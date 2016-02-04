@@ -206,8 +206,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ClinicDAL\" />
     <Folder Include="Content\" />
+    <Folder Include="Doctor\" />
+    <Folder Include="Masters\" />
+    <Folder Include="Pharmacy\" />
+    <Folder Include="Registration\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Stock\" />
+    <Folder Include="Token\" />
+    <Folder Include="UIClasses\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
