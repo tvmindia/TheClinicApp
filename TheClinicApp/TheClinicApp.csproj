@@ -195,6 +195,11 @@
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ClinicDAL\CaseSheet.cs" />
+    <Compile Include="ClinicDAL\Clinic.cs" />
+    <Compile Include="ClinicDAL\common.cs" />
+    <Compile Include="ClinicDAL\Patient.cs" />
+    <Compile Include="ClinicDAL\Stock.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -203,10 +208,10 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIClasses\common.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ClinicDAL\" />
     <Folder Include="Content\" />
     <Folder Include="Doctor\" />
     <Folder Include="Masters\" />
@@ -215,7 +220,6 @@
     <Folder Include="Scripts\" />
     <Folder Include="Stock\" />
     <Folder Include="Token\" />
-    <Folder Include="UIClasses\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
