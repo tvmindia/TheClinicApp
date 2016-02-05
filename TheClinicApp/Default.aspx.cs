@@ -11,7 +11,16 @@ namespace TheClinicApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (IsPostBack) {
+                ClinicDAL.Security secObj = new ClinicDAL.Security();
+          if(secObj.Login(username.Value,password.Value)){
+          Response.Redirect("home.aspx");
+          
+          }
+            
+            }
         }
+
+       
     }
 }
