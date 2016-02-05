@@ -141,6 +141,7 @@
     <Content Include="Content\Theme\Blue.css" />
     <Content Include="Content\Theme\Green.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Home.aspx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\arrowR.png" />
     <Content Include="Images\bullet.png" />
@@ -250,6 +251,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Masters\Landing.Master.cs">
       <DependentUpon>Landing.Master</DependentUpon>
