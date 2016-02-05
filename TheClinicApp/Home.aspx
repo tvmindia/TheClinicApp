@@ -9,12 +9,16 @@
 </head>
 <body class="Semitransparent_1">
     <form id="form1" runat="server">
-        <div class="outer">
-             <table class="AppBgTable" >
-            <tr>
-                <td class="LeftLogo"></td>
+        <div class="outerTop">
+              <table   style="width:99%" >
+            <tr  >
+                <td class="LeftLogo"> <img src="Images/LOGO.png"  style="width:50px;"/></td>
                 <td class="RightLogo"></td>
-            </tr>
+            </tr></table >
+        </div>
+        <div class="outer">
+           
+                 <table class="AppBgTable">
             <tr>
                 <td></td>
                 <td></td>
