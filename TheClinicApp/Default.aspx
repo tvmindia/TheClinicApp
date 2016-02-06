@@ -14,6 +14,15 @@
             position:fixed;
             z-index:-1;
         }
+
+         .auto-style2 {
+            width: 203px;
+            height: 117px;
+            left:40%;
+            top:70%;
+            position:fixed;
+            z-index:-1;
+        }
     </style>
      
     <script src="Scripts/jquery-1.12.0.min.js"></script>
@@ -25,7 +34,7 @@
 <body class="Semitransparent_1">
     <form id="form1" runat="server">
     <div class="logo" >
-        <img src="Images/LOGO.png"  style="width:100px"/>
+        <img src="Images/LOGO.png"  style="width:50px"/>
         
     </div>
     
@@ -52,6 +61,11 @@
      </div>  
 
     </div>
+
+        <div  class="loginerrormessage">
+            <asp:Label   ID="lblmsg" runat="server" Text=""></asp:Label>
+
+        </div>
         </form>
 </body>
 </html>

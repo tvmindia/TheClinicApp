@@ -12,7 +12,7 @@
         <div class="outerTop">
               <table   style="width:99%" >
             <tr  >
-                <td class="LeftLogo"> <img src="Images/LOGO.png"  style="width:50px;"/></td>
+                <td class="LeftLogo"> <img src="Images/LOGO.png"  style="width:20px;padding:5px;"/></td>
                 <td class="RightLogo"></td>
             </tr></table >
         </div>
