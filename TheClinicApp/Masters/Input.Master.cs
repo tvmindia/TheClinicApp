@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace TheClinicApp.Masters
 {
-    public partial class Menu : System.Web.UI.MasterPage
+    public partial class Input : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

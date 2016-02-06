@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Landing.master.cs" Inherits="TheClinicApp.Masters.Landing" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Popup.master.cs" Inherits="TheClinicApp.Masters.Popup" %>
 
 <!DOCTYPE html>
 

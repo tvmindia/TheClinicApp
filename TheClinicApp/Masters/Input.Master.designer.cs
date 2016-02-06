@@ -11,7 +11,7 @@ namespace TheClinicApp.Masters
 {
 
 
-    public partial class Landing
+    public partial class Input
     {
 
         /// <summary>
