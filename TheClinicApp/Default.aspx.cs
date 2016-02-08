@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Messages = TheClinicApp.UIClasses.Messages;
 
+
 namespace TheClinicApp
 {
     public partial class Default : System.Web.UI.Page
@@ -14,10 +15,25 @@ namespace TheClinicApp
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) {
-                ClinicDAL.Security secObj = new ClinicDAL.Security();
-                if (username.Value.ToString().Trim() !="" && secObj.Login(username.Value, password.Value))
+                
+                if (username.Value.ToString().Trim() !=""  )
                 {
-                    Response.Redirect("home.aspx");
+                    UIClasses.Const constants = new UIClasses.Const();
+                    ClinicDAL.UserAuthendication UA = new ClinicDAL.UserAuthendication(username.Value, password.Value);
+
+                    if (UA.ValidUser)
+                    {
+                        if (Session[constants.LoginSession] != null)
+                        {
+                            Session.Remove(constants.LoginSession);
+                        }
+
+                        Session.Add(constants.LoginSession, UA);
+                        Response.Redirect("home.aspx");
+                        
+                    }
+
+                  
 
                 }
                 else {

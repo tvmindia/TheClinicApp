@@ -31,7 +31,7 @@
                 <tr>
                     <td class="LeftLogo">
                         <img src="Images/LOGO.png" style="width: 20px; padding: 5px;" /></td>
-                    <td class="RightLogo"></td>
+                    <td class="RightLogo"> Hi <asp:Label ID="lblUserName" runat="server" Text=""></asp:Label> &nbsp; | &nbsp;  <asp:Label ID="txtclinic" runat="server" Text=""></asp:Label>&nbsp; | &nbsp;  <asp:Label ID="lblGroupName" runat="server" Text=""></asp:Label></td>
                 </tr>
             </table>
         </div>
@@ -58,13 +58,12 @@
                     </div>
                 </div>
             </div>
-            <div class="right"></div>
-            <%--   <table class="AppBgTable">
-                <tr>
-                    <td class="LeftLogo"></td>
-                    <td class="RightLogo"></td>
-                </tr>
-            </table>--%>
+            <div class="right">
+                <iframe id="main" class="mainIframe" frameborder="0" src="underConstruction.aspx"></iframe>
+
+
+            </div>
+            
         </div>
 
     </form>

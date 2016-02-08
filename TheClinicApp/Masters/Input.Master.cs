@@ -9,9 +9,21 @@ namespace TheClinicApp.Masters
 {
     public partial class Input : System.Web.UI.MasterPage
     {
+        UIClasses.Const Const = new UIClasses.Const();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+        protected void Page_Init(object sender, EventArgs e)
+
+        {
+            if (Session[Const.LoginSession] == null)
+            {
+                Response.Redirect(Const.LoginPage);
+            }
+            
+        
         }
     }
 }
