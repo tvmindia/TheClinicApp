@@ -244,6 +244,7 @@
     <Compile Include="ClinicDAL\CaseSheet.cs" />
     <Compile Include="ClinicDAL\Clinic.cs" />
     <Compile Include="ClinicDAL\common.cs" />
+    <Compile Include="ClinicDAL\dbConnection.cs" />
     <Compile Include="ClinicDAL\Patient.cs" />
     <Compile Include="ClinicDAL\Security.cs" />
     <Compile Include="ClinicDAL\Stock.cs" />

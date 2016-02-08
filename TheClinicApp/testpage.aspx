@@ -9,7 +9,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
+    <asp:dropdownlist runat="server" DataSourceID="SqlDataSource1"  ID="dp1"></asp:dropdownlist>
+
+
     </div>
     </form>
 </body>
