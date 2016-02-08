@@ -319,3 +319,27 @@ html, body {
 }
 
 
+
+
+.settingsLogo {
+    width:15px;
+    cursor:pointer;
+}
+
+
+.settings {
+    width:10%;
+    height:30%;
+    display:none;
+    background:rgba(34,34,34,0.25);
+    box-shadow:rgba(34,34,34,0.45) 2px 2px;
+    position:fixed;
+    border-radius:5px;
+    top:6%;
+    left:87%;
+    text-align:left;
+    padding:15px;
+    font-family:'Segoe UI';
+    font-size:medium;
+        
+}
