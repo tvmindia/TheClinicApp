@@ -247,6 +247,7 @@
     <Compile Include="ClinicDAL\Patient.cs" />
     <Compile Include="ClinicDAL\Security.cs" />
     <Compile Include="ClinicDAL\Stock.cs" />
+    <Compile Include="ClinicDAL\Token.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -270,6 +271,7 @@
     </Compile>
     <Compile Include="Masters\Popup.Master.cs">
       <DependentUpon>Popup.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Masters\Popup.Master.designer.cs">
       <DependentUpon>Popup.Master</DependentUpon>
