@@ -6,6 +6,9 @@
 <head runat="server">
     <title></title>
     <link href="Content/TheClinicApp.css" rel="stylesheet" />
+    <style>
+    
+    </style>
     <script src="Scripts/jquery-1.12.0.min.js"></script>
 </head>
 <body class="Semitransparent_1">
@@ -115,6 +118,9 @@
               
                
           </div>
+         
+
+
     </form>
 </body>
 </html>
