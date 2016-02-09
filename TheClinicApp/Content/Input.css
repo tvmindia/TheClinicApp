@@ -1,4 +1,5 @@
 ﻿body {
+      background-color: transparent;
 }
 .regFormLabels {
     vertical-align: bottom !important;
@@ -12,8 +13,41 @@
     border-bottom-width: thin;
     border-bottom: 1px solid;
     border-radius: 0 !important;
+     background-color: transparent;
+    text-align:right;
+   
+     
 }
 
 .bodyBackground {
     background-color: transparent;
+}
+
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+   
+}
+a:link {
+    text-decoration: underline;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
 }
