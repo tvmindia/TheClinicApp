@@ -6,6 +6,9 @@
 <head runat="server">
     <title></title>
     <link href="Content/TheClinicApp.css" rel="stylesheet" />
+    <style>
+    
+    </style>
     <script src="Scripts/jquery-1.12.0.min.js"></script>
 </head>
 <body class="Semitransparent_1">
@@ -14,7 +17,7 @@
         function selectTile(id) {
             //debugger;
             var tileList = ['dashboard', 'patient', 'token', 'doctor', 'pharmacy', 'stock'];
-            var IframeUrl = ['underConstruction.aspx', '../Registration/Patients.aspx', 'underConstruction.aspx', 'underConstruction.aspx', 'underConstruction.aspx', 'underConstruction.aspx'];
+            var IframeUrl = ['underConstruction.aspx', '../Registration/Patients.aspx', '../Token/Tokens.aspx', 'underConstruction.aspx', 'underConstruction.aspx', 'underConstruction.aspx'];
             for (i = 0; i < tileList.length; i++) {
                 if (id == tileList[i]) {
                     document.getElementById(id).className = id + '_selected'
@@ -104,7 +107,7 @@
                 </div>
             </div>
             <div class="right">
-                <iframe id="main" class="mainIframe" frameborder="0" ></iframe>
+                <iframe id="main" class="mainIframe" frameborder="0"  ></iframe>
 
 
             </div>
@@ -115,6 +118,9 @@
               
                
           </div>
+         
+
+
     </form>
 </body>
 </html>
