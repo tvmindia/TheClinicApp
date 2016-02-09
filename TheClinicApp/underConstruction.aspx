@@ -26,7 +26,7 @@
    </style>
     <div class="fullsizeDiv">
         <div class="underConstructionLogo">
-         
+      
         <p class="underConstructionTitle">
             <asp:Label ID="lblmsg" runat="server" Text="Oops ! Sorry ,this page is under construction !!"></asp:Label></p>
     </div>

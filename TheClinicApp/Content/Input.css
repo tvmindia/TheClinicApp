@@ -1,0 +1,19 @@
+﻿body {
+}
+.regFormLabels {
+    vertical-align: bottom !important;
+}
+
+.textBoxborder {
+    border: 0;
+    outline: none;
+    box-shadow: none;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    border-bottom: 1px solid;
+    border-radius: 0 !important;
+}
+
+.bodyBackground {
+    background-color: transparent;
+}
