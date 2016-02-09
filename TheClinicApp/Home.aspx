@@ -12,12 +12,15 @@
         function selectTile(id) {
             //debugger;
             var tileList = ['dashboard', 'patient', 'token', 'doctor', 'pharmacy', 'stock'];
+            var IframeUrl = ['underConstruction.aspx', '../Registration/Patients.aspx', 'underConstruction.aspx', 'underConstruction.aspx', 'underConstruction.aspx', 'underConstruction.aspx'];
             for (i = 0; i < tileList.length; i++) {
                 if (id == tileList[i]) {
                     document.getElementById(id).className = id + '_selected'
+                    document.getElementById('main').src = IframeUrl[i];
                 }
                 else {
                     document.getElementById(tileList[i]).className = tileList[i]
+                
                 }
 
             }
@@ -59,7 +62,7 @@
                 </div>
             </div>
             <div class="right">
-                <iframe id="main" class="mainIframe" frameborder="0" src="underConstruction.aspx"></iframe>
+                <iframe id="main" class="mainIframe" frameborder="0" ></iframe>
 
 
             </div>

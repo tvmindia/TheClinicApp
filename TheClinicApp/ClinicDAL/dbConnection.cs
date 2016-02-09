@@ -45,7 +45,7 @@ namespace TheClinicApp.ClinicDAL
             {
                 try
                 {
-                    HttpContext.Current.Response.Redirect("~/General/UnderConstruction.aspx?cause=dbDown", true);
+                    HttpContext.Current.Response.Redirect("~/underConstruction.aspx?cause=dbDown", true);
                 }
                 catch (Exception)
                 {
