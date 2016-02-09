@@ -14,7 +14,10 @@ namespace TheClinicApp
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
-                if (Session[Const.LoginSession] == null) { }
+                if (Session[Const.LoginSession] == null) {
+                    Response.Redirect(Const.LoginPage);
+                
+                }
                 else {
 
                     ClinicDAL.UserAuthendication UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];

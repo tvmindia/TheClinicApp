@@ -29,7 +29,7 @@ namespace TheClinicApp
                         }
 
                         Session.Add(constants.LoginSession, UA);
-                        Response.Redirect("home.aspx");
+                        Response.Redirect(constants.HomePage);
                         
                     }
 
