@@ -71,7 +71,7 @@ namespace TheClinicApp.ClinicDAL
         }
         #endregion Patientproperty
         #region AddPatientDetails
-        public Guid AddPatientDetails(string username)
+        public void AddPatientDetails(string username)
         {
 
             SqlConnection con = null;
@@ -135,7 +135,7 @@ namespace TheClinicApp.ClinicDAL
                 }
 
             }
-            return PatientID;
+            //return PatientID;
         }
         #endregion AddPatientDetails
         #region UpdatePatientDetails
