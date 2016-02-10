@@ -163,6 +163,8 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Images\screw.png" />
+    <Content Include="Images\search-128.png" />
+    <Content Include="Images\search-64.png" />
     <Content Include="Images\settings.png" />
     <Content Include="Registration\Patients.aspx" />
     <Content Include="Scripts\bootstrap.min.js" />
