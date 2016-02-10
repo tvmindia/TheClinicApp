@@ -164,6 +164,7 @@
     <Content Include="Images\orderedList9.png" />
     <Content Include="Images\screw.png" />
     <Content Include="Images\settings.png" />
+    <Content Include="Images\tick.png" />
     <Content Include="Registration\Patients.aspx" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.12.0.min.js" />

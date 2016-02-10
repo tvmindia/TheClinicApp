@@ -76,6 +76,15 @@ namespace TheClinicApp.Registration {
         protected global::System.Web.UI.WebControls.TextBox txtMarital;
         
         /// <summary>
+        /// lblMsgges control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMsgges;
+        
+        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>
@@ -85,21 +94,21 @@ namespace TheClinicApp.Registration {
         protected global::System.Web.UI.WebControls.Button btnSave;
         
         /// <summary>
-        /// Label6 control.
+        /// txtSpecial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label6;
+        protected global::System.Web.UI.WebControls.TextBox txtSpecial;
         
         /// <summary>
-        /// Label7 control.
+        /// TextBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label7;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
     }
 }
