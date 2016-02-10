@@ -9,9 +9,397 @@ namespace TheClinicApp.ClinicDAL
 {
     public class Patient
     {
-
+        #region Connectionstring
         dbConnection dcon = new dbConnection();
+        #endregion Connectionstring
+         
+        #region Patientproperty
+        public string PatientID
+        {
+            get;
+            set;
+        }
+        public string ClinicID 
+        {
+            get;
+            set;
+        }
+        public string Name
+        {
+            get;
+            set;
+        }
+        public string Address
+        {
+            get;
+            set;
+        }
+        public string Phone
+        {
+            get;
+            set;
+        }
+        public string Email
+        {
+            get;
+            set;
+        }
+        public string DOB
+        {
+            get;
+            set;
+        }
+        public string Gender
+        {
+            get;
+            set;
+        }
+        public string MaritalStatus
+        {
+            get;
+            set;
+        }
+        public string Occupation
+        {
+            get;
+            set;
+        }
+        public string UDF
+        {
+            get;
+            set;
+        }
+        #endregion Patientproperty
+        #region AddPatientDetails
+        public void AddPatientDetails(string username)
+        {
 
-       
+            SqlConnection con = null;
+            try
+            {
+                
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand pud = new SqlCommand();
+                pud.Connection = con;
+                pud.CommandType = System.Data.CommandType.StoredProcedure;
+                pud.CommandText = "[InsertPatientDetails]";
+                pud.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = PatientID;
+                pud.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = ClinicID;
+                pud.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = Name;
+                pud.Parameters.Add("@Address", SqlDbType.NVarChar, 255).Value = Address;
+                pud.Parameters.Add("@Phone", SqlDbType.NVarChar, 50).Value = Phone;
+                pud.Parameters.Add("@Email", SqlDbType.NVarChar, 255).Value = Email;
+                pud.Parameters.Add("@DOB", SqlDbType.Date).Value = DOB;
+                pud.Parameters.Add("@Gender", SqlDbType.NVarChar, 50).Value = Gender;
+                pud.Parameters.Add("@MaritalStatus", SqlDbType.NVarChar, 50).Value = MaritalStatus;
+                pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = username;
+                pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;              
+                SqlParameter OutparmPatientId = pud.Parameters.Add("@OutputPatientID", SqlDbType.UniqueIdentifier);
+                OutparmPatientId.Direction = ParameterDirection.Output;
+
+                pud.ExecuteNonQuery();
+
+                //if (OutparmPatientId.Value.ToString() == "")
+                //{
+                //    //not successfull   
+
+                //    var page = HttpContext.Current.CurrentHandler as Page;
+                //    eObj.InsertionSuccessData(page, "Insert not Successfull,Duplicate Entry!");
+
+                //}
+                //else
+                //{
+                //    //successfull
+                //    PatientID = (Guid)OutparmPatientId.Value;
+                //    var page = HttpContext.Current.CurrentHandler as Page;
+                //    eObj.InsertionSuccessData(page);
+
+
+                //}
+
+
+            }
+            catch (Exception ex)
+            {
+                //var page = HttpContext.Current.CurrentHandler as Page;
+                //eObj.ErrorData(ex, page);
+                throw ex;
+            }
+
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+            //return PatientID;
+        }
+        #endregion AddPatientDetails
+        #region UpdatePatientDetails
+        /// <summary>
+        /// Updates the PatientDetails
+        /// </summary>
+        public void UpdateBOQ(string username)
+        {
+            SqlConnection con = null;
+            try
+            {
+                
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand pud = new SqlCommand();
+                pud.Connection = con;
+                pud.CommandType = System.Data.CommandType.StoredProcedure;
+                pud.CommandText = "UpdatePatientDetails";
+                pud.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = PatientID;
+                pud.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = ClinicID;
+                pud.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = Name;
+                pud.Parameters.Add("@Address", SqlDbType.NVarChar, 255).Value = Address;
+                pud.Parameters.Add("@Phone", SqlDbType.NVarChar, 50).Value = Phone;
+                pud.Parameters.Add("@Email", SqlDbType.NVarChar, 255).Value = Email;
+                pud.Parameters.Add("@DOB", SqlDbType.Date).Value = DOB;
+                pud.Parameters.Add("@Gender", SqlDbType.NVarChar, 50).Value = Gender;
+                pud.Parameters.Add("@MaritalStatus", SqlDbType.NVarChar, 50).Value = MaritalStatus;
+                pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = username;
+                pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                SqlParameter OutparamId = pud.Parameters.Add("@OutparamId", SqlDbType.SmallInt);
+                OutparamId.Direction = ParameterDirection.Output;
+
+                pud.ExecuteNonQuery();
+                //if (int.Parse(OutparamId.Value.ToString()) != 0)
+                //{
+                //    //not successfull
+                //    var page = HttpContext.Current.CurrentHandler as Page;
+                //    eObj.UpdationSuccessData(page, "Not Updated");
+                //}
+                //else
+                //{
+                //    //successfull
+                //    var page = HttpContext.Current.CurrentHandler as Page;
+                //    eObj.UpdationSuccessData(page);
+                //}
+
+
+            }
+            catch (Exception ex)
+            {
+                //var page = HttpContext.Current.CurrentHandler as Page;
+                //eObj.ErrorData(ex, page);
+                throw ex;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+        }
+        #endregion UpdatePatientDetails
+        #region GetPatientDetails
+        public void GetPatientDetails()
+        {
+            SqlConnection con = null;
+            try
+            {
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand pud = new SqlCommand();
+                pud.Connection = con;
+                pud.CommandType = System.Data.CommandType.StoredProcedure;
+                pud.CommandText = "UpdatePatientDetails";
+                pud.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = PatientID;
+                
+                SqlParameter OutparamId = pud.Parameters.Add("@OutparamId", SqlDbType.SmallInt);
+                OutparamId.Direction = ParameterDirection.Output;
+                SqlDataReader dr;
+                dr=pud.ExecuteReader();
+                //if (int.Parse(OutparamId.Value.ToString()) != 0)
+                //{
+                //    //not successfull
+                //    var page = HttpContext.Current.CurrentHandler as Page;
+                //    eObj.UpdationSuccessData(page, "Not Updated");
+                //}
+                //else
+                //{
+                //    //successfull
+                //    var page = HttpContext.Current.CurrentHandler as Page;
+                //    eObj.UpdationSuccessData(page);
+                //}
+
+
+            }
+            catch (Exception ex)
+            {
+                //var page = HttpContext.Current.CurrentHandler as Page;
+                //eObj.ErrorData(ex, page);
+                throw ex;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+
+        }
+        #endregion GetPatientDetails
+        #region SearchPatientDetails
+        public void SearchPatientDetails(string searchtxt)
+        {
+            SqlConnection con = null;
+            try
+            {
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand pud = new SqlCommand();
+                pud.Connection = con;
+                pud.CommandType = System.Data.CommandType.StoredProcedure;
+                pud.CommandText = "UpdatePatientDetails";
+                pud.Parameters.Add("@string", SqlDbType.NVarChar, 255).Value = searchtxt;
+               
+                SqlParameter OutparamId = pud.Parameters.Add("@OutparamId", SqlDbType.SmallInt);
+                OutparamId.Direction = ParameterDirection.Output;
+                string strreturn;
+                strreturn=pud.ExecuteScalar().ToString();
+                //if (int.Parse(OutparamId.Value.ToString()) != 0)
+                //{
+                //    //not successfull
+                //    var page = HttpContext.Current.CurrentHandler as Page;
+                //    eObj.UpdationSuccessData(page, "Not Updated");
+                //}
+                //else
+                //{
+                //    //successfull
+                //    var page = HttpContext.Current.CurrentHandler as Page;
+                //    eObj.UpdationSuccessData(page);
+                //}
+
+
+            }
+            catch (Exception ex)
+            {
+                //var page = HttpContext.Current.CurrentHandler as Page;
+                //eObj.ErrorData(ex, page);
+                throw ex;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+        }
+
+        #endregion SearchPatientDetails
+        #region ViewAllRegistration
+        public void ViewAllRegistration()
+        {
+            SqlConnection con = null;
+            try
+            {
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand pud = new SqlCommand();
+                pud.Connection = con;
+                pud.CommandType = System.Data.CommandType.StoredProcedure;
+                pud.CommandText = "ViewAllRegistration";
+                SqlParameter OutparamId = pud.Parameters.Add("@OutparamId", SqlDbType.SmallInt);
+                OutparamId.Direction = ParameterDirection.Output;
+                SqlDataReader dr;
+                dr = pud.ExecuteReader();
+                //if (int.Parse(OutparamId.Value.ToString()) != 0)
+                //{
+                //    //not successfull
+                //    var page = HttpContext.Current.CurrentHandler as Page;
+                //    eObj.UpdationSuccessData(page, "Not Updated");
+                //}
+                //else
+                //{
+                //    //successfull
+                //    var page = HttpContext.Current.CurrentHandler as Page;
+                //    eObj.UpdationSuccessData(page);
+                //}
+
+
+            }
+            catch (Exception ex)
+            {
+                //var page = HttpContext.Current.CurrentHandler as Page;
+                //eObj.ErrorData(ex, page);
+                throw ex;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+        }
+        #endregion ViewAllRegistration
+        #region ViewDateRegistration
+        public void ViewDateRegistration(DateTime CreatedDate)
+        {
+            SqlConnection con = null;
+            try
+            {
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand pud = new SqlCommand();
+                pud.Connection = con;
+                pud.CommandType = System.Data.CommandType.StoredProcedure;
+                pud.CommandText = "ViewDateRegistration";
+                pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = CreatedDate;
+                SqlParameter OutparamId = pud.Parameters.Add("@OutparamId", SqlDbType.SmallInt);
+                OutparamId.Direction = ParameterDirection.Output;
+                SqlDataReader dr;
+                dr = pud.ExecuteReader();
+                //if (int.Parse(OutparamId.Value.ToString()) != 0)
+                //{
+                //    //not successfull
+                //    var page = HttpContext.Current.CurrentHandler as Page;
+                //    eObj.UpdationSuccessData(page, "Not Updated");
+                //}
+                //else
+                //{
+                //    //successfull
+                //    var page = HttpContext.Current.CurrentHandler as Page;
+                //    eObj.UpdationSuccessData(page);
+                //}
+
+
+            }
+            catch (Exception ex)
+            {
+                //var page = HttpContext.Current.CurrentHandler as Page;
+                //eObj.ErrorData(ex, page);
+                throw ex;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+        }
+        #endregion ViewDateRegistration
+
     }
+
 }

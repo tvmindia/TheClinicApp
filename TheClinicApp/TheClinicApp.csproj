@@ -163,12 +163,15 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Images\screw.png" />
+    <Content Include="Images\search-128.png" />
+    <Content Include="Images\search-64.png" />
     <Content Include="Images\settings.png" />
     <Content Include="Images\tick.png" />
     <Content Include="Registration\Patients.aspx" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.12.0.min.js" />
     <Content Include="testpage.aspx" />
+    <Content Include="Token\Tokens.aspx" />
     <Content Include="underConstruction.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -253,6 +256,7 @@
     <Compile Include="ClinicDAL\Clinic.cs" />
     <Compile Include="ClinicDAL\common.cs" />
     <Compile Include="ClinicDAL\dbConnection.cs" />
+    <Compile Include="ClinicDAL\Master.cs" />
     <Compile Include="ClinicDAL\Patient.cs" />
     <Compile Include="ClinicDAL\Security.cs" />
     <Compile Include="ClinicDAL\Stock.cs" />
@@ -300,6 +304,13 @@
     <Compile Include="testpage.aspx.designer.cs">
       <DependentUpon>testpage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Token\Tokens.aspx.cs">
+      <DependentUpon>Tokens.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Token\Tokens.aspx.designer.cs">
+      <DependentUpon>Tokens.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UIClasses\common.cs" />
     <Compile Include="UIClasses\Messages.cs" />
     <Compile Include="underConstruction.aspx.cs">
@@ -315,7 +326,6 @@
     <Folder Include="Doctor\" />
     <Folder Include="Pharmacy\" />
     <Folder Include="Stock\" />
-    <Folder Include="Token\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
