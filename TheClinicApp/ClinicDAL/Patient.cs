@@ -302,6 +302,103 @@ namespace TheClinicApp.ClinicDAL
         }
 
         #endregion SearchPatientDetails
+        #region ViewAllRegistration
+        public void ViewAllRegistration()
+        {
+            SqlConnection con = null;
+            try
+            {
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand pud = new SqlCommand();
+                pud.Connection = con;
+                pud.CommandType = System.Data.CommandType.StoredProcedure;
+                pud.CommandText = "ViewAllRegistration";
+                SqlParameter OutparamId = pud.Parameters.Add("@OutparamId", SqlDbType.SmallInt);
+                OutparamId.Direction = ParameterDirection.Output;
+                SqlDataReader dr;
+                dr = pud.ExecuteReader();
+                //if (int.Parse(OutparamId.Value.ToString()) != 0)
+                //{
+                //    //not successfull
+                //    var page = HttpContext.Current.CurrentHandler as Page;
+                //    eObj.UpdationSuccessData(page, "Not Updated");
+                //}
+                //else
+                //{
+                //    //successfull
+                //    var page = HttpContext.Current.CurrentHandler as Page;
+                //    eObj.UpdationSuccessData(page);
+                //}
+
+
+            }
+            catch (Exception ex)
+            {
+                //var page = HttpContext.Current.CurrentHandler as Page;
+                //eObj.ErrorData(ex, page);
+                throw ex;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+        }
+        #endregion ViewAllRegistration
+        #region ViewDateRegistration
+        public void ViewDateRegistration(DateTime CreatedDate)
+        {
+            SqlConnection con = null;
+            try
+            {
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand pud = new SqlCommand();
+                pud.Connection = con;
+                pud.CommandType = System.Data.CommandType.StoredProcedure;
+                pud.CommandText = "ViewDateRegistration";
+                pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = CreatedDate;
+                SqlParameter OutparamId = pud.Parameters.Add("@OutparamId", SqlDbType.SmallInt);
+                OutparamId.Direction = ParameterDirection.Output;
+                SqlDataReader dr;
+                dr = pud.ExecuteReader();
+                //if (int.Parse(OutparamId.Value.ToString()) != 0)
+                //{
+                //    //not successfull
+                //    var page = HttpContext.Current.CurrentHandler as Page;
+                //    eObj.UpdationSuccessData(page, "Not Updated");
+                //}
+                //else
+                //{
+                //    //successfull
+                //    var page = HttpContext.Current.CurrentHandler as Page;
+                //    eObj.UpdationSuccessData(page);
+                //}
+
+
+            }
+            catch (Exception ex)
+            {
+                //var page = HttpContext.Current.CurrentHandler as Page;
+                //eObj.ErrorData(ex, page);
+                throw ex;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+        }
+        #endregion ViewDateRegistration
 
     }
 
