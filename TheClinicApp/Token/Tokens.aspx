@@ -44,7 +44,7 @@
                             </div>
                              <div class="col-md-4">           
                                 <div class="col-md-12">                 
-                                      <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Images/search-64.png" />
+                                      <asp:ImageButton ID="imbsearch" runat="server" ImageUrl="~/Images/search-64.png" />
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        <%-- Patient Details Diplay region --%>
                         <div class="col-md-12 Span-One">
                             <div class="col-md-10">
                                 <div class="form-group">
@@ -182,7 +182,7 @@
 
 
                     </div>
-                    
+                    <%--token gridview region --%>
                     <div class="col-md-3">
                          <div  > 
 
@@ -194,6 +194,43 @@
                     </div>
 
       </div>
+   <footer>
+            <div style="position: fixed; background: rgba(0, 0, 0, 0.1); bottom: 0%; width: 100%; margin-left: 0px; height: 10%;">
+
+                <table style="width: 100%; height: 100%;">
+                    <tr>
+                        <td class="footerMessagesColumn" style="width:50%; ">
+                            <div id="Errorbox"  style="height:100%;  display:none"  runat="server" >
+                                 <a href="#" class="close" data-dismiss="alert" style="padding-top:0%;">&times;</a>
+
+                            <div>
+                            <strong> <asp:Label ID="lblErrorCaption" runat="server" Text=""></asp:Label> </strong>      <asp:Label ID="lblMsgges" runat="server" Text=""></asp:Label>
+
+</div>
+       </div>                     
+
+                        </td>
+                        <td style="height: 100%;   width:50%;" >
+                            <table class="footerTable" style="width:100%; margin-left:0px;padding-left:0px;">
+                                <tr>
+                                    <td style="width: 10%;">
+                                        <asp:Button ID="btnSave" runat="server" Text="BookToken" CssClass="button footerButtonColumn"  />
+
+                                    </td>
+                                    <td>
+                                        <label style="font-weight: bold; margin-left: 0px;">
+                                            <img src="../Images/tick.png" style="font-weight: bold;" /></label></td>
+                                </tr>
+                            </table>
+
+                        </td>
+
+                    </tr>
+                </table>
+
+
+            </div>
+        </footer>
 
     </div>
 </asp:Content>

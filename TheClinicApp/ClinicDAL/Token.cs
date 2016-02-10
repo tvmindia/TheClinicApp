@@ -116,30 +116,29 @@ namespace TheClinicApp.ClinicDAL
         }
 
         #endregion ViewToken
-
+        /// <summary>
+        /// to delete tokens
+        /// </summary>
+        /// <param name="id"></param>
         #region DeleteToken
         public void DeleteToken(int id)
         {
             SqlConnection con = null;
 
             try
-            { 
-         
-
+            {          
             dbConnection dcon = new dbConnection();
             con = dcon.GetDBConnection();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[DeleteToken]";
-            cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = id;
-             
+            cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = id;            
             cmd.ExecuteNonQuery();
             }
 
             catch (Exception ex)
             {
-
                 throw ex;
             }
 
@@ -149,7 +148,6 @@ namespace TheClinicApp.ClinicDAL
                 {
                     con.Dispose();
                 }
-
             }
 
 
@@ -160,7 +158,11 @@ namespace TheClinicApp.ClinicDAL
         #endregion DeleteToken
 
         #region InsertToken
-        public void InsertToken()
+        /// <summary>
+        /// to insert a new token all params should be set.
+        /// </summary>
+        /// <returns>return generated token number</returns>
+        public int InsertToken()
         {
 
             SqlConnection con = null;
@@ -187,11 +189,12 @@ namespace TheClinicApp.ClinicDAL
             SqlParameter OutparmItemId = cmd.Parameters.Add("@TokenNo", SqlDbType.Int);
             OutparmItemId.Direction = ParameterDirection.Output;
 
-          
+           
 
             cmd.ExecuteNonQuery();
-
-                //int token= Convert.ToInt32(OutparmItemId.Value);
+            TokenNo = Convert.ToInt32(OutparmItemId.Value);
+            return TokenNo;
+                 
              }
 
             catch (Exception ex)
