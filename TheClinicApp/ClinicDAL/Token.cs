@@ -12,6 +12,8 @@ namespace TheClinicApp.ClinicDAL
     {
         //Property
         #region TokenProperty
+
+        
         
         public int TokenNo
         {
@@ -87,9 +89,8 @@ namespace TheClinicApp.ClinicDAL
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[GetTokens]";
 
-             //want to add codding
-
-
+            cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = DoctorID;
+            cmd.Parameters.Add("@DateTime", SqlDbType.DateTime).Value = DateTime;
             sda = new SqlDataAdapter();
             sda.SelectCommand = cmd;
             ds = new DataSet();
@@ -111,7 +112,7 @@ namespace TheClinicApp.ClinicDAL
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[DeleteToken]";
             cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = id;
-            //want to add codding
+             
             cmd.ExecuteNonQuery();
 
 
@@ -131,8 +132,8 @@ namespace TheClinicApp.ClinicDAL
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[InsertTokens]";
 
-            //cmd.Parameters.Add("@TokenNo", SqlDbType.Int) = TokenNo;
-
+            Guid UniqueID = Guid.NewGuid();
+            cmd.Parameters.Add("@Unique", SqlDbType.UniqueIdentifier).Value = UniqueID;
             cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = DoctorID;
             cmd.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = PatientID;
             cmd.Parameters.Add("@DateTime", SqlDbType.DateTime).Value = DateTime;
@@ -140,9 +141,17 @@ namespace TheClinicApp.ClinicDAL
             cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
             cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreateDate;
 
-
+            SqlParameter OutparmItemId = cmd.Parameters.Add("@TokenNo", SqlDbType.Int);
+            OutparmItemId.Direction = ParameterDirection.Output;
 
             cmd.ExecuteNonQuery();
+
+           //int token= Convert.ToInt32(OutparmItemId.Value);
+
+
+
+
+           
 
 
 
