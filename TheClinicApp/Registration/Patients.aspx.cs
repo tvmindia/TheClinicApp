@@ -33,9 +33,10 @@ namespace TheClinicApp.Registration
             PatientObj.Occupation = "BUSINESS";
             PatientObj.AddPatientDetails();
             var page = HttpContext.Current.CurrentHandler as Page;
-            eObj.InsertionSuccessData(page);
-            //eObj.DeleteSuccessData(page);
-            //eObj.WarningSuccessData(page);
+           
+            //eObj.ErrorMessage(page);
+            //eObj.InsertionSuccessMassage(page);
+            //eObj.WarningMessage(page);
 
         }
 

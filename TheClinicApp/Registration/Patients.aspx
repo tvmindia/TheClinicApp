@@ -10,7 +10,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
-    <style>
+    <%--<style>
         footer {
             position: fixed;
             bottom: 0;
@@ -66,12 +66,12 @@
         .footerbuttonTable {
             margin-left: 1%;
         }
-    </style>
+    </style>--%>
     <link href="../Content/Input.css" rel="stylesheet" />
 
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
-    <div class="container bodyBackground" style="width: 100%;">
+    <div class="container bodyBackground" style="width:100%;">
         <label class="headingLabel">New Patient Registration </label>
         <div class="col-lg-12 Span-One ">
             <div class="col-md-9">
@@ -360,8 +360,7 @@
 
                                     </td>
                                     <td>
-                                        <label style="font-weight: bold; margin-left: 0px;">
-                                            <img src="../Images/tick.png" style="font-weight: bold;" /></label></td>
+                                       </td>
                                 </tr>
                             </table>
 
