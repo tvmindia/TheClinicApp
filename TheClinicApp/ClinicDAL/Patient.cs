@@ -310,22 +310,24 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion SearchPatientDetails
         #region ViewAllRegistration
-        public void ViewAllRegistration()
+        public DataTable ViewAllRegistration()
         {
             SqlConnection con = null;
+           
             try
             {
-
+                DataTable dt = new DataTable();
                 dbConnection dcon = new dbConnection();
                 con = dcon.GetDBConnection();
-                SqlCommand pud = new SqlCommand();
-                pud.Connection = con;
-                pud.CommandType = System.Data.CommandType.StoredProcedure;
-                pud.CommandText = "ViewAllRegistration";
-                SqlParameter OutparamId = pud.Parameters.Add("@OutparamId", SqlDbType.SmallInt);
-                OutparamId.Direction = ParameterDirection.Output;
-                SqlDataReader dr;
-                dr = pud.ExecuteReader();
+                SqlCommand cmd = new SqlCommand("ViewAllRegistration", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = cmd;
+                dt = new DataTable();
+                adapter.Fill(dt);
+                con.Close();
+                return dt;
+                
                 //if (int.Parse(OutparamId.Value.ToString()) != 0)
                 //{
                 //    //not successfull
@@ -355,26 +357,29 @@ namespace TheClinicApp.ClinicDAL
                 }
 
             }
+
+
         }
         #endregion ViewAllRegistration
         #region ViewDateRegistration
-        public void ViewDateRegistration(DateTime CreatedDate)
+        public DataTable ViewDateRegistration()
         {
             SqlConnection con = null;
             try
             {
-
+                DataTable dt1 = new DataTable();
                 dbConnection dcon = new dbConnection();
                 con = dcon.GetDBConnection();
-                SqlCommand pud = new SqlCommand();
-                pud.Connection = con;
-                pud.CommandType = System.Data.CommandType.StoredProcedure;
-                pud.CommandText = "ViewDateRegistration";
-                pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = CreatedDate;
-                SqlParameter OutparamId = pud.Parameters.Add("@OutparamId", SqlDbType.SmallInt);
-                OutparamId.Direction = ParameterDirection.Output;
-                SqlDataReader dr;
-                dr = pud.ExecuteReader();
+                SqlCommand cmd = new SqlCommand("ViewAllRegistration", con);
+                cmd.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = cmd;
+                dt1 = new DataTable();
+                adapter.Fill(dt1);
+                con.Close();
+                return dt1;
+                
                 //if (int.Parse(OutparamId.Value.ToString()) != 0)
                 //{
                 //    //not successfull

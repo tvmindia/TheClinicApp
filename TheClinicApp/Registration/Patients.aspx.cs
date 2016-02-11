@@ -13,7 +13,18 @@ namespace TheClinicApp.Registration
         ErrorHandling eObj = new ErrorHandling();
         protected void Page_Load(object sender, EventArgs e)
         {
+            Patient Patientobj = new Patient();
+            #region GridAllRegistration        
+            dtgViewAllRegistration.EmptyDataText = "No Records Found";           
+            dtgViewAllRegistration.DataSource=Patientobj.ViewAllRegistration();
+            dtgViewAllRegistration.DataBind();
+            #endregion GridAllRegistration
 
+            //#region GridDateRegistration           
+            //dtgViewTodaysRegistration.EmptyDataText = "No Records Found";
+            //dtgViewTodaysRegistration.DataSource = Patientobj.ViewDateRegistration();
+            //dtgViewTodaysRegistration.DataBind();
+            //#endregion GridDateRegistration
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
