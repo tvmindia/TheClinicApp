@@ -60,7 +60,7 @@
         .footerButtonColumn {
             width: 30%;
             margin-left: 0%;
-            background-color:red;
+         
         }
 
         .footerbuttonTable {
