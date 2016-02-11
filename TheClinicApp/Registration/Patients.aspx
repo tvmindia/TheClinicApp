@@ -200,7 +200,7 @@
 
 
                             <div class="col-md-11">
-                                <asp:TextBox ID="txtMobile" class="form-control textBoxborder" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtMobile" class="form-control textBoxborder" runat="server" maxlength="10"  pattern="[0-9]{10}"  ></asp:TextBox>
 
                             </div>
                         </div>
@@ -215,14 +215,14 @@
                 <div class="col-md-12 Span-One">
                     <div class="col-md-11">
                         <div class="form-group">
-                            <label class="control-label col-md-1 regFormLabels" for="email">Email:</label>
+                            <label class="control-label col-md-1 regFormLabels" for="email" >Email:</label>
 
 
 
 
 
                             <div class="col-md-11">
-                                <asp:TextBox ID="txtEmail" class="form-control textBoxborder" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtEmail" class="form-control textBoxborder" runat="server" type="email"></asp:TextBox>
 
                             </div>
                         </div>
