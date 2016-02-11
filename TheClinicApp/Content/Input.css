@@ -110,3 +110,15 @@ a:active {
         .footerbuttonTable {
             margin-left: 1%;
         }
+        .lblErrorCaptionSuccess{
+            color:#606B1D;
+
+        }
+        .lblErrorCaptionWarning{
+            color:#9F6000;
+
+        }
+         .lblErrorCaptionDanger{
+            color:#800000;
+
+        }

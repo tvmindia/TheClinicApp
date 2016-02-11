@@ -19,9 +19,10 @@ namespace TheClinicApp.Registration
         protected void btnSave_Click(object sender, EventArgs e)
         {
             var page = HttpContext.Current.CurrentHandler as Page;
-            eObj.InsertionSuccessData(page);
-            //eObj.DeleteSuccessData(page);
-            //eObj.WarningSuccessData(page);
+           
+            //eObj.ErrorMessage(page);
+            //eObj.InsertionSuccessMassage(page);
+            //eObj.WarningMessage(page);
 
         }
 

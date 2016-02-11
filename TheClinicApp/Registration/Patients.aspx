@@ -360,8 +360,7 @@
 
                                     </td>
                                     <td>
-                                        <label style="font-weight: bold; margin-left: 0px;">
-                                            <img src="../Images/tick.png" style="font-weight: bold;" /></label></td>
+                                       </td>
                                 </tr>
                             </table>
 
