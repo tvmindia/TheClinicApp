@@ -104,10 +104,7 @@ namespace TheClinicApp.ClinicDAL
                 Output.DbType = DbType.Int32;
                 Output.ParameterName = "@Status";
                 Output.Direction = ParameterDirection.Output;
-                pud.Parameters.Add(Output);
-                //SqlParameter OutparmPatientId = pud.Parameters.Add("@Status", SqlDbType.Int);
-                //OutparmPatientId.Direction = ParameterDirection.Output;
-
+                pud.Parameters.Add(Output);              
                 pud.ExecuteNonQuery();
 
                 if (Output.Value.ToString() == "")
