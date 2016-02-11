@@ -12,6 +12,8 @@ namespace TheClinicApp.ClinicDAL
     {
         //Property
         #region TokenProperty
+
+        
         
         public int TokenNo
         {
@@ -68,18 +70,16 @@ namespace TheClinicApp.ClinicDAL
 
         //Methods
         #region Token_Methods
-
-              
-
-
-
+        
+        #region ViewToken
         public DataSet ViewToken()
         {
 
             SqlConnection con = null;
             DataSet ds = null;
             SqlDataAdapter sda = null;
-
+            try
+            { 
             dbConnection dcon = new dbConnection();
             con = dcon.GetDBConnection();
             SqlCommand cmd = new SqlCommand();
@@ -87,9 +87,8 @@ namespace TheClinicApp.ClinicDAL
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[GetTokens]";
 
-             //want to add codding
-
-
+            cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = DoctorID;
+            cmd.Parameters.Add("@DateTime", SqlDbType.DateTime).Value = DateTime;
             sda = new SqlDataAdapter();
             sda.SelectCommand = cmd;
             ds = new DataSet();
@@ -97,32 +96,79 @@ namespace TheClinicApp.ClinicDAL
             
             return ds;
 
+            }
+
+            catch (Exception ex)
+            {
+                 
+                throw ex;
+            }
+
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
 
         }
+
+        #endregion ViewToken
+        /// <summary>
+        /// to delete tokens
+        /// </summary>
+        /// <param name="id"></param>
+        #region DeleteToken
         public void DeleteToken(int id)
         {
             SqlConnection con = null;
-         
 
+            try
+            {          
             dbConnection dcon = new dbConnection();
             con = dcon.GetDBConnection();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[DeleteToken]";
-            cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = id;
-            //want to add codding
+            cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = id;            
             cmd.ExecuteNonQuery();
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+            }
+
 
 
             
         }
 
-        public void GenerateToken()
+        #endregion DeleteToken
+
+        #region InsertToken
+        /// <summary>
+        /// to insert a new token all params should be set.
+        /// </summary>
+        /// <returns>return generated token number</returns>
+        public int InsertToken()
         {
 
             SqlConnection con = null;
             
+            try
+            {
 
             dbConnection dcon = new dbConnection();
             con = dcon.GetDBConnection();
@@ -131,8 +177,8 @@ namespace TheClinicApp.ClinicDAL
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[InsertTokens]";
 
-            //cmd.Parameters.Add("@TokenNo", SqlDbType.Int) = TokenNo;
-
+            Guid UniqueID = Guid.NewGuid();
+            cmd.Parameters.Add("@Unique", SqlDbType.UniqueIdentifier).Value = UniqueID;
             cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = DoctorID;
             cmd.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = PatientID;
             cmd.Parameters.Add("@DateTime", SqlDbType.DateTime).Value = DateTime;
@@ -140,16 +186,39 @@ namespace TheClinicApp.ClinicDAL
             cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
             cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreateDate;
 
-
-
-            cmd.ExecuteNonQuery();
-
-
+            SqlParameter OutparmItemId = cmd.Parameters.Add("@TokenNo", SqlDbType.Int);
+            OutparmItemId.Direction = ParameterDirection.Output;
 
            
-        
-        }
 
+            cmd.ExecuteNonQuery();
+            TokenNo = Convert.ToInt32(OutparmItemId.Value);
+            return TokenNo;
+                 
+             }
+
+            catch (Exception ex)
+            {
+                 
+                throw ex;
+            }
+
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+         
+
+
+
+
+        }
+        #endregion InsertToken
+        
         #endregion Token_Methods
 
 

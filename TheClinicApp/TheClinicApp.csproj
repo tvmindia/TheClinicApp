@@ -163,13 +163,17 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Images\screw.png" />
+    <Content Include="Images\search-128.png" />
+    <Content Include="Images\search-64.png" />
     <Content Include="Images\settings.png" />
+    <Content Include="Images\tick.png" />
     <Content Include="Registration\Patients.aspx" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.12.0.min.js" />
     <Content Include="testpage.aspx" />
     <Content Include="Token\Tokens.aspx" />
     <Content Include="underConstruction.aspx" />
+    <Content Include="UserControl\ProfilePicUpload.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
   </ItemGroup>
@@ -253,6 +257,7 @@
     <Compile Include="ClinicDAL\Clinic.cs" />
     <Compile Include="ClinicDAL\common.cs" />
     <Compile Include="ClinicDAL\dbConnection.cs" />
+    <Compile Include="ClinicDAL\ErrorHandling.cs" />
     <Compile Include="ClinicDAL\Master.cs" />
     <Compile Include="ClinicDAL\Patient.cs" />
     <Compile Include="ClinicDAL\Security.cs" />
@@ -316,6 +321,13 @@
     </Compile>
     <Compile Include="underConstruction.aspx.designer.cs">
       <DependentUpon>underConstruction.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\ProfilePicUpload.ascx.cs">
+      <DependentUpon>ProfilePicUpload.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\ProfilePicUpload.ascx.designer.cs">
+      <DependentUpon>ProfilePicUpload.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
