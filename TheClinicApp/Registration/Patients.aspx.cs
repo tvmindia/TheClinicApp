@@ -34,9 +34,7 @@ namespace TheClinicApp.Registration
             PatientObj.AddPatientDetails();
             var page = HttpContext.Current.CurrentHandler as Page;
            
-            //eObj.ErrorMessage(page);
-            //eObj.InsertionSuccessMassage(page);
-            //eObj.WarningMessage(page);
+           
 
         }
 

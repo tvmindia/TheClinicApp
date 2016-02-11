@@ -4,11 +4,13 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
 
 namespace TheClinicApp.ClinicDAL
 {
     public class Patient
     {
+        ErrorHandling eObj = new ErrorHandling();
         #region Connectionstring
         dbConnection dcon = new dbConnection();
         #endregion Connectionstring
@@ -93,37 +95,40 @@ namespace TheClinicApp.ClinicDAL
                 pud.Parameters.Add("@DOB", SqlDbType.Date).Value = DOB;
                 pud.Parameters.Add("@Gender", SqlDbType.NVarChar, 50).Value = Gender;
                 pud.Parameters.Add("@MaritalStatus", SqlDbType.NVarChar, 50).Value = MaritalStatus;
+                pud.Parameters.Add("@Occupation", SqlDbType.NVarChar, 255).Value = Occupation;
                 pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
-                pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;              
+                pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
                 SqlParameter OutparmPatientId = pud.Parameters.Add("@OutputPatientID", SqlDbType.UniqueIdentifier);
                 OutparmPatientId.Direction = ParameterDirection.Output;
 
                 pud.ExecuteNonQuery();
 
-                //if (OutparmPatientId.Value.ToString() == "")
-                //{
-                //    //not successfull   
+                if (OutparmPatientId.Value.ToString() == "")
+                {
+                    //not successfull   
 
-                //    var page = HttpContext.Current.CurrentHandler as Page;
-                //    eObj.InsertionSuccessData(page, "Insert not Successfull,Duplicate Entry!");
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.ErrorMessage(page);
 
-                //}
-                //else
-                //{
-                //    //successfull
-                //    PatientID = (Guid)OutparmPatientId.Value;
-                //    var page = HttpContext.Current.CurrentHandler as Page;
-                //    eObj.InsertionSuccessData(page);
+                }
+                else
+                {
+                    //successfull
+                    PatientID = (Guid)OutparmPatientId.Value;
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.InsertionSuccessMassage(page);
 
 
-                //}
+                }
 
 
             }
             catch (Exception ex)
             {
-                //var page = HttpContext.Current.CurrentHandler as Page;
-                //eObj.ErrorData(ex, page);
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.WarningMessage(page);
                 throw ex;
             }
 
@@ -135,7 +140,7 @@ namespace TheClinicApp.ClinicDAL
                 }
 
             }
-            //return PatientID;
+            
         }
         #endregion AddPatientDetails
         #region UpdatePatientDetails
