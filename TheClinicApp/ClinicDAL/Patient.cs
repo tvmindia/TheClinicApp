@@ -110,7 +110,7 @@ namespace TheClinicApp.ClinicDAL
                     //not successfull   
 
                     var page = HttpContext.Current.CurrentHandler as Page;
-                    eObj.ErrorMessage(page);
+                    eObj.InsertionNotSuccessMessage(page);
 
                 }
                 else
@@ -118,7 +118,7 @@ namespace TheClinicApp.ClinicDAL
                     //successfull
                     PatientID = (Guid)OutparmPatientId.Value;
                     var page = HttpContext.Current.CurrentHandler as Page;
-                    eObj.InsertionSuccessMassage(page);
+                    eObj.InsertionSuccessMessage(page);
 
 
                 }
@@ -128,8 +128,8 @@ namespace TheClinicApp.ClinicDAL
             catch (Exception ex)
             {
                 var page = HttpContext.Current.CurrentHandler as Page;
-                eObj.WarningMessage(page);
-                throw ex;
+                eObj.ErrorData(ex, page);
+            
             }
 
             finally
