@@ -21,7 +21,7 @@ namespace TheClinicApp.Token
          
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
 
             if(!IsPostBack)
             {
@@ -44,10 +44,14 @@ namespace TheClinicApp.Token
         
 
      
-
+        /// <summary>
+        /// inerting values to tokens table and get the token value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnBookToken_Click(object sender, EventArgs e)
         {
-            //tokenNo get the token value
+            
             int tokenNo = tok.InsertToken();
            
           
@@ -65,8 +69,12 @@ namespace TheClinicApp.Token
             string value = Request.Form["txtSearch"];
              
             DataSet dsPdetails = tok.GetpatientDetails(value);
-
-
+            DataTable dt=dsPdetails.Tables[0];
+            lblFile.Text = Convert.ToString(dt.Rows[0][0]);
+            lblName.Text = Convert.ToString(dt.Rows[0][2]);
+            lblAge.Text = Convert.ToString(dt.Rows[0][6]);
+            lblPhone.Text = Convert.ToString(dt.Rows[0][4]);
+            lblGender.Text = Convert.ToString(dt.Rows[0][7]);
         }
     }
 }

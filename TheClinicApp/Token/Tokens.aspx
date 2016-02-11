@@ -119,7 +119,7 @@
                    
                                     <div class="col-md-12">
                                                                                                 
-                                          <label class="control-label col-md-1 regFormLabels"  >File:</label>
+                                          <label   class="control-label col-md-1 regFormLabels"  >File:</label>
                                                                                                 
                                     </div>
                                 </div>
@@ -127,7 +127,7 @@
                             </div>
                              <div class="col-md-8">           
                                 <div class="col-md-12">                 
-                                     <label> #3598</label>
+                                    <asp:Label ID="lblFile" runat="server" Text="Label"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +146,7 @@
                             </div>
                              <div class="col-md-8">           
                                 <div class="col-md-12">                 
-                                     <label class="" > name</label>
+                                    <asp:Label ID="lblName"   runat="server" Text="Label"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -165,7 +165,7 @@
                             </div>
                              <div class="col-md-8">           
                                 <div class="col-md-12">                 
-                                     <label> 23</label>
+                                    <asp:Label ID="lblAge" runat="server" Text="Label"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -184,7 +184,7 @@
                             </div>
                              <div class="col-md-8">           
                                 <div class="col-md-12">                 
-                                     <label>5936434</label>
+                                    <asp:Label ID="lblPhone" runat="server" Text="Label"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -203,7 +203,7 @@
                             </div>
                              <div class="col-md-8">           
                                 <div class="col-md-12">                 
-                                     <label> Male</label>
+                                    <asp:Label ID="lblGender" runat="server" Text="Label"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -217,7 +217,7 @@
                              <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                              <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                  <ContentTemplate>
-                                     <asp:Timer ID="Timer1" Interval="10000" runat="server"></asp:Timer>
+                                     
 
                                       <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False">
                                           <Columns>
