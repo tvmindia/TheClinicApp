@@ -55,10 +55,10 @@
                                     <div class="col-md-12">
 
                                       <div class="input-group stylish-input-group">
-                                    <input type="text" class="form-control" placeholder="Patient Search" style="height: 20%;" />
+                                    <input type="text" name="txtSearch" class="form-control" placeholder="Patient Search" style="height: 20%;" />
 
                                     <span class="input-group-addon" style="height: 0%;">
-                                        <button type="submit" style="height: .1%;">
+                                        <button type="submit" id="btnSearch"  style="height: .1%;"  runat="server" onserverclick="btnSearch_ServerClick">
                                             <i class="glyphicon glyphicon-search"></i>
 
                                         </button>
@@ -72,7 +72,7 @@
                             </div>
                              <div class="col-md-6">           
                                 <div class="col-md-12">                 
-                                     <asp:DropDownList ID="DropDownList1" Height="30px" Width="100" runat="server"></asp:DropDownList>
+                                     <asp:DropDownList ID="ddlDoctorName" Height="30px" Width="100" runat="server"></asp:DropDownList>
                                 </div>
                             </div>
                         </div>
@@ -138,7 +138,7 @@
                    
                                     <div class="col-md-12">
                                                                                                 
-                                          <label class="control-label col-md-1 regFormLabels"  >Name:</label>
+                                          <label class="control-label col-md-1 regFormLabels  "  >Name:</label>
                                                                                                 
                                     </div>
                                 </div>
@@ -146,7 +146,7 @@
                             </div>
                              <div class="col-md-8">           
                                 <div class="col-md-12">                 
-                                     <label > name</label>
+                                     <label class="" > name</label>
                                 </div>
                             </div>
                         </div>
@@ -212,9 +212,26 @@
                     </div>
                     <%--token gridview region --%>
                     <div class="col-md-3">
-                         <div  > 
+                         <div  >
 
-                             <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+                             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                 <ContentTemplate>
+                                     <asp:Timer ID="Timer1" Interval="10000" runat="server"></asp:Timer>
+
+                                      <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False">
+                                          <Columns>
+                                              <asp:BoundField HeaderText="DOCTOR NAME" />
+                                              <asp:BoundField HeaderText="TOKEN NO" />
+                                              <asp:BoundField HeaderText="PATIENT NAME" />
+                                              <asp:BoundField HeaderText="TIME" />
+                                          </Columns>
+                                     </asp:GridView>
+
+                                 </ContentTemplate>
+                             </asp:UpdatePanel>
+
+                            
                       
 
 
