@@ -388,7 +388,33 @@
                     </div>
                     <div class="modal-body">
 
-                        <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellSpacing="2">
+                            <Columns>
+                                <asp:BoundField DataField="Name" HeaderText="Name"></asp:BoundField>
+                                <asp:BoundField DataField="Address" HeaderText="Address"></asp:BoundField>
+                                <asp:BoundField DataField="DOB" HeaderText="Age"></asp:BoundField>
+                                <asp:BoundField DataField="Phone" HeaderText="Phone"></asp:BoundField>
+                                <asp:BoundField DataField="Email" HeaderText="Email"></asp:BoundField>
+                            </Columns>
+
+                            <FooterStyle BackColor="#CCCCCC"></FooterStyle>
+
+                            <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                            <PagerStyle HorizontalAlign="Left" BackColor="#CCCCCC" ForeColor="Black"></PagerStyle>
+
+                            <RowStyle BackColor="White"></RowStyle>
+
+                            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White"></SelectedRowStyle>
+
+                            <SortedAscendingCellStyle BackColor="#F1F1F1"></SortedAscendingCellStyle>
+
+                            <SortedAscendingHeaderStyle BackColor="#808080"></SortedAscendingHeaderStyle>
+
+                            <SortedDescendingCellStyle BackColor="#CAC9C9"></SortedDescendingCellStyle>
+
+                            <SortedDescendingHeaderStyle BackColor="#383838"></SortedDescendingHeaderStyle>
+                        </asp:GridView>
                     </div>
                     <div class="modal-footer">
                         <button data-dismiss="modal" class="btn  btn-large">Close</button>
@@ -410,7 +436,35 @@
 
                     </div>
                     <div class="modal-body">
-                     <asp:GridView ID="GridView2" runat="server"></asp:GridView>
+                        <asp:GridView ID="dtgViewTodaysRegistration" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                            <Columns>
+                                <asp:BoundField DataField="Name" HeaderText="Name"></asp:BoundField>
+                                <asp:BoundField DataField="Address" HeaderText="Address"></asp:BoundField>
+                                <asp:BoundField DataField="DOB" HeaderText="Age"></asp:BoundField>
+                                <asp:BoundField DataField="Phone" HeaderText="Phone"></asp:BoundField>
+                                <asp:BoundField DataField="Email" HeaderText="Email"></asp:BoundField>
+                            </Columns>
+                            <EditRowStyle BackColor="#7C6F57"></EditRowStyle>
+
+                            <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                            <PagerStyle HorizontalAlign="Center" BackColor="#666666" ForeColor="White"></PagerStyle>
+
+                            <RowStyle BackColor="#E3EAEB"></RowStyle>
+
+                            <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                            <SortedAscendingCellStyle BackColor="#F8FAFA"></SortedAscendingCellStyle>
+
+                            <SortedAscendingHeaderStyle BackColor="#246B61"></SortedAscendingHeaderStyle>
+
+                            <SortedDescendingCellStyle BackColor="#D4DFE1"></SortedDescendingCellStyle>
+
+                            <SortedDescendingHeaderStyle BackColor="#15524A"></SortedDescendingHeaderStyle>
+                        </asp:GridView>
                     </div>
                     <div class="modal-footer">
                         <button data-dismiss="modal" class="btn  btn-large">Close</button>

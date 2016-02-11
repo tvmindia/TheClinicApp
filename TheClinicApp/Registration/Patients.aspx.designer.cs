@@ -130,21 +130,21 @@ namespace TheClinicApp.Registration {
         protected global::System.Web.UI.WebControls.Button btnSave;
         
         /// <summary>
-        /// GridView1 control.
+        /// dtgViewAllRegistration control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView dtgViewAllRegistration;
         
         /// <summary>
-        /// GridView2 control.
+        /// dtgViewTodaysRegistration control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
+        protected global::System.Web.UI.WebControls.GridView dtgViewTodaysRegistration;
     }
 }
