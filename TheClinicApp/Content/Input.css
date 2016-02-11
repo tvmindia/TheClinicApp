@@ -54,33 +54,59 @@ a:hover {
 a:active {
     text-decoration: none;
 }
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-}
+  footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+         
+        }
 
-.footerTable {
-    margin-left: 50%;
-    height: 100%;
-}
+        .footerTable {
+            height: 100%;
+            background-color: transparent;
+            padding-left: 0px;
+            margin-left: 0px;
+            width: 100%;
+        }
 
-.button {
-    background-color: transparent; /* Green */
-    border: none;
-    color: black;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    height: 100%;
-    width: 100%;
-    font: bolder 900;
-}
+        .button {
+            background-color: gray;
+            border: none;
+            color:black;
+            font-weight: bold;
+            font-size: 16px;
+            height: 100%;
+            width: 100%;
+            font: bolder 900;
+            z-index: 1;
+            margin-right: 0%;
+            padding-right: 0%;
+        }
 
-.headingLabel {
-    margin-left: 20%;
-    color: seagreen;
-}
+        .headingLabel {
+            margin-left: 20%;
+            color: seagreen;
+            font: bold;
+            font-size: 17px;
+            text-decoration: underline;
+            padding-top: 2%;
+        }
+
+        .footerMessagesColumn {
+            margin-left: 2%;
+            width: 30%;
+            padding-left: 2%;
+          
+        }
+
+        .footerButtonColumn {
+            width: 100%;
+            margin-left: 0%;
+         
+        }
+
+        .footerbuttonTable {
+            margin-left: 1%;
+        }
