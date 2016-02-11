@@ -100,12 +100,17 @@ namespace TheClinicApp.ClinicDAL
                 pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
                 pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
                 pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
-                SqlParameter OutparmPatientId = pud.Parameters.Add("@OutputPatientID", SqlDbType.UniqueIdentifier);
-                OutparmPatientId.Direction = ParameterDirection.Output;
+                SqlParameter Output = new SqlParameter();
+                Output.DbType = DbType.Int32;
+                Output.ParameterName = "@Status";
+                Output.Direction = ParameterDirection.Output;
+                pud.Parameters.Add(Output);
+                //SqlParameter OutparmPatientId = pud.Parameters.Add("@Status", SqlDbType.Int);
+                //OutparmPatientId.Direction = ParameterDirection.Output;
 
                 pud.ExecuteNonQuery();
 
-                if (OutparmPatientId.Value.ToString() == "")
+                if (Output.Value.ToString() == "")
                 {
                     //not successfull   
 
@@ -116,7 +121,7 @@ namespace TheClinicApp.ClinicDAL
                 else
                 {
                     //successfull
-                    PatientID = (Guid)OutparmPatientId.Value;
+                    
                     var page = HttpContext.Current.CurrentHandler as Page;
                     eObj.InsertionSuccessMessage(page);
 
