@@ -17,7 +17,7 @@ namespace TheClinicApp.ClinicDAL
         }
 
 
-        public void InsertionSuccessMassage(Page pg)
+        public void InsertionSuccessMessage(Page pg)
         {
 
             var master1 = pg.Master;
@@ -34,7 +34,7 @@ namespace TheClinicApp.ClinicDAL
             // Success.Text = "Successfully Inserted"; 
 
         }
-        public void InsertionSuccessMassage(Page pg, string msg)//if insert does not happend becasue of already existing
+        public void InsertionSuccessMessage(Page pg, string msg)//if insert does not happend becasue of already existing
         {
             var master1 = pg.Master;
             ContentPlaceHolder mpContentPlaceHolder1;
@@ -49,7 +49,7 @@ namespace TheClinicApp.ClinicDAL
             divMask1.Attributes["class"] = "alert lblErrorCaptionSuccess fade in";
             
         }
-        public void UpdationSuccessMassage(Page pg)
+        public void UpdationSuccessMessage(Page pg)
         {
             var master1 = pg.Master;
             ContentPlaceHolder mpContentPlaceHolder1;
@@ -65,7 +65,7 @@ namespace TheClinicApp.ClinicDAL
         
         }
 
-        public void UpdationSuccessMassage(Page pg, string msg)//if update fails
+        public void UpdationSuccessMessage(Page pg, string msg)//if update fails
         {
             var master1 = pg.Master;
             ContentPlaceHolder mpContentPlaceHolder1;
@@ -95,7 +95,7 @@ namespace TheClinicApp.ClinicDAL
          
 
         }
-        public void DeleteSuccessMassage(Page pg)
+        public void DeleteSuccessMessage(Page pg)
         {
             var master1 = pg.Master;
             ContentPlaceHolder mpContentPlaceHolder1;
@@ -123,7 +123,7 @@ namespace TheClinicApp.ClinicDAL
             divMask1.Attributes["class"] = "alert lblErrorCaptionWarning fade in";
         }
 
-        public void InsertionNotSuccessMassage(Page pg)
+        public void InsertionNotSuccessMessage(Page pg)
         {
             var master1 = pg.Master;
             ContentPlaceHolder mpContentPlaceHolder1;
