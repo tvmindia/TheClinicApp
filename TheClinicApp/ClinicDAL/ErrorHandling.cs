@@ -121,6 +121,20 @@ namespace TheClinicApp.ClinicDAL
             Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
             lblErrorCaption.Text = "Warning!";
             divMask1.Attributes["class"] = "alert lblErrorCaptionWarning fade in";
-        }        
+        }
+
+        public void InsertionNotSuccessMassage(Page pg)
+        {
+            var master1 = pg.Master;
+            ContentPlaceHolder mpContentPlaceHolder1;
+            mpContentPlaceHolder1 = (ContentPlaceHolder)master1.FindControl("ContentPlaceHolder1");
+            HtmlControl divMask1 = (HtmlControl)mpContentPlaceHolder1.FindControl("Errorbox") as HtmlControl;
+            Label lblMsgges = mpContentPlaceHolder1.FindControl("lblMsgges") as Label;
+            lblMsgges.Text = "Insertion Not Successful ";
+            divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
+            Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
+            lblErrorCaption.Text = "Danger!";
+            divMask1.Attributes["class"] = "alert lblErrorCaptionDanger fade in";
+        }
     }
 }
