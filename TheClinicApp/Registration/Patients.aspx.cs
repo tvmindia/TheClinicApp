@@ -18,10 +18,23 @@ namespace TheClinicApp.Registration
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            Patient PatientObj = new Patient();
+            Guid g = Guid.NewGuid();
+            string guitemp="2c7a7172-6ea9-4640-b7d2-0c329336f289";
+            PatientObj.PatientID = g;
+            PatientObj.ClinicID = Guid.Parse(guitemp);
+            PatientObj.Name = txtName.Text;
+            PatientObj.Address = txtAddress.Text;
+            PatientObj.Phone = txtMobile.Text;
+            PatientObj.Email = txtEmail.Text;
+            PatientObj.DOB = txtAge.Text;
+            PatientObj.Gender = txtSex.Text;
+            PatientObj.MaritalStatus = txtMarital.Text;
+            PatientObj.Occupation = "BUSINESS";
+            PatientObj.AddPatientDetails();
             var page = HttpContext.Current.CurrentHandler as Page;
-            eObj.InsertionSuccessData(page);
-            //eObj.DeleteSuccessData(page);
-            //eObj.WarningSuccessData(page);
+           
+           
 
         }
 

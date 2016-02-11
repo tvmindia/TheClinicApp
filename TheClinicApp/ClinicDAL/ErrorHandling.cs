@@ -15,9 +15,9 @@ namespace TheClinicApp.ClinicDAL
             get;
             set;
         }
-   
 
-        public void InsertionSuccessData(Page pg)
+
+        public void InsertionSuccessMessage(Page pg)
         {
 
             var master1 = pg.Master;
@@ -30,11 +30,11 @@ namespace TheClinicApp.ClinicDAL
             lblMsgges.Text = "Successfully Inserted";
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
 
-            divMask1.Attributes["class"] = "alert alert-success fade in";
+            divMask1.Attributes["class"] = "alert lblErrorCaptionSuccess fade in";
             // Success.Text = "Successfully Inserted"; 
 
         }
-        public void InsertionSuccessData(Page pg, string msg)//if insert does not happend becasue of already existing
+        public void InsertionSuccessMessage(Page pg, string msg)//if insert does not happend becasue of already existing
         {
             var master1 = pg.Master;
             ContentPlaceHolder mpContentPlaceHolder1;
@@ -46,10 +46,10 @@ namespace TheClinicApp.ClinicDAL
             lblMsgges.Text = msg;
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
 
-            divMask1.Attributes["class"] = "alert alert-success fade in";
+            divMask1.Attributes["class"] = "alert lblErrorCaptionSuccess fade in";
             
         }
-        public void UpdationSuccessData(Page pg)
+        public void UpdationSuccessMessage(Page pg)
         {
             var master1 = pg.Master;
             ContentPlaceHolder mpContentPlaceHolder1;
@@ -61,11 +61,11 @@ namespace TheClinicApp.ClinicDAL
             lblMsgges.Text = "Successfully Inserted";
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
 
-            divMask1.Attributes["class"] = "alert alert-success fade in";
+            divMask1.Attributes["class"] = "alert lblErrorCaptionSuccess fade in";
         
         }
 
-        public void UpdationSuccessData(Page pg, string msg)//if update fails
+        public void UpdationSuccessMessage(Page pg, string msg)//if update fails
         {
             var master1 = pg.Master;
             ContentPlaceHolder mpContentPlaceHolder1;
@@ -77,11 +77,25 @@ namespace TheClinicApp.ClinicDAL
             lblMsgges.Text = "Successfully Inserted";
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
 
-            divMask1.Attributes["class"] = "alert alert-success fade in";
+            divMask1.Attributes["class"] = "alert lblErrorCaptionSuccess fade in";
         }
 
-       
-        public void DeleteSuccessData(Page pg)
+        public void ErrorData(Exception ex, Page pg)
+        {
+            var master1 = pg.Master;
+            ContentPlaceHolder mpContentPlaceHolder1;
+            mpContentPlaceHolder1 = (ContentPlaceHolder)master1.FindControl("ContentPlaceHolder1");
+            HtmlControl divMask1 = (HtmlControl)mpContentPlaceHolder1.FindControl("Errorbox") as HtmlControl;
+            Label lblMsgges = mpContentPlaceHolder1.FindControl("lblMsgges") as Label;
+            lblMsgges.Text = ex.Message;
+            divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
+            Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
+            lblErrorCaption.Text = "Danger!";
+            divMask1.Attributes["class"] = "alert lblErrorCaptionDanger fade in";
+         
+
+        }
+        public void DeleteSuccessMessage(Page pg)
         {
             var master1 = pg.Master;
             ContentPlaceHolder mpContentPlaceHolder1;
@@ -92,10 +106,10 @@ namespace TheClinicApp.ClinicDAL
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
             Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
             lblErrorCaption.Text = "Danger!";
-            divMask1.Attributes["class"] = "alert alert-danger fade in";
+            divMask1.Attributes["class"] = "alert lblErrorCaptionDanger fade in";
         }
 
-        public void WarningSuccessData(Page pg)
+        public void WarningMessage(Page pg)
         {
             var master1 = pg.Master;
             ContentPlaceHolder mpContentPlaceHolder1;
@@ -106,7 +120,21 @@ namespace TheClinicApp.ClinicDAL
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
             Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
             lblErrorCaption.Text = "Warning!";
-            divMask1.Attributes["class"] = "alert alert-warning fade in";
-        }        
+            divMask1.Attributes["class"] = "alert lblErrorCaptionWarning fade in";
+        }
+
+        public void InsertionNotSuccessMessage(Page pg)
+        {
+            var master1 = pg.Master;
+            ContentPlaceHolder mpContentPlaceHolder1;
+            mpContentPlaceHolder1 = (ContentPlaceHolder)master1.FindControl("ContentPlaceHolder1");
+            HtmlControl divMask1 = (HtmlControl)mpContentPlaceHolder1.FindControl("Errorbox") as HtmlControl;
+            Label lblMsgges = mpContentPlaceHolder1.FindControl("lblMsgges") as Label;
+            lblMsgges.Text = "Insertion Not Successful ";
+            divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
+            Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
+            lblErrorCaption.Text = "Danger!";
+            divMask1.Attributes["class"] = "alert lblErrorCaptionDanger fade in";
+        }
     }
 }

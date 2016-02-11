@@ -4,22 +4,24 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
 
 namespace TheClinicApp.ClinicDAL
 {
     public class Patient
     {
+        ErrorHandling eObj = new ErrorHandling();
         #region Connectionstring
         dbConnection dcon = new dbConnection();
         #endregion Connectionstring
          
         #region Patientproperty
-        public string PatientID
+        public Guid PatientID
         {
             get;
             set;
         }
-        public string ClinicID 
+        public Guid ClinicID 
         {
             get;
             set;
@@ -71,7 +73,7 @@ namespace TheClinicApp.ClinicDAL
         }
         #endregion Patientproperty
         #region AddPatientDetails
-        public void AddPatientDetails(string username)
+        public void AddPatientDetails()
         {
 
             SqlConnection con = null;
@@ -93,38 +95,43 @@ namespace TheClinicApp.ClinicDAL
                 pud.Parameters.Add("@DOB", SqlDbType.Date).Value = DOB;
                 pud.Parameters.Add("@Gender", SqlDbType.NVarChar, 50).Value = Gender;
                 pud.Parameters.Add("@MaritalStatus", SqlDbType.NVarChar, 50).Value = MaritalStatus;
-                pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = username;
-                pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;              
-                SqlParameter OutparmPatientId = pud.Parameters.Add("@OutputPatientID", SqlDbType.UniqueIdentifier);
-                OutparmPatientId.Direction = ParameterDirection.Output;
-
+                pud.Parameters.Add("@Occupation", SqlDbType.NVarChar, 255).Value = Occupation;
+                pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                SqlParameter Output = new SqlParameter();
+                Output.DbType = DbType.Int32;
+                Output.ParameterName = "@Status";
+                Output.Direction = ParameterDirection.Output;
+                pud.Parameters.Add(Output);              
                 pud.ExecuteNonQuery();
 
-                //if (OutparmPatientId.Value.ToString() == "")
-                //{
-                //    //not successfull   
+                if (Output.Value.ToString() == "")
+                {
+                    //not successfull   
 
-                //    var page = HttpContext.Current.CurrentHandler as Page;
-                //    eObj.InsertionSuccessData(page, "Insert not Successfull,Duplicate Entry!");
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.InsertionNotSuccessMessage(page);
 
-                //}
-                //else
-                //{
-                //    //successfull
-                //    PatientID = (Guid)OutparmPatientId.Value;
-                //    var page = HttpContext.Current.CurrentHandler as Page;
-                //    eObj.InsertionSuccessData(page);
+                }
+                else
+                {
+                    //successfull
+                    
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.InsertionSuccessMessage(page);
 
 
-                //}
+                }
 
 
             }
             catch (Exception ex)
             {
-                //var page = HttpContext.Current.CurrentHandler as Page;
-                //eObj.ErrorData(ex, page);
-                throw ex;
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
+            
             }
 
             finally
@@ -135,7 +142,7 @@ namespace TheClinicApp.ClinicDAL
                 }
 
             }
-            //return PatientID;
+            
         }
         #endregion AddPatientDetails
         #region UpdatePatientDetails
