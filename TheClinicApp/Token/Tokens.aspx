@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-   
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
     <link href="../Content/Input.css" rel="stylesheet" />
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
-    <div class="container bodyBackground" style="width:100%;">
+   
 
+    <div class="container bodyBackground" style="width:100%;">
+          <label  class="headingLabel" >Token</label>
         <div class="col-md-12 Span-One">
                     <div class="col-md-9" >
                         <div class="col-md-12 Span-One">
@@ -29,22 +31,48 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-md-12 Span-One">
+                         <div class="col-md-12 Span-One">
                             <div class="col-md-8">
                                 <div class="form-group">
                    
                                     <div class="col-md-12">
-
-                                        <asp:TextBox ID="TextBox1" placeholder="search patient" runat="server"></asp:TextBox>
-                                        <asp:TextBox ID="TextBox2" placeholder="select doctor" runat="server"></asp:TextBox>
+                  
                                     </div>
                                 </div>
                            
                             </div>
                              <div class="col-md-4">           
                                 <div class="col-md-12">                 
-                                      <asp:ImageButton ID="imbsearch" runat="server" ImageUrl="~/Images/search-64.png" />
+                                     &nbsp
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 Span-One">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                   
+                                    <div class="col-md-12">
+
+                                      <div class="input-group stylish-input-group">
+                                    <input type="text" class="form-control" placeholder="Patient Search" style="height: 20%;" />
+
+                                    <span class="input-group-addon" style="height: 0%;">
+                                        <button type="submit" style="height: .1%;">
+                                            <i class="glyphicon glyphicon-search"></i>
+
+                                        </button>
+                                    </span> 
+                                          
+                                </div>
+                                        
+                                    </div>
+                                </div>
+                           
+                            </div>
+                             <div class="col-md-6">           
+                                <div class="col-md-12">                 
+                                     <asp:DropDownList ID="DropDownList1" Height="30px" Width="100" runat="server"></asp:DropDownList>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +100,7 @@
                    
                                     <div class="col-md-12">
                                        
-                                        <label class="control-label col-md-8" >Patient Details</label>
+                                        <label  class="headingLabel" >Patient Details</label>
                  
                                     </div>
                                 </div>
@@ -194,14 +222,15 @@
                     </div>
 
       </div>
-   <footer>
+
+     <footer>
             <div style="position: fixed; background: rgba(0, 0, 0, 0.1); bottom: 0%; width: 100%; margin-left: 0px; height: 10%;">
 
                 <table style="width: 100%; height: 100%;">
                     <tr>
                         <td class="footerMessagesColumn" style="width:50%; ">
-                            <div id="Errorbox"  style="height:100%;  display:none"  runat="server" >
-                                 <a href="#" class="close" data-dismiss="alert" style="padding-top:0%;">&times;</a>
+                            <div id="Errorbox"  style="height:100%;  display:none;"  runat="server" >
+                               <a class="close" data-dismiss="alert">×</a>  
 
                             <div>
                             <strong> <asp:Label ID="lblErrorCaption" runat="server" Text=""></asp:Label> </strong>      <asp:Label ID="lblMsgges" runat="server" Text=""></asp:Label>
@@ -214,7 +243,7 @@
                             <table class="footerTable" style="width:100%; margin-left:0px;padding-left:0px;">
                                 <tr>
                                     <td style="width: 10%;">
-                                        <asp:Button ID="btnSave" runat="server" Text="BookToken" CssClass="button footerButtonColumn"  />
+                                        <asp:Button ID="btnBookToken" runat="server" Text="BOOK TOKEN" CssClass="button footerButtonColumn" OnClick="btnBookToken_Click" />
 
                                     </td>
                                     <td>
