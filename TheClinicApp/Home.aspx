@@ -107,7 +107,7 @@
                 </div>
             </div>
             <div class="right">
-                <iframe id="main" class="mainIframe" frameborder="0"  ></iframe>
+                <iframe id="main" class="mainIframe" frameborder="0" scrolling="no" ></iframe>
 
 
             </div>

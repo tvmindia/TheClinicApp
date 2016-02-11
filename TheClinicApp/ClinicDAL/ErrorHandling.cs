@@ -80,8 +80,22 @@ namespace TheClinicApp.ClinicDAL
             divMask1.Attributes["class"] = "alert lblErrorCaptionSuccess fade in";
         }
 
-       
-        public void ErrorMessage(Page pg)
+        public void ErrorData(Exception ex, Page pg)
+        {
+            var master1 = pg.Master;
+            ContentPlaceHolder mpContentPlaceHolder1;
+            mpContentPlaceHolder1 = (ContentPlaceHolder)master1.FindControl("ContentPlaceHolder1");
+            HtmlControl divMask1 = (HtmlControl)mpContentPlaceHolder1.FindControl("Errorbox") as HtmlControl;
+            Label lblMsgges = mpContentPlaceHolder1.FindControl("lblMsgges") as Label;
+            lblMsgges.Text = ex.Message;
+            divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
+            Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
+            lblErrorCaption.Text = "Danger!";
+            divMask1.Attributes["class"] = "alert lblErrorCaptionDanger fade in";
+         
+
+        }
+        public void DeleteSuccessMassage(Page pg)
         {
             var master1 = pg.Master;
             ContentPlaceHolder mpContentPlaceHolder1;

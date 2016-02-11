@@ -106,7 +106,7 @@
 
 
                             <div class="col-md-11">
-                                <asp:TextBox ID="txtName" class="form-control textBoxborder" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtName" class="form-control textBoxborder" runat="server" required></asp:TextBox>
 
                             </div>
                         </div>
@@ -150,7 +150,7 @@
 
 
                             <div class="col-md-11">
-                                <asp:TextBox ID="txtAge" class="form-control textBoxborder" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtAge" class="form-control textBoxborder" runat="server" required></asp:TextBox>
 
                             </div>
                         </div>
@@ -174,7 +174,7 @@
 
 
                             <div class="col-md-11">
-                                <asp:TextBox ID="txtAddress" class="form-control textBoxborder" TextMode="multiline" Columns="50" Rows="10" Height="100" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtAddress" class="form-control textBoxborder" TextMode="multiline" Columns="50" Rows="10" Height="100" runat="server" required></asp:TextBox>
 
                             </div>
                         </div>
@@ -337,7 +337,7 @@
           
         </div>
         <footer>
-            <div style="position: fixed; background: rgba(0, 0, 0, 0.1); bottom: 0%; width: 100%; margin-left: 0px; height: 10%;">
+            <div style="position: fixed; background: rgba(0, 0, 0, 0.3); bottom: 0%; width: 100%; margin-left: 0px; height: 10%;">
 
                 <table style="width: 100%; height: 100%;">
                     <tr>
@@ -352,10 +352,13 @@
        </div>                     
 
                         </td>
-                        <td style="height: 100%;   width:50%;" >
+                        <td style="height: 100%;   width:20%;">
+
+                        </td>
+                        <td style="height: 100%;   width:30%;" >
                             <table class="footerTable" style="width:100%; margin-left:0px;padding-left:0px;">
                                 <tr>
-                                    <td style="width: 10%;">
+                                    <td style="width:30%;">
                                         <asp:Button ID="btnSave" runat="server" Text="SAVE" CssClass="button footerButtonColumn" OnClick="btnSave_Click" />
 
                                     </td>

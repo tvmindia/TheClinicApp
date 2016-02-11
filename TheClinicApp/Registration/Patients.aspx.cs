@@ -20,8 +20,8 @@ namespace TheClinicApp.Registration
         {
             var page = HttpContext.Current.CurrentHandler as Page;
            
-            //eObj.ErrorMessage(page);
-            //eObj.InsertionSuccessMassage(page);
+            eObj.ErrorMessage(page);
+            eObj.InsertionSuccessMassage(page);
             //eObj.WarningMessage(page);
 
         }
