@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="Patients.aspx.cs" Inherits="TheClinicApp.Registration.Patients" %>
 
+<%@ Register Src="~/UserControl/ProfilePicUpload.ascx" TagPrefix="uc1" TagName="ProfilePicUpload" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -68,7 +71,7 @@
 
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
-    <div class="container table-responsive bodyBackground" style="width: 100%;">
+    <div class="container bodyBackground" style="width: 100%;">
         <label class="headingLabel">New Patient Registration </label>
         <div class="col-lg-12 Span-One ">
             <div class="col-md-9">
@@ -256,49 +259,30 @@
             </div>
 
             <div class="col-md-3">
-                <div class="table-responsive">
-                    <table>
+                    <table style="height: 100%;">
+                      
                         <tr>
-                            <td>&nbsp
-                            </td>
-                            <td>&nbsp
-                            </td>
-                        </tr>
-                        <tr style="height: 50%;">
                             <td>
-
-                                <img src="../Images/icon-user-default.jpg" width="75%" height="35%" />
+                                <uc1:ProfilePicUpload runat="server" ID="ProfilePicUpload" />
+                                
                             </td>
                             <td></td>
                         </tr>
-                        <tr style="height: 100%;">
+                        <tr style="height:200px;">
                             <td>&nbsp
                             </td>
 
                             <td>&nbsp
                             </td>
                         </tr>
-                        <tr style="height: 100%;">
-                            <td>&nbsp
-                            </td>
-
-                            <td>&nbsp
-                            </td>
-                        </tr>
-                        <tr style="height: 100%;">
-                            <td>&nbsp
-                            </td>
-
-                            <td>&nbsp
-                            </td>
-                        </tr>
+                      
                         <tr style="height: 40%;">
                             <td style="width: 90%">
                                 <div class="input-group stylish-input-group">
-                                    <input type="text" class="form-control" placeholder="Search" style="height: 20%;" />
+                                    <input type="text" class="form-control" placeholder="Search" style="height: 20%;" name="txtSearch" />
 
                                     <span class="input-group-addon" style="height: 0%;">
-                                        <button type="submit" style="height: .1%;">
+                                        <button type="submit" style="height: .1%;" runat="server" id="btnSearch" onserverclick="btnSearch_ServerClick">
                                             <i class="glyphicon glyphicon-search"></i>
 
                                         </button>
@@ -350,7 +334,7 @@
 
 
                 </div>
-            </div>
+          
         </div>
         <footer>
             <div style="position: fixed; background: rgba(0, 0, 0, 0.1); bottom: 0%; width: 100%; margin-left: 0px; height: 10%;">
@@ -358,8 +342,8 @@
                 <table style="width: 100%; height: 100%;">
                     <tr>
                         <td class="footerMessagesColumn" style="width:50%; ">
-                            <div id="Errorbox"  style="height:100%;  display:none"  runat="server" >
-                                 <a href="#" class="close" data-dismiss="alert" style="padding-top:0%;">&times;</a>
+                            <div id="Errorbox"  style="height:100%;  display:none;"  runat="server" >
+                               <a class="close" data-dismiss="alert">×</a>  
 
                             <div>
                             <strong> <asp:Label ID="lblErrorCaption" runat="server" Text=""></asp:Label> </strong>      <asp:Label ID="lblMsgges" runat="server" Text=""></asp:Label>
@@ -401,7 +385,8 @@
 
                     </div>
                     <div class="modal-body">
-                        <asp:TextBox ID="txtSpecial" runat="server" TextMode="multiline" Columns="50" Rows="10" Height="100"></asp:TextBox>
+
+                        <asp:GridView ID="GridView1" runat="server"></asp:GridView>
                     </div>
                     <div class="modal-footer">
                         <button data-dismiss="modal" class="btn  btn-large">Close</button>
@@ -423,7 +408,7 @@
 
                     </div>
                     <div class="modal-body">
-                        <asp:TextBox ID="TextBox1" runat="server" TextMode="multiline" Columns="50" Rows="10" Height="100"></asp:TextBox>
+                     <asp:GridView ID="GridView2" runat="server"></asp:GridView>
                     </div>
                     <div class="modal-footer">
                         <button data-dismiss="modal" class="btn  btn-large">Close</button>

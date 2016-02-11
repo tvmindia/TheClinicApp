@@ -24,6 +24,11 @@ namespace TheClinicApp.Registration
             //eObj.WarningSuccessData(page);
 
         }
+
+        protected void btnSearch_ServerClick(object sender, EventArgs e)
+        {
+            string value = Request.Form["txtSearch"];
+        }
         
     }
 }

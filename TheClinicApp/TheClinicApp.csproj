@@ -173,6 +173,7 @@
     <Content Include="testpage.aspx" />
     <Content Include="Token\Tokens.aspx" />
     <Content Include="underConstruction.aspx" />
+    <Content Include="UserControl\ProfilePicUpload.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
   </ItemGroup>
@@ -320,6 +321,13 @@
     </Compile>
     <Compile Include="underConstruction.aspx.designer.cs">
       <DependentUpon>underConstruction.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\ProfilePicUpload.ascx.cs">
+      <DependentUpon>ProfilePicUpload.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\ProfilePicUpload.ascx.designer.cs">
+      <DependentUpon>ProfilePicUpload.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

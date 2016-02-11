@@ -76,6 +76,24 @@ namespace TheClinicApp.Registration {
         protected global::System.Web.UI.WebControls.TextBox txtMarital;
         
         /// <summary>
+        /// ProfilePicUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::TheClinicApp.UserControl.ProfilePicUpload ProfilePicUpload;
+        
+        /// <summary>
+        /// btnSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnSearch;
+        
+        /// <summary>
         /// Errorbox control.
         /// </summary>
         /// <remarks>
@@ -112,21 +130,21 @@ namespace TheClinicApp.Registration {
         protected global::System.Web.UI.WebControls.Button btnSave;
         
         /// <summary>
-        /// txtSpecial control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSpecial;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// TextBox1 control.
+        /// GridView2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.GridView GridView2;
     }
 }
