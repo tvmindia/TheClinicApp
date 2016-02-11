@@ -14,12 +14,12 @@ namespace TheClinicApp.ClinicDAL
         #endregion Connectionstring
          
         #region Patientproperty
-        public string PatientID
+        public Guid PatientID
         {
             get;
             set;
         }
-        public string ClinicID 
+        public Guid ClinicID 
         {
             get;
             set;
@@ -71,7 +71,7 @@ namespace TheClinicApp.ClinicDAL
         }
         #endregion Patientproperty
         #region AddPatientDetails
-        public void AddPatientDetails(string username)
+        public void AddPatientDetails()
         {
 
             SqlConnection con = null;
@@ -93,7 +93,7 @@ namespace TheClinicApp.ClinicDAL
                 pud.Parameters.Add("@DOB", SqlDbType.Date).Value = DOB;
                 pud.Parameters.Add("@Gender", SqlDbType.NVarChar, 50).Value = Gender;
                 pud.Parameters.Add("@MaritalStatus", SqlDbType.NVarChar, 50).Value = MaritalStatus;
-                pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = username;
+                pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
                 pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;              
                 SqlParameter OutparmPatientId = pud.Parameters.Add("@OutputPatientID", SqlDbType.UniqueIdentifier);
                 OutparmPatientId.Direction = ParameterDirection.Output;
