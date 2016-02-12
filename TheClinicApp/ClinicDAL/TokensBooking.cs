@@ -90,12 +90,13 @@ namespace TheClinicApp.ClinicDAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "[SearchPatientDetails]";
+                cmd.CommandText = "[ViewPatientDetails]";
 
-                cmd.Parameters.Add("@string", SqlDbType.UniqueIdentifier).Value = str;
+                cmd.Parameters.Add("@string", SqlDbType.NVarChar).Value = str;
                  
                 sda = new SqlDataAdapter();
                 sda.SelectCommand = cmd;
+               
                 ds = new DataSet();
                 sda.Fill(ds);
 
@@ -191,12 +192,12 @@ namespace TheClinicApp.ClinicDAL
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[InsertTokens]";
 
-            Guid UniqueID = Guid.NewGuid();
-            cmd.Parameters.Add("@Unique", SqlDbType.UniqueIdentifier).Value = UniqueID;
-            cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = DoctorID;
-            cmd.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = PatientID;
+           // Guid UniqueID = Guid.NewGuid();
+          //  cmd.Parameters.Add("@Unique", SqlDbType.UniqueIdentifier).Value = UniqueID;
+            cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(DoctorID);
+            cmd.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(PatientID);
             cmd.Parameters.Add("@DateTime", SqlDbType.DateTime).Value = DateTime;
-            cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = ClinicID;
+            cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
             cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
             cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreateDate;
 
@@ -247,15 +248,17 @@ namespace TheClinicApp.ClinicDAL
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "[GetTokens]";
+            cmd.CommandText = "[ViewPatientsBooking]";
 
-            cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = DoctorID;
+            //cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = DoctorID;
             cmd.Parameters.Add("@DateTime", SqlDbType.DateTime).Value = DateTime;
             sda = new SqlDataAdapter();
+            cmd.ExecuteNonQuery();
             sda.SelectCommand = cmd;
             ds = new DataSet();
             sda.Fill(ds);
-            
+          
+
             return ds;
 
             }

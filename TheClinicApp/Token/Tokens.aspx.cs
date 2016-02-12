@@ -37,6 +37,14 @@ namespace TheClinicApp.Token
             }
 
 
+            //Gridview Binding to Diplay DoctorName,Token No,Patient Name,TIME
+            tok.DateTime = DateTime.Now;
+
+            DataSet gds = tok.ViewToken();
+           
+            GridViewTokenlist.DataSource = gds;
+            GridViewTokenlist.DataBind();
+
            
 
         }
@@ -51,8 +59,19 @@ namespace TheClinicApp.Token
         /// <param name="e"></param>
         protected void btnBookToken_Click(object sender, EventArgs e)
         {
+
+            tok.DoctorID = ddlDoctorName.SelectedValue;
+            tok.PatientID = HiddenPatientID.Value;
+            tok.ClinicID = HiddenClinicID.Value;
+            tok.CreateDate = DateTime.Now;
+            tok.DateTime =  DateTime.Now;
+            tok.CreatedBy = "GIBIN";
+          
+          
+            
             
             int tokenNo = tok.InsertToken();
+            lblToken.Text = tokenNo.ToString();
            
           
 
@@ -70,11 +89,17 @@ namespace TheClinicApp.Token
              
             DataSet dsPdetails = tok.GetpatientDetails(value);
             DataTable dt=dsPdetails.Tables[0];
+
+            if( dt.Rows.Count>0) 
+            {
             lblFile.Text = Convert.ToString(dt.Rows[0][0]);
-            lblName.Text = Convert.ToString(dt.Rows[0][2]);
-            lblAge.Text = Convert.ToString(dt.Rows[0][6]);
-            lblPhone.Text = Convert.ToString(dt.Rows[0][4]);
-            lblGender.Text = Convert.ToString(dt.Rows[0][7]);
+            lblName.Text = Convert.ToString(dt.Rows[0][1]);
+            lblAge.Text = Convert.ToString(dt.Rows[0][2]);
+            lblPhone.Text = Convert.ToString(dt.Rows[0][3]);
+            lblGender.Text = Convert.ToString(dt.Rows[0][4]);
+            HiddenPatientID.Value = Convert.ToString(dt.Rows[0][5]);
+            HiddenClinicID.Value = Convert.ToString(dt.Rows[0][6]);
+            }
         }
     }
 }

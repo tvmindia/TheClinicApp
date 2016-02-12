@@ -20,6 +20,7 @@
                                 <div class="form-group">
                    
                                     <div class="col-md-12">
+                                          &nbsp
                  
                                     </div>
                                 </div>
@@ -36,6 +37,7 @@
                                 <div class="form-group">
                    
                                     <div class="col-md-12">
+                                          &nbsp
                   
                                     </div>
                                 </div>
@@ -82,7 +84,7 @@
                                 <div class="form-group">
                    
                                     <div class="col-md-12">
-                 
+                                      &nbsp
                                     </div>
                                 </div>
                            
@@ -94,21 +96,38 @@
                             </div>
                         </div>
                         <%-- Patient Details Diplay region --%>
-                        <div class="col-md-12 Span-One">
-                            <div class="col-md-10">
+                   
+                           <div class="col-md-12 Span-One">
+                            <div class="col-md-11">
                                 <div class="form-group">
                    
                                     <div class="col-md-12">
-                                       
-                                        <label  class="headingLabel" >Patient Details</label>
+                                       <label  class="headingLabel" >Patient Details</label>
+                                    </div>
+                                </div>
+                           
+                            </div>
+                             <div class="col-md-1">           
+                                <div class="col-md-12">                 
+                                     &nbsp
+                                </div>
+                            </div>
+                        </div>
+
+                       <div class="col-md-12 Span-One">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                   
+                                    <div class="col-md-12">
+                                          &nbsp
                  
                                     </div>
                                 </div>
                            
                             </div>
-                             <div class="col-md-2">           
+                             <div class="col-md-4">           
                                 <div class="col-md-12">                 
-                                      
+                                     &nbsp
                                 </div>
                             </div>
                         </div>
@@ -119,7 +138,7 @@
                    
                                     <div class="col-md-12">
                                                                                                 
-                                          <label   class="control-label col-md-1 regFormLabels"  >File:</label>
+                                       <asp:Label ID="lblFile" runat="server" Text="#FileNO"></asp:Label>
                                                                                                 
                                     </div>
                                 </div>
@@ -127,26 +146,62 @@
                             </div>
                              <div class="col-md-8">           
                                 <div class="col-md-12">                 
-                                    <asp:Label ID="lblFile" runat="server" Text="Label"></asp:Label>
+                                    
                                 </div>
                             </div>
                         </div>
                        
+                         <div class="col-md-12 Span-One">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                   
+                                    <div class="col-md-12">
+                                          &nbsp
+                 
+                                    </div>
+                                </div>
+                           
+                            </div>
+                             <div class="col-md-4">           
+                                <div class="col-md-12">                 
+                                     &nbsp
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-md-12 Span-One">
-                            <div class="col-md-4">
+                            <div class="col-md-11">
                                 <div class="form-group">
                    
                                     <div class="col-md-12">
                                                                                                 
-                                          <label class="control-label col-md-1 regFormLabels  "  >Name:</label>
+                                          <asp:Label ID="lblName" CssClass="largefont"  runat="server" Text="GIBIN"></asp:Label>
                                                                                                 
                                     </div>
                                 </div>
                            
                             </div>
-                             <div class="col-md-8">           
+                             <div class="col-md-1">           
                                 <div class="col-md-12">                 
-                                    <asp:Label ID="lblName"   runat="server" Text="Label"></asp:Label>
+                                   
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="col-md-12 Span-One">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                   
+                                    <div class="col-md-12">
+                                          &nbsp
+                 
+                                    </div>
+                                </div>
+                           
+                            </div>
+                             <div class="col-md-4">           
+                                <div class="col-md-12">                 
+                                     &nbsp
                                 </div>
                             </div>
                         </div>
@@ -157,7 +212,7 @@
                    
                                     <div class="col-md-12">
                                                                                                 
-                                          <label class="control-label col-md-1 regFormLabels"  >Age:</label>
+                                        <asp:Label ID="lblAge" runat="server" Text="Age"></asp:Label>
                                                                                                 
                                     </div>
                                 </div>
@@ -165,7 +220,25 @@
                             </div>
                              <div class="col-md-8">           
                                 <div class="col-md-12">                 
-                                    <asp:Label ID="lblAge" runat="server" Text="Label"></asp:Label>
+                                    <asp:Label ID="lblGender" runat="server" Text="Gender"></asp:Label>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="col-md-12 Span-One">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                   
+                                    <div class="col-md-12">
+                                          &nbsp
+                 
+                                    </div>
+                                </div>
+                           
+                            </div>
+                             <div class="col-md-4">           
+                                <div class="col-md-12">                 
+                                     &nbsp
                                 </div>
                             </div>
                         </div>
@@ -176,7 +249,7 @@
                    
                                     <div class="col-md-12">
                                                                                                 
-                                          <label class="control-label col-md-1 regFormLabels"  >Phone:</label>
+                                           <asp:Label ID="lblPhone" runat="server" Text="Label"></asp:Label>
                                                                                                 
                                     </div>
                                 </div>
@@ -184,30 +257,67 @@
                             </div>
                              <div class="col-md-8">           
                                 <div class="col-md-12">                 
-                                    <asp:Label ID="lblPhone" runat="server" Text="Label"></asp:Label>
+                                   
+                                </div>
+                            </div>
+                        </div>
+
+                     <div class="col-md-12 Span-One">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                   
+                                    <div class="col-md-12">
+                                          &nbsp
+                 
+                                    </div>
+                                </div>
+                           
+                            </div>
+                             <div class="col-md-4">           
+                                <div class="col-md-12">                 
+                                     &nbsp
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-md-12 Span-One">
-                            <div class="col-md-4">
+                            <div class="col-md-1">
                                 <div class="form-group">
                    
                                     <div class="col-md-12">
                                                                                                 
-                                          <label class="control-label col-md-1 regFormLabels"  >Gender:</label>
+                                        
                                                                                                 
                                     </div>
                                 </div>
                            
                             </div>
-                             <div class="col-md-8">           
+                             <div class="col-md-11">           
                                 <div class="col-md-12">                 
-                                    <asp:Label ID="lblGender" runat="server" Text="Label"></asp:Label>
+                                    <asp:Label ID="lblToken" CssClass="largefont" runat="server" Text="Token NO"></asp:Label>
                                 </div>
                             </div>
                         </div>
 
+                            <div class="col-md-12 Span-One">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                   
+                                    <div class="col-md-12">
+                                          &nbsp
+                 <%-- hidden fields --%>
+                                        <asp:HiddenField ID="HiddenPatientID"  runat="server" />
+                                        <asp:HiddenField ID="HiddenClinicID" runat="server" />
+                                    </div>
+                                </div>
+                           
+                            </div>
+                             <div class="col-md-4">           
+                                <div class="col-md-12">                 
+                                     &nbsp
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                     <%--token gridview region --%>
@@ -221,10 +331,10 @@
 
                                       <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False">
                                           <Columns>
-                                              <asp:BoundField HeaderText="DOCTOR NAME" />
-                                              <asp:BoundField HeaderText="TOKEN NO" />
-                                              <asp:BoundField HeaderText="PATIENT NAME" />
-                                              <asp:BoundField HeaderText="TIME" />
+                                              <asp:BoundField HeaderText="DOCTOR NAME" DataField="Name" />
+                                              <asp:BoundField HeaderText="TOKEN NO" DataField="TokenNo" />
+                                              <asp:BoundField HeaderText="PATIENT NAME" DataField="Name" />
+                                              <asp:BoundField HeaderText="TIME" DataField="DateTime" />
                                           </Columns>
                                      </asp:GridView>
 
@@ -241,7 +351,7 @@
       </div>
 
      <footer>
-            <div style="position: fixed; background: rgba(0, 0, 0, 0.1); bottom: 0%; width: 100%; margin-left: 0px; height: 10%;">
+            <div style="position: fixed; background: rgba(0, 0, 0, 0.3); bottom: 0%; width: 100%; margin-left: 0px; height: 10%;">
 
                 <table style="width: 100%; height: 100%;">
                     <tr>
@@ -256,16 +366,19 @@
        </div>                     
 
                         </td>
-                        <td style="height: 100%;   width:50%;" >
+                        
+                      <td style="height: 100%;   width:20%;">
+
+                        </td>
+                        <td style="height: 100%;   width:30%;" >
                             <table class="footerTable" style="width:100%; margin-left:0px;padding-left:0px;">
                                 <tr>
-                                    <td style="width: 10%;">
+                                    <td style="width:30%;">
                                         <asp:Button ID="btnBookToken" runat="server" Text="BOOK TOKEN" CssClass="button footerButtonColumn" OnClick="btnBookToken_Click" />
 
                                     </td>
                                     <td>
-                                        <label style="font-weight: bold; margin-left: 0px;">
-                                            <img src="../Images/tick.png" style="font-weight: bold;" /></label></td>
+                                       </td>
                                 </tr>
                             </table>
 
