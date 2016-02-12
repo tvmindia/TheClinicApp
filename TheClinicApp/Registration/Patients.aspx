@@ -388,7 +388,7 @@
                     </div>
                     <div class="modal-body">
 
-                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellSpacing="2">
+                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False">
                             <Columns>
                                 <asp:BoundField DataField="Name" HeaderText="Name"></asp:BoundField>
                                 <asp:BoundField DataField="Address" HeaderText="Address"></asp:BoundField>
@@ -396,24 +396,6 @@
                                 <asp:BoundField DataField="Phone" HeaderText="Phone"></asp:BoundField>
                                 <asp:BoundField DataField="Email" HeaderText="Email"></asp:BoundField>
                             </Columns>
-
-                            <FooterStyle BackColor="#CCCCCC"></FooterStyle>
-
-                            <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White"></HeaderStyle>
-
-                            <PagerStyle HorizontalAlign="Left" BackColor="#CCCCCC" ForeColor="Black"></PagerStyle>
-
-                            <RowStyle BackColor="White"></RowStyle>
-
-                            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White"></SelectedRowStyle>
-
-                            <SortedAscendingCellStyle BackColor="#F1F1F1"></SortedAscendingCellStyle>
-
-                            <SortedAscendingHeaderStyle BackColor="#808080"></SortedAscendingHeaderStyle>
-
-                            <SortedDescendingCellStyle BackColor="#CAC9C9"></SortedDescendingCellStyle>
-
-                            <SortedDescendingHeaderStyle BackColor="#383838"></SortedDescendingHeaderStyle>
                         </asp:GridView>
                     </div>
                     <div class="modal-footer">

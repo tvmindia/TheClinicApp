@@ -60,6 +60,57 @@ namespace TheClinicApp.ClinicDAL
         }
          
        #endregion ClinicProperty
+        #region DoctorProperty
+        public Guid DoctorID
+        {
+            get;
+            set;
+        }
+        public String DoctorName
+        {
+            get;
+            set;
+        }
+        public String DoctorPhone
+        {
+            get;
+            set;
+        }
+        public String DoctorEmail
+        {
+            get;
+            set;
+        }
+        #endregion DoctorsProperty
+        #region CategoryProperty
+        public Guid CategoryID
+        {
+            get;
+            set;
+        }
+        public String CategoryName
+        {
+            get;
+            set;
+        }
+        #endregion CategoryProperty
+        #region unitProperty
+        public Guid UnitID
+        {
+            get;
+            set;
+        }
+        public String Code
+        {
+            get;
+            set;
+        }
+        public String Description
+        {
+            get;
+            set;
+        }
+        #endregion unitProperty
         #region AddGroups
         public void InsertGroups()
         {
@@ -127,7 +178,7 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion AddGroups
 
-        #region AddClinics
+         #region AddClinics
          public void InsertClinics()
         {
             SqlConnection con = null;
@@ -196,6 +247,211 @@ namespace TheClinicApp.ClinicDAL
 
         }
         #endregion AddClinics
+
+         #region AddDoctors
+         public void InsertDoctors()
+         {
+             SqlConnection con = null;
+             try
+             {
+
+                 dbConnection dcon = new dbConnection();
+                 con = dcon.GetDBConnection();
+                 SqlCommand pud = new SqlCommand();
+                 pud.Connection = con;
+                 pud.CommandType = System.Data.CommandType.StoredProcedure;
+                 pud.CommandText = "[InsertDoctors]";
+                 pud.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = DoctorID;
+                 pud.Parameters.Add("@GroupID", SqlDbType.UniqueIdentifier).Value = GroupID;
+                 pud.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = DoctorName;
+                 pud.Parameters.Add("@Phone", SqlDbType.NVarChar, 50).Value = DoctorPhone;
+                 pud.Parameters.Add("@Email", SqlDbType.NVarChar, 50).Value = DoctorEmail;
+                 pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                 pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                 pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                 pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                 SqlParameter Output = new SqlParameter();
+                 Output.DbType = DbType.Int32;
+                 Output.ParameterName = "@Status";
+                 Output.Direction = ParameterDirection.Output;
+                 pud.Parameters.Add(Output);
+                 pud.ExecuteNonQuery();
+
+                 if (Output.Value.ToString() == "")
+                 {
+                     //not successfull   
+
+                     var page = HttpContext.Current.CurrentHandler as Page;
+                     eObj.InsertionNotSuccessMessage(page);
+
+                 }
+                 else
+                 {
+                     //successfull
+
+                     var page = HttpContext.Current.CurrentHandler as Page;
+                     eObj.InsertionSuccessMessage(page);
+
+
+                 }
+
+
+             }
+             catch (Exception ex)
+             {
+                 var page = HttpContext.Current.CurrentHandler as Page;
+                 eObj.ErrorData(ex, page);
+
+             }
+
+             finally
+             {
+                 if (con != null)
+                 {
+                     con.Dispose();
+                 }
+
+             }
+
+
+         }
+         #endregion AddDoctors
+
+         #region AddCategoryID
+         public void InsertCategories()
+         {
+             SqlConnection con = null;
+             try
+             {
+
+                 dbConnection dcon = new dbConnection();
+                 con = dcon.GetDBConnection();
+                 SqlCommand pud = new SqlCommand();
+                 pud.Connection = con;
+                 pud.CommandType = System.Data.CommandType.StoredProcedure;
+                 pud.CommandText = "[InsertCategories]";
+                 pud.Parameters.Add("@CategoryID", SqlDbType.UniqueIdentifier).Value = CategoryID;
+                 pud.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = CategoryName;
+                 pud.Parameters.Add("@ClinicID", SqlDbType.VarBinary, 255).Value = ClinicID ;
+                 pud.Parameters.Add("@CreatedBY", SqlDbType.DateTime).Value = "Thomson";
+                 pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                 pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                 pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                 SqlParameter Output = new SqlParameter();
+                 Output.DbType = DbType.Int32;
+                 Output.ParameterName = "@Status";
+                 Output.Direction = ParameterDirection.Output;
+                 pud.Parameters.Add(Output);
+                 pud.ExecuteNonQuery();
+
+                 if (Output.Value.ToString() == "")
+                 {
+                     //not successfull   
+
+                     var page = HttpContext.Current.CurrentHandler as Page;
+                     eObj.InsertionNotSuccessMessage(page);
+
+                 }
+                 else
+                 {
+                     //successfull
+
+                     var page = HttpContext.Current.CurrentHandler as Page;
+                     eObj.InsertionSuccessMessage(page);
+
+
+                 }
+
+
+             }
+             catch (Exception ex)
+             {
+                 var page = HttpContext.Current.CurrentHandler as Page;
+                 eObj.ErrorData(ex, page);
+
+             }
+
+             finally
+             {
+                 if (con != null)
+                 {
+                     con.Dispose();
+                 }
+
+             }
+
+         }
+
+         #endregion AddCategories
+
+         #region AddUnit
+         public void InsertUnits()
+         {
+             SqlConnection con = null;
+             try
+             {
+
+                 dbConnection dcon = new dbConnection();
+                 con = dcon.GetDBConnection();
+                 SqlCommand pud = new SqlCommand();
+                 pud.Connection = con;
+                 pud.CommandType = System.Data.CommandType.StoredProcedure;
+                 pud.CommandText = "[InsertUnits]";
+                 pud.Parameters.Add("@UnitID", SqlDbType.UniqueIdentifier).Value = UnitID;
+                 pud.Parameters.Add("@Code", SqlDbType.NVarChar, 255).Value = Code;
+                 pud.Parameters.Add("@Description", SqlDbType.VarBinary, 255).Value = Description;
+                 pud.Parameters.Add("@ClinicID", SqlDbType.VarBinary, 255).Value = ClinicID;
+                 pud.Parameters.Add("@CreatedBY", SqlDbType.DateTime).Value = "Thomson";
+                 pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                 pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                 pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                 SqlParameter Output = new SqlParameter();
+                 Output.DbType = DbType.Int32;
+                 Output.ParameterName = "@Status";
+                 Output.Direction = ParameterDirection.Output;
+                 pud.Parameters.Add(Output);
+                 pud.ExecuteNonQuery();
+
+                 if (Output.Value.ToString() == "")
+                 {
+                     //not successfull   
+
+                     var page = HttpContext.Current.CurrentHandler as Page;
+                     eObj.InsertionNotSuccessMessage(page);
+
+                 }
+                 else
+                 {
+                     //successfull
+
+                     var page = HttpContext.Current.CurrentHandler as Page;
+                     eObj.InsertionSuccessMessage(page);
+
+
+                 }
+
+
+             }
+             catch (Exception ex)
+             {
+                 var page = HttpContext.Current.CurrentHandler as Page;
+                 eObj.ErrorData(ex, page);
+
+             }
+
+             finally
+             {
+                 if (con != null)
+                 {
+                     con.Dispose();
+                 }
+
+             }
+
+         }
+
+         #endregion AddUnits
+
     }
        
     }
