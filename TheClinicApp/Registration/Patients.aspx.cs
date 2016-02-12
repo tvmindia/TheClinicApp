@@ -16,15 +16,15 @@ namespace TheClinicApp.Registration
             Patient Patientobj = new Patient();
             #region GridAllRegistration        
             dtgViewAllRegistration.EmptyDataText = "No Records Found";           
-            dtgViewAllRegistration.DataSource=Patientobj.ViewAllRegistration();
+            dtgViewAllRegistration.DataSource=Patientobj.GetAllRegistration();
             dtgViewAllRegistration.DataBind();
             #endregion GridAllRegistration
 
-            //#region GridDateRegistration           
-            //dtgViewTodaysRegistration.EmptyDataText = "No Records Found";
-            //dtgViewTodaysRegistration.DataSource = Patientobj.ViewDateRegistration();
-            //dtgViewTodaysRegistration.DataBind();
-            //#endregion GridDateRegistration
+            #region GridDateRegistration
+            dtgViewTodaysRegistration.EmptyDataText = "No Records Found";
+            dtgViewTodaysRegistration.DataSource = Patientobj.GetDateRegistration();
+            dtgViewTodaysRegistration.DataBind();
+            #endregion GridDateRegistration
         }
 
         protected void btnSave_Click(object sender, EventArgs e)

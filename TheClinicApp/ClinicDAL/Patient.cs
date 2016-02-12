@@ -72,6 +72,7 @@ namespace TheClinicApp.ClinicDAL
             set;
         }
         #endregion Patientproperty
+
         #region AddPatientDetails
         public void AddPatientDetails()
         {
@@ -145,6 +146,7 @@ namespace TheClinicApp.ClinicDAL
             
         }
         #endregion AddPatientDetails
+
         #region UpdatePatientDetails
         /// <summary>
         /// Updates the PatientDetails
@@ -207,6 +209,7 @@ namespace TheClinicApp.ClinicDAL
             }
         }
         #endregion UpdatePatientDetails
+
         #region GetPatientDetails
         public void GetPatientDetails()
         {
@@ -258,6 +261,7 @@ namespace TheClinicApp.ClinicDAL
 
         }
         #endregion GetPatientDetails
+
         #region SearchPatientDetails
         public void SearchPatientDetails(string searchtxt)
         {
@@ -309,8 +313,13 @@ namespace TheClinicApp.ClinicDAL
         }
 
         #endregion SearchPatientDetails
+
         #region ViewAllRegistration
-        public DataTable ViewAllRegistration()
+        /// <summary>
+        /// ***********
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetAllRegistration()
         {
             SqlConnection con = null;
            
@@ -327,21 +336,6 @@ namespace TheClinicApp.ClinicDAL
                 adapter.Fill(dt);
                 con.Close();
                 return dt;
-                
-                //if (int.Parse(OutparamId.Value.ToString()) != 0)
-                //{
-                //    //not successfull
-                //    var page = HttpContext.Current.CurrentHandler as Page;
-                //    eObj.UpdationSuccessData(page, "Not Updated");
-                //}
-                //else
-                //{
-                //    //successfull
-                //    var page = HttpContext.Current.CurrentHandler as Page;
-                //    eObj.UpdationSuccessData(page);
-                //}
-
-
             }
             catch (Exception ex)
             {
@@ -361,44 +355,30 @@ namespace TheClinicApp.ClinicDAL
 
         }
         #endregion ViewAllRegistration
+
         #region ViewDateRegistration
-        public DataTable ViewDateRegistration()
+        public DataTable GetDateRegistration()
         {
             SqlConnection con = null;
             try
             {
+                DateTime now = DateTime.Now;
                 DataTable dt1 = new DataTable();
                 dbConnection dcon = new dbConnection();
                 con = dcon.GetDBConnection();
-                SqlCommand cmd = new SqlCommand("ViewAllRegistration", con);
-                cmd.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                SqlCommand cmd = new SqlCommand("ViewDateRegistration", con);
+                cmd.Parameters.Add("@CreatedDate", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd");
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = cmd;
                 dt1 = new DataTable();
                 adapter.Fill(dt1);
-                con.Close();
                 return dt1;
-                
-                //if (int.Parse(OutparamId.Value.ToString()) != 0)
-                //{
-                //    //not successfull
-                //    var page = HttpContext.Current.CurrentHandler as Page;
-                //    eObj.UpdationSuccessData(page, "Not Updated");
-                //}
-                //else
-                //{
-                //    //successfull
-                //    var page = HttpContext.Current.CurrentHandler as Page;
-                //    eObj.UpdationSuccessData(page);
-                //}
-
-
             }
             catch (Exception ex)
             {
-                //var page = HttpContext.Current.CurrentHandler as Page;
-                //eObj.ErrorData(ex, page);
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
                 throw ex;
             }
             finally
