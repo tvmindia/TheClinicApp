@@ -30,18 +30,17 @@ namespace TheClinicApp.Registration
         protected void btnSave_Click(object sender, EventArgs e)
         {
             Patient PatientObj = new Patient();
-            System.DateTime moment = new System.DateTime(1999, 1, 13, 3, 57, 32, 11);
-            
+            DateTime _date = DateTime.Now;          
             Guid g = Guid.NewGuid();
             int age = Convert.ToInt32(txtAge.Text);
-            int year = moment.Year;
+            int year = _date.Year;
             int DOB = year - age;
             string guitemp="2c7a7172-6ea9-4640-b7d2-0c329336f289";
             PatientObj.PatientID = g;
             PatientObj.ClinicID = Guid.Parse(guitemp);
             PatientObj.Name = txtName.Text;
             PatientObj.Address = txtAddress.Text;
-            PatientObj.Phone = txtMobile.Text;
+            PatientObj.Phone = txtMobile.Text; 
             PatientObj.Email = txtEmail.Text;
             PatientObj.DOB = DOB+"-01-01";
             PatientObj.Gender = txtSex.Text;
