@@ -58,6 +58,15 @@ namespace TheClinicApp.Token {
         protected global::System.Web.UI.WebControls.Label lblAge;
         
         /// <summary>
+        /// lblGender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblGender;
+        
+        /// <summary>
         /// lblPhone control.
         /// </summary>
         /// <remarks>
@@ -67,13 +76,31 @@ namespace TheClinicApp.Token {
         protected global::System.Web.UI.WebControls.Label lblPhone;
         
         /// <summary>
-        /// lblGender control.
+        /// lblToken control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblGender;
+        protected global::System.Web.UI.WebControls.Label lblToken;
+        
+        /// <summary>
+        /// HiddenPatientID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenPatientID;
+        
+        /// <summary>
+        /// HiddenClinicID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenClinicID;
         
         /// <summary>
         /// ScriptManager1 control.
