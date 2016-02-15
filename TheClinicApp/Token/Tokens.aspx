@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" EnableEventValidation="true" CodeBehind="Tokens.aspx.cs" Inherits="TheClinicApp.Token.Tokens" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Tokens.aspx.cs" Inherits="TheClinicApp.Token.Tokens" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
 </asp:Content>
@@ -339,7 +339,7 @@
                                                
                                               <asp:TemplateField HeaderText="DELETE">
                                                   <ItemTemplate>
-                                                      <asp:ImageButton ID="ImgBtnDelete"   runat="server"   Width="25px" ImageUrl="~/Images/Delete.png"   />
+                                                       <asp:ImageButton ID="ImgBtnDelete" runat="server"  ImageUrl="~/Images/Delete.png"  Width="25px"  OnClientClick="return confirm('Deletion Confirmation \n\n\n\n\ Are you sure you want to delete this item ?');" OnClick="ImgBtnDelete_Click"/>
 
                                                   </ItemTemplate>
                                               </asp:TemplateField>

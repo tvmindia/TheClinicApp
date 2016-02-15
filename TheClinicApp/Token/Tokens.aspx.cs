@@ -125,13 +125,12 @@ namespace TheClinicApp.Token
 
         protected void ImgBtnDelete_Click(object sender, ImageClickEventArgs e)
         {
-             GridViewRow gr=(GridViewRow)((Button)sender).NamingContainer;
+           
+             GridViewRow gr = ((ImageButton)sender).NamingContainer as GridViewRow;
+             string ProductID = GridViewTokenlist.DataKeys[gr.RowIndex].Values["UniqueId"].ToString();
 
-            int id=Convert.ToInt32(GridViewTokenlist.DataKeys[gr.RowIndex].Value.ToString()) ;
-
-
-
-            //tok.DeleteToken();
+             tok.DeleteToken(ProductID);
+           
         }
 
        
