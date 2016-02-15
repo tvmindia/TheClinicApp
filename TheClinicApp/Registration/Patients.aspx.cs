@@ -18,9 +18,9 @@ namespace TheClinicApp.Registration
         protected void Page_Load(object sender, EventArgs e)
         {
             Patient Patientobj = new Patient();
-            #region GridAllRegistration        
-            dtgViewAllRegistration.EmptyDataText = "No Records Found";           
-            dtgViewAllRegistration.DataSource=Patientobj.GetAllRegistration();
+            #region GridAllRegistration
+            dtgViewAllRegistration.EmptyDataText = "No Records Found";
+            dtgViewAllRegistration.DataSource = Patientobj.GetAllRegistration();
             dtgViewAllRegistration.DataBind();
             #endregion GridAllRegistration
 
@@ -36,26 +36,26 @@ namespace TheClinicApp.Registration
         protected void btnSave_Click(object sender, EventArgs e)
         {
             Patient PatientObj = new Patient();
-            DateTime _date = DateTime.Now;          
+            DateTime _date = DateTime.Now;
             Guid g = Guid.NewGuid();
             int age = Convert.ToInt32(txtAge.Text);
             int year = _date.Year;
             int DOB = year - age;
-            string guitemp="2c7a7172-6ea9-4640-b7d2-0c329336f289";
+            string guitemp = "2c7a7172-6ea9-4640-b7d2-0c329336f289";
             PatientObj.PatientID = g;
             PatientObj.ClinicID = Guid.Parse(guitemp);
             PatientObj.Name = txtName.Text;
             PatientObj.Address = txtAddress.Text;
             PatientObj.Phone = txtMobile.Text;
             PatientObj.Email = txtEmail.Text;
-            PatientObj.DOB = DOB+"-01-01";
+            PatientObj.DOB = DOB + "-01-01";
             PatientObj.Gender = txtSex.Text;
             PatientObj.MaritalStatus = txtMarital.Text;
             PatientObj.Occupation = "BUSINESS";
             PatientObj.AddPatientDetails();
             var page = HttpContext.Current.CurrentHandler as Page;
-           
-           
+
+
 
         }
 
@@ -64,10 +64,11 @@ namespace TheClinicApp.Registration
             string value = Request.Form["txtSearch"];
         }
         private string BindName()
-        { Patient PatientObj = new Patient();
+        {
+            Patient PatientObj = new Patient();
 
-        DataTable dt = PatientObj.GetSearchBoxData();
-        
+            DataTable dt = PatientObj.GetSearchBoxData();
+
             StringBuilder output = new StringBuilder();
             output.Append("[");
             for (int i = 0; i < dt.Rows.Count; ++i)
@@ -79,7 +80,7 @@ namespace TheClinicApp.Registration
                     output.Append(",");
                 }
             }
-            output.Append("];");
+            output.Append("]");
             return output.ToString();
         }
     }
