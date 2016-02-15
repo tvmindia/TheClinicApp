@@ -12,7 +12,7 @@
    
 
     <div class="container bodyBackground" style="width:100%;">
-          <label  class="headingLabel" >Token</label>
+          <label  class="headingLabel" >Patient Token Booking</label>
         <div class="col-md-12 Span-One">
                     <div class="col-md-9" >
                         <div class="col-md-12 Span-One">
@@ -102,7 +102,7 @@
                                 <div class="form-group">
                    
                                     <div class="col-md-12">
-                                       <label  class="headingLabel" >Patient Details</label>
+                                       <label  class="subheadingLabel" >Patient Details</label>
                                     </div>
                                 </div>
                            
@@ -138,7 +138,7 @@
                    
                                     <div class="col-md-12">
                                                                                                 
-                                       <asp:Label ID="lblFile" runat="server" Text="#FileNO"></asp:Label>
+                                       <asp:Label ID="lblFile" runat="server" Text=""></asp:Label>
                                                                                                 
                                     </div>
                                 </div>
@@ -175,7 +175,7 @@
                    
                                     <div class="col-md-12">
                                                                                                 
-                                          <asp:Label ID="lblName" CssClass="largefont"  runat="server" Text="GIBIN"></asp:Label>
+                                          <asp:Label ID="lblName" CssClass="largefont"  runat="server" Text=""></asp:Label>
                                                                                                 
                                     </div>
                                 </div>
@@ -212,7 +212,7 @@
                    
                                     <div class="col-md-12">
                                                                                                 
-                                        <asp:Label ID="lblAge" runat="server" Text="Age"></asp:Label>
+                                        <asp:Label ID="lblAge" runat="server" Text=""></asp:Label>
                                                                                                 
                                     </div>
                                 </div>
@@ -220,7 +220,7 @@
                             </div>
                              <div class="col-md-8">           
                                 <div class="col-md-12">                 
-                                    <asp:Label ID="lblGender" runat="server" Text="Gender"></asp:Label>
+                                    <asp:Label ID="lblGender" runat="server" Text=""></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -249,7 +249,7 @@
                    
                                     <div class="col-md-12">
                                                                                                 
-                                           <asp:Label ID="lblPhone" runat="server" Text="Label"></asp:Label>
+                                           <asp:Label ID="lblPhone" runat="server" Text=""></asp:Label>
                                                                                                 
                                     </div>
                                 </div>
@@ -294,7 +294,7 @@
                             </div>
                              <div class="col-md-11">           
                                 <div class="col-md-12">                 
-                                    <asp:Label ID="lblToken" CssClass="largefont" runat="server" Text="Token NO"></asp:Label>
+                                    <asp:Label ID="lblToken" Visible="false" CssClass="largefont" runat="server" Text="Token NO"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -331,11 +331,19 @@
 
                                       <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False">
                                           <Columns>
-                                              <asp:BoundField HeaderText="DOCTOR NAME" DataField="Name" />
+                                              <asp:BoundField HeaderText="DOCTOR NAME" DataField="DOCNAME" />
                                               <asp:BoundField HeaderText="TOKEN NO" DataField="TokenNo" />
                                               <asp:BoundField HeaderText="PATIENT NAME" DataField="Name" />
                                               <asp:BoundField HeaderText="TIME" DataField="DateTime" />
+                                               
+                                              <asp:TemplateField HeaderText="DELETE">
+                                                  <ItemTemplate>
+                                                      <asp:ImageButton ID="ImgBtnDelete" runat="server"   Width="25px" />
+                                                  </ItemTemplate>
+                                              </asp:TemplateField>
+                                               
                                           </Columns>
+                                         
                                      </asp:GridView>
 
                                  </ContentTemplate>
