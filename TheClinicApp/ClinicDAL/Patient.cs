@@ -66,12 +66,13 @@ namespace TheClinicApp.ClinicDAL
             get;
             set;
         }
-        public string UDF
+        public String image
         {
             get;
             set;
         }
         #endregion Patientproperty
+
         #region AddPatientDetails
         public void AddPatientDetails()
         {
@@ -100,6 +101,7 @@ namespace TheClinicApp.ClinicDAL
                 pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
                 pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
                 pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                pud.Parameters.Add("@image", SqlDbType.VarBinary).Value = image; 
                 SqlParameter Output = new SqlParameter();
                 Output.DbType = DbType.Int32;
                 Output.ParameterName = "@Status";
@@ -145,6 +147,7 @@ namespace TheClinicApp.ClinicDAL
             
         }
         #endregion AddPatientDetails
+
         #region UpdatePatientDetails
         /// <summary>
         /// Updates the PatientDetails
@@ -207,6 +210,7 @@ namespace TheClinicApp.ClinicDAL
             }
         }
         #endregion UpdatePatientDetails
+
         #region GetPatientDetails
         public void GetPatientDetails()
         {
@@ -258,6 +262,7 @@ namespace TheClinicApp.ClinicDAL
 
         }
         #endregion GetPatientDetails
+
         #region SearchPatientDetails
         public void SearchPatientDetails(string searchtxt)
         {
@@ -309,37 +314,29 @@ namespace TheClinicApp.ClinicDAL
         }
 
         #endregion SearchPatientDetails
+
         #region ViewAllRegistration
-        public void ViewAllRegistration()
+        /// <summary>
+        /// ***********
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetAllRegistration()
         {
             SqlConnection con = null;
+           
             try
             {
-
+                DataTable dt = new DataTable();
                 dbConnection dcon = new dbConnection();
                 con = dcon.GetDBConnection();
-                SqlCommand pud = new SqlCommand();
-                pud.Connection = con;
-                pud.CommandType = System.Data.CommandType.StoredProcedure;
-                pud.CommandText = "ViewAllRegistration";
-                SqlParameter OutparamId = pud.Parameters.Add("@OutparamId", SqlDbType.SmallInt);
-                OutparamId.Direction = ParameterDirection.Output;
-                SqlDataReader dr;
-                dr = pud.ExecuteReader();
-                //if (int.Parse(OutparamId.Value.ToString()) != 0)
-                //{
-                //    //not successfull
-                //    var page = HttpContext.Current.CurrentHandler as Page;
-                //    eObj.UpdationSuccessData(page, "Not Updated");
-                //}
-                //else
-                //{
-                //    //successfull
-                //    var page = HttpContext.Current.CurrentHandler as Page;
-                //    eObj.UpdationSuccessData(page);
-                //}
-
-
+                SqlCommand cmd = new SqlCommand("ViewAllRegistration", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = cmd;
+                dt = new DataTable();
+                adapter.Fill(dt);
+                con.Close();
+                return dt;
             }
             catch (Exception ex)
             {
@@ -355,45 +352,34 @@ namespace TheClinicApp.ClinicDAL
                 }
 
             }
+
+
         }
         #endregion ViewAllRegistration
+
         #region ViewDateRegistration
-        public void ViewDateRegistration(DateTime CreatedDate)
+        public DataTable GetDateRegistration()
         {
             SqlConnection con = null;
             try
             {
-
+                DateTime now = DateTime.Now;
+                DataTable dt1 = new DataTable();
                 dbConnection dcon = new dbConnection();
                 con = dcon.GetDBConnection();
-                SqlCommand pud = new SqlCommand();
-                pud.Connection = con;
-                pud.CommandType = System.Data.CommandType.StoredProcedure;
-                pud.CommandText = "ViewDateRegistration";
-                pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = CreatedDate;
-                SqlParameter OutparamId = pud.Parameters.Add("@OutparamId", SqlDbType.SmallInt);
-                OutparamId.Direction = ParameterDirection.Output;
-                SqlDataReader dr;
-                dr = pud.ExecuteReader();
-                //if (int.Parse(OutparamId.Value.ToString()) != 0)
-                //{
-                //    //not successfull
-                //    var page = HttpContext.Current.CurrentHandler as Page;
-                //    eObj.UpdationSuccessData(page, "Not Updated");
-                //}
-                //else
-                //{
-                //    //successfull
-                //    var page = HttpContext.Current.CurrentHandler as Page;
-                //    eObj.UpdationSuccessData(page);
-                //}
-
-
+                SqlCommand cmd = new SqlCommand("ViewDateRegistration", con);
+                cmd.Parameters.Add("@CreatedDate", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd");
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = cmd;
+                dt1 = new DataTable();
+                adapter.Fill(dt1);
+                return dt1;
             }
             catch (Exception ex)
             {
-                //var page = HttpContext.Current.CurrentHandler as Page;
-                //eObj.ErrorData(ex, page);
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
                 throw ex;
             }
             finally

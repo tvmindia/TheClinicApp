@@ -97,6 +97,18 @@ a:active {
             text-decoration: underline;
             padding-top: 2%;
         }
+        .largefont
+        {
+            font-size:25px;
+            font:bold;
+        }
+
+        .subheadingLabel{
+            color: seagreen;
+            font: bold;
+            font-size: 15px;
+            padding-top: 2%;
+        }
 
         .footerMessagesColumn {
             margin-left: 2%;

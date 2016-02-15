@@ -17,14 +17,30 @@ namespace TheClinicApp.Registration
         public string listFilter = null;
         protected void Page_Load(object sender, EventArgs e)
         {
+            Patient Patientobj = new Patient();
+            #region GridAllRegistration        
+            dtgViewAllRegistration.EmptyDataText = "No Records Found";           
+            dtgViewAllRegistration.DataSource=Patientobj.GetAllRegistration();
+            dtgViewAllRegistration.DataBind();
+            #endregion GridAllRegistration
+
             listFilter = null;
             listFilter = BindName();
+            #region GridDateRegistration
+            dtgViewTodaysRegistration.EmptyDataText = "No Records Found";
+            dtgViewTodaysRegistration.DataSource = Patientobj.GetDateRegistration();
+            dtgViewTodaysRegistration.DataBind();
+            #endregion GridDateRegistration
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
             Patient PatientObj = new Patient();
+            DateTime _date = DateTime.Now;          
             Guid g = Guid.NewGuid();
+            int age = Convert.ToInt32(txtAge.Text);
+            int year = _date.Year;
+            int DOB = year - age;
             string guitemp="2c7a7172-6ea9-4640-b7d2-0c329336f289";
             PatientObj.PatientID = g;
             PatientObj.ClinicID = Guid.Parse(guitemp);
@@ -32,7 +48,7 @@ namespace TheClinicApp.Registration
             PatientObj.Address = txtAddress.Text;
             PatientObj.Phone = txtMobile.Text;
             PatientObj.Email = txtEmail.Text;
-            PatientObj.DOB = txtAge.Text;
+            PatientObj.DOB = DOB+"-01-01";
             PatientObj.Gender = txtSex.Text;
             PatientObj.MaritalStatus = txtMarital.Text;
             PatientObj.Occupation = "BUSINESS";
@@ -51,7 +67,7 @@ namespace TheClinicApp.Registration
         { Patient PatientObj = new Patient();
 
         DataTable dt = PatientObj.GetSearchBoxData();
-      
+        
             StringBuilder output = new StringBuilder();
             output.Append("[");
             for (int i = 0; i < dt.Rows.Count; ++i)
