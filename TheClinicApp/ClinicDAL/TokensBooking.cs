@@ -295,10 +295,10 @@ namespace TheClinicApp.ClinicDAL
         /// </summary>
         /// <param name="id"></param>
         
-        public void DeleteToken(int id)
+        public void DeleteToken(string id)
         {
             SqlConnection con = null;
-
+          
             try
             {          
             dbConnection dcon = new dbConnection();

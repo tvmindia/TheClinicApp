@@ -1,5 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="Tokens.aspx.cs" Inherits="TheClinicApp.Token.Tokens" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" EnableEventValidation="true" CodeBehind="Tokens.aspx.cs" Inherits="TheClinicApp.Token.Tokens" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
@@ -329,7 +330,7 @@
                                  <ContentTemplate>
                                      
 
-                                      <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False">
+                                      <asp:GridView ID="GridViewTokenlist" runat="server" DataKeyNames="UniqueId"   AutoGenerateColumns="False">
                                           <Columns>
                                               <asp:BoundField HeaderText="DOCTOR NAME" DataField="DOCNAME" />
                                               <asp:BoundField HeaderText="TOKEN NO" DataField="TokenNo" />
@@ -338,7 +339,8 @@
                                                
                                               <asp:TemplateField HeaderText="DELETE">
                                                   <ItemTemplate>
-                                                      <asp:ImageButton ID="ImgBtnDelete" runat="server"   Width="25px" />
+                                                      <asp:ImageButton ID="ImgBtnDelete"   runat="server"   Width="25px" ImageUrl="~/Images/Delete.png"   />
+
                                                   </ItemTemplate>
                                               </asp:TemplateField>
                                                

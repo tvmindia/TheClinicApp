@@ -75,36 +75,24 @@ namespace TheClinicApp.Token
             tok.CreatedBy = "GIBIN";
           
             int tokenNo = tok.InsertToken();
-            if (tokenNo > 0)
-            {
+            
                 lblToken.Text = "Token No: " + tokenNo.ToString();
                 lblToken.Visible = true;
-
-            }
-            else 
-            {
-                //alert message
-
-                ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Patient Already Booked');",true);
-
-                //string msg = "Patient Already Booked";
-                //Console.WriteLine("<script language='javascript'>" + msg + "')</script>");
-                
-            }
+ 
          
 
             //gridview bind when book button click
 
-           if (IsPostBack)
-           {
-               tok.DateTime = DateTime.Now;
+                if (IsPostBack)
+                {
+                    tok.DateTime = DateTime.Now;
 
-               DataSet gds = tok.ViewToken();
+                    DataSet gds = tok.ViewToken();
 
-               GridViewTokenlist.DataSource = gds;
-               GridViewTokenlist.DataBind();
+                    GridViewTokenlist.DataSource = gds;
+                    GridViewTokenlist.DataBind();
 
-           }
+                }
            
           
 
@@ -135,6 +123,20 @@ namespace TheClinicApp.Token
             }
         }
 
+        protected void ImgBtnDelete_Click(object sender, ImageClickEventArgs e)
+        {
+             GridViewRow gr=(GridViewRow)((Button)sender).NamingContainer;
+
+            int id=Convert.ToInt32(GridViewTokenlist.DataKeys[gr.RowIndex].Value.ToString()) ;
+
+
+
+            //tok.DeleteToken();
+        }
+
+       
+
+     
       
     }
 }
