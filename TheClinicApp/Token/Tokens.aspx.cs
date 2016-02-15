@@ -9,6 +9,10 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 
+ 
+
+
+
 
 namespace TheClinicApp.Token
 {
@@ -60,6 +64,9 @@ namespace TheClinicApp.Token
         protected void btnBookToken_Click(object sender, EventArgs e)
         {
 
+
+
+
             tok.DoctorID = ddlDoctorName.SelectedValue;
             tok.PatientID = HiddenPatientID.Value;
             tok.ClinicID = HiddenClinicID.Value;
@@ -67,11 +74,37 @@ namespace TheClinicApp.Token
             tok.DateTime =  DateTime.Now;
             tok.CreatedBy = "GIBIN";
           
-          
-            
-            
             int tokenNo = tok.InsertToken();
-            lblToken.Text = tokenNo.ToString();
+            if (tokenNo > 0)
+            {
+                lblToken.Text = "Token No: " + tokenNo.ToString();
+                lblToken.Visible = true;
+
+            }
+            else 
+            {
+                //alert message
+
+                ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Patient Already Booked');",true);
+
+                //string msg = "Patient Already Booked";
+                //Console.WriteLine("<script language='javascript'>" + msg + "')</script>");
+                
+            }
+         
+
+            //gridview bind when book button click
+
+           if (IsPostBack)
+           {
+               tok.DateTime = DateTime.Now;
+
+               DataSet gds = tok.ViewToken();
+
+               GridViewTokenlist.DataSource = gds;
+               GridViewTokenlist.DataBind();
+
+           }
            
           
 
@@ -101,5 +134,7 @@ namespace TheClinicApp.Token
             HiddenClinicID.Value = Convert.ToString(dt.Rows[0][6]);
             }
         }
+
+      
     }
 }
