@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,9 +14,11 @@ namespace TheClinicApp.Registration
     public partial class Patients : System.Web.UI.Page
     {
         ErrorHandling eObj = new ErrorHandling();
+        public string listFilter = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            listFilter = null;
+            listFilter = BindName();
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -42,6 +47,24 @@ namespace TheClinicApp.Registration
         {
             string value = Request.Form["txtSearch"];
         }
-        
+        private string BindName()
+        { Patient PatientObj = new Patient();
+
+        DataTable dt = PatientObj.GetSearchBoxData();
+      
+            StringBuilder output = new StringBuilder();
+            output.Append("[");
+            for (int i = 0; i < dt.Rows.Count; ++i)
+            {
+                output.Append("\"" + dt.Rows[i]["Name"].ToString() + "\"");
+
+                if (i != (dt.Rows.Count - 1))
+                {
+                    output.Append(",");
+                }
+            }
+            output.Append("];");
+            return output.ToString();
+        }
     }
 }

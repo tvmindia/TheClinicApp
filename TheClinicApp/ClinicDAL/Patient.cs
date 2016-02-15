@@ -407,6 +407,28 @@ namespace TheClinicApp.ClinicDAL
         }
         #endregion ViewDateRegistration
 
+        public DataTable GetSearchBoxData()
+        {
+
+            DataTable dt = null;
+            SqlConnection con = null;
+            dbConnection dcon = new dbConnection();
+            con = dcon.GetDBConnection();
+
+
+            SqlCommand cmd = new SqlCommand("GetSearchBoxData", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = cmd;
+            dt = new DataTable();
+            adapter.Fill(dt);
+            con.Close();
+            return dt;
+
+        } 
+
+
     }
 
 }
