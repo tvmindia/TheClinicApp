@@ -66,7 +66,7 @@ namespace TheClinicApp.ClinicDAL
             get;
             set;
         }
-        public String image
+        public object image
         {
             get;
             set;
@@ -101,7 +101,7 @@ namespace TheClinicApp.ClinicDAL
                 pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
                 pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
                 pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
-                pud.Parameters.Add("@image", SqlDbType.VarBinary).Value = image; 
+                //pud.Parameters.Add("@image", SqlDbType.VarBinary).Value = image; 
                 SqlParameter Output = new SqlParameter();
                 Output.DbType = DbType.Int32;
                 Output.ParameterName = "@Status";

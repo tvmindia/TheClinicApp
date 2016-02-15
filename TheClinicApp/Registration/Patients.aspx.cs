@@ -52,6 +52,7 @@ namespace TheClinicApp.Registration
             PatientObj.Gender = txtSex.Text;
             PatientObj.MaritalStatus = txtMarital.Text;
             PatientObj.Occupation = "BUSINESS";
+            //PatientObj.image =null ;
             PatientObj.AddPatientDetails();
             var page = HttpContext.Current.CurrentHandler as Page;
 
