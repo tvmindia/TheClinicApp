@@ -316,6 +316,8 @@ html, body {
     height:98%;
     width:98%;
     background:transparent;
+    overflow-y:scroll;
+    overflow-x:hidden;
 }
 
 

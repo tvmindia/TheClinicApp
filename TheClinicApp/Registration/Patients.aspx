@@ -8,6 +8,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
     <%--<style>
@@ -68,10 +69,21 @@
         }
     </style>--%>
     <link href="../Content/Input.css" rel="stylesheet" />
-
+    <link href="../Content/jquery-ui.css" rel="stylesheet" />
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
+    <script src="../Scripts/jquery-ui.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
-    <div class="container bodyBackground" style="width:100%;">
+    <%--<script>
+        $(document).ready(function () {
+            debugger;
+            var ac=null;
+            ac = <%=listFilter %>;
+            $( "#txtSearch" ).autocomplete({
+                source: ac
+            });
+        });
+    </script>--%>
+    <div class="container bodyBackground" style="width:100%;    overflow-x:hidden;">
         <label class="headingLabel">New Patient Registration </label>
         <div class="col-lg-12 Span-One ">
             <div class="col-md-9">
@@ -278,8 +290,9 @@
                       
                         <tr style="height: 40%;">
                             <td style="width: 90%">
+                                <div class=" auto-complete">
                                 <div class="input-group stylish-input-group">
-                                    <input type="text" class="form-control" placeholder="Search" style="height: 20%;" name="txtSearch" />
+                                    <input type="text" class="form-control" placeholder="Search" style="height: 20%;" name="txtSearch" id="txtSearch" />
 
                                     <span class="input-group-addon" style="height: 0%;">
                                         <button type="submit" style="height: .1%;" runat="server" id="btnSearch" onserverclick="btnSearch_ServerClick">
@@ -289,6 +302,7 @@
                                     </span>
 
                                 </div>
+                                    </div>
                             </td>
                             <td></td>
                         </tr>
@@ -337,7 +351,7 @@
           
         </div>
         <footer>
-            <div style="position: fixed; background: rgba(0, 0, 0, 0.3); bottom: 0%; width: 100%; margin-left: 0px; height: 10%;">
+            <div style="position: fixed; background: rgba(0, 153, 153,.4); bottom: 0%; width: 100%; margin-left: 0px; height: 10%;">
 
                 <table style="width: 100%; height: 100%;">
                     <tr>

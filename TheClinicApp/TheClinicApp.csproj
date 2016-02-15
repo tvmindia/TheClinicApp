@@ -132,6 +132,7 @@
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Input.css" />
+    <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\materialize\css\materialize.css" />
     <Content Include="Content\materialize\css\materialize.min.css" />
     <Content Include="Content\materialize\font\material-design-icons\LICENSE.txt" />
@@ -170,6 +171,7 @@
     <Content Include="Registration\Patients.aspx" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.12.0.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="testpage.aspx" />
     <Content Include="Token\Tokens.aspx" />
     <Content Include="underConstruction.aspx" />
