@@ -41,10 +41,12 @@
 }
 a:link {
     text-decoration: underline;
+   
 }
 
 a:visited {
     text-decoration: none;
+ 
 }
 
 a:hover {

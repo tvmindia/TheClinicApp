@@ -68,12 +68,22 @@
             margin-left: 1%;
         }
     </style>--%>
+    <style>
+        
+    </style>
     <link href="../Content/Input.css" rel="stylesheet" />
     <link href="../Content/jquery-ui.css" rel="stylesheet" />
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/jquery-ui.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
-    <%--<script>
+    <script>
+    function ClearTextBox() {
+            $('textarea').empty();
+
+            $("input:text").val('');
+        }
+    </script>
+    <script>
         $(document).ready(function () {
             debugger;
             var ac=null;
@@ -82,8 +92,9 @@
                 source: ac
             });
         });
-    </script>--%>
-    <div class="container bodyBackground" style="width:100%;    overflow-x:hidden;">
+    </script>
+
+    <div class="container bodyBackground" style="width:100%;overflow-x:hidden;">
         <label class="headingLabel">New Patient Registration </label>
         <div class="col-lg-12 Span-One ">
             <div class="col-md-9">
@@ -162,7 +173,7 @@
 
 
                             <div class="col-md-11">
-                                <asp:TextBox ID="txtAge" class="form-control textBoxborder" runat="server" required></asp:TextBox>
+                                <asp:TextBox ID="txtAge" class="form-control textBoxborder" runat="server" required TextMode="Number"></asp:TextBox>
 
                             </div>
                         </div>
@@ -289,10 +300,10 @@
                         </tr>
                       
                         <tr style="height: 40%;">
-                            <td style="width: 90%">
+                            <td style="width: 100%">
                                 <div class=" auto-complete">
                                 <div class="input-group stylish-input-group">
-                                    <input type="text" class="form-control" placeholder="Search" style="height: 20%;" name="txtSearch" id="txtSearch" />
+                                    <input type="text" class="form-control" placeholder="Search" style="height: 20%;" name="txtSearch" id="txtSearch"  />
 
                                     <span class="input-group-addon" style="height: 0%;">
                                         <button type="submit" style="height: .1%;" runat="server" id="btnSearch" onserverclick="btnSearch_ServerClick">
@@ -306,7 +317,25 @@
                             </td>
                             <td></td>
                         </tr>
-                        <tr style="height: 40%;">
+                        <tr style="height: 100%;">
+                            <td>&nbsp
+                            </td>
+
+                            <td></td>
+                        </tr>
+                           <tr style="height: 100%;">
+                            <td>&nbsp
+                            </td>
+
+                            <td></td>
+                        </tr>
+                           <tr style="height: 100%;">
+                            <td>&nbsp
+                            </td>
+
+                            <td></td>
+                        </tr>
+                            <tr style="height: 100%;">
                             <td>&nbsp
                             </td>
 
@@ -336,12 +365,7 @@
 
                             <td></td>
                         </tr>
-                        <tr>
-                            <td>
-                                <a href="#" role="button">Other links</a>
-                            </td>
-                            <td></td>
-                        </tr>
+                       
                     </table>
 
 

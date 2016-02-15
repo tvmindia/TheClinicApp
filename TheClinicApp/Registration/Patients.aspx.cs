@@ -17,20 +17,9 @@ namespace TheClinicApp.Registration
         public string listFilter = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            Patient Patientobj = new Patient();
-            #region GridAllRegistration
-            dtgViewAllRegistration.EmptyDataText = "No Records Found";
-            dtgViewAllRegistration.DataSource = Patientobj.GetAllRegistration();
-            dtgViewAllRegistration.DataBind();
-            #endregion GridAllRegistration
 
-            listFilter = null;
-            listFilter = BindName();
-            #region GridDateRegistration
-            dtgViewTodaysRegistration.EmptyDataText = "No Records Found";
-            dtgViewTodaysRegistration.DataSource = Patientobj.GetDateRegistration();
-            dtgViewTodaysRegistration.DataBind();
-            #endregion GridDateRegistration
+
+            gridDataBind();
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -56,13 +45,35 @@ namespace TheClinicApp.Registration
             PatientObj.AddPatientDetails();
             var page = HttpContext.Current.CurrentHandler as Page;
 
+            gridDataBind();
 
+        }
+        public void gridDataBind()
+        {
 
+            Patient Patientobj = new Patient();
+            #region GridAllRegistration
+            dtgViewAllRegistration.EmptyDataText = "No Records Found";
+            dtgViewAllRegistration.DataSource = Patientobj.GetAllRegistration();
+            dtgViewAllRegistration.DataBind();
+            #endregion GridAllRegistration
+
+            listFilter = null;
+            listFilter = BindName();
+            #region GridDateRegistration
+            dtgViewTodaysRegistration.EmptyDataText = "No Records Found";
+            dtgViewTodaysRegistration.DataSource = Patientobj.GetDateRegistration();
+            dtgViewTodaysRegistration.DataBind();
+            #endregion GridDateRegistration
         }
 
         protected void btnSearch_ServerClick(object sender, EventArgs e)
         {
+            Patient PatientObj = new Patient();
             string value = Request.Form["txtSearch"];
+          DataTable dt = PatientObj.GetSearchBoxDataByAnyValue(value);
+        
+
         }
         private string BindName()
         {
