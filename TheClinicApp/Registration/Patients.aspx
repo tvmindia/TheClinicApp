@@ -71,7 +71,7 @@
 
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
-    <script>
+    <%--<script>
         $(document).ready(function () {
             var ac=null;
             ac = <%=listFilter %>;
@@ -79,7 +79,7 @@
                 source: ac
             });
         });
-    </script>
+    </script>--%>
     <div class="container bodyBackground" style="width:100%;    overflow-x:hidden;">
         <label class="headingLabel">New Patient Registration </label>
         <div class="col-lg-12 Span-One ">
