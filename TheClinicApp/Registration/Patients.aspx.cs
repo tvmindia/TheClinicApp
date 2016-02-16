@@ -24,34 +24,28 @@ namespace TheClinicApp.Registration
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            if(btnSave.Text=="Save")
-            { 
-            Patient PatientObj = new Patient();
-            DateTime _date = DateTime.Now;          
-            Guid g = Guid.NewGuid();
-            int age = Convert.ToInt32(txtAge.Text);
-            int year = _date.Year;
-            int DOB = year - age;
-            string guitemp = "2c7a7172-6ea9-4640-b7d2-0c329336f289";
-            PatientObj.PatientID = g;
-            PatientObj.ClinicID = Guid.Parse(guitemp);
-            PatientObj.Name = txtName.Text;
-            PatientObj.Address = txtAddress.Text;
-            PatientObj.Phone = txtMobile.Text;
-            PatientObj.Email = txtEmail.Text;
-            PatientObj.DOB = DOB + "-01-01";
-            PatientObj.Gender = txtSex.Text;
-            PatientObj.MaritalStatus = txtMarital.Text;
-            PatientObj.Occupation = "BUSINESS";
-            //PatientObj.image =null ;
-            PatientObj.AddPatientDetails();
-            var page = HttpContext.Current.CurrentHandler as Page;
-            }
-            else
-            {
+            
+                Patient PatientObj = new Patient();
+                DateTime _date = DateTime.Now;
+                Guid g = Guid.NewGuid();
+                int age = Convert.ToInt32(txtAge.Text);
+                int year = _date.Year;
+                int DOB = year - age;
+                string guitemp = "2c7a7172-6ea9-4640-b7d2-0c329336f289";
+                PatientObj.PatientID = g;
+                PatientObj.ClinicID = Guid.Parse(guitemp);
+                PatientObj.Name = txtName.Text;
+                PatientObj.Address = txtAddress.Text;
+                PatientObj.Phone = txtMobile.Text;
+                PatientObj.Email = txtEmail.Text;
+                PatientObj.DOB = DOB + "-01-01";
+                PatientObj.Gender = txtSex.Text;
+                PatientObj.MaritalStatus = txtMarital.Text;
+                PatientObj.Occupation = "BUSINESS";
+                //PatientObj.image =null ;
+                PatientObj.AddPatientDetails();
+                var page = HttpContext.Current.CurrentHandler as Page;
            
-            gridDataBind();
-
         }
         public void gridDataBind()
         {
