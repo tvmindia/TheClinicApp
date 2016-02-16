@@ -154,6 +154,11 @@
     <Content Include="Images\icon-user-default.jpg" />
     <Content Include="Images\LOGO.png" />
     <Content Include="Images\mainbg.jpg" />
+    <Content Include="Images\mainbg1.jpg" />
+    <Content Include="Images\mainbg2.jpeg" />
+    <Content Include="Images\mainbg3.jpg" />
+    <Content Include="Images\mainbg4.jpg" />
+    <Content Include="Images\mainbg5.jpg" />
     <Content Include="Images\orderedList0.png" />
     <Content Include="Images\orderedList1.png" />
     <Content Include="Images\orderedList2.png" />
