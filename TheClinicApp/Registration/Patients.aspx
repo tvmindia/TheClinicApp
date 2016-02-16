@@ -129,7 +129,8 @@
 
 
                             <div class="col-md-11">
-                                <asp:TextBox ID="txtName" class="form-control textBoxborder" runat="server" required></asp:TextBox>
+                                <asp:TextBox ID="txtName" class="form-control textBoxborder" runat="server"
+                                    ></asp:TextBox>
 
                             </div>
                         </div>
