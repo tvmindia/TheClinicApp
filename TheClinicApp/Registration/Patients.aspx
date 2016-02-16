@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="Patients.aspx.cs" Inherits="TheClinicApp.Registration.Patients" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true"  EnableEventValidation="false" CodeBehind="Patients.aspx.cs" Inherits="TheClinicApp.Registration.Patients" %>
 
 <%@ Register Src="~/UserControl/ProfilePicUpload.ascx" TagPrefix="uc1" TagName="ProfilePicUpload" %>
 
@@ -431,19 +431,29 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                     </div>
                     <div class="modal-body">
 
-                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
-                                <asp:BoundField DataField="Name" HeaderText="Name"></asp:BoundField>
-                                <asp:BoundField DataField="Address" HeaderText="Address"></asp:BoundField>
-                                <asp:BoundField DataField="Phone" HeaderText="Phone"></asp:BoundField>
-                                <asp:BoundField DataField="Email" HeaderText="Email"></asp:BoundField>
-                                <asp:TemplateField>
+                                <asp:TemplateField HeaderImageUrl="~/Images/Pencil-01.png">
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" />
+                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" data-dismiss="modal" />
                                        
+
                                     </ItemTemplate>
+                                    
                                 </asp:TemplateField>
+                                <asp:BoundField DataField="Name" HeaderText="Name">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Address" HeaderText="Address">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Phone" HeaderText="Phone">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Email" HeaderText="Email">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
 
                             </Columns>
                             <EditRowStyle BackColor="#0080AA"></EditRowStyle>
@@ -487,9 +497,15 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
 
                     </div>
                     <div class="modal-body">
-                        <asp:GridView ID="dtgViewTodaysRegistration" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                        <asp:GridView ID="dtgViewTodaysRegistration" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White" ForeColor="#284775"></AlternatingRowStyle>
                             <Columns>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command1" />
+
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:BoundField DataField="Name" HeaderText="Name"></asp:BoundField>
                                 <asp:BoundField DataField="Address" HeaderText="Address"></asp:BoundField>
                                 <asp:BoundField DataField="Phone" HeaderText="Phone"></asp:BoundField>
