@@ -295,10 +295,10 @@ namespace TheClinicApp.ClinicDAL
         /// </summary>
         /// <param name="id"></param>
         
-        public void DeleteToken(int id)
+        public void DeleteToken(string id)
         {
             SqlConnection con = null;
-
+          
             try
             {          
             dbConnection dcon = new dbConnection();
@@ -307,7 +307,7 @@ namespace TheClinicApp.ClinicDAL
             cmd.Connection = con;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[DeleteToken]";
-            cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = id;            
+            cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(id);            
             cmd.ExecuteNonQuery();
             }
 
