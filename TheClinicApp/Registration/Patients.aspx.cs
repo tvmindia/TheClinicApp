@@ -143,5 +143,19 @@ namespace TheClinicApp.Registration
             HiddenField1.Value = PatientID.ToString();
         }
 
+        protected void ImgBtnUpdate1_Command(object sender, CommandEventArgs e)
+        {
+            string[] Patient = e.CommandArgument.ToString().Split(new char[] { ',' });
+            Guid PatientID = Guid.Parse(Patient[0]);
+            txtName.Text = Patient[1];
+            txtSex.Text = Patient[6];
+            txtAge.Text = Patient[5];
+            txtAddress.Text = Patient[2];
+            txtMobile.Text = Patient[3];
+            txtEmail.Text = Patient[4];
+            txtMarital.Text = Patient[7];
+        }
+
+     
     }
 }

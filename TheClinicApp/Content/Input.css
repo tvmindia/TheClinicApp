@@ -26,6 +26,7 @@
     background-color: transparent;
     width:100%;
     overflow-x:hidden;
+
 }
 
 .stylish-input-group .input-group-addon{
@@ -124,7 +125,9 @@ a:active {
         .footerButtonColumn {
             width: 100%;
             margin-left: 0%;
-         
+         vertical-align:bottom;
+        margin-bottom:0%;
+        padding-bottom:0%;
         }
 
         .footerbuttonTable {
@@ -149,5 +152,7 @@ a:active {
                bottom: 0%; width: 100%; 
                margin-left: 0px;
                 height: 6%;
+                vertical-align:bottom;
+
 
 }
