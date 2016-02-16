@@ -174,10 +174,7 @@
 
 
                             <div class="col-xs-11">
-                                <asp:RangeValidator ID="RangeValidator2" runat="server"
-ControlToValidate="txtAge" ErrorMessage="Under 16 Not Allowed" MaximumValue="100"
-
-MinimumValue="0" Type="Integer" ></asp:RangeValidator>
+                                <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="txtAge" ErrorMessage="Under 16 Not Allowed" MaximumValue="100" MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                                 <asp:TextBox ID="txtAge" class="form-control textBoxborder" runat="server" required TextMode="Number" ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
@@ -437,7 +434,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                             <Columns>
                                 <asp:TemplateField HeaderImageUrl="~/Images/Pencil-01.png">
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
+                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"|" + Eval("Name") + "|" + Eval("Address")+"|"+ Eval("Phone")+"|"+ Eval("Email")+"|"+Eval("DOB")+"|"+Eval("Gender")+"|"+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
                                        
 
                                     </ItemTemplate>
@@ -505,7 +502,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
+                                        <asp:ImageButton ID="ImgBtnUpdate1" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"|" + Eval("Name") + "|" + Eval("Address")+"|"+ Eval("Phone")+"|"+ Eval("Email")+"|"+Eval("DOB")+"|"+Eval("Gender")+"|"+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate1_Command" formnovalidate />
 
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -513,11 +510,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                                 <asp:BoundField DataField="Address" HeaderText="Address"></asp:BoundField>
                                 <asp:BoundField DataField="Phone" HeaderText="Phone"></asp:BoundField>
                                 <asp:BoundField DataField="Email" HeaderText="Email"></asp:BoundField>
-                                <asp:TemplateField>
-                                    <ItemTemplate>
-                                         <asp:ImageButton ID="ImgBtnUpdate1" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate1_Command" formnovalidate/>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
+                                
                             </Columns>
 
                             <EditRowStyle BackColor="#0080AA"></EditRowStyle>
