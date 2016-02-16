@@ -184,9 +184,9 @@ namespace TheClinicApp.ClinicDAL
                 pud.ExecuteNonQuery();
                 if (int.Parse(Output.Value.ToString()) == -1)
                 {
-                    ////not successfull
-                    //var page = HttpContext.Current.CurrentHandler as Page;
-                    //eObj.ErrorData(ex, page);
+                   // ////not successfull
+                   // var page = HttpContext.Current.CurrentHandler as Page;
+                   //eObj.U
                 }
                 else
                 {

@@ -231,6 +231,8 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
 
                             <div class="col-xs-11">
                                 <asp:TextBox ID="txtMobile" class="form-control textBoxborder" runat="server" maxlength="10"  pattern="[0-9]{10}"  ></asp:TextBox>
+                            <div class="col-md-11">
+                                <asp:TextBox ID="txtMobile" class="form-control textBoxborder" runat="server" maxlength="10"  pattern="[0-9]{10}" ValidationGroup="Submit"  ></asp:TextBox>
 
                             </div>
                         </div>
@@ -253,6 +255,8 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
 
                             <div class="col-xs-11">
                                 <asp:TextBox ID="txtEmail" class="form-control textBoxborder" runat="server" type="email"></asp:TextBox>
+                            <div class="col-md-11">
+                                <asp:TextBox ID="txtEmail" class="form-control textBoxborder" runat="server" type="email" ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
                         </div>
@@ -275,6 +279,8 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
 
                             <div class="col-xs-11">
                                 <asp:TextBox ID="txtMarital" class="form-control textBoxborder" runat="server"></asp:TextBox>
+                            <div class="col-md-11">
+                                <asp:TextBox ID="txtMarital" class="form-control textBoxborder" runat="server" ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
                         </div>
@@ -439,7 +445,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                             <Columns>
                                 <asp:TemplateField HeaderImageUrl="~/Images/Pencil-01.png">
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
+                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" ValidationGroup="update" formnovalidate />
                                        
 
                                     </ItemTemplate>
@@ -481,7 +487,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                         </asp:GridView>
                     </div>
                     <div class="modal-footer">
-                        <button data-dismiss="modal" class="btn  btn-large">Close</button>
+                        <%--<button data-dismiss="modal" class="btn  btn-large">Close</button>--%>
 
                     </div>
                 </div>
@@ -495,7 +501,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                 <!-- Modal content-->
                 
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header" style="width:100%">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Todays Registrations</h4>
 
@@ -515,11 +521,6 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                                 <asp:BoundField DataField="Address" HeaderText="Address"></asp:BoundField>
                                 <asp:BoundField DataField="Phone" HeaderText="Phone"></asp:BoundField>
                                 <asp:BoundField DataField="Email" HeaderText="Email"></asp:BoundField>
-                                <asp:TemplateField>
-                                    <ItemTemplate>
-                                         <asp:ImageButton ID="ImgBtnUpdate1" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate1_Command" formnovalidate/>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
                             </Columns>
 
                             <EditRowStyle BackColor="#0080AA"></EditRowStyle>
@@ -545,7 +546,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                         
                     </div>
                     <div class="modal-footer">
-                        <button data-dismiss="modal" class="btn  btn-large">Close</button>
+                        <%--<button data-dismiss="modal" class="btn  btn-large">Close</button>--%>
 
                     </div>
                 </div>
