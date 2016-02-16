@@ -129,7 +129,7 @@
 
 
                             <div class="col-md-11">
-                                <asp:TextBox ID="txtName" class="form-control textBoxborder" runat="server"
+                                <asp:TextBox ID="txtName" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"
                                     ></asp:TextBox>
 
                             </div>
@@ -152,7 +152,7 @@
 
 
                             <div class="col-md-11">
-                                <asp:TextBox ID="txtSex" class="form-control textBoxborder" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtSex" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
                         </div>
@@ -178,7 +178,7 @@
 ControlToValidate="txtAge" ErrorMessage="Under 16 Not Allowed" MaximumValue="100"
 
 MinimumValue="0" Type="Integer" ></asp:RangeValidator>
-                                <asp:TextBox ID="txtAge" class="form-control textBoxborder" runat="server" required TextMode="Number"></asp:TextBox>
+                                <asp:TextBox ID="txtAge" class="form-control textBoxborder" runat="server" required TextMode="Number" ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
                         </div>
@@ -202,7 +202,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
 
 
                             <div class="col-md-11">
-                                <asp:TextBox ID="txtAddress" class="form-control textBoxborder" TextMode="multiline" Columns="50" Rows="10" Height="100" runat="server" required></asp:TextBox>
+                                <asp:TextBox ID="txtAddress" class="form-control textBoxborder" TextMode="multiline" Columns="50" Rows="10" Height="100" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
                         </div>
@@ -402,7 +402,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                             <table class="footerTable" style="width:100%; margin-left:0px;padding-left:0px;">
                                 <tr>
                                     <td style="width:30%;">
-                                        <asp:Button ID="btnSave" runat="server" Text="SAVE" CssClass="button footerButtonColumn" OnClick="btnSave_Click" />
+                                        <asp:Button ID="btnSave" runat="server" Text="SAVE" CssClass="button footerButtonColumn" OnClick="btnSave_Click" ValidationGroup="Submit" />
 
                                     </td>
                                     <td>
