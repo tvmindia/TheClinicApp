@@ -35,6 +35,8 @@ namespace TheClinicApp.Registration
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            if(btnSave.Text=="Save")
+            { 
             Patient PatientObj = new Patient();
             DateTime _date = DateTime.Now;          
             Guid g = Guid.NewGuid();
@@ -55,11 +57,16 @@ namespace TheClinicApp.Registration
             //PatientObj.image =null ;
             PatientObj.AddPatientDetails();
             var page = HttpContext.Current.CurrentHandler as Page;
-           
+            }
+            else
+            {
+
+            }
            
 
         }
 
+       
         protected void btnSearch_ServerClick(object sender, EventArgs e)
         {
             string value = Request.Form["txtSearch"];
@@ -83,5 +90,27 @@ namespace TheClinicApp.Registration
             output.Append("];");
             return output.ToString();
         }
+
+        
+
+        protected void ImgBtnUpdate_Command(object sender, CommandEventArgs e)
+        {
+            if (e.CommandName == "Comment")
+            {
+                string[] Patient = e.CommandArgument.ToString().Split(new char[] { ',' });
+                Guid PatientID = Guid.Parse(Patient[0]);
+                txtName.Text = Patient[1];
+                txtSex.Text = Patient[6];
+                txtAge.Text = Patient[5];
+                txtAddress.Text = Patient[2];
+                txtMobile.Text = Patient[3];
+                txtEmail.Text = Patient[4];
+                txtMarital.Text = Patient[7];
+            }
+        }
+
+        
+
+        
     }
 }

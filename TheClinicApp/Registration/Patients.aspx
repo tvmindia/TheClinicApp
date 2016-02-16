@@ -397,14 +397,40 @@
                     </div>
                     <div class="modal-body">
 
-                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False">
+                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
                                 <asp:BoundField DataField="Name" HeaderText="Name"></asp:BoundField>
                                 <asp:BoundField DataField="Address" HeaderText="Address"></asp:BoundField>
-                                <asp:BoundField DataField="DOB" HeaderText="Age"></asp:BoundField>
                                 <asp:BoundField DataField="Phone" HeaderText="Phone"></asp:BoundField>
                                 <asp:BoundField DataField="Email" HeaderText="Email"></asp:BoundField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" />
+                                       
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
                             </Columns>
+                            <EditRowStyle BackColor="#0080AA"></EditRowStyle>
+
+                            <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
+
+                            <HeaderStyle BackColor="#0080AA" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                            <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#2461BF"></PagerStyle>
+
+                            <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                         </asp:GridView>
                     </div>
                     <div class="modal-footer">
@@ -428,33 +454,38 @@
                     </div>
                     <div class="modal-body">
                         <asp:GridView ID="dtgViewTodaysRegistration" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
-                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                            <AlternatingRowStyle BackColor="White" ForeColor="#284775"></AlternatingRowStyle>
                             <Columns>
                                 <asp:BoundField DataField="Name" HeaderText="Name"></asp:BoundField>
                                 <asp:BoundField DataField="Address" HeaderText="Address"></asp:BoundField>
-                                <asp:BoundField DataField="DOB" HeaderText="Age"></asp:BoundField>
                                 <asp:BoundField DataField="Phone" HeaderText="Phone"></asp:BoundField>
                                 <asp:BoundField DataField="Email" HeaderText="Email"></asp:BoundField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                         <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
-                            <EditRowStyle BackColor="#7C6F57"></EditRowStyle>
 
-                            <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White"></FooterStyle>
+                            <EditRowStyle BackColor="#0080AA"></EditRowStyle>
 
-                            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                            <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
 
-                            <PagerStyle HorizontalAlign="Center" BackColor="#666666" ForeColor="White"></PagerStyle>
+                            <HeaderStyle BackColor="#0080AA" Font-Bold="True" ForeColor="White"></HeaderStyle>
 
-                            <RowStyle BackColor="#E3EAEB"></RowStyle>
+                            <PagerStyle HorizontalAlign="Center" BackColor="#284775" ForeColor="White"></PagerStyle>
 
-                            <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+                            <RowStyle BackColor="#F7F6F3" ForeColor="#333333"></RowStyle>
 
-                            <SortedAscendingCellStyle BackColor="#F8FAFA"></SortedAscendingCellStyle>
+                            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
 
-                            <SortedAscendingHeaderStyle BackColor="#246B61"></SortedAscendingHeaderStyle>
+                            <SortedAscendingCellStyle BackColor="#E9E7E2"></SortedAscendingCellStyle>
 
-                            <SortedDescendingCellStyle BackColor="#D4DFE1"></SortedDescendingCellStyle>
+                            <SortedAscendingHeaderStyle BackColor="#506C8C"></SortedAscendingHeaderStyle>
 
-                            <SortedDescendingHeaderStyle BackColor="#15524A"></SortedDescendingHeaderStyle>
+                            <SortedDescendingCellStyle BackColor="#FFFDF8"></SortedDescendingCellStyle>
+
+                            <SortedDescendingHeaderStyle BackColor="#6F8DAE"></SortedDescendingHeaderStyle>
                         </asp:GridView>
                     </div>
                     <div class="modal-footer">
