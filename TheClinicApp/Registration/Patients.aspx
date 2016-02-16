@@ -129,7 +129,7 @@
 
 
                             <div class="col-md-11">
-                                <asp:TextBox ID="txtName" class="form-control textBoxborder" runat="server"
+                                <asp:TextBox ID="txtName" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"
                                     ></asp:TextBox>
 
                             </div>
@@ -152,7 +152,7 @@
 
 
                             <div class="col-md-11">
-                                <asp:TextBox ID="txtSex" class="form-control textBoxborder" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtSex" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
                         </div>
@@ -174,7 +174,11 @@
 
 
                             <div class="col-md-11">
-                                <asp:TextBox ID="txtAge" class="form-control textBoxborder" runat="server" required TextMode="Number"></asp:TextBox>
+                                <asp:RangeValidator ID="RangeValidator2" runat="server"
+ControlToValidate="txtAge" ErrorMessage="Under 16 Not Allowed" MaximumValue="100"
+
+MinimumValue="0" Type="Integer" ></asp:RangeValidator>
+                                <asp:TextBox ID="txtAge" class="form-control textBoxborder" runat="server" required TextMode="Number" ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
                         </div>
@@ -198,7 +202,7 @@
 
 
                             <div class="col-md-11">
-                                <asp:TextBox ID="txtAddress" class="form-control textBoxborder" TextMode="multiline" Columns="50" Rows="10" Height="100" runat="server" required></asp:TextBox>
+                                <asp:TextBox ID="txtAddress" class="form-control textBoxborder" TextMode="multiline" Columns="50" Rows="10" Height="100" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
                         </div>
@@ -398,7 +402,7 @@
                             <table class="footerTable" style="width:100%; margin-left:0px;padding-left:0px;">
                                 <tr>
                                     <td style="width:30%;">
-                                        <asp:Button ID="btnSave" runat="server" Text="SAVE" CssClass="button footerButtonColumn" OnClick="btnSave_Click" />
+                                        <asp:Button ID="btnSave" runat="server" Text="SAVE" CssClass="button footerButtonColumn" OnClick="btnSave_Click" ValidationGroup="Submit" />
 
                                     </td>
                                     <td>
@@ -433,7 +437,7 @@
                                 <asp:TemplateField HeaderImageUrl="~/Images/Pencil-01.png">
                                     <ItemTemplate>
                                         <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" data-dismiss="modal" />
-
+                                       
 
                                     </ItemTemplate>
                                     
@@ -450,7 +454,7 @@
                                 <asp:BoundField DataField="Email" HeaderText="Email">
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                                 </asp:BoundField>
-                                
+
                             </Columns>
                             <EditRowStyle BackColor="#0080AA"></EditRowStyle>
 
@@ -506,6 +510,11 @@
                                 <asp:BoundField DataField="Address" HeaderText="Address"></asp:BoundField>
                                 <asp:BoundField DataField="Phone" HeaderText="Phone"></asp:BoundField>
                                 <asp:BoundField DataField="Email" HeaderText="Email"></asp:BoundField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                         <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
 
                             <EditRowStyle BackColor="#0080AA"></EditRowStyle>
