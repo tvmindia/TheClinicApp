@@ -152,7 +152,7 @@ namespace TheClinicApp.ClinicDAL
         /// <summary>
         /// Updates the PatientDetails
         /// </summary>
-        public void UpdateBOQ(string username)
+        public void UpdatePatientDetails()
         {
             SqlConnection con = null;
             try
@@ -165,7 +165,6 @@ namespace TheClinicApp.ClinicDAL
                 pud.CommandType = System.Data.CommandType.StoredProcedure;
                 pud.CommandText = "UpdatePatientDetails";
                 pud.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = PatientID;
-                pud.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = ClinicID;
                 pud.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = Name;
                 pud.Parameters.Add("@Address", SqlDbType.NVarChar, 255).Value = Address;
                 pud.Parameters.Add("@Phone", SqlDbType.NVarChar, 50).Value = Phone;
@@ -173,31 +172,35 @@ namespace TheClinicApp.ClinicDAL
                 pud.Parameters.Add("@DOB", SqlDbType.Date).Value = DOB;
                 pud.Parameters.Add("@Gender", SqlDbType.NVarChar, 50).Value = Gender;
                 pud.Parameters.Add("@MaritalStatus", SqlDbType.NVarChar, 50).Value = MaritalStatus;
-                pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = username;
+                pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
                 pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
-                SqlParameter OutparamId = pud.Parameters.Add("@OutparamId", SqlDbType.SmallInt);
-                OutparamId.Direction = ParameterDirection.Output;
-
+                //SqlParameter OutparamId = pud.Parameters.Add("@OutparamId", SqlDbType.SmallInt);
+                //OutparamId.Direction = ParameterDirection.Output;
+                SqlParameter Output = new SqlParameter();
+                Output.DbType = DbType.Int32;
+                Output.ParameterName = "@Status";
+                Output.Direction = ParameterDirection.Output;
+                pud.Parameters.Add(Output);  
                 pud.ExecuteNonQuery();
-                //if (int.Parse(OutparamId.Value.ToString()) != 0)
-                //{
-                //    //not successfull
-                //    var page = HttpContext.Current.CurrentHandler as Page;
-                //    eObj.UpdationSuccessData(page, "Not Updated");
-                //}
-                //else
-                //{
-                //    //successfull
-                //    var page = HttpContext.Current.CurrentHandler as Page;
-                //    eObj.UpdationSuccessData(page);
-                //}
+                if (int.Parse(Output.Value.ToString()) == -1)
+                {
+                    ////not successfull
+                    //var page = HttpContext.Current.CurrentHandler as Page;
+                    //eObj.ErrorData(ex, page);
+                }
+                else
+                {
+                    //successfull
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.UpdationSuccessMessage(page);
+                }
 
 
             }
             catch (Exception ex)
             {
-                //var page = HttpContext.Current.CurrentHandler as Page;
-                //eObj.ErrorData(ex, page);
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
                 throw ex;
             }
             finally

@@ -43,13 +43,13 @@
          
         <div class="input-field ">
           <input id="username" runat="server" type="text"  class="validate">
-          <label for="username">User Name</label>
+          <label for="username" class="captions">User Name</label>
         </div>
       
           
         <div class="input-field">
           <input id="password" type="password" class="validate" runat="server">
-          <label for="password">Password</label>
+          <label for="password" class="captions">Password</label>
         </div>
        
      <div style="text-align:right">

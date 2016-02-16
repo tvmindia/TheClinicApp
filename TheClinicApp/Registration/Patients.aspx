@@ -180,6 +180,8 @@ ControlToValidate="txtAge" ErrorMessage="Under 16 Not Allowed" MaximumValue="100
 MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                                 <asp:TextBox ID="txtAge" class="form-control textBoxborder" runat="server" required TextMode="Number" ValidationGroup="Submit"></asp:TextBox>
 
+                                <asp:HiddenField ID="HiddenField1" runat="server" />
+
                             </div>
                         </div>
                         <div class="col-xs-1">
@@ -486,7 +488,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
 
             </div>
         </div>
-        
+
         <div class="modal fade" id="TodaysRegistration" role="dialog">
             <div class="modal-dialog">
 
