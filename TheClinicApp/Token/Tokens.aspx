@@ -1,5 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="Tokens.aspx.cs" Inherits="TheClinicApp.Token.Tokens" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Tokens.aspx.cs" Inherits="TheClinicApp.Token.Tokens" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
@@ -12,7 +13,7 @@
    
 
     <div class="container bodyBackground" style="width:100%;">
-          <label  class="headingLabel" >Token</label>
+          <label  class="headingLabel" >Patient Token Booking</label>
         <div class="col-md-12 Span-One">
                     <div class="col-md-9" >
                         <div class="col-md-12 Span-One">
@@ -102,7 +103,7 @@
                                 <div class="form-group">
                    
                                     <div class="col-md-12">
-                                       <label  class="headingLabel" >Patient Details</label>
+                                       <label  class="subheadingLabel" >Patient Details</label>
                                     </div>
                                 </div>
                            
@@ -138,7 +139,7 @@
                    
                                     <div class="col-md-12">
                                                                                                 
-                                       <asp:Label ID="lblFile" runat="server" Text="#FileNO"></asp:Label>
+                                       <asp:Label ID="lblFile" runat="server" Text=""></asp:Label>
                                                                                                 
                                     </div>
                                 </div>
@@ -175,7 +176,7 @@
                    
                                     <div class="col-md-12">
                                                                                                 
-                                          <asp:Label ID="lblName" CssClass="largefont"  runat="server" Text="GIBIN"></asp:Label>
+                                          <asp:Label ID="lblName" CssClass="largefont"  runat="server" Text=""></asp:Label>
                                                                                                 
                                     </div>
                                 </div>
@@ -212,7 +213,7 @@
                    
                                     <div class="col-md-12">
                                                                                                 
-                                        <asp:Label ID="lblAge" runat="server" Text="Age"></asp:Label>
+                                        <asp:Label ID="lblAge" runat="server" Text=""></asp:Label>
                                                                                                 
                                     </div>
                                 </div>
@@ -220,7 +221,7 @@
                             </div>
                              <div class="col-md-8">           
                                 <div class="col-md-12">                 
-                                    <asp:Label ID="lblGender" runat="server" Text="Gender"></asp:Label>
+                                    <asp:Label ID="lblGender" runat="server" Text=""></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -249,7 +250,7 @@
                    
                                     <div class="col-md-12">
                                                                                                 
-                                           <asp:Label ID="lblPhone" runat="server" Text="Label"></asp:Label>
+                                           <asp:Label ID="lblPhone" runat="server" Text=""></asp:Label>
                                                                                                 
                                     </div>
                                 </div>
@@ -294,7 +295,7 @@
                             </div>
                              <div class="col-md-11">           
                                 <div class="col-md-12">                 
-                                    <asp:Label ID="lblToken" CssClass="largefont" runat="server" Text="Token NO"></asp:Label>
+                                    <asp:Label ID="lblToken" Visible="false" CssClass="largefont" runat="server" Text="Token NO"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -329,13 +330,22 @@
                                  <ContentTemplate>
                                      
 
-                                      <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False">
+                                      <asp:GridView ID="GridViewTokenlist" runat="server" DataKeyNames="UniqueId"   AutoGenerateColumns="False">
                                           <Columns>
-                                              <asp:BoundField HeaderText="DOCTOR NAME" DataField="Name" />
+                                              <asp:BoundField HeaderText="DOCTOR NAME" DataField="DOCNAME" />
                                               <asp:BoundField HeaderText="TOKEN NO" DataField="TokenNo" />
                                               <asp:BoundField HeaderText="PATIENT NAME" DataField="Name" />
                                               <asp:BoundField HeaderText="TIME" DataField="DateTime" />
+                                               
+                                              <asp:TemplateField HeaderText="DELETE">
+                                                  <ItemTemplate>
+                                                       <asp:ImageButton ID="ImgBtnDelete" runat="server"  ImageUrl="~/Images/Delete.png"  Width="25px"  OnClientClick="return confirm('Deletion Confirmation \n\n\n\n\ Are you sure you want to delete this item ?');" OnClick="ImgBtnDelete_Click"/>
+
+                                                  </ItemTemplate>
+                                              </asp:TemplateField>
+                                               
                                           </Columns>
+                                         
                                      </asp:GridView>
 
                                  </ContentTemplate>

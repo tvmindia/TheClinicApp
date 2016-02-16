@@ -17,20 +17,9 @@ namespace TheClinicApp.Registration
         public string listFilter = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            Patient Patientobj = new Patient();
-            #region GridAllRegistration        
-            dtgViewAllRegistration.EmptyDataText = "No Records Found";           
-            dtgViewAllRegistration.DataSource=Patientobj.GetAllRegistration();
-            dtgViewAllRegistration.DataBind();
-            #endregion GridAllRegistration
 
-            listFilter = null;
-            listFilter = BindName();
-            #region GridDateRegistration
-            dtgViewTodaysRegistration.EmptyDataText = "No Records Found";
-            dtgViewTodaysRegistration.DataSource = Patientobj.GetDateRegistration();
-            dtgViewTodaysRegistration.DataBind();
-            #endregion GridDateRegistration
+
+            gridDataBind();
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -43,14 +32,14 @@ namespace TheClinicApp.Registration
             int age = Convert.ToInt32(txtAge.Text);
             int year = _date.Year;
             int DOB = year - age;
-            string guitemp="2c7a7172-6ea9-4640-b7d2-0c329336f289";
+            string guitemp = "2c7a7172-6ea9-4640-b7d2-0c329336f289";
             PatientObj.PatientID = g;
             PatientObj.ClinicID = Guid.Parse(guitemp);
             PatientObj.Name = txtName.Text;
             PatientObj.Address = txtAddress.Text;
             PatientObj.Phone = txtMobile.Text;
             PatientObj.Email = txtEmail.Text;
-            PatientObj.DOB = DOB+"-01-01";
+            PatientObj.DOB = DOB + "-01-01";
             PatientObj.Gender = txtSex.Text;
             PatientObj.MaritalStatus = txtMarital.Text;
             PatientObj.Occupation = "BUSINESS";
@@ -60,19 +49,41 @@ namespace TheClinicApp.Registration
             }
             else
             {
-
-            }
            
+            gridDataBind();
 
+        }
+        public void gridDataBind()
+        {
+           
+            Patient Patientobj = new Patient();
+            #region GridAllRegistration
+            dtgViewAllRegistration.EmptyDataText = "No Records Found";
+            dtgViewAllRegistration.DataSource = Patientobj.GetAllRegistration();
+            dtgViewAllRegistration.DataBind();
+            #endregion GridAllRegistration
+
+            listFilter = null;
+            listFilter = BindName();
+            #region GridDateRegistration
+            dtgViewTodaysRegistration.EmptyDataText = "No Records Found";
+            dtgViewTodaysRegistration.DataSource = Patientobj.GetDateRegistration();
+            dtgViewTodaysRegistration.DataBind();
+            #endregion GridDateRegistration
         }
 
        
         protected void btnSearch_ServerClick(object sender, EventArgs e)
         {
+            Patient PatientObj = new Patient();
             string value = Request.Form["txtSearch"];
+          DataTable dt = PatientObj.GetSearchBoxDataByAnyValue(value);
+        
+
         }
         private string BindName()
-        { Patient PatientObj = new Patient();
+        {
+            Patient PatientObj = new Patient();
 
         DataTable dt = PatientObj.GetSearchBoxData();
         
@@ -87,7 +98,7 @@ namespace TheClinicApp.Registration
                     output.Append(",");
                 }
             }
-            output.Append("];");
+            output.Append("]");
             return output.ToString();
         }
 

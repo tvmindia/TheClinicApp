@@ -412,8 +412,28 @@ namespace TheClinicApp.ClinicDAL
             con.Close();
             return dt;
 
-        } 
+        }
 
+        public DataTable GetSearchBoxDataByAnyValue(string value)
+        {
+
+            DataTable dt = null;
+            SqlConnection con = null;
+            dbConnection dcon = new dbConnection();
+            con = dcon.GetDBConnection();
+
+
+            SqlCommand cmd = new SqlCommand("SearchPatientDetails", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@string", SqlDbType.NVarChar, 255).Value = value;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = cmd;
+            dt = new DataTable();
+            adapter.Fill(dt);
+            con.Close();
+            return dt;
+
+        } 
 
     }
 

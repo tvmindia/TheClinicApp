@@ -95,6 +95,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@string", SqlDbType.NVarChar).Value = str;
                  
                 sda = new SqlDataAdapter();
+                cmd.ExecuteNonQuery();
                 sda.SelectCommand = cmd;
                
                 ds = new DataSet();
@@ -184,7 +185,8 @@ namespace TheClinicApp.ClinicDAL
             
             try
             {
-
+            
+            DateTime now = DateTime.Now;
             dbConnection dcon = new dbConnection();
             con = dcon.GetDBConnection();
             SqlCommand cmd = new SqlCommand();
@@ -192,11 +194,12 @@ namespace TheClinicApp.ClinicDAL
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[InsertTokens]";
 
-           // Guid UniqueID = Guid.NewGuid();
+          // Guid UniqueID = Guid.NewGuid();
           //  cmd.Parameters.Add("@Unique", SqlDbType.UniqueIdentifier).Value = UniqueID;
             cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(DoctorID);
             cmd.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(PatientID);
-            cmd.Parameters.Add("@DateTime", SqlDbType.DateTime).Value = DateTime;
+         //cmd.Parameters.Add("@DateTime", SqlDbType.DateTime).Value = DateTime;
+            cmd.Parameters.Add("@DateTime", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd");
             cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
             cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
             cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreateDate;
@@ -242,7 +245,9 @@ namespace TheClinicApp.ClinicDAL
             DataSet ds = null;
             SqlDataAdapter sda = null;
             try
-            { 
+            {
+            
+            DateTime now = DateTime.Now;
             dbConnection dcon = new dbConnection();
             con = dcon.GetDBConnection();
             SqlCommand cmd = new SqlCommand();
@@ -251,7 +256,8 @@ namespace TheClinicApp.ClinicDAL
             cmd.CommandText = "[ViewPatientsBooking]";
 
             //cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = DoctorID;
-            cmd.Parameters.Add("@DateTime", SqlDbType.DateTime).Value = DateTime;
+            //cmd.Parameters.Add("@DateTime", SqlDbType.DateTime).Value = DateTime;
+            cmd.Parameters.Add("@DateTime", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd");
             sda = new SqlDataAdapter();
             cmd.ExecuteNonQuery();
             sda.SelectCommand = cmd;
@@ -289,10 +295,10 @@ namespace TheClinicApp.ClinicDAL
         /// </summary>
         /// <param name="id"></param>
         
-        public void DeleteToken(int id)
+        public void DeleteToken(string id)
         {
             SqlConnection con = null;
-
+          
             try
             {          
             dbConnection dcon = new dbConnection();
@@ -301,7 +307,7 @@ namespace TheClinicApp.ClinicDAL
             cmd.Connection = con;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[DeleteToken]";
-            cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = id;            
+            cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(id);            
             cmd.ExecuteNonQuery();
             }
 
