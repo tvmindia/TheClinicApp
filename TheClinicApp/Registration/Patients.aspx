@@ -94,7 +94,7 @@
         });
     </script>
 
-    <div class="container bodyBackground" style="width:100%;overflow-x:hidden;">
+    <div class="container bodyDiv" >
         <label class="headingLabel">New Patient Registration </label>
         <div class="col-lg-12 Span-One ">
             <div class="col-md-9">
@@ -376,7 +376,7 @@
           
         </div>
         <footer>
-            <div style="position: fixed; background: rgba(0, 153, 153,.4); bottom: 0%; width: 100%; margin-left: 0px; height: 10%;">
+            <div  class="footerDiv">
 
                 <table style="width: 100%; height: 100%;">
                     <tr>

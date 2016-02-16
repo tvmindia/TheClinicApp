@@ -22,8 +22,10 @@
      
 }
 
-.bodyBackground {
+.bodyDiv {
     background-color: transparent;
+    width:100%;
+    overflow-x:hidden;
 }
 
 .stylish-input-group .input-group-addon{
@@ -140,3 +142,12 @@ a:active {
             color:#800000;
 
         }
+         .footerDiv
+{
+             position: fixed;
+              background: rgba(0, 153, 153,.4);
+               bottom: 0%; width: 100%; 
+               margin-left: 0px;
+                height: 10%;
+
+}
