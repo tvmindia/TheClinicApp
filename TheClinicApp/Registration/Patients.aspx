@@ -440,7 +440,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                                 <asp:BoundField DataField="Email" HeaderText="Email"></asp:BoundField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" />
+                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png"  CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" />
                                        
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -496,9 +496,9 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                                 <asp:BoundField DataField="Email" HeaderText="Email"></asp:BoundField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                         <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
+                                         <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>'  />
+                                       </ItemTemplate>
+                                      </asp:TemplateField>
                             </Columns>
 
                             <EditRowStyle BackColor="#0080AA"></EditRowStyle>
