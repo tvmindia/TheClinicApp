@@ -18,7 +18,12 @@
     left: 30%;
     border-radius: 20px;
     text-align: center;
+    color:white;
     vertical-align: middle;
+}
+
+.captions {
+    color:white;
 }
 
 .LoginCaption {
@@ -130,10 +135,10 @@ html, body {
 
     /*----------------------1-----------------------*/
     .tiles .dashboard {
-        background-color: #0099CC;
-        height: 15%;
-        margin: 3%;
-    }
+    background-color: #00CC99;
+    height: 15%;
+    margin: 3%;
+}
 
     .tiles .dashboard_selected {
         color: black;
@@ -147,17 +152,17 @@ html, body {
     }
 
     .tiles .dashboard:hover {
-        background-color: #0080AA;
-        cursor: pointer;
-        -webkit-transform: scale(1.03);
-        -ms-transform: scale(1.03);
-        transform: scale(1.03);
-        transition: .25s ease;
-    }
+    background-color: #00B386;
+    cursor: pointer;
+    -webkit-transform: scale(1.03);
+    -ms-transform: scale(1.03);
+    transform: scale(1.03);
+    transition: .25s ease;
+}
 
     /*---------------------2------------------------*/
     .tiles .patient {
-        background-color: #37CDFF;
+        background-color: #00CC99;
         height: 15%;
         margin: 3%;
     }
@@ -175,7 +180,7 @@ html, body {
     }
 
     .tiles .patient:hover {
-        background-color: #006080;
+        background-color: #00B386;
         cursor: pointer;
         -webkit-transform: scale(1.03);
         -ms-transform: scale(1.03);
@@ -185,7 +190,7 @@ html, body {
 
     /*----------------------3-----------------------*/
     .tiles .token {
-        background-color: #0099CC;
+        background-color: #00CC99;
         height: 15%;
         margin: 3%;
     }
@@ -204,7 +209,7 @@ html, body {
     }
 
     .tiles .token:hover {
-        background-color: #0080AA;
+        background-color: #00B386;
         cursor: pointer;
         -webkit-transform: scale(1.03);
         -ms-transform: scale(1.03);
@@ -214,7 +219,7 @@ html, body {
 
     /*-------------------4--------------------------*/
     .tiles .doctor {
-        background-color: #37CDFF;
+        background-color: #00CC99;
         height: 15%;
         margin: 3%;
     }
@@ -233,7 +238,7 @@ html, body {
     }
 
     .tiles .doctor:hover {
-        background-color: #006080;
+        background-color: #00B386;
         cursor: pointer;
         -webkit-transform: scale(1.03);
         -ms-transform: scale(1.03);
@@ -243,7 +248,7 @@ html, body {
 
     /*--------------------5-------------------------*/
     .tiles .pharmacy {
-        background-color: #0099CC;
+        background-color: #00CC99;
         height: 15%;
         margin: 3%;
     }
@@ -262,7 +267,7 @@ html, body {
     }
 
     .tiles .pharmacy:hover {
-        background-color: #0080AA;
+        background-color: #00B386;
         cursor: pointer;
         -webkit-transform: scale(1.03);
         -ms-transform: scale(1.03);
@@ -272,7 +277,7 @@ html, body {
 
     /*---------------------6------------------------*/
     .tiles .stock {
-        background-color: #37CDFF;
+        background-color: #00CC99;
         height: 15%;
         margin: 3%;
     }
@@ -291,7 +296,7 @@ html, body {
     }
 
     .tiles .stock:hover {
-        background-color: #006080;
+        background-color: #00B386;
         cursor: pointer;
         -webkit-transform: scale(1.03);
         -ms-transform: scale(1.03);
