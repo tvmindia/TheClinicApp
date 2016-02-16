@@ -12,7 +12,7 @@
     <script src="../Scripts/bootstrap.min.js"></script>
    
 
-    <div class="container bodyBackground" style="width:100%;">
+    <div class="container bodyDiv" style="width:100%;">
           <label  class="headingLabel" >Patient Token Booking</label>
         <div class="col-md-12 Span-One">
                     <div class="col-md-9" >
@@ -361,7 +361,7 @@
       </div>
 
      <footer>
-            <div style="position: fixed; background: rgba(0, 0, 0, 0.3); bottom: 0%; width: 100%; margin-left: 0px; height: 10%;">
+            <div  class="footerDiv">
 
                 <table style="width: 100%; height: 100%;">
                     <tr>

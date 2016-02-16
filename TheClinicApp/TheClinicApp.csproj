@@ -154,6 +154,11 @@
     <Content Include="Images\icon-user-default.jpg" />
     <Content Include="Images\LOGO.png" />
     <Content Include="Images\mainbg.jpg" />
+    <Content Include="Images\mainbg1.jpg" />
+    <Content Include="Images\mainbg2.jpeg" />
+    <Content Include="Images\mainbg3.jpg" />
+    <Content Include="Images\mainbg4.jpg" />
+    <Content Include="Images\mainbg5.jpg" />
     <Content Include="Images\orderedList0.png" />
     <Content Include="Images\orderedList1.png" />
     <Content Include="Images\orderedList2.png" />
@@ -164,6 +169,7 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
+    <Content Include="Images\Pencil-01.png" />
     <Content Include="Images\screw.png" />
     <Content Include="Images\search-128.png" />
     <Content Include="Images\search-64.png" />
@@ -210,6 +216,7 @@
     <Content Include="Content\materialize\README.md" />
     <Content Include="Masters\Input.Master" />
     <Content Include="Masters\Popup.Master" />
+    <None Include="Properties\PublishProfiles\ClinicAppProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="Patients.aspx.cs" Inherits="TheClinicApp.Registration.Patients" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true"  EnableEventValidation="false" CodeBehind="Patients.aspx.cs" Inherits="TheClinicApp.Registration.Patients" %>
 
 <%@ Register Src="~/UserControl/ProfilePicUpload.ascx" TagPrefix="uc1" TagName="ProfilePicUpload" %>
 
@@ -94,7 +94,7 @@
         });
     </script>
 
-    <div class="container bodyBackground" style="width:100%;overflow-x:hidden;">
+    <div class="container bodyDiv" >
         <label class="headingLabel">New Patient Registration </label>
         <div class="col-lg-12 Span-One ">
             <div class="col-md-9">
@@ -129,7 +129,8 @@
 
 
                             <div class="col-md-11">
-                                <asp:TextBox ID="txtName" class="form-control textBoxborder" runat="server" required></asp:TextBox>
+                                <asp:TextBox ID="txtName" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"
+                                    ></asp:TextBox>
 
                             </div>
                         </div>
@@ -151,7 +152,7 @@
 
 
                             <div class="col-md-11">
-                                <asp:TextBox ID="txtSex" class="form-control textBoxborder" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtSex" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
                         </div>
@@ -173,7 +174,11 @@
 
 
                             <div class="col-md-11">
-                                <asp:TextBox ID="txtAge" class="form-control textBoxborder" runat="server" required TextMode="Number"></asp:TextBox>
+                                <asp:RangeValidator ID="RangeValidator2" runat="server"
+ControlToValidate="txtAge" ErrorMessage="Under 16 Not Allowed" MaximumValue="100"
+
+MinimumValue="0" Type="Integer" ></asp:RangeValidator>
+                                <asp:TextBox ID="txtAge" class="form-control textBoxborder" runat="server" required TextMode="Number" ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
                         </div>
@@ -197,7 +202,7 @@
 
 
                             <div class="col-md-11">
-                                <asp:TextBox ID="txtAddress" class="form-control textBoxborder" TextMode="multiline" Columns="50" Rows="10" Height="100" runat="server" required></asp:TextBox>
+                                <asp:TextBox ID="txtAddress" class="form-control textBoxborder" TextMode="multiline" Columns="50" Rows="10" Height="100" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
                         </div>
@@ -375,7 +380,7 @@
           
         </div>
         <footer>
-            <div style="position: fixed; background: rgba(0, 153, 153,.4); bottom: 0%; width: 100%; margin-left: 0px; height: 10%;">
+            <div  class="footerDiv">
 
                 <table style="width: 100%; height: 100%;">
                     <tr>
@@ -397,7 +402,7 @@
                             <table class="footerTable" style="width:100%; margin-left:0px;padding-left:0px;">
                                 <tr>
                                     <td style="width:30%;">
-                                        <asp:Button ID="btnSave" runat="server" Text="SAVE" CssClass="button footerButtonColumn" OnClick="btnSave_Click" />
+                                        <asp:Button ID="btnSave" runat="server" Text="SAVE" CssClass="button footerButtonColumn" OnClick="btnSave_Click" ValidationGroup="Submit" />
 
                                     </td>
                                     <td>
@@ -426,14 +431,50 @@
                     </div>
                     <div class="modal-body">
 
-                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False">
+                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
-                                <asp:BoundField DataField="Name" HeaderText="Name"></asp:BoundField>
-                                <asp:BoundField DataField="Address" HeaderText="Address"></asp:BoundField>
-                                <asp:BoundField DataField="DOB" HeaderText="Age"></asp:BoundField>
-                                <asp:BoundField DataField="Phone" HeaderText="Phone"></asp:BoundField>
-                                <asp:BoundField DataField="Email" HeaderText="Email"></asp:BoundField>
+                                <asp:TemplateField HeaderImageUrl="~/Images/Pencil-01.png">
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" data-dismiss="modal" />
+                                       
+
+                                    </ItemTemplate>
+                                    
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="Name" HeaderText="Name">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Address" HeaderText="Address">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Phone" HeaderText="Phone">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Email" HeaderText="Email">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+
                             </Columns>
+                            <EditRowStyle BackColor="#0080AA"></EditRowStyle>
+
+                            <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
+
+                            <HeaderStyle BackColor="#0080AA" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                            <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#2461BF"></PagerStyle>
+
+                            <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                         </asp:GridView>
                     </div>
                     <div class="modal-footer">
@@ -456,34 +497,45 @@
 
                     </div>
                     <div class="modal-body">
-                        <asp:GridView ID="dtgViewTodaysRegistration" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
-                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                        <asp:GridView ID="dtgViewTodaysRegistration" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <AlternatingRowStyle BackColor="White" ForeColor="#284775"></AlternatingRowStyle>
                             <Columns>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command1" />
+
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:BoundField DataField="Name" HeaderText="Name"></asp:BoundField>
                                 <asp:BoundField DataField="Address" HeaderText="Address"></asp:BoundField>
-                                <asp:BoundField DataField="DOB" HeaderText="Age"></asp:BoundField>
                                 <asp:BoundField DataField="Phone" HeaderText="Phone"></asp:BoundField>
                                 <asp:BoundField DataField="Email" HeaderText="Email"></asp:BoundField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                         <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
-                            <EditRowStyle BackColor="#7C6F57"></EditRowStyle>
 
-                            <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White"></FooterStyle>
+                            <EditRowStyle BackColor="#0080AA"></EditRowStyle>
 
-                            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                            <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
 
-                            <PagerStyle HorizontalAlign="Center" BackColor="#666666" ForeColor="White"></PagerStyle>
+                            <HeaderStyle BackColor="#0080AA" Font-Bold="True" ForeColor="White"></HeaderStyle>
 
-                            <RowStyle BackColor="#E3EAEB"></RowStyle>
+                            <PagerStyle HorizontalAlign="Center" BackColor="#284775" ForeColor="White"></PagerStyle>
 
-                            <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+                            <RowStyle BackColor="#F7F6F3" ForeColor="#333333"></RowStyle>
 
-                            <SortedAscendingCellStyle BackColor="#F8FAFA"></SortedAscendingCellStyle>
+                            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
 
-                            <SortedAscendingHeaderStyle BackColor="#246B61"></SortedAscendingHeaderStyle>
+                            <SortedAscendingCellStyle BackColor="#E9E7E2"></SortedAscendingCellStyle>
 
-                            <SortedDescendingCellStyle BackColor="#D4DFE1"></SortedDescendingCellStyle>
+                            <SortedAscendingHeaderStyle BackColor="#506C8C"></SortedAscendingHeaderStyle>
 
-                            <SortedDescendingHeaderStyle BackColor="#15524A"></SortedDescendingHeaderStyle>
+                            <SortedDescendingCellStyle BackColor="#FFFDF8"></SortedDescendingCellStyle>
+
+                            <SortedDescendingHeaderStyle BackColor="#6F8DAE"></SortedDescendingHeaderStyle>
                         </asp:GridView>
                     </div>
                     <div class="modal-footer">
