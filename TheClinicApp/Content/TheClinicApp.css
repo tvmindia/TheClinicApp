@@ -2,7 +2,7 @@
 .Semitransparent_1 {
     background: rgb(34,34,34); /* for IE */
     background: rgba(34,34,34,0.75);
-    background-image: url('../Images/mainbg.jpg');
+    background-image: url('../Images/mainbg5.jpg');
     background-size: 100%;
 }
 
@@ -36,7 +36,7 @@
 
 html, body {
     height: 95%;
-    background-image: url('../Images/mainbg.jpg');
+    background-image: url('../Images/mainbg5.jpg');
     background-size: 100%;
 }
 
@@ -98,7 +98,7 @@ html, body {
     text-align: right;
     vertical-align: top;
     font-family: 'segoe UI' , Tahoma, Geneva, Verdana, sans-serif;
-    color: #666666;
+    color: whitesmoke;
 }
 
 .logoRow {
