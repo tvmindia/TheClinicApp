@@ -70,6 +70,8 @@ namespace TheClinicApp.ClinicDAL
             
             try
             {
+
+            Guid PrescID = new Guid();
             
             DateTime now = DateTime.Now;
             dbConnection dcon = new dbConnection();
@@ -79,7 +81,7 @@ namespace TheClinicApp.ClinicDAL
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[InsertPrescriptionHeaderDetails]";
 
-            cmd.Parameters.Add("@PrescID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(PrescID);
+            cmd.Parameters.Add("@PrescID", SqlDbType.UniqueIdentifier).Value =  PrescID;
             cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(DoctorID);
             cmd.Parameters.Add("@VisitID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(VisitID);
             cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
@@ -219,7 +221,6 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion ViewPrescriptionHeaderDetails
 
-
         #endregion Methods
 
 
@@ -294,14 +295,10 @@ namespace TheClinicApp.ClinicDAL
              set;
          }
                 
-        #endregion Property
-
-       
-
-
+        #endregion Property     
+        
         #region Methods
-
-
+        
         #region InsertPrescriptionDetails
 
          public void InsertPrescriptionDetails()
@@ -468,8 +465,6 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion UpdatePrescriptionDetails
 
-
-
         #region DeletePrescriptionDetails
 
          public void DeletePrescriptionDetails()
@@ -512,12 +507,7 @@ namespace TheClinicApp.ClinicDAL
          }
 
         #endregion DeletePrescriptionDetails
-
-
-
-
-
-
+        
         #endregion Methods
 
 
