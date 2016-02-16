@@ -24,12 +24,12 @@ namespace TheClinicApp.Registration
         {
             Patient PatientObj = new Patient();
             DateTime _date = DateTime.Now;          
-            Guid g = Guid.NewGuid();
+            
             int age = Convert.ToInt32(txtAge.Text);
             int year = _date.Year;
             int DOB = year - age;
             string guitemp = "2c7a7172-6ea9-4640-b7d2-0c329336f289";
-            PatientObj.PatientID = g;
+            
             PatientObj.ClinicID = Guid.Parse(guitemp);
             PatientObj.Name = txtName.Text;
             PatientObj.Address = txtAddress.Text;
@@ -40,8 +40,20 @@ namespace TheClinicApp.Registration
             PatientObj.MaritalStatus = txtMarital.Text;
             PatientObj.Occupation = "BUSINESS";
             //PatientObj.image =null ;
-            PatientObj.AddPatientDetails();
-            var page = HttpContext.Current.CurrentHandler as Page;
+            if (btnSave.Text=="SAVE")
+            {
+                Guid g = Guid.NewGuid();
+                PatientObj.PatientID = g;
+                PatientObj.AddPatientDetails();
+                var page = HttpContext.Current.CurrentHandler as Page;
+            }
+            else if(btnSave.Text=="Update")
+            {
+                PatientObj.PatientID = Guid.Parse(HiddenField1.Value);
+                PatientObj.UpdatePatientDetails();
+                var page = HttpContext.Current.CurrentHandler as Page;
+            }
+            
         }
         public void gridDataBind()
         {
@@ -106,8 +118,26 @@ namespace TheClinicApp.Registration
                 txtMarital.Text = Patient[7];
              
         }
+        protected void ImgBtnUpdate1_Command(object sender, CommandEventArgs e)
+        {
+            DateTime date=DateTime.Now;
+            int year=date.Year;
+            string[] Patient = e.CommandArgument.ToString().Split(new char[] { ',' });
+            Guid PatientID = Guid.Parse(Patient[0]);
+            txtName.Text = Patient[1];
+            txtSex.Text = Patient[6];
+            DateTime dt = Convert.ToDateTime(Patient[5]);
+            int Age= year-dt.Year;
+            txtAge.Text = Age.ToString();
+            txtAddress.Text = Patient[2];
+            txtMobile.Text = Patient[3];
+            txtEmail.Text = Patient[4];
+            txtMarital.Text = Patient[7];
+            btnSave.Text = "Update";
+            HiddenField1.Value = PatientID.ToString();
+        }
 
-        protected void ImgBtnUpdate_Command1(object sender, CommandEventArgs e)
+        protected void ImgBtnUpdate1_Command(object sender, CommandEventArgs e)
         {
             string[] Patient = e.CommandArgument.ToString().Split(new char[] { ',' });
             Guid PatientID = Guid.Parse(Patient[0]);
@@ -120,5 +150,6 @@ namespace TheClinicApp.Registration
             txtMarital.Text = Patient[7];
         }
 
+     
     }
 }

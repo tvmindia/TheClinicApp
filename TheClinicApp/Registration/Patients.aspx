@@ -93,13 +93,13 @@
             });
         });
     </script>
-
-    <div class="container bodyDiv" >
+ <asp:ScriptManager runat="server"></asp:ScriptManager>
+    <div class="container-fluid bodyDiv" >
         <label class="headingLabel">New Patient Registration </label>
-        <div class="col-lg-12 Span-One ">
-            <div class="col-md-9">
-                <div class="col-md-12 Span-One">
-                    <div class="col-md-11">
+        <div class="col-sm-12 Span-One ">
+            <div class="col-xs-9">
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
                         <div class="form-group">
 
 
@@ -107,10 +107,10 @@
 
 
 
-                            <div class="col-md-11">
+                            <div class="col-xs-11">
                             </div>
-                            <div class="col-md-1">
-                                <div class="col-md-12">
+                            <div class="col-xs-1">
+                                <div class="col-xs-12">
                                     &nbsp
                                 </div>
                             </div>
@@ -119,71 +119,73 @@
                     </div>
 
                 </div>
-                <div class="col-md-12 Span-One">
-                    <div class="col-md-11">
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
                         <div class="form-group">
-                            <label class="control-label col-md-1 regFormLabels">Name:</label>
+                            <label class="control-label col-xs-1 regFormLabels">Name:</label>
 
 
 
 
 
-                            <div class="col-md-11">
+                            <div class="col-xs-11">
                                 <asp:TextBox ID="txtName" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"
                                     ></asp:TextBox>
 
                             </div>
                         </div>
-                        <div class="col-md-1">
-                            <div class="col-md-12">
+                        <div class="col-xs-1">
+                            <div class="col-xs-12">
                                 &nbsp
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <div class="col-md-12 Span-One">
-                    <div class="col-md-11">
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
                         <div class="form-group">
-                            <label class="control-label col-md-1 regFormLabels">Sex:</label>
+                            <label class="control-label col-xs-1 regFormLabels">Sex:</label>
 
 
 
 
 
-                            <div class="col-md-11">
+                            <div class="col-xs-11">
                                 <asp:TextBox ID="txtSex" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
                         </div>
-                        <div class="col-md-1">
-                            <div class="col-md-12">
+                        <div class="col-xs-1">
+                            <div class="col-xs-12">
                                 &nbsp
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <div class="col-md-12 Span-One">
-                    <div class="col-md-11">
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
                         <div class="form-group">
-                            <label class="control-label col-md-1 regFormLabels">Age:</label>
+                            <label class="control-label col-xs-1 regFormLabels">Age:</label>
 
 
 
 
 
-                            <div class="col-md-11">
+                            <div class="col-xs-11">
                                 <asp:RangeValidator ID="RangeValidator2" runat="server"
 ControlToValidate="txtAge" ErrorMessage="Under 16 Not Allowed" MaximumValue="100"
 
 MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                                 <asp:TextBox ID="txtAge" class="form-control textBoxborder" runat="server" required TextMode="Number" ValidationGroup="Submit"></asp:TextBox>
 
+                                <asp:HiddenField ID="HiddenField1" runat="server" />
+
                             </div>
                         </div>
-                        <div class="col-md-1">
-                            <div class="col-md-12">
+                        <div class="col-xs-1">
+                            <div class="col-xs-12">
                                 &nbsp
                             </div>
                         </div>
@@ -192,22 +194,22 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                 </div>
 
 
-                <div class="col-md-12 Span-One">
-                    <div class="col-md-11">
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
                         <div class="form-group">
-                            <label class="control-label col-md-1 regFormLabels">Address:</label>
+                            <label class="control-label col-xs-1 regFormLabels">Address:</label>
 
 
 
 
 
-                            <div class="col-md-11">
+                            <div class="col-xs-11">
                                 <asp:TextBox ID="txtAddress" class="form-control textBoxborder" TextMode="multiline" Columns="50" Rows="10" Height="100" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
                         </div>
-                        <div class="col-md-1">
-                            <div class="col-md-12">
+                        <div class="col-xs-1">
+                            <div class="col-xs-12">
                                 &nbsp
                             </div>
                         </div>
@@ -218,66 +220,66 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
 
 
 
-                <div class="col-md-12 Span-One">
-                    <div class="col-md-11">
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
                         <div class="form-group">
-                            <label class="control-label col-md-1 regFormLabels">Mobile:</label>
+                            <label class="control-label col-xs-1 regFormLabels">Mobile:</label>
 
 
 
 
 
-                            <div class="col-md-11">
+                            <div class="col-xs-11">
                                 <asp:TextBox ID="txtMobile" class="form-control textBoxborder" runat="server" maxlength="10"  pattern="[0-9]{10}"  ></asp:TextBox>
 
                             </div>
                         </div>
-                        <div class="col-md-1">
-                            <div class="col-md-12">
+                        <div class="col-xs-1">
+                            <div class="col-xs-12">
                                 &nbsp
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <div class="col-md-12 Span-One">
-                    <div class="col-md-11">
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
                         <div class="form-group">
-                            <label class="control-label col-md-1 regFormLabels" for="email" >Email:</label>
+                            <label class="control-label col-xs-1 regFormLabels" for="email" >Email:</label>
 
 
 
 
 
-                            <div class="col-md-11">
+                            <div class="col-xs-11">
                                 <asp:TextBox ID="txtEmail" class="form-control textBoxborder" runat="server" type="email"></asp:TextBox>
 
                             </div>
                         </div>
-                        <div class="col-md-1">
-                            <div class="col-md-12">
+                        <div class="col-xs-1">
+                            <div class="col-xs-12">
                                 &nbsp
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <div class="col-md-12 Span-One">
-                    <div class="col-md-11">
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
                         <div class="form-group">
-                            <label class="control-label col-md-1 regFormLabels">Marital:</label>
+                            <label class="control-label col-xs-1 regFormLabels">Marital:</label>
 
 
 
 
 
-                            <div class="col-md-11">
+                            <div class="col-xs-11">
                                 <asp:TextBox ID="txtMarital" class="form-control textBoxborder" runat="server"></asp:TextBox>
 
                             </div>
                         </div>
-                        <div class="col-md-1">
-                            <div class="col-md-12">
+                        <div class="col-xs-1">
+                            <div class="col-xs-12">
                                 &nbsp
                             </div>
                         </div>
@@ -286,8 +288,8 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                 </div>
             </div>
 
-            <div class="col-md-3">
-                    <table style="height: 100%;">
+            <div class="col-xs-3">
+                    <table style="height: 100%;" class="table-responsive">
                       
                         <tr>
                             <td>
@@ -304,8 +306,8 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                             </td>
                         </tr>
                       
-                        <tr style="height: 40%;">
-                            <td style="width: 100%">
+                        <tr style="height: 40%; ">
+                            <td style="width:1%; ">
                                 <div class=" auto-complete">
                                 <div class="input-group stylish-input-group">
                                     <input type="text" class="form-control" placeholder="Search" style="height: 20%;" name="txtSearch" id="txtSearch"  />
@@ -320,7 +322,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                                 </div>
                                     </div>
                             </td>
-                            <td></td>
+                            <td style="background-color:red;"></td>
                         </tr>
                         <tr style="height: 100%;">
                             <td>&nbsp
@@ -348,7 +350,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                         </tr>
                         <tr style="height: 40%;">
                             <td>
-                                <a href="#" role="button" data-toggle="modal" data-target="#myModal">View All Registrations </a>
+                                <a href="#" role="button" data-toggle="modal" data-target="#myModal" >View All Registrations </a>
                             </td>
                             <td></td>
                         </tr>
@@ -360,7 +362,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                         </tr>
                         <tr style="height: 40%;">
                             <td>
-                                <a href="#" role="button" data-toggle="modal" data-target="#TodaysRegistration">Todays Registrations</a>
+                                <a href="#" role="button" data-toggle="modal" data-target="#TodaysRegistration" >Todays Registrations</a>
                             </td>
                             <td></td>
                         </tr>
@@ -379,8 +381,8 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                 </div>
           
         </div>
-        <footer>
-            <div  class="footerDiv">
+        <footer  class="footerDiv">
+         
 
                 <table style="width: 100%; height: 100%;">
                     <tr>
@@ -399,11 +401,12 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
 
                         </td>
                         <td style="height: 100%;   width:30%;" >
-                            <table class="footerTable" style="width:100%; margin-left:0px;padding-left:0px;">
+                            <table class="footerTable" style="width:100%; margin-left:0px;padding-left:0px;padding-top:80%; margin-top:3%;  ">
                                 <tr>
                                     <td style="width:30%;">
-                                        <asp:Button ID="btnSave" runat="server" Text="SAVE" CssClass="button footerButtonColumn" OnClick="btnSave_Click" ValidationGroup="Submit" />
-
+                                         <div class="form-group">
+                                        <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button footerButtonColumn" OnClick="btnSave_Click" ValidationGroup="Submit" />
+</div>
                                     </td>
                                     <td>
                                        </td>
@@ -416,7 +419,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                 </table>
 
 
-            </div>
+            
         </footer>
 
         <div class="modal fade" id="myModal" role="dialog">
@@ -436,7 +439,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                             <Columns>
                                 <asp:TemplateField HeaderImageUrl="~/Images/Pencil-01.png">
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" data-dismiss="modal" />
+                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
                                        
 
                                     </ItemTemplate>
@@ -490,6 +493,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
             <div class="modal-dialog">
 
                 <!-- Modal content-->
+                
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -497,12 +501,13 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
 
                     </div>
                     <div class="modal-body">
+                     
                         <asp:GridView ID="dtgViewTodaysRegistration" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White" ForeColor="#284775"></AlternatingRowStyle>
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command1" />
+                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command1" formnovalidate />
 
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -512,7 +517,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                                 <asp:BoundField DataField="Email" HeaderText="Email"></asp:BoundField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                         <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' />
+                                         <asp:ImageButton ID="ImgBtnUpdate1" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"," + Eval("Name") + "," + Eval("Address")+","+ Eval("Phone")+","+ Eval("Email")+","+Eval("DOB")+","+Eval("Gender")+","+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate1_Command" formnovalidate/>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
@@ -537,6 +542,7 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
 
                             <SortedDescendingHeaderStyle BackColor="#6F8DAE"></SortedDescendingHeaderStyle>
                         </asp:GridView>
+                        
                     </div>
                     <div class="modal-footer">
                         <button data-dismiss="modal" class="btn  btn-large">Close</button>
@@ -546,8 +552,6 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
 
             </div>
         </div>
-
-         
 
     </div>
 </asp:Content>

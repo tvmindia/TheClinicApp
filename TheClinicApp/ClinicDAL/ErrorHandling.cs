@@ -58,11 +58,26 @@ namespace TheClinicApp.ClinicDAL
             Label lblMsgges = mpContentPlaceHolder1.FindControl("lblMsgges") as Label;
             Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
             lblErrorCaption.Text = "Success!";
-            lblMsgges.Text = "Successfully Inserted";
+            lblMsgges.Text = "Successfully Updated";
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
 
             divMask1.Attributes["class"] = "alert lblErrorCaptionSuccess fade in";
         
+        }
+        public void UpdationNotSuccessMessage(Page pg)
+        {
+            var master1 = pg.Master;
+            ContentPlaceHolder mpContentPlaceHolder1;
+            mpContentPlaceHolder1 = (ContentPlaceHolder)master1.FindControl("ContentPlaceHolder1");
+            HtmlControl divMask1 = (HtmlControl)mpContentPlaceHolder1.FindControl("Errorbox") as HtmlControl;
+            Label lblMsgges = mpContentPlaceHolder1.FindControl("lblMsgges") as Label;
+            Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
+            lblErrorCaption.Text = "Failure!";
+            lblMsgges.Text = "Updatation Failure";
+            divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
+
+            divMask1.Attributes["class"] = "alert lblErrorCaptionSuccess fade in";
+
         }
 
         public void UpdationSuccessMessage(Page pg, string msg)//if update fails
@@ -74,7 +89,7 @@ namespace TheClinicApp.ClinicDAL
             Label lblMsgges = mpContentPlaceHolder1.FindControl("lblMsgges") as Label;
             Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
             lblErrorCaption.Text = "Success!";
-            lblMsgges.Text = "Successfully Inserted";
+            lblMsgges.Text = msg;
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
 
             divMask1.Attributes["class"] = "alert lblErrorCaptionSuccess fade in";
