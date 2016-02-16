@@ -216,6 +216,7 @@
     <Content Include="Content\materialize\README.md" />
     <Content Include="Masters\Input.Master" />
     <Content Include="Masters\Popup.Master" />
+    <None Include="Properties\PublishProfiles\ClinicAppProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
