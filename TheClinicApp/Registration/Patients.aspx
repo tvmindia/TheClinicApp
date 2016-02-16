@@ -175,7 +175,7 @@
 
                             <div class="col-md-11">
                                 <asp:RangeValidator ID="RangeValidator2" runat="server"
-ControlToValidate="TextBox1" ErrorMessage="Under 16 Not Allowed" MaximumValue="100"
+ControlToValidate="txtAge" ErrorMessage="Under 16 Not Allowed" MaximumValue="100"
 
 MinimumValue="0" Type="Integer" ></asp:RangeValidator>
                                 <asp:TextBox ID="txtAge" class="form-control textBoxborder" runat="server" required TextMode="Number"></asp:TextBox>
