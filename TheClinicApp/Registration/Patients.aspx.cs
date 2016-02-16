@@ -17,40 +17,35 @@ namespace TheClinicApp.Registration
         public string listFilter = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
             gridDataBind();
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            Patient PatientObj = new Patient();
-            DateTime _date = DateTime.Now;
-            Guid g = Guid.NewGuid();
-            int age = Convert.ToInt32(txtAge.Text);
-            int year = _date.Year;
-            int DOB = year - age;
-            string guitemp = "2c7a7172-6ea9-4640-b7d2-0c329336f289";
-            PatientObj.PatientID = g;
-            PatientObj.ClinicID = Guid.Parse(guitemp);
-            PatientObj.Name = txtName.Text;
-            PatientObj.Address = txtAddress.Text;
-            PatientObj.Phone = txtMobile.Text;
-            PatientObj.Email = txtEmail.Text;
-            PatientObj.DOB = DOB + "-01-01";
-            PatientObj.Gender = txtSex.Text;
-            PatientObj.MaritalStatus = txtMarital.Text;
-            PatientObj.Occupation = "BUSINESS";
-            //PatientObj.image =null ;
-            PatientObj.AddPatientDetails();
-            var page = HttpContext.Current.CurrentHandler as Page;
-
-            gridDataBind();
-
+                Patient PatientObj = new Patient();
+                DateTime _date = DateTime.Now;
+                Guid g = Guid.NewGuid();
+                int age = Convert.ToInt32(txtAge.Text);
+                int year = _date.Year;
+                int DOB = year - age;
+                string guitemp = "2c7a7172-6ea9-4640-b7d2-0c329336f289";
+                PatientObj.PatientID = g;
+                PatientObj.ClinicID = Guid.Parse(guitemp);
+                PatientObj.Name = txtName.Text;
+                PatientObj.Address = txtAddress.Text;
+                PatientObj.Phone = txtMobile.Text;
+                PatientObj.Email = txtEmail.Text;
+                PatientObj.DOB = DOB + "-01-01";
+                PatientObj.Gender = txtSex.Text;
+                PatientObj.MaritalStatus = txtMarital.Text;
+                PatientObj.Occupation = "BUSINESS";
+                //PatientObj.image =null ;
+                PatientObj.AddPatientDetails();
+                var page = HttpContext.Current.CurrentHandler as Page;
         }
         public void gridDataBind()
         {
-
+           
             Patient Patientobj = new Patient();
             #region GridAllRegistration
             dtgViewAllRegistration.EmptyDataText = "No Records Found";
@@ -67,6 +62,7 @@ namespace TheClinicApp.Registration
             #endregion GridDateRegistration
         }
 
+       
         protected void btnSearch_ServerClick(object sender, EventArgs e)
         {
             Patient PatientObj = new Patient();
@@ -79,8 +75,8 @@ namespace TheClinicApp.Registration
         {
             Patient PatientObj = new Patient();
 
-            DataTable dt = PatientObj.GetSearchBoxData();
-
+        DataTable dt = PatientObj.GetSearchBoxData();
+        
             StringBuilder output = new StringBuilder();
             output.Append("[");
             for (int i = 0; i < dt.Rows.Count; ++i)
@@ -95,5 +91,21 @@ namespace TheClinicApp.Registration
             output.Append("]");
             return output.ToString();
         }
+
+        protected void ImgBtnUpdate_Command(object sender, CommandEventArgs e)
+        {
+             
+                 string[] Patient = e.CommandArgument.ToString().Split(new char[] { ',' });
+                 Guid PatientID = Guid.Parse(Patient[0]);
+                 txtName.Text = Patient[1];
+                 txtSex.Text = Patient[6];
+                 txtAge.Text = Patient[5];
+                 txtAddress.Text = Patient[2];
+                 txtMobile.Text = Patient[3];
+                 txtEmail.Text = Patient[4];
+                 txtMarital.Text = Patient[7];
+             
+        }
+
     }
 }

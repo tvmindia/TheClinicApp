@@ -307,7 +307,7 @@ namespace TheClinicApp.ClinicDAL
             cmd.Connection = con;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[DeleteToken]";
-            cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = id;            
+            cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(id);            
             cmd.ExecuteNonQuery();
             }
 

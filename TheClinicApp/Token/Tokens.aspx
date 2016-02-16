@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" EnableEventValidation="true" CodeBehind="Tokens.aspx.cs" Inherits="TheClinicApp.Token.Tokens" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Tokens.aspx.cs" Inherits="TheClinicApp.Token.Tokens" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
 </asp:Content>
@@ -12,7 +12,7 @@
     <script src="../Scripts/bootstrap.min.js"></script>
    
 
-    <div class="container bodyBackground" style="width:100%;">
+    <div class="container bodyDiv" style="width:100%;">
           <label  class="headingLabel" >Patient Token Booking</label>
         <div class="col-md-12 Span-One">
                     <div class="col-md-9" >
@@ -339,7 +339,7 @@
                                                
                                               <asp:TemplateField HeaderText="DELETE">
                                                   <ItemTemplate>
-                                                      <asp:ImageButton ID="ImgBtnDelete"   runat="server"   Width="25px" ImageUrl="~/Images/Delete.png"   />
+                                                       <asp:ImageButton ID="ImgBtnDelete" runat="server"  ImageUrl="~/Images/Delete.png"  Width="25px"  OnClientClick="return confirm('Deletion Confirmation \n\n\n\n\ Are you sure you want to delete this item ?');" OnClick="ImgBtnDelete_Click"/>
 
                                                   </ItemTemplate>
                                               </asp:TemplateField>
@@ -361,7 +361,7 @@
       </div>
 
      <footer>
-            <div style="position: fixed; background: rgba(0, 0, 0, 0.3); bottom: 0%; width: 100%; margin-left: 0px; height: 10%;">
+            <div  class="footerDiv">
 
                 <table style="width: 100%; height: 100%;">
                     <tr>
