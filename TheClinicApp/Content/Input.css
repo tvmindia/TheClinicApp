@@ -1,11 +1,9 @@
 ﻿body {
-      background-color: transparent;
+    background-color: transparent;
 }
 
-.regFormLabels 
-{
-    
-    color:rgb(0, 102, 102) !important;
+.regFormLabels {
+    color: rgb(0, 102, 102) !important;
 }
 
 .textBoxborder {
@@ -16,40 +14,40 @@
     border-bottom-width: thin;
     border-bottom: 1px solid;
     border-radius: 0 !important;
-     background-color: transparent;
-    text-align:left;
-   
-     
+    background-color: transparent;
+    text-align: left;
+    text-size-adjust:auto;
+    font-size:16px;
+    font-family:'Segoe UI';
 }
 
 .bodyDiv {
     background-color: transparent;
-    width:100%;
-    overflow-x:hidden;
-
+    width: 100%;
+    overflow-x: hidden;
 }
 
-.stylish-input-group .input-group-addon{
-    background: white !important; 
+.stylish-input-group .input-group-addon {
+    background: white !important;
 }
-.stylish-input-group .form-control{
-	border-right:0; 
-	box-shadow:0 0 0; 
-	border-color:#ccc;
+
+.stylish-input-group .form-control {
+    border-right: 0;
+    box-shadow: 0 0 0;
+    border-color: #ccc;
 }
-.stylish-input-group button{
-    border:0;
-    background:transparent;
-   
+
+.stylish-input-group button {
+    border: 0;
+    background: transparent;
 }
+
 a:link {
     text-decoration: underline;
-   
 }
 
 a:visited {
     text-decoration: none;
- 
 }
 
 a:hover {
@@ -59,100 +57,122 @@ a:hover {
 a:active {
     text-decoration: none;
 }
-  footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-         
-        }
 
-        .footerTable {
-            height: 100%;
-            background-color: transparent;
-            padding-left: 0px;
-            margin-left: 0px;
-            width: 100%;
-        }
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
 
-        .button {
-         -webkit-box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
-	-moz-box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
-	box-shadow:rgba(0,0,0,0.98) 0 0px 0 0;
-	background-color:transparent;
-	border-radius:0;
-	-webkit-border-radius:0;
-	-moz-border-radius:0;
-	/*border:1px solid #999;*/
-	color:black;
-	font-family:'Lucida Grande',Tahoma,Verdana,Arial,Sans-serif;
-	font-size:11px;
-	font-weight:700;
-	padding:2px 6px;
-      height: 100%;
-            width: 100%;
-        }
+.footerTable {
+    height: 100%;
+    background-color: transparent;
+    padding-left: 0px;
+    margin-left: 0px;
+    width: 100%;
+}
 
-        .headingLabel {
-            margin-left: 20%;
-            color: seagreen;
-            font: bold;
-            font-size: 20px;
-            text-decoration: underline;
-            padding-top: 2%;
-        }
-        .largefont
-        {
-            font-size:25px;
-            font:bold;
-        }
+.button {
+    -webkit-box-shadow: rgba(0,0,0,0.98) 0 1px 0 0;
+    -moz-box-shadow: rgba(0,0,0,0.98) 0 1px 0 0;
+    box-shadow: rgba(0,0,0,0.98) 0 0px 0 0;
+    background-color: transparent;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    /*border:1px solid #999;*/
+    color: black;
+    font-family: 'Lucida Grande',Tahoma,Verdana,Arial,Sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+   padding-left:0px;
+    height: 100%;
+    width: 90%;
+    margin-left: 0%;
+    vertical-align: bottom;
+    margin-bottom: 0%;
+    padding-bottom: 0%;
 
-        .subheadingLabel{
-            color: seagreen;
-            font: bold;
-            font-size: 15px;
-            padding-top: 2%;
-        }
+}
 
-        .footerMessagesColumn {
-            margin-left: 2%;
-            width: 30%;
-            padding-left: 2%;
-          
-        }
+.headingLabel {
+    margin-left: 20%;
+    color: seagreen;
+    font: bold;
+    font-size: 20px;
+    text-decoration: underline;
+    padding-top: 2%;
+    font-family:'Segoe UI' 
+}
 
-        .footerButtonColumn {
-            width: 100%;
-            margin-left: 0%;
-         vertical-align:bottom;
-        margin-bottom:0%;
-        padding-bottom:0%;
-        }
+.largefont {
+    font-size: 25px;
+    font: bold;
+}
 
-        .footerbuttonTable {
-            margin-left: 1%;
-        }
-        .lblErrorCaptionSuccess{
-            color:#606B1D;
+.subheadingLabel {
+    color: seagreen;
+    font: bold;
+    font-size: 15px;
+    padding-top: 2%;
+}
 
-        }
-        .lblErrorCaptionWarning{
-            color:#9F6000;
+.footerMessagesColumn {
+    margin-left: 2%;
+    width: 30%;
+    padding-left: 2%;
+}
 
-        }
-         .lblErrorCaptionDanger{
-            color:#800000;
+.footerButtonColumn {
+    width: 100%;
+    margin-left: 0%;
+    vertical-align: bottom;
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+    background-color:green;
+   
+}
 
-        }
-         .footerDiv
-{
-             position: fixed;
-              background: rgba(0, 179, 134,.4);
-               bottom: 0%; width: 100%; 
-               margin-left: 0px;
-                height: 6%;
-                vertical-align:bottom;
+.footerbuttonTable {
+    margin-left: 1%;
+}
 
+.lblErrorCaptionSuccess {
+    color: #606B1D;
+}
 
+.lblErrorCaptionWarning {
+    color: #9F6000;
+}
+
+.lblErrorCaptionDanger {
+    color: #800000;
+}
+
+.footerDiv {
+    position: fixed;
+    background: rgba(0, 179, 134,.4);
+    bottom: 0%;
+    width: 100%;
+    margin-left: 0px;
+    height: 6%;
+    vertical-align: bottom;
+}
+
+.modal-dialog
+{ 
+    height:87%;
+}
+.modal-content {
+    /* 80% of window height */
+    height: 95%;
+    overflow-y: hidden;
+}
+
+.modal-body {
+    /* 100% = dialog height, 120px = header + footer */
+    max-height: calc(100% - 120px);
+    overflow-y: scroll;
 }
