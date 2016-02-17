@@ -547,10 +547,9 @@ MinimumValue="0" Type="Integer" ></asp:RangeValidator>
 
                     </div>
                 </div>
-
+                <asp:HiddenField ID="HiddenField1" runat="server" />
             </div>
         </div>
-        <asp:HiddenField ID="HiddenField1" runat="server" />
+
     </div>
 </asp:Content>
-
