@@ -400,7 +400,7 @@
                                 <tr>
                                     <td style="width:30%;">
                                          <div class="form-group">
-                                        <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button footerButtonColumn" OnClick="btnSave_Click" ValidationGroup="Submit" />
+                                        <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button " OnClick="btnSave_Click" ValidationGroup="Submit" />
 </div>
                                     </td>
                                     <td>
@@ -418,18 +418,18 @@
         </footer>
 
         <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
+            <div class="modal-dialog  modal-lg">
 
                 <!-- Modal content-->
-                <div class="modal-content">
+                <div class="modal-content" >
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">View All Registrations</h4>
 
                     </div>
-                    <div class="modal-body">
-
-                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None">
+                    <div class="modal-body" >
+                        
+                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None" Height="30px">
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
                                 <asp:TemplateField HeaderImageUrl="~/Images/Pencil-01.png">
@@ -474,9 +474,10 @@
 
                             <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                         </asp:GridView>
-                    </div>
+                            </div>
+                   
                     <div class="modal-footer">
-                        <button data-dismiss="modal" class="btn  btn-large">Close</button>
+                   
 
                     </div>
                 </div>
@@ -485,7 +486,7 @@
         </div>
         
         <div class="modal fade" id="TodaysRegistration" role="dialog">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
 
                 <!-- Modal content-->
                 
@@ -536,7 +537,7 @@
                         
                     </div>
                     <div class="modal-footer">
-                        <button data-dismiss="modal" class="btn  btn-large">Close</button>
+                       
 
                     </div>
                 </div>
