@@ -218,6 +218,8 @@
     <Content Include="Masters\Input.Master" />
     <Content Include="Masters\Popup.Master" />
     <None Include="Properties\PublishProfiles\ClinicAppProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\Hondaprofile.pubxml" />
+    <None Include="Properties\PublishProfiles\Jinzprofile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
