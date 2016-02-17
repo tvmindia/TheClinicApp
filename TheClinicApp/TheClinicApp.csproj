@@ -175,6 +175,7 @@
     <Content Include="Images\search-64.png" />
     <Content Include="Images\settings.png" />
     <Content Include="Images\tick.png" />
+    <Content Include="Images\UploadPic.png" />
     <Content Include="Registration\Patients.aspx" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.12.0.min.js" />

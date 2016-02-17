@@ -25,8 +25,8 @@ input.file {
 
 
 <div class="fileinputs" >
- <input type="file" id="fileupload" class="file" />
+ <input type="file" id="fileupload" class="file" runat="server"/>
  <div class="fakefile">  
-  <img src="../Images/icon-user-default.jpg" style="width:60%;height:60%" onclick="document.getElementById('fileupload').click()" />
+  <img src="../Images/UploadPic.png" style="width:60%;height:60%" onclick="document.getElementById('fileupload').click()" />
  </div>
 </div>
