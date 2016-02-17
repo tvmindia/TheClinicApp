@@ -68,7 +68,7 @@ namespace TheClinicApp.Registration
             listFilter = null;
             listFilter = BindName();
             #region GridDateRegistration
-            dtgViewTodaysRegistration.EmptyDataText = "No Records Found";
+            dtgViewTodaysRegistration.EmptyDataText = "....Till Now No Registration....";
             dtgViewTodaysRegistration.DataSource = Patientobj.GetDateRegistration();
             dtgViewTodaysRegistration.DataBind();
             #endregion GridDateRegistration
@@ -104,17 +104,17 @@ namespace TheClinicApp.Registration
             return output.ToString();
         }
 
-       
+        #region EditPatients
         protected void ImgBtnUpdate_Command(object sender, CommandEventArgs e)
         {
-            DateTime date=DateTime.Now;
-            int year=date.Year;
+            DateTime date = DateTime.Now;
+            int year = date.Year;
             string[] Patient = e.CommandArgument.ToString().Split(new char[] { '|' });
             Guid PatientID = Guid.Parse(Patient[0]);
             txtName.Text = Patient[1];
             txtSex.Text = Patient[6];
             DateTime dt = Convert.ToDateTime(Patient[5]);
-            int Age= year-dt.Year;
+            int Age = year - dt.Year;
             txtAge.Text = Age.ToString();
             txtAddress.Text = Patient[2];
             txtMobile.Text = Patient[3];
@@ -141,6 +141,8 @@ namespace TheClinicApp.Registration
             txtMarital.Text = Patient[7];
             btnSave.Text = "Update";
             HiddenField1.Value = PatientID.ToString();
-        }     
+        }
+        #endregion EditPatients
+
     }
 }

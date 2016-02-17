@@ -23,8 +23,10 @@
 }
 
 .captions {
-    color:white;
+    color:white !important;
+   
 }
+ 
 
 .LoginCaption {
     color: #EFF8F8;
@@ -352,4 +354,9 @@ html, body {
     font-family:'Segoe UI';
     font-size:medium;
         
+}
+.validate
+{
+    text-decoration-color:white;
+    color:white;
 }

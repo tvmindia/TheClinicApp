@@ -220,6 +220,50 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion ViewIssueHeaderDetails
 
+        #region DeleteIssueHeaderDetails
+
+        public void DeleteIssueHeaderDetails()
+        {
+
+            SqlConnection con = null;
+
+            try
+            {
+
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[DeleteIssueHeaderDetails]";
+
+                cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = IssueID;
+
+                cmd.ExecuteNonQuery();
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+
+        }
+
+
+
+        #endregion DeleteIssueHeaderDetails
 
         #endregion Methods
 
@@ -275,6 +319,212 @@ namespace TheClinicApp.ClinicDAL
         #endregion Property
 
         #region Methods
+
+
+        #region InsertIssueDetails
+        public void InsertIssueDetails()
+        {
+
+            SqlConnection con = null;
+
+            try
+            {
+
+                Guid UniqueID = new Guid();
+
+                //DateTime now = DateTime.Now;
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[InsertIssueDetails]";
+
+                cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = UniqueID;
+                cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ReceiptID);
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
+                cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
+                cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
+                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
+                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreatedDate;
+                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
+                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = UpdatedDate;
+
+
+
+                cmd.ExecuteNonQuery();
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+
+        }
+
+        #endregion InsertIssueDetails
+
+        #region UpdateIssueDetails
+        public void UpdateIssueDetails()
+        {
+
+            SqlConnection con = null;
+
+            try
+            {
+
+                DateTime now = DateTime.Now;
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[UpdateIssueDetails]";
+
+                cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = UniqueID;
+                cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ReceiptID);
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
+                cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
+                cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
+                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
+                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreatedDate;
+                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
+                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = UpdatedDate;
+
+                cmd.ExecuteNonQuery();
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+
+        }
+
+
+        #endregion UpdateIssueDetails
+
+        #region ViewIssueDetails
+
+        public DataSet ViewIssueDetails()
+        {
+
+            SqlConnection con = null;
+            DataSet ds = null;
+            SqlDataAdapter sda = null;
+            try
+            {
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[ViewIssueDetails]";
+
+                //cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = DoctorID;
+                //cmd.Parameters.Add("@DateTime", SqlDbType.DateTime).Value = DateTime;
+                //cmd.Parameters.Add("@DateTime", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd");
+
+                sda = new SqlDataAdapter();
+                cmd.ExecuteNonQuery();
+                sda.SelectCommand = cmd;
+                ds = new DataSet();
+                sda.Fill(ds);
+
+
+                return ds;
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+
+        }
+
+
+        #endregion ViewIssueDetails
+
+        #region DeleteIssueDetails
+
+        public void DeleteIssueDetails()
+        {
+
+            SqlConnection con = null;
+
+            try
+            {
+
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[DeleteIssueDetails]";
+
+                cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = UniqueID;
+
+                cmd.ExecuteNonQuery();
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+
+        }
+
+
+
+        #endregion DeleteIssueDetails
+
+
 
         #endregion Methods
 

@@ -118,55 +118,55 @@ namespace TheClinicApp.ClinicDAL
                 
         #endregion InsertPrescriptionHeaderDetails
 
-        #region UpdatePrescriptionHeaderDetails
-        public void UpdatePrescriptionHeaderDetails()
-        {
+        //#region UpdatePrescriptionHeaderDetails
+        ////public void UpdatePrescriptionHeaderDetails()
+        ////{
 
-        SqlConnection con = null;
+        ////SqlConnection con = null;
             
-            try
-            {
+        ////    try
+        ////    {
 
-            DateTime now = DateTime.Now;
-            dbConnection dcon = new dbConnection();
-            con = dcon.GetDBConnection();
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "[UpdatePrescriptionHeaderDetails]";
+        ////    DateTime now = DateTime.Now;
+        ////    dbConnection dcon = new dbConnection();
+        ////    con = dcon.GetDBConnection();
+        ////    SqlCommand cmd = new SqlCommand();
+        ////    cmd.Connection = con;
+        ////    cmd.CommandType = CommandType.StoredProcedure;
+        ////    cmd.CommandText = "[UpdatePrescriptionHeaderDetails]";
 
-            cmd.Parameters.Add("@PrescID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(PrescID);
-            cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(DoctorID);      
-            cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd");
-            cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
-            cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreatedDate;
-            cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
-            cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = UpdatedDate;
+        ////    cmd.Parameters.Add("@PrescID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(PrescID);
+        ////    cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(DoctorID);      
+        ////    cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd");
+        ////    cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
+        ////    cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreatedDate;
+        ////    cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
+        ////    cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = UpdatedDate;
 
 
-            cmd.ExecuteNonQuery();
+        ////    cmd.ExecuteNonQuery();
             
-             }
+        ////     }
 
-            catch (Exception ex)
-            {
+        ////    catch (Exception ex)
+        ////    {
                  
-                throw ex;
-            }
+        ////        throw ex;
+        ////    }
 
-            finally
-            {
-                if (con != null)
-                {
-                    con.Dispose();
-                }
+        ////    finally
+        ////    {
+        ////        if (con != null)
+        ////        {
+        ////            con.Dispose();
+        ////        }
 
-            }
+        ////    }
 
-        }
+        ////}
 
 
-        #endregion UpdatePrescriptionHeaderDetails
+        //#endregion UpdatePrescriptionHeaderDetails
 
         #region ViewPrescriptionHeaderDetails
 
@@ -220,6 +220,52 @@ namespace TheClinicApp.ClinicDAL
 
 
         #endregion ViewPrescriptionHeaderDetails
+
+        #region DeletePrescriptionDetails
+
+        public void DeletePrescriptionDetails()
+        {
+
+            SqlConnection con = null;
+
+            try
+            {
+
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[DeletePrescriptionHeaderDetails]";
+
+                cmd.Parameters.Add("@PrescID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(PrescID);
+
+                cmd.ExecuteNonQuery();
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+
+        }
+
+        #endregion DeletePrescriptionDetails
+
+
+
 
         #endregion Methods
 

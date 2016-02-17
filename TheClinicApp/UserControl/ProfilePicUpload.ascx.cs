@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,7 +12,14 @@ namespace TheClinicApp.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            HttpPostedFile file = Request.Files["fileupload"];
 
+            //check file was submitted
+            if (file != null && file.ContentLength > 0)
+            {
+                string fname = Path.GetFileName(file.FileName);
+                file.SaveAs(Server.MapPath(Path.Combine("~/images/", fname)));
+            }
         }
     }
 }
