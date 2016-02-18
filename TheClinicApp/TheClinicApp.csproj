@@ -275,6 +275,7 @@
     <Compile Include="ClinicDAL\Master.cs" />
     <Compile Include="ClinicDAL\Patient.cs" />
     <Compile Include="ClinicDAL\PrescriptionHeaderDetails.cs" />
+    <Compile Include="ClinicDAL\Receipt.cs" />
     <Compile Include="ClinicDAL\Security.cs" />
     <Compile Include="ClinicDAL\Stock.cs" />
     <Compile Include="ClinicDAL\TokensBooking.cs" />
