@@ -53,7 +53,7 @@ namespace TheClinicApp.Registration
                 PatientObj.UpdatePatientDetails();
                 var page = HttpContext.Current.CurrentHandler as Page;
             }
-            
+            gridDataBind();
         }
         public void gridDataBind()
         {

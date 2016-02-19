@@ -25,7 +25,7 @@ namespace TheClinicApp.Token
          
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            GridViewTokenlist.EmptyDataText = "No Records Found";
 
             if(!IsPostBack)
             {
@@ -88,7 +88,7 @@ namespace TheClinicApp.Token
                     tok.DateTime = DateTime.Now;
 
                     DataSet gds = tok.ViewToken();
-
+                    GridViewTokenlist.EmptyDataText = "No Records Found";
                     GridViewTokenlist.DataSource = gds;
                     GridViewTokenlist.DataBind();
 
@@ -117,7 +117,17 @@ namespace TheClinicApp.Token
             lblName.Text = Convert.ToString(dt.Rows[0][1]);
             lblAge.Text = Convert.ToString(dt.Rows[0][2]);
             lblPhone.Text = Convert.ToString(dt.Rows[0][3]);
+                if( Convert.ToString(dt.Rows[0][3])=="")
+                {
+                  lblPhone.Text =   "Phone Number Not Specified";
+                      
+                }
+              
             lblGender.Text = Convert.ToString(dt.Rows[0][4]);
+            if (Convert.ToString(dt.Rows[0][4]) == "")
+            {
+                lblGender.Text = "Gender Not Specified";
+            }
             HiddenPatientID.Value = Convert.ToString(dt.Rows[0][5]);
             HiddenClinicID.Value = Convert.ToString(dt.Rows[0][6]);
             }

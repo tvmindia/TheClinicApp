@@ -96,8 +96,29 @@
  <asp:ScriptManager runat="server"></asp:ScriptManager>
     <div class="container-fluid bodyDiv" >
         <label class="headingLabel">New Patient Registration </label>
-        <div class="col-sm-12 Span-One ">
-            <div class="col-xs-9">
+        <div class="col-sm-12 Span-One  ">
+            <div class="col-xs-9 table-responsive">
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
+                        <div class="form-group">
+
+
+                            
+
+
+
+                            <div class="col-xs-11">
+                            </div>
+                            <div class="col-xs-1">
+                                <div class="col-xs-12">
+                                    &nbsp
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
@@ -129,7 +150,7 @@
 
 
                             <div class="col-xs-11">
-                                <asp:TextBox ID="txtName" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"
+                                <asp:TextBox ID="txtName" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit" pattern="^[A-z][A-z\.\s]+$"
                                     ></asp:TextBox>
 
                             </div>
@@ -152,7 +173,7 @@
 
 
                             <div class="col-xs-11">
-                                <asp:TextBox ID="txtSex" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"></asp:TextBox>
+                                <asp:TextBox ID="txtSex" class="form-control textBoxborder" required runat="server"  ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
                         </div>
@@ -174,8 +195,8 @@
 
 
                             <div class="col-xs-11">
-                                <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="txtAge" ErrorMessage="Under 16 Not Allowed" MaximumValue="100" MinimumValue="0" Type="Integer" ></asp:RangeValidator>
-                                <asp:TextBox ID="txtAge" class="form-control textBoxborder" runat="server" required TextMode="Number" ValidationGroup="Submit"></asp:TextBox>
+                             
+                                <asp:TextBox ID="txtAge" class="form-control textBoxborder numberTypeTextBox" runat="server" required  ValidationGroup="Submit" type="number" min ="0" max="120" ></asp:TextBox>
 
                             </div>
                         </div>
@@ -247,9 +268,10 @@
 
 
                             <div class="col-xs-11">
-                                <asp:TextBox ID="txtEmail" class="form-control textBoxborder" runat="server" type="email"></asp:TextBox>
+                                <asp:TextBox ID="txtEmail" class="form-control textBoxborder" runat="server" type="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"></asp:TextBox>
 
                             </div>
+                              
                         </div>
                         <div class="col-xs-1">
                             <div class="col-xs-12">
@@ -283,8 +305,8 @@
                 </div>
             </div>
 
-            <div class="col-xs-3">
-                    <table style="height: 100%;" class="table-responsive">
+            <div class="col-xs-3" >
+                    <table style="height: 100%; width:0%;" >
                       
                         <tr>
                             <td>
@@ -301,7 +323,7 @@
                             </td>
                         </tr>
                       
-                        <tr style="height: 40%; ">
+                        <tr style="height: 40%;width:100%; ">
                             <td style="width:1%; ">
                                 <div class=" auto-complete">
                                 <div class="input-group stylish-input-group">
@@ -317,7 +339,7 @@
                                 </div>
                                     </div>
                             </td>
-                            <td style="background-color:red;"></td>
+                            <td style="width:40%;"></td>
                         </tr>
                         <tr style="height: 100%;">
                             <td>&nbsp
@@ -400,7 +422,7 @@
                                 <tr>
                                     <td style="width:30%;">
                                          <div class="form-group">
-                                        <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button " OnClick="btnSave_Click" ValidationGroup="Submit" />
+                                        <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button  " OnClick="btnSave_Click" ValidationGroup="Submit" />
 </div>
                                     </td>
                                     <td>
