@@ -172,6 +172,7 @@ namespace TheClinicApp.Registration
             Guid PatientID = Guid.Parse(e.CommandArgument.ToString());
             PatientObj.PatientID = PatientID;
             PatientObj.DeletePatientDetails();
+            gridDataBind();
         }
 
         protected void ImgBtnDelete1_Command(object sender, CommandEventArgs e)
@@ -180,7 +181,8 @@ namespace TheClinicApp.Registration
             Guid PatientID = Guid.Parse(e.CommandArgument.ToString());
             PatientObj.PatientID = PatientID;
             PatientObj.DeletePatientDetails();
-           
+
+            gridDataBind();
         }
 
     }

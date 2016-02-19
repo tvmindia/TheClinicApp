@@ -1886,6 +1886,8 @@ pre {
 
 .col-xs-9 {
     width: 75%;
+    top: -1px;
+    left: 10px;
 }
 
 .col-xs-8 {
