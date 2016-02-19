@@ -97,7 +97,7 @@
     <div class="container-fluid bodyDiv" >
         <label class="headingLabel">New Patient Registration </label>
         <div class="col-sm-12 Span-One  ">
-            <div class="col-xs-9 table-responsive">
+            <div class="col-xs-9">
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
