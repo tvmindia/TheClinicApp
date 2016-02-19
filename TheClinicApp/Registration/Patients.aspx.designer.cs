@@ -76,15 +76,6 @@ namespace TheClinicApp.Registration {
         protected global::System.Web.UI.WebControls.TextBox txtMarital;
         
         /// <summary>
-        /// ProfilePicUpload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TheClinicApp.UserControl.ProfilePicUpload ProfilePicUpload;
-        
-        /// <summary>
         /// btnSearch control.
         /// </summary>
         /// <remarks>

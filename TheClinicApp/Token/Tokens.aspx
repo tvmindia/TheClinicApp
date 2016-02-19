@@ -221,6 +221,7 @@
 
                             <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                         </asp:GridView>
+                                     
                                  </ContentTemplate>
                              </asp:UpdatePanel>
 
@@ -229,6 +230,23 @@
 
 
                          </div>
+                        <div class="col-md-12 Span-One">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                   
+                                    <div class="col-md-12">
+                                          &nbsp
+                 
+                                    </div>
+                                </div>
+                           
+                            </div>
+                             <div class="col-md-4">           
+                                <div class="col-md-12">                 
+                                     &nbsp
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
       </div>

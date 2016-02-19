@@ -24,7 +24,7 @@
 .bodyDiv {
     background-color: transparent;
     width: 100%;
-    overflow-x: hidden;
+    overflow-x:hidden;
 }
 
 .stylish-input-group .input-group-addon {
@@ -260,3 +260,26 @@ height:50px;
         font-size:19px;
         font-family:Segoe UI Light;
     }
+div.fileinputs {
+
+ width:80%;
+ 
+}
+
+div.fakefile {
+ top: 0px;
+ left: 0px;
+ z-index: 1;
+
+}
+
+input.file {
+ text-align: right;
+ -moz-opacity:0 ;
+ filter:alpha(opacity: 0);
+ opacity: 0;
+ z-index: 2;
+    width:20px;
+     margin-top:-50px;
+ padding-top:0px;
+}

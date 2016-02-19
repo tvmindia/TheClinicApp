@@ -123,8 +123,8 @@ background-color: ghostwhite;
  <asp:ScriptManager runat="server"></asp:ScriptManager>
     <div class="container-fluid bodyDiv" >
         <label class="headingLabel">New Patient Registration </label>
-        <div class="col-sm-12 Span-One  ">
-            <div class="col-xs-9 table-responsive">
+        <div class="col-sm-12 Span-One ">
+            <div class="col-xs-8">
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
@@ -330,29 +330,45 @@ background-color: ghostwhite;
                     </div>
 
                 </div>
+
+                <div class="col-md-12 Span-One">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                   
+                                    <div class="col-md-12">
+                                          &nbsp
+                 
+                                    </div>
+                                </div>
+                           
+                            </div>
+                             <div class="col-md-4">           
+                                <div class="col-md-12">                 
+                                     &nbsp
+                                </div>
+                            </div>
+                        </div>
             </div>
 
-            <div class="col-xs-3" >
-                    <table style="height: 100%; width:0%;" >
-                      
-                        <tr>
-                            <td>
-                                <uc1:ProfilePicUpload runat="server" ID="ProfilePicUpload" />
-                                
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr style="height:200px;">
-                            <td>&nbsp
-                            </td>
+            <div class="col-xs-4" style="height:350px;width:30%;" >
+                  
+                <table style="height:100%;width:100%;margin-left:0px; padding-left:0px;">
+                    <tr style="height:100%;width:100%;">
+                        <td style="height:100px;width:100%;">
+                           <div class="fileinputs"  >
+ <input type="file" id="fileupload" class="file"/>
+ <div class="fakefile">  
+  <img src="../Images/UploadPic.png" style="width:80%;height:60%" OnClick="document.getElementById('fileupload').click()" />
+ </div>
+</div>  
+                        </td>
+                        
+                    </tr>
+                       
 
-                            <td>&nbsp
-                            </td>
-                        </tr>
-                      
-                        <tr style="height: 40%;width:100%; ">
-                            <td style="width:1%; ">
-                                <div class=" auto-complete">
+                    <tr style="height:100%;width:100%;">
+                        <td style="height:100%;width:100%;">
+                               <div>
                                 <div class="input-group stylish-input-group">
                                     <input type="text" class="form-control" placeholder="Search" style="height: 20%;" aria-haspopup="false" name="txtSearch" id="txtSearch" />
 
@@ -365,62 +381,25 @@ background-color: ghostwhite;
 
                                 </div>
                                     </div>
-                            </td>
-                            <td style="width:40%;"></td>
-                        </tr>
-                        <tr style="height: 100%;">
-                            <td>&nbsp
-                            </td>
+                        </td>
+                        
+                    </tr>
 
-                            <td></td>
-                        </tr>
-                           <tr style="height: 100%;">
-                            <td>&nbsp
-                            </td>
-
-                            <td></td>
-                        </tr>
-                           <tr style="height: 100%;">
-                            <td>&nbsp
-                            </td>
-
-                            <td></td>
-                        </tr>
-                            <tr style="height: 100%;">
-                            <td>&nbsp
-                            </td>
-
-                            <td></td>
-                        </tr>
-                        <tr style="height: 40%;">
-                            <td>
+                       <tr style="height:100%;width:100%;">
+                        <td style="height:100px;width:100%;">
                                 <a href="#" role="button" data-toggle="modal" data-target="#myModal" >View All Registrations </a>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr style="height: 40%;">
-                            <td>&nbsp
-                            </td>
+                        </td>
+                        
+                    </tr>
+                    <tr style="height:100%;width:100%;">
+                        <td style="height:100%;width:100%;">
+                              <a href="#" role="button" data-toggle="modal" data-target="#TodaysRegistration" >Todays Registrations</a>
+                        </td>
+                        
+                    </tr>
+                </table>
 
-                            <td></td>
-                        </tr>
-                        <tr style="height: 40%;">
-                            <td>
-                                <a href="#" role="button" data-toggle="modal" data-target="#TodaysRegistration" >Todays Registrations</a>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr style="height: 40%;">
-                            <td>&nbsp
-                            </td>
-
-                            <td></td>
-                        </tr>
-                       
-                    </table>
-
-
-
+              
 
                 </div>
           
