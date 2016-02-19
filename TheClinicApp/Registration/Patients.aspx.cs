@@ -21,7 +21,7 @@ namespace TheClinicApp.Registration
             //ProfilePicUpload.onClick += new RadToolBarEventHandler(ProfilePicUpload_onClick);
             //ProfilePicUpload.OnClientButtonClicking = "OnClientButtonClicking";
         }
-
+        #region MainButton
         protected void btnSave_Click(object sender, EventArgs e)
         {
             Patient PatientObj = new Patient();
@@ -57,6 +57,9 @@ namespace TheClinicApp.Registration
             }
             gridDataBind();
         }
+        #endregion MainButton
+
+        #region GridBind
         public void gridDataBind()
         {
            
@@ -75,16 +78,10 @@ namespace TheClinicApp.Registration
             dtgViewTodaysRegistration.DataBind();
             #endregion GridDateRegistration
         }
+        #endregion GridBind
 
-       
-        protected void btnSearch_ServerClick(object sender, EventArgs e)
-        {
-            Patient PatientObj = new Patient();
-            string value = Request.Form["txtSearch"];
-          DataTable dt = PatientObj.GetSearchBoxDataByAnyValue(value);
-        
 
-        }
+        #region BindDataAutocomplete
         private string BindName()
         {
             Patient PatientObj = new Patient();
@@ -105,6 +102,7 @@ namespace TheClinicApp.Registration
             output.Append("]");
             return output.ToString();
         }
+        #endregion BindDataAutocomplete
 
         #region EditPatients
         protected void ImgBtnUpdate_Command(object sender, CommandEventArgs e)
@@ -146,26 +144,33 @@ namespace TheClinicApp.Registration
         }
         #endregion EditPatients
 
+        #region SearchButtonClick
         protected void btnSearch_ServerClick1(object sender, EventArgs e)
         {
-            string name = Request.Form["txtSearch"];
-            //DateTime date = DateTime.Now;
-            //int year = date.Year;
-            //string[] Patient = e.CommandArgument.ToString().Split(new char[] { '|' });
-            //Guid PatientID = Guid.Parse(Patient[0]);
-            //txtName.Text = Patient[1];
-            //txtSex.Text = Patient[6];
-            //DateTime dt = Convert.ToDateTime(Patient[5]);
-            //int Age = year - dt.Year;
-            //txtAge.Text = Age.ToString();
-            //txtAddress.Text = Patient[2];
-            //txtMobile.Text = Patient[3];
-            //txtEmail.Text = Patient[4];
-            //txtMarital.Text = Patient[7];
-            //btnSave.Text = "Update";
-            //HiddenField1.Value = PatientID.ToString();
+            Patient PatientObj = new Patient();
+            DataRow dr = null;//;
+            string Name = Request.Form["txtSearch"];
+            DataTable dt=PatientObj.GetSearchWithName(Name);
+            dr = dt.NewRow();
+            dr = dt.Rows[0];
+            DateTime date = DateTime.Now;
+            int year = date.Year;
+            Guid PatientID = Guid.Parse(dr["PatientID"].ToString());
+            txtName.Text = dr["Name"].ToString();
+            txtSex.Text = dr["Gender"].ToString();
+            DateTime DT = Convert.ToDateTime(dr["DOB"].ToString());
+            int Age = year - DT.Year;
+            txtAge.Text = Age.ToString();
+            txtAddress.Text = dr["Address"].ToString();
+            txtMobile.Text = dr["Phone"].ToString();
+            txtEmail.Text = dr["Email"].ToString();
+            txtMarital.Text = dr["MaritalStatus"].ToString();
+            btnSave.Text = "Update";
+            HiddenField1.Value = PatientID.ToString();
         }
+        #endregion SearchButtonClick
 
+        #region GridDelete
         protected void ImgBtnDelete_Command(object sender, CommandEventArgs e)
         {
             Patient PatientObj = new Patient();
@@ -180,8 +185,9 @@ namespace TheClinicApp.Registration
             Guid PatientID = Guid.Parse(e.CommandArgument.ToString());
             PatientObj.PatientID = PatientID;
             PatientObj.DeletePatientDetails();
-           
+
         }
+        #endregion GridDelete
 
     }
 }

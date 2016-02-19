@@ -495,7 +495,25 @@ namespace TheClinicApp.ClinicDAL
             con.Close();
             return dt;
 
-        } 
+        }
+        public DataTable GetSearchWithName(string SearchName)
+        {
+
+            DataTable dt = null;
+            SqlConnection con = null;
+            dbConnection dcon = new dbConnection();
+            con = dcon.GetDBConnection();
+            SqlCommand cmd = new SqlCommand("SearchPatientWithName", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = SearchName;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = cmd;
+            dt = new DataTable();
+            adapter.Fill(dt);
+            con.Close();
+            return dt;
+
+        }
 
     }
 

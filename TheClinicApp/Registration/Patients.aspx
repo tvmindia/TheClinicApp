@@ -13,9 +13,10 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
     <style>
 .ui-autocomplete {
-background: local;
+background: space;
 background-color: ghostwhite;
-border: ridge;}
+ box-shadow:1px 5px 10px 5px #ccffe6;
+}
     </style>
 
     <%--<style>
