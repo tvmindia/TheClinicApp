@@ -323,6 +323,11 @@ namespace TheClinicApp.ClinicDAL
             get;
             set;
         }
+        public int QTY
+        {
+            get;
+            set;
+        }
 
 
         #endregion Property
@@ -361,6 +366,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreatedDate;
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
                 cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = UpdatedDate;
+                cmd.Parameters.Add("@QTY", SqlDbType.Real).Value = QTY;
 
 
 
@@ -417,6 +423,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreatedDate;
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
                 cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = UpdatedDate;
+                cmd.Parameters.Add("@QTY", SqlDbType.Real).Value = QTY;
 
                 cmd.ExecuteNonQuery();
 
@@ -513,6 +520,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandText = "[DeleteReceiptDetails]";
 
                 cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = UniqueID;
+                cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = MedicineID;
 
                 cmd.ExecuteNonQuery();
 

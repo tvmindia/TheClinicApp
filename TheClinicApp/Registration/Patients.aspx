@@ -11,6 +11,13 @@
 
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
+    <style>
+.ui-autocomplete {
+background: local;
+background-color: ghostwhite;
+border: ridge;}
+    </style>
+
     <%--<style>
         footer {
             position: fixed;
@@ -83,6 +90,25 @@
             $("input:text").val('');
         }
     </script>
+    <%--<script>
+        function OnClientButtonClicking(sender, args) {
+
+            var btn = args.get_item();
+            if (btn.get_value() == 'Delete') {
+
+                args.set_cancel(!confirm('Do you want to delete ?'));
+            }
+            if (btn.get_value() == 'Save') {
+                debugger;
+                args.set_cancel(!validate());
+            }
+            if (btn.get_value() == 'Update') {
+
+                args.set_cancel(!validate());
+            }
+
+        }
+    </script>--%>
     <script>
         $(document).ready(function () {
             debugger;
@@ -327,10 +353,10 @@
                             <td style="width:1%; ">
                                 <div class=" auto-complete">
                                 <div class="input-group stylish-input-group">
-                                    <input type="text" class="form-control" placeholder="Search" style="height: 20%;" name="txtSearch" id="txtSearch"  />
+                                    <input type="text" class="form-control" placeholder="Search" style="height: 20%;" aria-haspopup="false" name="txtSearch" id="txtSearch" />
 
                                     <span class="input-group-addon" style="height: 0%;">
-                                        <button type="submit" style="height: .1%;" runat="server" id="btnSearch" onserverclick="btnSearch_ServerClick">
+                                        <button type="submit" style="height: .1%;" runat="server" id="btnSearch" onserverclick="btnSearch_ServerClick1" formnovalidate>
                                             <i class="glyphicon glyphicon-search"></i>
 
                                         </button>
@@ -454,13 +480,20 @@
                         <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None" Height="30px">
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
-                                <asp:TemplateField HeaderImageUrl="~/Images/Pencil-01.png">
+                                <asp:TemplateField>
                                     <ItemTemplate>
                                         <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"|" + Eval("Name") + "|" + Eval("Address")+"|"+ Eval("Phone")+"|"+ Eval("Email")+"|"+Eval("DOB")+"|"+Eval("Gender")+"|"+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
                                        
 
                                     </ItemTemplate>
                                     
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="ImgBtnDelete" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("PatientID")%>' OnCommand="ImgBtnDelete_Command" formnovalidate />
+                                       
+
+                                    </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="Name" HeaderText="Name">
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
@@ -526,6 +559,13 @@
                                 <asp:TemplateField>
                                     <ItemTemplate>
                                         <asp:ImageButton ID="ImgBtnUpdate1" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"|" + Eval("Name") + "|" + Eval("Address")+"|"+ Eval("Phone")+"|"+ Eval("Email")+"|"+Eval("DOB")+"|"+Eval("Gender")+"|"+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate1_Command" formnovalidate />
+
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="ImgBtnDelete1" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("PatientID")%>' OnCommand="ImgBtnDelete1_Command" formnovalidate />
+                                       
 
                                     </ItemTemplate>
                                 </asp:TemplateField>

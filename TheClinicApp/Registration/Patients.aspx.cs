@@ -18,6 +18,8 @@ namespace TheClinicApp.Registration
         protected void Page_Load(object sender, EventArgs e)
         {
             gridDataBind();
+            //ProfilePicUpload.onClick += new RadToolBarEventHandler(ProfilePicUpload_onClick);
+            //ProfilePicUpload.OnClientButtonClicking = "OnClientButtonClicking";
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -143,6 +145,43 @@ namespace TheClinicApp.Registration
             HiddenField1.Value = PatientID.ToString();
         }
         #endregion EditPatients
+
+        protected void btnSearch_ServerClick1(object sender, EventArgs e)
+        {
+            string name = Request.Form["txtSearch"];
+            //DateTime date = DateTime.Now;
+            //int year = date.Year;
+            //string[] Patient = e.CommandArgument.ToString().Split(new char[] { '|' });
+            //Guid PatientID = Guid.Parse(Patient[0]);
+            //txtName.Text = Patient[1];
+            //txtSex.Text = Patient[6];
+            //DateTime dt = Convert.ToDateTime(Patient[5]);
+            //int Age = year - dt.Year;
+            //txtAge.Text = Age.ToString();
+            //txtAddress.Text = Patient[2];
+            //txtMobile.Text = Patient[3];
+            //txtEmail.Text = Patient[4];
+            //txtMarital.Text = Patient[7];
+            //btnSave.Text = "Update";
+            //HiddenField1.Value = PatientID.ToString();
+        }
+
+        protected void ImgBtnDelete_Command(object sender, CommandEventArgs e)
+        {
+            Patient PatientObj = new Patient();
+            Guid PatientID = Guid.Parse(e.CommandArgument.ToString());
+            PatientObj.PatientID = PatientID;
+            PatientObj.DeletePatientDetails();
+        }
+
+        protected void ImgBtnDelete1_Command(object sender, CommandEventArgs e)
+        {   
+            Patient PatientObj = new Patient();
+            Guid PatientID = Guid.Parse(e.CommandArgument.ToString());
+            PatientObj.PatientID = PatientID;
+            PatientObj.DeletePatientDetails();
+           
+        }
 
     }
 }

@@ -21,12 +21,15 @@ input.file {
     
 }
     </style>
-
-
-
-<div class="fileinputs" >
- <input type="file" id="fileupload" class="file" runat="server"/>
- <div class="fakefile">  
-  <img src="../Images/UploadPic.png" style="width:60%;height:60%" onclick="document.getElementById('fileupload').click()" />
- </div>
+<div class="fileinputs">
+	<input type="file" class="file" runat="server"/>
+	<div class="fakefile">		
+		<img src="../Images/UploadPic.png" style="width:30%;height:30%" />
+	</div>
 </div>
+<%--<div class="fileinputs" >
+ <input type="file" id="fileupload" class="file"/>
+ <div class="fakefile">  
+  <img src="../Images/UploadPic.png" style="width:60%;height:60%" OnClick="document.getElementById('fileupload').click()" />
+ </div>
+</div>--%>
