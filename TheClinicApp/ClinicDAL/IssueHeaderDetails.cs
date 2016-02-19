@@ -498,6 +498,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandText = "[DeleteIssueDetails]";
 
                 cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = UniqueID;
+                cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
 
                 cmd.ExecuteNonQuery();
 
