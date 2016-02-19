@@ -94,7 +94,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[InsertMedicines]";
 
-                cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = MedicineID;
+                cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = MedicineID;
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@CateoryID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(CategoryID);
                 cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = Name;
@@ -284,6 +284,63 @@ namespace TheClinicApp.ClinicDAL
         }
 
         #endregion InsertMedicines
+
+
+#region Out_of_Stock_MedicineList
+        public DataSet OutofStockMedicines()
+        {
+
+            SqlConnection con = null;
+            DataSet ds = null;
+            SqlDataAdapter sda = null;
+            try
+            {
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[OutofStockMedicines]";
+
+            
+                cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
+                cmd.Parameters.Add("@ReOrderQty", SqlDbType.Real).Value = ReOrderQty;
+
+               
+               
+
+              
+
+                sda = new SqlDataAdapter();
+                cmd.ExecuteNonQuery();
+                sda.SelectCommand = cmd;
+                ds = new DataSet();
+                sda.Fill(ds);
+
+
+                return ds;
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+
+        }
+
+#endregion Out_of_Stock_MedicineList
 
 
 
