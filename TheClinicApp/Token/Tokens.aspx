@@ -15,7 +15,7 @@
     <div class="container bodyDiv" style="width:100%;">
           <label  class="headingLabel" >Patient Token Booking</label>
         <div class="col-md-12 Span-One">
-                    <div class="col-md-9" >
+                    <div class="col-md-7" >
                         <div class="col-md-12 Span-One">
                             <div class="col-md-8">
                                 <div class="form-group">
@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="col-md-12 Span-One">
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <div class="form-group">
                    
                                     <div class="col-md-12">
@@ -73,7 +73,7 @@
                                 </div>
                            
                             </div>
-                             <div class="col-md-6">           
+                             <div class="col-md-5">           
                                 <div class="col-md-12">                 
                                      <asp:DropDownList ID="ddlDoctorName" Height="30px" Width="100" runat="server"></asp:DropDownList>
                                 </div>
@@ -97,208 +97,56 @@
                             </div>
                         </div>
                         <%-- Patient Details Diplay region --%>
-                   
-                           <div class="col-md-12 Span-One">
-                            <div class="col-md-11">
-                                <div class="form-group">
-                   
-                                    <div class="col-md-12">
-                                       <label  class="subheadingLabel" >Patient Details</label>
-                                    </div>
-                                </div>
-                           
-                            </div>
-                             <div class="col-md-1">           
-                                <div class="col-md-12">                 
-                                     &nbsp
-                                </div>
-                            </div>
-                        </div>
+                      
+                   <table class="tokenPatientDetailsTable" id="divContainer" >
+                       <tr>
+                           <td class="tokenPatientDetailsTableColumn">
+                                       <label  class="subheadingLabel " >Patient Details</label>
 
-                       <div class="col-md-12 Span-One">
-                            <div class="col-md-8">
-                                <div class="form-group">
-                   
-                                    <div class="col-md-12">
-                                          &nbsp
-                 
-                                    </div>
-                                </div>
-                           
-                            </div>
-                             <div class="col-md-4">           
-                                <div class="col-md-12">                 
-                                     &nbsp
-                                </div>
-                            </div>
-                        </div>
+                           </td>
+                       </tr>
 
-                        <div class="col-md-12 Span-One">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                   
-                                    <div class="col-md-12">
-                                                                                                
-                                       <asp:Label ID="lblFile" runat="server" Text=""></asp:Label>
-                                                                                                
-                                    </div>
-                                </div>
-                           
-                            </div>
-                             <div class="col-md-8">           
-                                <div class="col-md-12">                 
+                        <tr>
+                           <td  class="tokenPatientDetailsTableColumn">
+                                     
+                                       <asp:Label ID="lblFile" CssClass="largefont " runat="server" Text=""></asp:Label>
+
+                           </td>
+                       </tr>
+                        <tr>
+                           <td  class="tokenPatientDetailsTableColumn">
                                     
-                                </div>
-                            </div>
-                        </div>
-                       
-                         <div class="col-md-12 Span-One">
-                            <div class="col-md-8">
-                                <div class="form-group">
-                   
-                                    <div class="col-md-12">
-                                          &nbsp
-                 
-                                    </div>
-                                </div>
-                           
-                            </div>
-                             <div class="col-md-4">           
-                                <div class="col-md-12">                 
-                                     &nbsp
-                                </div>
-                            </div>
-                        </div>
+                                          <asp:Label ID="lblName"  CssClass="tokenPatientDetailsName "  runat="server" Text=""></asp:Label>
 
-                        <div class="col-md-12 Span-One">
-                            <div class="col-md-11">
-                                <div class="form-group">
-                   
-                                    <div class="col-md-12">
-                                                                                                
-                                          <asp:Label ID="lblName" CssClass="largefont"  runat="server" Text=""></asp:Label>
-                                                                                                
-                                    </div>
-                                </div>
-                           
-                            </div>
-                             <div class="col-md-1">           
-                                <div class="col-md-12">                 
-                                   
-                                </div>
-                            </div>
-                        </div>
+                           </td>
+                       </tr>
+                        <tr>
+                           <td  class="tokenPatientDetailsTableColumn">
+                                        <asp:Label ID="lblAge" runat="server"  CssClass="tokenPatientDetailslabel" Text=""></asp:Label>
 
-                         <div class="col-md-12 Span-One">
-                            <div class="col-md-8">
-                                <div class="form-group">
-                   
-                                    <div class="col-md-12">
-                                          &nbsp
-                 
-                                    </div>
-                                </div>
-                           
-                            </div>
-                             <div class="col-md-4">           
-                                <div class="col-md-12">                 
-                                     &nbsp
-                                </div>
-                            </div>
-                        </div>
+                           </td>
+                       </tr>
+                         <tr>
+                           <td  class="tokenPatientDetailsTableColumn">
+                                 <asp:Label ID="lblGender" runat="server" CssClass="tokenPatientDetailslabel" Text=""></asp:Label>
+                           </td>
+                       </tr>
+                        <tr>
+                           <td  class="tokenPatientDetailsTableColumn">
+                                           <asp:Label ID="lblPhone" runat="server" CssClass="tokenPatientDetailslabel" Text=""></asp:Label>
 
-                        <div class="col-md-12 Span-One">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                   
-                                    <div class="col-md-12">
-                                                                                                
-                                        <asp:Label ID="lblAge" runat="server" Text=""></asp:Label>
-                                                                                                
-                                    </div>
-                                </div>
-                           
-                            </div>
-                             <div class="col-md-8">           
-                                <div class="col-md-12">                 
-                                    <asp:Label ID="lblGender" runat="server" Text=""></asp:Label>
-                                </div>
-                            </div>
-                        </div>
+                           </td>
+                       </tr>
 
-                         <div class="col-md-12 Span-One">
-                            <div class="col-md-8">
-                                <div class="form-group">
-                   
-                                    <div class="col-md-12">
-                                          &nbsp
-                 
-                                    </div>
-                                </div>
-                           
-                            </div>
-                             <div class="col-md-4">           
-                                <div class="col-md-12">                 
-                                     &nbsp
-                                </div>
-                            </div>
-                        </div>
+                        <tr>
+                           <td  class="tokenPatientDetailsTableColumn">
+                                    <asp:Label ID="lblToken" Visible="false" CssClass="largefont tokenPatientDetailslabel"  runat="server" Text="Token NO"></asp:Label>
 
-                        <div class="col-md-12 Span-One">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                   
-                                    <div class="col-md-12">
-                                                                                                
-                                           <asp:Label ID="lblPhone" runat="server" Text=""></asp:Label>
-                                                                                                
-                                    </div>
-                                </div>
-                           
-                            </div>
-                             <div class="col-md-8">           
-                                <div class="col-md-12">                 
-                                   
-                                </div>
-                            </div>
-                        </div>
-
-                     <div class="col-md-12 Span-One">
-                            <div class="col-md-8">
-                                <div class="form-group">
-                   
-                                    <div class="col-md-12">
-                                          &nbsp
-                 
-                                    </div>
-                                </div>
-                           
-                            </div>
-                             <div class="col-md-4">           
-                                <div class="col-md-12">                 
-                                     &nbsp
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-12 Span-One">
-                            <div class="col-md-1">
-                                <div class="form-group">
-                   
-                                    <div class="col-md-12">
-                                                                                                
-                                        
-                                                                                                
-                                    </div>
-                                </div>
-                           
-                            </div>
-                             <div class="col-md-11">           
-                                <div class="col-md-12">                 
-                                    <asp:Label ID="lblToken" Visible="false" CssClass="largefont" runat="server" Text="Token NO"></asp:Label>
-                                </div>
-                            </div>
-                        </div>
+                           </td>
+                       </tr>
+                        
+                   </table>
+                                     
 
                             <div class="col-md-12 Span-One">
                             <div class="col-md-8">
@@ -319,35 +167,60 @@
                                 </div>
                             </div>
                         </div>
-
+                        
                     </div>
                     <%--token gridview region --%>
-                    <div class="col-md-3">
-                         <div  >
+                    <div class="col-md-5">
+                        <br />
+                      
+                       
+
+                         <div class="rounded_corners"  style="width: 400px">
 
                              <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                              <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                  <ContentTemplate>
                                      
 
-                                      <asp:GridView ID="GridViewTokenlist" runat="server" DataKeyNames="UniqueId"   AutoGenerateColumns="False">
-                                          <Columns>
-                                              <asp:BoundField HeaderText="DOCTOR NAME" DataField="DOCNAME" />
+                                    
+                                     <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False"  CssClass="footable" Style="max-width: 500px">
+                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                            <Columns>
+                                  <asp:TemplateField HeaderText="DELETE">
+                                                  <ItemTemplate>
+                                                       <asp:ImageButton ID="ImgBtnDelete" runat="server"  ImageUrl="~/Images/Cancel.png"   Width="25px"  OnClientClick="return confirm('Deletion Confirmation \n\n\n\n\ Are you sure you want to delete this item ?');" OnClick="ImgBtnDelete_Click"/>
+
+                                                  </ItemTemplate>
+                                              </asp:TemplateField>
+                               <asp:BoundField HeaderText="DOCTOR NAME" DataField="DOCNAME" />
                                               <asp:BoundField HeaderText="TOKEN NO" DataField="TokenNo" />
                                               <asp:BoundField HeaderText="PATIENT NAME" DataField="Name" />
                                               <asp:BoundField HeaderText="TIME" DataField="DateTime" />
                                                
-                                              <asp:TemplateField HeaderText="DELETE">
-                                                  <ItemTemplate>
-                                                       <asp:ImageButton ID="ImgBtnDelete" runat="server"  ImageUrl="~/Images/Delete.png"  Width="25px"  OnClientClick="return confirm('Deletion Confirmation \n\n\n\n\ Are you sure you want to delete this item ?');" OnClick="ImgBtnDelete_Click"/>
-
-                                                  </ItemTemplate>
-                                              </asp:TemplateField>
+                                           
                                                
-                                          </Columns>
                                          
-                                     </asp:GridView>
+                            </Columns>
+                            <EditRowStyle BackColor="#0080AA"></EditRowStyle>
 
+                            <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
+
+                            <HeaderStyle BackColor="#3FBF7F" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                            <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#2461BF"></PagerStyle>
+
+                            <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                        </asp:GridView>
                                  </ContentTemplate>
                              </asp:UpdatePanel>
 
@@ -384,7 +257,7 @@
                             <table class="footerTable" style="width:100%; margin-left:0px;padding-left:0px;">
                                 <tr>
                                     <td style="width:30%;">
-                                        <asp:Button ID="btnBookToken" runat="server" Text="BOOK TOKEN" CssClass="button footerButtonColumn" OnClick="btnBookToken_Click" />
+                                        <asp:Button ID="btnBookToken" runat="server" Text="BOOK TOKEN" CssClass="button " OnClick="btnBookToken_Click" />
 
                                     </td>
                                     <td>
