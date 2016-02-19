@@ -12,6 +12,11 @@ namespace TheClinicApp.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(!IsPostBack)
+            {
+            //Button myButton = this.FormView1.FindControl("myButtonId");
+
+            //myButton.Atttibutes.Add("onClientClick","myJavascriptFunction();");
             HttpPostedFile file = Request.Files["fileupload"];
 
             //check file was submitted
@@ -20,6 +25,7 @@ namespace TheClinicApp.UserControl
                 string fname = Path.GetFileName(file.FileName);
                 file.SaveAs(Server.MapPath(Path.Combine("~/images/", fname)));
             }
+        }
         }
     }
 }
