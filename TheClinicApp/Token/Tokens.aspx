@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
     <link href="../Content/Input.css" rel="stylesheet" />
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
@@ -61,8 +60,8 @@
                                     <input type="text" name="txtSearch" class="form-control" placeholder="Patient Search" style="height: 20%;" />
 
                                     <span class="input-group-addon" style="height: 0%;">
-                                        <button type="submit" id="btnSearch"  style="height: .1%;"  runat="server" onserverclick="btnSearch_ServerClick">
-                                            <i class="glyphicon glyphicon-search"></i>
+                                        <button type="submit" id="btnSearch"  style="height:0px;"  runat="server" onserverclick="btnSearch_ServerClick">
+                                            <img src="../Images/Search-WF.png" />
 
                                         </button>
                                     </span> 
@@ -108,7 +107,7 @@
 
                         <tr>
                            <td  class="tokenPatientDetailsTableColumn">
-                                     
+
                                        <asp:Label ID="lblFile" CssClass="largefont " runat="server" Text=""></asp:Label>
 
                            </td>
