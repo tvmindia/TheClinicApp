@@ -280,10 +280,12 @@
     <Compile Include="ClinicDAL\Clinic.cs" />
     <Compile Include="ClinicDAL\common.cs" />
     <Compile Include="ClinicDAL\dbConnection.cs" />
+    <Compile Include="ClinicDAL\Doctor.cs" />
     <Compile Include="ClinicDAL\ErrorHandling.cs" />
     <Compile Include="ClinicDAL\IssueHeaderDetails.cs" />
     <Compile Include="ClinicDAL\Master.cs" />
     <Compile Include="ClinicDAL\Patient.cs" />
+    <Compile Include="ClinicDAL\Pharmacy.cs" />
     <Compile Include="ClinicDAL\PrescriptionHeaderDetails.cs" />
     <Compile Include="ClinicDAL\Receipt.cs" />
     <Compile Include="ClinicDAL\Security.cs" />
@@ -365,6 +367,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Doctor\" />
+    <Folder Include="Images\Profilepic\" />
     <Folder Include="Pharmacy\" />
     <Folder Include="Stock\" />
   </ItemGroup>
