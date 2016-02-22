@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -24,6 +25,14 @@ namespace TheClinicApp.Registration
         #region MainButton
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            //HttpPostedFile file = Request.Files["fileupload"];
+
+            ////check file was submitted
+            //if (file != null && file.ContentLength > 0)
+            //{
+            //    string fname = Path.GetFileName(file.FileName);
+            //    file.SaveAs(Server.MapPath(Path.Combine("~/images/Profilepic", fname)));
+            //}
             Patient PatientObj = new Patient();
             DateTime _date = DateTime.Now;          
             
@@ -56,8 +65,30 @@ namespace TheClinicApp.Registration
                 var page = HttpContext.Current.CurrentHandler as Page;
             }
             gridDataBind();
+            PicUpload();
         }
         #endregion MainButton
+
+        public void PicUpload()
+        {
+            HttpPostedFile filePosted = Request.Files["fileupload"];
+
+            if (filePosted != null && filePosted.ContentLength > 0)
+            {
+                string fileNameApplication = System.IO.Path.GetFileName(filePosted.FileName);
+                string fileExtensionApplication = System.IO.Path.GetExtension(fileNameApplication);
+
+                // generating a random guid for a new file at server for the uploaded file
+                string newFile = Guid.NewGuid().ToString() + fileExtensionApplication;
+                // getting a valid server path to save
+                string filePath = System.IO.Path.Combine(Server.MapPath("~/Images/Profilepic"), newFile);
+
+                if (fileNameApplication != String.Empty)
+                {
+                    filePosted.SaveAs(filePath);
+                }
+            }
+        }
 
         #region GridBind
         public void gridDataBind()
@@ -190,6 +221,11 @@ namespace TheClinicApp.Registration
             gridDataBind();
         }
         #endregion GridDelete
+
+        //protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        //{
+        //    Image1.Attributes.Add("onclick", "document.getElementById('" + FileUpload1.ClientID + "').click();");
+        //}
 
     }
 }

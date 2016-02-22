@@ -89,7 +89,48 @@ background-color: ghostwhite;
             $('textarea').empty();
 
             $("input:text").val('');
+    }
+    var W3CDOM = (document.createElement && document.getElementsByTagName);
+
+    function initFileUploads() {
+        if (!W3CDOM) return;
+        var fakeFileUpload = document.createElement('div');
+        fakeFileUpload.className = 'fakefile';
+        fakeFileUpload.appendChild(document.createElement('input'));
+        var image = document.createElement('img');
+        image.src='pix/button_UploadPic.png';
+        fakeFileUpload.appendChild(image);
+        var x = document.getElementsByTagName('input');
+        for (var i=0;i<x.length;i++) {
+            if (x[i].type != 'file') continue;
+            if (x[i].parentNode.className != 'fileinputs') continue;
+            x[i].className = 'file hidden';
+            var clone = fakeFileUpload.cloneNode(true);
+            x[i].parentNode.appendChild(clone);
+            x[i].relatedElement = clone.getElementsByTagName('input')[0];
+            x[i].onchange = x[i].onmouseout = function () {
+                this.relatedElement.value = this.value;
+            }
         }
+    }
+    //$('#btnSave').bind("click",function(){ 
+    //var imgVal = $('#fileupload').val(); 
+    //alert(imgVal);
+    //return false;
+    //});
+    <%--function previewFile() {
+        var preview = document.querySelector('#<%=Image1.ClientID %>');
+        var file = document.querySelector('#<%=FileUpload1.ClientID %>').files[0];
+        var reader = new FileReader();
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        }
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+        }
+    }--%>
     </script>
     <%--<script>
         function OnClientButtonClicking(sender, args) {
@@ -119,8 +160,13 @@ background-color: ghostwhite;
                 source: ac
             });
         });
+        //$('input[type="file"]').on('change', function (event, files, label) {
+        //    var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '')
+        //    $('.filename').text(file_name);
+        //});
     </script>
  <asp:ScriptManager runat="server"></asp:ScriptManager>
+    
     <div class="container-fluid bodyDiv" >
         <label class="headingLabel">New Patient Registration </label>
         <div class="col-sm-12 Span-One ">
@@ -349,22 +395,32 @@ background-color: ghostwhite;
                             </div>
                         </div>
             </div>
-
+           
             <div class="col-xs-4" style="height:350px;width:30%;" >
                   
                 <table style="height:100%;width:100%;margin-left:0px; padding-left:0px;">
                     <tr style="height:100%;width:100%;">
                         <td style="height:100px;width:100%;">
-                           <div class="fileinputs"  >
- <input type="file" id="fileupload" class="file"/>
+                           <div class="fileinputs">
+                               <input type="file" class="file" />
+	<div class="fakefile">
+		
+		<img src="../Images/UploadPic.png" style="width:60%;height:40%" />
+	</div>
+<%--<asp:FileUpload ID="FileUpload1" runat="server" onchange="previewFile()" style="display:none"/>
+                               <asp:Image ID="Image1" onclick="ImageButton1_Click" ImageUrl="~/Images/icon-user-default.jpg" runat="server" formnovalidate />--%>
+<%--<asp:ImageButton ID="ImageButton1" runat="server" onclick="ImageButton1_Click" ImageUrl="~/Images/icon-user-default.jpg" formnovalidate/>--%>
+      <%--<asp:FileUpload ID="fileupload" CssClass="file" runat="server" />---%>                         
+ <%--<input type="file" id="fileupload" class="file" name="annex" />
+<span class="filename"></span>
  <div class="fakefile">  
-  <img src="../Images/UploadPic.png" style="width:80%;height:60%" OnClick="document.getElementById('fileupload').click()" />
- </div>
+  <img src="../Images/UploadPic.png" style="width:60%;height:40%" OnClick="document.getElementById('fileupload').click()" />
+ </div>--%>
 </div>  
                         </td>
                         
                     </tr>
-                       
+                    
 
                     <tr style="height:100%;width:100%;">
                         <td style="height:100%;width:100%;">
@@ -475,25 +531,25 @@ background-color: ghostwhite;
 
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="Name" HeaderText="Name">
+                                <asp:BoundField DataField="Name" HeaderText="PATIENT NAME">
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                                 </asp:BoundField>
-                                <asp:BoundField DataField="Address" HeaderText="Address">
+                                <asp:BoundField DataField="Address" HeaderText="ADDRESS">
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                                 </asp:BoundField>
-                                <asp:BoundField DataField="Phone" HeaderText="Phone">
+                                <asp:BoundField DataField="Phone" HeaderText="PHONE">
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                                 </asp:BoundField>
-                                <asp:BoundField DataField="Email" HeaderText="Email">
+                                <asp:BoundField DataField="Email" HeaderText="EMAIL">
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                                 </asp:BoundField>
 
                             </Columns>
-                            <EditRowStyle BackColor="#0080AA"></EditRowStyle>
+                            <EditRowStyle HorizontalAlign="Center" BackColor="#0080AA"></EditRowStyle>
 
                             <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
 
-                            <HeaderStyle BackColor="#0080AA" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                            <HeaderStyle BackColor="#001a00" Font-Bold="True" ForeColor="White"></HeaderStyle>
 
                             <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#2461BF"></PagerStyle>
 
@@ -588,4 +644,5 @@ background-color: ghostwhite;
         </div>
 
     </div>
+    
 </asp:Content>

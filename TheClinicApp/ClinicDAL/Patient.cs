@@ -396,6 +396,8 @@ namespace TheClinicApp.ClinicDAL
         }
         #endregion ViewDateRegistration
 
+        #region DeletePatientDetails
+
         public void DeletePatientDetails()
         {
             SqlConnection con = null;
@@ -453,8 +455,9 @@ namespace TheClinicApp.ClinicDAL
             }
             
         }
-        
-        
+        #endregion DeletePatientDetails
+
+
         public DataTable GetSearchBoxData()
         {
 
