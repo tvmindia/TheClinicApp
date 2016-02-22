@@ -429,9 +429,9 @@ background-color: ghostwhite;
                                     <input type="text" class="form-control" placeholder="Search" style="height: 20%;" aria-haspopup="false" name="txtSearch" id="txtSearch" />
 
                                     <span class="input-group-addon" style="height: 0%;">
-                                        <button type="submit" style="height: .1%;" runat="server" id="btnSearch" onserverclick="btnSearch_ServerClick1" formnovalidate>
-                                            <i class="glyphicon glyphicon-search"></i>
-
+                                        <button type="submit" style="height: 0px;;" runat="server" id="btnSearch" onserverclick="btnSearch_ServerClick1" formnovalidate>
+                                          
+                                            <img src="../Images/Search-WF.png" />
                                         </button>
                                     </span>
 

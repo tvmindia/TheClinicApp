@@ -110,20 +110,25 @@ namespace TheClinicApp.Token
              
             DataSet dsPdetails = tok.GetpatientDetails(value);
             DataTable dt=dsPdetails.Tables[0];
-
+           
             if( dt.Rows.Count>0) 
             {
-            lblFile.Text = Convert.ToString(dt.Rows[0][0]);
+
+                lblFile.Text = "File Number &nbsp&nbsp  : &nbsp &nbsp &nbsp  " + Convert.ToString(dt.Rows[0][0]);
             lblName.Text = Convert.ToString(dt.Rows[0][1]);
-            lblAge.Text = Convert.ToString(dt.Rows[0][2]);
-            lblPhone.Text = Convert.ToString(dt.Rows[0][3]);
-                if( Convert.ToString(dt.Rows[0][3])=="")
+            DateTime date = DateTime.Now;
+            int year = date.Year;
+            DateTime dateTimeObj = Convert.ToDateTime(dt.Rows[0][2]);
+            int Age = year - dateTimeObj.Year;
+            lblAge.Text = Age.ToString();
+            lblPhone.Text ="Phone Number &nbsp&nbsp  : &nbsp &nbsp &nbsp  "+ Convert.ToString(dt.Rows[0][4]);
+            if (Convert.ToString(dt.Rows[0][4]) == "")
                 {
-                  lblPhone.Text =   "Phone Number Not Specified";
+                  lblPhone.Text ="Phone Number &nbsp&nbsp  : &nbsp &nbsp &nbsp  "+   "Phone Number Not Specified";
                       
                 }
-              
-            lblGender.Text = Convert.ToString(dt.Rows[0][4]);
+
+                lblGender.Text = Convert.ToString(dt.Rows[0][3]);
             if (Convert.ToString(dt.Rows[0][4]) == "")
             {
                 lblGender.Text = "Gender Not Specified";
