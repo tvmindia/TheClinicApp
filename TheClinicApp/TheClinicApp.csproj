@@ -130,6 +130,10 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Content\simple-sidebar.css" />
+    <Content Include="Images\navigate-left-icon.png" />
+    <Content Include="Images\navigate-right-icon.png" />
+    <Content Include="Scripts\bootcards.js" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Input.css" />
     <Content Include="Content\jquery-ui.css" />
@@ -144,6 +148,7 @@
     <Content Include="Content\Theme\Blue.css" />
     <Content Include="Content\Theme\Green.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Doctor\DoctorInformationPage.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\arrowR.png" />
@@ -183,6 +188,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.12.0.min.js" />
     <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="testpage.aspx" />
     <Content Include="Token\Tokens.aspx" />
     <Content Include="underConstruction.aspx" />
@@ -290,6 +296,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Doctor\DoctorInformationPage.aspx.cs">
+      <DependentUpon>DoctorInformationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Doctor\DoctorInformationPage.aspx.designer.cs">
+      <DependentUpon>DoctorInformationPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -352,7 +365,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Doctor\" />
     <Folder Include="Pharmacy\" />
     <Folder Include="Stock\" />
   </ItemGroup>

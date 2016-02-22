@@ -118,10 +118,9 @@ footer {
     color: white;
     font: bold;
     font-size: 25px;
-    padding-top: 2%;
     font-family: 'Cambria, Georgia, serif';
     text-align: center;
-    margin-left: 30%;
+    margin-left: 10%;
 }
 
 .footerMessagesColumn {
@@ -196,7 +195,6 @@ footer {
 }
 
 .tokenPatientDetailsTable {
-   
     margin-left: 7%;
 }
 
@@ -205,12 +203,12 @@ footer {
 }
 
 .tokenPatientDetailsName {
-  
     margin-left: 10%;
     color: white;
     font-size: 24px;
     font-family: 'Segoe WP SemiLight';
-    font-weight:bold;
+    font-weight: bold;
+    text-align: center;
 }
 
 .rounded_corners {
@@ -279,4 +277,21 @@ input.file {
     width: 20px;
     margin-top: -50px;
     padding-top: 0px;
+}
+
+.sidebar {
+    background-color: #e3e3e3 !important;
+    color: #428BCA !important;
+}
+
+
+.leftSideBar {
+    background-color: #47a3da;
+    position: fixed;
+    z-index: 2;
+    bottom: 0%;
+    right: 0%;
+    width: 15%;
+    height: 100%;
+   
 }

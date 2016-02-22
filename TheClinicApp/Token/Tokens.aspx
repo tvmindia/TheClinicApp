@@ -10,7 +10,7 @@
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
    
-
+    <script src="../Content/bootcards.js"></script>
     <div class="container bodyDiv" style="width:100%;">
           <label  class="headingLabel" >Patient Token Booking</label>
         <div class="col-md-12 Span-One">
@@ -96,6 +96,7 @@
                             </div>
                         </div>
                         <%-- Patient Details Diplay region --%>
+                        
                       
                    <table class="tokenPatientDetailsTable" id="divContainer" >
                        <tr>
@@ -182,7 +183,7 @@
                                      
 
                                     
-                                     <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False"  CssClass="footable" Style="max-width: 500px">
+                                     <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False"  CssClass="footable" Style="max-width: 500px" DataKeyNames="UniqueId">
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
                                   <asp:TemplateField HeaderText="DELETE">
