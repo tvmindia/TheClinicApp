@@ -79,7 +79,7 @@ namespace TheClinicApp.ClinicDAL
         {
 
 
-            SqlConnection con = null;
+            dbConnection dcon = null;
 
             try
             {
@@ -87,10 +87,10 @@ namespace TheClinicApp.ClinicDAL
                 Guid MedicineID = new Guid();
 
                 
-                dbConnection dcon = new dbConnection();
-                con = dcon.GetDBConnection();
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[InsertMedicines]";
 
@@ -121,9 +121,9 @@ namespace TheClinicApp.ClinicDAL
 
             finally
             {
-                if (con != null)
+                if (dcon.SQLCon != null)
                 {
-                    con.Dispose();
+                    dcon.DisconectDB();
                 }
 
             }
@@ -133,25 +133,25 @@ namespace TheClinicApp.ClinicDAL
         #endregion InsertMedicines
 
         #region UpdateMedicines
-        public void UpdateMedicines()
+        public void UpdateMedicines(string MedicineID )
         {
 
-            SqlConnection con = null;
+            dbConnection dcon = null;
 
             try
             {
 
                 
-                dbConnection dcon = new dbConnection();
-                con = dcon.GetDBConnection();
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[UpdateMedicines]";
 
 
 
-                cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = MedicineID;
+                cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
                 //cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@CateoryID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(CategoryID);
                 cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = Name;
@@ -178,9 +178,9 @@ namespace TheClinicApp.ClinicDAL
 
             finally
             {
-                if (con != null)
+                if (dcon.SQLCon != null)
                 {
-                    con.Dispose();
+                    dcon.DisconectDB();
                 }
 
             }
@@ -195,16 +195,16 @@ namespace TheClinicApp.ClinicDAL
         public DataSet ViewMedicines()
         {
 
-            SqlConnection con = null;
+            dbConnection dcon = null;
             DataSet ds = null;
             SqlDataAdapter sda = null;
             try
             {
 
-                dbConnection dcon = new dbConnection();
-                con = dcon.GetDBConnection();
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[ViewMedicines]";
 
@@ -231,9 +231,9 @@ namespace TheClinicApp.ClinicDAL
 
             finally
             {
-                if (con != null)
+                if (dcon.SQLCon != null)
                 {
-                    con.Dispose();
+                    dcon.DisconectDB();
                 }
 
             }
@@ -244,23 +244,23 @@ namespace TheClinicApp.ClinicDAL
         #endregion ViewMedicines
 
         #region DeleteMedicines
-        public void DeleteMedicines()
+        public void DeleteMedicines(string MedicineID)
         {
 
-            SqlConnection con = null;
+            dbConnection dcon = null;
 
             try
             {
 
 
-                dbConnection dcon = new dbConnection();
-                con = dcon.GetDBConnection();
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[DeleteMedicines]";
 
-                cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = MedicineID;
+                cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
 
                 cmd.ExecuteNonQuery();
 
@@ -274,9 +274,9 @@ namespace TheClinicApp.ClinicDAL
 
             finally
             {
-                if (con != null)
+                if (dcon.SQLCon != null)
                 {
-                    con.Dispose();
+                    dcon.DisconectDB();
                 }
 
             }
@@ -286,26 +286,26 @@ namespace TheClinicApp.ClinicDAL
         #endregion InsertMedicines
 
 
-#region Out_of_Stock_MedicineList
+        #region Out_of_Stock_MedicineList
         public DataSet OutofStockMedicines()
         {
 
-            SqlConnection con = null;
+            dbConnection dcon = null;
             DataSet ds = null;
             SqlDataAdapter sda = null;
             try
             {
 
-                dbConnection dcon = new dbConnection();
-                con = dcon.GetDBConnection();
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[OutofStockMedicines]";
 
             
-                cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
-                cmd.Parameters.Add("@ReOrderQty", SqlDbType.Real).Value = ReOrderQty;
+                //cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
+                //cmd.Parameters.Add("@ReOrderQty", SqlDbType.Real).Value = ReOrderQty;
 
                
                
@@ -331,9 +331,9 @@ namespace TheClinicApp.ClinicDAL
 
             finally
             {
-                if (con != null)
+                if (dcon.SQLCon != null)
                 {
-                    con.Dispose();
+                    dcon.DisconectDB();
                 }
 
             }
