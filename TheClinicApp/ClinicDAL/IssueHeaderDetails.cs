@@ -63,19 +63,17 @@ namespace TheClinicApp.ClinicDAL
         #region InsertIssueHeaderDetails
         public void InsertIssueHeaderDetails()
         {
-
-            SqlConnection con = null;
-
-            try
+             dbConnection dcon=null;
+           try
             {
 
                 Guid IssueID = new Guid();
 
                 DateTime now = DateTime.Now;
-                dbConnection dcon = new dbConnection();
-                con = dcon.GetDBConnection();
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[InsertIssueHeaderDetails]";
 
@@ -103,9 +101,9 @@ namespace TheClinicApp.ClinicDAL
 
             finally
             {
-                if (con != null)
+                if (dcon.SQLCon != null)
                 {
-                    con.Dispose();
+                    dcon.DisconectDB();
                 }
 
             }
@@ -115,24 +113,24 @@ namespace TheClinicApp.ClinicDAL
         #endregion InsertIssueHeaderDetails
 
         #region UpdateIssueHeaderDetails
-        public void UpdateIssueHeaderDetails()
+        public void UpdateIssueHeaderDetails( string IssueID)
         {
 
-            SqlConnection con = null;
+            dbConnection dcon = null;
 
             try
             {
 
                 DateTime now = DateTime.Now;
-                dbConnection dcon = new dbConnection();
-                con = dcon.GetDBConnection();
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[UpdateIssueHeaderDetails]";
 
 
-                cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = IssueID;
+                cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(IssueID);
              
                 cmd.Parameters.Add("@IssuedTo", SqlDbType.NVarChar, 255).Value = IssuedTo;
                 cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd");
@@ -155,9 +153,9 @@ namespace TheClinicApp.ClinicDAL
 
             finally
             {
-                if (con != null)
+                if (dcon.SQLCon != null)
                 {
-                    con.Dispose();
+                    dcon.DisconectDB();
                 }
 
             }
@@ -172,16 +170,16 @@ namespace TheClinicApp.ClinicDAL
         public DataSet ViewIssueHeaderDetails()
         {
 
-            SqlConnection con = null;
+            dbConnection dcon = null;
             DataSet ds = null;
             SqlDataAdapter sda = null;
             try
             {
 
-                dbConnection dcon = new dbConnection();
-                con = dcon.GetDBConnection();
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[ViewIssueHeaderDetails]";
 
@@ -208,9 +206,9 @@ namespace TheClinicApp.ClinicDAL
 
             finally
             {
-                if (con != null)
+                if (dcon.SQLCon != null)
                 {
-                    con.Dispose();
+                    dcon.DisconectDB();
                 }
 
             }
@@ -221,24 +219,27 @@ namespace TheClinicApp.ClinicDAL
         #endregion ViewIssueHeaderDetails
 
         #region DeleteIssueHeaderDetails
-
-        public void DeleteIssueHeaderDetails()
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="IssueID"></param>
+        public void DeleteIssueHeaderDetails(string IssueID)
         {
 
-            SqlConnection con = null;
+            dbConnection dcon = null;
 
             try
             {
 
 
-                dbConnection dcon = new dbConnection();
-                con = dcon.GetDBConnection();
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[DeleteIssueHeaderDetails]";
 
-                cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = IssueID;
+                cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(IssueID);
 
                 cmd.ExecuteNonQuery();
 
@@ -252,9 +253,9 @@ namespace TheClinicApp.ClinicDAL
 
             finally
             {
-                if (con != null)
+                if (dcon.SQLCon != null)
                 {
-                    con.Dispose();
+                    dcon.DisconectDB();
                 }
 
             }
@@ -325,7 +326,7 @@ namespace TheClinicApp.ClinicDAL
         public void InsertIssueDetails()
         {
 
-            SqlConnection con = null;
+            dbConnection dcon = null;
 
             try
             {
@@ -333,10 +334,10 @@ namespace TheClinicApp.ClinicDAL
                 Guid UniqueID = new Guid();
 
                 //DateTime now = DateTime.Now;
-                dbConnection dcon = new dbConnection();
-                con = dcon.GetDBConnection();
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[InsertIssueDetails]";
 
@@ -364,9 +365,9 @@ namespace TheClinicApp.ClinicDAL
 
             finally
             {
-                if (con != null)
+                if (dcon.SQLCon != null)
                 {
-                    con.Dispose();
+                    dcon.DisconectDB();
                 }
 
             }
@@ -376,23 +377,24 @@ namespace TheClinicApp.ClinicDAL
         #endregion InsertIssueDetails
 
         #region UpdateIssueDetails
-        public void UpdateIssueDetails()
+        public void UpdateIssueDetails(string UniqueID)
         {
 
-            SqlConnection con = null;
+            dbConnection dcon = null;
 
             try
             {
 
                 DateTime now = DateTime.Now;
-                dbConnection dcon = new dbConnection();
-                con = dcon.GetDBConnection();
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[UpdateIssueDetails]";
 
-                cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = UniqueID;
+                cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(UniqueID);
+
                 cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(IssueID);
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
@@ -414,9 +416,9 @@ namespace TheClinicApp.ClinicDAL
 
             finally
             {
-                if (con != null)
+                if (dcon.SQLCon != null)
                 {
-                    con.Dispose();
+                    dcon.DisconectDB();
                 }
 
             }
@@ -431,16 +433,16 @@ namespace TheClinicApp.ClinicDAL
         public DataSet ViewIssueDetails()
         {
 
-            SqlConnection con = null;
+            dbConnection  dcon = null;
             DataSet ds = null;
             SqlDataAdapter sda = null;
             try
             {
 
-                dbConnection dcon = new dbConnection();
-                con = dcon.GetDBConnection();
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[ViewIssueDetails]";
 
@@ -467,10 +469,11 @@ namespace TheClinicApp.ClinicDAL
 
             finally
             {
-                if (con != null)
+                if (dcon.SQLCon != null)
                 {
-                    con.Dispose();
+                    dcon.DisconectDB();
                 }
+
 
             }
 
@@ -481,23 +484,23 @@ namespace TheClinicApp.ClinicDAL
 
         #region DeleteIssueDetails
 
-        public void DeleteIssueDetails()
+        public void DeleteIssueDetails(string UniqueID,string MedicineID )
         {
 
-            SqlConnection con = null;
+            dbConnection dcon = null;
 
             try
             {
 
 
-                dbConnection dcon = new dbConnection();
-                con = dcon.GetDBConnection();
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[DeleteIssueDetails]";
 
-                cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = UniqueID;
+                cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(UniqueID);
                 cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
 
                 cmd.ExecuteNonQuery();
@@ -512,10 +515,11 @@ namespace TheClinicApp.ClinicDAL
 
             finally
             {
-                if (con != null)
+                if (dcon.SQLCon != null)
                 {
-                    con.Dispose();
+                    dcon.DisconectDB();
                 }
+
 
             }
 

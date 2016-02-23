@@ -90,7 +90,8 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandText = "[PrescriptionDetails]";
 
                 cmd.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = PatientID;
-
+                
+                // PrescriptionDT.PrescID,MedicineID,Qty,Unit,Dosage,Timing,Days will be diplayed
 
                 sda = new SqlDataAdapter();
                 cmd.ExecuteNonQuery();
