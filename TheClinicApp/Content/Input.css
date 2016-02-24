@@ -123,6 +123,15 @@ footer {
     margin-left: 10%;
 }
 
+.subheadingLabel_1 {
+    color: seagreen;
+    font: bold;
+    font-size: 25px;
+    font-family: 'Cambria, Georgia, serif';
+    text-align: center;
+    margin-left: 10%;
+}
+
 .footerMessagesColumn {
     margin-left: 2%;
     width: 30%;
