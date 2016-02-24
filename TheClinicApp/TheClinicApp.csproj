@@ -300,7 +300,7 @@
     <Compile Include="ClinicDAL\PrescriptionHeaderDetails.cs" />
     <Compile Include="ClinicDAL\Receipt.cs" />
     <Compile Include="ClinicDAL\Security.cs" />
-    <Compile Include="ClinicDAL\Stock.cs" />
+    <Compile Include="ClinicDAL\Stocks.cs" />
     <Compile Include="ClinicDAL\TokensBooking.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
