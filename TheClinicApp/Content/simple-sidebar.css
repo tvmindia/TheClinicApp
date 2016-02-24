@@ -67,12 +67,13 @@
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: color: ;
+    color:  rgb(0, 51, 0)  ;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: 
+    color: white;
 .sid;
     background: rgba(255,255,255,0.2);
 }

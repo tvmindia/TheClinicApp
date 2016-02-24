@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TheClinicApp.ClinicDAL;
 
 namespace TheClinicApp.Doctor
 {
@@ -11,7 +12,12 @@ namespace TheClinicApp.Doctor
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //Patient Patientobj = new Patient();
+            //#region GridAllRegistration
+            //datagrid.EmptyDataText = "No Records Found";
+            ////datagrid.DataSource = Patientobj.GetAllRegistration();
+            //datagrid.DataBind();
+            //#endregion GridAllRegistration
         }
     }
 }
