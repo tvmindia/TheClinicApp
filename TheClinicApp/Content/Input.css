@@ -35,6 +35,7 @@
     border-right: 0;
     box-shadow: 0 0 0;
     border-color: #ccc;
+    height:100%;
 }
 
 .stylish-input-group button {
@@ -279,13 +280,17 @@ input.file {
     padding-top: 0px;
 }
 
+
 .sidebar {
-    background-color:rgba(102, 51, 0,.3) !important;
+  background-color:rgba(102, 51, 0,.3) !important;
     color: #428BCA !important;
+    margin:0px auto;
+    height:100%;
 }
 
+ 
 
-.leftSideBar {
+.RightSideBar {
     background-color: black;
     position: fixed;
     z-index: 2;
@@ -361,4 +366,20 @@ input.file {
     color:white;
     font-size:16px;
 
+}
+.add-on .input-group-btn > .btn {
+  border-left-width:0;left:-2px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+/* stop the glowing blue shadow */
+.add-on .form-control:focus {
+ box-shadow:none;
+ -webkit-box-shadow:none; 
+ border-color:#cccccc; 
+}
+
+.wrap {
+    min-height: 100%;
+    position: relative;
 }

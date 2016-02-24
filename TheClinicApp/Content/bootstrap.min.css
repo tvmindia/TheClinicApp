@@ -4284,6 +4284,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
+    height:100%;
 }
 
     .nav > li {
@@ -5685,14 +5686,14 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
 
 .list-group {
     padding-left: 0;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .list-group-item {
     position: relative;
     display: block;
     padding: 10px 15px;
-    margin-bottom: -1px;
+    margin-top: -20px;
     background-color: #fff;
     border: 1px solid #ddd;
 }
