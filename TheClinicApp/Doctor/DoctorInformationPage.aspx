@@ -4,11 +4,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="../Content/font-awesome.min.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/simple-sidebar.css" rel="stylesheet" />
@@ -19,11 +15,11 @@
   
 
       <div class="container" style="width:100%; ">
-  
+          
         <div class="col-md-12">
-
-             <div class="col-md-3">
-                 <div id="sidebar-wrapper" class="sidebar">
+           
+             <div class="col-md-3" >
+                	<div id="sidebar-wrapper" class="sidebar">
             <ul class="sidebar-nav">
                 <li class="leftSideBarHeaing"  >
                     
@@ -54,25 +50,27 @@
             </ul>
         </div>
                  </div>
+
              <div class="col-md-7">
                  <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div  class="row"> 
-                    <div class="col-md-12">
-                                <div>
-                                <div class="input-group stylish-input-group">
-                                    <input type="text" class="form-control" placeholder="Search" style="height: 20%;" aria-haspopup="false" name="txtSearch" id="txtSearch" />
+                    <div class="col-lg-12">
+                              
+                                         <form class="navbar-form navbar-right" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search this site">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default">
+                        <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </form>
 
-                                    <span class="input-group-addon" style="height: 0%;">
-                                        <button type="submit" style="height: 0px;;" runat="server" id="btnSearch" >
-                                          
-                                            <img src="../Images/Search-WF.png" />
-                                        </button>
-                                    </span>
-
-                                </div>
+                                
                                     </div>
-                                    </div></div>
+                                    </div>
                   
                 <div class="row patientDetailsDiv" >
                     <div class="col-md-12" style="margin-top:20px;">
@@ -175,7 +173,7 @@
  
     <div class="col-md-12"  style="width:100%;">
       <div class="content">
-        <div class="accordion-container"> <a href="#" class="accordion-toggle">Lorem Ipsum is simply <span class="toggle-icon"><i >
+        <div class="accordion-container"> <a href="#" class="accordion-toggle">Symptoms <span class="toggle-icon"><i >
           
             <img src="../Images/plus.png" />
                </i></span></a>
@@ -203,7 +201,8 @@
                <label  class="control-label col-lg-3">Sleep
                   </label>
                 <div class="col-lg-9">
-                                <asp:TextBox ID="txtSleep" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                                                              <asp:TextBox ID="txtSleep" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+
              
 
                 </div>
@@ -214,14 +213,76 @@
         <!--/.accordion-container-->
         <div class="accordion-container"> <a href="#" class="accordion-toggle">Systamatic Examination Details<span class="toggle-icon"><i >    <img src="../Images/plus.png" /></i></span></a>
           <div class="accordion-content">
-               <label  class="control-label col-lg-3">Sleep
+               <label  class="control-label col-lg-3">Cardiovascular
                   </label>
                 <div class="col-lg-9">
-                                <asp:TextBox ID="TextBox1" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                                <asp:TextBox ID="txtCardiovascular" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
              
 
                 </div>
+                <label  class="control-label col-lg-3">Nervoussystem
+                  </label>
+                <div class="col-lg-9">
+                                <asp:TextBox ID="txtNervoussystem" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+             
 
+                </div>
+                      <label  class="control-label col-lg-3">Musculoskeletal
+                  </label>
+                <div class="col-lg-9">
+                                <asp:TextBox ID="txtMusculoskeletal" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+             
+
+                </div>
+                 <label  class="control-label col-lg-3">Palloe
+                  </label>
+                <div class="col-lg-9">
+                                <asp:TextBox ID="txtPalloe" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+             
+
+                </div>
+               <label  class="control-label col-lg-3">Icterus
+                  </label>
+                <div class="col-lg-9">
+                                <asp:TextBox ID="txtIcterus" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+             
+
+                </div>
+               <label  class="control-label col-lg-3">Clubbing
+                  </label>
+                <div class="col-lg-9">
+                                <asp:TextBox ID="txtClubbing" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+             
+
+                </div>
+                   <label  class="control-label col-lg-3">Cyanasis
+                  </label>
+                <div class="col-lg-9">
+                                <asp:TextBox ID="txtCyanasis" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+             
+
+                </div>
+                 <label  class="control-label col-lg-3">Bowel
+                  </label>
+                <div class="col-lg-9">
+                                <asp:TextBox ID="txtBowel" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+             
+
+                </div>
+                    <label  class="control-label col-lg-3">Appettie
+                  </label>
+                <div class="col-lg-9">
+                                <asp:TextBox ID="txtAppettie" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+             
+
+                </div>
+                <label  class="control-label col-lg-3">Micturation
+                  </label>
+                <div class="col-lg-9">
+                                <asp:TextBox ID="txtMicturation" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+             
+
+                </div>
           </div>
           <!--/.accordion-content--> 
         </div>
@@ -261,7 +322,7 @@
                <label  class="control-label col-lg-3">Prescription section
                   </label>
                 <div class="col-lg-9">
-                                <table style="width:50%">
+                                <table style="width:20%">
             <tr>
                 <td style="font-size: small">MEDICINE</td><td><input id="txtMedname1" class="Country" type="text" runat="server" /></td><td><input id="txtMeddoz1" type="text" placeholder="Dozage" runat="server" /></td><td><input id="txtMedprescription1" type="text" placeholder="Prescription" runat="server" /></td>
             </tr>
@@ -288,6 +349,28 @@
           </div>
           <!--/.accordion-content--> 
         </div>
+          <div class="accordion-container"> <a href="#" class="accordion-toggle">Remarks<span class="toggle-icon"><i >
+          
+            <img src="../Images/plus.png" />
+               </i></span></a>
+          <div class="accordion-content">
+            <form role="form" class="form-horizontal">
+              <div class="form-group">
+                <label  class="control-label col-lg-3">Remarks
+                  </label>
+                <div class="col-lg-9">
+                                <asp:TextBox ID="txtRemarks" class="form-control " TextMode="multiline"  Height="100"  Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+             
+
+                </div>
+              </div>
+            </form>
+            
+            
+            
+          </div>
+          <!--/.accordion-content--> 
+        </div>
       </div>
     </div>
 
@@ -295,11 +378,10 @@
     
 	</div>
 
-
+                </div>
                     </div>
             </div>
-        </div>
-                 
+                        
              <div class="col-md-2" ">
                  <div class="row" >
 	  
@@ -308,7 +390,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </div>
-    <div class="list-group leftSideBar">
+    <div class="list-group RightSideBar">
         <span href="#" class="list-group-item active">
          GRID
             <span class="pull-right" id="slide-submenu">
@@ -324,8 +406,52 @@
              
                 
             </div>
-    </div>
-         </div>
+   
+       
+              
+          </div>
+      
+          <footer  class="footerDiv">
+         
+
+                <table style="width: 100%; height: 100%;">
+                    <tr>
+                        <td class="footerMessagesColumn" style="width:50%; ">
+                            <div id="Errorbox"  style="height:100%;  display:none;"  runat="server" >
+                               <a class="close" data-dismiss="alert">×</a>  
+
+                            <div>
+                            <strong> <asp:Label ID="lblErrorCaption" runat="server" Text=""></asp:Label> </strong>      <asp:Label ID="lblMsgges" runat="server" Text=""></asp:Label>
+
+</div>
+       </div>                     
+
+                        </td>
+                        <td style="height: 100%;   width:20%;">
+
+                        </td>
+                        <td style="height: 100%;   width:30%;" >
+                            <table class="footerTable" style="width:100%; margin-left:0px;padding-left:0px;padding-top:80%; margin-top:3%;  ">
+                                <tr>
+                                    <td style="width:30%;">
+                                         <div class="form-group">
+                                        <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button" ValidationGroup="Submit" />
+</div>
+                                    </td>
+                                    <td>
+                                       </td>
+                                </tr>
+                            </table>
+
+                        </td>
+
+                    </tr>
+                </table>
+
+
+            
+        </footer>
+          </div>
     <asp:HiddenField runat="server" ID="HiddenField1"></asp:HiddenField>
      <!-- Sidebar -->
         
@@ -381,7 +507,7 @@
                   <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');
                           count.value=iCnt;--%>
                   // ADD TEXTBOX.
-                  $(container).append('<table style="width:50%"><tr><td style="font-size: small">MEDICINE</td> <td><input id="txtMedname5" type="text" class="input" placeholder="Name"/></td><td style="font-size: small"><input id="txtMeddoz5" type="text" class="input" placeholder="Dozage"/></td><td style="font-size: small"><input id="txtMedprescription" type="text" class="input" placeholder="Prescription"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
+                  $(container).append('<table style="width:20%"><tr><td style="font-size: small">MEDICINE</td> <td><input id="txtMedname5" type="text" class="input" placeholder="Name"/></td><td style="font-size: small"><input id="txtMeddoz5" type="text" class="input" placeholder="Dozage"/></td><td style="font-size: small"><input id="txtMedprescription" type="text" class="input" placeholder="Prescription"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
 
                   // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
                   if (iCnt == 1) {
