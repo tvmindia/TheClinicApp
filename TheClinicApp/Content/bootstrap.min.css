@@ -2334,7 +2334,7 @@ pre {
         font-size:18px;
     }
     .col-phar-patiedet{
-        width:50%;
+        width:100%;
     }
     .col-md-3 {
         width: 25%;
@@ -5390,6 +5390,7 @@ a.badge:focus, a.badge:hover {
 .jumbotron .container {
     max-width: 100%;
 }
+
 
 @media screen and (min-width:768px) {
     .jumbotron {

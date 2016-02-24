@@ -28,8 +28,7 @@
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/Input.css" rel="stylesheet" />
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
-   
+ 
     <div class="container"> 
         <div class="col-md-12">
              <div class="col-md-9">
@@ -47,20 +46,20 @@
         <div class="jumbotron"> 
             <h1>PATIENT DETAILS</h1>
          <div class="col-phar-patient">
-             <table>
+             <table class="table-responsive">
                  <tr>
-                     <td>
+                     <td style="width:100%">
                          <asp:Label ID="lblName" runat="server"  Text="Mr.THOMSON K VARKEY" style="font-size: large"></asp:Label>
 
                      </td>
-                      <td>
+                      <td style="width:100%">
                          <asp:Label ID="lblPhone" runat="server" Text="9656605436" style="font-size: medium;text-align:right"></asp:Label>
                      </td>
 
                  </tr>
                  </table>
              </div>
-            <div>
+            <div style="width:100%">
              <table id="t01" style="width:98.75%" >
                  <tr>
                      <td class="auto-style1">
@@ -92,7 +91,7 @@
                          </td>
                      </tr>
                  <tr>
-                    >
+                    
                      <td>
 
                      </td>
@@ -105,7 +104,7 @@
         <div class="row">
             <div class="jumbotron">
                 <h1>MEDICINE DETAILS</h1>
-                <table style="width: 100%">
+                <table>
                     <tr>
                         <td style="font-size: small">MEDICINE</td>
                         <td>
