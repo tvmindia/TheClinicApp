@@ -295,6 +295,16 @@ input.file {
     height: 100%;
    padding-top:20px;
 }
+.leftSideBar1 {
+    background-color: #347300;
+    position: fixed;
+    z-index: 2;
+    bottom: 0%;
+    right: 0%;
+    width: 25%;
+    height: 90%;
+   padding-top:20px;
+}
 
  .patientDetailsDiv
  {
