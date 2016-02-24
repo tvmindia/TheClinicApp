@@ -135,7 +135,7 @@
 
                 <%--  --%>
 
-               <label  class="subheadingLabel " >Existing Details</label>
+               <label  class="subheadingLabel_1 " >Existing Details</label>
 
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
@@ -208,7 +208,7 @@
 
             <div class="col-xs-5" style="height:350px;width:30%;" >
                 <div >
-                     <label  class="subheadingLabel " >OUT OF STOCK/LESS STOCK LIST </label>
+                     <label  class="subheadingLabel_1 " >OUT OF STOCK/LESS STOCK LIST </label>
 
                    <div class="rounded_corners"  style="width: 400px">
 
