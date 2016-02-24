@@ -10,7 +10,6 @@
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
    
-    <script src="../Content/bootcards.js"></script>
     <div class="container bodyDiv" style="width:100%;">
           <label  class="headingLabel" >Patient Token Booking</label>
         <div class="col-md-12 Span-One">

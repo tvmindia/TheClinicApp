@@ -130,11 +130,18 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Content\accodin.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\selectize.css" />
     <Content Include="Content\simple-sidebar.css" />
+    <Content Include="Images\Addition .png" />
+    <Content Include="Images\Close1.png" />
+    <Content Include="Images\Minus.png" />
     <Content Include="Images\navigate-left-icon.png" />
     <Content Include="Images\navigate-right-icon.png" />
+    <Content Include="Images\plus.png" />
     <Content Include="Scripts\bootcards.js" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Input.css" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\materialize\css\materialize.css" />
@@ -186,9 +193,12 @@
     <Content Include="Images\UploadPic.png" />
     <Content Include="Registration\Patients.aspx" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-1.12.0.min.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\selectize.js" />
+    <Content Include="Stock\Stock.aspx" />
     <Content Include="testpage.aspx" />
     <Content Include="Token\Tokens.aspx" />
     <Content Include="underConstruction.aspx" />
@@ -334,6 +344,13 @@
     <Compile Include="Registration\Patients.aspx.designer.cs">
       <DependentUpon>Patients.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Stock\Stock.aspx.cs">
+      <DependentUpon>Stock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\Stock.aspx.designer.cs">
+      <DependentUpon>Stock.aspx</DependentUpon>
+    </Compile>
     <Compile Include="testpage.aspx.cs">
       <DependentUpon>testpage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -367,10 +384,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Doctor\" />
     <Folder Include="Images\Profilepic\" />
     <Folder Include="Pharmacy\" />
-    <Folder Include="Stock\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
