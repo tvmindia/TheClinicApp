@@ -66,7 +66,7 @@ namespace TheClinicApp.ClinicDAL
         public void InsertPrescriptionHeaderDetails()
         {
 
-          SqlConnection con = null;
+          dbConnection dcon = null;
             
             try
             {
@@ -74,10 +74,10 @@ namespace TheClinicApp.ClinicDAL
             Guid PrescID = new Guid();
             
             DateTime now = DateTime.Now;
-            dbConnection dcon = new dbConnection();
-            con = dcon.GetDBConnection();
+            dcon = new dbConnection();
+            dcon.GetDBConnection();
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
+            cmd.Connection = dcon.SQLCon;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[InsertPrescriptionHeaderDetails]";
 
@@ -107,9 +107,9 @@ namespace TheClinicApp.ClinicDAL
 
             finally
             {
-                if (con != null)
+                if (dcon.SQLCon != null)
                 {
-                    con.Dispose();
+                    dcon.DisconectDB();
                 }
 
             }
@@ -119,51 +119,51 @@ namespace TheClinicApp.ClinicDAL
         #endregion InsertPrescriptionHeaderDetails
 
         //#region UpdatePrescriptionHeaderDetails
-        ////public void UpdatePrescriptionHeaderDetails()
-        ////{
+        //public void UpdatePrescriptionHeaderDetails(string PrescID)
+        //{
 
-        ////SqlConnection con = null;
-            
-        ////    try
-        ////    {
+        //    dbConnection dcon = null;
 
-        ////    DateTime now = DateTime.Now;
-        ////    dbConnection dcon = new dbConnection();
-        ////    con = dcon.GetDBConnection();
-        ////    SqlCommand cmd = new SqlCommand();
-        ////    cmd.Connection = con;
-        ////    cmd.CommandType = CommandType.StoredProcedure;
-        ////    cmd.CommandText = "[UpdatePrescriptionHeaderDetails]";
+        //    try
+        //    {
 
-        ////    cmd.Parameters.Add("@PrescID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(PrescID);
-        ////    cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(DoctorID);      
-        ////    cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd");
-        ////    cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
-        ////    cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreatedDate;
-        ////    cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
-        ////    cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = UpdatedDate;
+        //        DateTime now = DateTime.Now;
+        //        dcon = new dbConnection();
+        //        dcon.GetDBConnection();
+        //        SqlCommand cmd = new SqlCommand();
+        //        cmd.Connection = dcon.SQLCon;
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        cmd.CommandText = "[UpdatePrescriptionHeaderDetails]";
+
+        //        cmd.Parameters.Add("@PrescID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(PrescID);
+        //        cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(DoctorID);
+        //        cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd");
+        //        cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
+        //        cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreatedDate;
+        //        cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
+        //        cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = UpdatedDate;
 
 
-        ////    cmd.ExecuteNonQuery();
-            
-        ////     }
+        //        cmd.ExecuteNonQuery();
 
-        ////    catch (Exception ex)
-        ////    {
-                 
-        ////        throw ex;
-        ////    }
+        //    }
 
-        ////    finally
-        ////    {
-        ////        if (con != null)
-        ////        {
-        ////            con.Dispose();
-        ////        }
+        //    catch (Exception ex)
+        //    {
 
-        ////    }
+        //        throw ex;
+        //    }
 
-        ////}
+        //    finally
+        //    {
+        //        if (dcon.SQLCon != null)
+        //        {
+        //            dcon.DisconectDB();
+        //        }
+
+        //    }
+
+        //}
 
 
         //#endregion UpdatePrescriptionHeaderDetails
@@ -173,16 +173,16 @@ namespace TheClinicApp.ClinicDAL
         public DataSet  ViewPrescriptionHeaderDetails()
         {
 
-            SqlConnection con = null;
+            dbConnection dcon = null;
             DataSet ds = null;
             SqlDataAdapter sda = null;
             try
             {
  
-                dbConnection dcon = new dbConnection();
-                con = dcon.GetDBConnection();
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[ViewPrescriptionHeaderDetails]";
 
@@ -209,9 +209,9 @@ namespace TheClinicApp.ClinicDAL
 
             finally
             {
-                if (con != null)
+                if (dcon.SQLCon != null)
                 {
-                    con.Dispose();
+                    dcon.DisconectDB();
                 }
 
             }
@@ -223,19 +223,19 @@ namespace TheClinicApp.ClinicDAL
 
         #region DeletePrescriptionDetails
 
-        public void DeletePrescriptionDetails()
+        public void DeletePrescriptionDetails( string PrescID)
         {
 
-            SqlConnection con = null;
+            dbConnection dcon = null;
 
             try
             {
 
 
-                dbConnection dcon = new dbConnection();
-                con = dcon.GetDBConnection();
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[DeletePrescriptionHeaderDetails]";
 
@@ -253,9 +253,9 @@ namespace TheClinicApp.ClinicDAL
 
             finally
             {
-                if (con != null)
+                if (dcon.SQLCon != null)
                 {
-                    con.Dispose();
+                    dcon.DisconectDB();
                 }
 
             }
@@ -350,17 +350,17 @@ namespace TheClinicApp.ClinicDAL
          public void InsertPrescriptionDetails()
          {
 
-             SqlConnection con = null;
+             dbConnection  dcon = null;
 
              try
              {
 
                  Guid UniqueID = new Guid();
 
-                 dbConnection dcon = new dbConnection();
-                 con = dcon.GetDBConnection();
+                 dcon = new dbConnection();
+                 dcon.GetDBConnection();
                  SqlCommand cmd = new SqlCommand();
-                 cmd.Connection = con;
+                 cmd.Connection = dcon.SQLCon;
                  cmd.CommandType = CommandType.StoredProcedure;
                  cmd.CommandText = "[InsertPrescriptionDetails]";
 
@@ -392,9 +392,9 @@ namespace TheClinicApp.ClinicDAL
 
              finally
              {
-                 if (con != null)
+                 if (dcon.SQLCon != null)
                  {
-                     con.Dispose();
+                     dcon.DisconectDB();
                  }
 
              }
@@ -409,16 +409,16 @@ namespace TheClinicApp.ClinicDAL
          public DataSet ViewPrescriptionDetails()
          {
 
-             SqlConnection con = null;
+             dbConnection  dcon = null;
              DataSet ds = null;
              SqlDataAdapter sda = null;
              try
              {
 
-                 dbConnection dcon = new dbConnection();
-                 con = dcon.GetDBConnection();
+                 dcon = new dbConnection();
+                 dcon.GetDBConnection();
                  SqlCommand cmd = new SqlCommand();
-                 cmd.Connection = con;
+                 cmd.Connection = dcon.SQLCon;
                  cmd.CommandType = CommandType.StoredProcedure;
                  cmd.CommandText = "[ViewPrescriptionDetails]";
 
@@ -444,9 +444,9 @@ namespace TheClinicApp.ClinicDAL
 
              finally
              {
-                 if (con != null)
+                 if (dcon.SQLCon != null)
                  {
-                     con.Dispose();
+                     dcon.DisconectDB();
                  }
 
              }
@@ -457,19 +457,19 @@ namespace TheClinicApp.ClinicDAL
 
         #region UpdatePrescriptionDetails
 
-         public void UpdatePrescriptionDetails()
+         public void UpdatePrescriptionDetails( string UniqueID)
          {
 
-             SqlConnection con = null;
+             dbConnection dcon = null;
 
              try
              {
 
             
-                 dbConnection dcon = new dbConnection();
-                 con = dcon.GetDBConnection();
+                 dcon = new dbConnection();
+                 dcon.GetDBConnection();
                  SqlCommand cmd = new SqlCommand();
-                 cmd.Connection = con;
+                 cmd.Connection = dcon.SQLCon;
                  cmd.CommandType = CommandType.StoredProcedure;
                  cmd.CommandText = "[UpdatePrescriptionDetails]";
 
@@ -499,9 +499,9 @@ namespace TheClinicApp.ClinicDAL
 
              finally
              {
-                 if (con != null)
+                 if (dcon.SQLCon != null)
                  {
-                     con.Dispose();
+                     dcon.DisconectDB();
                  }
 
              }
@@ -513,19 +513,19 @@ namespace TheClinicApp.ClinicDAL
 
         #region DeletePrescriptionDetails
 
-         public void DeletePrescriptionDetails()
+         public void DeletePrescriptionDetails( string UniqueID)
          {
 
-             SqlConnection con = null;
+             dbConnection dcon = null;
 
              try
              {
 
 
-                 dbConnection dcon = new dbConnection();
-                 con = dcon.GetDBConnection();
+                 dcon = new dbConnection();
+                 dcon.GetDBConnection();
                  SqlCommand cmd = new SqlCommand();
-                 cmd.Connection = con;
+                 cmd.Connection = dcon.SQLCon;
                  cmd.CommandType = CommandType.StoredProcedure;
                  cmd.CommandText = "[DeletePrescriptionDetails]";
 
@@ -543,9 +543,9 @@ namespace TheClinicApp.ClinicDAL
 
              finally
              {
-                 if (con != null)
+                 if (dcon.SQLCon != null)
                  {
-                     con.Dispose();
+                     dcon.DisconectDB();
                  }
 
              }
