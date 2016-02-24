@@ -198,6 +198,7 @@
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\selectize.js" />
+    <Content Include="Stock\Stock.aspx" />
     <Content Include="testpage.aspx" />
     <Content Include="Token\Tokens.aspx" />
     <Content Include="underConstruction.aspx" />
@@ -343,6 +344,13 @@
     <Compile Include="Registration\Patients.aspx.designer.cs">
       <DependentUpon>Patients.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Stock\Stock.aspx.cs">
+      <DependentUpon>Stock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\Stock.aspx.designer.cs">
+      <DependentUpon>Stock.aspx</DependentUpon>
+    </Compile>
     <Compile Include="testpage.aspx.cs">
       <DependentUpon>testpage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -378,7 +386,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Images\Profilepic\" />
     <Folder Include="Pharmacy\" />
-    <Folder Include="Stock\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
