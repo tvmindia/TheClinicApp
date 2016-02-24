@@ -134,7 +134,7 @@ namespace TheClinicApp.ClinicDAL
             set;
         }
         #endregion Visitsproperty
-        #region VisitAttachments
+        #region VisitAttachmentsProperty
         public Guid AttachID
         {
             get;
@@ -165,7 +165,173 @@ namespace TheClinicApp.ClinicDAL
             get;
             set;
         }
-        #endregion VisitAttachments
+        #endregion VisitAttachmentsProperty
+        #region PrescriptionProperty
+        public Guid UniqueID
+        {
+            get;
+            set;
+        }
+        public Guid MedicineID
+        {
+            get;
+            set;
+        }
+        
+        public string Qty
+        {
+            get;
+            set;
+        }
+        public string Unit
+        {
+            get;
+            set;
+        }
+        public string Dosage
+        {
+            get;
+            set;
+        }
+        public string Timing
+        {
+            get;
+            set;
+        }
+        public int Days
+        {
+            get;
+            set;
+        }
+
+        #endregion PrescriptionProperty
+
+        #region AddFile
+        public void AddFile()
+        {
+            dbConnection dcon = new dbConnection();
+           
+            try
+            {
+
+                
+                dcon.GetDBConnection();
+                SqlCommand pud = new SqlCommand();
+                pud.Connection = dcon.SQLCon;
+                pud.CommandType = System.Data.CommandType.StoredProcedure;
+                pud.CommandText = "[InsertNewFile]";
+                pud.Parameters.Add("@FileID", SqlDbType.UniqueIdentifier).Value = FileID;
+                pud.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = PatientID;
+                pud.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = ClinicID;
+                pud.Parameters.Add("@FileDate", SqlDbType.DateTime).Value = DateTime.Now;
+                pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                pud.Parameters.Add("@FileNumber", SqlDbType.NVarChar, 50).Value = FileNumber;
+                //pud.Parameters.Add("@image", SqlDbType.VarBinary).Value = image; 
+                SqlParameter Output = new SqlParameter();
+                Output.DbType = DbType.Int32;
+                Output.ParameterName = "@Status";
+                Output.Direction = ParameterDirection.Output;
+                pud.Parameters.Add(Output);
+                pud.ExecuteNonQuery();
+
+                if (Output.Value.ToString() == "")
+                {
+                    //not successfull   
+
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.InsertionNotSuccessMessage(page);
+
+                }
+                else
+                {
+                    //successfull
+
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.InsertionSuccessMessage(page);
+
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
+
+            }
+
+            finally
+            {
+                if (dcon.SQLCon != null)
+                {
+                    dcon.DisconectDB();
+                }
+
+            }
+        }
+        #endregion AddFile
+
+        #region UpdateFile
+        public void UpdateFile()
+        {
+            SqlConnection con = null;
+            try
+            {
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand pud = new SqlCommand();
+                pud.Connection = con;
+                pud.CommandType = System.Data.CommandType.StoredProcedure;
+                pud.CommandText = "UpdateFile";
+                pud.Parameters.Add("@FileID", SqlDbType.UniqueIdentifier).Value = FileID;
+                pud.Parameters.Add("@FileDate", SqlDbType.DateTime).Value = DateTime.Now;
+                pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                pud.Parameters.Add("@FileNumber", SqlDbType.NVarChar, 50).Value = FileNumber;
+                //SqlParameter OutparamId = pud.Parameters.Add("@OutparamId", SqlDbType.SmallInt);
+                //OutparamId.Direction = ParameterDirection.Output;
+                SqlParameter Output = new SqlParameter();
+                Output.DbType = DbType.Int32;
+                Output.ParameterName = "@Status";
+                Output.Direction = ParameterDirection.Output;
+                pud.Parameters.Add(Output);
+                pud.ExecuteNonQuery();
+                if (int.Parse(Output.Value.ToString()) == -1)
+                {
+                    // ////not successfull
+                    // var page = HttpContext.Current.CurrentHandler as Page;
+                    //eObj.U
+                }
+                else
+                {
+                    //successfull
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.UpdationSuccessMessage(page);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
+                throw ex;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+        }
+        #endregion UpdateFile
 
         #region AddVisits
         public void AddVisits()
@@ -252,6 +418,78 @@ namespace TheClinicApp.ClinicDAL
 
         }
         #endregion AddVisits
+
+        #region AddPrescriptionDT
+        public void AddPrescriptionDT()
+        {
+            SqlConnection con = null;
+            try
+            {
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand pud = new SqlCommand();
+                pud.Connection = con;
+                pud.CommandType = System.Data.CommandType.StoredProcedure;
+                pud.CommandText = "[InsertPrescriptionDT]";
+                pud.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = UniqueID;
+                pud.Parameters.Add("@PrescriptionID", SqlDbType.UniqueIdentifier).Value = PrescriptionID;
+                pud.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = ClinicID;
+                pud.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = MedicineID;
+                pud.Parameters.Add("@Qty", SqlDbType.Real).Value = double.Parse(Qty);
+                pud.Parameters.Add("@Unit", SqlDbType.Real).Value = double.Parse(Unit);
+                pud.Parameters.Add("@Dosage", SqlDbType.Real).Value = double.Parse(Dosage);
+                pud.Parameters.Add("@Timing", SqlDbType.NVarChar, 10).Value = Timing;
+                pud.Parameters.Add("@Days", SqlDbType.Int).Value = Days;
+                pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                //pud.Parameters.Add("@image", SqlDbType.VarBinary).Value = image; 
+                SqlParameter Output = new SqlParameter();
+                Output.DbType = DbType.Int32;
+                Output.ParameterName = "@Status";
+                Output.Direction = ParameterDirection.Output;
+                pud.Parameters.Add(Output);
+                pud.ExecuteNonQuery();
+
+                if (Output.Value.ToString() == "")
+                {
+                    //not successfull   
+
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.InsertionNotSuccessMessage(page);
+
+                }
+                else
+                {
+                    //successfull
+
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.InsertionSuccessMessage(page);
+
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
+
+            }
+
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+        }
+        #endregion AddPrescriptionDT
 
         #region UpdateVisits
         /// <summary>
