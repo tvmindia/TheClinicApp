@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace TheClinicApp.ClinicDAL
 {
-    public class Stock
+    public class Stocks
     {
 
         #region Property
