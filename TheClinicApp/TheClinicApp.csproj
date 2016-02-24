@@ -142,6 +142,7 @@
     <Content Include="Images\navigate-left-icon.png" />
     <Content Include="Images\navigate-right-icon.png" />
     <Content Include="Images\plus.png" />
+    <Content Include="Pharmacy\Pharmacy.aspx" />
     <Content Include="Scripts\bootcards.js" />
     <Content Include="Content\Input.css" />
     <Content Include="Content\jquery-ui.css" />
@@ -199,6 +200,7 @@
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\selectize.js" />
+    <Content Include="Stock\Stock.aspx" />
     <Content Include="testpage.aspx" />
     <Content Include="Token\Tokens.aspx" />
     <Content Include="underConstruction.aspx" />
@@ -299,7 +301,7 @@
     <Compile Include="ClinicDAL\PrescriptionHeaderDetails.cs" />
     <Compile Include="ClinicDAL\Receipt.cs" />
     <Compile Include="ClinicDAL\Security.cs" />
-    <Compile Include="ClinicDAL\Stock.cs" />
+    <Compile Include="ClinicDAL\Stocks.cs" />
     <Compile Include="ClinicDAL\TokensBooking.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -336,6 +338,13 @@
     <Compile Include="Masters\Popup.Master.designer.cs">
       <DependentUpon>Popup.Master</DependentUpon>
     </Compile>
+    <Compile Include="Pharmacy\Pharmacy.aspx.cs">
+      <DependentUpon>Pharmacy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pharmacy\Pharmacy.aspx.designer.cs">
+      <DependentUpon>Pharmacy.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration\Patients.aspx.cs">
       <DependentUpon>Patients.aspx</DependentUpon>
@@ -343,6 +352,13 @@
     </Compile>
     <Compile Include="Registration\Patients.aspx.designer.cs">
       <DependentUpon>Patients.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\Stock.aspx.cs">
+      <DependentUpon>Stock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\Stock.aspx.designer.cs">
+      <DependentUpon>Stock.aspx</DependentUpon>
     </Compile>
     <Compile Include="testpage.aspx.cs">
       <DependentUpon>testpage.aspx</DependentUpon>
@@ -378,8 +394,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\Profilepic\" />
-    <Folder Include="Pharmacy\" />
-    <Folder Include="Stock\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />

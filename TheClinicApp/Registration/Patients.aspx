@@ -13,9 +13,9 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
     <style>
 .ui-autocomplete {
-background: space;
+background: fixed;
 background-color: ghostwhite;
- box-shadow:1px 5px 10px 5px #ccffe6;
+ box-shadow:1px 5px 10px 5px #4d3319;
 }
     </style>
 
@@ -90,29 +90,29 @@ background-color: ghostwhite;
 
             $("input:text").val('');
     }
-    var W3CDOM = (document.createElement && document.getElementsByTagName);
+    //var W3CDOM = (document.createElement && document.getElementsByTagName);
 
-    function initFileUploads() {
-        if (!W3CDOM) return;
-        var fakeFileUpload = document.createElement('div');
-        fakeFileUpload.className = 'fakefile';
-        fakeFileUpload.appendChild(document.createElement('input'));
-        var image = document.createElement('img');
-        image.src='pix/button_UploadPic.png';
-        fakeFileUpload.appendChild(image);
-        var x = document.getElementsByTagName('input');
-        for (var i=0;i<x.length;i++) {
-            if (x[i].type != 'file') continue;
-            if (x[i].parentNode.className != 'fileinputs') continue;
-            x[i].className = 'file hidden';
-            var clone = fakeFileUpload.cloneNode(true);
-            x[i].parentNode.appendChild(clone);
-            x[i].relatedElement = clone.getElementsByTagName('input')[0];
-            x[i].onchange = x[i].onmouseout = function () {
-                this.relatedElement.value = this.value;
-            }
-        }
-    }
+    //function initFileUploads() {
+    //    if (!W3CDOM) return;
+    //    var fakeFileUpload = document.createElement('div');
+    //    fakeFileUpload.className = 'fakefile';
+    //    fakeFileUpload.appendChild(document.createElement('input'));
+    //    var image = document.createElement('img');
+    //    image.src='pix/button_UploadPic.png';
+    //    fakeFileUpload.appendChild(image);
+    //    var x = document.getElementsByTagName('input');
+    //    for (var i=0;i<x.length;i++) {
+    //        if (x[i].type != 'file') continue;
+    //        if (x[i].parentNode.className != 'fileinputs') continue;
+    //        x[i].className = 'file hidden';
+    //        var clone = fakeFileUpload.cloneNode(true);
+    //        x[i].parentNode.appendChild(clone);
+    //        x[i].relatedElement = clone.getElementsByTagName('input')[0];
+    //        x[i].onchange = x[i].onmouseout = function () {
+    //            this.relatedElement.value = this.value;
+    //        }
+    //    }
+    //}
     //$('#btnSave').bind("click",function(){ 
     //var imgVal = $('#fileupload').val(); 
     //alert(imgVal);
