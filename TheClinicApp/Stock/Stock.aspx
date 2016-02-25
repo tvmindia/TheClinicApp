@@ -1,20 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="Stock.aspx.cs" Inherits="TheClinicApp.Stock.Stock" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-        <script>
-        function OpenPageOnHyperLinkClick(HyperLinkid) {
-            var url = "";
-
-            if (HyperLinkid == "hlkExternalIssue")
-            {
-                NavigateUrl = "../Stock/InventoryOut.aspx";
-            }
-
-
-            document.getElementById('main').src = NavigateUrl;
-
-        }
-    </script>
+      
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -39,9 +26,9 @@
         <div class="col-sm-12 Span-One ">
 
             <%-- center Block --%>
-            
 
-            <div class="col-xs-7  ">              
+           
+            <div class="col-xs-7  ">             
             
                  <div class="col-md-12 Span-One">
                             <div class="col-md-4">
@@ -72,13 +59,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-               
-
-
-
-               
 
 
                  <div class="col-md-12 Span-One">
@@ -260,7 +240,10 @@
                 </div>               
                  <div class="">
 
-                     <div>  <a id="hlkExternalIssue"  onclick="OpenPageOnHyperLinkClick(id)" >External Iusse </a> </div><br />
+                     <div>
+                          <a id="hlkExternalIssue" href="../Stock/InventoryOut.aspx"  >External Iusse </a> 
+                         
+                     </div><br />
                      <div><a href="#" >View All Items </a> </div><br />
                      <div><a href="#" >Usage (Receive/Issue Detail) </a></div><br />
                           
@@ -299,7 +282,7 @@
                                 <tr>
                                     <td style="width:30%;">
                                          <div class="form-group">
-                                        <%--<asp:Button ID="btnSave" runat="server" Text="ADD STOCK"  type="submit" CssClass="button  " OnClick="" ValidationGroup="Submit" />--%>
+                                        <%--<asp:Button ID="btnSave" runat="server" Text="ADD STOCK"  type="submit" CssClass="button  " " ValidationGroup="Submit" />--%>
 
                                          </div>
                                     </td>
