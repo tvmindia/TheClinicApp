@@ -282,7 +282,7 @@
                                 <tr>
                                     <td style="width:30%;">
                                          <div class="form-group">
-                                        <%--<asp:Button ID="btnSave" runat="server" Text="ADD STOCK"  type="submit" CssClass="button  " " ValidationGroup="Submit" />--%>
+                                        <asp:Button ID="btnStock" runat="server" Text="ADD STOCK"  type="submit" CssClass="button" OnClick="btnStock_Click" ValidationGroup="Submit" />
 
                                          </div>
                                     </td>
