@@ -392,6 +392,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Admin\" />
     <Folder Include="App_Data\" />
     <Folder Include="Images\Profilepic\" />
   </ItemGroup>
