@@ -130,6 +130,7 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Admin\AssignRoles.aspx" />
     <Content Include="Content\accodin.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -250,6 +251,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AssignRoles.aspx.cs">
+      <DependentUpon>AssignRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AssignRoles.aspx.designer.cs">
+      <DependentUpon>AssignRoles.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="Account\Login.aspx.cs">
@@ -392,7 +400,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Admin\" />
     <Folder Include="App_Data\" />
     <Folder Include="Images\Profilepic\" />
   </ItemGroup>

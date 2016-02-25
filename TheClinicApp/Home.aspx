@@ -116,7 +116,7 @@
 
           <div class="settings" id="settings">
               
-               
+              <asp:HyperLink ID="hlkAssignRoles" runat="server" NavigateUrl="~/Admin/AssignRoles.aspx">Assign Roles</asp:HyperLink>  
           </div>
          
 
