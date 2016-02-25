@@ -9,54 +9,57 @@
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/simple-sidebar.css" rel="stylesheet" />
     <link href="../Content/Input.css" rel="stylesheet" />
-    <link href="../Content/accodin.css" rel="stylesheet" />   
+<%--    <link href="../Content/accodin.css" rel="stylesheet" />   --%>
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
-  
-
-      <div class="container" style="width:100%; ">
-          
-        <div class="col-md-12">
+    <script src="../Scripts/jquery.js"></script>
+    
+     <div id="wrapper">
+      
            
-             <div class="col-md-3" >
-                	<div id="sidebar-wrapper" class="sidebar">
+           
+                	
+                 <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="leftSideBarHeaing"  >
-                    
-                      CASE HISTORY
-
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
                 </li>
                 <li>
-                    <a href="#" >CS03-12,1.2016</a>
+                    <a href="#">Dashboard</a>
                 </li>
                 <li>
-                    <a href="#">CS03-12,1.2016</a>
+                    <a href="#">Shortcuts</a>
                 </li>
                 <li>
-                    <a href="#">CS03-12,1.2016</a>
+                    <a href="#">Overview</a>
                 </li>
                 <li>
-                    <a href="#">CS03-12,1.2016</a>
+                    <a href="#">Events</a>
                 </li>
                 <li>
-                    <a href="#">CS03-12,1.2016</a>
+                    <a href="#">About</a>
                 </li>
                 <li>
-                    <a href="#">CS02-10.4.2015</a>
+                    <a href="#">Services</a>
                 </li>
                 <li>
-                    <a href="#">CS02-10.4.2015</a>
+                    <a href="#">Contact</a>
                 </li>
             </ul>
         </div>
-                 </div>
-
-             <div class="col-md-7">
+               
+            
                  <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div  class="row"> 
-                    <div class="col-lg-12">
-                              
+                     <div class="col-md-12">
+                         <div class="col-md-9">
+                             <div  class="row"> 
+                                
+                    <%--<div class="col-lg-12">
+                         
                                          <form class="navbar-form navbar-right" role="search">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search this site">
@@ -67,13 +70,17 @@
                     </span>
                 </div>
             </form>
-
+                         
+        
+    
+ 
                                 
-                                    </div>
+                                    </div>--%>
+                                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">      <img src="../Images/Menu-01-WF.png" /></a>
                                     </div>
                   
                 <div class="row patientDetailsDiv" >
-                    <div class="col-md-12" style="margin-top:20px;">
+                    <div class="col-md-12" style="margin-top:8%;">
                        
                          <div class="col-md-4">
                              <table>
@@ -169,50 +176,48 @@
                 <div class="row" >
                    
                         <!----SECTION ACCORDIN---->
- 
+   <div   style="margin-top:40px;">
  
     <div class="col-md-12"  style="width:100%;">
       <div class="content">
-        <div class="accordion-container"> <a href="#" class="accordion-toggle">Symptoms <span class="toggle-icon"><i >
-          
-            <img src="../Images/plus.png" />
-               </i></span></a>
-          <div class="accordion-content">
-            <form role="form" class="form-horizontal">
+          <ul class="accordion-menu">
+<li class="open">
+<header onclick="toggle(this.parentNode)"><span class="title">Symptoms</span></header>
+<section class="content">
+
               <div class="form-group">
                 <label  class="control-label col-lg-3">Symptoms
                   </label>
                 <div class="col-lg-9">
-                                <asp:TextBox ID="txtSymptoms" class="form-control " TextMode="multiline"  Height="100"  Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                                <asp:TextBox ID="txtSymptoms" class="form-control " TextMode="multiline"  Height="100"  Width="100%" runat="server" required ></asp:TextBox>
              
 
                 </div>
               </div>
-            </form>
-            
-            
-            
-          </div>
-          <!--/.accordion-content--> 
-        </div>
-        <!--/.accordion-container-->
-        <div class="accordion-container"> <a href="#" class="accordion-toggle">General Examination Details <span class="toggle-icon"><i >    <img src="../Images/plus.png" /></i></span></a>
-          <div class="accordion-content">
+          
+    </section>
+</li>
+<li class="closed">
+<header onclick="toggle(this.parentNode)"><span class="title">General Examination Details</span></header>
+<section class="content">
+
+
                <label  class="control-label col-lg-3">Sleep
                   </label>
                 <div class="col-lg-9">
-                                                              <asp:TextBox ID="txtSleep" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                                                              <asp:TextBox ID="txtSleep" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ></asp:TextBox>
 
              
 
                 </div>
 
-          </div>
-          <!--/.accordion-content--> 
-        </div>
-        <!--/.accordion-container-->
-        <div class="accordion-container"> <a href="#" class="accordion-toggle">Systamatic Examination Details<span class="toggle-icon"><i >    <img src="../Images/plus.png" /></i></span></a>
-          <div class="accordion-content">
+
+</section>
+</li>
+<li class="closed">
+<header onclick="toggle(this.parentNode)"><span class="title">Systamatic Examination Details</span></header>
+<section class="content">
+
                <label  class="control-label col-lg-3">Cardiovascular
                   </label>
                 <div class="col-lg-9">
@@ -283,12 +288,13 @@
              
 
                 </div>
-          </div>
-          <!--/.accordion-content--> 
-        </div>
-        <!--/.accordion-container-->
-        <div class="accordion-container"> <a href="#" class="accordion-toggle">Ayurvedic parameters	<span class="toggle-icon"><i >    <img src="../Images/plus.png" /></i></span></a>
-          <div class="accordion-content">
+       
+</section>
+</li>
+<li class="closed">
+<header onclick="toggle(this.parentNode)"><span class="title">Ayurvedic parameters</span></header>
+<section class="content">
+
                <label  class="control-label col-lg-3">Sleep
                   </label>
                 <div class="col-lg-9">
@@ -296,13 +302,13 @@
              
 
                 </div>
+    </section>
 
-          </div>
-          <!--/.accordion-content--> 
-        </div>
-            <!--/.accordion-container-->
-        <div class="accordion-container"> <a href="#" class="accordion-toggle">diagnosis<span class="toggle-icon"><i >    <img src="../Images/plus.png" /></i></span></a>
-          <div class="accordion-content">
+          </li>
+<li class="closed">
+<header onclick="toggle(this.parentNode)"><span class="title">diagnosis</span></header>
+<section class="content">
+
                <label  class="control-label col-lg-3">diagnosis
                   </label>
                 <div class="col-lg-9">
@@ -313,27 +319,28 @@
 
                 </div>
 
-          </div>
-          <!--/.accordion-content--> 
-        </div>
-                <!--/.accordion-container-->
-        <div class="accordion-container"> <a href="#" class="accordion-toggle">Prescription section <span class="toggle-icon"><i >    <img src="../Images/plus.png" /></i></span></a>
-          <div class="accordion-content">
+        
+</section>
+</li>
+<li class="closed">
+<header onclick="toggle(this.parentNode)"><span class="title">Prescription section</span></header>
+<section class="content">
+
                <label  class="control-label col-lg-3">Prescription section
                   </label>
                 <div class="col-lg-9">
                                 <table style="width:20%">
             <tr>
-                <td style="font-size: small">MEDICINE</td><td><input id="txtMedname1" class="Country" type="text" runat="server" /></td><td><input id="txtMeddoz1" type="text" placeholder="Dozage" runat="server" /></td><td><input id="txtMedprescription1" type="text" placeholder="Prescription" runat="server" /></td>
+                <td style="font-size: small" ><input id="Text1" type="text" placeholder="Medicine" runat="server"  class="dynamicTd"/></td><td><input id="txtMedname1" class="dynamicTd" type="text"  placeholder="Timing" runat="server"  /></td><td><input id="txtMeddoz1" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="txtMedprescription1" type="text" placeholder="Days" runat="server" class="dynamicTd" /></td>
             </tr>
             <tr>
-                <td style="font-size: small">MEDICINE</td><td><input id="txtMedname2" class="Country" type="text" runat="server" /></td><td><input id="txtMeddoz2" type="text" placeholder="Dozage" runat="server" /></td><td><input id="txtMedprescription2" type="text" placeholder="Prescription" runat="server" /></td>
+                <td style="font-size: small" ><input id="Text2" type="text" placeholder="Medicine" runat="server" class="dynamicTd" /></td><td ><input id="txtMedname2" class="dynamicTd" type="text" placeholder="Timing" runat="server" /></td><td ><input id="txtMeddoz2" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="txtMedprescription2" type="text" placeholder="Days" runat="server" class="dynamicTd"/></td>
             </tr>
             <tr>
-                <td style="font-size: small">MEDICINE</td><td><input id="txtMedname3" class="Country" type="text" runat="server" /></td><td><input id="txtMeddoz3" type="text" placeholder="Dozage" runat="server" /></td><td><input id="txtMedprescription3" type="text" placeholder="Prescription" runat="server" /></td>
+                <td style="font-size: small"><input id="Text3" type="text" placeholder="Medicine" runat="server" class="dynamicTd" /></td><td ><input id="txtMedname3" class="dynamicTd" type="text" placeholder="Timing" runat="server" /></td><td ><input id="txtMeddoz3" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="txtMedprescription3" type="text" placeholder="Days" runat="server" class="dynamicTd"/></td>
             </tr>
             <tr>
-                <td style="font-size: small">MEDICINE</td><td><input id="txtMedname4" class="Country" type="text" runat="server" /></td><td><input id="txtMeddoz4" type="text" placeholder="Dozage" runat="server" /></td><td><input id="txtMedprescription4" type="text" placeholder="Prescription" runat="server" /></td><td>
+                <td style="font-size: small" ><input id="Text4" type="text" placeholder="Medicine" runat="server"  class="dynamicTd"/></td><td ><input id="txtMedname4" class="dynamicTd" type="text" placeholder="Timing" runat="server" /></td><td ><input id="txtMeddoz4" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="txtMedprescription4" type="text" placeholder="Days" runat="server" class="dynamicTd"/></td><td>
         
      <span class="auto-style4">
      <input type="button" id="btAdd" onclick="this.style.visibility = 'hidden';" value="+" class="bt" />
@@ -346,14 +353,13 @@
 
                 </div>
 
-          </div>
-          <!--/.accordion-content--> 
-        </div>
-          <div class="accordion-container"> <a href="#" class="accordion-toggle">Remarks<span class="toggle-icon"><i >
-          
-            <img src="../Images/plus.png" />
-               </i></span></a>
-          <div class="accordion-content">
+         
+</section>
+</li>
+<li class="closed">
+<header onclick="toggle(this.parentNode)"><span class="title">Remarks </span></header>
+<section class="content">
+
             <form role="form" class="form-horizontal">
               <div class="form-group">
                 <label  class="control-label col-lg-3">Remarks
@@ -368,31 +374,30 @@
             
             
             
-          </div>
-          <!--/.accordion-content--> 
-        </div>
-      </div>
-    </div>
+      
+</section>
+</li>
 
+</ul>
+          </div>
+    </div>
+       </div>
     
     
 	</div>
-
-                </div>
                     </div>
-            </div>
-                        
-             <div class="col-md-2" ">
+                    <div class="col-md-3" ">
                  <div class="row" >
-	  
-    <div class="mini-submenu"   style="  margin-left:90%;">
+	    <div >
+    <div class="mini-submenu"   style=" margin-left:90%;">
+  
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </div>
     <div class="list-group RightSideBar">
         <span href="#" class="list-group-item active">
-         GRID
+      TOKENS
             <span class="pull-right" id="slide-submenu">
                 <i>
                    X</i>
@@ -400,18 +405,21 @@
         </span>
       
         
-    </div>        
+    </div>   
+            </div>     
 </div>
 
              
                 
             </div>
+                         </div>
+                </div>
+                    </div>
+          
+             </div>
    
        
-              
-          </div>
-      
-          <footer  class="footerDiv">
+              <footer  class="footerDiv">
          
 
                 <table style="width: 100%; height: 100%;">
@@ -435,7 +443,7 @@
                                 <tr>
                                     <td style="width:30%;">
                                          <div class="form-group">
-                                        <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button" ValidationGroup="Submit" />
+                                        <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button  "  ValidationGroup="Submit" />
 </div>
                                     </td>
                                     <td>
@@ -451,7 +459,10 @@
 
             
         </footer>
-          </div>
+          
+          
+         </div>
+
     <asp:HiddenField runat="server" ID="HiddenField1"></asp:HiddenField>
      <!-- Sidebar -->
         
@@ -540,20 +551,40 @@
   </script>
     <script>
         $(function () {
-
+              <%--Right Side Bar Menu Click --%>
             $('#slide-submenu').on('click', function () {
                 $(this).closest('.list-group').fadeOut('slide', function () {
                     $('.mini-submenu').fadeIn();
                 });
 
             });
+            <%--Right Side Bar Menu Click --%>
 
+             <%--Left Side Bar Menu Click --%>
             $('.mini-submenu').on('click', function () {
                 $(this).next('.list-group').toggle('slide');
                 $('.mini-submenu').hide();
             })
-        })
 
+
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        })
+        <%--Left Side Bar Menu Click --%>
+
+
+  <%--Accordian Open Close--%>
+        function toggle(e) {
+            if (e.className == 'closed') {
+                e.className = 'open';
+            }
+            else {
+                e.className = 'closed';
+            }
+        }
+         <%--Accordian Open Close--%>
     </script>
     <%--<script type="text/javascript">
 

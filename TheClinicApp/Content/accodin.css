@@ -101,6 +101,7 @@
     text-decoration: none;
     border-radius: 5px;
     outline: none;
+   
 }
 	.accordion-toggle.open {
   background-color:transparent;
@@ -119,6 +120,7 @@
 		top: 9px;
 		right: 20px;
 		font-size: 1.5em;
+        vertical-align:middle;
 	}
 	.accordion-content {
 		display: none;
@@ -131,6 +133,7 @@
 		margin: 0 15px 10px 0;
 		max-width: 100%;
 		height: auto;
+        vertical-align:middle;
 	}
 	@media (max-width: 767px) {
 		.content {

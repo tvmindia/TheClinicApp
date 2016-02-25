@@ -26,7 +26,7 @@
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background:rgba(102, 51, 0,.3);
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -67,14 +67,12 @@
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color:  rgb(0, 51, 0)  ;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:white;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: white;
-.sid;
+    color: #fff;
     background: rgba(255,255,255,0.2);
 }
 
@@ -87,17 +85,16 @@
     height: 65px;
     font-size: 18px;
     line-height: 60px;
+    background-color:#337ab7;
+        
 }
 
 .sidebar-nav > .sidebar-brand a {
-    color:
-}
-
-@me;
+    color: white;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-    colo 250pfff;
+    color: #fff;
     background: none;
 }
 

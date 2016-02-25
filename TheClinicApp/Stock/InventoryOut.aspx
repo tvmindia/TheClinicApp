@@ -23,7 +23,134 @@
 
 
 
-    <asp:Button ID="Button1" runat="server" Text="btn" />
+       <div class="container-fluid bodyDiv" >
+
+        <label class="headingLabel">Inventory Out</label>
+       
+       
+           <div class="col-sm-12">
+               <div class="col-sm-8">.
+
+                     <table class="col-phar-patiedet">
+                     <tr>
+                         <td> <label class="control-label col-sm-6 regFormLabels">Issued To:</label></td>
+                         <td> <asp:TextBox ID="txtIussedTo" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit" >
+                                </asp:TextBox>
+
+                         </td>
+                     </tr>
+                            <tr>
+                         <td>&nbsp;</td>
+                         <td>&nbsp;</td>
+                     </tr>
+                     <tr>
+                         <td>  <label class="control-label col-xs-6 regFormLabels">Date:</label>   
+
+                         </td>
+                         <td>     <asp:TextBox ID="txtDate" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit" >
+                                </asp:TextBox>
+
+                         </td>
+                     </tr>
+                            <tr>
+                         <td>&nbsp;</td>
+                         <td>&nbsp;</td>
+                     </tr>
+                     <tr>
+                         <td> <label class="control-label col-xs-6 regFormLabels">PrescID:</label>   
+
+                         </td>
+                         <td>  <asp:TextBox ID="txtPrescID" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit" >
+                                </asp:TextBox>
+
+                         </td>
+                     </tr>
+                            <tr>
+                         <td>&nbsp;</td>
+                         <td>&nbsp;</td>
+                     </tr>
+                              <tr>
+                         <td> <label class="control-label col-xs-6 regFormLabels">Medicine ID:</label>
+
+                         </td>
+                         <td> <asp:TextBox ID="txtMedicineID" class="form-control textBoxborder numberTypeTextBox col-sm-6" runat="server" required  ValidationGroup="Submit"></asp:TextBox></td>
+                     </tr>
+                            <tr>
+                         <td>&nbsp;</td>
+                         <td>&nbsp;</td>
+                     </tr>
+                     <tr>
+                         <td>      <label class="control-label col-xs-6 regFormLabels">Quantity:</label>
+                            </td>
+                         <td> <asp:TextBox ID="txtQty" class="form-control textBoxborder col-sm-6" required runat="server"  ValidationGroup="Submit">
+
+                                </asp:TextBox></td>
+                     </tr>
+                     
+                          <tr>
+                         <td>&nbsp;</td>
+                         <td>&nbsp;</td>
+                     </tr>
+                          <tr>
+                         <td>&nbsp;</td>
+                         <td>&nbsp;</td>
+                     </tr>
+                 </table>
+
+
+               </div>
+               <div class="col-sm-4">
+
+               </div>
+           </div>
+
+
+       </div>
+
+    
+<%--Footer Region--%> 
+     <footer  class="footerDiv">
+         
+
+                <table style="width: 100%; height: 100%;">
+                    <tr>
+                        <td class="footerMessagesColumn" style="width:50%; ">
+                            <div id="Errorbox"  style="height:100%;  display:none;"  runat="server" >
+                               <a class="close" data-dismiss="alert">×</a>  
+
+                            <div>
+                            <strong> <asp:Label ID="lblErrorCaption" runat="server" Text=""></asp:Label> </strong>      <asp:Label ID="lblMsgges" runat="server" Text=""></asp:Label>
+
+</div>
+       </div>                     
+
+                        </td>
+                        <td style="height: 100%;   width:20%;">
+
+                        </td>
+                        <td style="height: 100%;   width:30%;" >
+                            <table class="footerTable" style="width:100%; margin-left:0px;padding-left:0px;padding-top:80%; margin-top:3%;  ">
+                                <tr>
+                                    <td style="width:30%;">
+                                         <div class="form-group">
+                                        <asp:Button ID="btnIssue" runat="server" Text="Issue"  type="submit" CssClass="button" OnClick="btnIssue_Click" ValidationGroup="Submit" />
+
+                                         </div>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </td>
+
+                    </tr>
+                </table>
+
+
+            
+        </footer>
+
 
 
 
