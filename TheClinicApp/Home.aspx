@@ -6,6 +6,7 @@
 <head runat="server">
     <title></title>
     <link href="Content/TheClinicApp.css" rel="stylesheet" />
+    <link href="Content/simple-sidebar.css" rel="stylesheet" />
     <style>
     
     </style>
@@ -47,6 +48,21 @@
             }
 
         }
+
+        function OpenPageOnHyperLinkClick(HyperLinkid)
+        {
+            var url = "";
+
+            if (HyperLinkid == "hlkAssignRoles")
+            {
+                NavigateUrl = "../Admin/AssignRoles.aspx";
+            }
+
+            document.getElementById('main').src = NavigateUrl;
+          
+        }
+
+
     </script>
     <form id="form1" runat="server">
         <div class="outerTop">
@@ -115,8 +131,12 @@
         </div>
 
           <div class="settings" id="settings">
-              
-              <asp:HyperLink ID="hlkAssignRoles" runat="server" NavigateUrl="~/Admin/AssignRoles.aspx">Assign Roles</asp:HyperLink>  
+
+                <ul class="sidebar-nav" style="width:75%">
+               <li><a id="hlkAssignRoles" onclick="OpenPageOnHyperLinkClick(id)">Assign Roles</a></li>
+               <li><a id="hlkCreateUser"  onclick="OpenPageOnHyperLinkClick(id)">Create User</a> </li>
+               </ul>
+
           </div>
          
 
