@@ -152,13 +152,15 @@ namespace TheClinicApp.ClinicDAL
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "[InsertErrorLog]";
+            cmd.CommandText = "[InsertEvents]";
 
             cmd.Parameters.Add("@ErrorID", SqlDbType.UniqueIdentifier).Value = EventID;
-            cmd.Parameters.Add("@Description", SqlDbType.NVarChar, 255).Value = Description;
+            cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = EventID;
+            cmd.Parameters.Add("@EventDesc", SqlDbType.NVarChar).Value = Module;
+            cmd.Parameters.Add("@TableName", SqlDbType.NVarChar, 255).Value = Method;
+            cmd.Parameters.Add("@ParentKey", SqlDbType.NVarChar, 255).Value = Module;
+            cmd.Parameters.Add("@ActionType", SqlDbType.NVarChar, 255).Value = Method;
             cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd"); 
-            cmd.Parameters.Add("@Module", SqlDbType.NVarChar, 255).Value = Module;
-            cmd.Parameters.Add("@Method", SqlDbType.NVarChar, 255).Value = Method;
             cmd.Parameters.Add("@UserID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(UserID);
    
             cmd.ExecuteNonQuery();
