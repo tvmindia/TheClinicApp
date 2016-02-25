@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="AssignRoles.aspx.cs" Inherits="TheClinicApp.Admin.AssignRoles" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -22,8 +23,14 @@
 
          <label class="headingLabel">Assign Roles</label>
           <div class="col-xs-12 Span-One">
-                 <div class="col-xs-8">
-                <div class="col-xs-12 Span-One">
+
+                 <div class="col-sm-2">
+              
+
+ </div>
+
+              <div class="col-sm-8">
+                   <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
 
@@ -75,8 +82,12 @@
 
 
                             <div class="col-xs-11">
-                                <asp:TextBox ID="txtName" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit" pattern="^[A-z][A-z\.\s]+$"
-                                    ></asp:TextBox>
+                               
+                                <asp:DropDownList ID="ddlUsers" runat="server" CssClass="selectpicker">
+                                    <asp:ListItem>--Select--</asp:ListItem>
+                                   
+                                </asp:DropDownList>
+        
 
                             </div>
                         </div>
@@ -98,7 +109,10 @@
 
 
                             <div class="col-xs-11">
-                                <asp:TextBox ID="txtSex" class="form-control textBoxborder" required runat="server"  ValidationGroup="Submit"></asp:TextBox>
+                                <asp:DropDownList ID="ddlRoles" runat="server" >
+                                    <asp:ListItem>--Select--</asp:ListItem>
+                                   
+                                </asp:DropDownList>
 
                             </div>
                         </div>
@@ -111,13 +125,16 @@
 
                 </div>
 
+                    </div>
 
-                
+                <div class="col-sm-2">
+
+                    </div>
             </div>
               
           </div>
 
-        </div>
+      
 
 
 
