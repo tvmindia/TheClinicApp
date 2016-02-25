@@ -5406,12 +5406,13 @@ a.badge:focus, a.badge:hover {
         border-color:#003300;
     }
 
-    .jumbotron .h1, .jumbotron h1 {
-        font-size: 20px;
+    .mui-panel .h1, .mui-panel h1 {
+        font-size: 25px;
         text-align:center;
         font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;
         background-color:#347300;
         color:wheat;
+        margin-top:5px;
     }
 }
 
