@@ -23,7 +23,9 @@
         <div class="col-sm-12 Span-One ">
 
             <%-- center Block --%>
-            <div class="col-xs-7">              
+            
+
+            <div class="col-xs-7  ">              
             
                  <div class="col-md-12 Span-One">
                             <div class="col-md-8">
@@ -61,7 +63,52 @@
                             </div>
                         </div>
                 
-                <%--  --%>
+                  
+                       
+                   
+
+
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
+                        <div class="form-group">
+                            <label class="control-label col-xs-4 regFormLabels">Category:</label>
+                                                        
+                            <div class="col-xs-8">
+                                <asp:TextBox ID="txtCategory" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit" >
+
+                                </asp:TextBox>
+
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-xs-1">
+                            <div class="col-xs-12">
+                                &nbsp
+                            </div>
+                     </div>
+                   
+
+                </div>
+
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
+                        <div class="form-group">
+                            <label class="control-label col-xs-4 regFormLabels">Date:</label>
+                                                        
+                            <div class="col-xs-8">
+                                <asp:TextBox ID="txtDate" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit" >
+
+                                </asp:TextBox>
+
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-xs-1">
+                            <div class="col-xs-12">
+                                &nbsp
+                            </div>
+                     </div>
+              </div>
 
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
@@ -133,7 +180,9 @@
 
                 </div>
 
-                <%--  --%>
+                  
+
+              
 
                <label  class="subheadingLabel_1 " >Existing Details</label>
 
@@ -199,16 +248,17 @@
                    
                 </div>
            
+                
 
 
-                 </div>
+              </div>
            
 
-            <%--OUT OF STOCK/LESS STOCK LIST Block --%>
+            <%--OUT OF STOCK/LESS STOCK LIST Block--%> 
 
-            <div class="col-xs-5" style="height:350px;width:30%;" >
-                <div >
-                     <label  class="subheadingLabel_1 " >OUT OF STOCK/LESS STOCK LIST </label>
+            <div class="col-xs-5 " style="height:350px;width:30%;" >
+                <div class="">
+                     <label  class="subheadingLabel_1 " >OUT OF STOCK LIST </label>
 
                    <div class="rounded_corners"  style="width: 400px">
 
@@ -233,11 +283,11 @@
                    </div> 
                     
                 </div>               
-                 <div >
+                 <div class="">
 
-                     <div>  <a href="#" >External Iusse </a> </div>
-                     <div><a href="#" >View All Items </a> </div>
-                     <div><a href="#" >Usage (Receive/Issue Detail) </a></div>
+                     <div>  <a href="#" >External Iusse </a> </div><br />
+                     <div><a href="#" >View All Items </a> </div><br />
+                     <div><a href="#" >Usage (Receive/Issue Detail) </a></div><br />
                           
                      
                  </div>    
@@ -249,7 +299,7 @@
        
     </div>    
 
-    <%-- Footer Region --%>
+<%--Footer Region--%> 
      <footer  class="footerDiv">
          
 
