@@ -11,25 +11,19 @@ using System.Configuration;
 
 namespace TheClinicApp.Stock
 {
-    public partial class Stock : System.Web.UI.Page
+    public partial class InventoryOut : System.Web.UI.Page
     {
 
+
         ErrorHandling eObj = new ErrorHandling();
-        Stocks stok = new Stocks();
+        IssueHeaderDetails ihd = new IssueHeaderDetails();
+        IssueDetails idt = new IssueDetails();
 
 
-       
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
-            //gridview binding for listing the Out of Stock Medicines 
-            DataSet gds = stok.OutofStockMedicines();
-            GridViewOutofStock.EmptyDataText = "No Records Found";
-            GridViewOutofStock.DataSource = gds;
-            GridViewOutofStock.DataBind();
-
-
+              
 
 
         }
@@ -39,7 +33,7 @@ namespace TheClinicApp.Stock
 
         }
 
-        protected void btnStock_Click(object sender, EventArgs e)
+        protected void btnIssue_Click(object sender, EventArgs e)
         {
 
         }

@@ -102,7 +102,7 @@ footer {
     margin-left: 20%;
     color: seagreen;
     font: bold;
-    font-size: 23px;
+    font-size: 30px;
     text-decoration: underline;
     padding-top: 2%;
     font-family: 'Cambria, Georgia, serif';
@@ -316,8 +316,8 @@ input.file {
     z-index: 2;
     bottom: 0%;
     right: 0%;
-    width: 25%;
-    height: 90%;
+    width: 20%;
+    height: 95%;
    padding-top:20px;
 }
 

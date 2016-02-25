@@ -10,34 +10,16 @@
 namespace TheClinicApp.Stock {
     
     
-    public partial class Stock {
+    public partial class InventoryOut {
         
         /// <summary>
-        /// btnSearch control.
+        /// txtIussedTo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnSearch;
-        
-        /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton Button1;
-        
-        /// <summary>
-        /// txtCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCategory;
+        protected global::System.Web.UI.WebControls.TextBox txtIussedTo;
         
         /// <summary>
         /// txtDate control.
@@ -49,13 +31,22 @@ namespace TheClinicApp.Stock {
         protected global::System.Web.UI.WebControls.TextBox txtDate;
         
         /// <summary>
-        /// txtUnit control.
+        /// txtPrescID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUnit;
+        protected global::System.Web.UI.WebControls.TextBox txtPrescID;
+        
+        /// <summary>
+        /// txtMedicineID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMedicineID;
         
         /// <summary>
         /// txtQty control.
@@ -65,42 +56,6 @@ namespace TheClinicApp.Stock {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtQty;
-        
-        /// <summary>
-        /// txtReference control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtReference;
-        
-        /// <summary>
-        /// ScriptManager1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
-        /// <summary>
-        /// UpdatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
-        /// <summary>
-        /// GridViewOutofStock control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewOutofStock;
         
         /// <summary>
         /// Errorbox control.
@@ -130,12 +85,12 @@ namespace TheClinicApp.Stock {
         protected global::System.Web.UI.WebControls.Label lblMsgges;
         
         /// <summary>
-        /// btnStock control.
+        /// btnIssue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnStock;
+        protected global::System.Web.UI.WebControls.Button btnIssue;
     }
 }
