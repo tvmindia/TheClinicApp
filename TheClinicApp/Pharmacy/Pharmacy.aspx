@@ -20,6 +20,10 @@
         .auto-style1 {
             height: 17px;
         }
+        input[type="text"] {
+    width: 125px;
+    box-shadow: 1px 1px 1px 1px #347300;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -118,42 +122,59 @@
         <div class="row">
             <div class="mui-panel">
                 <h1>Medicine Details</h1>
-                <table>
+                <table style="width:100px">
                     <tr>
-                        <td style="font-size: small">MEDICINE</td>
+                        
                         <td>
-                            <input id="txtMedname1" class="Country" type="text" runat="server" /></td>
+                            <input id="txtMedname1" class="Country" type="text" runat="server" placeholder="Medicine" /></td>
                         <td>
                             <input id="txtMeddoz1" type="text" placeholder="Dozage" runat="server" /></td>
                         <td>
                             <input id="txtMedprescription1" type="text" placeholder="Prescription" runat="server" /></td>
+                        <td>
+                            <input id="Text1" type="text" placeholder="Prescription" runat="server" /></td>
+                        <td>
+                            <input id="Text8" type="text" placeholder="Prescription" runat="server" /></td>
                     </tr>
                     <tr>
-                        <td style="font-size: small">MEDICINE</td>
+                        
                         <td>
-                            <input id="txtMedname2" class="Country" type="text" runat="server" /></td>
+                            <input id="txtMedname2" class="Country" type="text" runat="server" placeholder="Medicine" /></td>
                         <td>
                             <input id="txtMeddoz2" type="text" placeholder="Dozage" runat="server" /></td>
                         <td>
                             <input id="txtMedprescription2" type="text" placeholder="Prescription" runat="server" /></td>
+                        <td>
+                            <input id="Text2" type="text" placeholder="Prescription" runat="server" /></td>
+                        <td>
+                            <input id="Text7" type="text" placeholder="Prescription" runat="server" /></td>
+
                     </tr>
                     <tr>
-                        <td style="font-size: small">MEDICINE</td>
+                        
                         <td>
-                            <input id="txtMedname3" class="Country" type="text" runat="server" /></td>
+                            <input id="txtMedname3" class="Country" type="text" runat="server" placeholder="Medicine" /></td>
                         <td>
                             <input id="txtMeddoz3" type="text" placeholder="Dozage" runat="server" /></td>
                         <td>
                             <input id="txtMedprescription3" type="text" placeholder="Prescription" runat="server" /></td>
+                        <td>
+                            <input id="Text3" type="text" placeholder="Prescription" runat="server" /></td>
+                        <td>
+                            <input id="Text6" type="text" placeholder="Prescription" runat="server" /></td>
                     </tr>
                     <tr>
-                        <td style="font-size: small">MEDICINE</td>
+                        
                         <td>
-                            <input id="txtMedname4" class="Country" type="text" runat="server" /></td>
+                            <input id="txtMedname4" class="Country" type="text" runat="server" placeholder="Medicine" /></td>
                         <td>
                             <input id="txtMeddoz4" type="text" placeholder="Dozage" runat="server" /></td>
                         <td>
                             <input id="txtMedprescription4" type="text" placeholder="Prescription" runat="server" /></td>
+                        <td>
+                            <input id="Text4" type="text" placeholder="Prescription" runat="server" /></td>
+                        <td>
+                            <input id="Text5" type="text" placeholder="Prescription" runat="server" /></td>
                         <td>
 
                             <span class="auto-style4" />
@@ -171,7 +192,7 @@
             <div class="col-md-3">
                 <div class="row" >
                      <div class="list-group leftSideBar1">
-                          <span href="#" class="list-group-item active">
+                          <span class="list-group-item active">
                               PATIENT LIST TODAY </span>
                          <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
                              <Columns>
