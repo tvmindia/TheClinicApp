@@ -130,6 +130,7 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Admin\AssignRoles.aspx" />
     <Content Include="Content\accodin.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -215,6 +216,7 @@
     <Content Include="Scripts\mui.js" />
     <Content Include="Scripts\mui.min.js" />
     <Content Include="Scripts\selectize.js" />
+    <Content Include="Stock\InventoryOut.aspx" />
     <Content Include="Stock\Stock.aspx" />
     <Content Include="testpage.aspx" />
     <Content Include="Token\Tokens.aspx" />
@@ -265,6 +267,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AssignRoles.aspx.cs">
+      <DependentUpon>AssignRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AssignRoles.aspx.designer.cs">
+      <DependentUpon>AssignRoles.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="Account\Login.aspx.cs">
@@ -367,6 +376,13 @@
     </Compile>
     <Compile Include="Registration\Patients.aspx.designer.cs">
       <DependentUpon>Patients.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\InventoryOut.aspx.cs">
+      <DependentUpon>InventoryOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\InventoryOut.aspx.designer.cs">
+      <DependentUpon>InventoryOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="Stock\Stock.aspx.cs">
       <DependentUpon>Stock.aspx</DependentUpon>
