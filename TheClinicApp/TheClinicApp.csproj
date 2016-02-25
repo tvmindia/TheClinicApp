@@ -201,6 +201,7 @@
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\selectize.js" />
+    <Content Include="Stock\InventoryOut.aspx" />
     <Content Include="Stock\Stock.aspx" />
     <Content Include="testpage.aspx" />
     <Content Include="Token\Tokens.aspx" />
@@ -360,6 +361,13 @@
     </Compile>
     <Compile Include="Registration\Patients.aspx.designer.cs">
       <DependentUpon>Patients.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\InventoryOut.aspx.cs">
+      <DependentUpon>InventoryOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\InventoryOut.aspx.designer.cs">
+      <DependentUpon>InventoryOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="Stock\Stock.aspx.cs">
       <DependentUpon>Stock.aspx</DependentUpon>
