@@ -23,15 +23,23 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- load MUI -->
+   
+    <link href="../Content/mui.min.css" rel="stylesheet" />
+    <script src="../Scripts/mui.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/Input.css" rel="stylesheet" />
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
  
-    <div class="container"> 
+    <div class="mui-container"> 
         <div class="col-md-12">
              <div class="col-md-9">
+                 <div class="row">
                  <div class="input-group">
              <input type="text" class="form-control" placeholder="Search" style="height: 20%; top: 0px; left: 0px;" aria-haspopup="false" name="txtSearch" id="txtSearch" />
              <span class="input-group-addon" style="height: 0%;">
@@ -43,8 +51,13 @@
         </span>
 
     </div>
-        <div class="jumbotron"> 
-            <h1>PATIENT DETAILS</h1>
+
+                 </div>
+
+
+        <div class="mui-panel"> 
+           
+            <h1>Patient Details</h1>
          <div class="col-phar-patient">
              <table class="table-responsive">
                  <tr>
@@ -100,10 +113,11 @@
                              </div>    
         </div>
             
+            
  
         <div class="row">
-            <div class="jumbotron">
-                <h1>MEDICINE DETAILS</h1>
+            <div class="mui-panel">
+                <h1>Medicine Details</h1>
                 <table>
                     <tr>
                         <td style="font-size: small">MEDICINE</td>
@@ -156,17 +170,15 @@
              </div>
             <div class="col-md-3">
                 <div class="row" >
-                    <div class="mini-submenu"   style="margin-left:90%;">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-
-                    </div>
                      <div class="list-group leftSideBar1">
                           <span href="#" class="list-group-item active">
-                              PATIENT LIST TODAY
-
-                          </span>
-
+                              PATIENT LIST TODAY </span>
+                         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+                             <Columns>
+                                 <asp:BoundField HeaderText="Name"></asp:BoundField>
+                                 <asp:TemplateField></asp:TemplateField>
+                             </Columns>
+                         </asp:GridView>
                      </div>
 
                 </div>
@@ -174,6 +186,46 @@
             </div>
 
         </div>
+        <footer  class="footerDiv">
+         
 
+                <table style="width: 100%; height: 100%;">
+                    <tr>
+                        <td class="footerMessagesColumn" style="width:50%; ">
+                            <div id="Errorbox"  style="height:100%;  display:none;"  runat="server" >
+                               <a class="close" data-dismiss="alert">×</a>  
+
+                            <div>
+                            <strong> <asp:Label ID="lblErrorCaption" runat="server" Text=""></asp:Label> </strong>
+                                <asp:Label ID="lblMsgges" runat="server" Text=""></asp:Label>
+
+</div>
+       </div>                     
+
+                        </td>
+                        <td style="height: 100%;   width:20%;">
+
+                        </td>
+                        <td style="height: 100%;   width:30%;" >
+                            <table class="footerTable" style="width:100%; margin-left:0px;padding-left:0px;padding-top:80%; margin-top:3%;  ">
+                                <tr>
+                                    <td style="width:30%;">
+                                         <div class="form-group">
+                                        <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button" OnClick="btnSave_Click" ValidationGroup="Submit" />
+</div>
+                                    </td>
+                                    <td>
+                                       </td>
+                                </tr>
+                            </table>
+
+                        </td>
+
+                    </tr>
+                </table>
+
+
+            
+        </footer>
     </div>
 </asp:Content>

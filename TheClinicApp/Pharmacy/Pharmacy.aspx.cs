@@ -18,5 +18,10 @@ namespace TheClinicApp.Pharmacy
         {
 
         }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

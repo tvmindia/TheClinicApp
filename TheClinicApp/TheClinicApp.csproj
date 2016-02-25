@@ -135,6 +135,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\mui-colors.css" />
+    <Content Include="Content\mui-email-inline.css" />
+    <Content Include="Content\mui-email-styletag.css" />
+    <Content Include="Content\mui.css" />
+    <Content Include="Content\mui.min.css" />
     <Content Include="Content\selectize.css" />
     <Content Include="Content\simple-sidebar.css" />
     <Content Include="Images\Addition .png" />
@@ -200,7 +205,18 @@
     <Content Include="Scripts\jquery-1.12.0.min.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\mui-angular.js" />
+    <Content Include="Scripts\mui-angular.min.js" />
+    <Content Include="Scripts\mui-combined.js" />
+    <Content Include="Scripts\mui-react-combined.js" />
+    <Content Include="Scripts\mui-react.js" />
+    <Content Include="Scripts\mui-react.min.js" />
+    <Content Include="Scripts\mui-webcomponents.js" />
+    <Content Include="Scripts\mui-webcomponents.min.js" />
+    <Content Include="Scripts\mui.js" />
+    <Content Include="Scripts\mui.min.js" />
     <Content Include="Scripts\selectize.js" />
+    <Content Include="Stock\InventoryOut.aspx" />
     <Content Include="Stock\Stock.aspx" />
     <Content Include="testpage.aspx" />
     <Content Include="Token\Tokens.aspx" />
@@ -360,6 +376,13 @@
     </Compile>
     <Compile Include="Registration\Patients.aspx.designer.cs">
       <DependentUpon>Patients.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\InventoryOut.aspx.cs">
+      <DependentUpon>InventoryOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\InventoryOut.aspx.designer.cs">
+      <DependentUpon>InventoryOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="Stock\Stock.aspx.cs">
       <DependentUpon>Stock.aspx</DependentUpon>
