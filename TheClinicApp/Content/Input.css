@@ -295,12 +295,13 @@ input.file {
     color: #428BCA !important;
     margin:0px auto;
     height:100%;
+    
 }
 
  
 
 .RightSideBar {
-    background-color: black;
+    background-color: rgba(40, 92, 0,.8);;
     position: fixed;
     z-index: 2;
     bottom: 0%;
@@ -324,6 +325,7 @@ input.file {
  {
      margin-top:20px;
       background-color:#F2F2F2;
+      height:130px;
  }
 
 
@@ -398,7 +400,115 @@ input.file {
  border-color:#cccccc; 
 }
 
-.wrap {
-    min-height: 100%;
-    position: relative;
+
+.dynamicTd
+{
+    width: 95px;
+    box-shadow: 1px 1px 1px 1px #347300;
+}
+
+.accorianHeaings {color:black
+}
+
+/* .......... */
+     
+ul.accordion-menu {
+	list-style:none;
+	padding:0;
+	font-family:'consolas',sans-serif;
+	font-weight:400;
+	font-size:16px;
+
+}
+
+ul.accordion-menu li {
+
+	background:none;
+
+	
+
+	padding:0;
+
+}
+
+ul.accordion-menu li header {
+
+	background-color:#B7D576;
+
+	border:1px solid #75AD02;
+    border-bottom:0px;
+	cursor:pointer;
+
+	padding:10px 20px;
+
+	text-align:left;
+
+	transition:all 200ms ease;
+
+	user-select:none;
+
+	-khtml-user-select:none;
+
+	-moz-user-select:none;
+
+	-ms-user-select:none;
+
+	-webkit-touch-callout:none;
+
+	-webkit-user-select:none;
+
+}
+
+ul.accordion-menu li header:hover {
+
+	background-color:#73AB09;
+
+	border-color:#75AD02;
+
+}
+
+ul.accordion-menu li section.content {
+
+	border-bottom:1px solid #CCC;
+
+	border-left:1px solid #CCC;
+
+	border-right:1px solid #CCC;
+
+	height:auto;
+
+	overflow:hidden;
+
+	padding:20px;
+
+	transition:all 200ms linear;
+
+}
+
+ul.accordion-menu li section.content p {
+
+	margin:0;	
+
+}
+
+ul.accordion-menu li.closed section.content {
+
+	max-height:0;
+
+	padding:0 20px;
+
+}
+
+ul.accordion-menu li.open header {
+
+	background-color:#347506;
+
+	border:1px solid #1E4703;
+
+}
+
+ul.accordion-menu li.open header span.title {
+
+	color:#FFF;
+
 }
