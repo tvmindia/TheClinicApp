@@ -33,7 +33,7 @@
     <script src="../Scripts/bootstrap.min.js"></script>
 
 
-    <div class="mui-container-fluid" >
+    <div class="container-fluid bodyDiv" >
 
          <label class="headingLabel">Assign Roles</label>
           <div class="col-xs-12 Span-One">
@@ -187,4 +187,5 @@
 
             
         </footer>
+        </div>
 </asp:Content>
