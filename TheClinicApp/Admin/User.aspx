@@ -77,7 +77,7 @@
 
 
                             <div class="col-xs-10">
-                                <asp:TextBox ID="txtName" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit" pattern="^[A-z][A-z\.\s]+$"
+                                <asp:TextBox ID="txtLoginName" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit" pattern="^[A-z][A-z\.\s]+$"
                                     ></asp:TextBox>
 
                             </div>
@@ -101,7 +101,7 @@
 
 
                             <div class="col-xs-10">
-                                <asp:TextBox ID="txtSex" class="form-control textBoxborder" required runat="server"  ValidationGroup="Submit"></asp:TextBox>
+                                <asp:TextBox ID="txtFirstName" class="form-control textBoxborder" required runat="server"  ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
                         </div>
@@ -125,8 +125,33 @@
 
                             <div class="col-xs-10">
                              
-                                <asp:TextBox ID="txtAge" class="form-control textBoxborder numberTypeTextBox" runat="server" required  ValidationGroup="Submit" type="number" min ="0" max="120" ></asp:TextBox>
+                                <asp:TextBox ID="txtLastName" class="form-control textBoxborder numberTypeTextBox" runat="server" required  ValidationGroup="Submit" type="number" min ="0" max="120" ></asp:TextBox>
 
+                            </div>
+                        </div>
+                        <div class="col-xs-1">
+                            <div class="col-xs-12">
+                                &nbsp
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                  <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
+                        <div class="form-group">
+                            <label class="control-label col-xs-2 regFormLabels">Active:</label>
+
+
+
+
+
+                            <div class="col-xs-10">
+                                <asp:RadioButton ID="rdoActiveYes" runat="server" GroupName="Active" Text="Yes" Checked="true" CssClass="checkbox-inline" />
+                                <asp:RadioButton ID="rdoActiveNo" runat="server"  GroupName="Active" Text="No" CssClass="checkbox-inline"/>
+                             
+                                
                             </div>
                         </div>
                         <div class="col-xs-1">
@@ -169,7 +194,7 @@
                                 <tr>
                                     <td style="width:30%;">
                                          <div class="form-group">
-                                        <asp:Button ID="btnIssue" runat="server" Text="Save"  type="submit" CssClass="button"  ValidationGroup="Submit" />
+                                        <asp:Button ID="btnSave" runat="server" Text="Save"  type="submit" CssClass="button"  ValidationGroup="Submit" OnClick="btnSave_Click"  />
 
                                          </div>
                                     </td>
