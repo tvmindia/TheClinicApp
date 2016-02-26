@@ -9,17 +9,42 @@
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/simple-sidebar.css" rel="stylesheet" />
     <link href="../Content/Input.css" rel="stylesheet" />
+<%--    <link href="../Content/mui.min.css" rel="stylesheet" />--%>
+    <script src="../Scripts/mui.min.js"></script>
 <%--    <link href="../Content/accodin.css" rel="stylesheet" />   --%>
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/jquery.js"></script>
+                                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">      <img src="../Images/Menu-01-WF.png" /></a>
     
-     <div id="wrapper">
+     <div id="wrapper" class="container">
       
-           
-           
+            <div>
+            <div class="container-fluid">
+                <div  class="row"> 
+                     <div class="col-md-12">
+                         <div class="col-md-9">
+                             <div  class="row "> 
+                                 <div class="input-group stylish-input-group">
+                                    <input type="text" class=" form-control" placeholder="Search" aria-haspopup="false" name="txtSearch" id="txtSearch" />
+
+                                    <span class="input-group-addon" style="height: 0%;">
+                                        <button type="submit" style="height: 0px;;" runat="server" id="btnSearch"  onserverclick="btnSearch_ServerClick"  formnovalidate>
+                                          
+                                            <img src="../Images/Search-WF.png" />
+                                        </button>
+                                    </span>
+
+                                </div>
+           </div>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+                </div>
                 	
                  <div id="sidebar-wrapper">
+
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
@@ -56,7 +81,7 @@
                 <div  class="row"> 
                      <div class="col-md-12">
                          <div class="col-md-9">
-                             <div  class="row"> 
+                             <div  class="row "> 
                                 
                     <%--<div class="col-lg-12">
                          
@@ -76,10 +101,9 @@
  
                                 
                                     </div>--%>
-                                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">      <img src="../Images/Menu-01-WF.png" /></a>
                                     </div>
                   
-                <div class="row patientDetailsDiv" >
+                <div class="row patientDetailsDiv  mui-panel" >
                     <div class="col-md-12" style="margin-top:8%;">
                        
                          <div class="col-md-4">
@@ -350,7 +374,8 @@
             
     </table> 
              
-
+                      <div id="main">
+                          </div>
                 </div>
 
          
@@ -395,7 +420,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </div>
-    <div class="list-group RightSideBar">
+    <div class="list-group leftSideBar1">
         <span href="#" class="list-group-item active">
       TOKENS
             <span class="pull-right" id="slide-submenu">
@@ -482,26 +507,6 @@
   <script type="text/javascript">
       $(document).ready(function () {
        
-          $('.accordion-toggle').on('click', function (event) {
-              event.preventDefault();
-              // create accordion variables
-              var accordion = $(this);
-              var accordionContent = accordion.next('.accordion-content');
-              var accordionToggleIcon = $(this).children('.toggle-icon');
-
-              // toggle accordion link open class
-              accordion.toggleClass("open");
-              // toggle accordion content
-              accordionContent.slideToggle(250);
-
-              // change plus/minus icon
-              if (accordion.hasClass("open")) {
-                  accordionToggleIcon.html("<i><img src="+'"'+'../Images/Minus.png'+'"'+"/> </i>");
-              } else {
-                  accordionToggleIcon.html("<i > <img src=" + '"' + '../Images/plus.png' + '"' + "/></i>");
-              }
-            
-          });
           var iCnt = 0;
           // CREATE A "DIV" ELEMENT AND DESIGN IT USING JQUERY ".css()" CLASS.
           var container = $(document.createElement('div')).css({
@@ -513,22 +518,23 @@
 
           $('body').on('click', '#btAdd', function () {
 
+
               if (iCnt <= 19) {
                   iCnt = iCnt + 1;
                   <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');
                           count.value=iCnt;--%>
                   // ADD TEXTBOX.
-                  $(container).append('<table style="width:20%"><tr><td style="font-size: small">MEDICINE</td> <td><input id="txtMedname5" type="text" class="input" placeholder="Name"/></td><td style="font-size: small"><input id="txtMeddoz5" type="text" class="input" placeholder="Dozage"/></td><td style="font-size: small"><input id="txtMedprescription" type="text" class="input" placeholder="Prescription"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
-
+                  $(container).append('<table style="width:50%"><tr><td style="font-size: small" ><input id="txtMedicine5" type="text" placeholder="Medicine" runat="server"  class="dynamicTd"/></td><td><input id="txtTiming5" class="dynamicTd" type="text"  placeholder="Timing" runat="server"  /></td><td><input id="txtDozage5" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="txtDays5" type="text" placeholder="Days" runat="server" class="dynamicTd" /></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
+                 
                   // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
                   if (iCnt == 1) {
                       var divSubmit = $(document.createElement('div'));
                       $(divSubmit).append('<input type=button class="bt" onclick="GetTextValue()"' + 'id=btSubmit value=Submit />');
                   }
                   // ADD BOTH THE DIV ELEMENTS TO THE "main" CONTAINER.
-
+                
                   $('#main').after(container, divSubmit);
-
+                 
               }
 
                   // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
