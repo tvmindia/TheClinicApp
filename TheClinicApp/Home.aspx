@@ -58,6 +58,12 @@
                 NavigateUrl = "../Admin/AssignRoles.aspx";
             }
 
+            else if (HyperLinkid == "hlkCreateUser")
+            {
+                NavigateUrl = "../Admin/User.aspx";
+            }
+
+
             document.getElementById('main').src = NavigateUrl;
           
         }

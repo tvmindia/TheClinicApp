@@ -40,13 +40,13 @@ namespace TheClinicApp.Stock {
         protected global::System.Web.UI.WebControls.TextBox txtPrescID;
         
         /// <summary>
-        /// txtMedicineID control.
+        /// ddlMedicine control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMedicineID;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMedicine;
         
         /// <summary>
         /// txtQty control.
@@ -56,6 +56,24 @@ namespace TheClinicApp.Stock {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtQty;
+        
+        /// <summary>
+        /// HiddenFieldClinicID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldClinicID;
+        
+        /// <summary>
+        /// HiddenFieldReceiptID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldReceiptID;
         
         /// <summary>
         /// Errorbox control.
