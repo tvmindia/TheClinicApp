@@ -43,8 +43,28 @@ namespace TheClinicApp.Stock
 
         protected void btnIssue_Click(object sender, EventArgs e)
         {
+            // ihd.ClinicID = HiddenFieldClinicID.Value;
+            ihd.IssuedTo = txtIussedTo.Text;
+            ihd.Date = Convert.ToDateTime(txtDate.Text);
+            ihd.PrescID = txtPrescID.Text;
 
 
+            // idt.ClinicID = HiddenFieldClinicID.Value;
+            
+            idt.MedicineID = ddlMedicine.SelectedValue;
+
+            //idt.Qty=
+
+           // idt.CreatedBy = ;
+            idt.CreatedDate = DateTime.Now;
+
+
+
+
+
+
+            // ihd.InsertIssueHeaderDetails();
+            //idt.InsertIssueDetails();
         }
     }
 }
