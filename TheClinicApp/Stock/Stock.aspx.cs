@@ -33,12 +33,7 @@ namespace TheClinicApp.Stock
 
 
         }
-
-        protected void btnSave_Click(object sender, EventArgs e)
-        {
-
-        }
-
+ 
         protected void btnStock_Click(object sender, EventArgs e)
         {
 

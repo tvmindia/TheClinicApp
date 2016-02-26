@@ -241,7 +241,7 @@
                  <div class="">
 
                      <div>
-                          <a id="hlkExternalIssue" href="../Stock/InventoryOut.aspx"  >External Iusse </a> 
+                          <a id="hlkExternalIssue" href="../Stock/InventoryOut.aspx"  >External Issue </a> 
                          
                      </div><br />
                      <div><a href="#" >View All Items </a> </div><br />

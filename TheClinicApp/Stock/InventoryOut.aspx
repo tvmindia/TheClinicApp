@@ -73,7 +73,10 @@
                          <td> <label class="control-label col-xs-6 regFormLabels">Medicine ID:</label>
 
                          </td>
-                         <td> <asp:TextBox ID="txtMedicineID" class="form-control textBoxborder numberTypeTextBox col-sm-6" runat="server" required  ValidationGroup="Submit"></asp:TextBox></td>
+                         <td>
+                              <asp:TextBox ID="txtMedicineID" class="form-control textBoxborder numberTypeTextBox col-sm-6" runat="server" required  ValidationGroup="Submit"></asp:TextBox>
+                             <asp:DropDownList ID="DropDownMedicine" runat="server"></asp:DropDownList>
+                         </td>
                      </tr>
                             <tr>
                          <td>&nbsp;</td>
@@ -92,7 +95,14 @@
                          <td>&nbsp;</td>
                      </tr>
                           <tr>
-                         <td>&nbsp;</td>
+
+                              <%-- hidden fields --%>
+
+                         <td>
+                             <asp:HiddenField ID="HiddenFieldClinicID" runat="server" />
+                             <asp:HiddenField ID="HiddenFieldIssueID" runat="server" />
+                             <%--<asp:HiddenField ID="HiddenField3" runat="server" />--%>
+                         </td>
                          <td>&nbsp;</td>
                      </tr>
                  </table>
