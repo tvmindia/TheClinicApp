@@ -29,7 +29,7 @@
        
        
            <div class="col-sm-12">
-               <div class="col-sm-8">.
+               <div class="col-sm-11">.
 
                      <table class="col-phar-patiedet">
                      <tr>
@@ -70,12 +70,12 @@
                          <td>&nbsp;</td>
                      </tr>
                               <tr>
-                         <td> <label class="control-label col-xs-6 regFormLabels">Medicine ID:</label>
+                         <td> <label class="control-label col-xs-6 regFormLabels">Medicine Name(ID):</label>
 
                          </td>
                          <td>
-                              <asp:TextBox ID="txtMedicineID" class="form-control textBoxborder numberTypeTextBox col-sm-6" runat="server" required  ValidationGroup="Submit"></asp:TextBox>
-                             <asp:DropDownList ID="DropDownMedicine" runat="server"></asp:DropDownList>
+                              <%--<asp:TextBox ID="txtMedicineID" class="form-control textBoxborder numberTypeTextBox col-sm-6" runat="server" required  ValidationGroup="Submit"></asp:TextBox>--%>
+                             <asp:DropDownList ID="ddlMedicine" style="width:300px" runat="server"></asp:DropDownList>
                          </td>
                      </tr>
                             <tr>
@@ -83,7 +83,7 @@
                          <td>&nbsp;</td>
                      </tr>
                      <tr>
-                         <td>      <label class="control-label col-xs-6 regFormLabels">Quantity:</label>
+                         <td>      <label class="control-label col-xs-6  regFormLabels">Quantity:</label>
                             </td>
                          <td> <asp:TextBox ID="txtQty" class="form-control textBoxborder col-sm-6" required runat="server"  ValidationGroup="Submit">
 
@@ -100,7 +100,7 @@
 
                          <td>
                              <asp:HiddenField ID="HiddenFieldClinicID" runat="server" />
-                             <asp:HiddenField ID="HiddenFieldIssueID" runat="server" />
+                             <asp:HiddenField ID="HiddenFieldReceiptID" runat="server" />
                              <%--<asp:HiddenField ID="HiddenField3" runat="server" />--%>
                          </td>
                          <td>&nbsp;</td>
@@ -109,7 +109,7 @@
 
 
                </div>
-               <div class="col-sm-4">
+               <div class="col-sm-1">
 
                </div>
            </div>

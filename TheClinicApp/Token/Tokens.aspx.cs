@@ -40,20 +40,24 @@ namespace TheClinicApp.Token
                 ddlDoctorName.DataBind();
             }
 
+            gridviewbind();
 
-            //Gridview Binding to Diplay DoctorName,Token No,Patient Name,TIME
-            tok.DateTime = DateTime.Now;
-
-            DataSet gds = tok.ViewToken();
-           
-            GridViewTokenlist.DataSource = gds;
-            GridViewTokenlist.DataBind();
+        
 
            
 
         }
 
-        
+        public void gridviewbind()
+        {
+            //Gridview Binding to Diplay DoctorName,Token No,Patient Name,TIME
+            tok.DateTime = DateTime.Now;
+
+            DataSet gds = tok.ViewToken();
+
+            GridViewTokenlist.DataSource = gds;
+            GridViewTokenlist.DataBind();
+        }
 
      
         /// <summary>
@@ -85,12 +89,7 @@ namespace TheClinicApp.Token
 
                 if (IsPostBack)
                 {
-                    tok.DateTime = DateTime.Now;
-
-                    DataSet gds = tok.ViewToken();
-                    GridViewTokenlist.EmptyDataText = "No Records Found";
-                    GridViewTokenlist.DataSource = gds;
-                    GridViewTokenlist.DataBind();
+                    gridviewbind();
 
                 }
            
@@ -145,6 +144,7 @@ namespace TheClinicApp.Token
              string ProductID = GridViewTokenlist.DataKeys[gr.RowIndex].Values["UniqueId"].ToString();
 
              tok.DeleteToken(ProductID);
+             gridviewbind();
            
         }
 
