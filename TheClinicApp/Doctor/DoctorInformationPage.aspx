@@ -205,7 +205,7 @@
     <div class="col-md-12"  style="width:100%;">
       <div class="content">
           <ul class="accordion-menu">
-<li class="open">
+<li class="closed">
 <header onclick="toggle(this.parentNode)"><span class="title">Symptoms</span></header>
 <section class="content">
 
@@ -402,7 +402,17 @@
       
 </section>
 </li>
+<li class="closed">
+<header onclick="toggle(this.parentNode)"><span class="title">File Attachment</span></header>
+<section class="content">
 
+          
+            
+            
+            
+      
+</section>
+</li>
 </ul>
           </div>
     </div>
