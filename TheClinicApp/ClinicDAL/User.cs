@@ -115,11 +115,10 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@LoginName", SqlDbType.NVarChar,255).Value = loginName;
                 cmd.Parameters.Add("@FirstName", SqlDbType.NVarChar, 255).Value = firstName;
                 cmd.Parameters.Add("@LastName", SqlDbType.NVarChar, 255).Value = lastName;
-                cmd.Parameters.Add("@LoginName", SqlDbType.NVarChar, 255).Value = loginName;
                 cmd.Parameters.Add("@Active", SqlDbType.Bit).Value = isActive;
 
 
-                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = ClinicID;
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = "2C7A7172-6EA9-4640-B7D2-0C329336F289";
                 cmd.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = createdBy;
                 cmd.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = updatedBy;
                 cmd.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
