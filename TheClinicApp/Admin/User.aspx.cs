@@ -49,7 +49,7 @@ namespace TheClinicApp.Admin
         /// <param name="e"></param>
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+            //UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
 
             userObj.firstName = txtFirstName.Text;
             userObj.loginName = txtLoginName.Text;
@@ -67,7 +67,7 @@ namespace TheClinicApp.Admin
                 }
             }
 
-            userObj.UserID = UA.userName;
+            //userObj.UserID = UA.userName;
 
             userObj.AddUser();
         }
