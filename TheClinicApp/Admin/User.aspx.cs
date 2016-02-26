@@ -25,8 +25,8 @@ namespace TheClinicApp.Admin
         #region Global Variables
 
         ClinicDAL.User userObj = new ClinicDAL.User();
-        UIClasses.Const Const = new UIClasses.Const();
-        ClinicDAL.UserAuthendication UA;
+        //UIClasses.Const Const = new UIClasses.Const();
+        //ClinicDAL.UserAuthendication UA;
         
         #endregion Global Variables
 
