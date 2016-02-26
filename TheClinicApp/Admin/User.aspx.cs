@@ -68,6 +68,7 @@ namespace TheClinicApp.Admin
             }
 
             userObj.createdBy = UA.userName;
+            userObj.updatedBy = UA.userName; 
             //userObj.UserID = UA.userName;
 
             userObj.AddUser();

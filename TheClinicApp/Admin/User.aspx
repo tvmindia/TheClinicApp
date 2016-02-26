@@ -125,7 +125,7 @@
 
                             <div class="col-xs-10">
                              
-                                <asp:TextBox ID="txtLastName" class="form-control textBoxborder numberTypeTextBox" runat="server" required  ValidationGroup="Submit" type="number" min ="0" max="120" ></asp:TextBox>
+                               <asp:TextBox ID="txtLastName" class="form-control textBoxborder" required runat="server"  ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
                         </div>

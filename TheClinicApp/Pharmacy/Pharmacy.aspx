@@ -44,17 +44,17 @@
         <div class="col-md-12">
              <div class="col-md-9">
                  <div class="row">
-                 <div class="input-group">
-             <input type="text" class="form-control" placeholder="Search" style="height: 20%; top: 0px; left: 0px;" aria-haspopup="false" name="txtSearch" id="txtSearch" />
-             <span class="input-group-addon" style="height: 0%;">
-                  <button type="submit" style="height: 0px;" runat="server" id="btnSearch" onserverclick="btnSearch_ServerClick" formnovalidate>
-                <img src="../Images/Search-WF.png" />
+                 <div class="input-group stylish-input-group">
+                                    <input type="text" class=" form-control" placeholder="Search" aria-haspopup="false" name="txtSearch" id="txtSearch" />
 
-            </button>
+                                    <span class="input-group-addon" style="height: 0%;">
+                                        <button type="submit" style="height: 0px;;" runat="server" id="btnSearch" formnovalidate>
+                                          
+                                            <img src="../Images/Search-WF.png" />
+                                        </button>
+                                    </span>
 
-        </span>
-
-    </div>
+                                </div>
 
                  </div>
 
