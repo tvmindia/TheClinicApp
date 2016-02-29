@@ -19,6 +19,7 @@ namespace TheClinicApp.Stock
         IssueHeaderDetails ihd = new IssueHeaderDetails();
         IssueDetails idt = new IssueDetails();
         Stocks stok = new Stocks();
+        Receipt rpt = new Receipt();
 
 
 
@@ -36,6 +37,9 @@ namespace TheClinicApp.Stock
                 ddlMedicine.DataTextField = "Name";
                 ddlMedicine.DataBind();
 
+
+                
+
             }
         }
 
@@ -52,7 +56,7 @@ namespace TheClinicApp.Stock
             // idt.ClinicID = HiddenFieldClinicID.Value;
             
             idt.MedicineID = ddlMedicine.SelectedValue;
-
+            //idt.ReceiptID=
             //idt.Qty=
 
            // idt.CreatedBy = ;

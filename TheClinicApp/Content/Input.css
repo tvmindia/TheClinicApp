@@ -36,6 +36,7 @@
     box-shadow: 0 0 0;
     border-color: #ccc;
     height:100%;
+    width:100%;
 }
 
 .stylish-input-group button {
@@ -325,7 +326,7 @@ input.file {
  {
      margin-top:20px;
       background-color:#F2F2F2;
-      height:130px;
+      height:100%;
  }
 
 
