@@ -132,6 +132,37 @@
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Admin\AssignRoles.aspx" />
     <Content Include="Admin\User.aspx" />
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\AspNet.ScriptManager.jQuery.dll" />
+    <Content Include="bin\AspNet.ScriptManager.jQuery.UI.Combined.dll" />
+    <Content Include="bin\DotNetOpenAuth.AspNet.dll" />
+    <Content Include="bin\DotNetOpenAuth.AspNet.xml" />
+    <Content Include="bin\DotNetOpenAuth.Core.dll" />
+    <Content Include="bin\DotNetOpenAuth.Core.xml" />
+    <Content Include="bin\DotNetOpenAuth.OAuth.Consumer.dll" />
+    <Content Include="bin\DotNetOpenAuth.OAuth.Consumer.xml" />
+    <Content Include="bin\DotNetOpenAuth.OAuth.dll" />
+    <Content Include="bin\DotNetOpenAuth.OAuth.xml" />
+    <Content Include="bin\DotNetOpenAuth.OpenId.dll" />
+    <Content Include="bin\DotNetOpenAuth.OpenId.RelyingParty.dll" />
+    <Content Include="bin\DotNetOpenAuth.OpenId.RelyingParty.xml" />
+    <Content Include="bin\DotNetOpenAuth.OpenId.xml" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\Microsoft.AspNet.FriendlyUrls.dll" />
+    <Content Include="bin\Microsoft.AspNet.FriendlyUrls.xml" />
+    <Content Include="bin\Microsoft.AspNet.Membership.OpenAuth.dll" />
+    <Content Include="bin\Microsoft.AspNet.Membership.OpenAuth.xml" />
+    <Content Include="bin\Microsoft.AspNet.Web.Optimization.WebForms.dll" />
+    <Content Include="bin\Microsoft.ScriptManager.MSAjax.dll" />
+    <Content Include="bin\Microsoft.ScriptManager.WebForms.dll" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Providers.dll" />
+    <Content Include="bin\TheClinicApp.dll" />
+    <Content Include="bin\TheClinicApp.pdb" />
+    <Content Include="bin\WebGrease.dll" />
     <Content Include="Content\accodin.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -144,12 +175,18 @@
     <Content Include="Content\selectize.css" />
     <Content Include="Content\simple-sidebar.css" />
     <Content Include="Images\Addition .png" />
+    <Content Include="Images\Check.png" />
     <Content Include="Images\Close1.png" />
     <Content Include="Images\Menu-01-WF.png" />
     <Content Include="Images\Minus.png" />
     <Content Include="Images\navigate-left-icon.png" />
     <Content Include="Images\navigate-right-icon.png" />
     <Content Include="Images\plus.png" />
+    <Content Include="Images\select.png" />
+    <Content Include="Images\Sync-WF.png" />
+    <Content Include="obj\Debug\TheClinicApp.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\TheClinicApp.dll" />
+    <Content Include="obj\Debug\TheClinicApp.pdb" />
     <Content Include="Pharmacy\Pharmacy.aspx" />
     <Content Include="Scripts\bootcards.js" />
     <Content Include="Content\Input.css" />
@@ -258,6 +295,9 @@
     <Content Include="Content\materialize\README.md" />
     <Content Include="Masters\Input.Master" />
     <Content Include="Masters\Popup.Master" />
+    <Content Include="bin\TheClinicApp.dll.config" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\TheClinicApp.csprojResolveAssemblyReference.cache" />
     <None Include="Properties\PublishProfiles\AmruthaProfile.pubxml" />
     <None Include="Properties\PublishProfiles\ClinicAppProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Hondaprofile.pubxml" />
@@ -373,6 +413,9 @@
     <Compile Include="Masters\Popup.Master.designer.cs">
       <DependentUpon>Popup.Master</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Pharmacy\Pharmacy.aspx.cs">
       <DependentUpon>Pharmacy.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -443,6 +486,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\Profilepic\" />
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />

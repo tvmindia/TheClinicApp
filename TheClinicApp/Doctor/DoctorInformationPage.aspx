@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="DoctorInformationPage.aspx.cs" Inherits="TheClinicApp.Doctor.DoctorInformationPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="DoctorInformationPage.aspx.cs" Inherits="TheClinicApp.Doctor.DoctorInformationPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     
 </asp:Content>
@@ -117,8 +117,7 @@
                                  </tr>
                                     <tr>
                                     <td>
-                                                       <asp:Label ID="lblAddress" runat="server" Text="Address"></asp:Label>
-
+                                         <asp:Label ID="lblAddress" runat="server" Text="Address"></asp:Label>
 
                                     </td>
                                         </tr>
@@ -405,8 +404,7 @@
 <li class="closed">
 <header onclick="toggle(this.parentNode)"><span class="title">File Attachment</span></header>
 <section class="content">
-
-          
+   
             
             
             
@@ -438,7 +436,44 @@
                    X</i>
             </span>
         </span>
-      
+       <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False"  CssClass="footable" Style="max-width: 500px" DataKeyNames="UniqueId">
+                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                            <Columns>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Check.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID") %>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
+                                    </ItemTemplate>
+                                    
+                                </asp:TemplateField>
+                                <asp:BoundField HeaderText="TOKEN NO" DataField="TokenNo" />
+                                              <asp:BoundField HeaderText="PATIENT NAME" DataField="Name" />
+                                              <asp:BoundField HeaderText="TIME" DataField="DateTime" />
+                                               
+                                           
+                                               
+                                         
+                            </Columns>
+                            <EditRowStyle BackColor="#0080AA"></EditRowStyle>
+
+                            <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
+
+                            <HeaderStyle BackColor="#3FBF7F" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                            <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#2461BF"></PagerStyle>
+
+                            <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                        </asp:GridView>
+          
         
     </div>   
             </div>     

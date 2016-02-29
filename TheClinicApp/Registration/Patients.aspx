@@ -6,6 +6,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:Panel DefaultButton="btnSave" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -84,50 +85,7 @@ background-color: ghostwhite;
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/jquery-ui.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
-    <script>
-  
-    //var W3CDOM = (document.createElement && document.getElementsByTagName);
-
-    //function initFileUploads() {
-    //    if (!W3CDOM) return;
-    //    var fakeFileUpload = document.createElement('div');
-    //    fakeFileUpload.className = 'fakefile';
-    //    fakeFileUpload.appendChild(document.createElement('input'));
-    //    var image = document.createElement('img');
-    //    image.src='pix/button_UploadPic.png';
-    //    fakeFileUpload.appendChild(image);
-    //    var x = document.getElementsByTagName('input');
-    //    for (var i=0;i<x.length;i++) {
-    //        if (x[i].type != 'file') continue;
-    //        if (x[i].parentNode.className != 'fileinputs') continue;
-    //        x[i].className = 'file hidden';
-    //        var clone = fakeFileUpload.cloneNode(true);
-    //        x[i].parentNode.appendChild(clone);
-    //        x[i].relatedElement = clone.getElementsByTagName('input')[0];
-    //        x[i].onchange = x[i].onmouseout = function () {
-    //            this.relatedElement.value = this.value;
-    //        }
-    //    }
-    //}
-    //$('#btnSave').bind("click",function(){ 
-    //var imgVal = $('#fileupload').val(); 
-    //alert(imgVal);
-    //return false;
-    //});
-    <%--function previewFile() {
-        var preview = document.querySelector('#<%=Image1.ClientID %>');
-        var file = document.querySelector('#<%=FileUpload1.ClientID %>').files[0];
-        var reader = new FileReader();
-        reader.onloadend = function () {
-            preview.src = reader.result;
-        }
-        if (file) {
-            reader.readAsDataURL(file);
-        } else {
-            preview.src = "";
-        }
-    }--%>
-    </script>
+    
     <%--<script>
         function OnClientButtonClicking(sender, args) {
 
@@ -156,10 +114,7 @@ background-color: ghostwhite;
                 source: ac
             });
         });
-        //$('input[type="file"]').on('change', function (event, files, label) {
-        //    var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '')
-        //    $('.filename').text(file_name);
-        //});
+        
     </script>
  <asp:ScriptManager runat="server"></asp:ScriptManager>
     
@@ -282,12 +237,7 @@ background-color: ghostwhite;
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
-                            <label class="control-label col-xs-1 regFormLabels">Address:</label>
-
-
-
-
-
+                            <label class="control-label col-xs-1 regFormLabels">Address:   </label>
                             <div class="col-xs-11">
                                 <asp:TextBox ID="txtAddress" class="form-control textBoxborder" TextMode="multiline" Columns="50" Rows="10" Height="100" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
@@ -331,11 +281,6 @@ background-color: ghostwhite;
                     <div class="col-xs-11">
                         <div class="form-group">
                             <label class="control-label col-xs-1 regFormLabels" for="email" >Email:</label>
-
-
-
-
-
                             <div class="col-xs-11">
                                 <asp:TextBox ID="txtEmail" class="form-control textBoxborder" runat="server" type="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"></asp:TextBox>
 
@@ -403,15 +348,7 @@ background-color: ghostwhite;
 		
 		<img src="../Images/UploadPic.png" style="width:60%;height:40%" />
 	</div>
-<%--<asp:FileUpload ID="FileUpload1" runat="server" onchange="previewFile()" style="display:none"/>
-                               <asp:Image ID="Image1" onclick="ImageButton1_Click" ImageUrl="~/Images/icon-user-default.jpg" runat="server" formnovalidate />--%>
-<%--<asp:ImageButton ID="ImageButton1" runat="server" onclick="ImageButton1_Click" ImageUrl="~/Images/icon-user-default.jpg" formnovalidate/>--%>
-      <%--<asp:FileUpload ID="fileupload" CssClass="file" runat="server" />---%>                         
- <%--<input type="file" id="fileupload" class="file" name="annex" />
-<span class="filename"></span>
- <div class="fakefile">  
-  <img src="../Images/UploadPic.png" style="width:60%;height:40%" OnClick="document.getElementById('fileupload').click()" />
- </div>--%>
+
 </div>  
                         </td>
                         
@@ -640,5 +577,6 @@ background-color: ghostwhite;
         </div>
 
     </div>
+        </asp:Panel>
     
 </asp:Content>

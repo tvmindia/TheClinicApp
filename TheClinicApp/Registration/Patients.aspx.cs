@@ -66,7 +66,9 @@ namespace TheClinicApp.Registration
             }
             gridDataBind();
             PicUpload();
+            ClearFields();
         }
+
         #endregion MainButton
 
         public void PicUpload()
@@ -226,6 +228,19 @@ namespace TheClinicApp.Registration
         //{
         //    Image1.Attributes.Add("onclick", "document.getElementById('" + FileUpload1.ClientID + "').click();");
         //}
-
+        #region clearfield
+        public void ClearFields()
+        {
+            txtName.Text = "";
+            txtSex.Text = "";
+            txtAge.Text = "";
+            txtAddress.Text = "";
+            txtEmail.Text = "";
+            txtMobile.Text = "";
+            txtMarital.Text = "";
+            //lblErrorCaption.Text = "";
+            //lblMsgges.Text = "";
+        }
+        #endregion clearfield
     }
 }
