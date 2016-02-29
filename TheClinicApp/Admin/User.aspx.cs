@@ -10,6 +10,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -30,12 +31,26 @@ namespace TheClinicApp.Admin
         
         #endregion Global Variables
 
+        #region Methods
+
+        #region Bind Gridview
+        public void BindGriewWithDetailsOfAllUsers()
+        {
+            DataTable dtUsers = userObj.GetDetailsOfAllUsers();
+            dtgViewAllUsers.DataSource = dtUsers;
+            dtgViewAllUsers.DataBind();
+        }
+
+        #endregion Bind Gridview
+
+        #endregion Methods
+
         #region Events
 
         #region Page Load
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            BindGriewWithDetailsOfAllUsers(); 
         }
 
         #endregion Page Load
@@ -63,19 +78,76 @@ namespace TheClinicApp.Admin
             {
                 if(rdoActiveNo.Checked == true)
                 {
-                    userObj.isActive = true;
+                    userObj.isActive = false;
                 }
             }
-            userObj.ClinicID = UA.ClinicID;
+            //userObj.ClinicID = UA.ClinicID;
+            userObj.ClinicID = new Guid("2c7a7172-6ea9-4640-b7d2-0c329336f289");
             userObj.createdBy = UA.userName;
             userObj.updatedBy = UA.userName; 
-            //userObj.UserID = UA.userName;
+           
 
-            userObj.AddUser();
+            if(btnSave.Text == "Save")
+            {
+                 userObj.AddUser();
+                 BindGriewWithDetailsOfAllUsers();
+            }
+            else
+            {
+                if(btnSave.Text == "Update" )
+                {
+                    userObj.UserID = Guid.Parse(hdnUserID.Value);
+                    userObj.UpdateuserByUserID();
+                    BindGriewWithDetailsOfAllUsers();
+               }
+               
+            }
         }
 
         #endregion Save Button Click
 
+        #region Update Image Button Click
+        protected void ImgBtnUpdate_Command(object sender, CommandEventArgs e)
+        {
+            string[] Users = e.CommandArgument.ToString().Split(new char[] { '|' });
+            Guid UserID = Guid.Parse(Users[0]);
+            userObj.UserID = UserID;
+
+            txtLoginName.Text = Users[1];
+            txtFirstName.Text = Users[2];
+            txtLastName.Text = Users[3];
+
+            bool isActive = Convert.ToBoolean(Users[4]);
+
+            if (isActive)
+            {
+                rdoActiveYes.Checked = true;
+                 }
+            else
+            {
+                rdoActiveNo.Checked = true;
+              }
+
+            btnSave.Text = "Update";
+            hdnUserID.Value = UserID.ToString();
+
+        }
+
+        #endregion  Update Image Button Click
+
+        #region Delete Image Button Click
+        protected void ImgBtnDelete_Command(object sender, CommandEventArgs e)
+        {
+            Guid UserID = Guid.Parse(e.CommandArgument.ToString());
+            userObj.UserID = UserID;
+            userObj.DeleteUserByUserID();
+            BindGriewWithDetailsOfAllUsers();
+
+        }
+        #endregion Delete Image Button Click
+
         #endregion Events
+
+
     }
 }

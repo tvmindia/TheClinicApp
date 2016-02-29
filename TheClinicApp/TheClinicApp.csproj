@@ -334,6 +334,7 @@
     <Compile Include="ClinicDAL\Pharmacy.cs" />
     <Compile Include="ClinicDAL\PrescriptionHeaderDetails.cs" />
     <Compile Include="ClinicDAL\Receipt.cs" />
+    <Compile Include="ClinicDAL\RoleAssign.cs" />
     <Compile Include="ClinicDAL\Security.cs" />
     <Compile Include="ClinicDAL\Stocks.cs" />
     <Compile Include="ClinicDAL\TokensBooking.cs" />

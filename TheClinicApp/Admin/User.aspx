@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="User.aspx.cs" Inherits="TheClinicApp.Admin.User" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="User.aspx.cs" Inherits="TheClinicApp.Admin.User" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -165,6 +165,8 @@
  </div>
 
             <div class="col-xs-2">
+                 <a href="#" role="button" data-toggle="modal" data-target="#myModal" >View All Users </a>
+
                  </div>
 
             </div>
@@ -212,6 +214,81 @@
             
         </footer>
 
+    <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog  modal-lg">
 
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">View All Users</h4>
+
+                    </div>
+                    <div class="modal-body" >
+                        
+                        <asp:GridView ID="dtgViewAllUsers" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None" Height="30px">
+                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                            <Columns>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("UserID")+"|"+Eval("LoginName")+"|"+Eval("FirstName")+"|"+Eval("LastName")+"|"+Eval("Active")%>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
+                                       
+
+                                    </ItemTemplate>
+                                    
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="ImgBtnDelete" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("UserID")%>' OnCommand="ImgBtnDelete_Command" OnClientClick="return confirm('Are you sure');"  formnovalidate />
+                                       
+
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="LoginName" HeaderText="LOGIN NAME">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="FirstName" HeaderText="FIRST NAME">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="LastName" HeaderText="LAST NAME">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Active" HeaderText="ACTIVE">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+
+                            </Columns>
+                            <EditRowStyle HorizontalAlign="Center" BackColor="#0080AA"></EditRowStyle>
+
+                            <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
+
+                            <HeaderStyle BackColor="#001a00" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                            <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#2461BF"></PagerStyle>
+
+                            <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                        </asp:GridView>
+                            </div>
+                   
+                    <div class="modal-footer">
+                   
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    <asp:HiddenField ID="hdnUserID" runat="server" />
 
 </asp:Content>
