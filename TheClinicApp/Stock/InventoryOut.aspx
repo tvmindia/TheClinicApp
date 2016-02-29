@@ -22,6 +22,17 @@
     <script src="../Scripts/bootstrap.min.js"></script>
 
 
+     <script type="text/javascript">
+        $(function () {
+            $("[id$=txtDate]").datepicker({ dateFormat: 'dd-M-yy' ,
+                showOn: 'button',
+                buttonImageOnly: true,
+                buttonImage: 'http://findicons.com/files/icons/577/refresh_cl/48/calendar.png'
+            });
+        });
+    </script>
+
+
 
        <div class="container-fluid bodyDiv" >
 
@@ -82,6 +93,25 @@
                          <td>&nbsp;</td>
                          <td>&nbsp;</td>
                      </tr>
+
+
+
+
+                             <tr>
+                         <td> <label class="control-label col-xs-6 regFormLabels">ReceiptID:</label>   
+
+                         </td>
+                         <td> <asp:DropDownList ID="ddlReceiptID" style="width:300px" runat="server"></asp:DropDownList>
+
+                         </td>
+                     </tr>
+
+
+                            <tr>
+                         <td>&nbsp;</td>
+                         <td>&nbsp;</td>
+                     </tr>
+
                      <tr>
                          <td>      <label class="control-label col-xs-6  regFormLabels">Quantity:</label>
                             </td>
@@ -90,30 +120,21 @@
                                 </asp:TextBox></td>
                      </tr>
                      
-                          <tr>
-                         <td>&nbsp;</td>
-                         <td>&nbsp;</td>
-                     </tr>
+                       
 
-                          <tr>
-                         <td> <label class="control-label col-xs-6 regFormLabels">ReceiptID:</label>   
-
-                         </td>
-                         <td>  <asp:TextBox ID="txtReceiptID" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit" >
-                                </asp:TextBox>
-
-                         </td>
-                     </tr>
+                      
                           <tr>
 
                               <%-- hidden fields --%>
 
                          <td>
                              <asp:HiddenField ID="HiddenFieldClinicID" runat="server" />
-                             <asp:HiddenField ID="HiddenFieldReceiptID" runat="server" />
+                             
                              <%--<asp:HiddenField ID="HiddenField3" runat="server" />--%>
                          </td>
+
                          <td>&nbsp;</td>
+
                      </tr>
                  </table>
 

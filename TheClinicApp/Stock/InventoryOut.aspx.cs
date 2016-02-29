@@ -30,11 +30,19 @@ namespace TheClinicApp.Stock
             if (!IsPostBack)
             {
 
+                //Binding  Medicine ID and Name
                 DataSet ds = stok.ViewMedicines();
 
                 ddlMedicine.DataSource = ds.Tables[0];
                 ddlMedicine.DataValueField = "MedicineID";
                 ddlMedicine.DataTextField = "Name";
+                ddlMedicine.DataBind();
+
+                //Binding  Receipt ID
+                DataSet ds1 = rpt.ViewReceiptHeaderDetails();
+                ddlMedicine.DataSource = ds.Tables[0];
+                ddlMedicine.DataValueField = "ReceiptID";
+                ddlMedicine.DataTextField = "ReceiptID";
                 ddlMedicine.DataBind();
 
 
@@ -47,28 +55,41 @@ namespace TheClinicApp.Stock
 
         protected void btnIssue_Click(object sender, EventArgs e)
         {
-            // ihd.ClinicID = HiddenFieldClinicID.Value;
+
+            //Inserting Issue Header
+
+
+            ihd.ClinicID = HiddenFieldClinicID.Value;
             ihd.IssuedTo = txtIussedTo.Text;
             ihd.Date = Convert.ToDateTime(txtDate.Text);
             ihd.PrescID = txtPrescID.Text;
+            ihd.CreatedBy = "User";
+            ihd.CreatedDate = DateTime.Now;
+            ihd.UpdatedBy = "User";
+            ihd.UpdatedDate=DateTime.Now;
 
+            //Inserting Issue Details
 
-            // idt.ClinicID = HiddenFieldClinicID.Value;
-            
+            idt.ClinicID = HiddenFieldClinicID.Value;
             idt.MedicineID = ddlMedicine.SelectedValue;
-            //idt.ReceiptID=
-            //idt.Qty=
+          
+            idt.Qty = Convert.ToInt32(txtQty.Text);
 
-           // idt.CreatedBy = ;
+            idt.CreatedBy ="User";
             idt.CreatedDate = DateTime.Now;
+            idt.UpdatedBy = "User";
+            idt.UpdatedDate = DateTime.Now;
 
 
 
-
-
+            //  Calling  Insert Functions
 
             // ihd.InsertIssueHeaderDetails();
             //idt.InsertIssueDetails();
         }
+
+
+
+
     }
 }
