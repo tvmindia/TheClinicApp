@@ -56,7 +56,7 @@
 
                             <div class="col-xs-11">
                                
-                                <asp:DropDownList ID="ddlUsers" runat="server" CssClass="selectbox">
+                                <asp:DropDownList ID="ddlUsers" runat="server" >
                                     <asp:ListItem>--Select--</asp:ListItem>
                                    
                                 </asp:DropDownList>
@@ -109,7 +109,7 @@
     <li><a href="#">Option 4</a></li>
   </ul>
 </div>--%>
-                                 <asp:ListBox ID="lstRoles" runat="server" SelectionMode="Multiple" CssClass="selectbox">
+                                 <asp:ListBox ID="lstRoles" runat="server" SelectionMode="Multiple" >
                                 
 
                                     <asp:ListItem>Html</asp:ListItem>

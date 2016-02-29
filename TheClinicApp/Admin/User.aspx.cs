@@ -66,7 +66,7 @@ namespace TheClinicApp.Admin
                     userObj.isActive = true;
                 }
             }
-
+            userObj.ClinicID = UA.ClinicID;
             userObj.createdBy = UA.userName;
             userObj.updatedBy = UA.userName; 
             //userObj.UserID = UA.userName;

@@ -33,11 +33,8 @@ namespace TheClinicApp.ClinicDAL
 
         public Guid ClinicID
         {
-
-            get
-            {
-                return Clinic_ID;
-            }
+            get;
+            set;
         }
 
         public Guid UserID
@@ -95,7 +92,6 @@ namespace TheClinicApp.ClinicDAL
         }
 
         #endregion Global Variables
-
 
         #region AddUser
         public void AddUser()
@@ -167,5 +163,140 @@ namespace TheClinicApp.ClinicDAL
             }
         }
         #endregion AddUsers
+
+        #region Update User By UserID
+
+        public void UpdateuserByUserID()
+        {
+            dbConnection dcon = new dbConnection();
+
+            try
+            {
+
+
+                dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = dcon.SQLCon;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandText = "[UpdateUserByUserID]";
+
+                cmd.Parameters.Add("@LoginName", SqlDbType.NVarChar, 255).Value = loginName;
+                cmd.Parameters.Add("@FirstName", SqlDbType.NVarChar, 255).Value = firstName;
+                cmd.Parameters.Add("@LastName", SqlDbType.NVarChar, 255).Value = lastName;
+                cmd.Parameters.Add("@Active", SqlDbType.Bit).Value = isActive;
+
+
+                //cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = "2C7A7172-6EA9-4640-B7D2-0C329336F289";
+                cmd.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = createdBy;
+                cmd.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = updatedBy;
+
+
+                SqlParameter Output = new SqlParameter();
+                Output.DbType = DbType.Int32;
+                Output.ParameterName = "@Status";
+                Output.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(Output);
+                cmd.ExecuteNonQuery();
+
+                if (Output.Value.ToString() == "")
+                {
+                    //not successfull   
+
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.InsertionNotSuccessMessage(page);
+
+                }
+                else
+                {
+                    //successfull
+
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.UpdationSuccessMessage(page);
+
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
+
+            }
+
+            finally
+            {
+                if (dcon.SQLCon != null)
+                {
+                    dcon.DisconectDB();
+                }
+
+            }
+        }
+
+        #endregion Update User By UserID
+
+        #region Delete User By UserID
+
+        public void DeleteUserByUserID()
+        {
+            SqlConnection con = null;
+            try
+            {
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandText = "DeleteUserByUserID";
+                cmd.Parameters.Add("@UserID", SqlDbType.UniqueIdentifier).Value = UserID;
+
+                SqlParameter Output = new SqlParameter();
+                Output.DbType = DbType.Int32;
+                Output.ParameterName = "@Status";
+                Output.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(Output);
+                cmd.ExecuteNonQuery();
+                if (Output.Value.ToString() == "")
+                {
+                    //not successfull   
+
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.WarningMessage(page);
+
+                }
+                else
+                {
+                    //successfull
+
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.DeleteSuccessMessage(page);
+
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
+
+            }
+
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+        }
+
+        #endregion Delete User By UserID
+
     }
 }
