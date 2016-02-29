@@ -19,5 +19,10 @@ namespace TheClinicApp.Doctor
             //datagrid.DataBind();
             //#endregion GridAllRegistration
         }
+
+        protected void btnSearch_ServerClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }

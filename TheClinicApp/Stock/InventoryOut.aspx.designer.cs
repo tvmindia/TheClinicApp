@@ -40,22 +40,13 @@ namespace TheClinicApp.Stock {
         protected global::System.Web.UI.WebControls.TextBox txtPrescID;
         
         /// <summary>
-        /// txtMedicineID control.
+        /// ddlMedicine control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMedicineID;
-        
-        /// <summary>
-        /// DropDownMedicine control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownMedicine;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMedicine;
         
         /// <summary>
         /// txtQty control.
@@ -67,6 +58,15 @@ namespace TheClinicApp.Stock {
         protected global::System.Web.UI.WebControls.TextBox txtQty;
         
         /// <summary>
+        /// txtReceiptID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtReceiptID;
+        
+        /// <summary>
         /// HiddenFieldClinicID control.
         /// </summary>
         /// <remarks>
@@ -76,13 +76,13 @@ namespace TheClinicApp.Stock {
         protected global::System.Web.UI.WebControls.HiddenField HiddenFieldClinicID;
         
         /// <summary>
-        /// HiddenFieldIssueID control.
+        /// HiddenFieldReceiptID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldIssueID;
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldReceiptID;
         
         /// <summary>
         /// Errorbox control.

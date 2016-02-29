@@ -17,64 +17,158 @@
     <script src="../Scripts/bootstrap.min.js"></script>
 
 
-   
-       <div class="container bodyDiv" >
+   <div class="container-fluid bodyDiv" >
+        <label class="headingLabel">Create User</label>
+        <div class="col-sm-12 Span-One ">
+            
 
-        <label class="headingLabel">Inventory Out</label>
-       
-       
-           <div class="col-sm-12">
-               <div class="col-sm-8">.
-
-                     <table class="col-phar-patiedet">
-                     <tr>
-                         <td> <label class="control-label col-sm-6 regFormLabels">Login Name:</label></td>
-                         <td> <asp:TextBox ID="txtIussedTo" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit" >
-                                </asp:TextBox>
-
-                         </td>
-                     </tr>
-                            <tr>
-                         <td>&nbsp;</td>
-                         <td>&nbsp;</td>
-                     </tr>
-                     <tr>
-                         <td>  <label class="control-label col-xs-6 regFormLabels">First Name:</label>   
-
-                         </td>
-                         <td>     <asp:TextBox ID="txtDate" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit" >
-                                </asp:TextBox>
-
-                         </td>
-                     </tr>
-                            <tr>
-                         <td>&nbsp;</td>
-                         <td>&nbsp;</td>
-                     </tr>
-                     <tr>
-                         <td> <label class="control-label col-xs-6 regFormLabels">Last Name:</label>   
-
-                         </td>
-                         <td>  <asp:TextBox ID="txtPrescID" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit" >
-                                </asp:TextBox>
-
-                         </td>
-                     </tr>
-                           
-                     
-                 </table>
+             <div class="col-xs-10">
+                 <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
+                        <div class="form-group">
 
 
-               </div>
-               <div class="col-sm-4">
-
-               </div>
-           </div>
+                            
 
 
+
+                            <div class="col-xs-11">
+                            </div>
+                            <div class="col-xs-1">
+                                <div class="col-xs-12">
+                                    &nbsp
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
+                        <div class="form-group">
+
+
+
+
+
+
+                            <div class="col-xs-11">
+                            </div>
+                            <div class="col-xs-1">
+                                <div class="col-xs-12">
+                                    &nbsp
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
+                        <div class="form-group">
+                            <label class="control-label col-xs-2 regFormLabels">Login Name:</label>
+
+
+
+
+
+                            <div class="col-xs-10">
+                                <asp:TextBox ID="txtLoginName" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit" pattern="^[A-z][A-z\.\s]+$"
+                                    ></asp:TextBox>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-1">
+                            <div class="col-xs-12">
+                                &nbsp
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
+                        <div class="form-group">
+                            <label class="control-label col-xs-2 regFormLabels">First Name:</label>
+
+
+
+
+
+                            <div class="col-xs-10">
+                                <asp:TextBox ID="txtFirstName" class="form-control textBoxborder" required runat="server"  ValidationGroup="Submit"></asp:TextBox>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-1">
+                            <div class="col-xs-12">
+                                &nbsp
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
+                        <div class="form-group">
+                            <label class="control-label col-xs-2 regFormLabels">Last Name:</label>
+
+
+
+
+
+                            <div class="col-xs-10">
+                             
+                               <asp:TextBox ID="txtLastName" class="form-control textBoxborder" required runat="server"  ValidationGroup="Submit"></asp:TextBox>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-1">
+                            <div class="col-xs-12">
+                                &nbsp
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                  <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
+                        <div class="form-group">
+                            <label class="control-label col-xs-2 regFormLabels">Active:</label>
+
+
+
+
+
+                            <div class="col-xs-10">
+                                <asp:RadioButton ID="rdoActiveYes" runat="server" GroupName="Active" Text="Yes" Checked="true" CssClass="checkbox-inline" />
+                                <asp:RadioButton ID="rdoActiveNo" runat="server"  GroupName="Active" Text="No" CssClass="checkbox-inline"/>
+                             
+                                
+                            </div>
+                        </div>
+                        <div class="col-xs-1">
+                            <div class="col-xs-12">
+                                &nbsp
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+ </div>
+
+            <div class="col-xs-2">
+                 </div>
+
+            </div>
        </div>
-
-    
 <%--Footer Region--%> 
      <footer  class="footerDiv">
          
@@ -100,7 +194,7 @@
                                 <tr>
                                     <td style="width:30%;">
                                          <div class="form-group">
-                                        <asp:Button ID="btnIssue" runat="server" Text="Save"  type="submit" CssClass="button"  ValidationGroup="Submit" />
+                                        <asp:Button ID="btnSave" runat="server" Text="Save"  type="submit" CssClass="button"  ValidationGroup="Submit" OnClick="btnSave_Click"  />
 
                                          </div>
                                     </td>

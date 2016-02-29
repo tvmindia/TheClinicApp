@@ -85,11 +85,7 @@ background-color: ghostwhite;
     <script src="../Scripts/jquery-ui.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <script>
-    function ClearTextBox() {
-            $('textarea').empty();
-
-            $("input:text").val('');
-    }
+  
     //var W3CDOM = (document.createElement && document.getElementsByTagName);
 
     //function initFileUploads() {
@@ -426,7 +422,7 @@ background-color: ghostwhite;
                         <td style="height:100%;width:100%;">
                                <div>
                                 <div class="input-group stylish-input-group">
-                                    <input type="text" class="form-control" placeholder="Search" style="height: 20%;" aria-haspopup="false" name="txtSearch" id="txtSearch" />
+                                    <input type="text" class=" form-control" placeholder="Search" aria-haspopup="false" name="txtSearch" id="txtSearch" />
 
                                     <span class="input-group-addon" style="height: 0%;">
                                         <button type="submit" style="height: 0px;;" runat="server" id="btnSearch" onserverclick="btnSearch_ServerClick1" formnovalidate>

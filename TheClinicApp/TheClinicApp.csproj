@@ -337,6 +337,7 @@
     <Compile Include="ClinicDAL\Security.cs" />
     <Compile Include="ClinicDAL\Stocks.cs" />
     <Compile Include="ClinicDAL\TokensBooking.cs" />
+    <Compile Include="ClinicDAL\User.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
