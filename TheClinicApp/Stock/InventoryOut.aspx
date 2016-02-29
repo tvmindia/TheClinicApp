@@ -22,15 +22,15 @@
     <script src="../Scripts/bootstrap.min.js"></script>
 
 
-     <script type="text/javascript">
+   <%--  <script type="text/javascript">
         $(function () {
-            $("[id$=txtDate]").datepicker({ dateFormat: 'dd-M-yy' ,
+            $("[id$=txtDate]").datepicker({ dateFormat: 'dd-mm-yy' ,
                 showOn: 'button',
                 buttonImageOnly: true,
-                buttonImage: 'http://findicons.com/files/icons/577/refresh_cl/48/calendar.png'
+                buttonImage: '<img src="../Images/calendar.png" />'
             });
         });
-    </script>
+     </script>--%>
 
 
 
