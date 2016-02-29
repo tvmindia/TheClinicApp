@@ -84,7 +84,7 @@ namespace TheClinicApp.ClinicDAL
             try
             {
 
-                Guid MedicineID = new Guid();
+               
 
                 
                 dcon = new dbConnection();
@@ -94,17 +94,17 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[InsertMedicines]";
 
-                cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = MedicineID;
+              
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@CateoryID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(CategoryID);
                 cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = Name;
                 cmd.Parameters.Add("@Unit", SqlDbType.Real).Value =Unit;
                 cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
-
+                
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
-                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreatedDate;
+              
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
-                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = UpdatedDate;
+             
                 cmd.Parameters.Add("@ReOrderQty", SqlDbType.Real).Value = ReOrderQty;
 
 
@@ -159,9 +159,9 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
 
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
-                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreatedDate;
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
-                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = UpdatedDate;
+               
+                cmd.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
+                
                 cmd.Parameters.Add("@ReOrderQty", SqlDbType.Real).Value = ReOrderQty;
 
 

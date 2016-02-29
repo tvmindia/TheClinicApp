@@ -144,6 +144,7 @@
     <Content Include="Content\selectize.css" />
     <Content Include="Content\simple-sidebar.css" />
     <Content Include="Images\Addition .png" />
+    <Content Include="Images\calendar.png" />
     <Content Include="Images\Close1.png" />
     <Content Include="Images\Menu-01-WF.png" />
     <Content Include="Images\Minus.png" />
