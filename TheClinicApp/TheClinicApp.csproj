@@ -161,6 +161,7 @@
     <Content Include="bin\System.Web.Optimization.dll" />
     <Content Include="bin\System.Web.Providers.dll" />
     <Content Include="bin\TheClinicApp.dll" />
+    <Content Include="bin\TheClinicApp.dll.config" />
     <Content Include="bin\TheClinicApp.pdb" />
     <Content Include="bin\WebGrease.dll" />
     <Content Include="Content\accodin.css" />
@@ -185,7 +186,9 @@
     <Content Include="Images\plus.png" />
     <Content Include="Images\select.png" />
     <Content Include="Images\Sync-WF.png" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\TheClinicApp.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\TheClinicApp.csprojResolveAssemblyReference.cache" />
     <Content Include="obj\Debug\TheClinicApp.dll" />
     <Content Include="obj\Debug\TheClinicApp.pdb" />
     <Content Include="Pharmacy\Pharmacy.aspx" />
@@ -296,9 +299,6 @@
     <Content Include="Content\materialize\README.md" />
     <Content Include="Masters\Input.Master" />
     <Content Include="Masters\Popup.Master" />
-    <Content Include="bin\TheClinicApp.dll.config" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="obj\Debug\TheClinicApp.csprojResolveAssemblyReference.cache" />
     <None Include="Properties\PublishProfiles\AmruthaProfile.pubxml" />
     <None Include="Properties\PublishProfiles\ClinicAppProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Hondaprofile.pubxml" />
@@ -416,9 +416,15 @@
     <Compile Include="Masters\Popup.Master.designer.cs">
       <DependentUpon>Popup.Master</DependentUpon>
     </Compile>
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Pharmacy\Pharmacy.aspx.cs">
       <DependentUpon>Pharmacy.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
