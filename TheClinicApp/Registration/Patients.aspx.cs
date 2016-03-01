@@ -183,23 +183,31 @@ namespace TheClinicApp.Registration
             Patient PatientObj = new Patient();
             DataRow dr = null;//;
             string Name = Request.Form["txtSearch"];
-            DataTable dt=PatientObj.GetSearchWithName(Name);
-            dr = dt.NewRow();
-            dr = dt.Rows[0];
-            DateTime date = DateTime.Now;
-            int year = date.Year;
-            Guid PatientID = Guid.Parse(dr["PatientID"].ToString());
-            txtName.Text = dr["Name"].ToString();
-            txtSex.Text = dr["Gender"].ToString();
-            DateTime DT = Convert.ToDateTime(dr["DOB"].ToString());
-            int Age = year - DT.Year;
-            txtAge.Text = Age.ToString();
-            txtAddress.Text = dr["Address"].ToString();
-            txtMobile.Text = dr["Phone"].ToString();
-            txtEmail.Text = dr["Email"].ToString();
-            txtMarital.Text = dr["MaritalStatus"].ToString();
-            btnSave.Text = "Update";
-            HiddenField1.Value = PatientID.ToString();
+            if (Name != "")
+            {
+                DataTable dt = PatientObj.GetSearchWithName(Name);
+                dr = dt.NewRow();
+                dr = dt.Rows[0];
+                DateTime date = DateTime.Now;
+                int year = date.Year;
+                Guid PatientID = Guid.Parse(dr["PatientID"].ToString());
+                txtName.Text = dr["Name"].ToString();
+                txtSex.Text = dr["Gender"].ToString();
+                DateTime DT = Convert.ToDateTime(dr["DOB"].ToString());
+                int Age = year - DT.Year;
+                txtAge.Text = Age.ToString();
+                txtAddress.Text = dr["Address"].ToString();
+                txtMobile.Text = dr["Phone"].ToString();
+                txtEmail.Text = dr["Email"].ToString();
+                txtMarital.Text = dr["MaritalStatus"].ToString();
+                btnSave.Text = "Update";
+                HiddenField1.Value = PatientID.ToString();
+            }
+            else
+            {
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "alert('Invalid Suggesion');", true);
+
+            }
         }
         #endregion SearchButtonClick
 
@@ -238,6 +246,7 @@ namespace TheClinicApp.Registration
             txtEmail.Text = "";
             txtMobile.Text = "";
             txtMarital.Text = "";
+            btnSave.Text = "Save";
             //lblErrorCaption.Text = "";
             //lblMsgges.Text = "";
         }

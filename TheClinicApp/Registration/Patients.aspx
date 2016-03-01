@@ -125,12 +125,6 @@ background-color: ghostwhite;
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
-
-
-                            
-
-
-
                             <div class="col-xs-11">
                             </div>
                             <div class="col-xs-1">
@@ -146,13 +140,7 @@ background-color: ghostwhite;
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
-
-
-
-
-
-
-                            <div class="col-xs-11">
+                             <div class="col-xs-11">
                             </div>
                             <div class="col-xs-1">
                                 <div class="col-xs-12">
@@ -168,12 +156,7 @@ background-color: ghostwhite;
                     <div class="col-xs-11">
                         <div class="form-group">
                             <label class="control-label col-xs-1 regFormLabels">Name:</label>
-
-
-
-
-
-                            <div class="col-xs-11">
+                             <div class="col-xs-11">
                                 <asp:TextBox ID="txtName" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit" pattern="^[A-z][A-z\.\s]+$"
                                     ></asp:TextBox>
 
@@ -191,12 +174,7 @@ background-color: ghostwhite;
                     <div class="col-xs-11">
                         <div class="form-group">
                             <label class="control-label col-xs-1 regFormLabels">Sex:</label>
-
-
-
-
-
-                            <div class="col-xs-11">
+                             <div class="col-xs-11">
                                 <asp:TextBox ID="txtSex" class="form-control textBoxborder" required runat="server"  ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
@@ -213,12 +191,7 @@ background-color: ghostwhite;
                     <div class="col-xs-11">
                         <div class="form-group">
                             <label class="control-label col-xs-1 regFormLabels">Age:</label>
-
-
-
-
-
-                            <div class="col-xs-11">
+                             <div class="col-xs-11">
                              
                                 <asp:TextBox ID="txtAge" class="form-control textBoxborder numberTypeTextBox" runat="server" required  ValidationGroup="Submit" type="number" min ="0" max="120" ></asp:TextBox>
 
@@ -251,20 +224,11 @@ background-color: ghostwhite;
                     </div>
 
                 </div>
-
-
-
-
-                <div class="col-xs-12 Span-One">
+                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
                             <label class="control-label col-xs-1 regFormLabels">Mobile:</label>
-
-
-
-
-
-                            <div class="col-xs-11">
+                             <div class="col-xs-11">
                                 <asp:TextBox ID="txtMobile" class="form-control textBoxborder" runat="server" maxlength="10"  pattern="[0-9]{10}"  ></asp:TextBox>
 
                             </div>
@@ -299,12 +263,7 @@ background-color: ghostwhite;
                     <div class="col-xs-11">
                         <div class="form-group">
                             <label class="control-label col-xs-1 regFormLabels">Marital:</label>
-
-
-
-
-
-                            <div class="col-xs-11">
+                             <div class="col-xs-11">
                                 <asp:TextBox ID="txtMarital" class="form-control textBoxborder" runat="server"></asp:TextBox>
 
                             </div>
@@ -459,7 +418,7 @@ background-color: ghostwhite;
                                 </asp:TemplateField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnDelete" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("PatientID")%>' OnCommand="ImgBtnDelete_Command" formnovalidate />
+                                        <asp:ImageButton ID="ImgBtnDelete" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("PatientID")%>' OnClientClick="return confirm('Deletion Confirmation \n\n\n\n\ Are you sure you want to delete this item ?');" OnCommand="ImgBtnDelete_Command" formnovalidate />
                                        
 
                                     </ItemTemplate>
@@ -533,7 +492,7 @@ background-color: ghostwhite;
                                 </asp:TemplateField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnDelete1" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("PatientID")%>' OnCommand="ImgBtnDelete1_Command" formnovalidate />
+                                        <asp:ImageButton ID="ImgBtnDelete1" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("PatientID")%>' OnClientClick="return confirm('Deletion Confirmation \n\n\n\n\ Are you sure you want to delete this item ?');" OnCommand="ImgBtnDelete1_Command" formnovalidate />
                                        
 
                                     </ItemTemplate>
