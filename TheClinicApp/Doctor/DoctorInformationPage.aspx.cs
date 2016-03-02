@@ -34,17 +34,31 @@ namespace TheClinicApp.Doctor
         {
             //Gridview Binding to Diplay DoctorName,Token No,Patient Name,TIME
             tok.DateTime = DateTime.Now;
-
             DataSet gds = tok.ViewToken();
-
             GridViewTokenlist.DataSource = gds;
             GridViewTokenlist.DataBind();
         }
 
         protected void ImgBtnUpdate_Command(object sender, CommandEventArgs e)
         {
-            //Doctor DoctorObj = new Doctor();
-            Guid PatientID = Guid.Parse(e.CommandArgument.ToString());
+            DataRow dr = null;
+            Patient PatientObj = new Patient();
+            PatientObj.PatientID = Guid.Parse(e.CommandArgument.ToString());
+            DataTable dt = PatientObj.SelectPatient();
+            dr = dt.NewRow();
+            dr = dt.Rows[0];
+            DateTime date = DateTime.Now;
+            int year = date.Year;
+            //Guid PatientID = Guid.Parse(dr["PatientID"].ToString());
+            lblName.Text= dr["Name"].ToString();
+            lblMale.Text = dr["Gender"].ToString();
+            DateTime DT = Convert.ToDateTime(dr["DOB"].ToString());
+            int Age = year - DT.Year;
+            lblAge.Text = Age.ToString();
+            lblAddress.Text = dr["Address"].ToString();
+            lblLastVisitDate.Text = dr["CreatedDate"].ToString();
+           
+            //HiddenField1.Value = PatientID.ToString();
         }
     }
 }

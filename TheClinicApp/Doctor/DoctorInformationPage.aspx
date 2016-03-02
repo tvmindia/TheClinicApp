@@ -15,12 +15,13 @@
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/jquery.js"></script>
-                                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">      <img src="../Images/Menu-01-WF.png" /></a>
-    
-     <div id="wrapper" class="container">
+    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+        <img src="../Images/Menu-01-WF.png" /></a>
+    <div id="wrapper" class="container">
       
             <div>
             <div class="container-fluid">
+                 <label class="headingLabel" style="text-align:center">Doctors</label>
                 <div  class="row"> 
                      <div class="col-md-12">
                          <div class="col-md-9">
@@ -29,7 +30,7 @@
                                     <input type="text" class=" form-control" placeholder="Search" aria-haspopup="false" name="txtSearch" id="txtSearch" />
 
                                     <span class="input-group-addon" style="height: 0%;">
-                                        <button type="submit" style="height: 0px;;" runat="server" id="btnSearch"  onserverclick="btnSearch_ServerClick"  formnovalidate>
+                                        <button type="submit" style="height: 0px;" runat="server" id="btnSearch"  onserverclick="btnSearch_ServerClick"  formnovalidate>
                                           
                                             <img src="../Images/Search-WF.png" />
                                         </button>
@@ -108,6 +109,7 @@
                        
                          <div class="col-md-4">
                              <table>
+                             <table>
                                  <tr>
                                     <td>
                              <asp:Label ID="lblName" runat="server" Text="Name"></asp:Label>
@@ -121,9 +123,11 @@
 
                                     </td>
                                         </tr>
-                             </table>
-                             </div>
-                             <div class="col-md-3">
+                           
+                             
+                                 <table>
+                                     <tr>
+                                         <td>
                                  <table>
                                  <tr>
                                     <td>
@@ -135,7 +139,7 @@
 
                                      </td>
                                       <td>
-                                                       <asp:Label ID="lblMale" runat="server" Text=""></asp:Label>
+                                          <asp:Label ID="lblMale" runat="server" Text=""></asp:Label>
 
 
                                     </td>
@@ -156,45 +160,49 @@
                                                </td>
                                         </tr>
                              </table>
-                             </div>
-                             <div class="col-md-3" >
+                            
                                  <table >
+                                   
                                          <tr>
                                              <td>
 
                                              </td>
                                     <td>
-                                                       <asp:Label ID="lblLastVisit" runat="server" Text="Last Visit"></asp:Label>:
-
-
-                                    </td>
-                                               <td>
-                                                       <asp:Label ID="lblLastVisitDate" runat="server" Text=""></asp:Label>
-
-                                               </td>
-                                        </tr>
-                                            <tr>
-                                                <td>
-
-                                                </td>
-                                    <td>
-                                                       <asp:Label ID="lblWeight" runat="server" Text="Weight"></asp:Label>:
-
+                                        <asp:Label ID="lblLastVisit" runat="server" Text="Last Visit"></asp:Label>:
 
                                     </td>
-                                               <td>
-                                                       <asp:Label ID="lblWeightCount" runat="server" Text=""></asp:Label>
+                                             <td>
+                                                 <asp:Label ID="lblLastVisitDate" runat="server" Text=""></asp:Label>
 
-                                               </td>
-                                        </tr>
+                                             </td>
+
+                                         </tr>
+                                     <tr>
+                                         <td>
+
+                                         </td>
+                                         <td>
+                                             <asp:Label ID="lblWeight" runat="server" Text="Weight"></asp:Label>:
+
+                                         </td>
+                                         <td>
+                                              <asp:Label ID="lblWeightCount" runat="server" Text=""></asp:Label>
+
+                                         </td>
+
+                                     </tr>
+
                                  </table>
-                             </div>
-                             <div class="col-md-2">
-<img src="../Images/UploadPic.png" /  width="100%;" height="60%;" style="margin-bottom:20px;">
-                             </div>
-                            
-                    </div>
-                </div>
+                             </td>
+                                         <td>
+                                 <img src="../Images/UploadPic.png" / width="100%" height="60%" style="margin-bottom:20px" />
+                            </td>
+                                         </tr>
+
+                                 </table>
+                                 </table>
+                                 </table>
+                                 </div>
 
                 <div class="row" >
                    
@@ -228,7 +236,7 @@
                <label  class="control-label col-lg-3">Sleep
                   </label>
                 <div class="col-lg-9">
-                                                              <asp:TextBox ID="txtSleep" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ></asp:TextBox>
+                    <asp:TextBox ID="txtSleep" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ></asp:TextBox>
 
              
 
@@ -297,8 +305,7 @@
              
 
                 </div>
-                    <label  class="control-label col-lg-3">Appettie
-                  </label>
+                    <label  class="control-label col-lg-3">Appettie </label>
                 <div class="col-lg-9">
                                 <asp:TextBox ID="txtAppettie" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
              
@@ -353,6 +360,9 @@
                   </label>
                 <div class="col-lg-9">
                                 <table style="width:20%">
+                                    <tr>
+                                        <td style="text-align:center;font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"><asp:Label ID="Label1" runat="server" Text="Medicine"></asp:Label></td><td style="text-align:center"><asp:Label ID="Label2" runat="server" Text="Timing"></asp:Label></td><td style="text-align:center"><asp:Label ID="Label3" runat="server" Text="Dozage"></asp:Label></td><td style="text-align:center"><asp:Label ID="Label4" runat="server" Text="Days"></asp:Label></td>
+                                    </tr>
             <tr>
                 <td style="font-size: small" ><input id="Text1" type="text" placeholder="Medicine" runat="server"  class="dynamicTd"/></td><td><input id="txtMedname1" class="dynamicTd" type="text"  placeholder="Timing" runat="server"  /></td><td><input id="txtMeddoz1" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="txtMedprescription1" type="text" placeholder="Days" runat="server" class="dynamicTd" /></td>
             </tr>

@@ -457,7 +457,7 @@ namespace TheClinicApp.ClinicDAL
         }
         #endregion DeletePatientDetails
 
-
+        #region GetSearchBoxData
         public DataTable GetSearchBoxData()
         {
 
@@ -465,11 +465,8 @@ namespace TheClinicApp.ClinicDAL
             SqlConnection con = null;
             dbConnection dcon = new dbConnection();
             con = dcon.GetDBConnection();
-
-
             SqlCommand cmd = new SqlCommand("GetSearchBoxData", con);
             cmd.CommandType = CommandType.StoredProcedure;
-
             SqlDataAdapter adapter = new SqlDataAdapter();
             adapter.SelectCommand = cmd;
             dt = new DataTable();
@@ -478,7 +475,9 @@ namespace TheClinicApp.ClinicDAL
             return dt;
 
         }
+        #endregion GetSearchBoxData
 
+        #region SearchWithAny
         public DataTable GetSearchBoxDataByAnyValue(string value)
         {
 
@@ -499,6 +498,9 @@ namespace TheClinicApp.ClinicDAL
             return dt;
 
         }
+        #endregion SearchWithAny
+
+        #region SearchWithName
         public DataTable GetSearchWithName(string SearchName)
         {
 
@@ -517,7 +519,28 @@ namespace TheClinicApp.ClinicDAL
             return dt;
 
         }
+        #endregion SearchWithName
 
+        #region SelectPatient
+        public DataTable SelectPatient()
+        {
+
+            DataTable dt = null;
+            SqlConnection con = null;
+            dbConnection dcon = new dbConnection();
+            con = dcon.GetDBConnection();
+            SqlCommand cmd = new SqlCommand("SelectPatient", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = PatientID;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = cmd;
+            dt = new DataTable();
+            adapter.Fill(dt);
+            con.Close();
+            return dt;
+
+        }
+        #endregion SelectPatient
     }
 
 }

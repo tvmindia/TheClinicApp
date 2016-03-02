@@ -210,7 +210,7 @@ background-color: ghostwhite;
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
-                            <label class="control-label col-xs-1 regFormLabels">Address:   </label>
+                            <label class="control-label col-xs-1 regFormLabels">Address:</label>
                             <div class="col-xs-11">
                                 <asp:TextBox ID="txtAddress" class="form-control textBoxborder" TextMode="multiline" Columns="50" Rows="10" Height="100" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 

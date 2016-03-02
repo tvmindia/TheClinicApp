@@ -132,8 +132,6 @@
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Admin\AssignRoles.aspx" />
     <Content Include="Admin\User.aspx" />
-    <Content Include="bin\TheClinicApp.dll" />
-    <Content Include="bin\TheClinicApp.pdb" />
     <Content Include="Content\accodin.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

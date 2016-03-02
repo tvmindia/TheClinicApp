@@ -34,6 +34,7 @@
    
     <link href="../Content/mui.min.css" rel="stylesheet" />
     <script src="../Scripts/mui.min.js"></script>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
@@ -41,14 +42,16 @@
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
  
     <div class="mui-container"> 
+        
         <div class="col-md-12">
+             <label class="headingLabel" style="text-align:center">Pharmacy Page</label>
              <div class="col-md-9">
                  <div class="row">
-                 <div class="input-group stylish-input-group">
+                 <div class="input-group stylish-input-group mui-select">
                                     <input type="text" class=" form-control" placeholder="Search" aria-haspopup="false" name="txtSearch" id="txtSearch" />
 
                                     <span class="input-group-addon" style="height: 0%;">
-                                        <button type="submit" style="height: 0px;;" runat="server" id="btnSearch" formnovalidate>
+                                        <button type="submit" style="height: 0px;" runat="server" id="btnSearch" formnovalidate>
                                           
                                             <img src="../Images/Search-WF.png" />
                                         </button>
@@ -57,6 +60,7 @@
                                 </div>
 
                  </div>
+                 
 
 
         <div class="mui-panel"> 

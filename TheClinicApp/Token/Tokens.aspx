@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    ss
     <link href="../Content/Input.css" rel="stylesheet" />
+    
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
+    
    
     <div class="container bodyDiv" style="width:100%;">
           <label  class="headingLabel" >Patient Token Booking</label>
@@ -97,10 +100,10 @@
                         <%-- Patient Details Diplay region --%>
                         
                       
-                   <table class="tokenPatientDetailsTable" id="divContainer" >
+                   <table class="tokenPatientDetailsTable TileContent" id="divContainer" >
                        <tr>
                            <td class="tokenPatientDetailsTableColumn">
-                                       <label  class="subheadingLabel " >Patient Details</label>
+                                       <label  class="subheadingLabel" style="text-align:center" >Patient Details</label>
 
                            </td>
                        </tr>
