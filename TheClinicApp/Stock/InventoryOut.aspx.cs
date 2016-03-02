@@ -31,21 +31,15 @@ namespace TheClinicApp.Stock
             {
 
                 //Binding  Medicine ID and Name
-                DataSet ds = stok.ViewMedicines();
+                //DataSet ds = stok.ViewMedicines();
 
-                ddlMedicine.DataSource = ds.Tables[0];
-                ddlMedicine.DataValueField = "MedicineID";
-                ddlMedicine.DataTextField = "Name";
-                ddlMedicine.DataBind();
+                //ddlMedicine.DataSource = ds.Tables[0];
+                //ddlMedicine.DataValueField = "MedicineID";
+                //ddlMedicine.DataTextField = "Name";
+                //ddlMedicine.DataBind();
 
 
-
-                //Binding  Receipt ID
-                DataSet ds1 = rpt.ViewReceiptHeaderDetails();
-                ddlReceiptID.DataSource = ds1.Tables[0];
-                ddlReceiptID.DataValueField = "ReceiptID";
-                ddlReceiptID.DataTextField = "ReceiptID";
-                ddlReceiptID.DataBind();
+ 
 
 
 
@@ -58,36 +52,36 @@ namespace TheClinicApp.Stock
         protected void btnIssue_Click(object sender, EventArgs e)
         {
 
-            //Inserting Issue Header
+            ////Inserting Issue Header
 
 
-            ihd.ClinicID = HiddenFieldClinicID.Value;
-            ihd.IssuedTo = txtIussedTo.Text;
-            ihd.Date = Convert.ToDateTime(txtDate.Text);
-            ihd.PrescID = txtPrescID.Text;
-            ihd.CreatedBy = "User";
-            ihd.CreatedDate = DateTime.Now;
-            ihd.UpdatedBy = "User";
-            ihd.UpdatedDate = DateTime.Now;
+            //ihd.ClinicID = HiddenFieldClinicID.Value;
+            //ihd.IssuedTo = txtIussedTo.Text;
+            //ihd.Date = Convert.ToDateTime(txtDate.Text);
+            //ihd.PrescID = txtPrescID.Text;
+            //ihd.CreatedBy = "User";
+            //ihd.CreatedDate = DateTime.Now;
+            //ihd.UpdatedBy = "User";
+            //ihd.UpdatedDate = DateTime.Now;
 
-            //Inserting Issue Details
+            ////Inserting Issue Details
 
-            idt.ClinicID = HiddenFieldClinicID.Value;
-            idt.MedicineID = ddlMedicine.SelectedValue;
+            //idt.ClinicID = HiddenFieldClinicID.Value;
+            //idt.MedicineID = ddlMedicine.SelectedValue;
 
-            idt.Qty = Convert.ToInt32(txtQty.Text);
+            //idt.Qty = Convert.ToInt32(txtQty.Text);
 
-            idt.CreatedBy = "User";
-            idt.CreatedDate = DateTime.Now;
-            idt.UpdatedBy = "User";
-            idt.UpdatedDate = DateTime.Now;
+            //idt.CreatedBy = "User";
+            //idt.CreatedDate = DateTime.Now;
+            //idt.UpdatedBy = "User";
+            //idt.UpdatedDate = DateTime.Now;
 
 
 
-            //  Calling  Insert Functions
+            ////  Calling  Insert Functions
 
-            // ihd.InsertIssueHeaderDetails();
-            //idt.InsertIssueDetails();
+            //// ihd.InsertIssueHeaderDetails();
+            ////idt.InsertIssueDetails();
         }
 
 

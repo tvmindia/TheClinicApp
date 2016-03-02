@@ -1,4 +1,4 @@
-﻿ <%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="InventoryOut.aspx.cs" Inherits="TheClinicApp.Stock.InventoryOut" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="InventoryOut.aspx.cs" Inherits="TheClinicApp.Stock.InventoryOut" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -9,25 +9,15 @@
 
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
-
     <link href="../Content/Input.css" rel="stylesheet" />
     <link href="../Content/jquery-ui.css" rel="stylesheet" />
-
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/jquery-ui.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/mui.min.js"></script>
 
-    
-    <%-- <script type="text/javascript">
-        $(function () {
-            $("[id$=txtDate]").datepicker({
-                dateFormat: 'dd-mm-yy',
-                showOn: 'button',
-                buttonImageOnly: true,
-                buttonImage: ''
-            });
-        });
-    </script>--%>
+
+
 
 
 
@@ -42,12 +32,17 @@
 
                 <table class="col-phar-patiedet">
                     <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
                         <td>
-                            <label class="control-label col-sm-6 regFormLabels">Issued To:</label></td>
+                            <label class="control-label col-sm-6 regFormLabels">Issued To:</label>
+
+                        </td>
                         <td>
                             <asp:TextBox ID="txtIussedTo" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit">
                             </asp:TextBox>
-
                         </td>
                     </tr>
                     <tr>
@@ -70,13 +65,67 @@
                         <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td>
-                            <label class="control-label col-xs-6 regFormLabels">PrescID:</label>
+                        <td colspan="2">
 
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txtPrescID" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit">
-                            </asp:TextBox>
+                            <div class="col-lg-9">
+                                <table style="width: 20%">
+                                    <tr>
+                                        <td style="text-align: center; font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                            <asp:Label ID="Label1" runat="server" Text="Medicine"></asp:Label></td>
+                                        <td style="text-align: center">
+                                            <asp:Label ID="Label2" runat="server" Text="Quantity"></asp:Label></td>
+                                        <td style="text-align: center">
+                                          
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: small">
+                                            <input id="Text1" type="text" placeholder="Medicine" runat="server" class="dynamicTd" /></td>
+                                        <td>
+                                            <input id="txtMedname1" class="dynamicTd" type="text" placeholder="Quantity" runat="server" /></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: small">
+                                            <input id="Text2" type="text" placeholder="Medicine" runat="server" class="dynamicTd" />
+
+                                        </td>
+                                        <td>
+                                            <input id="txtMedname2" class="dynamicTd" type="text" placeholder="Quantity" runat="server" /></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: small">
+                                            <input id="Text3" type="text" placeholder="Medicine" runat="server" class="dynamicTd" />
+                                        </td>
+                                        <td>
+                                            <input id="txtMedname3" class="dynamicTd" type="text" placeholder="Quantity" runat="server" />
+                                        </td>
+                                       
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: small">
+                                            <input id="Text4" type="text" placeholder="Medicine" runat="server" class="dynamicTd" /></td>
+                                        <td>
+                                            <input id="txtMedname4" class="dynamicTd" type="text" placeholder="Quantity" runat="server" /></td>
+                                        
+                                        <td>
+
+                                            <span class="auto-style4">
+                                                <input type="button" id="btAdd" onclick="this.style.visibility = 'hidden';" value="+" class="bt" />
+                                                </span>
+         
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                                <div id="main">
+                                </div>
+                            </div>
+
+
+
+
 
                         </td>
                     </tr>
@@ -85,69 +134,34 @@
                         <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td>
-                            <label class="control-label col-xs-6 regFormLabels">Medicine Name(ID):</label>
-
-                        </td>
-                        <td>
-                            <%--<asp:TextBox ID="txtMedicineID" class="form-control textBoxborder numberTypeTextBox col-sm-6" runat="server" required  ValidationGroup="Submit"></asp:TextBox>--%>
-                            <asp:DropDownList ID="ddlMedicine" Style="width: 300px" runat="server"></asp:DropDownList>
-                        </td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                     </tr>
-
-
-
-
-                    <tr>
-                        <td>
-                            <label class="control-label col-xs-6 regFormLabels">ReceiptID:</label>
-
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="ddlReceiptID" Style="width: 300px" runat="server"></asp:DropDownList>
-
-                        </td>
-                    </tr>
-
-
                     <tr>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                     </tr>
-
                     <tr>
-                        <td>
-                            <label class="control-label col-xs-6  regFormLabels">Quantity:</label>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txtQty" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit">
-
-                            </asp:TextBox></td>
-                    </tr>
-
-
-
-
-                    <tr>
-
-                        <%-- hidden fields --%>
-
-                        <td>
-                            <asp:HiddenField ID="HiddenFieldClinicID" runat="server" />
-
-                            <%--<asp:HiddenField ID="HiddenField3" runat="server" />--%>
-                        </td>
-
                         <td>&nbsp;</td>
-
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
                     </tr>
                 </table>
 
 
+
+
+
+                <%--<asp:HiddenField ID="HiddenFieldClinicID" runat="server" />--%>
+
+                <%--<asp:HiddenField ID="HiddenField3" runat="server" />--%>
             </div>
             <div class="col-sm-4">
             </div>

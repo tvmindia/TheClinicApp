@@ -31,49 +31,94 @@ namespace TheClinicApp.Stock {
         protected global::System.Web.UI.WebControls.TextBox txtDate;
         
         /// <summary>
-        /// txtPrescID control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrescID;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// ddlMedicine control.
+        /// Label2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMedicine;
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// ddlReceiptID control.
+        /// Text1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlReceiptID;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
         
         /// <summary>
-        /// txtQty control.
+        /// txtMedname1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtQty;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtMedname1;
         
         /// <summary>
-        /// HiddenFieldClinicID control.
+        /// Text2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldClinicID;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text2;
+        
+        /// <summary>
+        /// txtMedname2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtMedname2;
+        
+        /// <summary>
+        /// Text3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text3;
+        
+        /// <summary>
+        /// txtMedname3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtMedname3;
+        
+        /// <summary>
+        /// Text4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text4;
+        
+        /// <summary>
+        /// txtMedname4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtMedname4;
         
         /// <summary>
         /// Errorbox control.
