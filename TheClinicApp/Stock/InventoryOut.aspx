@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="InventoryOut.aspx.cs" Inherits="TheClinicApp.Stock.InventoryOut" %>
+﻿ <%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="InventoryOut.aspx.cs" Inherits="TheClinicApp.Stock.InventoryOut" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -17,8 +17,8 @@
     <script src="../Scripts/jquery-ui.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
 
-
-   <%-- <script type="text/javascript">
+    
+    <%-- <script type="text/javascript">
         $(function () {
             $("[id$=txtDate]").datepicker({
                 dateFormat: 'dd-mm-yy',
@@ -37,119 +37,119 @@
 
 
         <div class="col-sm-12">
-            <div class="col-sm-11">
-                .
-
-                     <table class="col-phar-patiedet">
-                         <tr>
-                             <td>
-                                 <label class="control-label col-sm-6 regFormLabels">Issued To:</label></td>
-                             <td>
-                                 <asp:TextBox ID="txtIussedTo" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit">
-                                 </asp:TextBox>
-
-                             </td>
-                         </tr>
-                         <tr>
-                             <td>&nbsp;</td>
-                             <td>&nbsp;</td>
-                         </tr>
-                         <tr>
-                             <td>
-                                 <label class="control-label col-xs-6 regFormLabels">Date:</label>
-
-                             </td>
-                             <td>
-                                 <asp:TextBox ID="txtDate" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit">
-                                 </asp:TextBox>
-
-                             </td>
-                         </tr>
-                         <tr>
-                             <td>&nbsp;</td>
-                             <td>&nbsp;</td>
-                         </tr>
-                         <tr>
-                             <td>
-                                 <label class="control-label col-xs-6 regFormLabels">PrescID:</label>
-
-                             </td>
-                             <td>
-                                 <asp:TextBox ID="txtPrescID" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit">
-                                 </asp:TextBox>
-
-                             </td>
-                         </tr>
-                         <tr>
-                             <td>&nbsp;</td>
-                             <td>&nbsp;</td>
-                         </tr>
-                         <tr>
-                             <td>
-                                 <label class="control-label col-xs-6 regFormLabels">Medicine Name(ID):</label>
-
-                             </td>
-                             <td>
-                                 <%--<asp:TextBox ID="txtMedicineID" class="form-control textBoxborder numberTypeTextBox col-sm-6" runat="server" required  ValidationGroup="Submit"></asp:TextBox>--%>
-                                 <asp:DropDownList ID="ddlMedicine" Style="width: 300px" runat="server"></asp:DropDownList>
-                             </td>
-                         </tr>
-                         <tr>
-                             <td>&nbsp;</td>
-                             <td>&nbsp;</td>
-                         </tr>
+            <div class="col-sm-8">
 
 
+                <table class="col-phar-patiedet">
+                    <tr>
+                        <td>
+                            <label class="control-label col-sm-6 regFormLabels">Issued To:</label></td>
+                        <td>
+                            <asp:TextBox ID="txtIussedTo" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit">
+                            </asp:TextBox>
 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="control-label col-xs-6 regFormLabels">Date:</label>
 
-                         <tr>
-                             <td>
-                                 <label class="control-label col-xs-6 regFormLabels">ReceiptID:</label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtDate" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit">
+                            </asp:TextBox>
 
-                             </td>
-                             <td>
-                                 <asp:DropDownList ID="ddlReceiptID" Style="width: 300px" runat="server"></asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="control-label col-xs-6 regFormLabels">PrescID:</label>
 
-                             </td>
-                         </tr>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtPrescID" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit">
+                            </asp:TextBox>
 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="control-label col-xs-6 regFormLabels">Medicine Name(ID):</label>
 
-                         <tr>
-                             <td>&nbsp;</td>
-                             <td>&nbsp;</td>
-                         </tr>
-
-                         <tr>
-                             <td>
-                                 <label class="control-label col-xs-6  regFormLabels">Quantity:</label>
-                             </td>
-                             <td>
-                                 <asp:TextBox ID="txtQty" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit">
-
-                                 </asp:TextBox></td>
-                         </tr>
+                        </td>
+                        <td>
+                            <%--<asp:TextBox ID="txtMedicineID" class="form-control textBoxborder numberTypeTextBox col-sm-6" runat="server" required  ValidationGroup="Submit"></asp:TextBox>--%>
+                            <asp:DropDownList ID="ddlMedicine" Style="width: 300px" runat="server"></asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
 
 
 
 
-                         <tr>
+                    <tr>
+                        <td>
+                            <label class="control-label col-xs-6 regFormLabels">ReceiptID:</label>
 
-                             <%-- hidden fields --%>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="ddlReceiptID" Style="width: 300px" runat="server"></asp:DropDownList>
 
-                             <td>
-                                 <asp:HiddenField ID="HiddenFieldClinicID" runat="server" />
+                        </td>
+                    </tr>
 
-                                 <%--<asp:HiddenField ID="HiddenField3" runat="server" />--%>
-                             </td>
 
-                             <td>&nbsp;</td>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
 
-                         </tr>
-                     </table>
+                    <tr>
+                        <td>
+                            <label class="control-label col-xs-6  regFormLabels">Quantity:</label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtQty" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit">
+
+                            </asp:TextBox></td>
+                    </tr>
+
+
+
+
+                    <tr>
+
+                        <%-- hidden fields --%>
+
+                        <td>
+                            <asp:HiddenField ID="HiddenFieldClinicID" runat="server" />
+
+                            <%--<asp:HiddenField ID="HiddenField3" runat="server" />--%>
+                        </td>
+
+                        <td>&nbsp;</td>
+
+                    </tr>
+                </table>
 
 
             </div>
-            <div class="col-sm-1">
+            <div class="col-sm-4">
             </div>
         </div>
 
@@ -184,6 +184,7 @@
                             <td style="width: 30%;">
                                 <div class="form-group">
                                     <asp:Button ID="btnIssue" runat="server" Text="Issue" type="submit" CssClass="button" OnClick="btnIssue_Click" ValidationGroup="Submit" />
+
 
                                 </div>
                             </td>

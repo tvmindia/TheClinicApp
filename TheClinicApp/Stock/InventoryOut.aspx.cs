@@ -38,20 +38,22 @@ namespace TheClinicApp.Stock
                 ddlMedicine.DataTextField = "Name";
                 ddlMedicine.DataBind();
 
+
+
                 //Binding  Receipt ID
                 DataSet ds1 = rpt.ViewReceiptHeaderDetails();
-                ddlMedicine.DataSource = ds.Tables[0];
-                ddlMedicine.DataValueField = "ReceiptID";
-                ddlMedicine.DataTextField = "ReceiptID";
-                ddlMedicine.DataBind();
+                ddlReceiptID.DataSource = ds1.Tables[0];
+                ddlReceiptID.DataValueField = "ReceiptID";
+                ddlReceiptID.DataTextField = "ReceiptID";
+                ddlReceiptID.DataBind();
 
 
-                
+
 
             }
         }
 
- 
+
 
         protected void btnIssue_Click(object sender, EventArgs e)
         {
@@ -66,16 +68,16 @@ namespace TheClinicApp.Stock
             ihd.CreatedBy = "User";
             ihd.CreatedDate = DateTime.Now;
             ihd.UpdatedBy = "User";
-            ihd.UpdatedDate=DateTime.Now;
+            ihd.UpdatedDate = DateTime.Now;
 
             //Inserting Issue Details
 
             idt.ClinicID = HiddenFieldClinicID.Value;
             idt.MedicineID = ddlMedicine.SelectedValue;
-          
+
             idt.Qty = Convert.ToInt32(txtQty.Text);
 
-            idt.CreatedBy ="User";
+            idt.CreatedBy = "User";
             idt.CreatedDate = DateTime.Now;
             idt.UpdatedBy = "User";
             idt.UpdatedDate = DateTime.Now;
