@@ -1,37 +1,30 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="User.aspx.cs" Inherits="TheClinicApp.Admin.User" EnableEventValidation="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      
-     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" EnablePartialRendering="true" EnableCdn="true"></asp:ScriptManager>
 
-   
-    <%--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />--%>
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" EnablePartialRendering="true" EnableCdn="true"></asp:ScriptManager>
 
-     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
 
-     <script src="../Scripts/DeletionConfirmation.js"></script>
+    <script src="../Scripts/DeletionConfirmation.js"></script>
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <link href="../Content/Input.css" rel="stylesheet" />
-  
-     <%-- <script src="../Scripts/mui.min.js"></script>
+    <%--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+     <script src="../Scripts/mui.min.js"></script>
     <link href="../Content/mui.min.css" rel="stylesheet" />
     <script src="../Scripts/jquery-ui.js"></script>
           <link href="../Content/jquery-ui.css" rel="stylesheet" />
     <script src="../Scripts/bootstrap.min.js"></script>--%>
-   
-
 
     <div class="container-fluid bodyDiv">
         <label class="headingLabel">Create User</label>
         <div class="col-sm-12 Span-One ">
             <div class="col-sm-1">
             </div>
-
             <div class="col-xs-8">
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
@@ -73,23 +66,24 @@
                             <label class="control-label col-xs-4 regFormLabels">Login Name:</label>
 
                             <div class="col-xs-7">
-                               
-                              <table>
-                            <tr>
-                                <td>
-                           <asp:TextBox ID="txtLoginName" class="form-control textBoxborder" required runat="server" onchange="LoginNameCheck(this)"  ValidationGroup="Submit" pattern="^[A-z][A-z\.\s]+$"></asp:TextBox></td>
-                                <td>
-                        <asp:Image  ID="imgWebLnames" runat="server" ToolTip="Login Name is Available" ImageUrl="~/Images/Check.png" Width="30px" Height="30px" /></td>
-                        <td>   <asp:Image ID="errorLnames" runat="server" ToolTip="Login Name is Unavailable" ImageUrl="~/Images/newClose.png" Width="17px" Height="17px" /></td>
-                           </tr> 
-                               
-                             </table>  
-                       </div>
-                        
-                       
-                           
-                            </div>    
-                          
+
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <asp:TextBox ID="txtLoginName" class="form-control textBoxborder" required runat="server" onchange="LoginNameCheck(this)" ValidationGroup="Submit" pattern="^[A-z][A-z\.\s]+$"></asp:TextBox></td>
+                                        <td>
+                                            <asp:Image ID="imgWebLnames" runat="server" ToolTip="Login Name is Available" ImageUrl="~/Images/Check.png" Width="25%" Height="18%" /></td>
+                                        <td>
+                                            <asp:Image ID="errorLnames" runat="server" ToolTip="Login Name is Unavailable" ImageUrl="~/Images/newClose.png" Width="35%" Height="35%" /></td>
+                                    </tr>
+
+                                </table>
+                            </div>
+
+
+
+                        </div>
+
                     </div>
 
                 </div>
@@ -204,7 +198,7 @@
 
 
     </footer>
-      <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog  modal-lg">
 
             <!-- Modal content-->
@@ -276,7 +270,7 @@
         </div>
     </div>
 
-  
+
     <asp:HiddenField ID="hdnUserID" runat="server" />
     <script>
 
@@ -293,33 +287,33 @@
         function LoginNameCheck(txtLoginName) {
             debugger;
             var name = document.getElementById('<%=txtLoginName.ClientID %>').value;
-        
-           
-             PageMethods.ValidateLoginName(name, OnSuccess, onError);
-
-             function OnSuccess(response, userContext, methodName) {
-
-                 var LnameImage = document.getElementById('<%=imgWebLnames.ClientID %>');
-                var errLname = document.getElementById('<%=errorLnames.ClientID %>');
-                if (response == false) {
-
-                    LnameImage.style.display = "block";
-                    errLname.style.display = "none";
-
-                }
-                if (response == true) {
-                    errLname.style.display = "block";
-                    errLname.style.color = "Red";
-                    errLname.innerHTML = "Name Alreay Exists"
-                    LnameImage.style.display = "none";
-
-                }
-            }
-            function onError(response, userContext, methodName) {
 
 
-            }
-        }
+            PageMethods.ValidateLoginName(name, OnSuccess, onError);
+
+            function OnSuccess(response, userContext, methodName) {
+
+                var LnameImage = document.getElementById('<%=imgWebLnames.ClientID %>');
+                 var errLname = document.getElementById('<%=errorLnames.ClientID %>');
+                 if (response == false) {
+
+                     LnameImage.style.display = "block";
+                     errLname.style.display = "none";
+
+                 }
+                 if (response == true) {
+                     errLname.style.display = "block";
+                     errLname.style.color = "Red";
+                     errLname.innerHTML = "Name Alreay Exists"
+                     LnameImage.style.display = "none";
+
+                 }
+             }
+             function onError(response, userContext, methodName) {
+
+
+             }
+         }
 
     </script>
 </asp:Content>
