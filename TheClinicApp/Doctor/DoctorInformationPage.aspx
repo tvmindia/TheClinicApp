@@ -61,10 +61,7 @@
                                     </div>
                   
                 <div class="row patientDetailsDiv  mui-panel" >
-                   
-                       
-                        
-                             <table>
+                    <table>
                              
                                  <tr>
                                      <td>
@@ -78,37 +75,52 @@
                                              </tr>
                                              <tr>
                                                  <td>
-                                                 <asp:Label ID="lblAddress" runat="server" Text="Address"></asp:Label>
+                                                     <asp:Label ID="lblPhone" runat="server" Text="Phone"></asp:Label>:
                                                  </td>
-                                    
-                                        </tr>
+                                                 <td>
+                                                      <asp:Label ID="lblPhonedis" runat="server" Text=""></asp:Label>
+                                                 </td>
+                                             </tr>
+                                             
                                  </table>
                            
                              
                                
-                                 <table id="t02">
-                                 <tr>
-                                    <td>
+                                 <table id="t02" style="width:550px">
+                                     <tr>
+                                                 <td style="width:275px">
+                                                 <asp:Label ID="lblAddress" runat="server" Text="Address"></asp:Label>
+                                                 </td>
+                                          <td>
+                                              <table style="width:274px">
+                                                  <tr>
+                                                      <td style="width:137px">
                              <asp:Label ID="lblAge" runat="server" Text="Age"></asp:Label>:
 
                                     </td>
-                                     <td>
-                             <asp:Label ID="lblAgeCount" runat="server" Text=""></asp:Label>
+                                     <td style="width:137px">
+                                         <asp:Label ID="lblAgeCount" runat="server" Text=""></asp:Label>
 
                                      </td>
                                      </tr>
                                      <tr>
-                                         <td>
-                                          <asp:Label ID="lblGender" runat="server" Text="Gender"></asp:Label>
+                                         <td style="width:137px">
+                                          <asp:Label ID="lblGender" runat="server" Text="Gender"></asp:Label>:
 
 
                                     </td>
-                                      <td>
+                                      <td style="width:137px">
                                           <asp:Label ID="lblGenderString" runat="server" Text=""></asp:Label>
 
 
                                     </td>
+                                    
+                                        </tr>
+                                     </table>
+                                              </td>
                                  </tr>
+                                   
+                                
                                       <tr>
                                     <td>
                                         <asp:Label ID="lblLastVisit" runat="server" Text="Last Visit"></asp:Label>:
@@ -130,15 +142,11 @@
                                          </tr>
 
                                  </table>
-                                
-                                 
-                        
-                    </div>
 
-                <div class="row" >
-                   
-                        <!----SECTION ACCORDIN---->
-   <div   style="margin-top:40px;">
+                </div>
+                             <div class="row" >
+                                 <!----SECTION ACCORDIN---->
+                                  <div   style="margin-top:40px;">
        <div class="col-md-12"  style="width:100%;">
            <div class="content">
                <ul class="accordion-menu">
@@ -171,53 +179,39 @@
                    </li>
                    <li class="closed">
                        <header onclick="toggle(this.parentNode)"><span class="title">Systamatic Examination Details</span></header>
-<section class="content">
+                       <section class="content">
+                           <label  class="control-label col-lg-3">Cardiovascular</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtCardiovascular" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
-               <label  class="control-label col-lg-3">Cardiovascular
-                  </label>
-                <div class="col-lg-9">
-                                <asp:TextBox ID="txtCardiovascular" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-             
+                           </div>
+                           <label  class="control-label col-lg-3">Nervoussystem</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtNervoussystem" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
-                </div>
-                <label  class="control-label col-lg-3">Nervoussystem
-                  </label>
-                <div class="col-lg-9">
-                                <asp:TextBox ID="txtNervoussystem" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-             
+                           </div>
+                           <label  class="control-label col-lg-3">Musculoskeletal</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtMusculoskeletal" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
-                </div>
-                      <label  class="control-label col-lg-3">Musculoskeletal
-                  </label>
-                <div class="col-lg-9">
-                                <asp:TextBox ID="txtMusculoskeletal" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-             
+                           </div>
+                           <label  class="control-label col-lg-3">Palloe</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtPalloe" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
-                </div>
-                 <label  class="control-label col-lg-3">Palloe
-                  </label>
-                <div class="col-lg-9">
-                                <asp:TextBox ID="txtPalloe" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-             
-
-                </div>
-               <label  class="control-label col-lg-3">Icterus
-                  </label>
-                <div class="col-lg-9">
+                           </div>
+                           <label  class="control-label col-lg-3">Icterus</label>
+                           <div class="col-lg-9">
                                 <asp:TextBox ID="txtIcterus" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-             
 
-                </div>
-               <label  class="control-label col-lg-3">Clubbing
-                  </label>
-                <div class="col-lg-9">
-                                <asp:TextBox ID="txtClubbing" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-             
+                           </div>
+                            <label  class="control-label col-lg-3">Clubbing</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtClubbing" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
-                </div>
-                   <label  class="control-label col-lg-3">Cyanasis
-                  </label>
-                <div class="col-lg-9">
+                           </div>
+                           <label  class="control-label col-lg-3">Cyanasis </label>
+                            <div class="col-lg-9">
                                 <asp:TextBox ID="txtCyanasis" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
              
 
@@ -349,62 +343,57 @@
           </div>
     </div>
        </div>
-    
-    
-	</div>
-                    </div>
+
+                             </div>
+
+                         </div>
                          
                     <div class="col-md-3" ">
-                        
-      
-            
-                 <div class="row" >
-	    <div >
-    <div class="mini-submenu" style=" margin-left:10%"><img src="../Images/Check.png" style="width:30px;height:30px;" /></div>
-    <div class="list-group leftSideBar1">
-        <span href="#" class="list-group-item active">
-      TOKENS
-            <span class="pull-right" id="slide-submenu">
-                <i>
+                        <div class="row" >
+                            <div >
+                                <div class="mini-submenu" style=" margin-left:10%"><img src="../Images/Check.png" style="width:30px;height:30px;" /></div>
+                                <div class="list-group leftSideBar1">
+                                    <span href="#" class="list-group-item active">
+                                        TOKENS
+                                        <span class="pull-right" id="slide-submenu">
+                                            <i>
                    X</i>
             </span>
         </span>
-       <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False"  CssClass="footable" Style="max-width: 500px" DataKeyNames="UniqueId">
-                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
-                            <Columns>
-                                <asp:TemplateField>
-                                    <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Check.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID") %>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
-                                    </ItemTemplate>
-                                    
-                                </asp:TemplateField>
-                                <asp:BoundField HeaderText="TOKEN NO" DataField="TokenNo" />
-                                              <asp:BoundField HeaderText="PATIENT NAME" DataField="Name" />
-                                              <asp:BoundField HeaderText="TIME" DataField="DateTime" />
-                                               
-                                           
-                                               
-                                         
-                            </Columns>
-                            <EditRowStyle BackColor="#0080AA"></EditRowStyle>
+        <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False" CssClass="footable" Style="max-width: 500px" DataKeyNames="UniqueId" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
+            <Columns>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Check.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID") %>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
+                    </ItemTemplate>
 
-                            <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
+                </asp:TemplateField>
+                <asp:BoundField HeaderText="Token No" DataField="TokenNo" />
+                <asp:BoundField HeaderText="Patient Name" DataField="Name" />
+                <asp:BoundField HeaderText="Time" DataField="DateTime" />
 
-                            <HeaderStyle BackColor="#3FBF7F" Font-Bold="True" ForeColor="White"></HeaderStyle>
 
-                            <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#2461BF"></PagerStyle>
 
-                            <RowStyle BackColor="#EFF3FB"></RowStyle>
 
-                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+            </Columns>
 
-                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+            <FooterStyle BackColor="White" ForeColor="#333333"></FooterStyle>
 
-                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+            <HeaderStyle BackColor="#336666" Font-Bold="True" ForeColor="White"></HeaderStyle>
 
-                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+            <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#336666"></PagerStyle>
 
-                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+            <RowStyle BackColor="White" ForeColor="#333333"></RowStyle>
+
+            <SelectedRowStyle BackColor="#339966" Font-Bold="True" ForeColor="White"></SelectedRowStyle>
+
+            <SortedAscendingCellStyle BackColor="#F7F7F7"></SortedAscendingCellStyle>
+
+            <SortedAscendingHeaderStyle BackColor="#487575"></SortedAscendingHeaderStyle>
+
+            <SortedDescendingCellStyle BackColor="#E5E5E5"></SortedDescendingCellStyle>
+
+            <SortedDescendingHeaderStyle BackColor="#275353"></SortedDescendingHeaderStyle>
                         </asp:GridView>
 
     </div> 
@@ -560,11 +549,34 @@
     
 
 
-      // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
-  
+          // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
+          var divValue, values = '';
 
+          function GetTextValue() {
+              $(divValue)
+                  .empty()
+                  .remove();
+
+              values = '';
+
+              $('.input').each(function () {
+                  divValue = $(document.createElement('div')).css({
+                      padding: '5px', width: '200px'
+                  });
+
+
+                  var datas = document.getElementById('<%=HiddenField1.ClientID%>');
+
+                  values += this.value + ' ';
+
+                  datas.value = values;
+              })
+              }
+  
+              
    
-      });
+              });
+          
   </script>
     <script>
         $(function () {

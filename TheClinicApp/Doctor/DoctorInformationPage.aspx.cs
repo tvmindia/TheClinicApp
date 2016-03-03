@@ -54,7 +54,7 @@ namespace TheClinicApp.Doctor
             //lblMale.Text = dr["Gender"].ToString();
             DateTime DT = Convert.ToDateTime(dr["DOB"].ToString());
             int Age = year - DT.Year;
-            lblAge.Text = Age.ToString();
+            lblAgeCount.Text = Age.ToString();
             lblAddress.Text = dr["Address"].ToString();
             lblLastVisitDate.Text = dr["CreatedDate"].ToString();
            
