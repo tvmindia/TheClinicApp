@@ -335,6 +335,45 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion Delete User By UserID
 
+        #region ValidateUsername
+        public bool ValidateUsername(string CheckUser)
+        {
+            bool flag;
+            SqlConnection con = null;
+            try
+            {
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand("CheckLoginName", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@loginName", SqlDbType.VarChar, 50).Value = CheckUser;
+                SqlParameter outflag = cmd.Parameters.Add("@flag", SqlDbType.Bit);
+                outflag.Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                flag = (bool)outflag.Value;
+                if (flag == true)
+                {
+                    return flag;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+            }
+
+            return false;
+        }
+
+        #endregion ValidateUsername
+
         #endregion Methods
 
     }

@@ -16,6 +16,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheClinicApp.ClinicDAL;
+using System.Web.Services;
 
 #endregion Included Namespaces
 
@@ -42,6 +43,23 @@ namespace TheClinicApp.Admin
         }
 
         #endregion Bind Gridview
+
+
+        #region ValidateLoginName
+       [WebMethod]
+        public static bool ValidateLoginName(string LogName)
+        {
+            string loginName = LogName;
+
+            ClinicDAL.User userObj = new ClinicDAL.User();
+            if (userObj.ValidateUsername(loginName))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        #endregion ValidateLoginName
 
         #endregion Methods
 
@@ -130,6 +148,7 @@ namespace TheClinicApp.Admin
 
             btnSave.Text = "Update";
             hdnUserID.Value = UserID.ToString();
+            txtLoginName.ReadOnly = true;
 
         }
 

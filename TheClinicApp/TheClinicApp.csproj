@@ -151,6 +151,7 @@
     <Content Include="Images\Minus.png" />
     <Content Include="Images\navigate-left-icon.png" />
     <Content Include="Images\navigate-right-icon.png" />
+    <Content Include="Images\newClose.png" />
     <Content Include="Images\plus.png" />
     <Content Include="Images\select.png" />
     <Content Include="Images\Sync-WF.png" />
@@ -207,6 +208,7 @@
     <Content Include="Images\UploadPic.png" />
     <Content Include="Registration\Patients.aspx" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\DeletionConfirmation.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-1.12.0.min.js" />
     <Content Include="Scripts\jquery-ui.js" />
