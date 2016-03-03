@@ -138,7 +138,7 @@
 
           <div class="settings" id="settings">
 
-                <ul class="sidebar-nav" style="width:75%">
+                <ul class="sidebar-nav" style="width:75%;cursor:pointer">
                <li><a id="hlkAssignRoles" onclick="OpenPageOnHyperLinkClick(id)">Assign Roles</a></li>
                <li><a id="hlkCreateUser"  onclick="OpenPageOnHyperLinkClick(id)">Create User</a> </li>
                </ul>
