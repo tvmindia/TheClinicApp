@@ -15,13 +15,21 @@
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/jquery.js"></script>
-    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
-        <img src="../Images/Menu-01-WF.png" /></a>
-    <div id="wrapper" class="container">
-      
-            <div>
-            <div class="container-fluid">
-                 <label class="headingLabel" style="text-align:center">Doctors</label>
+    <%--<style>
+        table#t01 tr:nth-child(even) {
+    background-color: #eee;
+     
+}
+        table#t01 tr:nth-child(odd) {
+            background-color: #fff;
+        }
+        
+    </style>--%>
+
+ <div class="container-fluid">
+     <div class="headingLabel">
+         <label class="headingLabel" style="text-align:center">Doctors</label>
+         </div>
                 <div  class="row"> 
                      <div class="col-md-12">
                          <div class="col-md-9">
@@ -42,131 +50,78 @@
                          </div>
                     </div>
                 </div>
-                </div>
-                	
-                 <div id="sidebar-wrapper">
-
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        Start Bootstrap
-                    </a>
-                </li>
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
-               
-            
-                 <div id="page-content-wrapper">
+    <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div  class="row"> 
                      <div class="col-md-12">
                          <div class="col-md-9">
                              <div  class="row "> 
                                 
-                    <%--<div class="col-lg-12">
-                         
-                                         <form class="navbar-form navbar-right" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search this site">
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default">
-                        <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
-                </div>
-            </form>
-                         
-        
-    
- 
-                                
-                                    </div>--%>
+                  
                                     </div>
                   
                 <div class="row patientDetailsDiv  mui-panel" >
-                    <div class="col-md-12" style="margin-top:8%;">
-                       
-                         <div class="col-md-4">
-                             <table>
-                             <table>
+                    <table>
+                             
                                  <tr>
-                                    <td>
-                             <asp:Label ID="lblName" runat="server" Text="Name"></asp:Label>
+                                     <td>
+                                         <table id="t01" style="width:550px">
+                                             <tr>
+                                                 <td style="font-size:large">
 
-                                    </td>
-                                     
-                                 </tr>
-                                    <tr>
-                                    <td>
-                                         <asp:Label ID="lblAddress" runat="server" Text="Address"></asp:Label>
+                                                 <asp:Label ID="lblName" runat="server" Text="Name"></asp:Label>
+                                                     </td>
 
-                                    </td>
-                                        </tr>
+                                             </tr>
+                                             <tr>
+                                                 <td>
+                                                     <asp:Label ID="lblPhone" runat="server" Text="Phone"></asp:Label>:
+                                                 </td>
+                                                 <td>
+                                                      <asp:Label ID="lblPhonedis" runat="server" Text=""></asp:Label>
+                                                 </td>
+                                             </tr>
+                                             
+                                 </table>
                            
                              
-                                 <table>
+                               
+                                 <table id="t02" style="width:550px">
                                      <tr>
-                                         <td>
-                                 <table>
-                                 <tr>
-                                    <td>
+                                                 <td style="width:275px">
+                                                 <asp:Label ID="lblAddress" runat="server" Text="Address"></asp:Label>
+                                                 </td>
+                                          <td>
+                                              <table style="width:274px">
+                                                  <tr>
+                                                      <td style="width:137px">
                              <asp:Label ID="lblAge" runat="server" Text="Age"></asp:Label>:
 
                                     </td>
-                                     <td>
-                             <asp:Label ID="lblAgeCount" runat="server" Text=""></asp:Label>
+                                     <td style="width:137px">
+                                         <asp:Label ID="lblAgeCount" runat="server" Text=""></asp:Label>
 
                                      </td>
-                                      <td>
-                                          <asp:Label ID="lblMale" runat="server" Text=""></asp:Label>
+                                     </tr>
+                                     <tr>
+                                         <td style="width:137px">
+                                          <asp:Label ID="lblGender" runat="server" Text="Gender"></asp:Label>:
 
 
                                     </td>
-                                 </tr>
-                                  
-                                           <tr>
-                                    <td>
-                                                       <asp:Label ID="lblHeight" runat="server" Text="Height"></asp:Label>:
+                                      <td style="width:137px">
+                                          <asp:Label ID="lblGenderString" runat="server" Text=""></asp:Label>
 
 
                                     </td>
-                                               <td>
-                                                       <asp:Label ID="lblHeightCount" runat="server" Text=""></asp:Label>
-
-                                               </td>
-                                               <td>
-                                                   &nbsp
-                                               </td>
+                                    
                                         </tr>
-                             </table>
-                            
-                                 <table >
+                                     </table>
+                                              </td>
+                                 </tr>
                                    
-                                         <tr>
-                                             <td>
-
-                                             </td>
+                                
+                                      <tr>
                                     <td>
                                         <asp:Label ID="lblLastVisit" runat="server" Text="Last Visit"></asp:Label>:
 
@@ -177,123 +132,86 @@
                                              </td>
 
                                          </tr>
-                                     <tr>
-                                         <td>
-
-                                         </td>
-                                         <td>
-                                             <asp:Label ID="lblWeight" runat="server" Text="Weight"></asp:Label>:
-
-                                         </td>
-                                         <td>
-                                              <asp:Label ID="lblWeightCount" runat="server" Text=""></asp:Label>
-
-                                         </td>
-
-                                     </tr>
+                                    
 
                                  </table>
                              </td>
                                          <td>
-                                 <img src="../Images/UploadPic.png" / width="100%" height="60%" style="margin-bottom:20px" />
+                                 <img src="../Images/UploadPic.png" / width="75px" height="80px" style="box-shadow:initial"/>
                             </td>
                                          </tr>
 
                                  </table>
-                                 </table>
-                                 </table>
-                                 </div>
-
-                <div class="row" >
-                   
-                        <!----SECTION ACCORDIN---->
-   <div   style="margin-top:40px;">
- 
-    <div class="col-md-12"  style="width:100%;">
-      <div class="content">
-          <ul class="accordion-menu">
-<li class="closed">
-<header onclick="toggle(this.parentNode)"><span class="title">Symptoms</span></header>
-<section class="content">
-
-              <div class="form-group">
-                <label  class="control-label col-lg-3">Symptoms
-                  </label>
-                <div class="col-lg-9">
-                                <asp:TextBox ID="txtSymptoms" class="form-control " TextMode="multiline"  Height="100"  Width="100%" runat="server" required ></asp:TextBox>
-             
 
                 </div>
-              </div>
-          
-    </section>
-</li>
-<li class="closed">
-<header onclick="toggle(this.parentNode)"><span class="title">General Examination Details</span></header>
-<section class="content">
+                             <div class="row" >
+                                 <!----SECTION ACCORDIN---->
+                                  <div   style="margin-top:40px;">
+       <div class="col-md-12"  style="width:100%;">
+           <div class="content">
+               <ul class="accordion-menu">
+                   <li class="closed">
+                       <header onclick="toggle(this.parentNode)"><span class="title">Symptoms</span></header>
+                       <section class="content">
+                           <div class="form-group">
+                               <label  class="control-label col-lg-3">Symptoms</label>
+                               <div class="col-lg-9">
+                                   <asp:TextBox ID="txtSymptoms" class="form-control " TextMode="multiline"  Height="100"  Width="100%" runat="server" required ></asp:TextBox>
 
+                               </div>
 
-               <label  class="control-label col-lg-3">Sleep
-                  </label>
-                <div class="col-lg-9">
-                    <asp:TextBox ID="txtSleep" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ></asp:TextBox>
+                           </div>
 
-             
+                       </section>
 
-                </div>
+                   </li>
+                   <li class="closed">
+                       <header onclick="toggle(this.parentNode)"><span class="title">General Examination Details</span></header>
+                       <section class="content">
+                           <label  class="control-label col-lg-3">Sleep</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtSleep" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ></asp:TextBox>
 
+                           </div>
 
-</section>
-</li>
-<li class="closed">
-<header onclick="toggle(this.parentNode)"><span class="title">Systamatic Examination Details</span></header>
-<section class="content">
+                       </section>
 
-               <label  class="control-label col-lg-3">Cardiovascular
-                  </label>
-                <div class="col-lg-9">
-                                <asp:TextBox ID="txtCardiovascular" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-             
+                   </li>
+                   <li class="closed">
+                       <header onclick="toggle(this.parentNode)"><span class="title">Systamatic Examination Details</span></header>
+                       <section class="content">
+                           <label  class="control-label col-lg-3">Cardiovascular</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtCardiovascular" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
-                </div>
-                <label  class="control-label col-lg-3">Nervoussystem
-                  </label>
-                <div class="col-lg-9">
-                                <asp:TextBox ID="txtNervoussystem" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-             
+                           </div>
+                           <label  class="control-label col-lg-3">Nervoussystem</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtNervoussystem" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
-                </div>
-                      <label  class="control-label col-lg-3">Musculoskeletal
-                  </label>
-                <div class="col-lg-9">
-                                <asp:TextBox ID="txtMusculoskeletal" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-             
+                           </div>
+                           <label  class="control-label col-lg-3">Musculoskeletal</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtMusculoskeletal" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
-                </div>
-                 <label  class="control-label col-lg-3">Palloe
-                  </label>
-                <div class="col-lg-9">
-                                <asp:TextBox ID="txtPalloe" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-             
+                           </div>
+                           <label  class="control-label col-lg-3">Palloe</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtPalloe" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
-                </div>
-               <label  class="control-label col-lg-3">Icterus
-                  </label>
-                <div class="col-lg-9">
+                           </div>
+                           <label  class="control-label col-lg-3">Icterus</label>
+                           <div class="col-lg-9">
                                 <asp:TextBox ID="txtIcterus" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-             
 
-                </div>
-               <label  class="control-label col-lg-3">Clubbing
-                  </label>
-                <div class="col-lg-9">
-                                <asp:TextBox ID="txtClubbing" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-             
+                           </div>
+                            <label  class="control-label col-lg-3">Clubbing</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtClubbing" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
-                </div>
-                   <label  class="control-label col-lg-3">Cyanasis
-                  </label>
-                <div class="col-lg-9">
+                           </div>
+                           <label  class="control-label col-lg-3">Cyanasis </label>
+                            <div class="col-lg-9">
                                 <asp:TextBox ID="txtCyanasis" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
              
 
@@ -425,69 +343,96 @@
           </div>
     </div>
        </div>
-    
-    
-	</div>
-                    </div>
+
+                             </div>
+
+                         </div>
+                         
                     <div class="col-md-3" ">
-                 <div class="row" >
-	    <div >
-    <div class="mini-submenu"   style=" margin-left:90%;">
-  
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </div>
-    <div class="list-group leftSideBar1">
-        <span href="#" class="list-group-item active">
-      TOKENS
-            <span class="pull-right" id="slide-submenu">
-                <i>
+                        <div class="row" >
+                            <div >
+                                <div class="mini-submenu" style=" margin-left:10%"><img src="../Images/Check.png" style="width:30px;height:30px;" /></div>
+                                <div class="list-group leftSideBar1">
+                                    <span href="#" class="list-group-item active">
+                                        TOKENS
+                                        <span class="pull-right" id="slide-submenu">
+                                            <i>
                    X</i>
             </span>
         </span>
-       <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False"  CssClass="footable" Style="max-width: 500px" DataKeyNames="UniqueId">
-                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
-                            <Columns>
-                                <asp:TemplateField>
-                                    <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Check.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID") %>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
-                                    </ItemTemplate>
-                                    
-                                </asp:TemplateField>
-                                <asp:BoundField HeaderText="TOKEN NO" DataField="TokenNo" />
-                                              <asp:BoundField HeaderText="PATIENT NAME" DataField="Name" />
-                                              <asp:BoundField HeaderText="TIME" DataField="DateTime" />
-                                               
-                                           
-                                               
-                                         
-                            </Columns>
-                            <EditRowStyle BackColor="#0080AA"></EditRowStyle>
+        <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False" CssClass="footable" Style="max-width: 500px" DataKeyNames="UniqueId" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
+            <Columns>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Check.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID") %>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
+                    </ItemTemplate>
 
-                            <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
+                </asp:TemplateField>
+                <asp:BoundField HeaderText="Token No" DataField="TokenNo" />
+                <asp:BoundField HeaderText="Patient Name" DataField="Name" />
+                <asp:BoundField HeaderText="Time" DataField="DateTime" />
 
-                            <HeaderStyle BackColor="#3FBF7F" Font-Bold="True" ForeColor="White"></HeaderStyle>
 
-                            <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#2461BF"></PagerStyle>
 
-                            <RowStyle BackColor="#EFF3FB"></RowStyle>
 
-                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+            </Columns>
 
-                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+            <FooterStyle BackColor="White" ForeColor="#333333"></FooterStyle>
 
-                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+            <HeaderStyle BackColor="#336666" Font-Bold="True" ForeColor="White"></HeaderStyle>
 
-                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+            <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#336666"></PagerStyle>
 
-                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+            <RowStyle BackColor="White" ForeColor="#333333"></RowStyle>
+
+            <SelectedRowStyle BackColor="#339966" Font-Bold="True" ForeColor="White"></SelectedRowStyle>
+
+            <SortedAscendingCellStyle BackColor="#F7F7F7"></SortedAscendingCellStyle>
+
+            <SortedAscendingHeaderStyle BackColor="#487575"></SortedAscendingHeaderStyle>
+
+            <SortedDescendingCellStyle BackColor="#E5E5E5"></SortedDescendingCellStyle>
+
+            <SortedDescendingHeaderStyle BackColor="#275353"></SortedDescendingHeaderStyle>
                         </asp:GridView>
-          
-        
-    </div>   
-            </div>     
-</div>
+
+    </div> 
+
+	    </div>
+
+                 </div>
+                        <div class="col-lg-3">
+                            
+                        <div class="row">
+                            <div id="sidebar-wrapper">
+
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Case Sheet
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                
+            </ul>
+        </div>
+                            </div>
+                        </div>
+                            </div>
 
              
                 
@@ -496,7 +441,7 @@
                 </div>
                     </div>
           
-             </div>
+        
    
        
               <footer  class="footerDiv">
@@ -604,11 +549,34 @@
     
 
 
-      // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
-  
+          // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
+          var divValue, values = '';
 
+          function GetTextValue() {
+              $(divValue)
+                  .empty()
+                  .remove();
+
+              values = '';
+
+              $('.input').each(function () {
+                  divValue = $(document.createElement('div')).css({
+                      padding: '5px', width: '200px'
+                  });
+
+
+                  var datas = document.getElementById('<%=HiddenField1.ClientID%>');
+
+                  values += this.value + ' ';
+
+                  datas.value = values;
+              })
+              }
+  
+              
    
-      });
+              });
+          
   </script>
     <script>
         $(function () {
@@ -622,7 +590,7 @@
             <%--Right Side Bar Menu Click --%>
 
              <%--Left Side Bar Menu Click --%>
-            $('.mini-submenu').on('click', function () {
+           $('.mini-submenu').on('click', function () {
                 $(this).next('.list-group').toggle('slide');
                 $('.mini-submenu').hide();
             })

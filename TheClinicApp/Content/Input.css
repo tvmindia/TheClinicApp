@@ -105,7 +105,7 @@ footer {
     font: bold;
     font-size: 30px;
     text-decoration: underline;
-    padding-top: 2%;
+    padding-top: .5%;
     font-family: 'Cambria, Georgia, serif';
 }
 
@@ -318,7 +318,7 @@ input.file {
     bottom: 0%;
     right: 0%;
     width: 20%;
-    height: 95%;
+    height: 50%;
    padding-top:20px;
 }
 
@@ -353,10 +353,9 @@ input.file {
   border: 1px solid rgba(0, 0, 0, 0.9);
   border-radius: 4px;
   padding: 9px;  
-  /*position: relative;*/
+  position: relative;
   width: 42px;
-
-
+ 
 }
 
 .mini-submenu:hover{
@@ -419,6 +418,7 @@ ul.accordion-menu {
 	font-family:'consolas',sans-serif;
 	font-weight:400;
 	font-size:16px;
+    font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;
 
 }
 
