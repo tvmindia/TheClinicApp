@@ -51,7 +51,7 @@ namespace TheClinicApp.Doctor
             int year = date.Year;
             //Guid PatientID = Guid.Parse(dr["PatientID"].ToString());
             lblName.Text= dr["Name"].ToString();
-            lblMale.Text = dr["Gender"].ToString();
+            //lblMale.Text = dr["Gender"].ToString();
             DateTime DT = Convert.ToDateTime(dr["DOB"].ToString());
             int Age = year - DT.Year;
             lblAge.Text = Age.ToString();

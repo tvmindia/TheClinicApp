@@ -58,31 +58,22 @@ namespace TheClinicApp.Doctor {
         protected global::System.Web.UI.WebControls.Label lblAgeCount;
         
         /// <summary>
-        /// lblMale control.
+        /// lblGender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMale;
+        protected global::System.Web.UI.WebControls.Label lblGender;
         
         /// <summary>
-        /// lblHeight control.
+        /// lblGenderString control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHeight;
-        
-        /// <summary>
-        /// lblHeightCount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHeightCount;
+        protected global::System.Web.UI.WebControls.Label lblGenderString;
         
         /// <summary>
         /// lblLastVisit control.
@@ -101,24 +92,6 @@ namespace TheClinicApp.Doctor {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLastVisitDate;
-        
-        /// <summary>
-        /// lblWeight control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblWeight;
-        
-        /// <summary>
-        /// lblWeightCount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblWeightCount;
         
         /// <summary>
         /// txtSymptoms control.
