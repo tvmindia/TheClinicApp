@@ -17,7 +17,7 @@ namespace TheClinicApp.Stock
         ErrorHandling eObj = new ErrorHandling();
         Stocks stok = new Stocks();
 
-
+      
        
         protected void Page_Load(object sender, EventArgs e)
         {

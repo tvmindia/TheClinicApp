@@ -24,7 +24,7 @@ namespace TheClinicApp.ClinicDAL
         #region Global Variables
 
         ErrorHandling eObj = new ErrorHandling();
-
+       
         public Guid UniqueID
         {
             get;
@@ -65,8 +65,8 @@ namespace TheClinicApp.ClinicDAL
 
         #region Methods
 
-        #region View All user In Roles
-        public DataTable GetDetailsOfAllUserInRoles()
+        #region View All users
+        public DataTable GetDetailsOfAllUsers()
         {
             SqlConnection con = null;
             DataTable dtUsers = null;
@@ -75,7 +75,7 @@ namespace TheClinicApp.ClinicDAL
                 dtUsers = new DataTable();
                 dbConnection dcon = new dbConnection();
                 con = dcon.GetDBConnection();
-                SqlCommand cmd = new SqlCommand("ViewAllUserInRoles", con);
+                SqlCommand cmd = new SqlCommand("ViewAllUsers", con);
 
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter adapter = new SqlDataAdapter();
@@ -98,10 +98,84 @@ namespace TheClinicApp.ClinicDAL
 
             }
         }
-        #endregion  View All user In Roles
+        #endregion  View All users 
+
+        #region View All Roles
+
+        public DataTable GetDetailsOfAllRoles()
+        {
+            SqlConnection con = null;
+            DataTable dtRoles = null;
+            try
+            {
+                dtRoles = new DataTable();
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand("ViewAllRoles", con);
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dtRoles);
+                return dtRoles;
+            }
+            catch (Exception ex)
+            {
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
+                throw ex;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+        }
+
+        #endregion View All Roles
+
+        #region View Assigned Roles
+
+        public DataTable GetDetailsOfAllAssignedRoles()
+        {
+            SqlConnection con = null;
+            DataTable dtRoles = null;
+            try
+            {
+                dtRoles = new DataTable();
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand("ViewAllUserInRoles", con);
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dtRoles);
+                return dtRoles;
+            }
+            catch (Exception ex)
+            {
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
+                throw ex;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+        }
+
+        #endregion View Assigned Roles
 
         #region Assign Role
-        public void AddUser()
+        public void AssignRole()
         {
             dbConnection dcon = new dbConnection();
 

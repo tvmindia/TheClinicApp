@@ -22,13 +22,13 @@ namespace TheClinicApp.Admin {
         protected global::System.Web.UI.WebControls.DropDownList ddlUsers;
         
         /// <summary>
-        /// lstRoles control.
+        /// ddlRoles control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lstRoles;
+        protected global::System.Web.UI.WebControls.DropDownList ddlRoles;
         
         /// <summary>
         /// Errorbox control.
@@ -56,5 +56,32 @@ namespace TheClinicApp.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMsgges;
+        
+        /// <summary>
+        /// btnSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave;
+        
+        /// <summary>
+        /// dtgViewAllUserInRoles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView dtgViewAllUserInRoles;
+        
+        /// <summary>
+        /// hdnUniqueID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnUniqueID;
     }
 }
