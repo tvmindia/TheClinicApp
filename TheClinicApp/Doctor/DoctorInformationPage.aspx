@@ -14,6 +14,12 @@
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/jquery.js"></script>
     <div class="container-fluid">
+        <style>
+             input[type="text"] {
+    width: 125px;
+    box-shadow: 1px 1px 1px 1px #347300;
+}
+        </style>
    <div class="headingLabel">
          <label class="headingLabel" style="text-align:center">Doctors</label>
          </div>
@@ -156,7 +162,7 @@
                            <div class="form-group">
                                <label  class="control-label col-lg-3">Symptoms</label>
                                <div class="col-lg-9">
-                                   <asp:TextBox ID="TextBox1" class="form-control " TextMode="multiline"  Height="100"  Width="100%" runat="server" required ></asp:TextBox>
+                                   <asp:TextBox ID="txtSymptoms" class="form-control " TextMode="multiline"  Height="100"  Width="100%" runat="server" required ></asp:TextBox>
 
                                </div>
 
@@ -170,7 +176,7 @@
                        <section class="content">
                            <label  class="control-label col-lg-3">Sleep</label>
                            <div class="col-lg-9">
-                               <asp:TextBox ID="TextBox3" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ></asp:TextBox>
+                               <asp:TextBox ID="txtSleep" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ></asp:TextBox>
 
                            </div>
 
@@ -182,57 +188,57 @@
                        <section class="content">
                            <label  class="control-label col-lg-3">Cardiovascular</label>
                            <div class="col-lg-9">
-                               <asp:TextBox ID="TextBox4" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                               <asp:TextBox ID="txtCardiovascular" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
                            </div>
                            <label  class="control-label col-lg-3">Nervoussystem</label>
                            <div class="col-lg-9">
-                               <asp:TextBox ID="TextBox5" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                               <asp:TextBox ID="txtNervoussystem" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
                            </div>
                            <label  class="control-label col-lg-3">Musculoskeletal</label>
                            <div class="col-lg-9">
-                               <asp:TextBox ID="TextBox6" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                               <asp:TextBox ID="txtMusculoskeletal" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
                            </div>
                            <label  class="control-label col-lg-3">Palloe</label>
                            <div class="col-lg-9">
-                               <asp:TextBox ID="TextBox7" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                               <asp:TextBox ID="txtPalloe" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
                            </div>
                            <label  class="control-label col-lg-3">Icterus</label>
                            <div class="col-lg-9">
-                                <asp:TextBox ID="TextBox8" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                                <asp:TextBox ID="txtIcterus" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
                            </div>
                             <label  class="control-label col-lg-3">Clubbing</label>
                            <div class="col-lg-9">
-                               <asp:TextBox ID="TextBox9" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                               <asp:TextBox ID="txtClubbing" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
                            </div>
                            <label  class="control-label col-lg-3">Cyanasis </label>
                             <div class="col-lg-9">
-                                <asp:TextBox ID="TextBox10" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                                <asp:TextBox ID="txtCyanasis" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
              
 
                 </div>
                  <label  class="control-label col-lg-3">Bowel
                   </label>
                 <div class="col-lg-9">
-                                <asp:TextBox ID="TextBox11" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                                <asp:TextBox ID="txtBowel" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
              
 
                 </div>
                     <label  class="control-label col-lg-3">Appettie </label>
                 <div class="col-lg-9">
-                                <asp:TextBox ID="TextBox12" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                                <asp:TextBox ID="txtAppettie" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
              
 
                 </div>
                 <label  class="control-label col-lg-3">Micturation
                   </label>
                 <div class="col-lg-9">
-                                <asp:TextBox ID="TextBox13" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                                <asp:TextBox ID="txtMicturation" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
              
 
                 </div>
@@ -246,7 +252,7 @@
                <label  class="control-label col-lg-3">Sleep
                   </label>
                 <div class="col-lg-9">
-                                <asp:TextBox ID="TextBox14" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                                <asp:TextBox ID="txtSleepAyur" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
              
 
                 </div>
@@ -260,7 +266,7 @@
                <label  class="control-label col-lg-3">diagnosis
                   </label>
                 <div class="col-lg-9">
-                                <asp:TextBox ID="TextBox15" class="form-control " TextMode="multiline"  Height="100"  Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                                <asp:TextBox ID="txtdiagnosis" class="form-control " TextMode="multiline"  Height="100"  Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
                                 
 
              
@@ -279,19 +285,19 @@
                 <div class="col-lg-9">
                                 <table style="width:20%">
                                     <tr>
-                                        <td style="text-align:center;font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"><asp:Label ID="Label15" runat="server" Text="Medicine"></asp:Label></td><td style="text-align:center"><asp:Label ID="Label16" runat="server" Text="Timing"></asp:Label></td><td style="text-align:center"><asp:Label ID="Label17" runat="server" Text="Dozage"></asp:Label></td><td style="text-align:center"><asp:Label ID="Label18" runat="server" Text="Days"></asp:Label></td>
+                                        <td style="text-align:center;font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"><asp:Label ID="Label1" runat="server" Text="Medicine"></asp:Label></td><td style="text-align:center"><asp:Label ID="Label2" runat="server" Text="Timing"></asp:Label></td><td style="text-align:center"><asp:Label ID="Label3" runat="server" Text="Dozage"></asp:Label></td><td style="text-align:center"><asp:Label ID="Label4" runat="server" Text="Days"></asp:Label></td>
                                     </tr>
             <tr>
-                <td style="font-size: small" ><input id="Text5" type="text" placeholder="Medicine" runat="server"  class="dynamicTd"/></td><td><input id="Text6" class="dynamicTd" type="text"  placeholder="Timing" runat="server"  /></td><td><input id="Text7" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="Text8" type="text" placeholder="Days" runat="server" class="dynamicTd" /></td>
+                <td style="font-size: small" ><input id="Text1" type="text" placeholder="Medicine" runat="server"  class="dynamicTd"/></td><td><input id="txtMedname1" class="dynamicTd" type="text"  placeholder="Timing" runat="server"  /></td><td><input id="txtMeddoz1" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="txtMedprescription1" type="text" placeholder="Days" runat="server" class="dynamicTd" /></td>
             </tr>
             <tr>
-                <td style="font-size: small" ><input id="Text9" type="text" placeholder="Medicine" runat="server" class="dynamicTd" /></td><td ><input id="Text10" class="dynamicTd" type="text" placeholder="Timing" runat="server" /></td><td ><input id="Text11" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="Text12" type="text" placeholder="Days" runat="server" class="dynamicTd"/></td>
+                <td style="font-size: small" ><input id="Text2" type="text" placeholder="Medicine" runat="server" class="dynamicTd" /></td><td ><input id="txtMedname2" class="dynamicTd" type="text" placeholder="Timing" runat="server" /></td><td ><input id="txtMeddoz2" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="txtMedprescription2" type="text" placeholder="Days" runat="server" class="dynamicTd"/></td>
             </tr>
             <tr>
-                <td style="font-size: small"><input id="Text13" type="text" placeholder="Medicine" runat="server" class="dynamicTd" /></td><td ><input id="Text14" class="dynamicTd" type="text" placeholder="Timing" runat="server" /></td><td ><input id="Text15" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="Text16" type="text" placeholder="Days" runat="server" class="dynamicTd"/></td>
+                <td style="font-size: small"><input id="Text3" type="text" placeholder="Medicine" runat="server" class="dynamicTd" /></td><td ><input id="txtMedname3" class="dynamicTd" type="text" placeholder="Timing" runat="server" /></td><td ><input id="txtMeddoz3" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="txtMedprescription3" type="text" placeholder="Days" runat="server" class="dynamicTd"/></td>
             </tr>
             <tr>
-                <td style="font-size: small" ><input id="Text17" type="text" placeholder="Medicine" runat="server"  class="dynamicTd"/></td><td ><input id="Text18" class="dynamicTd" type="text" placeholder="Timing" runat="server" /></td><td ><input id="Text19" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="Text20" type="text" placeholder="Days" runat="server" class="dynamicTd"/></td><td>
+                <td style="font-size: small" ><input id="Text4" type="text" placeholder="Medicine" runat="server"  class="dynamicTd"/></td><td ><input id="txtMedname4" class="dynamicTd" type="text" placeholder="Timing" runat="server" /></td><td ><input id="txtMeddoz4" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="txtMedprescription4" type="text" placeholder="Days" runat="server" class="dynamicTd"/></td><td>
         
      <span class="auto-style4">
      <input type="button" id="btAdd" onclick="this.style.visibility = 'hidden';" value="+" class="bt" />
@@ -299,7 +305,7 @@
          </td>
             </tr>
             
-    </table> 
+    </table>  
              
                       <div id="main">
                           </div>
@@ -317,7 +323,7 @@
                 <label  class="control-label col-lg-3">Remarks
                   </label>
                 <div class="col-lg-9">
-                                <asp:TextBox ID="TextBox16" class="form-control " TextMode="multiline"  Height="100"  Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                                <asp:TextBox ID="txtRemarks" class="form-control " TextMode="multiline"  Height="100"  Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
              
 
                 </div>
@@ -383,15 +389,8 @@
                               PATIENT LIST TODAY </span>
                           <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False" CssClass="footable" Style="max-width: 500px" DataKeyNames="UniqueId" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
             <Columns>
-                <asp:TemplateField>
-                    <ItemTemplate>
-                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" Width="5%" Height="5%" ImageUrl="~/Images/Check.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID") %>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
-                    </ItemTemplate>
-
-                </asp:TemplateField>
                 <asp:BoundField HeaderText="Token No" DataField="TokenNo" />
                 <asp:BoundField HeaderText="Patient Name" DataField="Name" />
-                <asp:BoundField HeaderText="Time" DataField="DateTime" />
 
             </Columns>
 
@@ -423,7 +422,47 @@
 
 </div>
       
-   
+ <footer  class="footerDiv">
+         
+
+                <table style="width: 100%; height: 100%;">
+                    <tr>
+                        <td class="footerMessagesColumn" style="width:50%; ">
+                            <div id="Errorbox"  style="height:100%;  display:none;"  runat="server" >
+                               <a class="close" data-dismiss="alert">×</a>  
+
+                            <div>
+                            <strong> <asp:Label ID="lblErrorCaption" runat="server" Text=""></asp:Label> </strong>
+                                <asp:Label ID="lblMsgges" runat="server" Text=""></asp:Label>
+
+</div>
+       </div>                     
+
+                        </td>
+                        <td style="height: 100%;   width:20%;">
+
+                        </td>
+                        <td style="height: 100%;   width:30%;" >
+                            <table class="footerTable" style="width:100%; margin-left:0px;padding-left:0px;padding-top:80%; margin-top:3%;  ">
+                                <tr>
+                                    <td style="width:30%;">
+                                         <div class="form-group">
+                                        <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button" OnClick="btnSave_Click" ValidationGroup="Submit" />
+</div>
+                                    </td>
+                                    <td>
+                                       </td>
+                                </tr>
+                            </table>
+
+                        </td>
+
+                    </tr>
+                </table>
+
+
+            
+        </footer>  
 
     <script>
         $(function () {

@@ -184,7 +184,7 @@
                                      
 
                                     
-                                     <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False"  CssClass="footable" Style="max-width: 500px" DataKeyNames="UniqueId">
+                                     <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False"  CssClass="footable" DataKeyNames="UniqueId">
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
                                   <asp:TemplateField HeaderText="Delete">

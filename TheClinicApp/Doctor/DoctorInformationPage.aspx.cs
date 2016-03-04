@@ -60,5 +60,10 @@ namespace TheClinicApp.Doctor
            
             //HiddenField1.Value = PatientID.ToString();
         }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
