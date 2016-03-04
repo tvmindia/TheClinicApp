@@ -1,7 +1,7 @@
 ﻿
 
 function ConfirmDelete() {
-    var confirmation = confirm(" Are you sure you want to delete? ");
+    var confirmation = confirm("Are you sure ?");
     if (confirmation)
         return true;
     else

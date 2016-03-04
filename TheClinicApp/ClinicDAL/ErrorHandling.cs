@@ -105,8 +105,7 @@ namespace TheClinicApp.ClinicDAL
             lblMsgges.Text = ex.Message;
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
             Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
-            //lblErrorCaption.Text = "Danger!";
-            lblErrorCaption.Text = "Exception!";
+            lblErrorCaption.Text = "Danger!";
             divMask1.Attributes["class"] = "alert lblErrorCaptionDanger fade in";
          
 
@@ -121,7 +120,7 @@ namespace TheClinicApp.ClinicDAL
             lblMsgges.Text = " Deleted Successfully ";
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
             Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
-            lblErrorCaption.Text = "Success!";
+            lblErrorCaption.Text = "Danger!";
             divMask1.Attributes["class"] = "alert lblErrorCaptionDanger fade in";
         }
 
@@ -149,7 +148,7 @@ namespace TheClinicApp.ClinicDAL
             lblMsgges.Text = "Insertion Not Successful ";
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
             Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
-            lblErrorCaption.Text = "Already exists!";
+            lblErrorCaption.Text = "Danger!";
             divMask1.Attributes["class"] = "alert lblErrorCaptionDanger fade in";
         }
     }

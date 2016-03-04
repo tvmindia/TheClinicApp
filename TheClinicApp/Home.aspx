@@ -7,7 +7,6 @@
     <title></title>
     <link href="Content/TheClinicApp.css" rel="stylesheet" />
     <link href="Content/simple-sidebar.css" rel="stylesheet" />
-   <link href="Content/Input.css" rel="stylesheet" />
     <style>
     
     </style>
@@ -66,7 +65,6 @@
 
 
             document.getElementById('main').src = NavigateUrl;
-            document.getElementById('settings').style.display = "none";
           
         }
 
@@ -140,10 +138,8 @@
 
           <div class="settings" id="settings">
 
-                
-             <ul class="Settings-nav" >
-                 
-                <li><a id="hlkAssignRoles" onclick="OpenPageOnHyperLinkClick(id)">Assign Roles</a></li>
+                <ul class="sidebar-nav" style="width:75%;cursor:pointer">
+               <li><a id="hlkAssignRoles" onclick="OpenPageOnHyperLinkClick(id)">Assign Roles</a></li>
                <li><a id="hlkCreateUser"  onclick="OpenPageOnHyperLinkClick(id)">Create User</a> </li>
                </ul>
 
