@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="User.aspx.cs" Inherits="TheClinicApp.Admin.User" EnableEventValidation="false" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="User.aspx.cs" Inherits="TheClinicApp.Admin.User" EnableEventValidation="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -9,26 +9,23 @@
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
 
-    <script src="../Scripts/DeletionConfirmation.js"></script> 
-     <script src="../Scripts/jquery-1.12.0.min.js"></script>
+    <script src="../Scripts/DeletionConfirmation.js"></script>
+    <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <link href="../Content/Input.css" rel="stylesheet" />
-    <script src="../Scripts/bootstrap.min.js"></script>
-
-
     <%--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
      <script src="../Scripts/mui.min.js"></script>
     <link href="../Content/mui.min.css" rel="stylesheet" />
     <script src="../Scripts/jquery-ui.js"></script>
-          <link href="../Content/jquery-ui.css" rel="stylesheet" />--%>
-    
+          <link href="../Content/jquery-ui.css" rel="stylesheet" />
+    <script src="../Scripts/bootstrap.min.js"></script>--%>
 
     <div class="container-fluid bodyDiv">
         <label class="headingLabel">Create User</label>
         <div class="col-sm-12 Span-One ">
             <div class="col-sm-1">
             </div>
-            <div class="col-xs-7">
+            <div class="col-xs-8">
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
@@ -64,25 +61,27 @@
                 </div>
 
                 <div class="col-xs-12 Span-One">
-                    <div class="col-xs-12">
+                    <div class="col-xs-11">
                         <div class="form-group">
                             <label class="control-label col-xs-4 regFormLabels">Login Name:</label>
 
-                            <div class="col-xs-5">
+                            <div class="col-xs-7">
 
-                               
-                                            <asp:TextBox ID="txtLoginName" class="form-control textBoxborder" required runat="server" onchange="LoginNameCheck(this)" ValidationGroup="Submit"></asp:TextBox>
-                                      
-                                        
-                                   
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <asp:TextBox ID="txtLoginName" class="form-control textBoxborder" required runat="server" onchange="LoginNameCheck(this)" ValidationGroup="Submit" pattern="^[A-z][A-z\.\s]+$"></asp:TextBox></td>
+                                        <td>
+                                            <asp:Image ID="imgWebLnames" runat="server" ToolTip="Login Name is Available" ImageUrl="~/Images/Check.png" Width="25%" Height="18%" /></td>
+                                        <td>
+                                            <asp:Image ID="errorLnames" runat="server" ToolTip="Login Name is Unavailable" ImageUrl="~/Images/newClose.png" Width="35%" Height="35%" /></td>
+                                    </tr>
+
+                                </table>
                             </div>
 
-                            <div class="col-xs-3">
-                                <asp:Image ID="imgWebLnames" runat="server" ToolTip="Login Name is Available" ImageUrl="~/Images/Check.png" Width="25%" Height="18%" />
-                                        
-                                            <asp:Image ID="errorLnames" runat="server" ToolTip="Login Name is Unavailable" ImageUrl="~/Images/newClose.png" Width="10%" Height="10%" />
 
-                            </div>
+
                         </div>
 
                     </div>
@@ -90,38 +89,41 @@
                 </div>
 
                 <div class="col-xs-12 Span-One">
-                    <div class="col-xs-12">
+                    <div class="col-xs-11">
                         <div class="form-group">
                             <label class="control-label col-xs-4 regFormLabels">First Name:</label>
 
-                            <div class="col-xs-5">
+                            <div class="col-xs-7">
 
                                 <asp:TextBox ID="txtFirstName" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
-
-                            <div class="col-xs-3"></div>
-
                         </div>
-                      
+                        <div class="col-xs-1">
+                            <div class="col-xs-12">
+                                &nbsp
+                            </div>
+                        </div>
                     </div>
 
                 </div>
 
                 <div class="col-xs-12 Span-One">
-                    <div class="col-xs-12">
+                    <div class="col-xs-11">
                         <div class="form-group">
                             <label class="control-label col-xs-4 regFormLabels">Last Name:</label>
 
-                            <div class="col-xs-5">
+                            <div class="col-xs-7">
 
                                 <asp:TextBox ID="txtLastName" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
-
-                             <div class="col-xs-3"></div>
                         </div>
-                       
+                        <div class="col-xs-1">
+                            <div class="col-xs-12">
+                                &nbsp
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -147,7 +149,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-4">
+            <div class="col-xs-3">
                 <a href="#" role="button" data-toggle="modal" data-target="#myModal">View All Users </a>
 
             </div>
@@ -225,16 +227,16 @@
 
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="LoginName" HeaderText="Login Name">
+                            <asp:BoundField DataField="LoginName" HeaderText="LOGIN NAME">
                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="FirstName" HeaderText="First Name">
+                            <asp:BoundField DataField="FirstName" HeaderText="FIRST NAME">
                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="LastName" HeaderText="Last Name">
+                            <asp:BoundField DataField="LastName" HeaderText="LAST NAME">
                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Active" HeaderText="Active">
+                            <asp:BoundField DataField="Active" HeaderText="ACTIVE">
                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                             </asp:BoundField>
 
@@ -243,9 +245,7 @@
 
                         <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
 
-                        <%--<HeaderStyle BackColor="#001a00" Font-Bold="True" ForeColor="White"></HeaderStyle>--%>
-
-                           <HeaderStyle BackColor="#009933" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                        <HeaderStyle BackColor="#001a00" Font-Bold="True" ForeColor="White"></HeaderStyle>
 
                         <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#2461BF"></PagerStyle>
 
@@ -287,8 +287,8 @@
         function LoginNameCheck(txtLoginName) {
             debugger;
             var name = document.getElementById('<%=txtLoginName.ClientID %>').value;
-            name = name.replace(/\s/g, '');
-           
+
+
             PageMethods.ValidateLoginName(name, OnSuccess, onError);
 
             function OnSuccess(response, userContext, methodName) {
