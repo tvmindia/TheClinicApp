@@ -131,6 +131,51 @@ namespace TheClinicApp.ClinicDAL
 
         #region Medicines
 
+        #region SearchBoxMedicine
+        public DataTable SearchBoxMedicine()
+        {
+
+            DataTable dt = null;
+            SqlConnection con = null;
+            dbConnection dcon = new dbConnection();
+            con = dcon.GetDBConnection();
+            SqlCommand cmd = new SqlCommand("SearchBoxMedicine", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = cmd;
+            dt = new DataTable();
+            adapter.Fill(dt);
+            con.Close();
+            return dt;
+
+        }
+        #endregion SearchBoxMedicine
+
+
+
+        #region SearchWithName
+        public DataTable GetMedcineDetails(string SearchName)
+        {
+
+            DataTable dt = null;
+            SqlConnection con = null;
+            dbConnection dcon = new dbConnection();
+            con = dcon.GetDBConnection();
+            SqlCommand cmd = new SqlCommand("SearchMedicineWithName", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = SearchName;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = cmd;
+            dt = new DataTable();
+            adapter.Fill(dt);
+            con.Close();
+            return dt;
+
+        }
+        #endregion SearchWithName
+
+
+
         #region InsertMedicines
         public void InsertMedicines()
         {

@@ -17,6 +17,21 @@
     <script src="../Scripts/jquery-ui.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/mui.min.js"></script>
+    
+      <script>
+        $(document).ready(function () {
+            debugger;
+            var ac=null;
+            ac = <%=listFilter %>;
+            $( "#txtSearch" ).autocomplete({
+                source: ac
+            });
+        });
+        
+    </script>
+   
+
+
 
 
     <div class="container-fluid bodyDiv">
@@ -68,10 +83,10 @@
                     <div class="col-xs-8">
                         <div class="col-md-12">
                             <div class="input-group stylish-input-group">
-                                <input type="text" class="form-control" placeholder="Search" style="height: 20%;" aria-haspopup="false" name="txtSearch" id="txtNameSearch" />
+                                <input type="text" class="form-control" placeholder="Search" style="height: 20%;" aria-haspopup="false" name="txtSearch" id="txtSearch" />
 
                                 <span class="input-group-addon" style="height: 0%;">
-                                    <button type="submit" style="height: 0px;" runat="server" id="Button1">
+                                    <button type="submit" style="height: 0px;" runat="server" id="btnSearchMedicine" onserverclick="btnSearchMedicine_ServerClick" formnovalidate>
                                         <img src="../Images/Search-WF.png" />
                                     </button>
                                 </span>
@@ -283,7 +298,9 @@
                         </div>
                         <div class="col-xs-8">
                             <div class="col-xs-12">
-                                &nbsp
+                             
+                                <asp:Label ID="lblUnit" class="control-label col-xs-4 regFormLabels" runat="server">
+                                 </asp:Label>
                             </div>
 
                         </div>
@@ -302,7 +319,9 @@
                         </div>
                         <div class="col-xs-8">
                             <div class="col-xs-12">
-                                &nbsp
+                                     
+                                   <asp:Label ID="lblQuantity" class="control-label col-xs-4 regFormLabels" runat="server">
+                                 </asp:Label>
                             </div>
                         </div>
 
@@ -321,7 +340,9 @@
 
                         <div class="col-xs-8">
                             <div class="col-xs-12">
-                                &nbsp
+                                     <asp:Label ID="lblLastUpdated" class="control-label col-xs-4 regFormLabels" runat="server">
+                                 </asp:Label>
+                                
                             </div>
                         </div>
 

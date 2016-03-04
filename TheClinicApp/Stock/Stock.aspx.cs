@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheClinicApp.ClinicDAL;
-using System.Data.SqlClient;
-using System.Data;
-using System.Configuration;
 
 namespace TheClinicApp.Stock
 {
@@ -16,7 +17,7 @@ namespace TheClinicApp.Stock
 
         ErrorHandling eObj = new ErrorHandling();
         Stocks stok = new Stocks();
-
+        public string listFilter = null;
        
         Receipt rpt = new Receipt();
         ReceiptDetails rptdt = new ReceiptDetails();
@@ -25,6 +26,16 @@ namespace TheClinicApp.Stock
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            bindpageload();
+
+
+
+        }
+
+        #region bindpageload
+
+        public void bindpageload()
+        {
 
             //gridview binding for listing the Out of Stock Medicines 
             DataSet gds = stok.OutofStockMedicines();
@@ -42,12 +53,45 @@ namespace TheClinicApp.Stock
             ddlCategory.DataValueField = "CategoryID";
             ddlCategory.DataTextField = "Name";
             ddlCategory.DataBind();
-                
 
 
+
+
+            listFilter = null;
+            listFilter = BindName();
 
 
         }
+
+
+        #endregion bindpageload
+
+
+
+
+        #region BindDataAutocomplete
+        private string BindName()
+        {
+           // Patient PatientObj = new Patient();
+            Stocks stok = new Stocks();
+
+            DataTable dt = stok.SearchBoxMedicine();
+
+            StringBuilder output = new StringBuilder();
+            output.Append("[");
+            for (int i = 0; i < dt.Rows.Count; ++i)
+            {
+                output.Append("\"" + dt.Rows[i]["Name"].ToString() + "\"");
+
+                if (i != (dt.Rows.Count - 1))
+                {
+                    output.Append(",");
+                }
+            }
+            output.Append("]");
+            return output.ToString();
+        }
+        #endregion BindDataAutocomplete
  
         protected void btnStock_Click(object sender, EventArgs e)
         {
@@ -72,5 +116,36 @@ namespace TheClinicApp.Stock
 
 
         }
+
+        protected void btnSearchMedicine_ServerClick(object sender, EventArgs e)
+        {
+           // Patient PatientObj = new Patient();
+
+            Stocks stok = new Stocks();
+
+            DataRow dr = null; 
+            string Name = Request.Form["txtSearch"];
+            if (Name != "")
+            {
+                DataTable dt = stok.GetMedcineDetails(Name);
+                dr = dt.NewRow();
+                dr = dt.Rows[0];
+
+
+                lblUnit.Text = dr["Unit"].ToString();
+                lblQuantity.Text = dr["Qty"].ToString();
+                lblLastUpdated.Text = dr["UpdatedDate"].ToString();
+               
+                
+              
+            }
+            else
+            {
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "alert('Invalid Suggesion');", true);
+
+            }
+        }
+
+     
     }
 }
