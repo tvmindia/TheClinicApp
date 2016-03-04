@@ -378,7 +378,7 @@
          
         
     <div class="row">
-      <div id="div1" class="list-group leftSideBar1">
+      <div id="div1" class="list-group leftSideBar1"> 
           <span class="list-group-item active">
                               PATIENT LIST TODAY </span>
                           <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False" CssClass="footable" Style="max-width: 500px" DataKeyNames="UniqueId" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
