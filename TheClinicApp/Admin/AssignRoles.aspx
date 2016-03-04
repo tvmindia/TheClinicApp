@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="AssignRoles.aspx.cs" Inherits="TheClinicApp.Admin.AssignRoles" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
+
  </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -8,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+  <%--  <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
     <link href="../Content/mui.min.css" rel="stylesheet" />
     <link href="../Content/Input.css" rel="stylesheet" />
@@ -17,8 +19,17 @@
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/jquery-ui.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
-    <script src="../Scripts/DeletionConfirmation.js"></script>
+    <script src="../Scripts/DeletionConfirmation.js"></script>--%>
 
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
+
+    <script src="../Scripts/DeletionConfirmation.js"></script> 
+     <script src="../Scripts/jquery-1.12.0.min.js"></script>
+    <link href="../Content/Input.css" rel="stylesheet" />
+    <script src="../Scripts/bootstrap.min.js"></script>
+
+    
     <div class="container-fluid bodyDiv">
 
         <label class="headingLabel">Assign Roles</label>
@@ -27,7 +38,7 @@
             <div class="col-sm-1">
             </div>
 
-            <div class="col-sm-6  Span-One">
+            <div class="col-sm-7  Span-One">
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
@@ -70,7 +81,7 @@
 
                             <div class="col-xs-10">
 
-                                <asp:DropDownList ID="ddlUsers" runat="server">
+                                <asp:DropDownList ID="ddlUsers" runat="server" CssClass="selectbox">
                                     <asp:ListItem>--Select--</asp:ListItem>
 
                                 </asp:DropDownList>
@@ -93,7 +104,7 @@
 
                             <div class="col-xs-10">
 
-                                <asp:DropDownList ID="ddlRoles" runat="server"></asp:DropDownList>
+                                <asp:DropDownList ID="ddlRoles" runat="server" CssClass="selectbox"  ></asp:DropDownList>
 
                             </div>
                             <div class="col-xs-1">
@@ -110,7 +121,7 @@
 
             </div>
 
-            <div class="col-sm-5">
+            <div class="col-sm-4">
 
                 <a href="#" role="button" data-toggle="modal" data-target="#myModal">View All Assigned Roles </a>
             </div>
@@ -183,10 +194,10 @@
 
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="Role" HeaderText="ROLE NAME">
+                                <asp:BoundField DataField="Role" HeaderText="Role Name">
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                                 </asp:BoundField>
-                                <asp:BoundField DataField="Name" HeaderText="FIRST NAME">
+                                <asp:BoundField DataField="Name" HeaderText="First Name">
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                                 </asp:BoundField>
 
@@ -196,7 +207,8 @@
 
                             <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
 
-                            <HeaderStyle BackColor="#001a00" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                            <%--<HeaderStyle BackColor="#001a00" Font-Bold="True" ForeColor="White"></HeaderStyle>--%>
+                            <HeaderStyle BackColor="#009933" Font-Bold="True" ForeColor="White"></HeaderStyle>
 
                             <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#2461BF"></PagerStyle>
 

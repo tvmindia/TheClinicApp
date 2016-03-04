@@ -52,10 +52,20 @@ namespace TheClinicApp.Admin
             string loginName = LogName;
 
             ClinicDAL.User userObj = new ClinicDAL.User();
-            if (userObj.ValidateUsername(loginName))
+
+            if (LogName == string.Empty)
             {
                 return true;
             }
+            else
+            {
+                if (userObj.ValidateUsername(loginName))
+                {
+                    return true;
+                }
+            }
+            
+
             return false;
         }
 
