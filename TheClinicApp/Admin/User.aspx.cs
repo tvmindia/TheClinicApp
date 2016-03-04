@@ -127,6 +127,7 @@ namespace TheClinicApp.Admin
                     userObj.UserID = Guid.Parse(hdnUserID.Value);
                     userObj.UpdateuserByUserID();
                     BindGriewWithDetailsOfAllUsers();
+
                }
                
             }
