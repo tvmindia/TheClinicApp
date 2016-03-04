@@ -89,9 +89,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd");
          
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
-                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreatedDate;
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
-                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = UpdatedDate;
+           
 
 
 
@@ -276,6 +274,8 @@ namespace TheClinicApp.ClinicDAL
 
     public class ReceiptDetails
     {
+
+        Receipt rpt = new Receipt();
         #region Property
 
         public string UniqueID
@@ -346,7 +346,7 @@ namespace TheClinicApp.ClinicDAL
             {
 
                 Guid UniqueID = new Guid();
-
+                Guid ReceiptID = Guid.Parse(rpt.ReceiptID);
                 DateTime now = DateTime.Now;
                 dcon = new dbConnection();
                 dcon.GetDBConnection();
@@ -354,18 +354,17 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[InsertReceiptDetails]";
-
+              
                 cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = UniqueID;
                 cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = ReceiptID;
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
-                cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = MedicineID;
+                cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
                 
                 cmd.Parameters.Add("@Unit", SqlDbType.Real).Value = Unit;                           
 
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
-                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreatedDate;
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
-                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = UpdatedDate;
+                //cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreatedDate;
+
                 cmd.Parameters.Add("@QTY", SqlDbType.Real).Value = QTY;
 
 

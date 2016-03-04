@@ -13,15 +13,6 @@ namespace TheClinicApp.Stock {
     public partial class Stock {
         
         /// <summary>
-        /// btnSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnSearch;
-        
-        /// <summary>
         /// Button1 control.
         /// </summary>
         /// <remarks>
@@ -31,13 +22,13 @@ namespace TheClinicApp.Stock {
         protected global::System.Web.UI.HtmlControls.HtmlButton Button1;
         
         /// <summary>
-        /// txtCategory control.
+        /// ddlCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCategory;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCategory;
         
         /// <summary>
         /// txtDate control.
@@ -67,13 +58,58 @@ namespace TheClinicApp.Stock {
         protected global::System.Web.UI.WebControls.TextBox txtQty;
         
         /// <summary>
-        /// txtReference control.
+        /// txtReference1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtReference;
+        protected global::System.Web.UI.WebControls.TextBox txtReference1;
+        
+        /// <summary>
+        /// txtReference2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtReference2;
+        
+        /// <summary>
+        /// HiddenFieldReceiptID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldReceiptID;
+        
+        /// <summary>
+        /// HiddenFieldUniqueID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldUniqueID;
+        
+        /// <summary>
+        /// HiddenFieldClinicID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldClinicID;
+        
+        /// <summary>
+        /// HiddenFieldMedicineID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldMedicineID;
         
         /// <summary>
         /// ScriptManager1 control.

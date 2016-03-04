@@ -17,6 +17,9 @@ namespace TheClinicApp.Stock
         ErrorHandling eObj = new ErrorHandling();
         Stocks stok = new Stocks();
 
+       
+        Receipt rpt = new Receipt();
+        ReceiptDetails rptdt = new ReceiptDetails();
       
        
         protected void Page_Load(object sender, EventArgs e)
@@ -31,11 +34,42 @@ namespace TheClinicApp.Stock
 
 
 
+            //Binding  Category ID and Name
+
+            DataSet ds = stok.ViewCategory();
+
+            ddlCategory.DataSource = ds.Tables[0];
+            ddlCategory.DataValueField = "CategoryID";
+            ddlCategory.DataTextField = "Name";
+            ddlCategory.DataBind();
+                
+
+
+
 
         }
  
         protected void btnStock_Click(object sender, EventArgs e)
         {
+            //Receipt Header
+            rpt.RefNo1 = txtReference1.Text;
+            rpt.RefNo2 = txtReference2.Text;
+            rpt.Date = Convert.ToDateTime(txtDate.Text);
+            rpt.ClinicID = HiddenFieldClinicID.Value;
+            rpt.CreatedBy = "user";
+            
+            //Receipt Details
+
+            rptdt.QTY = Convert.ToInt32(txtQty.Text);
+            rptdt.Unit = Convert.ToInt32(txtUnit.Text);
+            rptdt.MedicineID = HiddenFieldMedicineID.Value;
+            rptdt.ClinicID = HiddenFieldClinicID.Value;
+            rptdt.CreatedBy = "user";
+
+            //Calling insert functions
+            rpt.InsertReceiptHeaderDetails();
+            rptdt.InsertReceiptDetails();
+
 
         }
     }

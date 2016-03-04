@@ -16,7 +16,7 @@
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/jquery-ui.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
-     <script src="../Scripts/mui.min.js"></script>
+    <script src="../Scripts/mui.min.js"></script>
 
 
     <div class="container-fluid bodyDiv">
@@ -25,23 +25,22 @@
 
             <%-- center Block --%>
 
+            
 
             <div class="col-xs-7  ">
 
-                <div class="col-md-12 Span-One">
-                    <div class="col-md-4">
+      <%--          <div class="col-md-12 Span-One">
+                    <div class="col-xs-4">
                         <div class="form-group">
-
                             <div class="col-md-12">
-                                <label class="control-label col-xs-4 regFormLabels">Code:</label>
+                                <label class="control-label col-xs-3 regFormLabels">Code:</label>
 
                             </div>
                         </div>
 
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-xs-8">
                         <div class="col-md-12">
-
                             <div class="input-group stylish-input-group">
                                 <input type="text" class="form-control" placeholder="Search" style="height: 20%;" aria-haspopup="false" name="txtSearch" id="txtCodeSearch" />
 
@@ -51,105 +50,230 @@
                                         <img src="../Images/Search-WF.png" />
                                     </button>
                                 </span>
-
                             </div>
-                            &nbsp
                         </div>
                     </div>
-                </div>
+                </div>--%>
 
 
                 <div class="col-md-12 Span-One">
-                    <div class="col-md-4">
+                    <div class="col-xs-4">
                         <div class="form-group">
-
                             <div class="col-md-12">
-                                <label class="control-label col-xs-4 regFormLabels">Name:</label>
+                                <label class="control-label col-xs-3 regFormLabels">Medicine Name:</label>
                             </div>
                         </div>
 
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-xs-8">
                         <div class="col-md-12">
                             <div class="input-group stylish-input-group">
                                 <input type="text" class="form-control" placeholder="Search" style="height: 20%;" aria-haspopup="false" name="txtSearch" id="txtNameSearch" />
 
                                 <span class="input-group-addon" style="height: 0%;">
                                     <button type="submit" style="height: 0px;" runat="server" id="Button1">
-
                                         <img src="../Images/Search-WF.png" />
                                     </button>
                                 </span>
-
                             </div>
-                            &nbsp
                         </div>
                     </div>
                 </div>
 
 
-                <table class="col-phar-patiedet  ">
-                    <tr>
-                        <td>
-                            <label class="control-label col-xs-4 regFormLabels">Category:</label></td>
-                        <td style="">
-                            <asp:TextBox ID="txtCategory" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"> </asp:TextBox>
+                <div class="col-md-12 Span-One">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <br />
+                                <label class="control-label col-xs-4 regFormLabels">Category:</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="col-md-12">
+                            <br />
+                           <%-- <asp:TextBox ID="txtCategory" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"> </asp:TextBox>--%>
+                            <asp:DropDownList ID="ddlCategory" style="width:70%"  runat="server"></asp:DropDownList>
+                        
+                        </div>
+                    </div>
+                </div>
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label class="control-label col-xs-4 regFormLabels">Date:</label>
-                        </td>
-                        <td>
+                <div class="col-md-12 Span-One">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="col-md-12">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 Span-One">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label class="control-label col-xs-6 regFormLabels">Date:</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="col-md-12">
                             <asp:TextBox ID="txtDate" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"> </asp:TextBox>
+                        </div>
+                    </div>
+                </div>
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label class="control-label col-xs-4 regFormLabels">Unit:</label>
-                        </td>
-                        <td>
+                <div class="col-md-12 Span-One">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="col-md-12">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 Span-One">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label class="control-label col-xs-4 regFormLabels">Unit:</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="col-md-12">
                             <asp:TextBox ID="txtUnit" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"> </asp:TextBox>
+                        </div>
+                    </div>
+                </div>
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label class="control-label col-xs-4 regFormLabels">Quantity:</label>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txtQty" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"> </asp:TextBox></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label class="control-label col-xs-4 regFormLabels">Reference/Bill No:</label></td>
-                        <td>
-                            <asp:TextBox ID="txtReference" class="form-control textBoxborder numberTypeTextBox" runat="server" required ValidationGroup="Submit"></asp:TextBox></td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                </table>
+                <div class="col-md-12 Span-One">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="col-md-12">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 Span-One">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label class="control-label col-xs-4 regFormLabels">Quantity:</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="col-md-12">
+                            <asp:TextBox ID="txtQty" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"> </asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 Span-One">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="col-md-12">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 Span-One">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label class="control-label col-xs-4 regFormLabels">Reference:1/Bill No:</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="col-md-12">
+                            <asp:TextBox ID="txtReference1" class="form-control textBoxborder numberTypeTextBox" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 Span-One">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="col-md-12">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 Span-One">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label class="control-label col-xs-4 regFormLabels">Reference:2/Bill No:</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="col-md-12">
+                            <asp:TextBox ID="txtReference2" class="form-control textBoxborder numberTypeTextBox" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 Span-One">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="col-md-12">
+                        </div>
+                    </div>
+                </div>
+
+              
+                  <%-- Primary Keys Receipt Header and Details --%>
+                <asp:HiddenField ID="HiddenFieldReceiptID" runat="server" />
+                <asp:HiddenField ID="HiddenFieldUniqueID" runat="server" />
+
+                <%-- ClinicID,MedicineID Foreign Keys --%>
+                <asp:HiddenField ID="HiddenFieldClinicID" runat="server" />
+                <asp:HiddenField ID="HiddenFieldMedicineID" runat="server" />
 
 
 
 
+                 <label class="subheadingLabel_1 ">Existing Details</label>
+                <div class="rounded_corners" style="height:200px; ">
 
-
-                <div class="rounded_corners">
-
-                    <label class="subheadingLabel_1 ">Existing Details</label>
+                   
 
                     <div class="col-xs-12 Span-One">
-                        <div class="col-xs-11">
+                        <div class="col-xs-4">
                             <div class="form-group">
+                                <br />
                                 <label class="control-label col-xs-4 regFormLabels">Unit:</label>
 
                                 <div class="col-xs-8">
@@ -157,7 +281,7 @@
                             </div>
 
                         </div>
-                        <div class="col-xs-1">
+                        <div class="col-xs-8">
                             <div class="col-xs-12">
                                 &nbsp
                             </div>
@@ -167,7 +291,7 @@
                     </div>
 
                     <div class="col-xs-12 Span-One">
-                        <div class="col-xs-11">
+                        <div class="col-xs-4">
                             <div class="form-group">
                                 <label class="control-label col-xs-4 regFormLabels">Quantity:</label>
 
@@ -176,7 +300,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-1">
+                        <div class="col-xs-8">
                             <div class="col-xs-12">
                                 &nbsp
                             </div>
@@ -186,7 +310,7 @@
                     </div>
 
                     <div class="col-xs-12 Span-One">
-                        <div class="col-xs-11">
+                        <div class="col-xs-4">
                             <div class="form-group">
                                 <label class="control-label col-xs-4 regFormLabels">Last Updated:</label>
 
@@ -195,7 +319,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-1">
+                        <div class="col-xs-8">
                             <div class="col-xs-12">
                                 &nbsp
                             </div>
@@ -213,7 +337,7 @@
 
             <div class="col-xs-5  rounded_corners" style="height: 100%; width: 40%;">
                 <div class="">
-                    <label class="subheadingLabel_1 ">OUT OF STOCK LIST </label>
+                    <label class="subheadingLabel_1 ">Out Of Stock List </label>
 
                     <div class="rounded_corners" style="width: 400px">
 

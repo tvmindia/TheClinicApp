@@ -13,6 +13,24 @@ namespace TheClinicApp.Stock {
     public partial class InventoryOut {
         
         /// <summary>
+        /// txtMedicine5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtMedicine5;
+        
+        /// <summary>
+        /// txtQuantity5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtQuantity5;
+        
+        /// <summary>
         /// txtIussedTo control.
         /// </summary>
         /// <remarks>
@@ -119,6 +137,42 @@ namespace TheClinicApp.Stock {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtMedname4;
+        
+        /// <summary>
+        /// HiddenFieldIssueID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldIssueID;
+        
+        /// <summary>
+        /// HiddenFieldUniqueID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldUniqueID;
+        
+        /// <summary>
+        /// HiddenFieldClinicID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldClinicID;
+        
+        /// <summary>
+        /// HiddenFieldPrescID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldPrescID;
         
         /// <summary>
         /// Errorbox control.
