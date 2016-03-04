@@ -195,7 +195,7 @@
              </div>
             <div class="col-md-3">
                 <div class="row" >
-                     <div class="list-group leftSideBar1">
+                     <div class="list-group leftSideBar">
                           <span class="list-group-item active">
                               PATIENT LIST TODAY </span>
                          <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">

@@ -18,7 +18,7 @@
         function selectTile(id) {
             //debugger;
             var tileList = ['dashboard', 'patient', 'token', 'doctor', 'pharmacy', 'stock'];
-            var IframeUrl = ['underConstruction.aspx', '../Registration/Patients.aspx', '../Token/Tokens.aspx', '../Doctor/DoctorInformationPage.aspx', '../Pharmacy/Pharmacy.aspx', '../Stock/Stock.aspx'];
+            var IframeUrl = ['Test.aspx', '../Registration/Patients.aspx', '../Token/Tokens.aspx', '../Doctor/DoctorInformationPage.aspx', '../Pharmacy/Pharmacy.aspx', '../Stock/Stock.aspx'];
             for (i = 0; i < tileList.length; i++) {
                 if (id == tileList[i]) {
                     document.getElementById(id).className = id + '_selected'
