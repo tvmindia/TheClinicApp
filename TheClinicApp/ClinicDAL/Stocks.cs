@@ -72,9 +72,111 @@ namespace TheClinicApp.ClinicDAL
 
         #region Methods
 
+
+        #region Category
+
+        #region ViewCategory
+
+        public DataSet ViewCategory()
+        {
+
+            dbConnection dcon = null;
+            DataSet ds = null;
+            SqlDataAdapter sda = null;
+            try
+            {
+
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = dcon.SQLCon;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[ViewCategory]";
+
+               
+
+                sda = new SqlDataAdapter();
+                cmd.ExecuteNonQuery();
+                sda.SelectCommand = cmd;
+                ds = new DataSet();
+                sda.Fill(ds);
+
+
+                return ds;
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                if (dcon.SQLCon != null)
+                {
+                    dcon.DisconectDB();
+                }
+
+            }
+
+        }
+
+
+        #endregion ViewMedicines
+
+        #endregion Category
+
+
         #region Medicines
 
-        #region InsertMedicines 
+        #region SearchBoxMedicine
+        public DataTable SearchBoxMedicine()
+        {
+
+            DataTable dt = null;
+            SqlConnection con = null;
+            dbConnection dcon = new dbConnection();
+            con = dcon.GetDBConnection();
+            SqlCommand cmd = new SqlCommand("SearchBoxMedicine", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = cmd;
+            dt = new DataTable();
+            adapter.Fill(dt);
+            con.Close();
+            return dt;
+
+        }
+        #endregion SearchBoxMedicine
+
+
+
+        #region SearchWithName
+        public DataTable GetMedcineDetails(string SearchName)
+        {
+
+            DataTable dt = null;
+            SqlConnection con = null;
+            dbConnection dcon = new dbConnection();
+            con = dcon.GetDBConnection();
+            SqlCommand cmd = new SqlCommand("SearchMedicineWithName", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = SearchName;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = cmd;
+            dt = new DataTable();
+            adapter.Fill(dt);
+            con.Close();
+            return dt;
+
+        }
+        #endregion SearchWithName
+
+
+
+        #region InsertMedicines
         public void InsertMedicines()
         {
 
@@ -284,7 +386,6 @@ namespace TheClinicApp.ClinicDAL
         }
 
         #endregion InsertMedicines
-
 
         #region Out_of_Stock_MedicineList
         public DataSet OutofStockMedicines()

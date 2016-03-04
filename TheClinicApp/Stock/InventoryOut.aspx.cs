@@ -52,36 +52,33 @@ namespace TheClinicApp.Stock
         protected void btnIssue_Click(object sender, EventArgs e)
         {
 
-            ////Inserting Issue Header
+            //Inserting Issue Header
 
 
-            //ihd.ClinicID = HiddenFieldClinicID.Value;
-            //ihd.IssuedTo = txtIussedTo.Text;
-            //ihd.Date = Convert.ToDateTime(txtDate.Text);
-            //ihd.PrescID = txtPrescID.Text;
-            //ihd.CreatedBy = "User";
-            //ihd.CreatedDate = DateTime.Now;
-            //ihd.UpdatedBy = "User";
-            //ihd.UpdatedDate = DateTime.Now;
+            ihd.ClinicID = HiddenFieldClinicID.Value;
+            ihd.IssuedTo = txtIussedTo.Text;
+            ihd.Date = Convert.ToDateTime(txtDate.Text);
+           
+            ihd.CreatedBy = "User";
+            ihd.CreatedDate = DateTime.Now;
+            
 
-            ////Inserting Issue Details
+            //Inserting Issue Details
 
-            //idt.ClinicID = HiddenFieldClinicID.Value;
-            //idt.MedicineID = ddlMedicine.SelectedValue;
+            idt.ClinicID = HiddenFieldClinicID.Value;
+          // idt.MedicineID = ddlMedicine.SelectedValue;
 
-            //idt.Qty = Convert.ToInt32(txtQty.Text);
+           // idt.Qty = Convert.ToInt32(txtQty.Text);
 
-            //idt.CreatedBy = "User";
-            //idt.CreatedDate = DateTime.Now;
-            //idt.UpdatedBy = "User";
-            //idt.UpdatedDate = DateTime.Now;
+            idt.CreatedBy = "User";
+            idt.CreatedDate = DateTime.Now;
+          
 
 
+            //  Calling  Insert Functions
 
-            ////  Calling  Insert Functions
-
-            //// ihd.InsertIssueHeaderDetails();
-            ////idt.InsertIssueDetails();
+            // ihd.InsertIssueHeaderDetails();
+            //idt.InsertIssueDetails();
         }
 
 

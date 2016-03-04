@@ -13,6 +13,15 @@ namespace TheClinicApp.Admin {
     public partial class User {
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// txtLoginName control.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,24 @@ namespace TheClinicApp.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLoginName;
+        
+        /// <summary>
+        /// imgWebLnames control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgWebLnames;
+        
+        /// <summary>
+        /// errorLnames control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image errorLnames;
         
         /// <summary>
         /// txtFirstName control.

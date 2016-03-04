@@ -153,6 +153,7 @@
     <Content Include="Images\Minus.png" />
     <Content Include="Images\navigate-left-icon.png" />
     <Content Include="Images\navigate-right-icon.png" />
+    <Content Include="Images\newClose.png" />
     <Content Include="Images\plus.png" />
     <Content Include="Images\select.png" />
     <Content Include="Images\Sync-WF.png" />
@@ -209,6 +210,7 @@
     <Content Include="Images\UploadPic.png" />
     <Content Include="Registration\Patients.aspx" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\DeletionConfirmation.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-1.12.0.min.js" />
     <Content Include="Scripts\jquery-ui.js" />
@@ -233,6 +235,7 @@
     <Content Include="UserControl\ProfilePicUpload.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
+    <Content Include="Webservices\WebServices.asmx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\materialize\2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2" />
@@ -446,6 +449,10 @@
     </Compile>
     <Compile Include="UserControl\ProfilePicUpload.ascx.designer.cs">
       <DependentUpon>ProfilePicUpload.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Webservices\WebServices.asmx.cs">
+      <DependentUpon>WebServices.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>

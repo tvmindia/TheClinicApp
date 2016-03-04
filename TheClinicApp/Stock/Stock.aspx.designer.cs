@@ -22,22 +22,13 @@ namespace TheClinicApp.Stock {
         protected global::System.Web.UI.HtmlControls.HtmlButton btnSearch;
         
         /// <summary>
-        /// Button1 control.
+        /// ddlCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton Button1;
-        
-        /// <summary>
-        /// txtCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCategory;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCategory;
         
         /// <summary>
         /// txtDate control.
@@ -67,13 +58,85 @@ namespace TheClinicApp.Stock {
         protected global::System.Web.UI.WebControls.TextBox txtQty;
         
         /// <summary>
-        /// txtReference control.
+        /// txtReference1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtReference;
+        protected global::System.Web.UI.WebControls.TextBox txtReference1;
+        
+        /// <summary>
+        /// txtReference2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtReference2;
+        
+        /// <summary>
+        /// HiddenFieldReceiptID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldReceiptID;
+        
+        /// <summary>
+        /// HiddenFieldUniqueID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldUniqueID;
+        
+        /// <summary>
+        /// HiddenFieldClinicID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldClinicID;
+        
+        /// <summary>
+        /// HiddenFieldMedicineID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldMedicineID;
+        
+        /// <summary>
+        /// lblUnit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUnit;
+        
+        /// <summary>
+        /// lblQuantity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblQuantity;
+        
+        /// <summary>
+        /// lblLastUpdated control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLastUpdated;
         
         /// <summary>
         /// ScriptManager1 control.
