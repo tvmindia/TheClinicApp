@@ -86,7 +86,9 @@
                                 <input type="text" class="form-control" placeholder="Search" style="height: 20%;" aria-haspopup="false" name="txtSearch" id="txtSearch" />
 
                                 <span class="input-group-addon" style="height: 0%;">
-                                    <button type="submit" style="height: 0px;" runat="server" id="btnSearchMedicine" onserverclick="btnSearchMedicine_ServerClick" formnovalidate>
+                                 
+
+                                             <button type="submit" style="height: 0px;" runat="server" id="btnSearch" onserverclick="btnSearchMedicine_ServerClick" formnovalidate>
                                         <img src="../Images/Search-WF.png" />
                                     </button>
                                 </span>

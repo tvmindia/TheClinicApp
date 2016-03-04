@@ -13,13 +13,13 @@ namespace TheClinicApp.Stock {
     public partial class Stock {
         
         /// <summary>
-        /// btnSearchMedicine control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnSearchMedicine;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnSearch;
         
         /// <summary>
         /// ddlCategory control.
