@@ -17,6 +17,59 @@
     <script src="../Scripts/mui.min.js"></script>
 
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var iCnt = 4;
+            // CREATE A "DIV" ELEMENT AND DESIGN IT USING JQUERY ".css()" CLASS.
+            var container = $(document.createElement('div')).css({
+                width: '100%',
+                borderTopColor: '#999', borderBottomColor: '#999',
+                borderLeftColor: '#999', borderRightColor: '#999'
+            });
+
+
+            $('body').on('click', '#btAdd', function () {
+
+
+                if (iCnt <= 19) {
+                    iCnt = iCnt + 1;
+                  <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');
+                          count.value=iCnt;--%>
+                    // ADD TEXTBOX.
+                    $(container).append('<table style="width:80%"><tr><td style="font-size: small" ><input id="txtMedicine5" style="width:100%" type="text" placeholder="Medicine" runat="server"  class="dynamicTd"/></td><td><input id="txtQuantity5" class="dynamicTd" style="width:100%" type="text"  placeholder="Quantity" runat="server"  /></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td> </tr></table>');
+
+                    // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
+                    if (iCnt == 5)
+                    {
+                        var divSubmit = $(document.createElement('div'));
+                        $(divSubmit).append('<input type=button class="bt" onclick="GetTextValue()"' + 'id=btSubmit value=Submit />');
+                    }
+                    // ADD BOTH THE DIV ELEMENTS TO THE "main" CONTAINER.
+
+                    $('#main').after(container, divSubmit);
+
+                }
+
+                    // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
+                    // (20 IS THE LIMIT WE HAVE SET)
+                else
+                {
+                    $(container).append('<label>Reached the limit</label>');
+                    $('#btAdd').attr('class', 'bt-disable');
+                    $('#btAdd').attr('disabled', 'disabled');
+                }
+
+            });
+
+
+
+            // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
+
+
+
+        });
+    </script>
 
 
 
@@ -65,55 +118,56 @@
                         <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td colspan="2">
+                        <td></td>
+                        <td>
 
-                            <div class="col-lg-9">
-                                <table style="width: 20%">
+                            <div class="col-lg-12">
+                                <table style="width: 80%">
                                     <tr>
-                                        <td style="text-align: center; font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                        <td style="text-align: center;">
                                             <asp:Label ID="Label1" runat="server" Text="Medicine"></asp:Label></td>
                                         <td style="text-align: center">
                                             <asp:Label ID="Label2" runat="server" Text="Quantity"></asp:Label></td>
-                                        <td style="text-align: center">
-                                          
+
+
                                     </tr>
                                     <tr>
                                         <td style="font-size: small">
-                                            <input id="Text1" type="text" placeholder="Medicine" runat="server" class="dynamicTd" /></td>
+                                            <input id="Text1" style="width: 100%" class="dynamicTd " type="text" placeholder="Medicine" runat="server" /></td>
                                         <td>
-                                            <input id="txtMedname1" class="dynamicTd" type="text" placeholder="Quantity" runat="server" /></td>
-                                        
+                                            <input id="txtMedname1" style="width: 100%" class="dynamicTd " type="text" placeholder="Quantity" runat="server" /></td>
+
                                     </tr>
                                     <tr>
                                         <td style="font-size: small">
-                                            <input id="Text2" type="text" placeholder="Medicine" runat="server" class="dynamicTd" />
+                                            <input id="Text2" style="width: 100%" class="dynamicTd " type="text" placeholder="Medicine" runat="server" />
 
                                         </td>
                                         <td>
-                                            <input id="txtMedname2" class="dynamicTd" type="text" placeholder="Quantity" runat="server" /></td>
-                                        
+                                            <input id="txtMedname2" style="width: 100%" class="dynamicTd" type="text" placeholder="Quantity" runat="server" /></td>
+
                                     </tr>
                                     <tr>
                                         <td style="font-size: small">
-                                            <input id="Text3" type="text" placeholder="Medicine" runat="server" class="dynamicTd" />
+                                            <input id="Text3" style="width: 100%" class="dynamicTd " type="text" placeholder="Medicine" runat="server" />
                                         </td>
                                         <td>
-                                            <input id="txtMedname3" class="dynamicTd" type="text" placeholder="Quantity" runat="server" />
+                                            <input id="txtMedname3" style="width: 100%" class="dynamicTd" type="text" placeholder="Quantity" runat="server" />
                                         </td>
-                                       
+
                                     </tr>
                                     <tr>
                                         <td style="font-size: small">
-                                            <input id="Text4" type="text" placeholder="Medicine" runat="server" class="dynamicTd" /></td>
+                                            <input id="Text4" style="width: 100%" class="dynamicTd " type="text" placeholder="Medicine" runat="server" /></td>
                                         <td>
-                                            <input id="txtMedname4" class="dynamicTd" type="text" placeholder="Quantity" runat="server" /></td>
-                                        
+                                            <input id="txtMedname4" style="width: 100%" class="dynamicTd" type="text" placeholder="Quantity" runat="server" /></td>
+
                                         <td>
 
                                             <span class="auto-style4">
                                                 <input type="button" id="btAdd" onclick="this.style.visibility = 'hidden';" value="+" class="bt" />
-                                                </span>
-         
+                                            </span>
+
                                         </td>
                                     </tr>
 
@@ -123,43 +177,21 @@
                                 </div>
                             </div>
 
-
-
-
-
                         </td>
                     </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
+
                 </table>
 
 
 
 
+                <%-- Primary Keys Issue Header and Details --%>
+                <asp:HiddenField ID="HiddenFieldIssueID" runat="server" />
+                <asp:HiddenField ID="HiddenFieldUniqueID" runat="server" />
 
-                <%--<asp:HiddenField ID="HiddenFieldClinicID" runat="server" />--%>
+                <%-- ClinicID,PrescID Foreign Keys --%>
+                <asp:HiddenField ID="HiddenFieldClinicID" runat="server" />
+                <asp:HiddenField ID="HiddenFieldPrescID" runat="server" />
 
                 <%--<asp:HiddenField ID="HiddenField3" runat="server" />--%>
             </div>

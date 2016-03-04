@@ -72,9 +72,66 @@ namespace TheClinicApp.ClinicDAL
 
         #region Methods
 
+
+        #region Category
+
+        #region ViewCategory
+
+        public DataSet ViewCategory()
+        {
+
+            dbConnection dcon = null;
+            DataSet ds = null;
+            SqlDataAdapter sda = null;
+            try
+            {
+
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = dcon.SQLCon;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[ViewCategory]";
+
+               
+
+                sda = new SqlDataAdapter();
+                cmd.ExecuteNonQuery();
+                sda.SelectCommand = cmd;
+                ds = new DataSet();
+                sda.Fill(ds);
+
+
+                return ds;
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                if (dcon.SQLCon != null)
+                {
+                    dcon.DisconectDB();
+                }
+
+            }
+
+        }
+
+
+        #endregion ViewMedicines
+
+        #endregion Category
+
+
         #region Medicines
 
-        #region InsertMedicines 
+        #region InsertMedicines
         public void InsertMedicines()
         {
 
@@ -284,7 +341,6 @@ namespace TheClinicApp.ClinicDAL
         }
 
         #endregion InsertMedicines
-
 
         #region Out_of_Stock_MedicineList
         public DataSet OutofStockMedicines()
