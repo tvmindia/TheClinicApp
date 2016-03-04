@@ -1,10 +1,26 @@
-﻿using System;
+﻿
+#region CopyRight
+
+//Author      : 
+//Created Date: 
+
+//Modified By   : SHAMILA T P
+//Modified Date : Mar-4-2016
+
+#endregion CopyRight
+
+#region Included Namespaces
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using Messages = TheClinicApp.UIClasses.Messages;
+
+#endregion Included Namespaces
 
 namespace TheClinicApp.ClinicDAL
 {
@@ -26,8 +42,8 @@ namespace TheClinicApp.ClinicDAL
             HtmlControl divMask1 = (HtmlControl)mpContentPlaceHolder1.FindControl("Errorbox") as HtmlControl;
             Label lblMsgges = mpContentPlaceHolder1.FindControl("lblMsgges") as Label;
             Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
-            lblErrorCaption.Text = "Success!";
-            lblMsgges.Text = "Successfully Inserted";
+            lblErrorCaption.Text = Messages.SuccessMsgCaption;
+            lblMsgges.Text = Messages.InsertionSuccessFull;
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
 
             divMask1.Attributes["class"] = "alert lblErrorCaptionSuccess fade in";
@@ -42,7 +58,7 @@ namespace TheClinicApp.ClinicDAL
             HtmlControl divMask1 = (HtmlControl)mpContentPlaceHolder1.FindControl("Errorbox") as HtmlControl;
             Label lblMsgges = mpContentPlaceHolder1.FindControl("lblMsgges") as Label;
             Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
-            lblErrorCaption.Text = "Success!";
+            lblErrorCaption.Text = Messages.InsertionSuccessFull;
             lblMsgges.Text = msg;
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
 
@@ -57,8 +73,8 @@ namespace TheClinicApp.ClinicDAL
             HtmlControl divMask1 = (HtmlControl)mpContentPlaceHolder1.FindControl("Errorbox") as HtmlControl;
             Label lblMsgges = mpContentPlaceHolder1.FindControl("lblMsgges") as Label;
             Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
-            lblErrorCaption.Text = "Success!";
-            lblMsgges.Text = "Successfully Updated";
+            lblErrorCaption.Text = Messages.SuccessMsgCaption;
+            lblMsgges.Text = Messages.UpdationSuccessFull;
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
 
             divMask1.Attributes["class"] = "alert lblErrorCaptionSuccess fade in";
@@ -72,8 +88,8 @@ namespace TheClinicApp.ClinicDAL
             HtmlControl divMask1 = (HtmlControl)mpContentPlaceHolder1.FindControl("Errorbox") as HtmlControl;
             Label lblMsgges = mpContentPlaceHolder1.FindControl("lblMsgges") as Label;
             Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
-            lblErrorCaption.Text = "Failure!";
-            lblMsgges.Text = "Updatation Failure";
+            lblErrorCaption.Text = Messages.FailureMsgCaption;
+            lblMsgges.Text = Messages.UpdationFailure;
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
 
             divMask1.Attributes["class"] = "alert lblErrorCaptionSuccess fade in";
@@ -88,7 +104,7 @@ namespace TheClinicApp.ClinicDAL
             HtmlControl divMask1 = (HtmlControl)mpContentPlaceHolder1.FindControl("Errorbox") as HtmlControl;
             Label lblMsgges = mpContentPlaceHolder1.FindControl("lblMsgges") as Label;
             Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
-            lblErrorCaption.Text = "Success!";
+            lblErrorCaption.Text = Messages.SuccessMsgCaption;
             lblMsgges.Text = msg;
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
 
@@ -106,7 +122,7 @@ namespace TheClinicApp.ClinicDAL
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
             Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
             //lblErrorCaption.Text = "Danger!";
-            lblErrorCaption.Text = "Exception!";
+            lblErrorCaption.Text = Messages.ExceptionMsgCaption;
             divMask1.Attributes["class"] = "alert lblErrorCaptionDanger fade in";
 
 
@@ -118,10 +134,10 @@ namespace TheClinicApp.ClinicDAL
             mpContentPlaceHolder1 = (ContentPlaceHolder)master1.FindControl("ContentPlaceHolder1");
             HtmlControl divMask1 = (HtmlControl)mpContentPlaceHolder1.FindControl("Errorbox") as HtmlControl;
             Label lblMsgges = mpContentPlaceHolder1.FindControl("lblMsgges") as Label;
-            lblMsgges.Text = " Deleted Successfully ";
+            lblMsgges.Text = Messages.DeletionSuccessFull;
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
             Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
-            lblErrorCaption.Text = "Success!";
+            lblErrorCaption.Text = Messages.SuccessMsgCaption;
             divMask1.Attributes["class"] = "alert lblErrorCaptionDanger fade in";
         }
 
@@ -132,10 +148,10 @@ namespace TheClinicApp.ClinicDAL
             mpContentPlaceHolder1 = (ContentPlaceHolder)master1.FindControl("ContentPlaceHolder1");
             HtmlControl divMask1 = (HtmlControl)mpContentPlaceHolder1.FindControl("Errorbox") as HtmlControl;
             Label lblMsgges = mpContentPlaceHolder1.FindControl("lblMsgges") as Label;
-            lblMsgges.Text = "Warning Msg";
+            lblMsgges.Text = Messages.Warning;
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
             Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
-            lblErrorCaption.Text = "Warning!";
+            lblErrorCaption.Text = Messages.WarningMsgCaption;
             divMask1.Attributes["class"] = "alert lblErrorCaptionWarning fade in";
         }
 
@@ -146,10 +162,10 @@ namespace TheClinicApp.ClinicDAL
             mpContentPlaceHolder1 = (ContentPlaceHolder)master1.FindControl("ContentPlaceHolder1");
             HtmlControl divMask1 = (HtmlControl)mpContentPlaceHolder1.FindControl("Errorbox") as HtmlControl;
             Label lblMsgges = mpContentPlaceHolder1.FindControl("lblMsgges") as Label;
-            lblMsgges.Text = "Insertion Not Successful ";
+            lblMsgges.Text = Messages.InsertionFailure;
             divMask1.Style["display"] = "";// divMask1.Style["display"] = "";   
             Label lblErrorCaption = mpContentPlaceHolder1.FindControl("lblErrorCaption") as Label;
-            lblErrorCaption.Text = "Already exists!";
+            lblErrorCaption.Text = Messages.InsertionFailureMsgCaption;
             divMask1.Attributes["class"] = "alert lblErrorCaptionDanger fade in";
         }
     }

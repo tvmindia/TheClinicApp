@@ -137,8 +137,6 @@ namespace TheClinicApp.ClinicDAL
 
             try
             {
-
-
                 dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = dcon.SQLCon;
