@@ -38,7 +38,7 @@
             <div class="col-sm-1">
             </div>
 
-            <div class="col-sm-7  Span-One">
+            <div class="col-sm-6  Span-One">
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
@@ -121,9 +121,9 @@
 
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-5">
 
-                <a href="#" role="button" data-toggle="modal" data-target="#myModal">View All Assigned Roles </a>
+                <a href="#" role="button" data-toggle="modal" data-target="#myModal">View Roles </a>
             </div>
 
         </div>
@@ -233,6 +233,8 @@
             </div>
         </div>
 
-        <asp:HiddenField ID="hdnUniqueID" runat="server" />
+      
     </div>
+      <asp:HiddenField ID="hdnUniqueID" runat="server" />
+
 </asp:Content>
