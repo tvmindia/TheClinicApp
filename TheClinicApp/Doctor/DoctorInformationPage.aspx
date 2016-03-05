@@ -2,91 +2,91 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     
 </asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
- <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../Content/font-awesome.min.css" rel="stylesheet" />
-    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="../Content/simple-sidebar.css" rel="stylesheet" />
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <%----<link href="../Content/accodin.css" rel="stylesheet" />----%>
     <link href="../Content/Input.css" rel="stylesheet" />
-<%--    <link href="../Content/mui.min.css" rel="stylesheet" />--%>
-    <script src="../Scripts/mui.min.js"></script>
-<%--    <link href="../Content/accodin.css" rel="stylesheet" />   --%>
-    <script src="../Scripts/bootstrap.min.js"></script>
+    <link href="../Content/TheClinicAppDoctors.css" rel="stylesheet" />
+    <link href="../Content/selectize.css" rel="stylesheet" />
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/jquery.js"></script>
-    <%--<style>
-        table#t01 tr:nth-child(even) {
-    background-color: #eee;
-     
+    <div class="container-fluid">
+        <style>
+             input[type="text"] {
+    width: 125px;
+    box-shadow: 1px 1px 1px 1px #347300;
 }
-        table#t01 tr:nth-child(odd) {
-            background-color: #fff;
-        }
-        
-    </style>--%>
-
- <div class="container-fluid">
-     <div class="headingLabel">
+        </style>
+   <div class="headingLabel">
          <label class="headingLabel" style="text-align:center">Doctors</label>
          </div>
-                <div  class="row"> 
-                     <div class="col-md-12">
-                         <div class="col-md-9">
+  </div>
+
+  
+<div class="container text-center"> 
+    <div class="row">
+        <div class="col-sm-7 bad">
+            <div class="row">
+                <div class="col-sm-12">
+                         <div class="col-sm-12">
                              <div  class="row "> 
                                  <div class="input-group stylish-input-group">
                                     <input type="text" class=" form-control" placeholder="Search" aria-haspopup="false" name="txtSearch" id="txtSearch" />
 
                                     <span class="input-group-addon" style="height: 0%;">
-                                        <button type="submit" style="height: 0px;" runat="server" id="btnSearch"  onserverclick="btnSearch_ServerClick"  formnovalidate>
+                                        <button type="submit" style="height: 0px;" runat="server" id="Button1" formnovalidate>
                                           
                                             <img src="../Images/Search-WF.png" />
                                         </button>
                                     </span>
 
-                                </div>
-           </div>
+                                 </div>
+
                              </div>
+
                          </div>
-                    </div>
+
                 </div>
-    <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div  class="row"> 
-                     <div class="col-md-12">
-                         <div class="col-md-9">
-                             <div  class="row "> 
-                                
-                  
-                                    </div>
-                  
-                <div class="row patientDetailsDiv  mui-panel" >
-                    <table>
-                             
-                                 <tr>
-                                     <td>
-                                         <table id="t01" style="width:550px">
-                                             <tr>
-                                                 <td style="font-size:large">
 
-                                                 <asp:Label ID="lblName" runat="server" Text="Name"></asp:Label>
-                                                     </td>
+            </div>
+                    
+         <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default text-left">
+            <div class="panel-body">
+                <div>
+              <table style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                  <tr>
+                      <td>
+                          <div>
+                              <table id="t01" style="width:550px">
+                                  <tr>
+                                      <td style="font-size:large">
+                                          <asp:Label ID="lblName" runat="server" Text="Name"></asp:Label>
 
-                                             </tr>
-                                             <tr>
-                                                 <td>
-                                                     <asp:Label ID="lblPhone" runat="server" Text="Phone"></asp:Label>:
-                                                 </td>
-                                                 <td>
-                                                      <asp:Label ID="lblPhonedis" runat="server" Text=""></asp:Label>
-                                                 </td>
-                                             </tr>
-                                             
-                                 </table>
-                           
-                             
-                               
-                                 <table id="t02" style="width:550px">
+                                      </td>
+
+                                  </tr>
+                                   <tr>
+                                       <td>
+                                           <asp:Label ID="lblPhone" runat="server" Text="Phone"></asp:Label>:
+
+                                       </td>
+                                       <td>
+                                           <asp:Label ID="lblPhoneDis" runat="server" Text=""></asp:Label>
+
+                                       </td>
+
+                                   </tr>
+
+                              </table>
+
+                          </div>
+                          <div>
+                              <table id="t02" style="width:550px">
                                      <tr>
                                                  <td style="width:275px">
                                                  <asp:Label ID="lblAddress" runat="server" Text="Address"></asp:Label>
@@ -110,7 +110,7 @@
 
                                     </td>
                                       <td style="width:137px">
-                                          <asp:Label ID="lblGenderString" runat="server" Text=""></asp:Label>
+                                          <asp:Label ID="lblGenderDis" runat="server" Text=""></asp:Label>
 
 
                                     </td>
@@ -135,18 +135,24 @@
                                     
 
                                  </table>
+                                             </div>
+                                         
                              </td>
+
                                          <td>
                                  <img src="../Images/UploadPic.png" / width="75px" height="80px" style="box-shadow:initial"/>
                             </td>
                                          </tr>
 
-                                 </table>
-
-                </div>
-                             <div class="row" >
-                                 <!----SECTION ACCORDIN---->
-                                  <div   style="margin-top:40px;">
+                                 </table>     
+                    </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div   style="margin-top:40px;">
        <div class="col-md-12"  style="width:100%;">
            <div class="content">
                <ul class="accordion-menu">
@@ -246,7 +252,7 @@
                <label  class="control-label col-lg-3">Sleep
                   </label>
                 <div class="col-lg-9">
-                                <asp:TextBox ID="TextBox2" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                                <asp:TextBox ID="txtSleepAyur" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
              
 
                 </div>
@@ -299,7 +305,7 @@
          </td>
             </tr>
             
-    </table> 
+    </table>  
              
                       <div id="main">
                           </div>
@@ -343,37 +349,48 @@
           </div>
     </div>
        </div>
+      </div>
+         
+     </div>
+    <div class="col-sm-2" style=" position:fixed; z-index:3; right:0%; width:25%; height:100% ">
+        <div id="div2" class="row">
+            <div id="sidebar-wrapper">
 
-                             </div>
-
-                         </div>
-                         
-                    <div class="col-md-3" ">
-                        <div class="row" >
-                            <div >
-                                <div class="mini-submenu" style=" margin-left:10%"><img src="../Images/Check.png" style="width:30px;height:30px;" /></div>
-                                <div class="list-group leftSideBar1">
-                                    <span href="#" class="list-group-item active">
-                                        TOKENS
-                                        <span class="pull-right" id="slide-submenu">
-                                            <i>
-                   X</i>
-            </span>
-        </span>
-        <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False" CssClass="footable" Style="max-width: 500px" DataKeyNames="UniqueId" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    
+                        Case Sheet
+                    
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                
+            </ul>
+        </div>
+        </div>
+         
+        
+    <div class="row">
+      <div id="div1" class="list-group leftSideBar1"> 
+          <span class="list-group-item active">
+                              PATIENT LIST TODAY </span>
+                          <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False" CssClass="footable" Style="max-width: 500px" DataKeyNames="UniqueId" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
             <Columns>
-                <asp:TemplateField>
-                    <ItemTemplate>
-                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Check.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID") %>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
-                    </ItemTemplate>
-
-                </asp:TemplateField>
                 <asp:BoundField HeaderText="Token No" DataField="TokenNo" />
                 <asp:BoundField HeaderText="Patient Name" DataField="Name" />
-                <asp:BoundField HeaderText="Time" DataField="DateTime" />
-
-
-
 
             </Columns>
 
@@ -395,56 +412,17 @@
 
             <SortedDescendingHeaderStyle BackColor="#275353"></SortedDescendingHeaderStyle>
                         </asp:GridView>
+                     </div>
 
-    </div> 
+    </div>
 
-	    </div>
+    </div>
 
-                 </div>
-                        <div class="col-lg-3">
-                            
-                        <div class="row">
-                            <div id="sidebar-wrapper">
+    </div>
 
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        Case Sheet
-                    </a>
-                </li>
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                
-            </ul>
-        </div>
-                            </div>
-                        </div>
-                            </div>
-
-             
-                
-            </div>
-                         </div>
-                </div>
-                    </div>
-          
-        
-   
-       
-              <footer  class="footerDiv">
+</div>
+      
+ <footer  class="footerDiv">
          
 
                 <table style="width: 100%; height: 100%;">
@@ -454,7 +432,8 @@
                                <a class="close" data-dismiss="alert">×</a>  
 
                             <div>
-                            <strong> <asp:Label ID="lblErrorCaption" runat="server" Text=""></asp:Label> </strong>      <asp:Label ID="lblMsgges" runat="server" Text=""></asp:Label>
+                            <strong> <asp:Label ID="lblErrorCaption" runat="server" Text=""></asp:Label> </strong>
+                                <asp:Label ID="lblMsgges" runat="server" Text=""></asp:Label>
 
 </div>
        </div>                     
@@ -468,7 +447,7 @@
                                 <tr>
                                     <td style="width:30%;">
                                          <div class="form-group">
-                                        <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button  "  ValidationGroup="Submit" />
+                                        <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button" OnClick="btnSave_Click" ValidationGroup="Submit" />
 </div>
                                     </td>
                                     <td>
@@ -483,101 +462,8 @@
 
 
             
-        </footer>
-          
-          
-         </div>
+        </footer>  
 
-    <asp:HiddenField runat="server" ID="HiddenField1"></asp:HiddenField>
-     <!-- Sidebar -->
-        
-
-    
-        <!-- /#sidebar-wrapper -->
-    
-    
-    
-    <%--    <div class="leftSideBar" id="div1">
-        <asp:GridView ID="datagrid" runat="server" 
-         RowStyle-CssClass="rows"
-            AllowPaging="True" >
-        </asp:GridView>
-        </div>--%>
-   
-  <script type="text/javascript">
-      $(document).ready(function () {
-       
-          var iCnt = 0;
-          // CREATE A "DIV" ELEMENT AND DESIGN IT USING JQUERY ".css()" CLASS.
-          var container = $(document.createElement('div')).css({
-              width: '100%',
-              borderTopColor: '#999', borderBottomColor: '#999',
-              borderLeftColor: '#999', borderRightColor: '#999'
-          });
-
-
-          $('body').on('click', '#btAdd', function () {
-
-
-              if (iCnt <= 19) {
-                  iCnt = iCnt + 1;
-                  <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');
-                          count.value=iCnt;--%>
-                  // ADD TEXTBOX.
-                  $(container).append('<table style="width:50%"><tr><td style="font-size: small" ><input id="txtMedicine5" type="text" placeholder="Medicine" runat="server"  class="dynamicTd"/></td><td><input id="txtTiming5" class="dynamicTd" type="text"  placeholder="Timing" runat="server"  /></td><td><input id="txtDozage5" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="txtDays5" type="text" placeholder="Days" runat="server" class="dynamicTd" /></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
-                 
-                  // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
-                  if (iCnt == 1) {
-                      var divSubmit = $(document.createElement('div'));
-                      $(divSubmit).append('<input type=button class="bt" onclick="GetTextValue()"' + 'id=btSubmit value=Submit />');
-                  }
-                  // ADD BOTH THE DIV ELEMENTS TO THE "main" CONTAINER.
-                
-                  $('#main').after(container, divSubmit);
-                 
-              }
-
-                  // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
-                  // (20 IS THE LIMIT WE HAVE SET)
-              else {
-                  $(container).append('<label>Reached the limit</label>');
-                  $('#btAdd').attr('class', 'bt-disable');
-                  $('#btAdd').attr('disabled', 'disabled');
-              }
-
-          });
-    
-
-
-          // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
-          var divValue, values = '';
-
-          function GetTextValue() {
-              $(divValue)
-                  .empty()
-                  .remove();
-
-              values = '';
-
-              $('.input').each(function () {
-                  divValue = $(document.createElement('div')).css({
-                      padding: '5px', width: '200px'
-                  });
-
-
-                  var datas = document.getElementById('<%=HiddenField1.ClientID%>');
-
-                  values += this.value + ' ';
-
-                  datas.value = values;
-              })
-              }
-  
-              
-   
-              });
-          
-  </script>
     <script>
         $(function () {
               <%--Right Side Bar Menu Click --%>
@@ -590,7 +476,7 @@
             <%--Right Side Bar Menu Click --%>
 
              <%--Left Side Bar Menu Click --%>
-           $('.mini-submenu').on('click', function () {
+            $('.mini-submenu').on('click', function () {
                 $(this).next('.list-group').toggle('slide');
                 $('.mini-submenu').hide();
             })
@@ -613,9 +499,9 @@
                 e.className = 'closed';
             }
         }
-         <%--Accordian Open Close--%>
+        <%--Accordian Open Close--%>
     </script>
-    <%--<script type="text/javascript">
+   <%-- <script type="text/javascript">
 
         function Show() {
            
@@ -625,7 +511,7 @@
             //    document.getElementById("#img1").src ="Images/navigate-right-icon.png";
             //}
 
-            $("#div1").animate({ "right": "-=100%" });
+            $("#div1").animate({ "right": "-=50%" });
             $("#img1").hide();
             $("#img2").show();
 
@@ -634,7 +520,7 @@
 
 
         function showback() {
-            $("#div1").animate({ "right": "+=100%" });
+            $("#div1").animate({ "right": "+=50%" });
             $("#img1").show();
             $("#img2").hide();
 
@@ -642,4 +528,33 @@
 
 
      </script>--%>
+    <div id="flip"  style=" position:fixed; z-index:3; bottom:30%; right:0%; width:5%; height:5% ">
+        <label>Tokens</label>
+        <img id="img1" src="../Images/Button-Add-icon.png" />
+
+    </div>
+    <div id="flip1"  style=" position:fixed; z-index:3; bottom:70%; right:0%; width:5%; height:5% ">
+        <label>CaseSheet</label>
+        <img id="img2" src="../Images/Button-Add-icon.png" />
+
+    </div>
+    <script>
+
+        $("#flip").click(function () {
+            $("#div1").animate({
+                width: 'toggle'
+            });
+        });
+        $("#flip1").click(function () {
+            $("#div2").animate({
+                width: 'toggle'
+            });
+        });
+
+
+    </script>
+    
+   
+        
 </asp:Content>
+

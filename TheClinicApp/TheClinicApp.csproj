@@ -143,8 +143,13 @@
     <Content Include="Content\mui.min.css" />
     <Content Include="Content\selectize.css" />
     <Content Include="Content\simple-sidebar.css" />
+    <Content Include="Content\TheClinicAppDoctors.css" />
     <Content Include="Images\Addition .png" />
+    <Content Include="Images\Button-Add-icon.png" />
+    <Content Include="Images\calendar 32x32.png" />
+    <Content Include="Images\calendar 42x42.png" />
     <Content Include="Images\calendar.png" />
+    <Content Include="Images\calendar4.png" />
     <Content Include="Images\Check.png" />
     <Content Include="Images\Close1.png" />
     <Content Include="Images\Menu-01-WF.png" />
@@ -475,7 +480,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51023/</IISUrl>
+          <IISUrl>http://localhost:7292/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
