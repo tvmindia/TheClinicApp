@@ -142,7 +142,6 @@
     <Content Include="Content\mui.css" />
     <Content Include="Content\mui.min.css" />
     <Content Include="Content\selectize.css" />
-    <Content Include="Content\simple-sidebar.css" />
     <Content Include="Content\TheClinicAppDoctors.css" />
     <Content Include="Images\Addition .png" />
     <Content Include="Images\Button-Add-icon.png" />
