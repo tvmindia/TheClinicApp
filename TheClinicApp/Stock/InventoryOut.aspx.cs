@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -8,6 +9,7 @@ using TheClinicApp.ClinicDAL;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using System.IO;
 
 namespace TheClinicApp.Stock
 {
@@ -21,31 +23,60 @@ namespace TheClinicApp.Stock
         Stocks stok = new Stocks();
         Receipt rpt = new Receipt();
 
+        public string listFilter = null;
+
 
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (!IsPostBack)
-            {
-
-                //Binding  Medicine ID and Name
-                //DataSet ds = stok.ViewMedicines();
-
-                //ddlMedicine.DataSource = ds.Tables[0];
-                //ddlMedicine.DataValueField = "MedicineID";
-                //ddlMedicine.DataTextField = "Name";
-                //ddlMedicine.DataBind();
-
-
- 
-
-
-
-
-            }
+            bindpageload();
         }
+
+
+
+        #region bindpageload
+
+        public void bindpageload()
+        {
+
+           
+
+            listFilter = null;
+            listFilter = BindName();
+
+
+        }
+
+
+        #endregion bindpageload
+
+
+
+        #region BindDataAutocomplete
+        private string BindName()
+        {
+            // Patient PatientObj = new Patient();
+            Stocks stok = new Stocks();
+
+            DataTable dt = stok.SearchBoxMedicine();
+
+            StringBuilder output = new StringBuilder();
+            output.Append("[");
+            for (int i = 0; i < dt.Rows.Count; ++i)
+            {
+                output.Append("\"" + dt.Rows[i]["Name"].ToString() + "\"");
+
+                if (i != (dt.Rows.Count - 1))
+                {
+                    output.Append(",");
+                }
+            }
+            output.Append("]");
+            return output.ToString();
+        }
+        #endregion BindDataAutocomplete
 
 
 
