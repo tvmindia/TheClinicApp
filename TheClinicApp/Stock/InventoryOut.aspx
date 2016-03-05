@@ -28,22 +28,30 @@
                 borderLeftColor: '#999', borderRightColor: '#999'
             });
 
+         
+
 
             $('body').on('click', '#btAdd', function () {
-
+                debugger;
 
                 if (iCnt <= 19) {
                     iCnt = iCnt + 1;
                   <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');
                           count.value=iCnt;--%>
                     // ADD TEXTBOX.
-                    $(container).append('<table style="width:80%"><tr><td style="font-size: small" ><input id="txtMedicine5" style="width:100%" type="text" placeholder="Medicine" runat="server"  class="dynamicTd"/></td><td><input id="txtQuantity5" class="dynamicTd" style="width:100%" type="text"  placeholder="Quantity" runat="server"  /></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td> </tr></table>');
+                    $(container).append('<table style="width:80%"><tr><td ><input id="txtSearch'+iCnt+'" style="width:100%" type="text" placeholder="Medicine"   class="dynamicTd"/></td><td><input id="txtQuantity" class="dynamicTd" style="width:100%" type="text"  placeholder="Quantity"    /></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td> </tr></table>');
+
+
+                          
 
                     // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
                     if (iCnt == 5)
                     {
                         var divSubmit = $(document.createElement('div'));
                         $(divSubmit).append('<input type=button class="bt" onclick="GetTextValue()"' + 'id=btSubmit value=Submit />');
+
+
+ 
                     }
                     // ADD BOTH THE DIV ELEMENTS TO THE "main" CONTAINER.
 
@@ -70,6 +78,48 @@
 
         });
     </script>
+
+    <style>
+        .ui-autocomplete {
+            background: fixed;
+            background-color: ghostwhite;
+            box-shadow: 1px 5px 10px 5px #4d3319;
+        }
+
+            .ui-datepicker{
+            background: fixed;
+            background-color: ghostwhite;
+            box-shadow: 1px 5px 10px 5px #4d3319
+
+        }
+
+
+    </style>
+
+        <script>
+
+           $(function () {
+            $("[id$=txtDate]").datepicker({ dateFormat: 'dd-m-yy' ,
+                showOn: 'button',
+               
+                buttonImageOnly: true,
+                buttonImage: '../Images/calendar4.png'
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+             
+            var ac=null;
+            ac = <%=listFilter %>;
+              $( "#txtSearch1,#txtSearch2,#txtSearch3,#txtSearch4" ).autocomplete({
+                  source: ac
+              });
+          });
+        
+    </script>
+
 
 
 
@@ -132,35 +182,35 @@
 
                                     </tr>
                                     <tr>
-                                        <td style="font-size: small">
-                                            <input id="Text1" style="width: 100%" class="dynamicTd " type="text" placeholder="Medicine" runat="server" /></td>
                                         <td>
-                                            <input id="txtMedname1" style="width: 100%" class="dynamicTd " type="text" placeholder="Quantity" runat="server" /></td>
+                                            <input id="txtSearch1" name="txtSearch1" style="width: 100%" class="dynamicTd " type="text" placeholder="Medicine" /></td>
+                                        <td>
+                                            <input id="txtQuantity1" style="width: 100%" class="dynamicTd " type="text" placeholder="Quantity" /></td>
 
                                     </tr>
                                     <tr>
-                                        <td style="font-size: small">
-                                            <input id="Text2" style="width: 100%" class="dynamicTd " type="text" placeholder="Medicine" runat="server" />
+                                        <td>
+                                            <input id="txtSearch2" style="width: 100%" class="dynamicTd " type="text" placeholder="Medicine" />
 
                                         </td>
                                         <td>
-                                            <input id="txtMedname2" style="width: 100%" class="dynamicTd" type="text" placeholder="Quantity" runat="server" /></td>
-
-                                    </tr>
-                                    <tr>
-                                        <td style="font-size: small">
-                                            <input id="Text3" style="width: 100%" class="dynamicTd " type="text" placeholder="Medicine" runat="server" />
-                                        </td>
-                                        <td>
-                                            <input id="txtMedname3" style="width: 100%" class="dynamicTd" type="text" placeholder="Quantity" runat="server" />
-                                        </td>
+                                            <input id="txtQuantity2" style="width: 100%" class="dynamicTd" type="text" placeholder="Quantity" /></td>
 
                                     </tr>
                                     <tr>
-                                        <td style="font-size: small">
-                                            <input id="Text4" style="width: 100%" class="dynamicTd " type="text" placeholder="Medicine" runat="server" /></td>
                                         <td>
-                                            <input id="txtMedname4" style="width: 100%" class="dynamicTd" type="text" placeholder="Quantity" runat="server" /></td>
+                                            <input id="txtSearch3" style="width: 100%" class="dynamicTd " type="text" placeholder="Medicine" />
+                                        </td>
+                                        <td>
+                                            <input id="txtQuantity3" style="width: 100%" class="dynamicTd" type="text" placeholder="Quantity" />
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input id="txtSearch4" style="width: 100%" class="dynamicTd " type="text" placeholder="Medicine" /></td>
+                                        <td>
+                                            <input id="txtQuantity4" style="width: 100%" class="dynamicTd" type="text" placeholder="Quantity" /></td>
 
                                         <td>
 

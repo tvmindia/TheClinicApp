@@ -17,10 +17,10 @@
     <script src="../Scripts/jquery-ui.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/mui.min.js"></script>
-    
-      <script>
+
+    <script>
         $(document).ready(function () {
-            debugger;
+            
             var ac=null;
             ac = <%=listFilter %>;
             $( "#txtSearch" ).autocomplete({
@@ -29,7 +29,41 @@
         });
         
     </script>
-   
+
+    <style>
+        .ui-autocomplete {
+            background: fixed;
+            background-color: ghostwhite;
+            box-shadow: 1px 5px 10px 5px #4d3319;
+        }
+        .ui-datepicker{
+            background: fixed;
+            background-color: ghostwhite;
+            box-shadow: 1px 5px 10px 5px #4d3319
+
+        }
+        
+
+        
+
+
+    </style>
+
+
+    <script type="text/javascript">
+
+
+
+        $(function () {
+            $("[id$=txtDate]").datepicker({ dateFormat: 'dd-m-yy' ,
+                showOn: 'button',
+               
+                buttonImageOnly: true,
+                buttonImage: '../Images/calendar4.png'
+            });
+        });
+    </script>
+
 
 
 
@@ -40,11 +74,11 @@
 
             <%-- center Block --%>
 
-            
+
 
             <div class="col-xs-7  ">
 
-      <%--          <div class="col-md-12 Span-One">
+                <%--          <div class="col-md-12 Span-One">
                     <div class="col-xs-4">
                         <div class="form-group">
                             <div class="col-md-12">
@@ -75,20 +109,20 @@
                     <div class="col-xs-4">
                         <div class="form-group">
                             <div class="col-md-12">
-                                <label class="control-label col-xs-3 regFormLabels">Medicine Name:</label>
+                                <label class="control-label col-xs-12 regFormLabels">Medicine Name:</label>
                             </div>
                         </div>
 
                     </div>
                     <div class="col-xs-8">
                         <div class="col-md-12">
-                            <div class="input-group stylish-input-group">
+                            <div class="input-group stylish-input-group" style="width: 70%">
                                 <input type="text" class="form-control" placeholder="Search" style="height: 20%;" aria-haspopup="false" name="txtSearch" id="txtSearch" />
 
                                 <span class="input-group-addon" style="height: 0%;">
-                                 
 
-                                             <button type="submit" style="height: 0px;" runat="server" id="btnSearch" onserverclick="btnSearchMedicine_ServerClick" formnovalidate>
+
+                                    <button type="submit" style="height: 0px;" runat="server" id="btnSearch" onserverclick="btnSearchMedicine_ServerClick" formnovalidate>
                                         <img src="../Images/Search-WF.png" />
                                     </button>
                                 </span>
@@ -98,33 +132,33 @@
                 </div>
 
 
-                <div class="col-md-12 Span-One">
+                <div class="col-md-12">
                     <div class="col-xs-4">
                         <div class="form-group">
-                            <div class="col-md-12">
+                            <div class="col-xs-12">
                                 <br />
-                                <label class="control-label col-xs-4 regFormLabels">Category:</label>
+                                <label class="control-label col-xs-12 regFormLabels">Category:</label>
                             </div>
                         </div>
                     </div>
                     <div class="col-xs-8">
-                        <div class="col-md-12">
+                        <div class="col-xs-12">
                             <br />
-                           <%-- <asp:TextBox ID="txtCategory" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"> </asp:TextBox>--%>
-                            <asp:DropDownList ID="ddlCategory" style="width:70%"  runat="server"></asp:DropDownList>
-                        
+                            <%-- <asp:TextBox ID="txtCategory" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"> </asp:TextBox>--%>
+                            <asp:DropDownList ID="ddlCategory" Style="width: 70%" runat="server"></asp:DropDownList>
+
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-12 Span-One">
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <div class="col-md-12">
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-8">
                         <div class="col-md-12">
                         </div>
                     </div>
@@ -140,7 +174,8 @@
                     </div>
                     <div class="col-xs-8">
                         <div class="col-md-12">
-                            <asp:TextBox ID="txtDate" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"> </asp:TextBox>
+                            <asp:TextBox ID="txtDate" class="form-control col-xs-11 textBoxborder" required runat="server" ValidationGroup="Submit"> </asp:TextBox>
+
                         </div>
                     </div>
                 </div>
@@ -218,7 +253,7 @@
                     <div class="col-xs-4">
                         <div class="form-group">
                             <div class="col-md-12">
-                                <label class="control-label col-xs-4 regFormLabels">Reference:1/Bill No:</label>
+                                <label class="control-label col-xs-12 regFormLabels">Reference:1/Bill No:</label>
                             </div>
                         </div>
                     </div>
@@ -246,7 +281,7 @@
                     <div class="col-xs-4">
                         <div class="form-group">
                             <div class="col-md-12">
-                                <label class="control-label col-xs-4 regFormLabels">Reference:2/Bill No:</label>
+                                <label class="control-label col-xs-12 regFormLabels">Reference:2/Bill No:</label>
                             </div>
                         </div>
                     </div>
@@ -270,8 +305,23 @@
                     </div>
                 </div>
 
-              
-                  <%-- Primary Keys Receipt Header and Details --%>
+
+
+                <div class="col-md-12">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="col-md-12">
+                        </div>
+                    </div>
+                </div>
+
+
+                <%-- Primary Keys Receipt Header and Details --%>
                 <asp:HiddenField ID="HiddenFieldReceiptID" runat="server" />
                 <asp:HiddenField ID="HiddenFieldUniqueID" runat="server" />
 
@@ -282,75 +332,73 @@
 
 
 
-                 <label class="subheadingLabel_1 ">Existing Details</label>
-                <div class="rounded_corners" style="height:200px; ">
+                <label class="subheadingLabel_1 ">Existing Details</label>
 
-                   
+                <div style="border-top-style: outset; border-top-width: medium; border-color: #1B5E20;"></div>
 
-                    <div class="col-xs-12 Span-One">
-                        <div class="col-xs-4">
-                            <div class="form-group">
-                                <br />
-                                <label class="control-label col-xs-4 regFormLabels">Unit:</label>
+                <div class="col-xs-12 ">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <br />
+                            <label class="control-label col-xs-12 regFormLabels">Unit:</label>
 
-                                <div class="col-xs-8">
-                                </div>
+                            <div class="col-xs-8">
                             </div>
-
-                        </div>
-                        <div class="col-xs-8">
-                            <div class="col-xs-12">
-                             
-                                <asp:Label ID="lblUnit" class="control-label col-xs-4 regFormLabels" runat="server">
-                                 </asp:Label>
-                            </div>
-
                         </div>
 
                     </div>
+                    <div class="col-xs-8">
+                        <div class="col-xs-12">
 
-                    <div class="col-xs-12 Span-One">
-                        <div class="col-xs-4">
-                            <div class="form-group">
-                                <label class="control-label col-xs-4 regFormLabels">Quantity:</label>
-
-
-                                <div class="col-xs-8">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-8">
-                            <div class="col-xs-12">
-                                     
-                                   <asp:Label ID="lblQuantity" class="control-label col-xs-4 regFormLabels" runat="server">
-                                 </asp:Label>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <div class="col-xs-12 Span-One">
-                        <div class="col-xs-4">
-                            <div class="form-group">
-                                <label class="control-label col-xs-4 regFormLabels">Last Updated:</label>
-
-                                <div class="col-xs-8">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-8">
-                            <div class="col-xs-12">
-                                     <asp:Label ID="lblLastUpdated" class="control-label col-xs-4 regFormLabels" runat="server">
-                                 </asp:Label>
-                                
-                            </div>
+                            <asp:Label ID="lblUnit" class="control-label col-xs-4 regFormLabels" runat="server">
+                            </asp:Label>
                         </div>
 
                     </div>
 
                 </div>
+
+                <div class="col-xs-12 ">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 regFormLabels">Quantity:</label>
+
+
+                            <div class="col-xs-8">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="col-xs-12">
+
+                            <asp:Label ID="lblQuantity" class="control-label col-xs-4 regFormLabels" runat="server">
+                            </asp:Label>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="col-xs-12 ">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 regFormLabels">Last Updated:</label>
+
+                            <div class="col-xs-8">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-8">
+                        <div class="col-xs-12">
+                            <asp:Label ID="lblLastUpdated" class="control-label col-xs-12 regFormLabels" runat="server">
+                            </asp:Label>
+
+                        </div>
+                    </div>
+
+                </div>
+
 
 
             </div>
@@ -454,6 +502,7 @@
                             <td style="width: 30%;">
                                 <div class="form-group">
                                     <asp:Button ID="btnStock" runat="server" Text="ADD STOCK" type="submit" CssClass="button" OnClick="btnStock_Click" ValidationGroup="Submit" />
+
 
                                 </div>
                             </td>

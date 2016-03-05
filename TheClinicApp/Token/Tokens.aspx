@@ -176,7 +176,6 @@
                         <br />
                       
                        
-
                          <div class="rounded_corners"  style="width: 400px">
 
                              <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -185,23 +184,20 @@
                                      
 
                                     
-                                     <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False"  CssClass="footable" Style="max-width: 500px" DataKeyNames="UniqueId">
+                                     <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False"  CssClass="footable" DataKeyNames="UniqueId">
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
-                                  <asp:TemplateField HeaderText="DELETE">
+                                  <asp:TemplateField HeaderText="Delete">
                                                   <ItemTemplate>
                                                        <asp:ImageButton ID="ImgBtnDelete" runat="server"  ImageUrl="~/Images/Cancel.png"   Width="25px"  OnClientClick="return confirm('Deletion Confirmation \n\n\n\n\ Are you sure you want to delete this item ?');" OnClick="ImgBtnDelete_Click"/>
 
                                                   </ItemTemplate>
                                               </asp:TemplateField>
-                               <asp:BoundField HeaderText="DOCTOR NAME" DataField="DOCNAME" />
-                                              <asp:BoundField HeaderText="TOKEN NO" DataField="TokenNo" />
-                                              <asp:BoundField HeaderText="PATIENT NAME" DataField="Name" />
-                                              <asp:BoundField HeaderText="TIME" DataField="DateTime" />
-                                               
-                                           
-                                               
-                                         
+                               <asp:BoundField HeaderText="Doctor Name" DataField="DOCNAME" />
+                                              <asp:BoundField HeaderText="Token No" DataField="TokenNo" />
+                                              <asp:BoundField HeaderText="Patient Name" DataField="Name" />
+                                              <asp:BoundField HeaderText="Time" DataField="DateTime" />
+                                             
                             </Columns>
                             <EditRowStyle BackColor="#0080AA"></EditRowStyle>
 

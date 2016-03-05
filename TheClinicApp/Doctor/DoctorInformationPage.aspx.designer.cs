@@ -13,13 +13,13 @@ namespace TheClinicApp.Doctor {
     public partial class DoctorInformationPage {
         
         /// <summary>
-        /// btnSearch control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnSearch;
+        protected global::System.Web.UI.HtmlControls.HtmlButton Button1;
         
         /// <summary>
         /// lblName control.
@@ -40,13 +40,13 @@ namespace TheClinicApp.Doctor {
         protected global::System.Web.UI.WebControls.Label lblPhone;
         
         /// <summary>
-        /// lblPhonedis control.
+        /// lblPhoneDis control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPhonedis;
+        protected global::System.Web.UI.WebControls.Label lblPhoneDis;
         
         /// <summary>
         /// lblAddress control.
@@ -85,13 +85,13 @@ namespace TheClinicApp.Doctor {
         protected global::System.Web.UI.WebControls.Label lblGender;
         
         /// <summary>
-        /// lblGenderString control.
+        /// lblGenderDis control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblGenderString;
+        protected global::System.Web.UI.WebControls.Label lblGenderDis;
         
         /// <summary>
         /// lblLastVisit control.
@@ -220,13 +220,13 @@ namespace TheClinicApp.Doctor {
         protected global::System.Web.UI.WebControls.TextBox txtMicturation;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txtSleepAyur control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtSleepAyur;
         
         /// <summary>
         /// txtdiagnosis control.
@@ -470,50 +470,5 @@ namespace TheClinicApp.Doctor {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSave;
-        
-        /// <summary>
-        /// HiddenField1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenField1;
-        
-        /// <summary>
-        /// txtMedicine5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtMedicine5;
-        
-        /// <summary>
-        /// txtTiming5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTiming5;
-        
-        /// <summary>
-        /// txtDozage5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDozage5;
-        
-        /// <summary>
-        /// txtDays5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDays5;
     }
 }

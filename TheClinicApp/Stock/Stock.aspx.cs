@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheClinicApp.ClinicDAL;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.IO;
 
 namespace TheClinicApp.Stock
 {
