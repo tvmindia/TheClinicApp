@@ -28,7 +28,7 @@
         <div class="col-sm-12 Span-One ">
             <div class="col-sm-1">
             </div>
-            <div class="col-xs-7">
+            <div class="col-xs-6">
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
@@ -147,7 +147,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-4">
+            <div class="col-xs-5">
                 <a href="#" role="button" data-toggle="modal" data-target="#myModal">View All Users </a>
 
             </div>
@@ -179,7 +179,7 @@
                     <table class="footerTable" style="width: 100%; margin-left: 0px; padding-left: 0px; padding-top: 80%; margin-top: 3%;">
                         <tr>
                             <td style="width: 30%;">
-                                <div class="form-group">
+                                <div class="form-group" >
                                     <asp:Button ID="btnSave" runat="server" Text="Save" type="submit" CssClass="button" ValidationGroup="Submit" OnClick="btnSave_Click" />
 
                                 </div>
