@@ -484,6 +484,7 @@
                                 <div class="form-group">
                                     <asp:Button ID="btnStock" runat="server" Text="ADD STOCK" type="submit" CssClass="button" OnClick="btnStock_Click" ValidationGroup="Submit" />
 
+
                                 </div>
                             </td>
                             <td></td>
