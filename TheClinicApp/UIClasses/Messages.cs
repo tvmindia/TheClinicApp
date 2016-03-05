@@ -27,44 +27,44 @@ namespace TheClinicApp.UIClasses
  //----------------* Messages Captions *--------------//
         public static string ExceptionMsgCaption
         {
-            get { return "  Exception!"; }
+            get { return "Exception!"; }
         }
 
         public static string SuccessMsgCaption
         {
-            get { return " Success!"; }
+            get { return "Success!"; }
         }
 
         public static string WarningMsgCaption
         {
-            get { return " Warning!"; }
+            get { return "Warning!"; }
         }
 
         public static string InsertionFailureMsgCaption
         {
-            get { return " Already exists!"; }
+            get { return "Already exists!"; }
         }
 
         public static string FailureMsgCaption
         {
-            get { return " Failure!"; }
+            get { return "Failure!"; }
         }
 
 //----------------* Success Messages *--------------//
 
         public static string InsertionSuccessFull
         {
-            get { return " Successfully Inserted "; }
+            get { return "Successfully Inserted"; }
         }
 
         public static string UpdationSuccessFull
         {
-            get { return " Successfully Updated "; }
+            get { return "Successfully Updated"; }
         }
 
         public static string DeletionSuccessFull
         {
-            get { return " Deleted Successfully "; }
+            get { return "Deleted Successfully"; }
         } 
 
 
@@ -72,22 +72,22 @@ namespace TheClinicApp.UIClasses
 
         public static string LoginFailed
         {
-            get { return "User Name / Password wrong !"; }
+            get { return "User Name / Password wrong!"; }
         }
 
         public static string InsertionFailure
         {
-            get { return " Insertion Not Successful  "; }
+            get { return "Insertion Not Successful"; }
         }
 
         public static string UpdationFailure
         {
-            get { return " Updatation Failure  "; }
+            get { return "Updatation Failure"; }
         }
 
         public static string Warning
         {
-            get { return "  Warning Msg  "; }
+            get { return "Warning Msg "; }
         }
 
     }

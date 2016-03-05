@@ -20,7 +20,7 @@
 
     <script>
         $(document).ready(function () {
-            debugger;
+            
             var ac=null;
             ac = <%=listFilter %>;
             $( "#txtSearch" ).autocomplete({
@@ -30,20 +30,39 @@
         
     </script>
 
-    
-      <script type="text/javascript">
+    <style>
+        .ui-autocomplete {
+            background: fixed;
+            background-color: ghostwhite;
+            box-shadow: 1px 5px 10px 5px #4d3319;
+        }
+        .ui-datepicker{
+            background: fixed;
+            background-color: ghostwhite;
+            box-shadow: 1px 5px 10px 5px #4d3319
+
+        }
+        
+
+        
+
+
+    </style>
+
+
+    <script type="text/javascript">
 
 
 
-          $(function () {
-              $("[id$=txtDate]").datepicker({ dateFormat: 'dd-m-yy' ,
-                  showOn: 'button',
-                  
-                  buttonImageOnly: true,
-                  buttonImage: '../Images/calendar4.png'
-              });
-          });
-      </script>
+        $(function () {
+            $("[id$=txtDate]").datepicker({ dateFormat: 'dd-m-yy' ,
+                showOn: 'button',
+               
+                buttonImageOnly: true,
+                buttonImage: '../Images/calendar4.png'
+            });
+        });
+    </script>
 
 
 
@@ -97,7 +116,7 @@
                     </div>
                     <div class="col-xs-8">
                         <div class="col-md-12">
-                            <div class="input-group stylish-input-group" style=" width:70%">
+                            <div class="input-group stylish-input-group" style="width: 70%">
                                 <input type="text" class="form-control" placeholder="Search" style="height: 20%;" aria-haspopup="false" name="txtSearch" id="txtSearch" />
 
                                 <span class="input-group-addon" style="height: 0%;">
@@ -315,7 +334,7 @@
 
                 <label class="subheadingLabel_1 ">Existing Details</label>
 
-                <div style=" border-top-style: outset; border-top-width: medium;  border-color: #1B5E20 ;"></div>
+                <div style="border-top-style: outset; border-top-width: medium; border-color: #1B5E20;"></div>
 
                 <div class="col-xs-12 ">
                     <div class="col-xs-4">
@@ -483,6 +502,7 @@
                             <td style="width: 30%;">
                                 <div class="form-group">
                                     <asp:Button ID="btnStock" runat="server" Text="ADD STOCK" type="submit" CssClass="button" OnClick="btnStock_Click" ValidationGroup="Submit" />
+
 
                                 </div>
                             </td>
