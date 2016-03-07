@@ -749,7 +749,7 @@ namespace TheClinicApp.ClinicDAL
                     }
                     public VisitAttachment()
                     {
-                        AttachID = new Guid();
+                        AttachID = Guid.NewGuid();
                     }
                     public VisitAttachment(Guid AttachID)
                     {
