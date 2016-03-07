@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 namespace TheClinicApp.ClinicDAL
 {
@@ -18,6 +21,8 @@ namespace TheClinicApp.ClinicDAL
 
     public class UserAuthendication
     {
+        #region Global Variables
+
         private string userN;
         private string GroupName;
         private Guid Group_ID;
@@ -79,11 +84,36 @@ namespace TheClinicApp.ClinicDAL
             }
         }
 
+        #endregion Global Variables
 
+        #region Encrypt Password
+        private string Encrypt(string clearText)
+        {
+            string EncryptionKey = "MAKV2SPBNI99212";
+            byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
+            using (Aes encryptor = Aes.Create())
+            {
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+                encryptor.Key = pdb.GetBytes(32);
+                encryptor.IV = pdb.GetBytes(16);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(clearBytes, 0, clearBytes.Length);
+                        cs.Close();
+                    }
+                    clearText = Convert.ToBase64String(ms.ToArray());
+                }
+            }
+            return clearText;
+        }
 
+        #endregion Encrypt Password
+
+        #region User Authentication
         public UserAuthendication(String userName, String password)
         {
-
             DataTable dt = GetLoginDetails(userName);
 
             if (dt.Rows.Count > 0)
@@ -91,53 +121,47 @@ namespace TheClinicApp.ClinicDAL
                 string Name = dt.Rows[0]["LoginName"].ToString();
                 string Passwd = dt.Rows[0]["Password"].ToString();
 
-
-                if (userName == Name && password == Passwd)
+                if (userName == Name && (Encrypt(password) == Passwd) )
                 {
                     isValidUser = true;
                     userN = userName;
                     ClinicName = " Clinic 1";
                     GroupName = "Thrithvam Ayurveda";
                     //Clinic_ID = new Guid("C0946CD5-EBB4-44CE-9DFC-349BB4D32761");
-
                     Clinic_ID = new Guid(dt.Rows[0]["ClinicID"].ToString());
                     Group_ID = new Guid("ED6A102A-E904-4471-BF9A-F6BEDB2F36FB");
-
                 }
 
                 else
                 {
-
                     isValidUser = false;
                 }
             }
+            //------------------* This case is temporaray * ---------------//
+            //else
+            //{
+                
+            //    if (userName == password)
+            //    {
+            //        isValidUser = true;
+            //        userN = userName;
+            //        ClinicName = " Clinic 1";
+            //        GroupName = "Thrithvam Ayurveda";
+            //        Clinic_ID = new Guid("C0946CD5-EBB4-44CE-9DFC-349BB4D32761");
+            //        Group_ID = new Guid("ED6A102A-E904-4471-BF9A-F6BEDB2F36FB");
 
-            else
-            {
-                //This case is temporaray
-                if (userName == password)
-                {
-                    isValidUser = true;
-                    userN = userName;
-                    ClinicName = " Clinic 1";
-                    GroupName = "Thrithvam Ayurveda";
-                    Clinic_ID = new Guid("C0946CD5-EBB4-44CE-9DFC-349BB4D32761");
-                    Group_ID = new Guid("ED6A102A-E904-4471-BF9A-F6BEDB2F36FB");
+            //    }
+            //    else
+            //    {
 
-                }
-                else
-                {
-
-                    isValidUser = false;
-                }
-            }
+            //        isValidUser = false;
+            //    }
+            //}
         }
 
-        public void GetLoginDetails()
-        {
+        #endregion  User Authentication
 
-        }
-
+        #region Get Login Details
         public DataTable GetLoginDetails(string LoginName)
         {
             SqlConnection con = null;
@@ -174,6 +198,7 @@ namespace TheClinicApp.ClinicDAL
 
 
         }
-
+       
+        #endregion Get Login Details
     }
 }
