@@ -528,29 +528,77 @@
 
 
      </script>--%>
-    <div id="flip"  style=" position:fixed; z-index:3; bottom:30%; right:0%; width:5%; height:5% ">
+    <div id="flip" class="demo" style=" position:fixed; z-index:3; bottom:30%; right:0%; width:5%; height:5% ">
         <label>Tokens</label>
         <img id="img1" src="../Images/Button-Add-icon.png" />
 
     </div>
-    <div id="flip1"  style=" position:fixed; z-index:3; bottom:70%; right:0%; width:5%; height:5% ">
+    <div id="flip1" class="demo1" style=" position:fixed; z-index:3; bottom:70%; right:0%; width:5%; height:5% ">
         <label>CaseSheet</label>
         <img id="img2" src="../Images/Button-Add-icon.png" />
 
     </div>
     <script>
-
+       
         $("#flip").click(function () {
             $("#div1").animate({
                 width: 'toggle'
             });
+            if ($("#flip").attr("class") == "demo") {
+                var element = document.getElementById("flip");
+                element.setAttribute("class", "clicked");
+            }
+            else{
+                var element = document.getElementById("flip");
+                element.setAttribute("class", "demo");
+            }
         });
+       
         $("#flip1").click(function () {
             $("#div2").animate({
                 width: 'toggle'
+            
+
             });
+            if ($("#flip1").attr("class") == "demo1") {
+                var element = document.getElementById("flip1");
+                element.setAttribute("class", "clicked1");
+            }
+            else{
+                var element = document.getElementById("flip1");
+                element.setAttribute("class", "demo1");
+            }
         });
 
+        $("#flip,#flip1").click(function () {
+            if (($("#flip").attr("class") == "clicked") && ($("#flip1").attr("class") == "clicked1")) {
+                $(".col-sm-7").animate({
+                    width: "95%"
+                }, 450); // how long the animation should be
+
+            }
+            else {
+                $(".col-sm-7").animate({
+                    width: "75%"
+                }, 450);
+            }
+            
+        });
+       //$("#flip").click(function () {
+       //     $(".col-sm-7").animate({
+       //         width: "95%"
+       //     }, 1000); // how long the animation should be
+       //});
+       //$("#flip1").click(function () {
+       //    $(".col-sm-7").animate({
+       //        width: "75%"
+       //    }, 1000); // how long the animation should be
+       //});
+        //$("#flip").click(function () {
+        //    $(".col-sm-7").animate({ width: '100%' }, 1000)
+        //}, function () {
+        //    $(".col-sm-7").animate({ width: '75%' }, 1000)
+        //});
 
     </script>
     
