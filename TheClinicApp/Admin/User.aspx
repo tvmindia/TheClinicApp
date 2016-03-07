@@ -126,6 +126,24 @@
 
                 </div>
 
+                   <div class="col-xs-12 Span-One">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label col-xs-4 regFormLabels">Password:</label>
+
+                            <div class="col-xs-5">
+
+                                <asp:TextBox ID="txtPassword" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"></asp:TextBox>
+
+                            </div>
+
+                             <div class="col-xs-3"></div>
+                        </div>
+                       
+                    </div>
+
+                </div>
+
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
@@ -231,12 +249,15 @@
                             <asp:BoundField DataField="FirstName" HeaderText="First Name">
                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="LastName" HeaderText="Last Name">
+                            <asp:BoundField DataField="LastName" HeaderText="Last Name">+
                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                             </asp:BoundField>
                             <asp:BoundField DataField="Active" HeaderText="Active">
                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                             </asp:BoundField>
+                           <%--  <asp:BoundField DataField="Password" HeaderText="Password">
+                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                            </asp:BoundField>--%>
 
                         </Columns>
                         <EditRowStyle HorizontalAlign="Center" BackColor="#0080AA"></EditRowStyle>

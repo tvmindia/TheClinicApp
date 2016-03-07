@@ -51,6 +51,10 @@ namespace TheClinicApp.UIClasses
         }
 
 //----------------* Success Messages *--------------//
+        public static string LoginSuccess
+        {
+            get { return "Successfully logged in"; }
+        }
 
         public static string InsertionSuccessFull
         {
@@ -72,7 +76,7 @@ namespace TheClinicApp.UIClasses
 
         public static string LoginFailed
         {
-            get { return "User Name / Password wrong!"; }
+            get { return "User Name / Password is wrong!"; }
         }
 
         public static string InsertionFailure
