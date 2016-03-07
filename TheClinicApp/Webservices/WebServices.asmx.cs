@@ -36,6 +36,8 @@ namespace TheClinicApp.Webservices
                 {
                     dr["Flag"] = true;
                     dr["Message"] = "success";// UIClasses.Messages.LoginSuccess;
+                    loginMsg.Columns.Add("ClinicID", typeof(String));
+                    dr["ClinicID"] = UA.ClinicID;
                 }
                 else
                 {
