@@ -91,6 +91,12 @@ namespace TheClinicApp.ClinicDAL
             set;
         }
 
+        public string passWord
+        {
+            get;
+            set;
+        }
+
         #endregion Global Variables
 
         #region Methods
@@ -152,7 +158,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = ClinicID;
                 cmd.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = createdBy;
                 cmd.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = updatedBy;
-               
+                cmd.Parameters.Add("@Password", SqlDbType.NVarChar,40).Value = passWord;
                
                 SqlParameter Output = new SqlParameter();
                 Output.DbType = DbType.Int32;
@@ -219,6 +225,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@LoginName", SqlDbType.NVarChar, 255).Value = loginName;
                 cmd.Parameters.Add("@FirstName", SqlDbType.NVarChar, 255).Value = firstName;
                 cmd.Parameters.Add("@LastName", SqlDbType.NVarChar, 255).Value = lastName;
+                cmd.Parameters.Add("@Password", SqlDbType.NVarChar, 40).Value = passWord;
                 cmd.Parameters.Add("@Active", SqlDbType.Bit).Value = isActive;
 
 
