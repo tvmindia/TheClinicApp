@@ -10,6 +10,10 @@ namespace TheClinicApp.ClinicDAL
 {
     public class Patient
     {
+        public Patient()
+        {
+            FileID = Guid.NewGuid();
+        }
         ErrorHandling eObj = new ErrorHandling();
         #region Connectionstring
         dbConnection dcon = new dbConnection();
@@ -72,6 +76,23 @@ namespace TheClinicApp.ClinicDAL
             set;
         }
         #endregion Patientproperty
+
+        
+        
+
+        #region FileProperty
+        
+        public string FileNumber
+        {
+            get;
+            set;
+        }
+        public Guid FileID
+        {
+            get;
+            set;
+        }
+        #endregion FileProperty
 
         #region AddPatientDetails
         public void AddPatientDetails()
@@ -317,6 +338,70 @@ namespace TheClinicApp.ClinicDAL
         }
 
         #endregion SearchPatientDetails
+        #region AddFile
+        public void AddFile()
+        {
+
+            SqlConnection con = null;
+            try
+            {
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand pud = new SqlCommand();
+                pud.Connection = con;
+                pud.CommandType = System.Data.CommandType.StoredProcedure;
+                pud.CommandText = "[InsertNewFile]";
+                pud.Parameters.Add("@FileID", SqlDbType.UniqueIdentifier).Value = FileID;
+                pud.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = PatientID;
+                pud.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = ClinicID;
+                pud.Parameters.Add("@FileDate", SqlDbType.DateTime).Value = DateTime.Now;               
+                pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                pud.Parameters.Add("@FileNumber", SqlDbType.NVarChar, 50).Value = FileNumber;
+                SqlParameter OutputFileNumber = pud.Parameters.Add("@OutFileNumber", SqlDbType.NVarChar, 50);
+                OutputFileNumber.Direction = ParameterDirection.Output;
+                pud.ExecuteNonQuery();
+
+                if (OutputFileNumber.Value.ToString() != "")
+                {
+                    //not successfull   
+
+                    FileNumber = OutputFileNumber.Value.ToString();
+
+                }
+                else
+                {
+                    //successfull
+
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.InsertionSuccessMessage(page);
+
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
+
+            }
+
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+
+        }
+        #endregion AddFile
 
         #region ViewAllRegistration
         /// <summary>

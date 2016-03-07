@@ -50,12 +50,16 @@ namespace TheClinicApp.Registration
             PatientObj.Gender = txtSex.Text;
             PatientObj.MaritalStatus = txtMarital.Text;
             PatientObj.Occupation = "BUSINESS";
+            PatientObj.FileNumber = "HO343499";
+            
             //PatientObj.image =null ;
             if (btnSave.Text=="SAVE")
             {
                 Guid g = Guid.NewGuid();
                 PatientObj.PatientID = g;
                 PatientObj.AddPatientDetails();
+                PatientObj.AddFile();
+                
                 var page = HttpContext.Current.CurrentHandler as Page;
             }
             else if(btnSave.Text=="Update")
@@ -66,7 +70,7 @@ namespace TheClinicApp.Registration
             }
             gridDataBind();
             PicUpload();
-            ClearFields();
+            lblFilenumber.Text = PatientObj.FileNumber;
         }
 
         #endregion MainButton
@@ -251,5 +255,8 @@ namespace TheClinicApp.Registration
             //lblMsgges.Text = "";
         }
         #endregion clearfield
+
+        
     }
+  
 }

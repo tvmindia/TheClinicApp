@@ -270,7 +270,7 @@ background-color: ghostwhite;
                         </div>
                         <div class="col-xs-1">
                             <div class="col-xs-12">
-                                &nbsp
+                               <asp:Label ID="lblFilenumber" runat="server" Text=""></asp:Label>
                             </div>
                         </div>
                     </div>
