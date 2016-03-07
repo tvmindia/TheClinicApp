@@ -65,8 +65,11 @@ namespace TheClinicApp.UIClasses
         public static string DeletionSuccessFull
         {
             get { return "Deleted Successfully"; }
-        } 
-
+        }
+        public static string SuccessfulUpload
+        {
+            get { return "Successfully Uploaded"; }
+        }
 
 //----------------* Failure Messages *--------------//
 
