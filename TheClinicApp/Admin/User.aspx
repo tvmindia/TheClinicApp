@@ -249,7 +249,7 @@
                             <asp:BoundField DataField="FirstName" HeaderText="First Name">
                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="LastName" HeaderText="Last Name">+
+                            <asp:BoundField DataField="LastName" HeaderText="Last Name">
                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                             </asp:BoundField>
                             <asp:BoundField DataField="Active" HeaderText="Active">
