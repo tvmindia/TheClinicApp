@@ -777,7 +777,7 @@ namespace TheClinicApp.ClinicDAL
                         get;
                         set;
                     }
-                    public string Attachment
+                    public object Attachment
                     {
                         get;
                         set;
