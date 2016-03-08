@@ -77,7 +77,7 @@
             <table style="width: 99%">
                 <tr>
                     <td class="LeftLogo">
-                        <img src="Images/LOGO.png" style="width: 20px; padding: 5px;" /></td>
+                        <img src="Images/LOGO.png" style="width: 15px; padding: 1px;" /></td>
                     <td class="RightLogo">Hi
                         <asp:Label ID="lblUserName" runat="server" Text=""></asp:Label>
                         &nbsp; | &nbsp; 

@@ -16,14 +16,24 @@ namespace TheClinicApp.Stock
     public partial class Stock : System.Web.UI.Page
     {
 
+        #region objects 
+
         ErrorHandling eObj = new ErrorHandling();
         Stocks stok = new Stocks();
         public string listFilter = null;
        
         Receipt rpt = new Receipt();
         ReceiptDetails rptdt = new ReceiptDetails();
-      
-       
+
+
+        //login details
+
+        UIClasses.Const Const = new UIClasses.Const();
+        ClinicDAL.UserAuthendication UA;
+
+        #endregion objects
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -96,23 +106,31 @@ namespace TheClinicApp.Stock
  
         protected void btnStock_Click(object sender, EventArgs e)
         {
+
+            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+
             //Receipt Header
             rpt.RefNo1 = txtReference1.Text;
             rpt.RefNo2 = txtReference2.Text;
             rpt.Date = Convert.ToDateTime(txtDate.Text);
-            rpt.ClinicID = HiddenFieldClinicID.Value;
-            rpt.CreatedBy = "user";
+            rpt.ClinicID = UA.ClinicID.ToString();
+            rpt.CreatedBy = UA.userName;
             
             //Receipt Details
 
             rptdt.QTY = Convert.ToInt32(txtQty.Text);
             rptdt.Unit = Convert.ToInt32(txtUnit.Text);
+          // how to set medicine id while new medicine added????
             rptdt.MedicineID = HiddenFieldMedicineID.Value;
-            rptdt.ClinicID = HiddenFieldClinicID.Value;
-            rptdt.CreatedBy = "user";
+            rptdt.ClinicID = UA.ClinicID.ToString();
+          
+            rptdt.CreatedBy =UA.userName;
 
             //Calling insert functions
             rpt.InsertReceiptHeaderDetails();
+
+
+            rptdt.ReceiptID = rpt.ReceiptID;
             rptdt.InsertReceiptDetails();
 
 
@@ -132,7 +150,7 @@ namespace TheClinicApp.Stock
                 dr = dt.NewRow();
                 dr = dt.Rows[0];
 
-
+                HiddenFieldMedicineID.Value = dr["MedicineID"].ToString();
                 lblUnit.Text = dr["Unit"].ToString();
                 lblQuantity.Text = dr["Qty"].ToString();
                 lblLastUpdated.Text = dr["UpdatedDate"].ToString();
