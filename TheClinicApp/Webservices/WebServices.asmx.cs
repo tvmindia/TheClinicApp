@@ -74,8 +74,8 @@ namespace TheClinicApp.Webservices
                 //Getting file dettails from http request
                 if (MyFileCollection.Count > 0)
                 {
-                    //               string FilePath = Server.MapPath("~/tempImages/")+DateTime.Now.ToString("ddHHmmssfff")+MyFileCollection[0].FileName;
-                    //               MyFileCollection[0].SaveAs(FilePath); //to save coming image to server folder
+                                   //string FilePath = Server.MapPath("~/")+DateTime.Now.ToString("ddHHmmssfff")+MyFileCollection[0].FileName;
+                                   //MyFileCollection[0].SaveAs(FilePath); //to save coming image to server folder
                     Stream MyStream = MyFileCollection[0].InputStream;
                     ClinicDAL.CaseFile.Visit.VisitAttachment visitAttachment = new ClinicDAL.CaseFile.Visit.VisitAttachment();
 
@@ -117,7 +117,7 @@ namespace TheClinicApp.Webservices
                         userName = HttpContext.Current.Request.Form["userName"];
                     }
 
-                    visitAttachment.InsertFileAttachment(true, userName);
+                    int k=visitAttachment.InsertFileAttachment(true, userName);
                     return "Message:" + UIClasses.Messages.SuccessfulUpload;
                 }
 
@@ -125,6 +125,7 @@ namespace TheClinicApp.Webservices
             }
             catch (Exception ex)
             {
+                //System.IO.File.WriteAllText(@Server.MapPath("~/Text.txt"), ex.Message);
                 return "Message:" + ex.Message;
             }
             finally
