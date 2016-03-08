@@ -10,8 +10,27 @@ namespace TheClinicApp.ClinicDAL
     public class Stocks
     {
 
+
+        public Stocks()
+        {
+
+             MedicineID  = Guid.NewGuid();
+        }
+
+        public Stocks(Guid MedicineID1)
+        {
+
+            // Guid ex = Guid.NewGuid();
+
+            MedicineID = MedicineID1;
+
+
+        }
+
+
+
         #region Property
-        public string MedicineID
+        public Guid MedicineID
         {
             get;
             set;
@@ -32,7 +51,7 @@ namespace TheClinicApp.ClinicDAL
             set;
 
         }
-        public int Unit
+        public string Unit
         {
             get;
             set;
@@ -151,8 +170,6 @@ namespace TheClinicApp.ClinicDAL
         }
         #endregion SearchBoxMedicine
 
-
-
         #region SearchWithName
         public DataTable GetMedcineDetails(string SearchName)
         {
@@ -173,9 +190,7 @@ namespace TheClinicApp.ClinicDAL
 
         }
         #endregion SearchWithName
-
-
-
+        
         #region InsertMedicines
         public void InsertMedicines()
         {
@@ -196,18 +211,16 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[InsertMedicines]";
 
-              
+                cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = MedicineID;
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
-                cmd.Parameters.Add("@CateoryID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(CategoryID);
+                cmd.Parameters.Add("@CategoryID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(CategoryID);
                 cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = Name;
-                cmd.Parameters.Add("@Unit", SqlDbType.Real).Value =Unit;
+                cmd.Parameters.Add("@Unit", SqlDbType.NVarChar, 15).Value = Unit;
                 cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
                 
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
               
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
-             
-                cmd.Parameters.Add("@ReOrderQty", SqlDbType.Real).Value = ReOrderQty;
+                cmd.Parameters.Add("@ReOrderQty", SqlDbType.Real).Value = Convert.ToInt32( ReOrderQty);
 
 
 
@@ -257,7 +270,7 @@ namespace TheClinicApp.ClinicDAL
                 //cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@CateoryID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(CategoryID);
                 cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = Name;
-                cmd.Parameters.Add("@Unit", SqlDbType.Real).Value = Unit;
+                cmd.Parameters.Add("@Unit", SqlDbType.NVarChar, 15).Value = Unit; 
                 cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
 
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
@@ -403,16 +416,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[OutofStockMedicines]";
-
-            
-                //cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
-                //cmd.Parameters.Add("@ReOrderQty", SqlDbType.Real).Value = ReOrderQty;
-
-               
-               
-
-              
-
+                
                 sda = new SqlDataAdapter();
                 cmd.ExecuteNonQuery();
                 sda.SelectCommand = cmd;
@@ -442,8 +446,6 @@ namespace TheClinicApp.ClinicDAL
         }
 
 #endregion Out_of_Stock_MedicineList
-
-
 
 
         #endregion Medicines

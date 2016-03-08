@@ -115,7 +115,6 @@ namespace TheClinicApp.ClinicDAL
               
 
 
-
                 cmd.ExecuteNonQuery();
 
             }
@@ -319,9 +318,6 @@ namespace TheClinicApp.ClinicDAL
 
         }
 
-
-        //Receipt rpt = new Receipt(Guid ReceiptID);
-
         #region Property
 
         public Guid UniqueID
@@ -346,7 +342,7 @@ namespace TheClinicApp.ClinicDAL
             get;
             set;
         }
-        public int Unit
+        public string Unit
         {
             get;
             set;
@@ -387,14 +383,11 @@ namespace TheClinicApp.ClinicDAL
         public void InsertReceiptDetails()
         {
 
-
             dbConnection dcon = null;
 
             try
             {
-
-                
-           
+                        
                 dcon = new dbConnection();
                 dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
@@ -405,14 +398,9 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = UniqueID;
                 cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = ReceiptID;
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
-
                 cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
-                
-                cmd.Parameters.Add("@Unit", SqlDbType.Real).Value = Unit;                           
-
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
-              
-
+                cmd.Parameters.Add("@Unit", SqlDbType.NVarChar, 15).Value = Unit;   
+                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy; 
                 cmd.Parameters.Add("@QTY", SqlDbType.Real).Value = QTY;
 
 
@@ -458,18 +446,11 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandText = "[UpdateReceiptDetails]";
 
 
-
-                cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(UniqueID);
-               
+                cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(UniqueID);               
                 cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
-
-                cmd.Parameters.Add("@Unit", SqlDbType.Real).Value = Unit;
-
-               
-                cmd.Parameters.Add("@UpdateBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
-                
+                cmd.Parameters.Add("@Unit", SqlDbType.NVarChar, 15).Value = Unit;                
+                cmd.Parameters.Add("@UpdateBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;                
                 cmd.Parameters.Add("@QTY", SqlDbType.Real).Value = QTY;
-
                 cmd.ExecuteNonQuery();
 
             }
