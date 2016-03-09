@@ -10,6 +10,8 @@ namespace TheClinicApp.ClinicDAL
     public class IssueHeaderDetails
     {
 
+        #region constructor
+
         public IssueHeaderDetails ()
         {
 
@@ -18,6 +20,8 @@ namespace TheClinicApp.ClinicDAL
 
 
         }
+        #endregion constructor
+
 
         #region Property
 
@@ -272,19 +276,81 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion DeleteIssueHeaderDetails
 
+
+
+        //Get Issue Details by Passing Issue Number
+
+        #region GetIssueDetails
+
+        public DataSet GetIssueDetails(String IssueNO)
+        {
+
+            dbConnection dcon = null;
+            DataSet ds = null;
+            SqlDataAdapter sda = null;
+            try
+            {
+
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = dcon.SQLCon;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[GetIssueDetails]";
+
+
+                cmd.Parameters.Add("@IssueNO", SqlDbType.NVarChar, 255).Value = IssueNO;
+
+
+                sda = new SqlDataAdapter();
+                cmd.ExecuteNonQuery();
+                sda.SelectCommand = cmd;
+                ds = new DataSet();
+                sda.Fill(ds);
+
+
+                return ds;
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                if (dcon.SQLCon != null)
+                {
+                    dcon.DisconectDB();
+                }
+
+            }
+
+        }
+
+
+        #endregion GetIssueDetails
+
+
+
         #endregion Methods
 
     }
     public class IssueDetails
     {
 
-        IssueHeaderDetails ihd = new IssueHeaderDetails();
-        
+        #region constructor
+
         public IssueDetails()
         {
             UniqueID = Guid.NewGuid();
             
         }
+
+        #endregion constructor
+
 
 
         #region Property
@@ -293,7 +359,7 @@ namespace TheClinicApp.ClinicDAL
             get;
             set;
         }
-        public string IssueID
+        public Guid IssueID
         {
             get;
             set;
@@ -361,7 +427,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandText = "[InsertIssueDetails]";
 
                 cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = UniqueID;
-                cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = ihd.IssueID;
+                cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = IssueID;
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
                 cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
@@ -411,9 +477,9 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[UpdateIssueDetails]";
 
-                cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(UniqueID);
+                
 
-                cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(IssueID);
+                cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = IssueID;
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
                 cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ReceiptID);

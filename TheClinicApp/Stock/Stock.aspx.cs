@@ -129,6 +129,7 @@ namespace TheClinicApp.Stock
                     stok.Unit = txtUnit.Text;
                     stok.CreatedBy = UA.userName;
                     stok.ReOrderQty = 10;
+                    stok.MedCode ="med";
 
                     //calling medicine insertion
 

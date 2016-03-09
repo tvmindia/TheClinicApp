@@ -10,8 +10,8 @@ namespace TheClinicApp.ClinicDAL
     public class Receipt
     {
 
-        
 
+        #region constructor
         public Receipt()
         {
 
@@ -31,6 +31,7 @@ namespace TheClinicApp.ClinicDAL
 
         }
 
+        #endregion constructor
 
         #region Property
 
@@ -289,6 +290,61 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion InsertReceiptHeaderDetails
 
+
+        //Get Recipt Details by Passing Reference Number
+        #region GetReceiptDetails
+
+        public DataSet GetReceiptDetails(String RefNo1)
+        {
+
+            dbConnection dcon = null;
+            DataSet ds = null;
+            SqlDataAdapter sda = null;
+            try
+            {
+
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = dcon.SQLCon;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[GetReceiptDetails]";
+
+
+                cmd.Parameters.Add("@RefNo1", SqlDbType.NVarChar, 255).Value = RefNo1;
+
+
+                sda = new SqlDataAdapter();
+                cmd.ExecuteNonQuery();
+                sda.SelectCommand = cmd;
+                ds = new DataSet();
+                sda.Fill(ds);
+
+
+                return ds;
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                if (dcon.SQLCon != null)
+                {
+                    dcon.DisconectDB();
+                }
+
+            }
+
+        }
+
+
+        #endregion GetReceiptDetails
+
         #endregion Methods
 
     }
@@ -298,7 +354,7 @@ namespace TheClinicApp.ClinicDAL
 
     public class ReceiptDetails
     {
-
+        #region constructor
         public ReceiptDetails()
         {
 
@@ -317,6 +373,7 @@ namespace TheClinicApp.ClinicDAL
 
 
         }
+        #endregion constructor
 
         #region Property
 
