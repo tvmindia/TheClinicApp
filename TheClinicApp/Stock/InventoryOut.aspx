@@ -39,7 +39,7 @@
                   <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');
                           count.value=iCnt;--%>
                     // ADD TEXTBOX.
-                    $(container).append('<table style="width:80%"><tr><td ><input id="txtSearch'+iCnt+'" style="width:100%" type="text" placeholder="Medicine"   class="dynamicTd"/></td><td><input id="txtQuantity" class="dynamicTd" style="width:100%" type="text"  placeholder="Quantity"    /></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td> </tr></table>');
+                    $(container).append('<table style="width:80%"><tr><td ><input id="txtSearch'+iCnt+'" style="width:100%" type="text" placeholder="Medicine"   class="dynamicTd"/></td><td><input id="txtQuantity'+iCnt+'" class="dynamicTd" style="width:100%" type="text"  placeholder="Quantity"    /></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td> </tr></table>');
 
 
                           
@@ -56,6 +56,12 @@
                     // ADD BOTH THE DIV ELEMENTS TO THE "main" CONTAINER.
 
                     $('#main').after(container, divSubmit);
+
+                    var ac=null;
+                    ac = <%=listFilter %>;
+                    $( "#txtSearch"+iCnt ).autocomplete({
+                        source: ac
+                    });
 
                 }
 
@@ -113,7 +119,7 @@
              
             var ac=null;
             ac = <%=listFilter %>;
-              $( "#txtSearch1,#txtSearch2,#txtSearch3,#txtSearch4" ).autocomplete({
+            $( "#txtSearch1,#txtSearch2,#txtSearch3,#txtSearch4" ).autocomplete({
                   source: ac
               });
           });
@@ -221,6 +227,8 @@
                                         </td>
                                     </tr>
 
+
+
                                 </table>
 
                                 <div id="main">
@@ -240,8 +248,8 @@
                 <asp:HiddenField ID="HiddenFieldUniqueID" runat="server" />
 
                 <%-- ClinicID,PrescID Foreign Keys --%>
-                <asp:HiddenField ID="HiddenFieldClinicID" runat="server" />
-                <asp:HiddenField ID="HiddenFieldPrescID" runat="server" />
+              
+              <%--  <asp:HiddenField ID="HiddenFieldPrescID" runat="server" />--%>
 
                 <%--<asp:HiddenField ID="HiddenField3" runat="server" />--%>
             </div>

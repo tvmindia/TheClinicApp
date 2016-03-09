@@ -737,6 +737,44 @@ namespace TheClinicApp.ClinicDAL
             }
             #endregion GetPatientDetails
 
+            #region Get Visit List with Name for Mobile
+            /// <summary>
+            /// Get Visit List with Name for Mobile app to upload image
+            /// </summary>
+            /// <returns>Datatable with details from table</returns>
+            public DataTable GetVisitListforMobile()
+            {
+                DataTable dt = new DataTable();
+                SqlConnection con = null;
+                SqlDataAdapter daObj;
+                try
+                {
+
+                    dbConnection dcon = new dbConnection();
+                    con = dcon.GetDBConnection();
+
+                    SqlCommand cmdSelect = new SqlCommand("GetVisitListForMobile", con);
+                    cmdSelect.CommandType = CommandType.StoredProcedure;
+                    //cmdSelect.Parameters.AddWithValue("@DoctorID", DoctorID);
+
+                    daObj = new SqlDataAdapter(cmdSelect);
+                    
+                    daObj.Fill(dt);
+
+                }
+                catch (SqlException ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    con.Close();
+                }
+
+                return dt;
+            }
+            #endregion Get Visit List with Name for Mobile
+
             #endregion Visit Methods
 
             #region Visit Attachment Class

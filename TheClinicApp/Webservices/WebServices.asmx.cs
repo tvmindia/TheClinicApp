@@ -60,6 +60,39 @@ namespace TheClinicApp.Webservices
         }
         #endregion User Login
 
+        #region Get Visit List with Name
+        /// <summary>
+        /// Get Visit List with Name
+        /// </summary>
+        /// <returns>JSON of list of visit</returns>
+        [WebMethod]
+        public string GetVisitList()
+        {  //return msg data initialization
+            DataSet ds = new DataSet();
+            try
+            {   //Retrieving details
+                ClinicDAL.CaseFile.Visit visit = new ClinicDAL.CaseFile.Visit();
+                ds.Tables.Add(visit.GetVisitListforMobile());
+            }
+            catch (Exception ex)
+            {
+                //Return error message
+                DataTable ErrorMsg = new DataTable();
+                ErrorMsg.Columns.Add("Flag", typeof(Boolean));
+                ErrorMsg.Columns.Add("Message", typeof(String));
+                DataRow dr = ErrorMsg.NewRow();
+                dr["Flag"] = false;
+                dr["Message"] = ex.Message;
+                ErrorMsg.Rows.Add(dr);
+                ds.Tables.Add(ErrorMsg);
+            }
+            finally
+            {
+            }
+            return getDbDataAsJSON(ds);
+        }
+        #endregion  Get Visit List with Name
+
         #region Add Vist Attatchment
         /// <summary>
         /// Webservice to get new attachment file from mobile
@@ -74,8 +107,8 @@ namespace TheClinicApp.Webservices
                 //Getting file dettails from http request
                 if (MyFileCollection.Count > 0)
                 {
-                    //               string FilePath = Server.MapPath("~/tempImages/")+DateTime.Now.ToString("ddHHmmssfff")+MyFileCollection[0].FileName;
-                    //               MyFileCollection[0].SaveAs(FilePath); //to save coming image to server folder
+                                   //string FilePath = Server.MapPath("~/")+DateTime.Now.ToString("ddHHmmssfff")+MyFileCollection[0].FileName;
+                                   //MyFileCollection[0].SaveAs(FilePath); //to save coming image to server folder
                     Stream MyStream = MyFileCollection[0].InputStream;
                     ClinicDAL.CaseFile.Visit.VisitAttachment visitAttachment = new ClinicDAL.CaseFile.Visit.VisitAttachment();
 
@@ -117,7 +150,7 @@ namespace TheClinicApp.Webservices
                         userName = HttpContext.Current.Request.Form["userName"];
                     }
 
-                    visitAttachment.InsertFileAttachment(true, userName);
+                    int k=visitAttachment.InsertFileAttachment(true, userName);
                     return "Message:" + UIClasses.Messages.SuccessfulUpload;
                 }
 
@@ -125,6 +158,7 @@ namespace TheClinicApp.Webservices
             }
             catch (Exception ex)
             {
+                //System.IO.File.WriteAllText(@Server.MapPath("~/Text.txt"), ex.Message);
                 return "Message:" + ex.Message;
             }
             finally

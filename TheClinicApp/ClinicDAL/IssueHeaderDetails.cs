@@ -9,9 +9,19 @@ namespace TheClinicApp.ClinicDAL
 {
     public class IssueHeaderDetails
     {
+
+        public IssueHeaderDetails ()
+        {
+
+
+            IssueID = Guid.NewGuid();
+
+
+        }
+
         #region Property
 
-        public string IssueID
+        public Guid IssueID
         {
             get;
             set;
@@ -66,10 +76,9 @@ namespace TheClinicApp.ClinicDAL
              dbConnection dcon=null;
            try
             {
+ 
 
-                Guid IssueID = new Guid();
-
-                DateTime now = DateTime.Now;
+                
                 dcon = new dbConnection();
                 dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
@@ -80,12 +89,12 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = IssueID;
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@IssuedTo", SqlDbType.NVarChar, 255).Value = IssuedTo;
-                cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd");
-                cmd.Parameters.Add("@PrescID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(PrescID);
+                cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value = Date;
+               //? PrescID 
+               cmd.Parameters.Add("@PrescID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(PrescID);
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
                 cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreatedDate;
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
-                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = UpdatedDate;
+                
 
 
 
@@ -121,7 +130,7 @@ namespace TheClinicApp.ClinicDAL
             try
             {
 
-                DateTime now = DateTime.Now;
+                //DateTime now = DateTime.Now;
                 dcon = new dbConnection();
                 dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
@@ -133,12 +142,11 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(IssueID);
              
                 cmd.Parameters.Add("@IssuedTo", SqlDbType.NVarChar, 255).Value = IssuedTo;
-                cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd");
+                cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value =Date;
                
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
-                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreatedDate;
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
-                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = UpdatedDate;
+               
+                cmd.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
+                //cmd.Parameters.Add("@UpdatedBy", SqlDbType.DateTime).Value = UpdatedDate;
 
 
                 cmd.ExecuteNonQuery();
@@ -183,9 +191,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[ViewIssueHeaderDetails]";
 
-                //cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = DoctorID;
-                //cmd.Parameters.Add("@DateTime", SqlDbType.DateTime).Value = DateTime;
-                //cmd.Parameters.Add("@DateTime", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd");
+               
 
                 sda = new SqlDataAdapter();
                 cmd.ExecuteNonQuery();
@@ -271,8 +277,18 @@ namespace TheClinicApp.ClinicDAL
     }
     public class IssueDetails
     {
+
+        IssueHeaderDetails ihd = new IssueHeaderDetails();
+        
+        public IssueDetails()
+        {
+            UniqueID = Guid.NewGuid();
+            
+        }
+
+
         #region Property
-        public string UniqueID
+        public Guid UniqueID
         {
             get;
             set;
@@ -336,9 +352,7 @@ namespace TheClinicApp.ClinicDAL
             try
             {
 
-                Guid UniqueID = new Guid();
-
-                //DateTime now = DateTime.Now;
+                 
                 dcon = new dbConnection();
                 dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
@@ -347,14 +361,13 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandText = "[InsertIssueDetails]";
 
                 cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = UniqueID;
-                cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(IssueID);
+                cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = ihd.IssueID;
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
                 cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
-                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreatedDate;
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
-                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = UpdatedDate;
+             
+             
                 cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ReceiptID);
 
 
@@ -405,10 +418,9 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
                 cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ReceiptID);
                 cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
-                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreatedDate;
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
-                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = UpdatedDate;
+               
+                cmd.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
+                cmd.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = UpdatedDate;
 
                 cmd.ExecuteNonQuery();
 
@@ -452,9 +464,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[ViewIssueDetails]";
 
-                //cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = DoctorID;
-                //cmd.Parameters.Add("@DateTime", SqlDbType.DateTime).Value = DateTime;
-                //cmd.Parameters.Add("@DateTime", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd");
+               
 
                 sda = new SqlDataAdapter();
                 cmd.ExecuteNonQuery();
