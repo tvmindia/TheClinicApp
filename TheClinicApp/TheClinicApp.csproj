@@ -162,6 +162,7 @@
     <Content Include="Images\select.png" />
     <Content Include="Images\Sync-WF.png" />
     <Content Include="Pharmacy\Pharmacy.aspx" />
+    <Content Include="ResetPassword.aspx" />
     <Content Include="Scripts\bootcards.js" />
     <Content Include="Content\Input.css" />
     <Content Include="Content\jquery-ui.css" />
@@ -409,6 +410,13 @@
     </Compile>
     <Compile Include="Registration\Patients.aspx.designer.cs">
       <DependentUpon>Patients.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Stock\InventoryOut.aspx.cs">
       <DependentUpon>InventoryOut.aspx</DependentUpon>

@@ -4,6 +4,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Label ID="lblEmail" runat="server" Text="Email"></asp:Label>
     <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+
+      <asp:Label ID="lblVerificationCode" runat="server" Text="Veification Code"></asp:Label>
+     <asp:TextBox ID="txtVerificationCode" runat="server"></asp:TextBox>
+
     <asp:Button ID="btnVerify" runat="server" Text="Click Me" OnClick="btnVerify_Click" />
 
 
