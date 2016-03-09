@@ -144,6 +144,7 @@
     <Content Include="Content\selectize.css" />
     <Content Include="Content\simple-sidebar.css" />
     <Content Include="Content\TheClinicAppDoctors.css" />
+    <Content Include="ForgotPassword.aspx" />
     <Content Include="Images\Addition .png" />
     <Content Include="Images\Button-Add-icon.png" />
     <Content Include="Images\calendar 32x32.png" />
@@ -161,6 +162,7 @@
     <Content Include="Images\select.png" />
     <Content Include="Images\Sync-WF.png" />
     <Content Include="Pharmacy\Pharmacy.aspx" />
+    <Content Include="ResetPassword.aspx" />
     <Content Include="Scripts\bootcards.js" />
     <Content Include="Content\Input.css" />
     <Content Include="Content\jquery-ui.css" />
@@ -366,6 +368,13 @@
     <Compile Include="Doctor\DoctorInformationPage.aspx.designer.cs">
       <DependentUpon>DoctorInformationPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -401,6 +410,13 @@
     </Compile>
     <Compile Include="Registration\Patients.aspx.designer.cs">
       <DependentUpon>Patients.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Stock\InventoryOut.aspx.cs">
       <DependentUpon>InventoryOut.aspx</DependentUpon>

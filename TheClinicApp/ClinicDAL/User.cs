@@ -97,6 +97,18 @@ namespace TheClinicApp.ClinicDAL
             set;
         }
 
+        public string verificationCode
+        {
+            get;
+            set;
+        }
+
+        public string Email
+        {
+            get;
+            set;
+        }
+
         #endregion Global Variables
 
         #region Methods
@@ -378,6 +390,108 @@ namespace TheClinicApp.ClinicDAL
         }
 
         #endregion ValidateUsername
+
+        #region Add verificationcode (Generated random number)
+
+        public void AddVerificationCode()
+        {
+            dbConnection dcon = new dbConnection();
+
+            try
+            {
+                dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = dcon.SQLCon;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandText = "[AddVerificationCode]";
+
+                cmd.Parameters.Add("@VerificationCode", SqlDbType.NVarChar, 20).Value = verificationCode;
+                cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 255).Value = Email;
+                
+                SqlParameter Output = new SqlParameter();
+                Output.DbType = DbType.Int32;
+                Output.ParameterName = "@Status";
+                Output.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(Output);
+                cmd.ExecuteNonQuery();
+
+                if (Output.Value.ToString() == "")
+                {
+                    //not successfull   
+
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.InsertionNotSuccessMessage(page);
+
+                }
+                else
+                {
+                    //successfull
+
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.InsertionSuccessMessage(page);
+
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
+
+            }
+
+            finally
+            {
+                if (dcon.SQLCon != null)
+                {
+                    dcon.DisconectDB();
+                }
+
+            }
+        }
+
+        #endregion Add verificationcode (Generated random number)
+        
+        #region Get User Verification Code By EmailID
+
+        public DataTable GetUserVerificationCodeByEmailID()
+        {
+            SqlConnection con = null;
+            DataTable dtVerificationCode = null;
+            try
+            {
+                dtVerificationCode = new DataTable();
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand("GetVerificationCodeByEmailID", con);
+                cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 255).Value = Email;
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dtVerificationCode);
+                return dtVerificationCode;
+            }
+            catch (Exception ex)
+            {
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
+                throw ex;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+        }
+
+        #endregion  Get User Verification Code By EmailID
+
 
         #endregion Methods
 

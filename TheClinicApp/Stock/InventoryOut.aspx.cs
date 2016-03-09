@@ -131,6 +131,12 @@ namespace TheClinicApp.Stock
             //  Calling  Insert Functions
 
             // ihd.InsertIssueHeaderDetails();
+
+
+
+            //passing foreign key value 
+           // idt.IssueID = ihd.IssueID;
+
             //idt.InsertIssueDetails();
         }
 

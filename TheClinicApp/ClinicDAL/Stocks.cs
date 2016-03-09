@@ -10,13 +10,13 @@ namespace TheClinicApp.ClinicDAL
     public class Stocks
     {
 
+        #region constructor
 
         public Stocks()
         {
 
              MedicineID  = Guid.NewGuid();
         }
-
         public Stocks(Guid MedicineID1)
         {
 
@@ -27,6 +27,7 @@ namespace TheClinicApp.ClinicDAL
 
         }
 
+        #endregion constructor
 
 
         #region Property
@@ -86,6 +87,14 @@ namespace TheClinicApp.ClinicDAL
             get;
             set;
         }
+
+        public string  MedCode
+        {
+            get;
+            set;
+        }
+
+
 
         #endregion Property
 
@@ -216,11 +225,10 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@CategoryID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(CategoryID);
                 cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = Name;
                 cmd.Parameters.Add("@Unit", SqlDbType.NVarChar, 15).Value = Unit;
-                cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
-                
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
-              
+                cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;                
+                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;              
                 cmd.Parameters.Add("@ReOrderQty", SqlDbType.Real).Value = Convert.ToInt32( ReOrderQty);
+                cmd.Parameters.Add("@MedCode", SqlDbType.NVarChar, 20).Value = MedCode;
 
 
 
@@ -266,18 +274,15 @@ namespace TheClinicApp.ClinicDAL
 
 
 
-                cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
-                //cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
+                cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);             
                 cmd.Parameters.Add("@CateoryID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(CategoryID);
                 cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = Name;
                 cmd.Parameters.Add("@Unit", SqlDbType.NVarChar, 15).Value = Unit; 
                 cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
-
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
-               
-                cmd.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
-                
+                             
+                cmd.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;                
                 cmd.Parameters.Add("@ReOrderQty", SqlDbType.Real).Value = ReOrderQty;
+                cmd.Parameters.Add("@MedCode", SqlDbType.NVarChar, 20).Value = MedCode;
 
 
 
@@ -323,9 +328,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[ViewMedicines]";
 
-                //cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = MedicineID;
-                //cmd.Parameters.Add("@DateTime", SqlDbType.DateTime).Value = DateTime;
-                //cmd.Parameters.Add("@DateTime", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd");
+            
 
                 sda = new SqlDataAdapter();
                 cmd.ExecuteNonQuery();
