@@ -26,9 +26,8 @@
     <div class="container-fluid bodyDiv">
         <label class="headingLabel">Create User</label>
         <div class="col-sm-12 Span-One ">
-            <div class="col-sm-1">
-            </div>
-            <div class="col-xs-6">
+           
+            <div class="col-xs-8">
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
@@ -66,9 +65,9 @@
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label class="control-label col-xs-4 regFormLabels">Login Name:</label>
+                            <label class="control-label col-xs-3 regFormLabels">Login Name:</label>
 
-                            <div class="col-xs-5">
+                            <div class="col-xs-6">
 
                                
                                             <asp:TextBox ID="txtLoginName" class="form-control textBoxborder" required runat="server" onchange="LoginNameCheck(this)" ValidationGroup="Submit"></asp:TextBox>
@@ -89,12 +88,19 @@
 
                 </div>
 
+
+                    <div class="col-xs-1">
+                                <div class="col-xs-12">
+                                    &nbsp
+                                </div>
+                            </div>
+
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label class="control-label col-xs-4 regFormLabels">First Name:</label>
+                            <label class="control-label col-xs-3 regFormLabels">First Name:</label>
 
-                            <div class="col-xs-5">
+                            <div class="col-xs-6">
 
                                 <asp:TextBox ID="txtFirstName" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"></asp:TextBox>
 
@@ -108,12 +114,19 @@
 
                 </div>
 
+
+                    <div class="col-xs-1">
+                                <div class="col-xs-12">
+                                    &nbsp
+                                </div>
+                            </div>
+
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label class="control-label col-xs-4 regFormLabels">Last Name:</label>
+                            <label class="control-label col-xs-3 regFormLabels">Last Name:</label>
 
-                            <div class="col-xs-5">
+                            <div class="col-xs-6">
 
                                 <asp:TextBox ID="txtLastName" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"></asp:TextBox>
 
@@ -126,12 +139,18 @@
 
                 </div>
 
+                    <div class="col-xs-1">
+                                <div class="col-xs-12">
+                                    &nbsp
+                                </div>
+                            </div>
+
                    <div class="col-xs-12 Span-One">
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label class="control-label col-xs-4 regFormLabels">Password:</label>
+                            <label class="control-label col-xs-3 regFormLabels">Password:</label>
 
-                            <div class="col-xs-5">
+                            <div class="col-xs-6">
 
                                 <asp:TextBox ID="txtPassword" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"></asp:TextBox>
 
@@ -144,28 +163,121 @@
 
                 </div>
 
-                <div class="col-xs-12 Span-One">
-                    <div class="col-xs-11">
-                        <div class="form-group">
-                            <label class="control-label col-xs-4 regFormLabels">Active:</label>
+                    <div class="col-xs-1">
+                                <div class="col-xs-12">
+                                    &nbsp
+                                </div>
+                            </div>
 
-                            <div class="col-xs-8">
+
+
+                
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label col-xs-3 regFormLabels">Phone:</label>
+
+                            <div class="col-xs-6">
+
+                                <asp:TextBox ID="txtPhoneNumber" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit" maxlength="10"  pattern="[0-9]{10}"></asp:TextBox>
+
+                            </div>
+
+                            <div class="col-xs-3"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                    <div class="col-xs-1">
+                                <div class="col-xs-12">
+                                    &nbsp
+                                </div>
+                            </div>
+
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label col-xs-3 regFormLabels">Email:</label>
+
+                            <div class="col-xs-6">
+
+                                 <asp:TextBox ID="txtEmail" class="form-control textBoxborder" runat="server" type="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"></asp:TextBox>
+
+                            </div>
+
+                            <div class="col-xs-3"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                    <div class="col-xs-1">
+                                <div class="col-xs-12">
+                                    &nbsp
+                                </div>
+                            </div>
+
+
+
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label col-xs-3 regFormLabels">Active:</label>
+
+                            <div class="col-xs-6">
                                 <asp:RadioButton ID="rdoActiveYes" runat="server" GroupName="Active" Text="Yes" Checked="true" CssClass="checkbox-inline" />
                                 <asp:RadioButton ID="rdoActiveNo" runat="server" GroupName="Active" Text="No" CssClass="checkbox-inline" />
 
                             </div>
                         </div>
-                        <div class="col-xs-1">
-                            <div class="col-xs-12">
-                                &nbsp
-                            </div>
-                        </div>
+                           <div class="col-xs-3"></div>
                     </div>
 
                 </div>
+
+
+                    <div class="col-xs-1">
+                                <div class="col-xs-12">
+                                    &nbsp
+                                </div>
+                            </div>
+
+                 <div class="col-xs-12 Span-One">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label col-xs-3 regFormLabels">IsDoctor:</label>
+
+                            <div class="col-xs-6">
+                                <asp:RadioButton ID="rdoDoctor" runat="server" GroupName="Doctor" Text="Yes"  CssClass="checkbox-inline" />
+                                <asp:RadioButton ID="rdoNotDoctor" runat="server" GroupName="Doctor" Text="No" Checked="true" CssClass="checkbox-inline" />
+
+                            </div>
+                        </div>
+                       <div class="col-xs-3"></div>
+                    </div>
+
+                </div>
+
+
+
+
+                    <div class="col-xs-1">
+                                <div class="col-xs-12">
+                                    &nbsp
+                                </div>
+                            </div>
+
+
+
+
             </div>
 
-            <div class="col-xs-5">
+            <div class="col-xs-4">
                 <a href="#" role="button" data-toggle="modal" data-target="#myModal">View All Users </a>
 
             </div>
@@ -290,7 +402,6 @@
 
         </div>
     </div>
-
 
     <asp:HiddenField ID="hdnUserID" runat="server" />
     <script>

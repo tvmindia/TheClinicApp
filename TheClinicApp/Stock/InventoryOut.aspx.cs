@@ -12,6 +12,8 @@ using System.Configuration;
 using System.IO;
 
 namespace TheClinicApp.Stock
+
+
 {
     public partial class InventoryOut : System.Web.UI.Page
     {
@@ -23,6 +25,13 @@ namespace TheClinicApp.Stock
         Stocks stok = new Stocks();
         Receipt rpt = new Receipt();
 
+        //login details
+
+        UIClasses.Const Const = new UIClasses.Const();
+        ClinicDAL.UserAuthendication UA;
+
+
+
         public string listFilter = null;
 
 
@@ -30,7 +39,7 @@ namespace TheClinicApp.Stock
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
             bindpageload();
         }
 
@@ -82,26 +91,39 @@ namespace TheClinicApp.Stock
 
         protected void btnIssue_Click(object sender, EventArgs e)
         {
+            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+
+
+           ihd.ClinicID =UA.ClinicID.ToString();
+           idt.ClinicID = UA.ClinicID.ToString();
+
+       //    HiddenFieldClinicID.Value = "";
+
+
+            //Request.Form.GetValues("txtSearch1")
 
             //Inserting Issue Header
 
 
-            ihd.ClinicID = HiddenFieldClinicID.Value;
+         
             ihd.IssuedTo = txtIussedTo.Text;
             ihd.Date = Convert.ToDateTime(txtDate.Text);
            
-            ihd.CreatedBy = "User";
+            ihd.CreatedBy = UA.userName;
             ihd.CreatedDate = DateTime.Now;
+
+
+            
             
 
             //Inserting Issue Details
 
-            idt.ClinicID = HiddenFieldClinicID.Value;
+        
           // idt.MedicineID = ddlMedicine.SelectedValue;
 
            // idt.Qty = Convert.ToInt32(txtQty.Text);
 
-            idt.CreatedBy = "User";
+            idt.CreatedBy = UA.userName;
             idt.CreatedDate = DateTime.Now;
           
 

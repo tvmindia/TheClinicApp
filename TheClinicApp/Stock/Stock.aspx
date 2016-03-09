@@ -36,17 +36,12 @@
             background-color: ghostwhite;
             box-shadow: 1px 5px 10px 5px #4d3319;
         }
-        .ui-datepicker{
+
+        .ui-datepicker {
             background: fixed;
             background-color: ghostwhite;
-            box-shadow: 1px 5px 10px 5px #4d3319
-
+            box-shadow: 1px 5px 10px 5px #4d3319;
         }
-        
-
-        
-
-
     </style>
 
 
@@ -325,8 +320,8 @@
                 <asp:HiddenField ID="HiddenFieldReceiptID" runat="server" />
                 <asp:HiddenField ID="HiddenFieldUniqueID" runat="server" />
 
-                <%-- ClinicID,MedicineID Foreign Keys --%>
-                <asp:HiddenField ID="HiddenFieldClinicID" runat="server" />
+                <%-- MedicineID Foreign Keys --%>
+
                 <asp:HiddenField ID="HiddenFieldMedicineID" runat="server" />
 
 

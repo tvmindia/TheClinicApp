@@ -16,14 +16,24 @@ namespace TheClinicApp.Stock
     public partial class Stock : System.Web.UI.Page
     {
 
+        #region objects 
+
         ErrorHandling eObj = new ErrorHandling();
         Stocks stok = new Stocks();
         public string listFilter = null;
        
         Receipt rpt = new Receipt();
         ReceiptDetails rptdt = new ReceiptDetails();
-      
-       
+
+
+        //login details
+
+        UIClasses.Const Const = new UIClasses.Const();
+        ClinicDAL.UserAuthendication UA;
+
+        #endregion objects
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -96,23 +106,70 @@ namespace TheClinicApp.Stock
  
         protected void btnStock_Click(object sender, EventArgs e)
         {
+
+            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+            
+            // CHECKING MEDICINE ALREADY EXITS condition...
+
+
+            string Name = Request.Form["txtSearch"];
+
+
+            if (Name != "")
+            {
+                DataTable dt = stok.GetMedcineDetails(Name);
+
+
+                if (dt.Rows.Count == 0)
+                {
+                    stok.ClinicID = UA.ClinicID.ToString();
+                    stok.CategoryID = ddlCategory.SelectedValue;
+                    stok.Name = Name;
+                    stok.Qty = 0;
+                    stok.Unit = txtUnit.Text;
+                    stok.CreatedBy = UA.userName;
+                    stok.ReOrderQty = 10;
+
+                    //calling medicine insertion
+
+                    stok.InsertMedicines();
+
+                    HiddenFieldMedicineID.Value = stok.MedicineID.ToString();
+
+
+                }
+            }
+           
+             
+                 
+
+
             //Receipt Header
             rpt.RefNo1 = txtReference1.Text;
             rpt.RefNo2 = txtReference2.Text;
             rpt.Date = Convert.ToDateTime(txtDate.Text);
-            rpt.ClinicID = HiddenFieldClinicID.Value;
-            rpt.CreatedBy = "user";
+            rpt.ClinicID = UA.ClinicID.ToString();
+            rpt.CreatedBy = UA.userName;
             
             //Receipt Details
 
             rptdt.QTY = Convert.ToInt32(txtQty.Text);
-            rptdt.Unit = Convert.ToInt32(txtUnit.Text);
+            rptdt.Unit = txtUnit.Text;
+        
             rptdt.MedicineID = HiddenFieldMedicineID.Value;
-            rptdt.ClinicID = HiddenFieldClinicID.Value;
-            rptdt.CreatedBy = "user";
+            rptdt.ClinicID = UA.ClinicID.ToString();
+          
+            rptdt.CreatedBy =UA.userName;
 
             //Calling insert functions
             rpt.InsertReceiptHeaderDetails();
+
+
+
+            //passing foreign key value 
+            rptdt.ReceiptID = rpt.ReceiptID;
+
+
             rptdt.InsertReceiptDetails();
 
 
@@ -129,13 +186,31 @@ namespace TheClinicApp.Stock
             if (Name != "")
             {
                 DataTable dt = stok.GetMedcineDetails(Name);
-                dr = dt.NewRow();
-                dr = dt.Rows[0];
+                
+                if (dt.Rows.Count>0)
+                {
+                    dr = dt.NewRow();
+                    dr = dt.Rows[0];
+
+                    HiddenFieldMedicineID.Value = dr["MedicineID"].ToString();
+                    lblUnit.Text = dr["Unit"].ToString();
+                    lblQuantity.Text = dr["Qty"].ToString();
+                    lblLastUpdated.Text = dr["UpdatedDate"].ToString();
+                }
+                else
+                {
 
 
-                lblUnit.Text = dr["Unit"].ToString();
-                lblQuantity.Text = dr["Qty"].ToString();
-                lblLastUpdated.Text = dr["UpdatedDate"].ToString();
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "alert('Medicine not Exists');", true);
+                    
+                    
+
+                    
+                  
+                }
+
+
+                
                
                 
               
