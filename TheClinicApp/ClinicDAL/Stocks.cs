@@ -450,6 +450,58 @@ namespace TheClinicApp.ClinicDAL
 
 #endregion Out_of_Stock_MedicineList
 
+        #region SearchMedicineStock
+
+        public DataSet SearchMedicineStock(string String )
+        {
+
+            dbConnection dcon = null;
+            DataSet ds = null;
+            SqlDataAdapter sda = null;
+            try
+            {
+
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = dcon.SQLCon;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[SearchMedicineStock]";
+
+                cmd.Parameters.Add("@String", SqlDbType.NVarChar, 255).Value = String;
+
+
+                sda = new SqlDataAdapter();
+                cmd.ExecuteNonQuery();
+                sda.SelectCommand = cmd;
+                ds = new DataSet();
+                sda.Fill(ds);
+
+
+                return ds;
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                if (dcon.SQLCon != null)
+                {
+                    dcon.DisconectDB();
+                }
+
+            }
+
+        }
+
+
+        #endregion ViewMedicines
+
 
         #endregion Medicines
 
