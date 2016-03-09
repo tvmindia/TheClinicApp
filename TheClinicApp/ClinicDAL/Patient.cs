@@ -77,9 +77,6 @@ namespace TheClinicApp.ClinicDAL
         }
         #endregion Patientproperty
 
-        
-        
-
         #region FileProperty
         
         public string FileNumber
@@ -338,6 +335,7 @@ namespace TheClinicApp.ClinicDAL
         }
 
         #endregion SearchPatientDetails
+
         #region AddFile
         public void AddFile()
         {
