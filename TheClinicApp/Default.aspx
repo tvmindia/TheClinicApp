@@ -63,7 +63,7 @@
        
      </div>  
  <div style="text-align:right">
-        <a href="#">  Forgot Password? </a></div>
+        <a href="ForgotPassword.aspx">  Forgot Password? </a></div>
 
 
     </div>

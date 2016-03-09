@@ -379,6 +379,13 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion ValidateUsername
 
+        #region Get User Verification Code By EmailID
+
+        
+
+        #endregion  Get User Verification Code By EmailID
+
+
         #endregion Methods
 
     }
