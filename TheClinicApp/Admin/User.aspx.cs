@@ -31,12 +31,116 @@ namespace TheClinicApp.Admin
         #region Global Variables
 
         ClinicDAL.User userObj = new ClinicDAL.User();
+        ClinicDAL.Master mstrObj = new ClinicDAL.Master();
+        ClinicDAL.RoleAssign roleObj = new RoleAssign();
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
-        
+        public Guid DoctorRoleID = new Guid("69668C0B-1231-4229-A7FA-5C0CD3744435");
+
         #endregion Global Variables
 
         #region Methods
+
+//---* To USER *--//
+
+        #region Add User To User Table
+        public void AddUserToUserTable()
+         {
+             UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+
+             userObj.firstName = txtFirstName.Text;
+             userObj.loginName = txtLoginName.Text;
+             userObj.lastName = txtLastName.Text;
+
+             if (rdoActiveYes.Checked == true)
+             {
+                 userObj.isActive = true;
+             }
+             else
+             {
+                 if (rdoActiveNo.Checked == true)
+                 {
+                     userObj.isActive = false;
+                 }
+             }
+             userObj.ClinicID = UA.ClinicID;
+             //userObj.ClinicID = new Guid("2c7a7172-6ea9-4640-b7d2-0c329336f289");
+             userObj.createdBy = UA.userName;
+             userObj.updatedBy = UA.userName;
+             userObj.passWord = Encrypt(txtPassword.Text);
+
+             if (btnSave.Text == "Save")
+             {
+                 userObj.AddUser();
+                 BindGriewWithDetailsOfAllUsers();
+             }
+             else
+             {
+                 if (btnSave.Text == "Update")
+                 {
+                     userObj.UserID = Guid.Parse(hdnUserID.Value);
+                     userObj.UpdateuserByUserID();
+                     BindGriewWithDetailsOfAllUsers();
+
+                 }
+
+             }
+         }
+
+        #endregion Add User To User Table   
+
+ //---* To DOCTOR *--//
+
+        #region Add User To Doctor Table
+        public void AddUserToDoctorTable()
+        {
+            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+
+            mstrObj.loginName = txtLoginName.Text;
+
+            mstrObj.ClinicID = UA.ClinicID;
+            mstrObj.DoctorName = txtFirstName.Text;
+            mstrObj.DoctorPhone = txtPhoneNumber.Text;
+            mstrObj.DoctorEmail = txtEmail.Text;
+            mstrObj.createdBy = UA.userName;
+            mstrObj.updatedBy = UA.userName;
+
+            mstrObj.InsertDoctors();
+        }
+
+        #endregion Add User To Doctor Table
+
+
+        //---* To USER-In-ROLES *--//
+
+        #region
+
+        public void AddUserRole()
+        {
+            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+
+            roleObj.ClinicID = UA.ClinicID;
+            roleObj.RoleID = DoctorRoleID;
+            roleObj.CreatedBy = UA.userName;
+           
+
+          DataTable  dtUsers = roleObj.GetDetailsOfAllUsers();
+        
+            foreach(DataRow dr in dtUsers.Rows)
+            {
+                if(dr["LoginName"].ToString() == txtLoginName.Text)
+                {
+                    roleObj.UserID = Guid.Parse(dr["UserID"].ToString());
+                }
+            }
+
+            roleObj.AssignRole();
+          //roleObj.UserID = Guid.Parse(foundRow["UserID"].ToString());
+
+
+        }
+
+        #endregion 
 
         #region Bind Gridview
         public void BindGriewWithDetailsOfAllUsers()
@@ -110,44 +214,23 @@ namespace TheClinicApp.Admin
         /// <param name="e"></param>
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+//---------*User is not doctor , operation :add user to user table 
 
-            userObj.firstName = txtFirstName.Text;
-            userObj.loginName = txtLoginName.Text;
-            userObj.lastName = txtLastName.Text;
-            
-            if(rdoActiveYes.Checked == true)
+            if (rdoNotDoctor.Checked == true)
             {
-                userObj.isActive = true;
+                AddUserToUserTable();
             }
+
+//---------* User is a doctor , Operations : 1.add user to user table , 2.add user to the doctor table , 3.add user - role(doctor) to assignroles table
+
             else
             {
-                if(rdoActiveNo.Checked == true)
+                if(rdoDoctor.Checked == true)
                 {
-                    userObj.isActive = false;
+                    AddUserToUserTable();
+                    AddUserToDoctorTable();
+                    AddUserRole();
                 }
-            }
-            userObj.ClinicID = UA.ClinicID;
-            //userObj.ClinicID = new Guid("2c7a7172-6ea9-4640-b7d2-0c329336f289");
-            userObj.createdBy = UA.userName;
-            userObj.updatedBy = UA.userName;
-            userObj.passWord = Encrypt(txtPassword.Text);
-
-            if(btnSave.Text == "Save")
-            {
-                 userObj.AddUser();
-                 BindGriewWithDetailsOfAllUsers();
-            }
-            else
-            {
-                if(btnSave.Text == "Update" )
-                {
-                    userObj.UserID = Guid.Parse(hdnUserID.Value);
-                    userObj.UpdateuserByUserID();
-                    BindGriewWithDetailsOfAllUsers();
-
-               }
-               
             }
         }
 

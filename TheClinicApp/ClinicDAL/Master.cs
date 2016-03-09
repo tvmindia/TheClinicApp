@@ -11,10 +11,32 @@ namespace TheClinicApp.ClinicDAL
 {
     public class Master
     {
+        #region Global variables
+
         ErrorHandling eObj = new ErrorHandling();
+
+        public string loginName
+        {
+            get;
+            set;
+        }
+
+        public string createdBy
+        {
+            get;
+            set;
+        }
+
+        public string updatedBy
+        {
+            get;
+            set;
+        }
+
         #region Connectionstring
         dbConnection dcon = new dbConnection();
         #endregion Connectionstring
+
         #region Groupproperty
         public Guid GroupID
         {
@@ -32,6 +54,7 @@ namespace TheClinicApp.ClinicDAL
             set;
         }
         #endregion Groupproperty
+
         #region ClinicProperty
         public Guid ClinicID
         {
@@ -60,6 +83,7 @@ namespace TheClinicApp.ClinicDAL
         }
          
        #endregion ClinicProperty
+
         #region DoctorProperty
         public Guid DoctorID
         {
@@ -82,6 +106,7 @@ namespace TheClinicApp.ClinicDAL
             set;
         }
         #endregion DoctorsProperty
+
         #region CategoryProperty
         public Guid CategoryID
         {
@@ -94,6 +119,7 @@ namespace TheClinicApp.ClinicDAL
             set;
         }
         #endregion CategoryProperty
+
         #region unitProperty
         public Guid UnitID
         {
@@ -111,6 +137,9 @@ namespace TheClinicApp.ClinicDAL
             set;
         }
         #endregion unitProperty
+
+        #endregion Global variables
+
         #region AddGroups
         public void InsertGroups()
         {
@@ -261,15 +290,20 @@ namespace TheClinicApp.ClinicDAL
                  pud.Connection = con;
                  pud.CommandType = System.Data.CommandType.StoredProcedure;
                  pud.CommandText = "[InsertDoctors]";
-                 pud.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = DoctorID;
-                 pud.Parameters.Add("@GroupID", SqlDbType.UniqueIdentifier).Value = GroupID;
+                 //pud.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = DoctorID;
+                 //pud.Parameters.Add("@GroupID", SqlDbType.UniqueIdentifier).Value = GroupID;
+                 //pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                 //pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+
+                 //pud.Parameters.Add("@LoginName", SqlDbType.NVarChar, 255).Value = loginName;
+                 pud.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = ClinicID;
+                 pud.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = Guid.NewGuid();
                  pud.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = DoctorName;
                  pud.Parameters.Add("@Phone", SqlDbType.NVarChar, 50).Value = DoctorPhone;
                  pud.Parameters.Add("@Email", SqlDbType.NVarChar, 50).Value = DoctorEmail;
-                 pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
-                 pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
-                 pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
-                 pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                 pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = createdBy;
+                 pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = updatedBy;
+               
                  SqlParameter Output = new SqlParameter();
                  Output.DbType = DbType.Int32;
                  Output.ParameterName = "@Status";

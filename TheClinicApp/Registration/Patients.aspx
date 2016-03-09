@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true"  EnableEventValidation="false" CodeBehind="Patients.aspx.cs" Inherits="TheClinicApp.Registration.Patients" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Patients.aspx.cs" Inherits="TheClinicApp.Registration.Patients" %>
 
 <%@ Register Src="~/UserControl/ProfilePicUpload.ascx" TagPrefix="uc1" TagName="ProfilePicUpload" %>
 
@@ -7,20 +7,20 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Panel DefaultButton="btnSave" runat="server">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
-    <style>
-.ui-autocomplete {
-background: fixed;
-background-color: ghostwhite;
- box-shadow:1px 5px 10px 5px #4d3319;
-}
-    </style>
+        <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
+        <style>
+            .ui-autocomplete {
+                background: fixed;
+                background-color: ghostwhite;
+                box-shadow: 1px 5px 10px 5px #4d3319;
+            }
+        </style>
 
-    <%--<style>
+        <%--<style>
         footer {
             position: fixed;
             bottom: 0;
@@ -77,16 +77,16 @@ background-color: ghostwhite;
             margin-left: 1%;
         }
     </style>--%>
-    <style>
+        <style>
         
     </style>
-    <link href="../Content/Input.css" rel="stylesheet" />
-    <link href="../Content/jquery-ui.css" rel="stylesheet" />
-    <script src="../Scripts/jquery-1.12.0.min.js"></script>
-    <script src="../Scripts/jquery-ui.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
-    
-    <%--<script>
+        <link href="../Content/Input.css" rel="stylesheet" />
+        <link href="../Content/jquery-ui.css" rel="stylesheet" />
+        <script src="../Scripts/jquery-1.12.0.min.js"></script>
+        <script src="../Scripts/jquery-ui.js"></script>
+        <script src="../Scripts/bootstrap.min.js"></script>
+
+        <%--<script>
         function OnClientButtonClicking(sender, args) {
 
             var btn = args.get_item();
@@ -105,27 +105,96 @@ background-color: ghostwhite;
 
         }
     </script>--%>
-    <script>
-        $(document).ready(function () {
-            debugger;
-            var ac=null;
-            ac = <%=listFilter %>;
+        <script>
+            $(document).ready(function () {
+                debugger;
+                var ac=null;
+                ac = <%=listFilter %>;
             $( "#txtSearch" ).autocomplete({
                 source: ac
             });
         });
         
-    </script>
- <asp:ScriptManager runat="server"></asp:ScriptManager>
-    
-    <div class="container-fluid bodyDiv" >
-        <label class="headingLabel">New Patient Registration </label>
-        <div class="col-sm-12 Span-One ">
-            <div class="col-xs-8">
-                <div class="col-xs-12 Span-One">
-                    <div class="col-xs-11">
-                        <div class="form-group">
-                            <div class="col-xs-11">
+        </script>
+        <asp:ScriptManager runat="server"></asp:ScriptManager>
+
+        <div class="container-fluid bodyDiv">
+            <label class="headingLabel">New Patient Registration </label>
+            <div class="col-sm-12 Span-One ">
+                <div class="col-xs-8">
+                    <div class="col-xs-12 Span-One">
+                        <div class="col-xs-11">
+                            <div class="form-group">
+                                <div class="col-xs-11">
+                                </div>
+                                <div class="col-xs-1">
+                                    <div class="col-xs-12">
+                                        &nbsp
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 Span-One">
+                        <div class="col-xs-11">
+                            <div class="form-group">
+                                <div class="col-xs-11">
+                                </div>
+                                <div class="col-xs-1">
+                                    <div class="col-xs-12">
+                                        &nbsp
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 Span-One">
+                        <div class="col-xs-11">
+                            <div class="form-group">
+                                <label class="control-label col-xs-1 regFormLabels">Name:</label>
+                                <div class="col-xs-11">
+                                    <asp:TextBox ID="txtName" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit" pattern="^[A-z][A-z\.\s]+$"></asp:TextBox>
+
+                                </div>
+                            </div>
+                            <div class="col-xs-1">
+                                <div class="col-xs-12">
+                                    &nbsp
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 Span-One">
+                        <div class="col-xs-11">
+                            <div class="form-group">
+                                <label class="control-label col-xs-1 regFormLabels">Sex:</label>
+                                <div class="col-xs-11">
+                                    <asp:TextBox ID="txtSex" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit"></asp:TextBox>
+
+                                </div>
+                            </div>
+                            <div class="col-xs-1">
+                                <div class="col-xs-12">
+                                    &nbsp
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 Span-One">
+                        <div class="col-xs-11">
+                            <div class="form-group">
+                                <label class="control-label col-xs-1 regFormLabels">Age:</label>
+                                <div class="col-xs-11">
+
+                                    <asp:TextBox ID="txtAge" class="form-control textBoxborder numberTypeTextBox" runat="server" required ValidationGroup="Submit" type="number" min="0" max="120"></asp:TextBox>
+
+                                </div>
                             </div>
                             <div class="col-xs-1">
                                 <div class="col-xs-12">
@@ -136,11 +205,15 @@ background-color: ghostwhite;
 
                     </div>
 
-                </div>
-                <div class="col-xs-12 Span-One">
-                    <div class="col-xs-11">
-                        <div class="form-group">
-                             <div class="col-xs-11">
+
+                    <div class="col-xs-12 Span-One">
+                        <div class="col-xs-11">
+                            <div class="form-group">
+                                <label class="control-label col-xs-1 regFormLabels">Address:</label>
+                                <div class="col-xs-11">
+                                    <asp:TextBox ID="txtAddress" class="form-control textBoxborder" TextMode="multiline" Columns="50" Rows="10" Height="100" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+
+                                </div>
                             </div>
                             <div class="col-xs-1">
                                 <div class="col-xs-12">
@@ -150,237 +223,163 @@ background-color: ghostwhite;
                         </div>
 
                     </div>
+                    <div class="col-xs-12 Span-One">
+                        <div class="col-xs-11">
+                            <div class="form-group">
+                                <label class="control-label col-xs-1 regFormLabels">Mobile:</label>
+                                <div class="col-xs-11">
+                                    <asp:TextBox ID="txtMobile" class="form-control textBoxborder" runat="server" MaxLength="10" pattern="[0-9]{10}"></asp:TextBox>
 
-                </div>
-                <div class="col-xs-12 Span-One">
-                    <div class="col-xs-11">
-                        <div class="form-group">
-                            <label class="control-label col-xs-1 regFormLabels">Name:</label>
-                             <div class="col-xs-11">
-                                <asp:TextBox ID="txtName" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit" pattern="^[A-z][A-z\.\s]+$"
-                                    ></asp:TextBox>
-
+                                </div>
+                            </div>
+                            <div class="col-xs-1">
+                                <div class="col-xs-12">
+                                    &nbsp
+                                </div>
                             </div>
                         </div>
-                        <div class="col-xs-1">
-                            <div class="col-xs-12">
-                                &nbsp
+
+                    </div>
+                    <div class="col-xs-12 Span-One">
+                        <div class="col-xs-11">
+                            <div class="form-group">
+                                <label class="control-label col-xs-1 regFormLabels" for="email">Email:</label>
+                                <div class="col-xs-11">
+                                    <asp:TextBox ID="txtEmail" class="form-control textBoxborder" runat="server" type="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"></asp:TextBox>
+
+                                </div>
+
+                            </div>
+                            <div class="col-xs-1">
+                                <div class="col-xs-12">
+                                    &nbsp
+                                </div>
                             </div>
                         </div>
+
+                    </div>
+                    <div class="col-xs-12 Span-One">
+                        <div class="col-xs-11">
+                            <div class="form-group">
+                                <label class="control-label col-xs-1 regFormLabels">Marital:</label>
+                                <div class="col-xs-11">
+                                    <asp:TextBox ID="txtMarital" class="form-control textBoxborder" runat="server"></asp:TextBox>
+
+                                </div>
+                            </div>
+                            <div class="col-xs-1">
+                                <div class="col-xs-12">
+                                    <asp:Label ID="lblFilenumber" runat="server" Text=""></asp:Label>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
-                </div>
-                <div class="col-xs-12 Span-One">
-                    <div class="col-xs-11">
-                        <div class="form-group">
-                            <label class="control-label col-xs-1 regFormLabels">Sex:</label>
-                             <div class="col-xs-11">
-                                <asp:TextBox ID="txtSex" class="form-control textBoxborder" required runat="server"  ValidationGroup="Submit"></asp:TextBox>
+                    <div class="col-md-12 Span-One">
+                        <div class="col-md-8">
+                            <div class="form-group">
 
-                            </div>
-                        </div>
-                        <div class="col-xs-1">
-                            <div class="col-xs-12">
-                                &nbsp
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-xs-12 Span-One">
-                    <div class="col-xs-11">
-                        <div class="form-group">
-                            <label class="control-label col-xs-1 regFormLabels">Age:</label>
-                             <div class="col-xs-11">
-                             
-                                <asp:TextBox ID="txtAge" class="form-control textBoxborder numberTypeTextBox" runat="server" required  ValidationGroup="Submit" type="number" min ="0" max="120" ></asp:TextBox>
-
-                            </div>
-                        </div>
-                        <div class="col-xs-1">
-                            <div class="col-xs-12">
-                                &nbsp
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <div class="col-xs-12 Span-One">
-                    <div class="col-xs-11">
-                        <div class="form-group">
-                            <label class="control-label col-xs-1 regFormLabels">Address:</label>
-                            <div class="col-xs-11">
-                                <asp:TextBox ID="txtAddress" class="form-control textBoxborder" TextMode="multiline" Columns="50" Rows="10" Height="100" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-
-                            </div>
-                        </div>
-                        <div class="col-xs-1">
-                            <div class="col-xs-12">
-                                &nbsp
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                 <div class="col-xs-12 Span-One">
-                    <div class="col-xs-11">
-                        <div class="form-group">
-                            <label class="control-label col-xs-1 regFormLabels">Mobile:</label>
-                             <div class="col-xs-11">
-                                <asp:TextBox ID="txtMobile" class="form-control textBoxborder" runat="server" maxlength="10"  pattern="[0-9]{10}"  ></asp:TextBox>
-
-                            </div>
-                        </div>
-                        <div class="col-xs-1">
-                            <div class="col-xs-12">
-                                &nbsp
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-xs-12 Span-One">
-                    <div class="col-xs-11">
-                        <div class="form-group">
-                            <label class="control-label col-xs-1 regFormLabels" for="email" >Email:</label>
-                            <div class="col-xs-11">
-                                <asp:TextBox ID="txtEmail" class="form-control textBoxborder" runat="server" type="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"></asp:TextBox>
-
-                            </div>
-                              
-                        </div>
-                        <div class="col-xs-1">
-                            <div class="col-xs-12">
-                                &nbsp
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-xs-12 Span-One">
-                    <div class="col-xs-11">
-                        <div class="form-group">
-                            <label class="control-label col-xs-1 regFormLabels">Marital:</label>
-                             <div class="col-xs-11">
-                                <asp:TextBox ID="txtMarital" class="form-control textBoxborder" runat="server"></asp:TextBox>
-
-                            </div>
-                        </div>
-                        <div class="col-xs-1">
-                            <div class="col-xs-12">
-                               <asp:Label ID="lblFilenumber" runat="server" Text=""></asp:Label>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-md-12 Span-One">
-                            <div class="col-md-8">
-                                <div class="form-group">
-                   
-                                    <div class="col-md-12">
-                                          &nbsp
+                                <div class="col-md-12">
+                                    &nbsp
                  
-                                    </div>
                                 </div>
-                           
                             </div>
-                             <div class="col-md-4">           
-                                <div class="col-md-12">                 
-                                     &nbsp
-                                </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-md-12">
+                                &nbsp
                             </div>
                         </div>
-            </div>
-           
-            <div class="col-xs-4" style="height:350px;width:30%;" >
-                  
-                <table style="height:100%;width:100%;margin-left:0px; padding-left:0px;">
-                    <tr style="height:100%;width:100%;">
-                        <td style="height:100px;width:100%;">
-                           <div class="fileinputs">
-                               <input type="file" class="file" />
-	<div class="fakefile">
-		
-		<img src="../Images/UploadPic.png" style="width:60%;height:40%" />
-	</div>
+                    </div>
+                </div>
 
-</div>  
-                        </td>
-                        
-                    </tr>
-                    
+                <div class="col-xs-4" style="height: 350px; width: 30%;">
 
-                    <tr style="height:100%;width:100%;">
-                        <td style="height:100%;width:100%;">
-                               <div>
-                                <div class="input-group stylish-input-group">
-                                    <input type="text" class=" form-control" placeholder="Search" aria-haspopup="false" name="txtSearch" id="txtSearch" />
+                    <table style="height: 100%; width: 100%; margin-left: 0px; padding-left: 0px;">
+                        <tr style="height: 100%; width: 100%;">
+                            <td style="height: 100px; width: 100%;">
+                                <div class="fileinputs">
+                                    <input type="file" class="file" />
+                                    <div class="fakefile">
 
-                                    <span class="input-group-addon" style="height: 0%;">
-                                        <button type="submit" style="height: 0px;" runat="server" id="btnSearch" onserverclick="btnSearch_ServerClick1" formnovalidate>
-                                          
-                                            <img src="../Images/Search-WF.png" />
-                                        </button>
-                                    </span>
+                                        <img src="../Images/UploadPic.png" style="width: 60%; height: 40%" />
+                                    </div>
 
                                 </div>
+                            </td>
+
+                        </tr>
+
+
+                        <tr style="height: 100%; width: 100%;">
+                            <td style="height: 100%; width: 100%;">
+                                <div>
+                                    <div class="input-group stylish-input-group">
+                                        <input type="text" class=" form-control" placeholder="Search" aria-haspopup="false" name="txtSearch" id="txtSearch" />
+
+                                        <span class="input-group-addon" style="height: 0%;">
+                                            <button type="submit" style="height: 0px;" runat="server" id="btnSearch" onserverclick="btnSearch_ServerClick1" formnovalidate>
+
+                                                <img src="../Images/Search-WF.png" />
+                                            </button>
+                                        </span>
+
                                     </div>
-                        </td>
-                        
-                    </tr>
+                                </div>
+                            </td>
 
-                       <tr style="height:100%;width:100%;">
-                        <td style="height:100px;width:100%;">
-                                <a href="#" role="button" data-toggle="modal" data-target="#myModal" >View All Registrations </a>
-                        </td>
-                        
-                    </tr>
-                    <tr style="height:100%;width:100%;">
-                        <td style="height:100%;width:100%;">
-                              <a href="#" role="button" data-toggle="modal" data-target="#TodaysRegistration" >Todays Registrations</a>
-                        </td>
-                        
-                    </tr>
-                </table>
+                        </tr>
 
-              
+                        <tr style="height: 100%; width: 100%;">
+                            <td style="height: 100px; width: 100%;">
+                                <a href="#" role="button" data-toggle="modal" data-target="#myModal">View All Registrations </a>
+                            </td>
+
+                        </tr>
+                        <tr style="height: 100%; width: 100%;">
+                            <td style="height: 100%; width: 100%;">
+                                <a href="#" role="button" data-toggle="modal" data-target="#TodaysRegistration">Todays Registrations</a>
+                            </td>
+
+                        </tr>
+                    </table>
+
+
 
                 </div>
-          
-        </div>
-        <footer  class="footerDiv">
-         
+
+            </div>
+            <footer class="footerDiv">
+
 
                 <table style="width: 100%; height: 100%;">
                     <tr>
-                        <td class="footerMessagesColumn" style="width:50%; ">
-                            <div id="Errorbox"  style="height:100%;  display:none;"  runat="server" >
-                               <a class="close" data-dismiss="alert">×</a>  
+                        <td class="footerMessagesColumn" style="width: 50%;">
+                            <div id="Errorbox" style="height: 100%; display: none;" runat="server">
+                                <a class="close" data-dismiss="alert">×</a>
 
-                            <div>
-                            <strong> <asp:Label ID="lblErrorCaption" runat="server" Text=""></asp:Label> </strong>      <asp:Label ID="lblMsgges" runat="server" Text=""></asp:Label>
+                                <div>
+                                    <strong>
+                                        <asp:Label ID="lblErrorCaption" runat="server" Text=""></asp:Label>
+                                    </strong>
+                                    <asp:Label ID="lblMsgges" runat="server" Text=""></asp:Label>
 
-</div>
-       </div>                     
+                                </div>
+                            </div>
 
                         </td>
-                        <td style="height: 100%;   width:20%;">
-
-                        </td>
-                        <td style="height: 100%;   width:30%;" >
-                            <table class="footerTable" style="width:100%; margin-left:0px;padding-left:0px;padding-top:80%; margin-top:3%;  ">
+                        <td style="height: 100%; width: 20%;"></td>
+                        <td style="height: 100%; width: 30%;">
+                            <table class="footerTable" style="width: 100%; margin-left: 0px; padding-left: 0px; padding-top: 80%; margin-top: 3%;">
                                 <tr>
-                                    <td style="width:30%;">
-                                         <div class="form-group">
-                                        <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button  " OnClick="btnSave_Click" ValidationGroup="Submit" />
-</div>
+                                    <td style="width: 30%;">
+                                        <div class="form-group">
+                                            <asp:Button ID="btnSave" runat="server" Text="SAVE" type="submit" CssClass="button  " OnClick="btnSave_Click" ValidationGroup="Submit" />
+                                        </div>
                                     </td>
-                                    <td>
-                                       </td>
+                                    <td></td>
                                 </tr>
                             </table>
 
@@ -390,152 +389,148 @@ background-color: ghostwhite;
                 </table>
 
 
-            
-        </footer>
 
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog  modal-lg">
+            </footer>
 
-                <!-- Modal content-->
-                <div class="modal-content" >
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">View All Registrations</h4>
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog  modal-lg">
 
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">View All Registrations</h4>
+
+                        </div>
+                        <div class="modal-body">
+
+                            <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" Style="text-align: center; width: 100%;" CellPadding="4" ForeColor="#333333" GridLines="None" Height="30px">
+                                <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                                <Columns>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"|" + Eval("Name") + "|" + Eval("Address")+"|"+ Eval("Phone")+"|"+ Eval("Email")+"|"+Eval("DOB")+"|"+Eval("Gender")+"|"+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
+
+
+                                        </ItemTemplate>
+
+                                    </asp:TemplateField>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:ImageButton ID="ImgBtnDelete" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("PatientID")%>' OnClientClick="return confirm('Deletion Confirmation \n\n\n\n\ Are you sure you want to delete this item ?');" OnCommand="ImgBtnDelete_Command" formnovalidate />
+
+
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="Name" HeaderText="PATIENT NAME">
+                                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Address" HeaderText="ADDRESS">
+                                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Phone" HeaderText="PHONE">
+                                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Email" HeaderText="EMAIL">
+                                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                    </asp:BoundField>
+
+                                </Columns>
+                                <EditRowStyle HorizontalAlign="Center" BackColor="#0080AA"></EditRowStyle>
+
+                                <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
+
+                                <HeaderStyle BackColor="#001a00" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                                <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#2461BF"></PagerStyle>
+
+                                <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                                <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                                <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                                <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                                <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                            </asp:GridView>
+                        </div>
+
+                        <div class="modal-footer">
+                        </div>
                     </div>
-                    <div class="modal-body" >
-                        
-                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None" Height="30px">
-                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
-                            <Columns>
-                                <asp:TemplateField>
-                                    <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"|" + Eval("Name") + "|" + Eval("Address")+"|"+ Eval("Phone")+"|"+ Eval("Email")+"|"+Eval("DOB")+"|"+Eval("Gender")+"|"+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
-                                       
 
-                                    </ItemTemplate>
-                                    
-                                </asp:TemplateField>
-                                <asp:TemplateField>
-                                    <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnDelete" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("PatientID")%>' OnClientClick="return confirm('Deletion Confirmation \n\n\n\n\ Are you sure you want to delete this item ?');" OnCommand="ImgBtnDelete_Command" formnovalidate />
-                                       
-
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:BoundField DataField="Name" HeaderText="PATIENT NAME">
-                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
-                                </asp:BoundField>
-                                <asp:BoundField DataField="Address" HeaderText="ADDRESS">
-                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
-                                </asp:BoundField>
-                                <asp:BoundField DataField="Phone" HeaderText="PHONE">
-                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
-                                </asp:BoundField>
-                                <asp:BoundField DataField="Email" HeaderText="EMAIL">
-                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
-                                </asp:BoundField>
-
-                            </Columns>
-                            <EditRowStyle HorizontalAlign="Center" BackColor="#0080AA"></EditRowStyle>
-
-                            <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
-
-                            <HeaderStyle BackColor="#001a00" Font-Bold="True" ForeColor="White"></HeaderStyle>
-
-                            <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#2461BF"></PagerStyle>
-
-                            <RowStyle BackColor="#EFF3FB"></RowStyle>
-
-                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
-
-                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
-
-                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
-
-                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
-
-                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
-                        </asp:GridView>
-                            </div>
-                   
-                    <div class="modal-footer">
-                   
-
-                    </div>
                 </div>
-
             </div>
-        </div>
-        
-        <div class="modal fade" id="TodaysRegistration" role="dialog">
-            <div class="modal-dialog modal-lg">
 
-                <!-- Modal content-->
-                
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Todays Registrations</h4>
+            <div class="modal fade" id="TodaysRegistration" role="dialog">
+                <div class="modal-dialog modal-lg">
 
+                    <!-- Modal content-->
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Todays Registrations</h4>
+
+                        </div>
+                        <div class="modal-body">
+
+                            <asp:GridView ID="dtgViewTodaysRegistration" runat="server" AutoGenerateColumns="False" Style="text-align: center; width: 100%;" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                <AlternatingRowStyle BackColor="White" ForeColor="#284775"></AlternatingRowStyle>
+                                <Columns>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:ImageButton ID="ImgBtnUpdate1" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"|" + Eval("Name") + "|" + Eval("Address")+"|"+ Eval("Phone")+"|"+ Eval("Email")+"|"+Eval("DOB")+"|"+Eval("Gender")+"|"+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate1_Command" formnovalidate />
+
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:ImageButton ID="ImgBtnDelete1" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("PatientID")%>' OnClientClick="return confirm('Deletion Confirmation \n\n\n\n\ Are you sure you want to delete this item ?');" OnCommand="ImgBtnDelete1_Command" formnovalidate />
+
+
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="Name" HeaderText="Name"></asp:BoundField>
+                                    <asp:BoundField DataField="Address" HeaderText="Address"></asp:BoundField>
+                                    <asp:BoundField DataField="Phone" HeaderText="Phone"></asp:BoundField>
+                                    <asp:BoundField DataField="Email" HeaderText="Email"></asp:BoundField>
+
+                                </Columns>
+
+                                <EditRowStyle BackColor="#0080AA"></EditRowStyle>
+
+                                <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
+
+                                <HeaderStyle BackColor="#0080AA" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                                <PagerStyle HorizontalAlign="Center" BackColor="#284775" ForeColor="White"></PagerStyle>
+
+                                <RowStyle BackColor="#F7F6F3" ForeColor="#333333"></RowStyle>
+
+                                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                                <SortedAscendingCellStyle BackColor="#E9E7E2"></SortedAscendingCellStyle>
+
+                                <SortedAscendingHeaderStyle BackColor="#506C8C"></SortedAscendingHeaderStyle>
+
+                                <SortedDescendingCellStyle BackColor="#FFFDF8"></SortedDescendingCellStyle>
+
+                                <SortedDescendingHeaderStyle BackColor="#6F8DAE"></SortedDescendingHeaderStyle>
+                            </asp:GridView>
+
+                        </div>
+                        <div class="modal-footer">
+                        </div>
                     </div>
-                    <div class="modal-body">
-                     
-                        <asp:GridView ID="dtgViewTodaysRegistration" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None">
-                            <AlternatingRowStyle BackColor="White" ForeColor="#284775"></AlternatingRowStyle>
-                            <Columns>
-                                <asp:TemplateField>
-                                    <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnUpdate1" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"|" + Eval("Name") + "|" + Eval("Address")+"|"+ Eval("Phone")+"|"+ Eval("Email")+"|"+Eval("DOB")+"|"+Eval("Gender")+"|"+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate1_Command" formnovalidate />
-
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField>
-                                    <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnDelete1" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("PatientID")%>' OnClientClick="return confirm('Deletion Confirmation \n\n\n\n\ Are you sure you want to delete this item ?');" OnCommand="ImgBtnDelete1_Command" formnovalidate />
-                                       
-
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:BoundField DataField="Name" HeaderText="Name"></asp:BoundField>
-                                <asp:BoundField DataField="Address" HeaderText="Address"></asp:BoundField>
-                                <asp:BoundField DataField="Phone" HeaderText="Phone"></asp:BoundField>
-                                <asp:BoundField DataField="Email" HeaderText="Email"></asp:BoundField>
-                                
-                            </Columns>
-
-                            <EditRowStyle BackColor="#0080AA"></EditRowStyle>
-
-                            <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
-
-                            <HeaderStyle BackColor="#0080AA" Font-Bold="True" ForeColor="White"></HeaderStyle>
-
-                            <PagerStyle HorizontalAlign="Center" BackColor="#284775" ForeColor="White"></PagerStyle>
-
-                            <RowStyle BackColor="#F7F6F3" ForeColor="#333333"></RowStyle>
-
-                            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
-
-                            <SortedAscendingCellStyle BackColor="#E9E7E2"></SortedAscendingCellStyle>
-
-                            <SortedAscendingHeaderStyle BackColor="#506C8C"></SortedAscendingHeaderStyle>
-
-                            <SortedDescendingCellStyle BackColor="#FFFDF8"></SortedDescendingCellStyle>
-
-                            <SortedDescendingHeaderStyle BackColor="#6F8DAE"></SortedDescendingHeaderStyle>
-                        </asp:GridView>
-                        
-                    </div>
-                    <div class="modal-footer">
-                       
-
-                    </div>
+                    <asp:HiddenField ID="HiddenField1" runat="server" />
                 </div>
-                <asp:HiddenField ID="HiddenField1" runat="server" />
             </div>
-        </div>
 
-    </div>
-        </asp:Panel>
-    
+        </div>
+    </asp:Panel>
+
 </asp:Content>

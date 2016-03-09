@@ -24,7 +24,8 @@
             z-index:-1;
         }
     </style>
-     
+   
+
     <script src="Scripts/jquery-1.12.0.min.js"></script>
        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="Content/TheClinicApp.css" rel="stylesheet" />
@@ -57,8 +58,13 @@
           <button class="btn waves-effect waves-light" type="submit" name="action"  >Login
     <i class="material-icons right" >
         <img style="width:80%" src="Images/arrowR.png" /></i>
-  </button>
+         </button>
+
+       
      </div>  
+ <div style="text-align:right">
+        <a href="#">  Forgot Password? </a></div>
+
 
     </div>
 
