@@ -20,12 +20,14 @@ font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;
 background-color: ghostwhite;
  box-shadow:1px 1px 1px 1px #f3e6d8;
 }
-#DisplayNumber{
+#divDisplayNumber{
     background-color:ghostwhite;
    
 }
 .modal-lg1{
-    width:30%;
+    width:40%;
+    overflow-x:hidden;
+    overflow-y:hidden;
 }
     </style>
 
@@ -205,6 +207,34 @@ background-color: ghostwhite;
                     </div>
 
                 </div>
+                <%--<div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
+                        <div class="form-group">
+                            <label class="control-label col-xs-2 regFormLabels">Sex:</label>
+                             <div class="col-xs-10">
+                                 
+                                <section class="contents">
+	
+      <label class="label--checkbox" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;color:green;">
+          <input type="checkbox" class="checkbox" /> Male </label>
+   
+      <label class="label--checkbox" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;color:green;">
+          <input type="checkbox" class="checkbox" />
+           Female
+          </label>
+      
+</section>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-1">
+                            <div class="col-xs-12">
+                                &nbsp
+                            </div>
+                        </div>
+                    </div>
+
+                </div>--%>
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
@@ -286,11 +316,7 @@ background-color: ghostwhite;
 
                             </div>
                         </div>
-                        <div class="col-xs-1">
-                            <div class="col-xs-12">
-                               <asp:Label ID="lblFilenumber" runat="server" Text=""></asp:Label>
-                            </div>
-                        </div>
+                        
                     </div>
 
                 </div>
@@ -312,7 +338,15 @@ background-color: ghostwhite;
                                 </div>
                             </div>
                         </div>
-                <div class="col-md-12" id="DisplayNumber" style="display:none" runat="server">
+
+
+
+
+
+
+                <%----------------------------------------- Display token and file number--------------------------------------------------%>
+
+                <div class="col-md-12" id="divDisplayNumber" visible="false" style="font-size:20px" runat="server">
                     <table>
                         <tr>
                             <td>
@@ -450,15 +484,21 @@ background-color: ghostwhite;
                 <!-- Modal content-->
                 
                 <div class="modal-content" style="height:60%;overflow-y:no-display;">
-                    <div class="modal-header">
+                    <div class="modal-header" style="background-color:#00CC99">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Token Registration</h4>
+                        <h4 class="modal-title" style="font-size:20px;color:white">Token Registration</h4>
 
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" style="background-color:lightgoldenrodyellow;overflow-x:hidden;overflow-y:hidden;">
+                        <div class="col-md-12">
+                            Would You Like to Book A Token ?
+                        </div>
+                         <div class="col-md-12">
+                           <button type="button" class="close" data-dismiss="modal" style="color:green">>>>Skip</button>
+                        </div>
                         <div class="col-md-12">
                             
-                     <asp:Label Text="Select Doctor" Font-Size="Large" Font-Bold="true"  runat="server"></asp:Label>
+                     <asp:Label Text="Select Your Doctor" Font-Size="Large" Font-Bold="true"  runat="server"></asp:Label>
                             <asp:DropDownList ID="ddlDoctorName" Height="40%" Width="100%" runat="server"></asp:DropDownList>
                         </div>
                         <div class="col-md-12 Span-One">
@@ -567,25 +607,22 @@ background-color: ghostwhite;
                         </div>
                         
                     </div>
-                               
-                    <%--token gridview region --%>
-                    
 
-      </div>
+                        </div>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer" style="background-color:lightgoldenrodyellow">
                        <table class="footerTable" style="width:100%; margin-left:0px;padding-left:0px;padding-top:0%; margin-top:3%;  ">
                                 <tr>
                                     <td style="width:90%;">
                                          <div class="form-group">
-                                        <asp:Button ID="btntokenbooking" runat="server" Text="BOOK TOKEN"  type="submit" CssClass="button" OnClick="btntokenbooking_Click" ValidationGroup="Submit" />
+                                        <asp:Button ID="btntokenbooking" runat="server" Text="BOOK TOKEN"  type="submit" CssClass="button" OnClick="btntokenbooking_Click" BorderColor="DarkSeaGreen" BackColor="wheat" ValidationGroup="Submit" />
 </div>
                                     </td>
                                     <td>
                                        </td>
                                 </tr>
                             </table>
-
+                        ....
                     </div>
                 </div>
                 <asp:HiddenField ID="HiddenField2" runat="server" />
@@ -604,7 +641,7 @@ background-color: ghostwhite;
                     </div>
                     <div class="modal-body" >
                         
-                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None" Height="30px">
+                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None" Height="30px" AllowPaging="true" OnPageIndexChanging="dtgViewAllRegistration_PageIndexChanging" PageSize="10">
                             
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
