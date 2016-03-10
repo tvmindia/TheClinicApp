@@ -403,8 +403,8 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion InsertMedicines
 
-        #region Out_of_Stock_MedicineList
-        public DataSet OutofStockMedicines()
+        #region View_Out_of_Stock_MedicineList
+        public DataSet ViewOutofStockMedicines()
         {
 
             dbConnection dcon = null;
@@ -418,7 +418,10 @@ namespace TheClinicApp.ClinicDAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "[OutofStockMedicines]";
+                cmd.CommandText = "[ViewOutofStockMedicines]";
+
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
+
                 
                 sda = new SqlDataAdapter();
                 cmd.ExecuteNonQuery();
@@ -469,6 +472,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandText = "[SearchMedicineStock]";
 
                 cmd.Parameters.Add("@String", SqlDbType.NVarChar, 255).Value = String;
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
 
 
                 sda = new SqlDataAdapter();

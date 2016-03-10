@@ -213,9 +213,10 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[ViewReceiptHeaderDetails]";
 
-                //cmd.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = DoctorID;
-                //cmd.Parameters.Add("@DateTime", SqlDbType.DateTime).Value = DateTime;
-                //cmd.Parameters.Add("@DateTime", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd");
+
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
+
+               
 
                 sda = new SqlDataAdapter();
                 cmd.ExecuteNonQuery();
@@ -292,9 +293,9 @@ namespace TheClinicApp.ClinicDAL
 
 
         //Get Recipt Details by Passing Reference Number
-        #region GetReceiptDetails
+        #region GetReceiptDetailsByRefNo
 
-        public DataSet GetReceiptDetails(String RefNo1)
+        public DataSet GetReceiptDetailsByRefNo(String RefNo1)
         {
 
             dbConnection dcon = null;
@@ -308,8 +309,9 @@ namespace TheClinicApp.ClinicDAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "[GetReceiptDetails]";
+                cmd.CommandText = "[GetReceiptDetailsByRefNo]";
 
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
 
                 cmd.Parameters.Add("@RefNo1", SqlDbType.NVarChar, 255).Value = RefNo1;
 
@@ -343,7 +345,7 @@ namespace TheClinicApp.ClinicDAL
         }
 
 
-        #endregion GetReceiptDetails
+        #endregion GetReceiptDetailsByRefNo
 
         #endregion Methods
 
@@ -549,6 +551,9 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[ViewReceiptDetails]";
+
+
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
 
                
                 sda = new SqlDataAdapter();
