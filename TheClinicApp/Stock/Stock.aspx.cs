@@ -47,7 +47,8 @@ namespace TheClinicApp.Stock
 
         public void bindpageload()
         {
-
+            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+            stok.ClinicID = UA.ClinicID.ToString();
             //gridview binding for listing the Out of Stock Medicines 
             DataSet gds = stok.ViewOutofStockMedicines();
             GridViewOutofStock.EmptyDataText = "No Records Found";
