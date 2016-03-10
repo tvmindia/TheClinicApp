@@ -63,8 +63,8 @@
        
      </div>  
  <div style="text-align:right">
-        <a href="ForgotPassword.aspx">  Forgot Password? </a></div>
-
+        <a href="ForgotPassword.aspx" >  Forgot Password? </a></div>
+     <%--   <asp:HyperLink ID="hlkForgotPassword" runat="server" NavigateUrl="~/ForgotPassword.aspx">Forgot Password? </asp:HyperLink>--%>
 
     </div>
 
@@ -73,5 +73,6 @@
 
         </div>
         </form>
+    
 </body>
 </html>

@@ -391,6 +391,8 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion ValidateUsername
 
+//------------*Methods Used For Forgot Password Implementation *------------//
+
         #region Add verificationcode (Generated random number)
 
         public void AddVerificationCode()
@@ -492,6 +494,68 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion  Get User Verification Code By EmailID
 
+        #region Reset Password
+
+        public void ResetPassword()
+        {
+            dbConnection dcon = new dbConnection();
+
+            try
+            {
+                dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = dcon.SQLCon;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandText = "ResetPassword";
+
+                cmd.Parameters.Add("@LoginName", SqlDbType.NVarChar, 255).Value = loginName;
+                cmd.Parameters.Add("@Password", SqlDbType.NVarChar, 40).Value = passWord;
+               
+
+                SqlParameter Output = new SqlParameter();
+                Output.DbType = DbType.Int32;
+                Output.ParameterName = "@Status";
+                Output.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(Output);
+                cmd.ExecuteNonQuery();
+
+                if (Output.Value.ToString() == "")
+                {
+                    //not successfull   
+
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.UpdationNotSuccessMessage(page);
+
+                }
+                else
+                {
+                    //successfull
+
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.UpdationSuccessMessage(page);
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
+
+            }
+
+            finally
+            {
+                if (dcon.SQLCon != null)
+                {
+                    dcon.DisconectDB();
+                }
+
+            }
+        }
+
+        #endregion  Reset Password
 
         #endregion Methods
 

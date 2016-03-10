@@ -10,5 +10,6 @@
 
     <asp:Button ID="btnVerify" runat="server" Text="Click Me" OnClick="btnVerify_Click" />
 
+    <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
 
 </asp:Content>

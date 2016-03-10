@@ -34,6 +34,7 @@ namespace TheClinicApp
 
         #endregion Global Variables
 
+        #region Page Load
         protected void Page_Load(object sender, EventArgs e)
         {
 //----------*Add verification code*------------//
@@ -47,12 +48,17 @@ namespace TheClinicApp
 
         }
 
+        #endregion Page Load
+
+        #region Verify Button Click
         protected void btnVerify_Click(object sender, EventArgs e)
         {
  //----------*Get verification code*------------//
             userObj.Email = txtEmail.Text;
             DataTable dtCode = userObj.GetUserVerificationCodeByEmailID();
             int verificationCode = Convert.ToInt32(dtCode.Rows[0]["VerificationCode"]);
+            DateTime vcCreatedTime = Convert.ToDateTime(dtCode.Rows[0]["VerificatinCreatedTime"]);
+            DateTime CurrentTime = DateTime.Now;
 
             MailMessage Msg = new MailMessage();
             // Sender e-mail address.
@@ -76,6 +82,26 @@ namespace TheClinicApp
             smtp.Send(Msg);
             Msg = null;
 
+
+           if(  (CurrentTime - vcCreatedTime) < TimeSpan.FromDays(1)     )
+           {
+               if (verificationCode.ToString() == txtVerificationCode.Text)
+               {
+                   Response.Redirect("ResetPassword.aspx");
+               }
+               else
+               {
+                   lblError.Text = "Verification Code is not correct"; 
+               }
+
+           }
+           else
+           {
+               lblError.Text = "Time expired";
+           }
+
         }
+
+        #endregion  Verify Button Click
     }
 }

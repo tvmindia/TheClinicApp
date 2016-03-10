@@ -17,5 +17,7 @@
 
     </asp:TextBox>
 
-    <asp:Button ID="btnReset" runat="server" Text="Reset" />
+    <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" />
+
+    <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
 </asp:Content>
