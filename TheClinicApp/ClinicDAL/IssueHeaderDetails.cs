@@ -195,7 +195,8 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[ViewIssueHeaderDetails]";
 
-               
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
+
 
                 sda = new SqlDataAdapter();
                 cmd.ExecuteNonQuery();
@@ -280,9 +281,9 @@ namespace TheClinicApp.ClinicDAL
 
         //Get Issue Details by Passing Issue Number
 
-        #region GetIssueDetails
+        #region GetIssueDetailsByIssueNO
 
-        public DataSet GetIssueDetails(String IssueNO)
+        public DataSet GetIssueDetailsByIssueNO(String IssueNO)
         {
 
             dbConnection dcon = null;
@@ -296,10 +297,11 @@ namespace TheClinicApp.ClinicDAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "[GetIssueDetails]";
+                cmd.CommandText = "[GetIssueDetailsByIssueNO]";
 
 
                 cmd.Parameters.Add("@IssueNO", SqlDbType.NVarChar, 255).Value = IssueNO;
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
 
 
                 sda = new SqlDataAdapter();
@@ -331,7 +333,7 @@ namespace TheClinicApp.ClinicDAL
         }
 
 
-        #endregion GetIssueDetails
+        #endregion GetIssueDetailsByIssueNO
 
 
 
@@ -530,7 +532,8 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[ViewIssueDetails]";
 
-               
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
+
 
                 sda = new SqlDataAdapter();
                 cmd.ExecuteNonQuery();

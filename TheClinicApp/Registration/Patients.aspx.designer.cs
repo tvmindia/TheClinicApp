@@ -76,22 +76,13 @@ namespace TheClinicApp.Registration {
         protected global::System.Web.UI.WebControls.TextBox txtMarital;
         
         /// <summary>
-        /// lblFilenumber control.
+        /// divDisplayNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFilenumber;
-        
-        /// <summary>
-        /// DisplayNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DisplayNumber;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDisplayNumber;
         
         /// <summary>
         /// lblDisplayFileNumber control.

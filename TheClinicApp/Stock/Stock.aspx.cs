@@ -49,7 +49,7 @@ namespace TheClinicApp.Stock
         {
 
             //gridview binding for listing the Out of Stock Medicines 
-            DataSet gds = stok.OutofStockMedicines();
+            DataSet gds = stok.ViewOutofStockMedicines();
             GridViewOutofStock.EmptyDataText = "No Records Found";
             GridViewOutofStock.DataSource = gds;
             GridViewOutofStock.DataBind();

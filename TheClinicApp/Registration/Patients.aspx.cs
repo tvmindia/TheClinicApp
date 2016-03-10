@@ -67,7 +67,7 @@ namespace TheClinicApp.Registration
             gridDataBind();
             
       
-            lblFilenumber.Text = PatientObj.FileNumber;
+            lblFileCount.Text = PatientObj.FileNumber;
             lblFile.Text = PatientObj.FileNumber;
             lblName.Text = txtName.Text;
             lblAge.Text = txtAge.Text;
@@ -168,7 +168,7 @@ namespace TheClinicApp.Registration
             string[] Patient = e.CommandArgument.ToString().Split(new char[] { '|' });
             Guid PatientID = Guid.Parse(Patient[0]);
             txtName.Text = Patient[1];
-            txtSex.Text = Patient[6];
+            //txtSex.Text = Patient[6];
             DateTime dt = Convert.ToDateTime(Patient[5]);
             int Age = year - dt.Year;
             txtAge.Text = Age.ToString();
@@ -267,16 +267,25 @@ namespace TheClinicApp.Registration
 
             int tokenNo = tok.InsertToken();
 
-            lblToken.Text = "Token No: " + tokenNo.ToString();
+            lblTokencount.Text = "Token No: " + tokenNo.ToString();
             lblToken.Visible = true;
+            divDisplayNumber.Visible = true;
         }
 
         protected void btnnew_Click(object sender, EventArgs e)
         {
             ClearFields();
             btnnew.Visible = false;
+            divDisplayNumber.Visible = false;
         }
 
+        protected void dtgViewAllRegistration_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dtgViewAllRegistration.PageIndex = e.NewPageIndex;
+            dtgViewAllRegistration.DataBind();
+        }
+
+       
         
     }
   
