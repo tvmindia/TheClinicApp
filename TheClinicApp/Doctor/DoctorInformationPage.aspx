@@ -13,20 +13,112 @@
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/jquery.js"></script>
-    <div class="container-fluid">
-        <style>
+    <script>   
+        $(document).ready(function () {
+
+            var iCnt = 0;
+            // CREATE A "DIV" ELEMENT AND DESIGN IT USING JQUERY ".css()" CLASS.
+            var container = $(document.createElement('div')).css({
+                width:'100%',
+                borderTopColor: '#999', borderBottomColor: '#999',
+                borderLeftColor: '#999', borderRightColor: '#999'
+            });
+
+
+            $('body').on('click', '#btAdd', function () {
+                      
+                if (iCnt <= 19) {
+                    iCnt = iCnt + 1;
+                          <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');
+                          count.value=iCnt;--%>
+                    // ADD TEXTBOX.
+                    $(container).append('<table style="width:50%"><tr><td><input id="txtMedname5" type="text" class="input" placeholder="Medicine"/></td><td><input id="txtMedname5" type="text" class="input" placeholder="Timmings"/></td><td><input id="txtMeddoz5" type="text" class="input" placeholder="Dozage"/></td><td><input id="txtMedDays5" type="text" class="input" placeholder="Days"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
+
+                    // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
+                    if (iCnt == 1) {
+                        var divSubmit = $(document.createElement('div'));
+                        $(divSubmit).append('<input type=button class="bt" onclick="GetTextValue()"' + 'id=btSubmit value=Submit />');
+                    }
+                    // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
+                          
+                    $('#main').after(container, divSubmit);
+                          
+                }
+
+                    // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
+                    // (20 IS THE LIMIT WE HAVE SET)
+                else {
+                    $(container).append('<label>Reached the limit</label>');
+                    $('#btAdd').attr('class', 'bt-disable');
+                    $('#btAdd').attr('disabled', 'disabled');
+                }
+             
+            });
+        });
+
+            
+
+        // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
+        var divValue, values = '';
+
+        function GetTextValue() {
+            $(divValue)
+                .empty()
+                .remove();
+
+            values = '';
+
+            $('.input').each(function () {
+                divValue = $(document.createElement('div')).css({
+                    padding: '5px', width: '200px'
+                });
+
+
+                var datas = document.getElementById('<%=HiddenField1.ClientID%>');
+
+                    values += this.value + ' ';
+
+                    datas.value = values;
+                      
+
+
+
+                });
+
+
+
+
+            }
+              
+          
+                  
+</script>
+    <script>
+        $(document).ready(function () {
+            debugger;
+            var ac=null;
+            ac = <%=listFilter %>;
+            $( "#txtSearch" ).autocomplete({
+                source: ac
+            });
+        });
+         </script>
+
+       <style>
              input[type="text"] {
     width: 125px;
     box-shadow: 1px 1px 1px 1px #347300;
 }
         </style>
-   <div class="headingLabel">
+
+    <div class="container-fluid">
+        <div class="headingLabel">
          <label class="headingLabel" style="text-align:center">Doctors</label>
          </div>
   </div>
 
   
-<div class="container text-center"> 
+<div class="container text-center bodyDiv"> 
     <div class="row">
         <div class="col-sm-7 bad">
             <div class="row">
@@ -141,6 +233,7 @@
 
                                          <td>
                                  <img src="../Images/UploadPic.png" / width="75px" height="80px" style="box-shadow:initial"/>
+                                             <asp:HiddenField ID="HiddenField1" runat="server" />
                             </td>
                                          </tr>
 
@@ -157,8 +250,19 @@
            <div class="content">
                <ul class="accordion-menu">
                    <li class="closed">
-                       <header onclick="toggle(this.parentNode)"><span class="title">Symptoms</span></header>
+                       <header onclick="toggle(this.parentNode)"><span class="title">Personal Details</span></header>
                        <section class="content">
+                            <label  class="control-label col-lg-3">Height</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtHeight" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+
+                           </div>
+                           <label  class="control-label col-lg-3">Weight</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtWeight" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+
+                           </div>
+
                            <div class="form-group">
                                <label  class="control-label col-lg-3">Symptoms</label>
                                <div class="col-lg-9">
@@ -167,24 +271,35 @@
                                </div>
 
                            </div>
+                           <label  class="control-label col-lg-3">Bowel</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtBowel" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
-                       </section>
+                           </div>
+                           <label  class="control-label col-lg-3">Appettie</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtAppettie" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
-                   </li>
-                   <li class="closed">
-                       <header onclick="toggle(this.parentNode)"><span class="title">General Examination Details</span></header>
-                       <section class="content">
+                           </div>
+                           <label  class="control-label col-lg-3">Micturation</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtMicturation" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+
+                           </div>
                            <label  class="control-label col-lg-3">Sleep</label>
                            <div class="col-lg-9">
-                               <asp:TextBox ID="txtSleep" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ></asp:TextBox>
+                               <asp:TextBox ID="txtSleep" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
                            </div>
 
                        </section>
 
                    </li>
+               
+
+                  
                    <li class="closed">
-                       <header onclick="toggle(this.parentNode)"><span class="title">Systamatic Examination Details</span></header>
+                       <header onclick="toggle(this.parentNode)"><span class="title">Systematic Examination Details</span></header>
                        <section class="content">
                            <label  class="control-label col-lg-3">Cardiovascular</label>
                            <div class="col-lg-9">
@@ -201,7 +316,15 @@
                                <asp:TextBox ID="txtMusculoskeletal" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
                            </div>
-                           <label  class="control-label col-lg-3">Palloe</label>
+                         
+                
+</section>
+</li>
+<li class="closed">
+<header onclick="toggle(this.parentNode)"><span class="title">General Examination Details</span></header>
+<section class="content">
+
+                 <label  class="control-label col-lg-3">Palloe</label>
                            <div class="col-lg-9">
                                <asp:TextBox ID="txtPalloe" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
@@ -219,46 +342,62 @@
                            <label  class="control-label col-lg-3">Cyanasis </label>
                             <div class="col-lg-9">
                                 <asp:TextBox ID="txtCyanasis" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-             
-
-                </div>
-                 <label  class="control-label col-lg-3">Bowel
-                  </label>
-                <div class="col-lg-9">
-                                <asp:TextBox ID="txtBowel" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-             
-
-                </div>
-                    <label  class="control-label col-lg-3">Appettie </label>
-                <div class="col-lg-9">
-                                <asp:TextBox ID="txtAppettie" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-             
-
-                </div>
-                <label  class="control-label col-lg-3">Micturation
-                  </label>
-                <div class="col-lg-9">
-                                <asp:TextBox ID="txtMicturation" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-             
-
-                </div>
-       
-</section>
-</li>
-<li class="closed">
-<header onclick="toggle(this.parentNode)"><span class="title">Ayurvedic parameters</span></header>
-<section class="content">
-
-               <label  class="control-label col-lg-3">Sleep
-                  </label>
-                <div class="col-lg-9">
-                                <asp:TextBox ID="txtSleepAyur" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-             
-
-                </div>
+                           </div>
+                            <label  class="control-label col-lg-3">Lymph Nodes </label>
+                            <div class="col-lg-9">
+                                <asp:TextBox ID="txtLymph" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                           </div>
+                            <label  class="control-label col-lg-3">Edima </label>
+                            <div class="col-lg-9">
+                                <asp:TextBox ID="txtEdima" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                           </div>
     </section>
 
           </li>
+                   <li class="closed">
+<header onclick="toggle(this.parentNode)"><span class="title">Clinical Data</span></header>
+<section class="content">
+   
+                        <label  class="control-label col-lg-3">Pulse</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtPulse" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+
+                           </div>  
+                        <label  class="control-label col-lg-3">Blood Pressur</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtBp" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+
+                           </div>  
+                        <label  class="control-label col-lg-3">Tounge</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtTounge" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+
+                           </div>   
+                         <label  class="control-label col-lg-3">Heart</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtHeart" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+
+                           </div>  
+                         <label  class="control-label col-lg-3">Lymphnodes</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtLymphnodes" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+
+                           </div>
+                         <label  class="control-label col-lg-3">Respiration Rate</label>
+                           <div class="col-lg-9">
+                               <asp:TextBox ID="txtRespRate" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+
+                           </div>
+                            <div class="form-group">
+                               <label  class="control-label col-lg-3">Others</label>
+                               <div class="col-lg-9">
+                                   <asp:TextBox ID="txtOthers" class="form-control " TextMode="multiline"  Height="100"  Width="100%" runat="server" required ></asp:TextBox>
+
+                               </div>
+
+                           </div>
+</section>
+</li>
 <li class="closed">
 <header onclick="toggle(this.parentNode)"><span class="title">diagnosis</span></header>
 <section class="content">
@@ -266,14 +405,29 @@
                <label  class="control-label col-lg-3">diagnosis
                   </label>
                 <div class="col-lg-9">
-                                <asp:TextBox ID="txtdiagnosis" class="form-control " TextMode="multiline"  Height="100"  Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-                                
+                  <asp:TextBox ID="txtdiagnosis" class="form-control " TextMode="multiline"  Height="100"  Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                  </div>        
+</section>
+</li>
+                   <li class="closed">
+<header onclick="toggle(this.parentNode)"><span class="title">Remarks </span></header>
+<section class="content">
 
+        
+              <div class="form-group">
+                <label  class="control-label col-lg-3">Remarks
+                  </label>
+                <div class="col-lg-9">
+                                <asp:TextBox ID="txtRemarks" class="form-control " TextMode="multiline"  Height="100"  Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
              
 
                 </div>
-
+              </div>
         
+            
+            
+            
+      
 </section>
 </li>
 <li class="closed">
@@ -288,63 +442,35 @@
                                         <td style="text-align:center;font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"><asp:Label ID="Label1" runat="server" Text="Medicine"></asp:Label></td><td style="text-align:center"><asp:Label ID="Label2" runat="server" Text="Timing"></asp:Label></td><td style="text-align:center"><asp:Label ID="Label3" runat="server" Text="Dozage"></asp:Label></td><td style="text-align:center"><asp:Label ID="Label4" runat="server" Text="Days"></asp:Label></td>
                                     </tr>
             <tr>
-                <td style="font-size: small" ><input id="Text1" type="text" placeholder="Medicine" runat="server"  class="dynamicTd"/></td><td><input id="txtMedname1" class="dynamicTd" type="text"  placeholder="Timing" runat="server"  /></td><td><input id="txtMeddoz1" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="txtMedprescription1" type="text" placeholder="Days" runat="server" class="dynamicTd" /></td>
+                <td ><input id="Text1" type="text" placeholder="Medicine" class="input"/></td><td><input id="txtMedname1" class="input" type="text"  placeholder="Timing" /></td><td><input id="txtMeddoz1" type="text" placeholder="Dozage" class="input"/></td><td ><input id="txtMedprescription1" type="text" placeholder="Days" class="input" /></td>
             </tr>
             <tr>
-                <td style="font-size: small" ><input id="Text2" type="text" placeholder="Medicine" runat="server" class="dynamicTd" /></td><td ><input id="txtMedname2" class="dynamicTd" type="text" placeholder="Timing" runat="server" /></td><td ><input id="txtMeddoz2" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="txtMedprescription2" type="text" placeholder="Days" runat="server" class="dynamicTd"/></td>
+                <td><input id="Text2" type="text" placeholder="Medicine" class="input" /></td><td ><input id="txtMedname2" class="input" type="text" placeholder="Timing" /></td><td ><input id="txtMeddoz2" type="text" placeholder="Dozage" class="input"/></td><td ><input id="txtMedprescription2" type="text" placeholder="Days" class="input"/></td>
             </tr>
             <tr>
-                <td style="font-size: small"><input id="Text3" type="text" placeholder="Medicine" runat="server" class="dynamicTd" /></td><td ><input id="txtMedname3" class="dynamicTd" type="text" placeholder="Timing" runat="server" /></td><td ><input id="txtMeddoz3" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="txtMedprescription3" type="text" placeholder="Days" runat="server" class="dynamicTd"/></td>
+                <td><input id="Text3" type="text" placeholder="Medicine" class="input" /></td><td ><input id="txtMedname3" class="input" type="text" placeholder="Timing" /></td><td ><input id="txtMeddoz3" type="text" placeholder="Dozage" class="input"/></td><td ><input id="txtMedprescription3" type="text" placeholder="Days" class="input"/></td>
             </tr>
             <tr>
-                <td style="font-size: small" ><input id="Text4" type="text" placeholder="Medicine" runat="server"  class="dynamicTd"/></td><td ><input id="txtMedname4" class="dynamicTd" type="text" placeholder="Timing" runat="server" /></td><td ><input id="txtMeddoz4" type="text" placeholder="Dozage" runat="server" class="dynamicTd"/></td><td ><input id="txtMedprescription4" type="text" placeholder="Days" runat="server" class="dynamicTd"/></td><td>
+                <td ><input id="Text4" type="text" placeholder="Medicine" class="input"/></td><td ><input id="txtMedname4" class="input" type="text" placeholder="Timing" /></td><td ><input id="txtMeddoz4" type="text" placeholder="Dozage" class="input"/></td><td ><input id="txtMedprescription4" type="text" placeholder="Days" class="input"/></td><td>
         
-     <span class="auto-style4">
+<%--     <span class="auto-style4" />--%>
      <input type="button" id="btAdd" onclick="this.style.visibility = 'hidden';" value="+" class="bt" />
          
          </td>
             </tr>
             
-    </table>  
-             
-                      <div id="main">
-                          </div>
+    </table>
+    <div id="main">
+
+    </div>
+
                 </div>
 
          
 </section>
 </li>
-<li class="closed">
-<header onclick="toggle(this.parentNode)"><span class="title">Remarks </span></header>
-<section class="content">
 
-            <form role="form" class="form-horizontal">
-              <div class="form-group">
-                <label  class="control-label col-lg-3">Remarks
-                  </label>
-                <div class="col-lg-9">
-                                <asp:TextBox ID="txtRemarks" class="form-control " TextMode="multiline"  Height="100"  Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
-             
 
-                </div>
-              </div>
-            </form>
-            
-            
-            
-      
-</section>
-</li>
-<li class="closed">
-<header onclick="toggle(this.parentNode)"><span class="title">File Attachment</span></header>
-<section class="content">
-   
-            
-            
-            
-      
-</section>
-</li>
 </ul>
           </div>
     </div>
@@ -387,30 +513,40 @@
       <div id="div1" class="list-group leftSideBar1"> 
           <span class="list-group-item active">
                               PATIENT LIST TODAY </span>
-                          <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False" CssClass="footable" Style="max-width: 500px" DataKeyNames="UniqueId" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
-            <Columns>
-                <asp:BoundField HeaderText="Token No" DataField="TokenNo" />
-                <asp:BoundField HeaderText="Patient Name" DataField="Name" />
+          <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False" CssClass="footable" Style="max-width: 500px" DataKeyNames="UniqueId" CellPadding="4" GridLines="None" ForeColor="#333333">
+              <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+              <Columns>
+                  <asp:BoundField HeaderText="Token No" DataField="TokenNo" />
+                  <asp:BoundField HeaderText="Patient Name" DataField="Name" />
 
-            </Columns>
+                  <asp:TemplateField>
+                      <ItemTemplate>
+                          <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")%>' OnCommand="ImgBtnUpdate_Command1" formnovalidate />
 
-            <FooterStyle BackColor="White" ForeColor="#333333"></FooterStyle>
 
-            <HeaderStyle BackColor="#336666" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                      </ItemTemplate>
+                  </asp:TemplateField>
+              </Columns>
 
-            <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#336666"></PagerStyle>
+              <EditRowStyle BackColor="#2461BF"></EditRowStyle>
 
-            <RowStyle BackColor="White" ForeColor="#333333"></RowStyle>
+              <FooterStyle BackColor="#507CD1" ForeColor="White" Font-Bold="True"></FooterStyle>
 
-            <SelectedRowStyle BackColor="#339966" Font-Bold="True" ForeColor="White"></SelectedRowStyle>
+              <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
 
-            <SortedAscendingCellStyle BackColor="#F7F7F7"></SortedAscendingCellStyle>
+              <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#2461BF"></PagerStyle>
 
-            <SortedAscendingHeaderStyle BackColor="#487575"></SortedAscendingHeaderStyle>
+              <RowStyle BackColor="#EFF3FB"></RowStyle>
 
-            <SortedDescendingCellStyle BackColor="#E5E5E5"></SortedDescendingCellStyle>
+              <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
 
-            <SortedDescendingHeaderStyle BackColor="#275353"></SortedDescendingHeaderStyle>
+              <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+              <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+              <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+              <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                         </asp:GridView>
                      </div>
 
@@ -584,21 +720,7 @@
             }
             
         });
-       //$("#flip").click(function () {
-       //     $(".col-sm-7").animate({
-       //         width: "95%"
-       //     }, 1000); // how long the animation should be
-       //});
-       //$("#flip1").click(function () {
-       //    $(".col-sm-7").animate({
-       //        width: "75%"
-       //    }, 1000); // how long the animation should be
-       //});
-        //$("#flip").click(function () {
-        //    $(".col-sm-7").animate({ width: '100%' }, 1000)
-        //}, function () {
-        //    $(".col-sm-7").animate({ width: '75%' }, 1000)
-        //});
+      
 
     </script>
     

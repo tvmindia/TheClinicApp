@@ -552,6 +552,9 @@ namespace TheClinicApp.ClinicDAL
                 get;
                 set;
             }
+            /// <summary>
+            /// Systematic Examination
+            /// </summary>
             public string Nervoussystem
             {
                 get;
