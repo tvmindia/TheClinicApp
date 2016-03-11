@@ -421,11 +421,11 @@ background-color: ghostwhite;
                     </tr>
                      <tr style="height:100%;width:100%;">
                         <td style="height:50px;width:100%;">
-                              <a href="#" role="button" data-toggle="modal" data-target="#TokenRegistration" >Register Token !</a>
+                              <a href="#" role="button" data-toggle="modal" data-target="#TokenRegistration" data-transition="flow" >Register Token !</a>
                         </td>
                         
                     </tr>
-                      <%--<tr style="height:100%;width:100%;">
+                     <%-- <tr style="height:100%;width:100%;">
                         <td style="height:50px;width:100%;">
                               <a href="#" role="button" data-toggle="modal" data-target="#myModal1" >Register Token !</a>
                         </td>
@@ -717,7 +717,7 @@ background-color: ghostwhite;
             </div>
         </div>
 
-       <%-- <div class="modal fade" id="myModal1" role="dialog">
+   <%--    <div class="modal fade" id="myModal1" role="dialog">
             <div class="modal-dialog  modal-lg">
 
                 <!-- Modal content-->

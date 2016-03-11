@@ -89,7 +89,9 @@ namespace TheClinicApp.Registration
             dtgViewAllRegistration.DataSource = Patientobj.GetAllRegistration();
             dtgViewAllRegistration.DataBind();
             #endregion GridAllRegistration
-           
+            //GridView1.EmptyDataText = "No Records Found";
+            //GridView1.DataSource = Patientobj.GetAllRegistration();
+            //GridView1.DataBind();
             listFilter = null;
             listFilter = BindName();
             #region GridDateRegistration
