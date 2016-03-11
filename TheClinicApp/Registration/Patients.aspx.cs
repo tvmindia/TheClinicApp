@@ -15,7 +15,7 @@ namespace TheClinicApp.Registration
     public partial class Patients : System.Web.UI.Page
     {
         //login details
-
+       
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
         TokensBooking tok = new TokensBooking();
@@ -54,14 +54,14 @@ namespace TheClinicApp.Registration
                 PatientObj.AddPatientDetails();
                 PatientObj.AddFile();
                 
-                var page = HttpContext.Current.CurrentHandler as Page;
+                ////var page = HttpContext.Current.CurrentHandler as Page;
                 
             }
             else if(btnSave.Text=="Update")
             {
                 PatientObj.PatientID = Guid.Parse(HiddenField1.Value);
                 PatientObj.UpdatePatientDetails();
-                var page = HttpContext.Current.CurrentHandler as Page;
+                //var page = HttpContext.Current.CurrentHandler as Page;
                 
             }
             gridDataBind();
@@ -89,7 +89,7 @@ namespace TheClinicApp.Registration
             dtgViewAllRegistration.DataSource = Patientobj.GetAllRegistration();
             dtgViewAllRegistration.DataBind();
             #endregion GridAllRegistration
-
+           
             listFilter = null;
             listFilter = BindName();
             #region GridDateRegistration
@@ -285,6 +285,7 @@ namespace TheClinicApp.Registration
             dtgViewAllRegistration.DataBind();
         }
 
+        
        
         
     }
