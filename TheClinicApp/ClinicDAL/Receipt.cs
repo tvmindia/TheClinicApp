@@ -105,7 +105,8 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@RefNo1", SqlDbType.NVarChar, 255).Value = RefNo1;
                 cmd.Parameters.Add("@RefNo2", SqlDbType.NVarChar, 255).Value = RefNo2;
                 cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value = Date;         
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;  
+                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
+            
                 cmd.ExecuteNonQuery();
 
             }

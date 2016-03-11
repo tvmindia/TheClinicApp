@@ -70,9 +70,25 @@ namespace TheClinicApp.ClinicDAL
             get;
             set;
         }
+
+
+        public string IssueNO
+        {
+            get;
+            set;
+        }
+
+
+
         #endregion Property
 
         #region Methods 
+
+
+   
+
+
+
 
         #region InsertIssueHeader
         public void InsertIssueHeader()
@@ -94,7 +110,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@IssuedTo", SqlDbType.NVarChar, 255).Value = IssuedTo;
                 cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value = Date;
-   
+                cmd.Parameters.Add("@IssueNO", SqlDbType.NVarChar, 50).Value = IssueNO; 
                cmd.Parameters.Add("@PrescID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(PrescID);
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
               
