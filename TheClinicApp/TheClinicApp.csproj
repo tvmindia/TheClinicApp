@@ -153,12 +153,16 @@
     <Content Include="Images\calendar4.png" />
     <Content Include="Images\Check.png" />
     <Content Include="Images\Close1.png" />
+    <Content Include="Images\first.gif" />
+    <Content Include="Images\last.gif" />
     <Content Include="Images\Menu-01-WF.png" />
     <Content Include="Images\Minus.png" />
     <Content Include="Images\navigate-left-icon.png" />
     <Content Include="Images\navigate-right-icon.png" />
     <Content Include="Images\newClose.png" />
+    <Content Include="Images\next.gif" />
     <Content Include="Images\plus.png" />
+    <Content Include="Images\prev.gif" />
     <Content Include="Images\select.png" />
     <Content Include="Images\Sync-WF.png" />
     <Content Include="Pharmacy\Pharmacy.aspx" />
@@ -218,8 +222,10 @@
     <Content Include="Scripts\DeletionConfirmation.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-1.12.0.min.js" />
+    <Content Include="Scripts\jquery-1.3.2.min.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.tablePagination.0.1.js" />
     <Content Include="Scripts\mui-angular.js" />
     <Content Include="Scripts\mui-angular.min.js" />
     <Content Include="Scripts\mui-combined.js" />
