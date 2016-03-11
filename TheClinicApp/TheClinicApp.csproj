@@ -132,6 +132,7 @@
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Admin\AssignRoles.aspx" />
     <Content Include="Admin\User.aspx" />
+    <Content Include="AutofillGrid.aspx" />
     <Content Include="Content\accodin.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -342,6 +343,13 @@
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AutofillGrid.aspx.cs">
+      <DependentUpon>AutofillGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AutofillGrid.aspx.designer.cs">
+      <DependentUpon>AutofillGrid.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ClinicDAL\CaseSheet.cs" />
     <Compile Include="ClinicDAL\Clinic.cs" />
     <Compile Include="ClinicDAL\common.cs" />

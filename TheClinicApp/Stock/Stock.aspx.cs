@@ -23,7 +23,7 @@ namespace TheClinicApp.Stock
         public string listFilter = null;
        
         Receipt rpt = new Receipt();
-        ReceiptDetails rptdt = new ReceiptDetails();
+      
 
 
         //login details
@@ -152,9 +152,11 @@ namespace TheClinicApp.Stock
             rpt.Date = Convert.ToDateTime(txtDate.Text);
             rpt.ClinicID = UA.ClinicID.ToString();
             rpt.CreatedBy = UA.userName;
-            
-            //Receipt Details
+            rpt.InsertReceiptHeader();
 
+            //Receipt Details MUST BE IN LOOP
+
+            ReceiptDetails rptdt = new ReceiptDetails();
             rptdt.QTY = Convert.ToInt32(txtQty.Text);
             rptdt.Unit = txtUnit.Text;
         
@@ -164,7 +166,7 @@ namespace TheClinicApp.Stock
             rptdt.CreatedBy =UA.userName;
 
             //Calling insert functions
-            rpt.InsertReceiptHeaderDetails();
+           
 
 
 
