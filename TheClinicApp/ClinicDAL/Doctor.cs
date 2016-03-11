@@ -55,7 +55,7 @@ namespace TheClinicApp.ClinicDAL
         //}
 
         //#endregion PrescriptionProperty
-                 
+
         #region ViewAllRegistration
         /// <summary>
         /// ***********
@@ -508,46 +508,6 @@ namespace TheClinicApp.ClinicDAL
                 get;
                 set;
             }
-            public string Symptoms
-            {
-                get;
-                set;
-            }
-            public string Cardiovascular
-            {
-                get;
-                set;
-            }
-            public string Nervoussystem
-            {
-                get;
-                set;
-            }
-            public string Musculoskeletal
-            {
-                get;
-                set;
-            }
-            public string Palloe
-            {
-                get;
-                set;
-            }
-            public string Icterus
-            {
-                get;
-                set;
-            }
-            public string Clubbing
-            {
-                get;
-                set;
-            }
-            public string Cyanasis
-            {
-                get;
-                set;
-            }
             public string Bowel
             {
                 get;
@@ -568,12 +528,108 @@ namespace TheClinicApp.ClinicDAL
                 get;
                 set;
             }
+            public string Cardiovascular
+            {
+                get;
+                set;
+            }
+            public string Nervoussystem
+            {
+                get;
+                set;
+            }
+            
+            public string Musculoskeletal
+            {
+                get;
+                set;
+            }
+            /// <summary>
+            /// General examination
+            /// </summary>
+            public string Palloe
+            {
+                get;
+                set;
+            }
+            public string Icterus
+            {
+                get;
+                set;
+            }
+            public string Clubbing
+            {
+                get;
+                set;
+            }
+            public string Cyanasis
+            {
+                get;
+                set;
+            }
+            public string LymphGen
+            {
+                get;
+                set;
+            }
+            public string Edima
+            {
+                get;
+                set;
+            }
+            /// <summary>
+            /// Daignosys
+            /// </summary>
+           
             public string Diagnosys
             {
                 get;
                 set;
             }
+            /// <summary>
+            /// Remarks
+            /// </summary>
+            /// 
             public string Remarks
+            {
+                get;
+                set;
+            }
+            /// <summary>
+            /// Clinical Needs
+            /// </summary>
+            /// 
+            public string Pulse
+            {
+                get;
+                set;
+            }
+            public string Bp
+            {
+                get;
+                set;
+            }
+            public string Tounge
+            {
+                get;
+                set;
+            }
+            public string Heart
+            {
+                get;
+                set;
+            }
+            public string LymphClinic
+            {
+                get;
+                set;
+            }
+            public string RespRate
+            {
+                get;
+                set;
+            }
+            public string Others
             {
                 get;
                 set;
@@ -626,6 +682,10 @@ namespace TheClinicApp.ClinicDAL
                     pud.Parameters.Add("@Height", SqlDbType.Real).Value =Height;
                     pud.Parameters.Add("@Weight", SqlDbType.Real).Value = Weight;
                     pud.Parameters.Add("@Symptoms", SqlDbType.NVarChar, 255).Value = Symptoms;
+                    pud.Parameters.Add("@Bowel", SqlDbType.NVarChar, 255).Value = Bowel;
+                    pud.Parameters.Add("@Appettie", SqlDbType.NVarChar, 255).Value = Appettie;
+                    pud.Parameters.Add("@Micturation", SqlDbType.NVarChar, 255).Value = Micturation;
+                    pud.Parameters.Add("@Sleep", SqlDbType.NVarChar, 255).Value = Sleep;
                     pud.Parameters.Add("@Cardiovascular", SqlDbType.NVarChar, 255).Value = Cardiovascular;
                     pud.Parameters.Add("@Nervoussystem", SqlDbType.NVarChar, 255).Value = Nervoussystem;
                     pud.Parameters.Add("@Musculoskeletal", SqlDbType.NVarChar, 255).Value = Musculoskeletal;
@@ -633,12 +693,17 @@ namespace TheClinicApp.ClinicDAL
                     pud.Parameters.Add("@Icterus", SqlDbType.NVarChar, 255).Value = Icterus;
                     pud.Parameters.Add("@Clubbing", SqlDbType.NVarChar, 255).Value = Clubbing;
                     pud.Parameters.Add("@Cyanasis", SqlDbType.NVarChar, 255).Value = Cyanasis;
-                    pud.Parameters.Add("@Bowel", SqlDbType.NVarChar, 255).Value = Bowel;
-                    pud.Parameters.Add("@Appettie", SqlDbType.NVarChar, 255).Value = Appettie;
-                    pud.Parameters.Add("@Micturation", SqlDbType.NVarChar, 255).Value = Micturation;
-                    pud.Parameters.Add("@Sleep", SqlDbType.NVarChar, 255).Value = Sleep;
+                    pud.Parameters.Add("@LymphGen",SqlDbType.NVarChar,255).Value=LymphGen;
+                    pud.Parameters.Add("@Edima",SqlDbType.NVarChar,255).Value=Edima;                   
                     pud.Parameters.Add("@Diagnosys", SqlDbType.NVarChar, 255).Value = Diagnosys;
                     pud.Parameters.Add("@Remarks", SqlDbType.NVarChar, 255).Value = Remarks;
+                    pud.Parameters.Add("@Pulse", SqlDbType.NVarChar, 255).Value = Pulse;
+                    pud.Parameters.Add("@Bp", SqlDbType.NVarChar, 255).Value = Bp;
+                    pud.Parameters.Add("@Tounge", SqlDbType.NVarChar, 255).Value = Tounge;
+                    pud.Parameters.Add("@Heart", SqlDbType.NVarChar, 255).Value = Heart;
+                    pud.Parameters.Add("@LymphClinic", SqlDbType.NVarChar, 255).Value = LymphClinic;
+                    pud.Parameters.Add("@RespRate", SqlDbType.NVarChar, 255).Value = RespRate;
+                    pud.Parameters.Add("@Others", SqlDbType.NVarChar, 255).Value = Others;
                     pud.Parameters.Add("@PrescriptionID", SqlDbType.UniqueIdentifier).Value = PrescriptionID;
                     pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
                     pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
@@ -995,7 +1060,7 @@ namespace TheClinicApp.ClinicDAL
                         get { return CreatedDateLocal;}
                     }
                     #endregion VisitAttachmentsProperty
-
+            
                     #region VisitAttachment methods
                     #region FileAttachment
                     public int InsertFileAttachment(Boolean isFromMobile = false, string userName = "")
