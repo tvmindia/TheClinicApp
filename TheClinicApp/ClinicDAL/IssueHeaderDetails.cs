@@ -74,8 +74,8 @@ namespace TheClinicApp.ClinicDAL
 
         #region Methods 
 
-        #region InsertIssueHeaderDetails
-        public void InsertIssueHeaderDetails()
+        #region InsertIssueHeader
+        public void InsertIssueHeader()
         {
              dbConnection dcon=null;
            try
@@ -88,16 +88,16 @@ namespace TheClinicApp.ClinicDAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "[InsertIssueHeaderDetails]";
+                cmd.CommandText = "[InsertIssueHeader]";
 
                 cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = IssueID;
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@IssuedTo", SqlDbType.NVarChar, 255).Value = IssuedTo;
                 cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value = Date;
-               //? PrescID 
+   
                cmd.Parameters.Add("@PrescID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(PrescID);
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
-                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = CreatedDate;
+              
                 
 
 
@@ -123,43 +123,34 @@ namespace TheClinicApp.ClinicDAL
 
         }
 
-        #endregion InsertIssueHeaderDetails
+        #endregion InsertIssueHeader
 
-        #region UpdateIssueHeaderDetails
-        public void UpdateIssueHeaderDetails( string IssueID)
+        #region UpdateIssueHeader
+        public void UpdateIssueHeader( string IssueID)
         {
 
             dbConnection dcon = null;
 
             try
             {
-
-                //DateTime now = DateTime.Now;
                 dcon = new dbConnection();
                 dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "[UpdateIssueHeaderDetails]";
-
-
+                cmd.CommandText = "[UpdateIssueHeader]";
                 cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(IssueID);
-             
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@IssuedTo", SqlDbType.NVarChar, 255).Value = IssuedTo;
-                cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value =Date;
-               
-               
+                cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value =Date;  
                 cmd.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
-                //cmd.Parameters.Add("@UpdatedBy", SqlDbType.DateTime).Value = UpdatedDate;
-
-
+             
                 cmd.ExecuteNonQuery();
 
             }
 
             catch (Exception ex)
             {
-
                 throw ex;
             }
 
@@ -175,11 +166,11 @@ namespace TheClinicApp.ClinicDAL
         }
 
 
-        #endregion UpdateIssueHeaderDetails
+        #endregion UpdateIssueHeader
 
-        #region ViewIssueHeaderDetails
+        #region View_Search_IssueHeader
 
-        public DataSet ViewIssueHeaderDetails()
+        public DataSet ViewIssueHeader( string String)
         {
 
             dbConnection dcon = null;
@@ -193,7 +184,16 @@ namespace TheClinicApp.ClinicDAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "[ViewIssueHeaderDetails]";
+                cmd.CommandText = "[ViewIssueHeader]";
+
+                if (String == String.Empty)
+                {
+                    cmd.Parameters.Add("@String", SqlDbType.NVarChar, 255).Value = DBNull.Value;
+                }
+                else
+                {
+                    cmd.Parameters.Add("@String", SqlDbType.NVarChar, 255).Value = String;
+                }
 
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
 
@@ -227,14 +227,14 @@ namespace TheClinicApp.ClinicDAL
         }
 
 
-        #endregion ViewIssueHeaderDetails
+        #endregion View_Search_IssueHeader
 
-        #region DeleteIssueHeaderDetails
-    /// <summary>
+        #region DeleteIssueHeader
+        /// <summary>
     /// 
     /// </summary>
     /// <param name="IssueID"></param>
-        public void DeleteIssueHeaderDetails(string IssueID)
+        public void DeleteIssueHeader(string IssueID)
         {
 
             dbConnection dcon = null;
@@ -248,9 +248,10 @@ namespace TheClinicApp.ClinicDAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "[DeleteIssueHeaderDetails]";
+                cmd.CommandText = "[DeleteIssueHeader]";
 
                 cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(IssueID);
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
 
                 cmd.ExecuteNonQuery();
 
@@ -279,11 +280,11 @@ namespace TheClinicApp.ClinicDAL
 
 
 
-        //Get Issue Details by Passing Issue Number
+        //Get Issue Details by Passing Issue ID
 
-        #region GetIssueDetailsByIssueNO
+        #region GetIssueDetailsByIssueID
 
-        public DataSet GetIssueDetailsByIssueNO(String IssueNO)
+        public DataSet GetIssueDetailsByIssueNO(String IssueID)
         {
 
             dbConnection dcon = null;
@@ -297,10 +298,10 @@ namespace TheClinicApp.ClinicDAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "[GetIssueDetailsByIssueNO]";
+                cmd.CommandText = "[GetIssueDetailsByIssueID]";
 
 
-                cmd.Parameters.Add("@IssueNO", SqlDbType.NVarChar, 255).Value = IssueNO;
+                cmd.Parameters.Add("@IssueID", SqlDbType.NVarChar, 255).Value = IssueID;
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
 
 
@@ -333,7 +334,7 @@ namespace TheClinicApp.ClinicDAL
         }
 
 
-        #endregion GetIssueDetailsByIssueNO
+        #endregion GetIssueDetailsByIssueID
 
 
 
@@ -463,7 +464,7 @@ namespace TheClinicApp.ClinicDAL
         #endregion InsertIssueDetails
 
         #region UpdateIssueDetails
-        public void UpdateIssueDetails(string UniqueID)
+        public void UpdateIssueDetails(string UniqueID,string MedicineID)
         {
 
             dbConnection dcon = null;

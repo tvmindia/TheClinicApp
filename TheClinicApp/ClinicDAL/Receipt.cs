@@ -491,7 +491,8 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandText = "[UpdateReceiptDetails]";
 
 
-                cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(UniqueID);               
+                cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(UniqueID);
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
                 cmd.Parameters.Add("@Unit", SqlDbType.NVarChar, 15).Value = Unit;                
                 cmd.Parameters.Add("@UpdateBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;                
