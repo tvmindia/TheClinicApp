@@ -451,18 +451,28 @@ namespace TheClinicApp.ClinicDAL
                 Height = float.Parse(row["Height"].ToString());
                 Weight = float.Parse(row["Weight"].ToString());
                 Symptoms = row["Symptoms"].ToString();
+                Bowel = row["Bowel"].ToString();
+                Appettie = row["Appettie"].ToString();
+                Micturation = row["Micturation"].ToString();
+                Sleep = row["Sleep"].ToString();
                 Cardiovascular = row["Cardiovascular"].ToString();
                 Nervoussystem = row["Nervoussystem"].ToString();
                 Musculoskeletal = row["Musculoskeletal"].ToString();
                 Palloe = row["Palloe"].ToString();
                 Icterus = row["Icterus"].ToString();
                 Clubbing = row["Clubbing"].ToString();
-                Cyanasis = row["Cyanasis"].ToString();
-                Bowel = row["Bowel"].ToString();
-                Appettie = row["Appettie"].ToString();
-                Sleep = row["Sleep"].ToString();
+                Cyanasis = row["Cyanasis"].ToString();           
+                LymphGen = row["LymphGen"].ToString();
+                Edima = row["Edima"].ToString();
                 Diagnosys = row["Diagnosys"].ToString();
                 Remarks = row["Remarks"].ToString();
+                Pulse = row["Pulse"].ToString();
+                Bp = row["Bp"].ToString();
+                Tounge = row["Tounge"].ToString();
+                Heart = row["Heart"].ToString();
+                LymphClinic = row["LymphClinic"].ToString();
+                RespRate = row["RespRate"].ToString();
+                Others = row["Others"].ToString();
                 if (row["PrescriptionID"] != DBNull.Value) { PrescriptionID = new Guid(row["PrescriptionID"].ToString()); }                
                 CreatedBy=row["CreatedBy"].ToString();
                 CreatedDateLocal = DateTime.Parse(row["CreatedDate"].ToString());
@@ -498,6 +508,9 @@ namespace TheClinicApp.ClinicDAL
                 get;
                 set;
             }
+            /// <summary>
+            /// Personal details
+            /// </summary>
             public float Height
             {
                 get;
@@ -508,6 +521,12 @@ namespace TheClinicApp.ClinicDAL
                 get;
                 set;
             }
+            public string Symptoms
+            {
+                get;
+                set;
+            }
+
             public string Bowel
             {
                 get;
