@@ -414,10 +414,11 @@
                                     <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                                     <Columns>
                                         <%--  <asp:BoundField DataField="MedicineID" HeaderText="MedicineID" />--%>
-                                        <asp:BoundField DataField="Name" HeaderText="Medicine Name" />
+                                        <asp:BoundField DataField="MedicineName" HeaderText="Medicine Name" />
                                         <asp:BoundField DataField="Unit" HeaderText="Unit" />
                                         <asp:BoundField DataField="Qty" HeaderText="Quantity" />
                                         <asp:BoundField DataField="ReOrderQty" HeaderText="ReOrder Quantity" />
+                                        <asp:BoundField DataField="CategoryName" HeaderText="Category Name"/>
                                     </Columns>
                                     <EditRowStyle BackColor="#0080AA"></EditRowStyle>
 
