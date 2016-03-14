@@ -56,7 +56,6 @@ namespace TheClinicApp.ClinicDAL
 
         //#endregion PrescriptionProperty
 
-         
         #region ViewAllRegistration
         /// <summary>
         /// ***********
@@ -196,13 +195,47 @@ namespace TheClinicApp.ClinicDAL
         //}
         //#endregion DeletePatientDetails
 
-       
-
     }
     public class CaseFile
     {   ErrorHandling eObj = new ErrorHandling();
-        #region Fileproperty
 
+            private DateTime CreatedDateLocal;
+            private DateTime UpdatedDateLocal;
+            #region Constructors
+            public CaseFile()
+            {
+                FileID = Guid.NewGuid();
+            }
+            public CaseFile(Guid FileID)
+            {
+                this.FileID = FileID;
+                DataTable dt = null;
+                SqlConnection con = null;
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand("GetFileDetails", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@FileID", SqlDbType.UniqueIdentifier).Value = FileID;
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = cmd;
+                dt = new DataTable();
+                adapter.Fill(dt);
+                if (dt.Rows.Count == 0) { throw new Exception("No such ID"); }
+                DataRow row = dt.NewRow();
+                row = dt.Rows[0];
+                PatientID = new Guid(row["PatientID"].ToString());
+                ClinicID = new Guid(row["ClinicID"].ToString());
+                FileDate = DateTime.Parse(row["FileDate"].ToString());
+                FileNumber = row["FileNumber"].ToString();
+                CreatedBy=row["CreatedBy"].ToString();
+                CreatedDateLocal = DateTime.Parse(row["CreatedDate"].ToString());
+                UpdatedBy = row["UpdatedBy"].ToString();
+                UpdatedDateLocal = DateTime.Parse(row["UpdatedDate"].ToString());
+                con.Close();
+            }
+            #endregion Constructors
+
+        #region Fileproperty
         public Guid FileID
         {
             get;
@@ -217,6 +250,29 @@ namespace TheClinicApp.ClinicDAL
         {
             get;
             set;
+        }
+        public DateTime FileDate
+        {
+            get;
+            set;
+        }
+        public string CreatedBy
+        {
+            get;
+            set;
+        }
+        public DateTime CreatedDate
+        {
+            get { return CreatedDateLocal; }
+        }
+        public string UpdatedBy
+        {
+            get;
+            set;
+        }
+        public DateTime UpdatedDate
+        {
+            get { return UpdatedDateLocal; }
         }
         public string FileNumber
         {
@@ -358,6 +414,10 @@ namespace TheClinicApp.ClinicDAL
         public class Visit
         {
             ErrorHandling eObj = new ErrorHandling();
+            private DateTime CreatedDateLocal;
+            private DateTime UpdatedDateLocal;
+
+            #region Constructors
             public Visit(CaseFile caseFile) 
             {
                 FileID = caseFile.FileID;
@@ -365,8 +425,62 @@ namespace TheClinicApp.ClinicDAL
             }
             public Visit()
             {
-
+               VisitID = Guid.NewGuid();
             }
+            public Visit(Guid VisitID)
+            {
+                this.VisitID = VisitID;
+                DataTable dt = null;
+                SqlConnection con = null;
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand("GetVisitDetails", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@VisitID", SqlDbType.UniqueIdentifier).Value = VisitID;
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = cmd;
+                dt = new DataTable();
+                adapter.Fill(dt);
+                if (dt.Rows.Count == 0) { throw new Exception("No such ID"); }
+                DataRow row = dt.NewRow();
+                row = dt.Rows[0];
+                FileID = new Guid(row["FileID"].ToString());
+                DoctorID = new Guid(row["DoctorID"].ToString());
+                ClinicID = new Guid(row["ClinicID"].ToString());
+                Date = DateTime.Parse(row["Date"].ToString());
+                Height = float.Parse(row["Height"].ToString());
+                Weight = float.Parse(row["Weight"].ToString());
+                Symptoms = row["Symptoms"].ToString();
+                Bowel = row["Bowel"].ToString();
+                Appettie = row["Appettie"].ToString();
+                Micturation = row["Micturation"].ToString();
+                Sleep = row["Sleep"].ToString();
+                Cardiovascular = row["Cardiovascular"].ToString();
+                Nervoussystem = row["Nervoussystem"].ToString();
+                Musculoskeletal = row["Musculoskeletal"].ToString();
+                Palloe = row["Palloe"].ToString();
+                Icterus = row["Icterus"].ToString();
+                Clubbing = row["Clubbing"].ToString();
+                Cyanasis = row["Cyanasis"].ToString();           
+                LymphGen = row["LymphGen"].ToString();
+                Edima = row["Edima"].ToString();
+                Diagnosys = row["Diagnosys"].ToString();
+                Remarks = row["Remarks"].ToString();
+                Pulse = row["Pulse"].ToString();
+                Bp = row["Bp"].ToString();
+                Tounge = row["Tounge"].ToString();
+                Heart = row["Heart"].ToString();
+                LymphClinic = row["LymphClinic"].ToString();
+                RespRate = row["RespRate"].ToString();
+                Others = row["Others"].ToString();
+                if (row["PrescriptionID"] != DBNull.Value) { PrescriptionID = new Guid(row["PrescriptionID"].ToString()); }                
+                CreatedBy=row["CreatedBy"].ToString();
+                CreatedDateLocal = DateTime.Parse(row["CreatedDate"].ToString());
+                UpdatedBy = row["UpdatedBy"].ToString();
+                UpdatedDateLocal = DateTime.Parse(row["UpdatedDate"].ToString());
+                con.Close();
+            }
+            #endregion Constructors
 
             #region VisitsProperty
             public Guid VisitID
@@ -389,12 +503,20 @@ namespace TheClinicApp.ClinicDAL
                 get;
                 set;
             }
-            public string Height
+            public DateTime Date
             {
                 get;
                 set;
             }
-            public string Weight
+            /// <summary>
+            /// Personal details
+            /// </summary>
+            public float Height
+            {
+                get;
+                set;
+            }
+            public float Weight
             {
                 get;
                 set;
@@ -404,46 +526,7 @@ namespace TheClinicApp.ClinicDAL
                 get;
                 set;
             }
-            public string Cardiovascular
-            {
-                get;
-                set;
-            }
-            public string Nervoussystem
-            {
-                get;
-                set;
-            }
-            public string MaritalStatus
-            {
-                get;
-                set;
-            }
-            public string Musculoskeletal
-            {
-                get;
-                set;
-            }
-            public string Palloe
-            {
-                get;
-                set;
-            }
-            public string Icterus
-            {
-                get;
-                set;
-            }
-            public string Clubbing
-            {
-                get;
-                set;
-            }
-            public string Cyanasis
-            {
-                get;
-                set;
-            }
+
             public string Bowel
             {
                 get;
@@ -464,12 +547,111 @@ namespace TheClinicApp.ClinicDAL
                 get;
                 set;
             }
+            public string Cardiovascular
+            {
+                get;
+                set;
+            }
+            /// <summary>
+            /// Systematic Examination
+            /// </summary>
+            public string Nervoussystem
+            {
+                get;
+                set;
+            }
+            
+            public string Musculoskeletal
+            {
+                get;
+                set;
+            }
+            /// <summary>
+            /// General examination
+            /// </summary>
+            public string Palloe
+            {
+                get;
+                set;
+            }
+            public string Icterus
+            {
+                get;
+                set;
+            }
+            public string Clubbing
+            {
+                get;
+                set;
+            }
+            public string Cyanasis
+            {
+                get;
+                set;
+            }
+            public string LymphGen
+            {
+                get;
+                set;
+            }
+            public string Edima
+            {
+                get;
+                set;
+            }
+            /// <summary>
+            /// Daignosys
+            /// </summary>
+           
             public string Diagnosys
             {
                 get;
                 set;
             }
+            /// <summary>
+            /// Remarks
+            /// </summary>
+            /// 
             public string Remarks
+            {
+                get;
+                set;
+            }
+            /// <summary>
+            /// Clinical Needs
+            /// </summary>
+            /// 
+            public string Pulse
+            {
+                get;
+                set;
+            }
+            public string Bp
+            {
+                get;
+                set;
+            }
+            public string Tounge
+            {
+                get;
+                set;
+            }
+            public string Heart
+            {
+                get;
+                set;
+            }
+            public string LymphClinic
+            {
+                get;
+                set;
+            }
+            public string RespRate
+            {
+                get;
+                set;
+            }
+            public string Others
             {
                 get;
                 set;
@@ -478,6 +660,24 @@ namespace TheClinicApp.ClinicDAL
             {
                 get;
                 set;
+            }
+            public string CreatedBy
+            {
+                get;
+                set;
+            }
+            public DateTime CreatedDate
+            {
+                get { return CreatedDateLocal; }
+            }
+            public string UpdatedBy
+            {
+                get;
+                set;
+            }
+            public DateTime UpdatedDate
+            {
+                get { return UpdatedDateLocal; }
             }
             #endregion Visitsproperty
 
@@ -501,9 +701,13 @@ namespace TheClinicApp.ClinicDAL
                     pud.Parameters.Add("@FileID", SqlDbType.UniqueIdentifier).Value = FileID;
                     pud.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = ClinicID;
                     pud.Parameters.Add("@Date", SqlDbType.DateTime).Value = DateTime.Now;
-                    pud.Parameters.Add("@Height", SqlDbType.Real).Value = double.Parse(Height);
-                    pud.Parameters.Add("@Weight", SqlDbType.Real).Value = double.Parse(Weight);
+                    pud.Parameters.Add("@Height", SqlDbType.Real).Value =Height;
+                    pud.Parameters.Add("@Weight", SqlDbType.Real).Value = Weight;
                     pud.Parameters.Add("@Symptoms", SqlDbType.NVarChar, 255).Value = Symptoms;
+                    pud.Parameters.Add("@Bowel", SqlDbType.NVarChar, 255).Value = Bowel;
+                    pud.Parameters.Add("@Appettie", SqlDbType.NVarChar, 255).Value = Appettie;
+                    pud.Parameters.Add("@Micturation", SqlDbType.NVarChar, 255).Value = Micturation;
+                    pud.Parameters.Add("@Sleep", SqlDbType.NVarChar, 255).Value = Sleep;
                     pud.Parameters.Add("@Cardiovascular", SqlDbType.NVarChar, 255).Value = Cardiovascular;
                     pud.Parameters.Add("@Nervoussystem", SqlDbType.NVarChar, 255).Value = Nervoussystem;
                     pud.Parameters.Add("@Musculoskeletal", SqlDbType.NVarChar, 255).Value = Musculoskeletal;
@@ -511,12 +715,17 @@ namespace TheClinicApp.ClinicDAL
                     pud.Parameters.Add("@Icterus", SqlDbType.NVarChar, 255).Value = Icterus;
                     pud.Parameters.Add("@Clubbing", SqlDbType.NVarChar, 255).Value = Clubbing;
                     pud.Parameters.Add("@Cyanasis", SqlDbType.NVarChar, 255).Value = Cyanasis;
-                    pud.Parameters.Add("@Bowel", SqlDbType.NVarChar, 255).Value = Bowel;
-                    pud.Parameters.Add("@Appettie", SqlDbType.NVarChar, 255).Value = Appettie;
-                    pud.Parameters.Add("@Micturation", SqlDbType.NVarChar, 255).Value = Micturation;
-                    pud.Parameters.Add("@Sleep", SqlDbType.NVarChar, 255).Value = Sleep;
+                    pud.Parameters.Add("@LymphGen",SqlDbType.NVarChar,255).Value=LymphGen;
+                    pud.Parameters.Add("@Edima",SqlDbType.NVarChar,255).Value=Edima;                   
                     pud.Parameters.Add("@Diagnosys", SqlDbType.NVarChar, 255).Value = Diagnosys;
                     pud.Parameters.Add("@Remarks", SqlDbType.NVarChar, 255).Value = Remarks;
+                    pud.Parameters.Add("@Pulse", SqlDbType.NVarChar, 255).Value = Pulse;
+                    pud.Parameters.Add("@Bp", SqlDbType.NVarChar, 255).Value = Bp;
+                    pud.Parameters.Add("@Tounge", SqlDbType.NVarChar, 255).Value = Tounge;
+                    pud.Parameters.Add("@Heart", SqlDbType.NVarChar, 255).Value = Heart;
+                    pud.Parameters.Add("@LymphClinic", SqlDbType.NVarChar, 255).Value = LymphClinic;
+                    pud.Parameters.Add("@RespRate", SqlDbType.NVarChar, 255).Value = RespRate;
+                    pud.Parameters.Add("@Others", SqlDbType.NVarChar, 255).Value = Others;
                     pud.Parameters.Add("@PrescriptionID", SqlDbType.UniqueIdentifier).Value = PrescriptionID;
                     pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
                     pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
@@ -659,8 +868,8 @@ namespace TheClinicApp.ClinicDAL
                     pud.CommandText = "UpdateVisits";
                     pud.Parameters.Add("@VisitID", SqlDbType.UniqueIdentifier).Value = VisitID;
                     pud.Parameters.Add("@Date", SqlDbType.DateTime).Value = DateTime.Now;
-                    pud.Parameters.Add("@Height", SqlDbType.Real).Value = double.Parse(Height);
-                    pud.Parameters.Add("@Weight", SqlDbType.Real).Value = double.Parse(Weight);
+                    pud.Parameters.Add("@Height", SqlDbType.Real).Value = Height;
+                    pud.Parameters.Add("@Weight", SqlDbType.Real).Value = Weight;
                     pud.Parameters.Add("@Symptoms", SqlDbType.NVarChar, 255).Value = Symptoms;
                     pud.Parameters.Add("@Cardiovascular", SqlDbType.NVarChar, 255).Value = Cardiovascular;
                     pud.Parameters.Add("@Nervoussystem", SqlDbType.NVarChar, 255).Value = Nervoussystem;
@@ -717,8 +926,8 @@ namespace TheClinicApp.ClinicDAL
             }
             #endregion UpdateVisits
 
-            #region GetVisitsUsingID
-            public DataTable GetVisitsUsingID()
+            #region SearchPatientWithName
+            public DataTable SearchPatientWithName()
             {
                 DataTable dt = null;
                 SqlConnection con = null;
@@ -735,7 +944,7 @@ namespace TheClinicApp.ClinicDAL
                 return dt;
 
             }
-            #endregion GetPatientDetails
+            #endregion SearchPatientWithName
 
             #region Get Visit List with Name for Mobile
             /// <summary>
@@ -781,6 +990,9 @@ namespace TheClinicApp.ClinicDAL
             public class VisitAttachment
                 {
                     ErrorHandling eObj = new ErrorHandling();
+                    private DateTime CreatedDateLocal;
+
+                    #region Constructors
                     public VisitAttachment(Visit visit){
                         VisitID = visit.VisitID;
                         ClinicID = visit.ClinicID;
@@ -792,8 +1004,33 @@ namespace TheClinicApp.ClinicDAL
                     public VisitAttachment(Guid AttachID)
                     {
                         this.AttachID = AttachID;
-                        /////////////////////////////////////////////////////create sp to get details
+                        DataTable dt = null;
+                        SqlConnection con = null;
+                        dbConnection dcon = new dbConnection();
+                        con = dcon.GetDBConnection();
+                        SqlCommand cmd = new SqlCommand("GetVisitAttachDetails", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@AttachID", SqlDbType.UniqueIdentifier).Value = AttachID;
+                        SqlDataAdapter adapter = new SqlDataAdapter();
+                        adapter.SelectCommand = cmd;
+                        dt = new DataTable();
+                        adapter.Fill(dt);
+                        if (dt.Rows.Count == 0) { throw new Exception("No such ID"); }
+                        DataRow row = dt.NewRow();
+                        row = dt.Rows[0];
+                        VisitID = new Guid(row["VisitID"].ToString());
+                        ClinicID = new Guid(row["ClinicID"].ToString());
+                        Description = row["Description"].ToString();
+                        Attachment = row["Attachment"];
+                        Name = row["Name"].ToString();
+                        this.Type = row["Type"].ToString();
+                        Size=row["Size"].ToString();
+                        CreatedBy=row["CreatedBy"].ToString();
+                        CreatedDateLocal = DateTime.Parse(row["CreatedDate"].ToString());
+                        con.Close();
                     }
+                    #endregion Constructors
+
                     #region VisitAttachmentsProperty
                     public Guid AttachID
                     {
@@ -835,8 +1072,18 @@ namespace TheClinicApp.ClinicDAL
                         get;
                         set;
                     }
+                    public string CreatedBy
+                    {
+                        get;
+                        set;
+                    }
+                    public DateTime CreatedDate
+                    {
+                        get { return CreatedDateLocal;}
+                    }
                     #endregion VisitAttachmentsProperty
             
+                    #region VisitAttachment methods
                     #region FileAttachment
                     public int InsertFileAttachment(Boolean isFromMobile = false, string userName = "")
                     {
@@ -905,6 +1152,7 @@ namespace TheClinicApp.ClinicDAL
 
                     }
                     #endregion FileAttachment
+                    #endregion
                 }
             #endregion Visit Attachment Class
         }
