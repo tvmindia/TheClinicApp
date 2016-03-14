@@ -13,6 +13,7 @@
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/jquery.js"></script>
+     
     <script>   
         $(document).ready(function () {
 
@@ -93,15 +94,15 @@
           
                   
 </script>
-    <script>
-        $(document).ready(function () {
-            debugger;
-            var ac=null;
-            ac = <%=listFilter %>;
-            $( "#txtSearch" ).autocomplete({
-                source: ac
-            });
-        });
+   <script>
+       $(document).ready(function () {
+           debugger;
+           var ac=null;
+           ac = <%=listFilter %>;
+             $( "#txtSearch" ).autocomplete({
+                 source: ac
+             });
+         });
          </script>
 
        <style>

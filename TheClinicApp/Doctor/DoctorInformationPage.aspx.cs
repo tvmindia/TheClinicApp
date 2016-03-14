@@ -13,6 +13,8 @@ namespace TheClinicApp.Doctor
 {
     public partial class DoctorInformationPage : System.Web.UI.Page
     {
+        UIClasses.Const Const = new UIClasses.Const();
+        ClinicDAL.UserAuthendication UA;
         ClinicDAL.ErrorHandling eObj = new ClinicDAL.ErrorHandling();
         ClinicDAL.TokensBooking tok = new ClinicDAL.TokensBooking();
         ClinicDAL.CaseFile.Visit CaseFileObj = new ClinicDAL.CaseFile.Visit();
@@ -71,7 +73,10 @@ namespace TheClinicApp.Doctor
         #region MainButtonSave
         protected void btnSave_Click(object sender, EventArgs e)
         {
-
+            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+            CaseFileObj.DoctorID = Guid.Parse("469489AE-6237-47B3-B8CC-74B62EC81D77");
+            CaseFileObj.FileID = Guid.Parse("70146E78-E66C-4667-B8F8-ED8CA9AD9256");
+            CaseFileObj.ClinicID = UA.ClinicID;
             CaseFileObj.Height = float.Parse(txtHeight.Text);
             CaseFileObj.Weight=float.Parse(txtWeight.Text);
             CaseFileObj.Symptoms=txtSymptoms.Text;
@@ -97,6 +102,9 @@ namespace TheClinicApp.Doctor
             CaseFileObj.LymphClinic=txtLymphnodes.Text;
             CaseFileObj.RespRate=txtRespRate.Text;
             CaseFileObj.Others=txtOthers.Text;
+            CaseFileObj.AddVisits();
+            CaseFileObj.CreatedBy = UA.userName;
+            CaseFileObj.UpdatedBy = UA.userName;
 
             string values = HiddenField1.Value;
             //int count = Convert.ToInt32(HiddenField2.ToString());
