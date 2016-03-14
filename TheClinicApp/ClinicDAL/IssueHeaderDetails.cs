@@ -87,7 +87,72 @@ namespace TheClinicApp.ClinicDAL
 
 
 
+        #region Generate_Issue_Number
+        public string Generate_Issue_Number()
+        {
 
+            string sDate = DateTime.Now.ToString();
+            DateTime datevalue = (Convert.ToDateTime(sDate.ToString()));
+            string mn = datevalue.Month.ToString();
+            string yy = datevalue.Year.ToString();
+            string dd = datevalue.Day.ToString();
+            string NUM;
+
+            dbConnection dcon = null;
+          
+            try
+            {
+                 DateTime now = DateTime.Now;
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = dcon.SQLCon;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[GetTopIssueNO]";
+                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = now.ToString("yyyy-MM-dd");
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
+                SqlParameter OutparmItemId = cmd.Parameters.Add("@String", SqlDbType.NVarChar);
+                OutparmItemId.Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                NUM = OutparmItemId.Value.ToString();    
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (dcon.SQLCon != null)
+                {
+                    dcon.DisconectDB();
+                }
+            }
+
+            if (NUM!=null)
+            {
+                //trim here
+               int x=Convert.ToInt32( NUM.TrimStart('/'));
+               x = x + 1;
+               x.ToString();
+               string IssueNO = yy + '-' + mn + '-' + dd + '/' + x;
+
+                return IssueNO;
+               
+            }
+            else
+            {
+                
+                int x = 1;
+                string IssueNO = yy + '-' + mn + '-' + dd + '/' + x;
+                return IssueNO;
+
+            }
+
+            
+        }
+
+        #endregion Generate_Issue_Number
+  
 
 
         #region InsertIssueHeader

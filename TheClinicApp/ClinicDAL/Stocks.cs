@@ -394,7 +394,7 @@ namespace TheClinicApp.ClinicDAL
 
          #region Search And View MedicineStock
         /// <summary>
-        /// VIEW MEDCINES IF SEARCH ITEM IS NULL....OTHERWISE SEARCH
+        /// VIEW MEDCINES IF SEARCH ITEM IS NULL ....OTHERWISE SEARCH
         /// 
         /// </summary>
         /// <param name="String"></param>
