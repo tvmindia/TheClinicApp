@@ -204,7 +204,7 @@ background-color: ghostwhite;
                     </div>
 
                 </div>
-                <div class="col-xs-12 Span-One">
+                <%--<div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
                             <label class="control-label col-xs-2 regFormLabels">Sex:</label>
@@ -231,14 +231,14 @@ background-color: ghostwhite;
                         </div>
                     </div>
 
-                </div>
+                </div>--%>
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
                             <label class="control-label col-xs-2 regFormLabels">Age:</label>
                              <div class="col-xs-10">
                              
-                                <asp:TextBox ID="txtAge" class="form-control textBoxborder numberTypeTextBox" runat="server" required  ValidationGroup="Submit" type="number" min ="0" max="120" ></asp:TextBox>
+                                <asp:TextBox ID="txtAge" class="form-control textBoxborder numberTypeTextBox" runat="server" required  ValidationGroup="Submit" type="number" min ="1" max="200" ></asp:TextBox>
 
                             </div>
                         </div>
@@ -274,7 +274,7 @@ background-color: ghostwhite;
                         <div class="form-group">
                             <label class="control-label col-xs-2 regFormLabels">Mobile:</label>
                              <div class="col-xs-10">
-                                <asp:TextBox ID="txtMobile" class="form-control textBoxborder" runat="server" maxlength="10"  pattern="[0-9]{10}"  ></asp:TextBox>
+                                <asp:TextBox ID="txtMobile" class="form-control textBoxborder" runat="server" minlength="10" pattern=" /^[0-9-+]+$/"  ></asp:TextBox>
 
                             </div>
                         </div>
