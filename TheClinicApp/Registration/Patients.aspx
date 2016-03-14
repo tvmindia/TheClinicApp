@@ -8,15 +8,28 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Panel DefaultButton="btnSave" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />       
+    <%-- <script src="../Scripts/jquery.tablePagination.0.1.js"></script>
+    <script src="../Scripts/jquery-1.3.2.min.js"></script>--%>        
+    <link href="../Content/Input.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
     <style>
 .ui-autocomplete {
 background: fixed;
+font-size:small;
+font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;
 background-color: ghostwhite;
- box-shadow:1px 5px 10px 5px #4d3319;
+ box-shadow:1px 1px 1px 1px #f3e6d8;
+}
+#divDisplayNumber{
+    background-color:ghostwhite;
+   
+}
+.modal-lg1{
+    width:40%;
+    overflow-x:hidden;
+    overflow-y:hidden;
 }
     </style>
 
@@ -77,9 +90,7 @@ background-color: ghostwhite;
             margin-left: 1%;
         }
     </style>--%>
-    <style>
-        
-    </style>
+    
     <link href="../Content/Input.css" rel="stylesheet" />
     <link href="../Content/jquery-ui.css" rel="stylesheet" />
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
@@ -114,14 +125,20 @@ background-color: ghostwhite;
                 source: ac
             });
         });
+         </script>
         
-    </script>
+        <%--- %><script type="text/javascript">
+    function openModal() {
+        $('#TokenRegistration').modal('show');
+    }
+</script>-----%>
+   
  <asp:ScriptManager runat="server"></asp:ScriptManager>
     
     <div class="container-fluid bodyDiv" >
         <label class="headingLabel">New Patient Registration </label>
         <div class="col-sm-12 Span-One ">
-            <div class="col-xs-8">
+            <div class="col-xs-9">
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
@@ -155,8 +172,8 @@ background-color: ghostwhite;
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
-                            <label class="control-label col-xs-1 regFormLabels">Name:</label>
-                             <div class="col-xs-11">
+                            <label class="control-label col-xs-2 regFormLabels">Name:</label>
+                             <div class="col-xs-10">
                                 <asp:TextBox ID="txtName" class="form-control textBoxborder" required runat="server" ValidationGroup="Submit" pattern="^[A-z][A-z\.\s]+$"
                                     ></asp:TextBox>
 
@@ -173,8 +190,8 @@ background-color: ghostwhite;
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
-                            <label class="control-label col-xs-1 regFormLabels">Sex:</label>
-                             <div class="col-xs-11">
+                            <label class="control-label col-xs-2 regFormLabels">Sex:</label>
+                             <div class="col-xs-10">
                                 <asp:TextBox ID="txtSex" class="form-control textBoxborder" required runat="server"  ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
@@ -190,8 +207,36 @@ background-color: ghostwhite;
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
-                            <label class="control-label col-xs-1 regFormLabels">Age:</label>
-                             <div class="col-xs-11">
+                            <label class="control-label col-xs-2 regFormLabels">Sex:</label>
+                             <div class="col-xs-10">
+                                 
+                                <section class="contents">
+	
+      <label class="label--checkbox" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;color:green;">
+          <input type="checkbox" class="checkbox" /> Male </label>
+   
+      <label class="label--checkbox" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;color:green;">
+          <input type="checkbox" class="checkbox" />
+           Female
+          </label>
+      
+</section>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-1">
+                            <div class="col-xs-12">
+                                &nbsp
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xs-12 Span-One">
+                    <div class="col-xs-11">
+                        <div class="form-group">
+                            <label class="control-label col-xs-2 regFormLabels">Age:</label>
+                             <div class="col-xs-10">
                              
                                 <asp:TextBox ID="txtAge" class="form-control textBoxborder numberTypeTextBox" runat="server" required  ValidationGroup="Submit" type="number" min ="0" max="120" ></asp:TextBox>
 
@@ -210,8 +255,8 @@ background-color: ghostwhite;
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
-                            <label class="control-label col-xs-1 regFormLabels">Address:</label>
-                            <div class="col-xs-11">
+                            <label class="control-label col-xs-2 regFormLabels">Address:</label>
+                            <div class="col-xs-10">
                                 <asp:TextBox ID="txtAddress" class="form-control textBoxborder" TextMode="multiline" Columns="50" Rows="10" Height="100" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
                             </div>
@@ -227,8 +272,8 @@ background-color: ghostwhite;
                  <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
-                            <label class="control-label col-xs-1 regFormLabels">Mobile:</label>
-                             <div class="col-xs-11">
+                            <label class="control-label col-xs-2 regFormLabels">Mobile:</label>
+                             <div class="col-xs-10">
                                 <asp:TextBox ID="txtMobile" class="form-control textBoxborder" runat="server" maxlength="10"  pattern="[0-9]{10}"  ></asp:TextBox>
 
                             </div>
@@ -244,8 +289,8 @@ background-color: ghostwhite;
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
-                            <label class="control-label col-xs-1 regFormLabels" for="email" >Email:</label>
-                            <div class="col-xs-11">
+                            <label class="control-label col-xs-2 regFormLabels" for="email" >Email:</label>
+                            <div class="col-xs-10">
                                 <asp:TextBox ID="txtEmail" class="form-control textBoxborder" runat="server" type="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"></asp:TextBox>
 
                             </div>
@@ -262,17 +307,13 @@ background-color: ghostwhite;
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
-                            <label class="control-label col-xs-1 regFormLabels">Marital:</label>
-                             <div class="col-xs-11">
+                            <label class="control-label col-xs-2 regFormLabels">Marital:</label>
+                             <div class="col-xs-10">
                                 <asp:TextBox ID="txtMarital" class="form-control textBoxborder" runat="server"></asp:TextBox>
 
                             </div>
                         </div>
-                        <div class="col-xs-1">
-                            <div class="col-xs-12">
-                               <asp:Label ID="lblFilenumber" runat="server" Text=""></asp:Label>
-                            </div>
-                        </div>
+                        
                     </div>
 
                 </div>
@@ -294,21 +335,54 @@ background-color: ghostwhite;
                                 </div>
                             </div>
                         </div>
+
+
+
+
+
+
+                <%----------------------------------------- Display token and file number--------------------------------------------------%>
+
+             
+                
+                
+                
+                
+                    <div class="col-md-12" id="divDisplayNumber" visible="false" style="font-size:20px" runat="server">
+                    <table>
+                        <tr>
+                            <td>
+                                 <asp:Label ID="lblDisplayFileNumber" runat="server" Text="File Number"></asp:Label>:
+                            </td>
+                            <td>
+                                <asp:Label ID="lblFileCount" runat="server" Text=""></asp:Label>
+                            </td>
+                            </tr>
+                        <tr>
+                            <td>
+                                 <asp:Label ID="lblTokenNumber" runat="server" Text="Token Number"></asp:Label>:
+                            </td>
+                            <td>
+                                <asp:Label ID="lblTokencount" runat="server" Text=""></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
            
-            <div class="col-xs-4" style="height:350px;width:30%;" >
+            <div class="col-xs-4" style="height:400px;width:20%;" >
                   
                 <table style="height:100%;width:100%;margin-left:0px; padding-left:0px;">
                     <tr style="height:100%;width:100%;">
                         <td style="height:100px;width:100%;">
                            <div class="fileinputs">
                                <input type="file" class="file" />
-	<div class="fakefile">
-		
-		<img src="../Images/UploadPic.png" style="width:60%;height:40%" />
-	</div>
+                               <div class="fakefile">
+                                   <img src="../Images/UploadPic.png" style="width:70%;height:50%" />
 
-</div>  
+                               </div>
+
+                           </div>  
                         </td>
                         
                     </tr>
@@ -334,17 +408,29 @@ background-color: ghostwhite;
                     </tr>
 
                        <tr style="height:100%;width:100%;">
-                        <td style="height:100px;width:100%;">
+                        <td style="height:50px;width:100%;">
                                 <a href="#" role="button" data-toggle="modal" data-target="#myModal" >View All Registrations </a>
                         </td>
                         
                     </tr>
                     <tr style="height:100%;width:100%;">
-                        <td style="height:100%;width:100%;">
+                        <td style="height:50px;width:100%;">
                               <a href="#" role="button" data-toggle="modal" data-target="#TodaysRegistration" >Todays Registrations</a>
                         </td>
                         
                     </tr>
+                     <tr style="height:100%;width:100%;">
+                        <td style="height:50px;width:100%;">
+                              <a href="#" role="button" data-toggle="modal" data-target="#TokenRegistration" >Register Token !</a>
+                        </td>
+                        
+                    </tr>
+                      <%--<tr style="height:100%;width:100%;">
+                        <td style="height:50px;width:100%;">
+                              <a href="#" role="button" data-toggle="modal" data-target="#myModal1" >Register Token !</a>
+                        </td>
+                        
+                    </tr>--%>
                 </table>
 
               
@@ -362,24 +448,31 @@ background-color: ghostwhite;
                                <a class="close" data-dismiss="alert">×</a>  
 
                             <div>
-                            <strong> <asp:Label ID="lblErrorCaption" runat="server" Text=""></asp:Label> </strong>      <asp:Label ID="lblMsgges" runat="server" Text=""></asp:Label>
+                            <strong> <asp:Label ID="lblErrorCaption" runat="server" Text=""></asp:Label> </strong>
+                                 <asp:Label ID="lblMsgges" runat="server" Text=""></asp:Label>
 
-</div>
-       </div>                     
+                            </div>
+
+                            </div>                     
 
                         </td>
-                        <td style="height: 100%;   width:20%;">
+                        <td style="height: 100%;   width:20%;"> 
 
                         </td>
                         <td style="height: 100%;   width:30%;" >
                             <table class="footerTable" style="width:100%; margin-left:0px;padding-left:0px;padding-top:80%; margin-top:3%;  ">
                                 <tr>
-                                    <td style="width:30%;">
+                                    <td style="width:40%;">
+                                       
                                          <div class="form-group">
-                                        <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button  " OnClick="btnSave_Click" ValidationGroup="Submit" />
-</div>
+                                       
+                                        <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button" data-toggle="modal" data-target="#TokenRegistration" OnClick="btnSave_Click" ValidationGroup="Submit" />
+                                        </div>
                                     </td>
-                                    <td>
+                                    <td style="width:40%">
+                                        <div class="form-group">
+                                        <asp:Button ID="btnnew" runat="server" Text="NEW"  type="submit" CssClass="button" OnClick="btnnew_Click" Visible="false" />
+                                            </div>
                                        </td>
                                 </tr>
                             </table>
@@ -392,6 +485,158 @@ background-color: ghostwhite;
 
             
         </footer>
+        <!---- Modal for Token Registration -------->
+        <div class="modal fade" id="TokenRegistration" role="dialog">
+            <div class="modal-dialog modal-lg1">
+
+                <!-- Modal content-->
+                
+                <div class="modal-content" style="height:60%;overflow-y:no-display;">
+                    <div class="modal-header" style="background-color:#00CC99">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" style="font-size:20px;color:white">Token Registration</h4>
+
+                    </div>
+                    <div class="modal-body" style="background-color:lightgoldenrodyellow;overflow-x:hidden;overflow-y:hidden;">
+                        <div class="col-md-12">
+                            Would You Like to Book A Token ?
+                        </div>
+                         <div class="col-md-12">
+                           <button type="button" class="close" data-dismiss="modal" style="color:green">>>>Skip</button>
+                        </div>
+                        <div class="col-md-12">
+                            
+                     <asp:Label Text="Select Your Doctor" Font-Size="Large" Font-Bold="true"  runat="server"></asp:Label>
+                            <asp:DropDownList ID="ddlDoctorName" Height="40%" Width="100%" runat="server"></asp:DropDownList>
+                        </div>
+                        <div class="col-md-12 Span-One">
+                        
+                    <div class="col-md-7" >
+                        <div class="col-md-12 Span-One">
+                            
+                             
+                        </div>
+                         
+
+                        <div class="col-md-12 Span-One">
+                            <div class="col-md-7">
+                                <div class="form-group">
+                   
+                                    
+                                </div>
+                           
+                            </div>
+                             <div class="col-md-5">           
+                                
+                            </div>
+                        </div>
+
+                          <div class="col-md-12 Span-One">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                   
+                                    
+                                </div>
+                           
+                            </div>
+                             
+                        </div>
+                        <%-- Patient Details Diplay region --%>
+                        
+                      
+                   <table class="tokenPatientDetailsTable TileContent" id="divContainer" style="display:none" >
+                       <tr>
+                           <td class="tokenPatientDetailsTableColumn">
+                                       <label  class="subheadingLabel" style="text-align:center" >Patient Details</label>
+
+                           </td>
+                       </tr>
+
+                        <tr>
+                           <td  class="tokenPatientDetailsTableColumn">
+
+                                       <asp:Label ID="lblFile" CssClass="largefont " runat="server" Text=""></asp:Label>
+
+                           </td>
+                       </tr>
+                        <tr>
+                           <td  class="tokenPatientDetailsTableColumn">
+                                    
+                                          <asp:Label ID="lblName"  CssClass="tokenPatientDetailsName "  runat="server" Text=""></asp:Label>
+
+                           </td>
+                       </tr>
+                        <tr>
+                           <td  class="tokenPatientDetailsTableColumn">
+                                        <asp:Label ID="lblAge" runat="server"  CssClass="tokenPatientDetailslabel" Text=""></asp:Label>
+
+                           </td>
+                       </tr>
+                         <tr>
+                           <td  class="tokenPatientDetailsTableColumn">
+                                 <asp:Label ID="lblGender" runat="server" CssClass="tokenPatientDetailslabel" Text=""></asp:Label>
+                           </td>
+                       </tr>
+                        <tr>
+                           <td  class="tokenPatientDetailsTableColumn">
+                                           <asp:Label ID="lblPhone" runat="server" CssClass="tokenPatientDetailslabel" Text=""></asp:Label>
+
+                           </td>
+                       </tr>
+
+                        <tr>
+                           <td  class="tokenPatientDetailsTableColumn">
+                                    <asp:Label ID="lblToken" Visible="false" CssClass="largefont tokenPatientDetailslabel"  runat="server" Text="Token NO"></asp:Label>
+
+                           </td>
+                       </tr>
+                        
+                   </table>
+                                     
+
+                            <div class="col-md-12 Span-One">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                   
+                                    <div class="col-md-12">
+                                          &nbsp
+                 <%-- hidden fields --%>
+                                     <%--   <asp:HiddenField ID="HiddenPatientID"  runat="server" />--%>
+                                        <asp:HiddenField ID="HiddenClinicID" runat="server" />
+                                    </div>
+                                </div>
+                           
+                            </div>
+                             <div class="col-md-4">           
+                                <div class="col-md-12">                 
+                                     &nbsp
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="background-color:lightgoldenrodyellow">
+                       <table class="footerTable" style="width:100%; margin-left:0px;padding-left:0px;padding-top:0%; margin-top:3%;  ">
+                                <tr>
+                                    <td style="width:90%;">
+                                         <div class="form-group">
+                                        <asp:Button ID="btntokenbooking" runat="server" Text="BOOK TOKEN"  type="submit" CssClass="button" OnClick="btntokenbooking_Click" BorderColor="DarkSeaGreen" BackColor="wheat" ValidationGroup="Submit" />
+</div>
+                                    </td>
+                                    <td>
+                                       </td>
+                                </tr>
+                            </table>
+                        ....
+                    </div>
+                </div>
+                <asp:HiddenField ID="HiddenField2" runat="server" />
+            </div>
+        </div>
+
 
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog  modal-lg">
@@ -405,7 +650,8 @@ background-color: ghostwhite;
                     </div>
                     <div class="modal-body" >
                         
-                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None" Height="30px">
+                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None" Height="30px" AllowPaging="true" OnPageIndexChanging="dtgViewAllRegistration_PageIndexChanging" PageSize="10">
+                            
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
                                 <asp:TemplateField>
@@ -422,17 +668,20 @@ background-color: ghostwhite;
                                        
 
                                     </ItemTemplate>
+                                   <ItemStyle HorizontalAlign="Center" />
+                                    <HeaderStyle HorizontalAlign="Center" />
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="Name" HeaderText="PATIENT NAME">
+                                <asp:BoundField DataField="Name" HeaderText="Patient Name">
+                                    
+                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Address" HeaderText="Address">
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                                 </asp:BoundField>
-                                <asp:BoundField DataField="Address" HeaderText="ADDRESS">
+                                <asp:BoundField DataField="Phone" HeaderText="Phone">
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                                 </asp:BoundField>
-                                <asp:BoundField DataField="Phone" HeaderText="PHONE">
-                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
-                                </asp:BoundField>
-                                <asp:BoundField DataField="Email" HeaderText="EMAIL">
+                                <asp:BoundField DataField="Email" HeaderText="Email">
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                                 </asp:BoundField>
 
@@ -441,7 +690,7 @@ background-color: ghostwhite;
 
                             <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
 
-                            <HeaderStyle BackColor="#001a00" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                            <HeaderStyle BackColor="#0080AA" HorizontalAlign="Center" VerticalAlign="Middle" Font-Bold="True" ForeColor="White"></HeaderStyle>
 
                             <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#2461BF"></PagerStyle>
 
@@ -467,6 +716,71 @@ background-color: ghostwhite;
 
             </div>
         </div>
+
+       <%-- <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog  modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">View All Registrations</h4>
+
+                    </div>
+                    <div class="modal-body" >
+                        
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="424px" DataKeyNames="PatientID" OnPreRender="GridView1_PreRender" EnableModelValidation="True">
+            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+       <Columns>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"|" + Eval("Name") + "|" + Eval("Address")+"|"+ Eval("Phone")+"|"+ Eval("Email")+"|"+Eval("DOB")+"|"+Eval("Gender")+"|"+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
+                                       
+
+                                    </ItemTemplate>
+                                    
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="ImgBtnDelete" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("PatientID")%>' OnClientClick="return confirm('Deletion Confirmation \n\n\n\n\ Are you sure you want to delete this item ?');" OnCommand="ImgBtnDelete_Command" formnovalidate />
+                                       
+
+                                    </ItemTemplate>
+                                   <ItemStyle HorizontalAlign="Center" />
+                                    <HeaderStyle HorizontalAlign="Center" />
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="Name" HeaderText="Patient Name">
+                                    
+                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Address" HeaderText="Address">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Phone" HeaderText="Phone">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Email" HeaderText="Email">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+
+                            </Columns>
+            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <EditRowStyle BackColor="#999999" />
+            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+        </asp:GridView>
+                            </div>
+                   
+                    <div class="modal-footer">
+                   
+
+                    </div>
+                </div>
+
+            </div>
+        </div>--%>
         
         <div class="modal fade" id="TodaysRegistration" role="dialog">
             <div class="modal-dialog modal-lg">
@@ -536,6 +850,58 @@ background-color: ghostwhite;
         </div>
 
     </div>
+       <%-- <script type ="text/javascript" >
+            $(document).ready(
+            function() {
+                $('table').tablePagination({});
+            });
+
+            <%--function check() {
+
+                var name = document.getElementById('<%=TextBox1.ClientID%>').value;
+      var first = name.substring(0, 1);
+      if (!(first >= "A" && first <= "Z"))
+      {
+          alert("First character is capital");
+          return false;
+      }
+      
+  }
+</script>--%>
+        <%--<style>
+              
+                  
+          #testTable { 
+            width : 300px;
+            margin-left: auto; 
+            margin-right: auto; 
+          }
+          
+          #tablePagination { 
+            background-color:  Transparent; 
+            font-size: 0.8em; 
+            padding: 0px 5px; 
+            height: 20px
+          }
+          
+          #tablePagination_paginater { 
+            margin-left: auto; 
+            margin-right: auto;
+          }
+          
+          #tablePagination img { 
+            padding: 0px 2px; 
+          }
+          
+          #tablePagination_perPage { 
+            float: left; 
+          }
+          
+          #tablePagination_paginater { 
+            float: right; 
+          }
+
+    </style>--%>
         </asp:Panel>
     
 </asp:Content>

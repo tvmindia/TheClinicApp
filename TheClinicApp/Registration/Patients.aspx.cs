@@ -14,33 +14,29 @@ namespace TheClinicApp.Registration
 {
     public partial class Patients : System.Web.UI.Page
     {
+        //login details
+
+        UIClasses.Const Const = new UIClasses.Const();
+        ClinicDAL.UserAuthendication UA;
+        TokensBooking tok = new TokensBooking();
         ErrorHandling eObj = new ErrorHandling();
         public string listFilter = null;
         protected void Page_Load(object sender, EventArgs e)
         {
             gridDataBind();
-            //ProfilePicUpload.onClick += new RadToolBarEventHandler(ProfilePicUpload_onClick);
-            //ProfilePicUpload.OnClientButtonClicking = "OnClientButtonClicking";
+
         }
+
         #region MainButton
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            //HttpPostedFile file = Request.Files["fileupload"];
-
-            ////check file was submitted
-            //if (file != null && file.ContentLength > 0)
-            //{
-            //    string fname = Path.GetFileName(file.FileName);
-            //    file.SaveAs(Server.MapPath(Path.Combine("~/images/Profilepic", fname)));
-            //}
+            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
             Patient PatientObj = new Patient();
-            DateTime _date = DateTime.Now;          
-            
+            DateTime _date = DateTime.Now;
             int age = Convert.ToInt32(txtAge.Text);
             int year = _date.Year;
             int DOB = year - age;
             string guitemp = "2c7a7172-6ea9-4640-b7d2-0c329336f289";
-            
             PatientObj.ClinicID = Guid.Parse(guitemp);
             PatientObj.Name = txtName.Text;
             PatientObj.Address = txtAddress.Text;
@@ -51,55 +47,42 @@ namespace TheClinicApp.Registration
             PatientObj.MaritalStatus = txtMarital.Text;
             PatientObj.Occupation = "BUSINESS";
             PatientObj.FileNumber = "HO343499";
-            
-            //PatientObj.image =null ;
-            if (btnSave.Text=="SAVE")
+            if (btnSave.Text == "SAVE")
             {
                 Guid g = Guid.NewGuid();
                 PatientObj.PatientID = g;
                 PatientObj.AddPatientDetails();
                 PatientObj.AddFile();
-                
-                var page = HttpContext.Current.CurrentHandler as Page;
+
+                ////var page = HttpContext.Current.CurrentHandler as Page;
+
             }
-            else if(btnSave.Text=="Update")
+            else if (btnSave.Text == "Update")
             {
                 PatientObj.PatientID = Guid.Parse(HiddenField1.Value);
                 PatientObj.UpdatePatientDetails();
-                var page = HttpContext.Current.CurrentHandler as Page;
+                //var page = HttpContext.Current.CurrentHandler as Page;
+
             }
             gridDataBind();
-            PicUpload();
-            lblFilenumber.Text = PatientObj.FileNumber;
+
+
+            lblFileCount.Text = PatientObj.FileNumber;
+            lblFile.Text = PatientObj.FileNumber;
+            lblName.Text = txtName.Text;
+            lblAge.Text = txtAge.Text;
+            lblGender.Text = txtSex.Text;
+            lblPhone.Text = txtMobile.Text;
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+            btnnew.Visible = true;
         }
 
         #endregion MainButton
 
-        public void PicUpload()
-        {
-            HttpPostedFile filePosted = Request.Files["fileupload"];
-
-            if (filePosted != null && filePosted.ContentLength > 0)
-            {
-                string fileNameApplication = System.IO.Path.GetFileName(filePosted.FileName);
-                string fileExtensionApplication = System.IO.Path.GetExtension(fileNameApplication);
-
-                // generating a random guid for a new file at server for the uploaded file
-                string newFile = Guid.NewGuid().ToString() + fileExtensionApplication;
-                // getting a valid server path to save
-                string filePath = System.IO.Path.Combine(Server.MapPath("~/Images/Profilepic"), newFile);
-
-                if (fileNameApplication != String.Empty)
-                {
-                    filePosted.SaveAs(filePath);
-                }
-            }
-        }
-
         #region GridBind
         public void gridDataBind()
         {
-           
+
             Patient Patientobj = new Patient();
             #region GridAllRegistration
             dtgViewAllRegistration.EmptyDataText = "No Records Found";
@@ -114,17 +97,33 @@ namespace TheClinicApp.Registration
             dtgViewTodaysRegistration.DataSource = Patientobj.GetDateRegistration();
             dtgViewTodaysRegistration.DataBind();
             #endregion GridDateRegistration
+
+            DropdownDoctors();
         }
         #endregion GridBind
 
-       
+        #region BindDropdownDoc
+        public void DropdownDoctors()
+        {
+            DataSet ds = tok.DropBindDoctorsName();
+
+            ddlDoctorName.DataSource = ds.Tables[0];
+            ddlDoctorName.DataValueField = "DoctorID";
+            ddlDoctorName.DataTextField = "Name";
+            ddlDoctorName.DataBind();
+
+
+
+        }
+        #endregion BindDropdownDOc
+
         #region BindDataAutocomplete
         private string BindName()
         {
             Patient PatientObj = new Patient();
 
-        DataTable dt = PatientObj.GetSearchBoxData();
-        
+            DataTable dt = PatientObj.GetSearchBoxData();
+
             StringBuilder output = new StringBuilder();
             output.Append("[");
             for (int i = 0; i < dt.Rows.Count; ++i)
@@ -158,6 +157,7 @@ namespace TheClinicApp.Registration
             txtEmail.Text = Patient[4];
             txtMarital.Text = Patient[7];
             btnSave.Text = "Update";
+            btnnew.Visible = true;
             HiddenField1.Value = PatientID.ToString();
         }
 
@@ -168,7 +168,7 @@ namespace TheClinicApp.Registration
             string[] Patient = e.CommandArgument.ToString().Split(new char[] { '|' });
             Guid PatientID = Guid.Parse(Patient[0]);
             txtName.Text = Patient[1];
-            txtSex.Text = Patient[6];
+            //txtSex.Text = Patient[6];
             DateTime dt = Convert.ToDateTime(Patient[5]);
             int Age = year - dt.Year;
             txtAge.Text = Age.ToString();
@@ -177,6 +177,7 @@ namespace TheClinicApp.Registration
             txtEmail.Text = Patient[4];
             txtMarital.Text = Patient[7];
             btnSave.Text = "Update";
+            btnnew.Visible = true;
             HiddenField1.Value = PatientID.ToString();
         }
         #endregion EditPatients
@@ -226,20 +227,16 @@ namespace TheClinicApp.Registration
         }
 
         protected void ImgBtnDelete1_Command(object sender, CommandEventArgs e)
-        {   
+        {
             Patient PatientObj = new Patient();
             Guid PatientID = Guid.Parse(e.CommandArgument.ToString());
             PatientObj.PatientID = PatientID;
             PatientObj.DeletePatientDetails();
-           
+
             gridDataBind();
         }
         #endregion GridDelete
 
-        //protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
-        //{
-        //    Image1.Attributes.Add("onclick", "document.getElementById('" + FileUpload1.ClientID + "').click();");
-        //}
         #region clearfield
         public void ClearFields()
         {
@@ -251,12 +248,46 @@ namespace TheClinicApp.Registration
             txtMobile.Text = "";
             txtMarital.Text = "";
             btnSave.Text = "Save";
-            //lblErrorCaption.Text = "";
-            //lblMsgges.Text = "";
+            lblErrorCaption.Text = "";
+            lblMsgges.Text = "";
         }
         #endregion clearfield
 
-        
+
+
+        protected void btntokenbooking_Click(object sender, EventArgs e)
+        {
+            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+            tok.DoctorID = ddlDoctorName.SelectedValue;
+            tok.PatientID = HiddenField1.Value;
+            tok.ClinicID = UA.ClinicID.ToString();
+            tok.CreateDate = DateTime.Now;
+            tok.DateTime = DateTime.Now;
+            tok.CreatedBy = UA.userName;
+
+            int tokenNo = tok.InsertToken();
+
+            lblTokencount.Text = "Token No: " + tokenNo.ToString();
+            lblToken.Visible = true;
+            divDisplayNumber.Visible = true;
+        }
+
+        protected void btnnew_Click(object sender, EventArgs e)
+        {
+            ClearFields();
+            btnnew.Visible = false;
+            divDisplayNumber.Visible = false;
+        }
+
+        protected void dtgViewAllRegistration_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dtgViewAllRegistration.PageIndex = e.NewPageIndex;
+            dtgViewAllRegistration.DataBind();
+        }
+
+
+
+
     }
-  
+
 }
