@@ -10,8 +10,28 @@ namespace TheClinicApp.ClinicDAL
     public class Stocks
     {
 
+        #region constructor
+
+        public Stocks()
+        {
+
+             MedicineID  = Guid.NewGuid();
+        }
+        public Stocks(Guid MedicineID1)
+        {
+
+            // Guid ex = Guid.NewGuid();
+
+            MedicineID = MedicineID1;
+
+
+        }
+
+        #endregion constructor
+
+
         #region Property
-        public string MedicineID
+        public Guid MedicineID
         {
             get;
             set;
@@ -32,7 +52,7 @@ namespace TheClinicApp.ClinicDAL
             set;
 
         }
-        public int Unit
+        public string Unit
         {
             get;
             set;
@@ -67,6 +87,14 @@ namespace TheClinicApp.ClinicDAL
             get;
             set;
         }
+
+        public string  MedCode
+        {
+            get;
+            set;
+        }
+
+
 
         #endregion Property
 
@@ -151,8 +179,6 @@ namespace TheClinicApp.ClinicDAL
         }
         #endregion SearchBoxMedicine
 
-
-
         #region SearchWithName
         public DataTable GetMedcineDetails(string SearchName)
         {
@@ -173,22 +199,15 @@ namespace TheClinicApp.ClinicDAL
 
         }
         #endregion SearchWithName
-
-
-
+        
         #region InsertMedicines
         public void InsertMedicines()
         {
-
-
             dbConnection dcon = null;
 
             try
             {
 
-               
-
-                
                 dcon = new dbConnection();
                 dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
@@ -196,18 +215,16 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[InsertMedicines]";
 
-              
+                cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = MedicineID;
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
-                cmd.Parameters.Add("@CateoryID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(CategoryID);
+                cmd.Parameters.Add("@CategoryID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(CategoryID);
                 cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = Name;
-                cmd.Parameters.Add("@Unit", SqlDbType.Real).Value =Unit;
-                cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
+                cmd.Parameters.Add("@Unit", SqlDbType.NVarChar, 15).Value = Unit;
                 
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
-              
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
-             
-                cmd.Parameters.Add("@ReOrderQty", SqlDbType.Real).Value = ReOrderQty;
+               // cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;                INITIAL QUANTITY WILL BE ZERO
+                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;              
+                cmd.Parameters.Add("@ReOrderQty", SqlDbType.Real).Value = Convert.ToInt32( ReOrderQty);
+                cmd.Parameters.Add("@MedCode", SqlDbType.NVarChar, 20).Value = MedCode;
 
 
 
@@ -237,13 +254,10 @@ namespace TheClinicApp.ClinicDAL
         #region UpdateMedicines
         public void UpdateMedicines(string MedicineID )
         {
-
             dbConnection dcon = null;
 
             try
             {
-
-                
                 dcon = new dbConnection();
                 dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
@@ -251,22 +265,17 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[UpdateMedicines]";
 
-
-
-                cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
-                //cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
+                cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
+               
                 cmd.Parameters.Add("@CateoryID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(CategoryID);
                 cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = Name;
-                cmd.Parameters.Add("@Unit", SqlDbType.Real).Value = Unit;
+                cmd.Parameters.Add("@Unit", SqlDbType.NVarChar, 15).Value = Unit; 
                 cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
-
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
-               
-                cmd.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
-                
+                             
+                cmd.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;                
                 cmd.Parameters.Add("@ReOrderQty", SqlDbType.Real).Value = ReOrderQty;
-
-
+                cmd.Parameters.Add("@MedCode", SqlDbType.NVarChar, 20).Value = MedCode;
 
                 cmd.ExecuteNonQuery();
 
@@ -292,59 +301,6 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion UpdateMedicines 
 
-        #region ViewMedicines
-
-        public DataSet ViewMedicines()
-        {
-
-            dbConnection dcon = null;
-            DataSet ds = null;
-            SqlDataAdapter sda = null;
-            try
-            {
-
-                dcon = new dbConnection();
-                dcon.GetDBConnection();
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = dcon.SQLCon;
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "[ViewMedicines]";
-
-                //cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = MedicineID;
-                //cmd.Parameters.Add("@DateTime", SqlDbType.DateTime).Value = DateTime;
-                //cmd.Parameters.Add("@DateTime", SqlDbType.NVarChar, 50).Value = now.ToString("yyyy-MM-dd");
-
-                sda = new SqlDataAdapter();
-                cmd.ExecuteNonQuery();
-                sda.SelectCommand = cmd;
-                ds = new DataSet();
-                sda.Fill(ds);
-
-
-                return ds;
-
-            }
-
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-
-            finally
-            {
-                if (dcon.SQLCon != null)
-                {
-                    dcon.DisconectDB();
-                }
-
-            }
-
-        }
-
-
-        #endregion ViewMedicines
-
         #region DeleteMedicines
         public void DeleteMedicines(string MedicineID)
         {
@@ -353,8 +309,6 @@ namespace TheClinicApp.ClinicDAL
 
             try
             {
-
-
                 dcon = new dbConnection();
                 dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
@@ -362,6 +316,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[DeleteMedicines]";
 
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
 
                 cmd.ExecuteNonQuery();
@@ -387,8 +342,8 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion InsertMedicines
 
-        #region Out_of_Stock_MedicineList
-        public DataSet OutofStockMedicines()
+        #region View_Out_of_Stock_MedicineList
+        public DataSet ViewOutofStockMedicines()
         {
 
             dbConnection dcon = null;
@@ -402,17 +357,11 @@ namespace TheClinicApp.ClinicDAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "[OutofStockMedicines]";
+                cmd.CommandText = "[ViewOutofStockMedicines]";
 
-            
-                //cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
-                //cmd.Parameters.Add("@ReOrderQty", SqlDbType.Real).Value = ReOrderQty;
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
 
-               
-               
-
-              
-
+                
                 sda = new SqlDataAdapter();
                 cmd.ExecuteNonQuery();
                 sda.SelectCommand = cmd;
@@ -443,8 +392,71 @@ namespace TheClinicApp.ClinicDAL
 
 #endregion Out_of_Stock_MedicineList
 
+         #region Search And View MedicineStock
+        /// <summary>
+        /// VIEW MEDCINES IF SEARCH ITEM IS NULL....OTHERWISE SEARCH
+        /// 
+        /// </summary>
+        /// <param name="String"></param>
+        /// <returns></returns>
+        public DataSet SearchMedicineStock(string String )//In case of view : Empty string has to be passed
+        {
+
+            dbConnection dcon = null;
+            DataSet ds = null;
+            SqlDataAdapter sda = null;
+            try
+            {
+
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = dcon.SQLCon;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[SearchMedicineStock]";
+
+                if (String == String.Empty)
+                {
+                    cmd.Parameters.Add("@String", SqlDbType.NVarChar, 255).Value = DBNull.Value;
+                }
+                else
+                {
+                    cmd.Parameters.Add("@String", SqlDbType.NVarChar, 255).Value = String;
+                }
+              
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
 
 
+                sda = new SqlDataAdapter();
+                cmd.ExecuteNonQuery();
+                sda.SelectCommand = cmd;
+                ds = new DataSet();
+                sda.Fill(ds);
+
+
+                return ds;
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                if (dcon.SQLCon != null)
+                {
+                    dcon.DisconectDB();
+                }
+
+            }
+
+        }
+
+
+        #endregion Search And View MedicineStock
 
         #endregion Medicines
 

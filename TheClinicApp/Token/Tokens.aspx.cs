@@ -68,9 +68,6 @@ namespace TheClinicApp.Token
         protected void btnBookToken_Click(object sender, EventArgs e)
         {
 
-
-
-
             tok.DoctorID = ddlDoctorName.SelectedValue;
             tok.PatientID = HiddenPatientID.Value;
             tok.ClinicID = HiddenClinicID.Value;

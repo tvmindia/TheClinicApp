@@ -10,7 +10,7 @@ namespace TheClinicApp.ClinicDAL
     public class Receipt
     {
 
-        
+
 
         public Receipt()
         {
@@ -93,7 +93,7 @@ namespace TheClinicApp.ClinicDAL
             dbConnection dcon = null;
 
             try
-            {
+            {            
 
               
 
@@ -109,13 +109,10 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@RefNo1", SqlDbType.NVarChar, 255).Value = RefNo1;
                 cmd.Parameters.Add("@RefNo2", SqlDbType.NVarChar, 255).Value = RefNo2;
-                cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value = Date;
+                cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value = Date;         
          
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
-              
-
-
-
+                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;  
+            
                 cmd.ExecuteNonQuery();
 
             }
@@ -138,7 +135,7 @@ namespace TheClinicApp.ClinicDAL
         }
 
         #endregion InsertReceiptHeaderDetails
-        
+
         #region UpdateReceiptHeaderDetails
         public void UpdateReceiptHeaderDetails(string ReceiptID)
         {
@@ -392,7 +389,7 @@ namespace TheClinicApp.ClinicDAL
 
             try
             {
-
+                        
                 
            
                 dcon = new dbConnection();
@@ -410,7 +407,7 @@ namespace TheClinicApp.ClinicDAL
                 
                 cmd.Parameters.Add("@Unit", SqlDbType.Real).Value = Unit;                           
 
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
+                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy; 
               
 
                 cmd.Parameters.Add("@QTY", SqlDbType.Real).Value = QTY;
@@ -466,7 +463,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@Unit", SqlDbType.Real).Value = Unit;
 
                
-                cmd.Parameters.Add("@UpdateBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
+                cmd.Parameters.Add("@UpdateBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;                
                 
                 cmd.Parameters.Add("@QTY", SqlDbType.Real).Value = QTY;
 
@@ -512,7 +509,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[ViewReceiptDetails]";
 
-               
+
                 sda = new SqlDataAdapter();
                 cmd.ExecuteNonQuery();
                 sda.SelectCommand = cmd;
