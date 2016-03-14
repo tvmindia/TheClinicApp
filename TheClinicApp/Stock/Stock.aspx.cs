@@ -158,7 +158,7 @@ namespace TheClinicApp.Stock
 
             ReceiptDetails rptdt = new ReceiptDetails();
             rptdt.QTY = Convert.ToInt32(txtQty.Text);
-            rptdt.Unit = txtUnit.Text;
+            rptdt.Unit =Convert.ToInt32(txtUnit.Text);
         
             rptdt.MedicineID = HiddenFieldMedicineID.Value;
             rptdt.ClinicID = UA.ClinicID.ToString();
