@@ -240,6 +240,7 @@
     <Content Include="Scripts\mui.js" />
     <Content Include="Scripts\mui.min.js" />
     <Content Include="Scripts\selectize.js" />
+    <Content Include="Stock\ExistingStockIn.aspx" />
     <Content Include="Stock\InventoryOut.aspx" />
     <Content Include="Stock\Stock.aspx" />
     <Content Include="Stock\StockIN.aspx" />
@@ -435,6 +436,13 @@
     </Compile>
     <Compile Include="ResetPassword.aspx.designer.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\ExistingStockIn.aspx.cs">
+      <DependentUpon>ExistingStockIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\ExistingStockIn.aspx.designer.cs">
+      <DependentUpon>ExistingStockIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="Stock\InventoryOut.aspx.cs">
       <DependentUpon>InventoryOut.aspx</DependentUpon>
