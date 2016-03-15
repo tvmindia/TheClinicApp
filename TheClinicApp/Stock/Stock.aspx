@@ -465,6 +465,12 @@
                         <a id="hlkStockDemo" href="../Stock/StocksDemo.aspx">Stocks Demo</a>
 
                     </div>
+                     <br />
+                     <div>
+
+                        <a id="hlkStockIN" href="../Stock/StockIN.aspx">Stocks IN</a>
+
+                    </div>
 
 
                 </div>
