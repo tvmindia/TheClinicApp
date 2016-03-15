@@ -19,7 +19,7 @@
 
 
       <div class="container-fluid bodyDiv">
-        <label class="headingLabel">Stocks</label>
+        <label class="headingLabel">Stocks IN</label>
         <div class="col-sm-12 Span-One ">
 
             <%-- center Block --%>
@@ -48,7 +48,7 @@
            <asp:GridView ID="GridViewStockin" runat="server" AutoGenerateColumns="False">
                 <Columns>
                     <asp:BoundField HeaderText="Receipt ID" DataField="ReceiptID" />
-                    <asp:HyperLinkField DataTextField="RefNo1" HeaderText="Bill Number" />
+                    <asp:HyperLinkField DataTextField="RefNo1" HeaderText="Bill Number" NavigateUrl="~/Stock/ExistingStockIn.aspx" />
                     <asp:BoundField DataField="RefNo2" HeaderText="Reference Number" />
                     <asp:BoundField HeaderText="Date" DataField="Date" />
                 </Columns>
