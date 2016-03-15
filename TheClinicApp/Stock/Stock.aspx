@@ -460,6 +460,11 @@
                     <br />
                     <div><a href="#">Usage (Receive/Issue Detail) </a></div>
                     <br />
+                     <div>
+
+                        <a id="hlkStockDemo" href="../Stock/StocksDemo.aspx">Stocks Demo</a>
+
+                    </div>
 
 
                 </div>
