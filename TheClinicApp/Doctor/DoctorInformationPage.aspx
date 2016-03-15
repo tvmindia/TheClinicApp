@@ -13,6 +13,7 @@
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/jquery.js"></script>
+     
     <script>   
         $(document).ready(function () {
 
@@ -31,77 +32,77 @@
                     iCnt = iCnt + 1;
                           <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');
                           count.value=iCnt;--%>
-                        // ADD TEXTBOX.
+                    // ADD TEXTBOX.
                     $(container).append('<table style="width:50%"><tr><td><input id="txtMedname5" type="text" class="input" placeholder="Medicine"/></td><td><input id="txtMedname5" type="text" class="input" placeholder="Timmings"/></td><td><input id="txtMeddoz5" type="text" class="input" placeholder="Dozage"/></td><td><input id="txtMedDays5" type="text" class="input" placeholder="Days"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
 
-                        // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
-                        if (iCnt == 1) {
-                            var divSubmit = $(document.createElement('div'));
-                            $(divSubmit).append('<input type=button class="bt" onclick="GetTextValue()"' + 'id=btSubmit value=Submit />');
-                        }
-                        // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
-                          
-                        $('#main').after(container, divSubmit);
-                          
+                    // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
+                    if (iCnt == 1) {
+                        var divSubmit = $(document.createElement('div'));
+                        $(divSubmit).append('<input type=button class="bt" onclick="GetTextValue()"' + 'id=btSubmit value=Submit />');
                     }
+                    // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
+                          
+                    $('#main').after(container, divSubmit);
+                          
+                }
 
-                        // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
-                        // (20 IS THE LIMIT WE HAVE SET)
-                    else {
-                        $(container).append('<label>Reached the limit</label>');
-                        $('#btAdd').attr('class', 'bt-disable');
-                        $('#btAdd').attr('disabled', 'disabled');
-                    }
+                    // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
+                    // (20 IS THE LIMIT WE HAVE SET)
+                else {
+                    $(container).append('<label>Reached the limit</label>');
+                    $('#btAdd').attr('class', 'bt-disable');
+                    $('#btAdd').attr('disabled', 'disabled');
+                }
              
-                });
             });
+        });
 
             
 
-            // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
-            var divValue, values = '';
+        // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
+        var divValue, values = '';
 
-            function GetTextValue() {
-                $(divValue)
-                    .empty()
-                    .remove();
+        function GetTextValue() {
+            $(divValue)
+                .empty()
+                .remove();
 
-                values = '';
+            values = '';
 
-                $('.input').each(function () {
-                    divValue = $(document.createElement('div')).css({
-                        padding: '5px', width: '200px'
-                    });
+            $('.input').each(function () {
+                divValue = $(document.createElement('div')).css({
+                    padding: '5px', width: '200px'
+                });
 
 
-                    var datas = document.getElementById('<%=HiddenField1.ClientID%>');
+                var datas = document.getElementById('<%=HiddenField1.ClientID%>');
 
-                      values += this.value + ' ';
+                    values += this.value + ' ';
 
-                      datas.value = values;
+                    datas.value = values;
                       
 
 
 
-                  });
+                });
 
 
 
 
-              }
+            }
               
           
                   
 </script>
-    <script>
-        $(document).ready(function () {
-            debugger;
-            var ac=null;
-            ac = <%=listFilter %>;
-                 $( "#txtSearch" ).autocomplete({
-                     source: ac
-                 });
+   <script>
+       $(document).ready(function () {
+           debugger;
+           var ac=null;
+           ac = <%=listFilter %>;
+             $( "#txtSearch" ).autocomplete({
+                 source: ac
              });
+         });
          </script>
 
        <style>

@@ -15,7 +15,7 @@ namespace TheClinicApp.Registration
     public partial class Patients : System.Web.UI.Page
     {
         //login details
-       
+
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
         TokensBooking tok = new TokensBooking();
@@ -24,9 +24,9 @@ namespace TheClinicApp.Registration
         protected void Page_Load(object sender, EventArgs e)
         {
             gridDataBind();
-            
+
         }
-       
+
         #region MainButton
         protected void btnSave_Click(object sender, EventArgs e)
         {
@@ -47,26 +47,26 @@ namespace TheClinicApp.Registration
             PatientObj.MaritalStatus = txtMarital.Text;
             PatientObj.Occupation = "BUSINESS";
             PatientObj.FileNumber = "HO343499";
-            if (btnSave.Text=="SAVE")
+            if (btnSave.Text == "SAVE")
             {
                 Guid g = Guid.NewGuid();
                 PatientObj.PatientID = g;
                 PatientObj.AddPatientDetails();
                 PatientObj.AddFile();
-                
+
                 ////var page = HttpContext.Current.CurrentHandler as Page;
-                
+
             }
-            else if(btnSave.Text=="Update")
+            else if (btnSave.Text == "Update")
             {
                 PatientObj.PatientID = Guid.Parse(HiddenField1.Value);
                 PatientObj.UpdatePatientDetails();
                 //var page = HttpContext.Current.CurrentHandler as Page;
-                
+
             }
             gridDataBind();
-            
-      
+
+
             lblFileCount.Text = PatientObj.FileNumber;
             lblFile.Text = PatientObj.FileNumber;
             lblName.Text = txtName.Text;
@@ -82,14 +82,14 @@ namespace TheClinicApp.Registration
         #region GridBind
         public void gridDataBind()
         {
-           
+
             Patient Patientobj = new Patient();
             #region GridAllRegistration
             dtgViewAllRegistration.EmptyDataText = "No Records Found";
             dtgViewAllRegistration.DataSource = Patientobj.GetAllRegistration();
             dtgViewAllRegistration.DataBind();
             #endregion GridAllRegistration
-           
+
             listFilter = null;
             listFilter = BindName();
             #region GridDateRegistration
@@ -111,19 +111,19 @@ namespace TheClinicApp.Registration
             ddlDoctorName.DataValueField = "DoctorID";
             ddlDoctorName.DataTextField = "Name";
             ddlDoctorName.DataBind();
-            
+
 
 
         }
-        #endregion BindDropdownDOc 
+        #endregion BindDropdownDOc
 
         #region BindDataAutocomplete
         private string BindName()
         {
             Patient PatientObj = new Patient();
 
-        DataTable dt = PatientObj.GetSearchBoxData();
-        
+            DataTable dt = PatientObj.GetSearchBoxData();
+
             StringBuilder output = new StringBuilder();
             output.Append("[");
             for (int i = 0; i < dt.Rows.Count; ++i)
@@ -227,16 +227,16 @@ namespace TheClinicApp.Registration
         }
 
         protected void ImgBtnDelete1_Command(object sender, CommandEventArgs e)
-        {   
+        {
             Patient PatientObj = new Patient();
             Guid PatientID = Guid.Parse(e.CommandArgument.ToString());
             PatientObj.PatientID = PatientID;
             PatientObj.DeletePatientDetails();
-           
+
             gridDataBind();
         }
         #endregion GridDelete
-        
+
         #region clearfield
         public void ClearFields()
         {
@@ -253,7 +253,7 @@ namespace TheClinicApp.Registration
         }
         #endregion clearfield
 
-       
+
 
         protected void btntokenbooking_Click(object sender, EventArgs e)
         {
@@ -285,9 +285,9 @@ namespace TheClinicApp.Registration
             dtgViewAllRegistration.DataBind();
         }
 
-        
-       
-        
+
+
+
     }
-  
+
 }

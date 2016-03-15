@@ -152,13 +152,13 @@ namespace TheClinicApp.Stock
             rpt.Date = Convert.ToDateTime(txtDate.Text);
             rpt.ClinicID = UA.ClinicID.ToString();
             rpt.CreatedBy = UA.userName;
-            rpt.InsertReceiptHeader();
+            //rpt.InsertReceiptHeader();
 
             //Receipt Details MUST BE IN LOOP
 
             ReceiptDetails rptdt = new ReceiptDetails();
             rptdt.QTY = Convert.ToInt32(txtQty.Text);
-            rptdt.Unit = txtUnit.Text;
+            rptdt.Unit =txtUnit.Text;
         
             rptdt.MedicineID = HiddenFieldMedicineID.Value;
             rptdt.ClinicID = UA.ClinicID.ToString();

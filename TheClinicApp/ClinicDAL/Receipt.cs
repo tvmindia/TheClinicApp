@@ -15,7 +15,7 @@ namespace TheClinicApp.ClinicDAL
         public Receipt()
         {
 
-           // Guid ex = Guid.NewGuid();
+            // Guid ex = Guid.NewGuid();
 
             ReceiptID = Guid.NewGuid();
 
@@ -93,7 +93,7 @@ namespace TheClinicApp.ClinicDAL
             dbConnection dcon = null;
 
             try
-            {            
+            {
                 dcon = new dbConnection();
                 dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
@@ -104,8 +104,9 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@RefNo1", SqlDbType.NVarChar, 255).Value = RefNo1;
                 cmd.Parameters.Add("@RefNo2", SqlDbType.NVarChar, 255).Value = RefNo2;
-                cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value = Date;         
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;  
+                cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value = Date;
+                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
+
                 cmd.ExecuteNonQuery();
 
             }
@@ -129,7 +130,7 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion InsertReceiptHeader
 
-        #region UpdateReceiptHeader 
+        #region UpdateReceiptHeader
         public void UpdateReceiptHeader(string ReceiptID)
         {
             dbConnection dcon = null;
@@ -147,12 +148,12 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ReceiptID);
 
-              //  cmd.Parameters.Add("@RefNo1", SqlDbType.NVarChar, 255).Value = RefNo1;
+                //  cmd.Parameters.Add("@RefNo1", SqlDbType.NVarChar, 255).Value = RefNo1;
                 cmd.Parameters.Add("@RefNo2", SqlDbType.NVarChar, 255).Value = RefNo2;
                 cmd.Parameters.Add("@Date", SqlDbType.NVarChar, 50).Value = Date;
 
                 cmd.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
-             
+
                 cmd.ExecuteNonQuery();
 
             }
@@ -205,7 +206,7 @@ namespace TheClinicApp.ClinicDAL
 
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
 
-               
+
 
                 sda = new SqlDataAdapter();
                 cmd.ExecuteNonQuery();
@@ -239,7 +240,7 @@ namespace TheClinicApp.ClinicDAL
         #endregion ViewAndSearchReceipteHeader
 
         #region DeleteReceiptHeader
-        public void DeleteReceiptHeader( string ReceiptID)
+        public void DeleteReceiptHeader(string ReceiptID)
         {
             dbConnection dcon = null;
 
@@ -253,7 +254,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandText = "[DeleteReceiptHeader]";
 
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
-                cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value =Guid.Parse(ReceiptID);
+                cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ReceiptID);
 
                 cmd.ExecuteNonQuery();
 
@@ -338,7 +339,7 @@ namespace TheClinicApp.ClinicDAL
     }
 
 
-   
+
 
     public class ReceiptDetails
     {
@@ -346,7 +347,7 @@ namespace TheClinicApp.ClinicDAL
         public ReceiptDetails()
         {
 
-           // Guid ex = Guid.NewGuid();
+            // Guid ex = Guid.NewGuid();
 
             UniqueID = Guid.NewGuid();
 
@@ -355,7 +356,7 @@ namespace TheClinicApp.ClinicDAL
         public ReceiptDetails(Guid UniqueID)
         {
 
-           // Guid ex = Guid.NewGuid();
+            // Guid ex = Guid.NewGuid();
 
             this.UniqueID = UniqueID;
 
@@ -370,8 +371,8 @@ namespace TheClinicApp.ClinicDAL
             get;
             set;
         }
-      
-         public Guid ReceiptID
+
+        public Guid ReceiptID
         {
             get;
             set;
@@ -432,20 +433,20 @@ namespace TheClinicApp.ClinicDAL
 
             try
             {
-                        
+
                 dcon = new dbConnection();
                 dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[InsertReceiptDetails]";
-              
+
                 cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = UniqueID;
                 cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = ReceiptID;
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
-                cmd.Parameters.Add("@Unit", SqlDbType.NVarChar, 15).Value = Unit;   
-                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy; 
+                cmd.Parameters.Add("@Unit", SqlDbType.NVarChar, 15).Value = Unit;
+                cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
                 cmd.Parameters.Add("@QTY", SqlDbType.Real).Value = QTY;
 
 
@@ -474,7 +475,7 @@ namespace TheClinicApp.ClinicDAL
         #endregion InsertReceiptDetails
 
         #region UpdateReceiptDetails
-        public void UpdateReceiptDetails( string UniqueID,string MedicineID)
+        public void UpdateReceiptDetails(string UniqueID, string MedicineID)
         {
 
             dbConnection dcon = null;
@@ -491,10 +492,11 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandText = "[UpdateReceiptDetails]";
 
 
-                cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(UniqueID);               
+                cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(UniqueID);
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
-                cmd.Parameters.Add("@Unit", SqlDbType.NVarChar, 15).Value = Unit;                
-                cmd.Parameters.Add("@UpdateBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;                
+                cmd.Parameters.Add("@Unit", SqlDbType.NVarChar, 15).Value = Unit;
+                cmd.Parameters.Add("@UpdateBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
                 cmd.Parameters.Add("@QTY", SqlDbType.Real).Value = QTY;
                 cmd.ExecuteNonQuery();
 
@@ -525,7 +527,7 @@ namespace TheClinicApp.ClinicDAL
         public DataSet ViewReceiptDetails()
         {
 
-            dbConnection  dcon = null;
+            dbConnection dcon = null;
             DataSet ds = null;
             SqlDataAdapter sda = null;
             try
@@ -541,7 +543,7 @@ namespace TheClinicApp.ClinicDAL
 
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
 
-               
+
                 sda = new SqlDataAdapter();
                 cmd.ExecuteNonQuery();
                 sda.SelectCommand = cmd;
