@@ -71,19 +71,19 @@
 
 //---------
 
-    $(function () {
-        $("[id*=gvMedicines] td").click(function () {
+    //$(function () {
+    //    $("[id*=gvMedicines] td").click(function () {
          
-            DisplayDetails($(this).closest("tr"));
-        });
-    });
-    function DisplayDetails(row) {
-        var message = "";
-        message += "Code: " + $("td", row).eq(0).html();
-        message += "\nName: " + $("td", row).eq(1).html();
-        message += "\nCategory: " + $("td", row).eq(2).html();
-        alert(message);
-    }
+    //        DisplayDetails($(this).closest("tr"));
+    //    });
+    //});
+    //function DisplayDetails(row) {
+    //    var message = "";
+    //    message += "Code: " + $("td", row).eq(0).html();
+    //    message += "\nName: " + $("td", row).eq(1).html();
+    //    message += "\nCategory: " + $("td", row).eq(2).html();
+    //    alert(message);
+    //}
 
 
 
@@ -132,7 +132,12 @@
         if (Medicines.length > 0) {
             $.each(Medicines, function () {
                 var medicine = $(this);
-                $("td", row).eq(0).html($(this).find("MedicineCode").text());
+
+
+                $("td", row).eq(0).html('<a href="#">' + $(this).find("MedicineCode").text() + '</a>');
+
+               
+                //$("td", row).eq(0).html($(this).find("MedicineCode").text());
                 $("td", row).eq(1).html($(this).find("MedicineName").text());
                 $("td", row).eq(2).html($(this).find("CategoryName").text());
                 $("[id*=gvMedicines]").append(row);
