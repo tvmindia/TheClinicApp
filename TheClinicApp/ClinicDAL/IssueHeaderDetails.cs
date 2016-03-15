@@ -109,9 +109,9 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[GetTopIssueNO]";
-                cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = now.ToString("yyyy-MM-dd");
+              
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
-                SqlParameter OutparmItemId = cmd.Parameters.Add("@String", SqlDbType.NVarChar);
+                SqlParameter OutparmItemId = cmd.Parameters.Add("@String", SqlDbType.NVarChar,50);
                 OutparmItemId.Direction = ParameterDirection.Output;
                 cmd.ExecuteNonQuery();
                 NUM = OutparmItemId.Value.ToString();    
@@ -128,7 +128,7 @@ namespace TheClinicApp.ClinicDAL
                 }
             }
 
-            if (NUM!=null)
+            if (NUM!="")
             {
                 //trim here
                int x=Convert.ToInt32( NUM.TrimStart('/'));
