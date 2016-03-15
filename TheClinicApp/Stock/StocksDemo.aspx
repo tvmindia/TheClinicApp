@@ -78,14 +78,33 @@
         });
         return false;
     });
+
+    $("[id*=btnNewMedicine]").live("click", function () {
+        $("#NewMedicine").dialog({
+            title: "Add New Medicine",
+            buttons: {
+                Close: function () {
+                    $(this).dialog('close');
+                }
+            }
+        });
+        return false;
+    });
+
 </script>
 <div id="dialog" style="display: none;height:100%;width:100%">
      <iframe src="OutOfStock.aspx" style="width:100%;height:100%"></iframe>
 </div>
+
+<div id="NewMedicine" style="display: none;height:100%;width:100%">
+     <iframe src="NewMedicine.aspx" style="width:100%;height:100%"></iframe>
+</div>
+
 <asp:Button ID="btnPopup" runat="server" Text="Out Of Stock" />
 
+    <br />
 
-
+<asp:Button ID="btnNewMedicine" runat="server" Text="Add New Medicine" />
     
     <script type="text/javascript">
 
