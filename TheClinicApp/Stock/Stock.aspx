@@ -64,7 +64,7 @@
 
 
     <div class="container-fluid bodyDiv">
-        <label class="headingLabel">Stocks</label>
+        <label class="headingLabel">Stocks IN</label>
         <div class="col-sm-12 Span-One ">
 
             <%-- center Block --%>

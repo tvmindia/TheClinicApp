@@ -18,23 +18,43 @@
     <script src="../Scripts/mui.min.js"></script>
 
 
+      <div class="container-fluid bodyDiv">
+        <label class="headingLabel">Stocks</label>
+        <div class="col-sm-12 Span-One ">
 
-    <div>
+            <%-- center Block --%>
+
+
+
+            <div class="col-xs-6  ">
+
+    
            Search:
     <asp:TextBox runat="server" ID="txtSearch" AutoPostBack="true"  ></asp:TextBox>
 
+                </div>
+    
+                <div class="col-xs-6  ">
+                    <asp:Button ID="Button1" runat="server" Text="Add New Receipt" />
+                </div>
 
-        <div>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+             </div>
+          <div class="col-sm-12 Span-One ">
+              <br />
+          </div>
+
+           <div class="col-sm-12 Span-One ">
+                    <div>
+           <asp:GridView ID="GridViewStockin" runat="server" AutoGenerateColumns="False">
                 <Columns>
-                    <asp:BoundField HeaderText="Receipt ID" />
-                    <asp:BoundField />
-                    <asp:BoundField HeaderText="REFERENCE NO:2" />
-                    <asp:BoundField HeaderText="DATE" />
+                    <asp:BoundField HeaderText="Receipt ID" DataField="ReceiptID" />
+                    <asp:HyperLinkField DataTextField="RefNo1" HeaderText="Bill Number" />
+                    <asp:BoundField DataField="RefNo2" HeaderText="Reference Number" />
+                    <asp:BoundField HeaderText="Date" DataField="Date" />
                 </Columns>
             </asp:GridView>
         </div>
-
+  </div>
     </div>
 
 
