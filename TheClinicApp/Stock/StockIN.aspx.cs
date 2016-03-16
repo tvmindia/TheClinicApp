@@ -58,5 +58,12 @@ namespace TheClinicApp.Stock
 
 
         }
+
+        protected void btnAddNewReceipt_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AddNewReceipt.aspx");
+        }
+
+        
     }
 }
