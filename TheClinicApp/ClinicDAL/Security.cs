@@ -201,4 +201,74 @@ namespace TheClinicApp.ClinicDAL
        
         #endregion Get Login Details
     }
+
+    public class CryptographyFunctions
+    {
+        //AES 128bit Cross Platform (Java and C#) Encryption Compatibility
+        string key = System.Web.Configuration.WebConfigurationManager.AppSettings["cryptography"];
+        /// <summary>
+        /// AES 128bit Encryption function
+        /// </summary>
+        /// <param name="plainText">text to be encrypted</param>
+        /// <returns>Encrypted text</returns>
+        public string Encrypt(string plainText)
+        {
+            string encryptedText = "";
+            try
+            {
+
+                var plainBytes = Encoding.UTF8.GetBytes(plainText);
+                var keyBytes = new byte[16];
+                var secretKeyBytes = Encoding.UTF8.GetBytes(key);
+                Array.Copy(secretKeyBytes, keyBytes, Math.Min(keyBytes.Length, secretKeyBytes.Length));
+                encryptedText = Convert.ToBase64String(new RijndaelManaged
+                {
+                    Mode = CipherMode.CBC,
+                    Padding = PaddingMode.PKCS7,
+                    KeySize = 128,
+                    BlockSize = 128,
+                    Key = keyBytes,
+                    IV = keyBytes
+                }.CreateEncryptor().TransformFinalBlock(plainBytes, 0, plainBytes.Length));
+            }
+            catch (Exception ex)
+            {
+                //System.IO.File.WriteAllText(@Server.MapPath("~/Text.txt"), ex.Message);
+                throw ex;
+            }
+            return encryptedText;
+        }
+        /// <summary>
+        /// AES 128 Decryption function
+        /// </summary>
+        /// <param name="encryptedText">Text to be decrypted</param>
+        /// <returns>decrypted plain text</returns>
+        public string Decrypt(string encryptedText)
+        {
+            string plainText = "";
+            try
+            {
+                var encryptedBytes = Convert.FromBase64String(encryptedText);
+                var keyBytes = new byte[16];
+                var secretKeyBytes = Encoding.UTF8.GetBytes(key);
+                Array.Copy(secretKeyBytes, keyBytes, Math.Min(keyBytes.Length, secretKeyBytes.Length));
+                plainText = Encoding.UTF8.GetString(
+                    new RijndaelManaged
+                    {
+                        Mode = CipherMode.CBC,
+                        Padding = PaddingMode.PKCS7,
+                        KeySize = 128,
+                        BlockSize = 128,
+                        Key = keyBytes,
+                        IV = keyBytes
+                    }.CreateDecryptor().TransformFinalBlock(encryptedBytes, 0, encryptedBytes.Length));                
+            }
+            catch (Exception ex)
+            {
+                //System.IO.File.WriteAllText(@Server.MapPath("~/Text.txt"), ex.Message);
+                throw ex;
+            }
+            return plainText;
+        }
+    }
 }
