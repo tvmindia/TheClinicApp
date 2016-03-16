@@ -247,6 +247,7 @@
     <Content Include="Stock\OutOfStock.aspx" />
     <Content Include="Stock\Stock.aspx" />
     <Content Include="Stock\StockIN.aspx" />
+    <Content Include="Stock\StockOut.aspx" />
     <Content Include="Stock\StocksDemo.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="testpage.aspx" />
@@ -492,6 +493,13 @@
     </Compile>
     <Compile Include="Stock\StockIN.aspx.designer.cs">
       <DependentUpon>StockIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\StockOut.aspx.cs">
+      <DependentUpon>StockOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\StockOut.aspx.designer.cs">
+      <DependentUpon>StockOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="Stock\StocksDemo.aspx.cs">
       <DependentUpon>StocksDemo.aspx</DependentUpon>
