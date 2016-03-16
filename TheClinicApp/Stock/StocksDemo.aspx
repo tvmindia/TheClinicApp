@@ -153,7 +153,7 @@
                     RecordCount: parseInt(pager.find("RecordCount").text())
                 });
 
-                $(".MedicineName").each(function () {
+                $(".Match").each(function () {
                     var searchPattern = new RegExp('(' + SearchTerm() + ')', 'ig');
                     $(this).html($(this).text().replace(searchPattern, "<span class = 'highlight'>" + SearchTerm() + "</span>"));
                 });
@@ -183,9 +183,11 @@
             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
             <Columns>
             
-                <asp:BoundField DataField="MedicineCode" HeaderText="Medicine Code" ItemStyle-Font-Underline="true" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Blue" ItemStyle-CssClass="cursorshow" />
-                <asp:BoundField DataField="MedicineName" HeaderText="Medicine Name" />
-                <asp:BoundField DataField="CategoryName" HeaderText="Category Name" />
+                <asp:BoundField DataField="MedicineCode" HeaderText="Medicine Code"  ItemStyle-CssClass="Match"  />
+              <%--<asp:BoundField DataField="MedicineCode" HeaderText="Medicine Code"   ItemStyle-Font-Underline="true" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Blue" ItemStyle-CssClass="cursorshow" />--%>
+
+                <asp:BoundField DataField="MedicineName" HeaderText="Medicine Name"  ItemStyle-CssClass="Match"  />
+                <asp:BoundField DataField="CategoryName" HeaderText="Category Name"  ItemStyle-CssClass="Match"  />
 
 
             </Columns>
@@ -219,7 +221,9 @@
         <br />
         <br />
         <a href="#" role="button" data-toggle="modal" data-target="#AddNewMedicine">Add New Medicine </a>
-
+        <br />
+        <br />
+        <a href="#" role="button" data-toggle="modal" data-target="#AddNewCategory">Add New Category </a>
     </div>
 
 <%--   //------------- OUT OF STOCK---------%>
@@ -268,6 +272,28 @@
         </div>
     </div>
 
+ <%--   //------------- ADD NEW CATEGORY---------%>
+
+    <div class="modal fade" id="AddNewCategory" role="dialog">
+        <div class="modal-dialog modal-lg1">
+
+            <!-- Modal content-->
+
+            <div class="modal-content" style="height: 60%; overflow-y: no-display;">
+                <div class="modal-header" style="background-color: #00CC99">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="font-size: 20px; color: white">Add New Medicine</h4>
+
+                </div>
+                <div class="modal-body" style="background-color: lightgoldenrodyellow; overflow-x: hidden; overflow-y: hidden;">
+                    <div class="col-md-12">
+                        <iframe src="NewMedicine.aspx" style="width: 100%; height: 100%"></iframe>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
     
 </asp:Content>
 

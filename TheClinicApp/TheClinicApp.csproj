@@ -243,6 +243,7 @@
     <Content Include="Stock\AddNewReceipt.aspx" />
     <Content Include="Stock\ExistingStockIn.aspx" />
     <Content Include="Stock\InventoryOut.aspx" />
+    <Content Include="Stock\NewCategory.aspx" />
     <Content Include="Stock\NewMedicine.aspx" />
     <Content Include="Stock\OutOfStock.aspx" />
     <Content Include="Stock\Stock.aspx" />
@@ -465,6 +466,13 @@
     </Compile>
     <Compile Include="Stock\InventoryOut.aspx.designer.cs">
       <DependentUpon>InventoryOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\NewCategory.aspx.cs">
+      <DependentUpon>NewCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\NewCategory.aspx.designer.cs">
+      <DependentUpon>NewCategory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Stock\NewMedicine.aspx.cs">
       <DependentUpon>NewMedicine.aspx</DependentUpon>
