@@ -1,4 +1,5 @@
 ﻿
+#region Included Namespaces
 
 using System;
 using System.Collections.Generic;
@@ -12,21 +13,27 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheClinicApp.ClinicDAL;
 
+#endregion  Included Namespaces
+
 namespace TheClinicApp.Stock
 {
     public partial class StocksDemo : System.Web.UI.Page
     {
-        private static int PageSize = 4;
-
+       
         #region Global Variables
 
+        private static int PageSize = 5;
         Stocks stockObj = new Stocks();
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
 
         #endregion Global Variables
 
-      
+        #region Filter Gridview
+
+        #region Methods
+
+        #region Bind Dummy Row
 
         private void BindDummyRow()
         {
@@ -39,6 +46,13 @@ namespace TheClinicApp.Stock
             gvMedicines.DataBind();
         }
 
+        #endregion Bind Dummy Row
+
+
+        #endregion Methods
+
+        #region Events
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -49,25 +63,27 @@ namespace TheClinicApp.Stock
           
         }
 
-       
+        #endregion Events
+
 
         [WebMethod]
         public static string GetMedicines(string searchTerm, int pageIndex)
         {
-             ClinicDAL.UserAuthendication UA;
-               UIClasses.Const Const = new UIClasses.Const();
+            ClinicDAL.UserAuthendication UA;
+            UIClasses.Const Const = new UIClasses.Const();
 
-              UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
+            UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
 
-            string query = "[ViewAndFilterMedicine]";
+            string query = "ViewAndFilterMedicine";
             SqlCommand cmd = new SqlCommand(query);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@ClinicID", UA.ClinicID );
-           
+            cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = UA.ClinicID;
+
+            cmd.Parameters.AddWithValue("@SearchTerm", searchTerm);
             cmd.Parameters.AddWithValue("@PageIndex", pageIndex);
             cmd.Parameters.AddWithValue("@PageSize", PageSize);
-            cmd.Parameters.Add("@RecordCount", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
+            cmd.Parameters.Add("@RecordCount", SqlDbType.Int).Direction = ParameterDirection.Output;
 
             var xml = GetData(cmd, pageIndex).GetXml();
             return xml;
@@ -100,5 +116,9 @@ namespace TheClinicApp.Stock
                 }
             }
         }
+
+
+
+        #endregion Filter Gridview
     }
 }

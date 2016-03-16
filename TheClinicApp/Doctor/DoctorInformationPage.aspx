@@ -78,7 +78,7 @@
                 var datas = document.getElementById('<%=HiddenField1.ClientID%>');
 
                     values += this.value + ' ';
-
+                    alert(values);
                     datas.value = values;
                       
 
@@ -229,17 +229,19 @@
                                     
 
                                  </table>
-                                             </div>
-                                         
-                             </td>
 
-                                         <td>
-                                 <img src="../Images/UploadPic.png" / width="75px" height="80px" style="box-shadow:initial"/>
-                                             <asp:HiddenField ID="HiddenField1" runat="server" />
-                            </td>
-                                         </tr>
+                          </div>
 
-                                 </table>     
+                      </td>
+                      <td>
+                          <img src="../Images/UploadPic.png/" style="box-shadow:initial;width:75px;" id="ProfilePic" runat="server"/>
+                          <asp:HiddenField ID="HiddenField1" runat="server" />
+
+                      </td>
+
+                  </tr>
+
+              </table>     
                     </div>
             </div>
           </div>

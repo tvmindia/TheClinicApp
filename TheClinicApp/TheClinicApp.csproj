@@ -243,10 +243,12 @@
     <Content Include="Stock\AddNewReceipt.aspx" />
     <Content Include="Stock\ExistingStockIn.aspx" />
     <Content Include="Stock\InventoryOut.aspx" />
+    <Content Include="Stock\NewCategory.aspx" />
     <Content Include="Stock\NewMedicine.aspx" />
     <Content Include="Stock\OutOfStock.aspx" />
     <Content Include="Stock\Stock.aspx" />
     <Content Include="Stock\StockIN.aspx" />
+    <Content Include="Stock\StockOut.aspx" />
     <Content Include="Stock\StocksDemo.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="testpage.aspx" />
@@ -287,6 +289,7 @@
     <Content Include="Content\materialize\README.md" />
     <Content Include="Masters\Input.Master" />
     <Content Include="Masters\Popup.Master" />
+    <Content Include="Handler\ImageHandler.ashx" />
     <None Include="Properties\PublishProfiles\AmruthaProfile.pubxml" />
     <None Include="Properties\PublishProfiles\ClinicAppProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Hondaprofile.pubxml" />
@@ -397,6 +400,9 @@
     <Compile Include="ForgotPassword.aspx.designer.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Handler\ImageHandler.ashx.cs">
+      <DependentUpon>ImageHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -461,6 +467,13 @@
     <Compile Include="Stock\InventoryOut.aspx.designer.cs">
       <DependentUpon>InventoryOut.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Stock\NewCategory.aspx.cs">
+      <DependentUpon>NewCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\NewCategory.aspx.designer.cs">
+      <DependentUpon>NewCategory.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Stock\NewMedicine.aspx.cs">
       <DependentUpon>NewMedicine.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -488,6 +501,13 @@
     </Compile>
     <Compile Include="Stock\StockIN.aspx.designer.cs">
       <DependentUpon>StockIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\StockOut.aspx.cs">
+      <DependentUpon>StockOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\StockOut.aspx.designer.cs">
+      <DependentUpon>StockOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="Stock\StocksDemo.aspx.cs">
       <DependentUpon>StocksDemo.aspx</DependentUpon>

@@ -375,9 +375,9 @@ background-color: ghostwhite;
                 <table style="height:100%;width:100%;margin-left:0px; padding-left:0px;">
                     <tr style="height:100%;width:100%;">
                         <td style="height:100px;width:100%;">
-                             <img src="../Images/UploadPic.png" style="width:40%;height:90%" id="ProfilePic" runat="server" />
-                            <asp:FileUpload ID="PicUpload" ForeColor="Green" Font-Size="12px" runat="server" />
-                            <asp:Label ID="lblmsg" runat="server" Text="Label"></asp:Label>
+                             <img src="../Images/UploadPic.png" style="width:50%;" id="ProfilePic" runat="server" />
+                            <asp:FileUpload ID="FileUpload1" ForeColor="Green" Font-Size="12px" runat="server" />
+                           
                            <%--<div class="fileinputs">
                                <input type="file" class="file" />
                                <div class="fakefile">

@@ -190,7 +190,7 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion InsertEvents
 
-
+       
         #endregion Methods
     }
 }
