@@ -124,7 +124,7 @@ namespace TheClinicApp.ClinicDAL
                 pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
                 pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
                 pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
-                pud.Parameters.Add("@image", SqlDbType.VarBinary).Value =Picupload;
+                pud.Parameters.Add("@image", SqlDbType.Image,0).Value =Picupload;
                 pud.Parameters.Add("@ImageType", SqlDbType.NVarChar, 6).Value = ImageType;
                 
                 SqlParameter Output = new SqlParameter();
@@ -631,6 +631,38 @@ namespace TheClinicApp.ClinicDAL
 
         }
         #endregion SelectPatient
+
+        protected void SaveImageToDB(byte[] ImageByteArray)
+        {
+            SqlConnection con = null;
+            try
+            {
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+
+                SqlCommand cmd = new SqlCommand("usp_SaveProfileImage", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@ImgBody", SqlDbType.Image, 0).Value = ImageByteArray;
+                con.Open();
+
+                cmd.ExecuteScalar();
+                con.Close();
+
+               
+            }
+            catch (Exception ex)
+            {
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
+                
+            }
+
+            finally
+            {
+                if (con != null && con.State != ConnectionState.Closed)
+                    con.Close();
+            }
+        }
     }
 
 }

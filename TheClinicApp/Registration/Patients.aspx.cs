@@ -38,10 +38,8 @@ namespace TheClinicApp.Registration
             DateTime _date = DateTime.Now;
             int age = Convert.ToInt32(txtAge.Text);
             int year = _date.Year;
-            int DOB = year - age;
-            string guitemp = "2C7A7172-6EA9-4640-B7D2-0C329336F289";
-            string ext = System.IO.Path.GetExtension(PicUpload.PostedFile.FileName);
-            PatientObj.ClinicID = Guid.Parse(guitemp);
+            int DOB = year - age;                      
+            PatientObj.ClinicID = UA.ClinicID;
             PatientObj.Name = txtName.Text;
             PatientObj.Address = txtAddress.Text;
             PatientObj.Phone = txtMobile.Text;
@@ -51,8 +49,14 @@ namespace TheClinicApp.Registration
             PatientObj.MaritalStatus = txtMarital.Text;
             PatientObj.Occupation = "BUSINESS";
             PatientObj.FileNumber = "HO343499";
-            PatientObj.Picupload=PicUpload.FileContent;
-            PatientObj.ImageType = ext;
+            if (FileUpload1.HasFile)
+            {
+                byte[] ImageByteArray = null;
+                ImageByteArray = ConvertImageToByteArray(FileUpload1);
+                PatientObj.Picupload = ImageByteArray;
+                PatientObj.ImageType = Path.GetExtension(FileUpload1.PostedFile.FileName);
+                
+            }
             
             if (btnSave.Text == "SAVE")
             {
@@ -152,7 +156,6 @@ namespace TheClinicApp.Registration
         {
             DateTime date = DateTime.Now;
             int year = date.Year;
-            string path = Server.MapPath("~/Content/ProfilePics/").ToString();
             string[] Patient = e.CommandArgument.ToString().Split(new char[] { '|' });
             Guid PatientID = Guid.Parse(Patient[0]);
             txtName.Text = Patient[1];
@@ -166,13 +169,15 @@ namespace TheClinicApp.Registration
             txtMarital.Text = Patient[7];
             //object image=(Patient[8]);
             //MakeFile(image,Patient[1],path);
-            ProfilePic.Src = "~/Content/ProfilePics/";
-            
+            ProfilePic.Src = "../Handler/ImageHandler.ashx?PatientID=" + PatientID.ToString();
+            ProfilePic.Visible = true;
             btnSave.Text = "Update";
             btnnew.Visible = true;
             HiddenField1.Value = PatientID.ToString();
+            
         }
 
+        
         protected void ImgBtnUpdate1_Command(object sender, CommandEventArgs e)
         {
             DateTime date = DateTime.Now;
@@ -188,6 +193,8 @@ namespace TheClinicApp.Registration
             txtMobile.Text = Patient[3];
             txtEmail.Text = Patient[4];
             txtMarital.Text = Patient[7];
+            ProfilePic.Src = "../Handler/ImageHandler.ashx?PatientID=" + PatientID.ToString();
+            ProfilePic.Visible = true;
             btnSave.Text = "Update";
             btnnew.Visible = true;
             HiddenField1.Value = PatientID.ToString();
@@ -218,9 +225,7 @@ namespace TheClinicApp.Registration
                 txtMobile.Text = dr["Phone"].ToString();
                 txtEmail.Text = dr["Email"].ToString();
                 txtMarital.Text = dr["MaritalStatus"].ToString();
-                MakeFile(dr, dr["Name"].ToString(), path);
-                btnSave.Text = "Update";
-                ProfilePic.Src = "~/Content/ProfilePics/";
+                
                 HiddenField1.Value = PatientID.ToString();
             }
             else
@@ -307,29 +312,21 @@ namespace TheClinicApp.Registration
 
         #endregion Paging
 
-        public bool ValidateFileType()
+        private byte[] ConvertImageToByteArray(FileUpload fuImage)
         {
-            bool isValidFile = false;
-            string[] validFileTypes = { "bmp", "gif", "png", "jpg", "jpeg"};
-            string ext = System.IO.Path.GetExtension(PicUpload.PostedFile.FileName);
-
-            for (int i = 0; i < validFileTypes.Length; i++)
+            byte[] ImageByteArray;
+            try
             {
-                if (ext == "." + validFileTypes[i])
-                {
-                    isValidFile = true;
-                    break;
-                }
+                MemoryStream ms = new MemoryStream(fuImage.FileBytes);
+                ImageByteArray = ms.ToArray();
+                return ImageByteArray;
             }
-            if (!isValidFile)
+            catch (Exception ex)
             {
-                lblmsg.ForeColor = System.Drawing.Color.Red;
-                lblmsg.Text = "Invalid File. Please upload a File with extension " +
-                               string.Join(",", validFileTypes);
+                return null;
             }
-            return isValidFile;
-
         }
+        //}
         public void MakeFile(DataRow dr, string fileName, string filePath)
         {
             byte[] buffer = (byte[])dr["image"];
