@@ -300,7 +300,7 @@ namespace TheClinicApp.ClinicDAL
 
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
 
-                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Receipt;
+                cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = Receipt;
 
 
                 sda = new SqlDataAdapter();

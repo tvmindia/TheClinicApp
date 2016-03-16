@@ -107,10 +107,15 @@
 
             <asp:GridView ID="GridViewReceiptDT" runat="server" AutoGenerateColumns="False">
                 <Columns>
-                    <asp:ButtonField DataTextField="MedicineName" HeaderText="Medicine Name" />
-                    <asp:ButtonField DataTextField="CategoryName" HeaderText="Category Name" Text="Button" />
-                    <asp:ButtonField DataTextField="Unit" HeaderText="Unit" />
-                    <asp:ButtonField DataTextField="Qty" HeaderText="Quantity" Text="Button" />
+
+                    <asp:BoundField DataField="MedicineName" HeaderText="Medicine Name" />
+                    <asp:BoundField DataField="CategoryName" HeaderText="Category Name" />
+                    <asp:BoundField DataField="Unit" HeaderText="Unit" />
+                    <asp:BoundField DataField="Qty" HeaderText="Quantity"  />
+                   
+                    
+
+                     
                 </Columns>
             </asp:GridView>
 

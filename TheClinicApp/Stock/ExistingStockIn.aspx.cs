@@ -39,6 +39,9 @@ namespace TheClinicApp.Stock
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            receipt = Guid.Parse(Request.QueryString["ReceiptID"]);
+           
+
             UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
             rpt.ClinicID = UA.ClinicID.ToString();
           
@@ -58,8 +61,14 @@ namespace TheClinicApp.Stock
             GridViewReceiptDT.EmptyDataText = "No Records Found";
             GridViewReceiptDT.DataSource = gds;
             GridViewReceiptDT.DataBind();
-            
 
+
+
+
+            lblBillNo.Text = gds.Tables[0].Rows[0][0].ToString();
+
+            lblRefNo2.Text = gds.Tables[0].Rows[0][1].ToString();
+            lblDate.Text = gds.Tables[0].Rows[0][2].ToString();
 
 
 
