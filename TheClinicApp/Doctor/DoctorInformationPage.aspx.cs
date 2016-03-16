@@ -75,7 +75,7 @@ namespace TheClinicApp.Doctor
         {
             UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
             CaseFileObj.DoctorID = Guid.Parse("469489AE-6237-47B3-B8CC-74B62EC81D77");
-            CaseFileObj.FileID = Guid.Parse("70146E78-E66C-4667-B8F8-ED8CA9AD9256");
+            CaseFileObj.FileID = Guid.Parse(HiddenField2.Value);
             CaseFileObj.ClinicID = UA.ClinicID;
             CaseFileObj.Height = float.Parse(txtHeight.Text);
             CaseFileObj.Weight=float.Parse(txtWeight.Text);
@@ -102,9 +102,10 @@ namespace TheClinicApp.Doctor
             CaseFileObj.LymphClinic=txtLymphnodes.Text;
             CaseFileObj.RespRate=txtRespRate.Text;
             CaseFileObj.Others=txtOthers.Text;
-            CaseFileObj.AddVisits();
             CaseFileObj.CreatedBy = UA.userName;
             CaseFileObj.UpdatedBy = UA.userName;
+            CaseFileObj.AddVisits();
+            
 
             string values = HiddenField1.Value;
             //int count = Convert.ToInt32(HiddenField2.ToString());
@@ -153,7 +154,22 @@ namespace TheClinicApp.Doctor
         {
             DataRow dr = null;
             Patient PatientObj = new Patient();
+            ClinicDAL.Doctor DoctorObj = new ClinicDAL.Doctor();
+            ClinicDAL.CaseFile.Visit VisitObj = new ClinicDAL.CaseFile.Visit();
             PatientObj.PatientID = Guid.Parse(e.CommandArgument.ToString());
+            Guid PatientIDForFile = Guid.Parse(e.CommandArgument.ToString());
+
+            DoctorObj.PatientIdForFile = PatientIDForFile;
+            DataTable DtFileID = DoctorObj.GetFileIDUSingPatientID();
+            dr = DtFileID.NewRow();
+            dr = DtFileID.Rows[0];
+            Guid FileIDForGrid =Guid.Parse(dr["FileID"].ToString());
+
+            DataTable GridBindVisits = new DataTable();
+            GridBindVisits=VisitObj.GetGridVisits(FileIDForGrid);
+            GridViewVisitsHistory.EmptyDataText = "No Records Found";
+            GridViewVisitsHistory.DataSource = GridBindVisits;
+            GridViewVisitsHistory.DataBind();
             DataTable dt = PatientObj.SelectPatient();
             dr = dt.NewRow();
             dr = dt.Rows[0];
@@ -162,7 +178,7 @@ namespace TheClinicApp.Doctor
             //Guid PatientID = Guid.Parse(dr["PatientID"].ToString());
             lblName.Text = dr["Name"].ToString();
             lblGenderDis.Text = dr["Gender"].ToString();
-            
+            HiddenField2.Value = FileIDForGrid.ToString();
             DateTime DT = Convert.ToDateTime(dr["DOB"].ToString());
             int Age = year - DT.Year;
             lblAgeCount.Text = Age.ToString();
@@ -172,5 +188,12 @@ namespace TheClinicApp.Doctor
             //HiddenField1.Value = PatientID.ToString();
         }
         #endregion FillPatientDetails
+
+        protected void ImgBtnUpdateVisits_Command(object sender, CommandEventArgs e)
+        {
+            string[] Visits = e.CommandArgument.ToString().Split(new char[] { '|' });
+            string ID= Visits[0];
+            string PrescriptionID = Visits[1];
+        }
     }
 }

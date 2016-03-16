@@ -18,14 +18,17 @@ namespace TheClinicApp.Registration
 
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
+
         TokensBooking tok = new TokensBooking();
         ErrorHandling eObj = new ErrorHandling();
         public string listFilter = null;
+        #region PageLoad
         protected void Page_Load(object sender, EventArgs e)
         {
             gridDataBind();
 
         }
+        #endregion PageLoad
 
         #region MainButton
         protected void btnSave_Click(object sender, EventArgs e)
@@ -36,7 +39,8 @@ namespace TheClinicApp.Registration
             int age = Convert.ToInt32(txtAge.Text);
             int year = _date.Year;
             int DOB = year - age;
-            string guitemp = "2c7a7172-6ea9-4640-b7d2-0c329336f289";
+            string guitemp = "2C7A7172-6EA9-4640-B7D2-0C329336F289";
+            string ext = System.IO.Path.GetExtension(PicUpload.PostedFile.FileName);
             PatientObj.ClinicID = Guid.Parse(guitemp);
             PatientObj.Name = txtName.Text;
             PatientObj.Address = txtAddress.Text;
@@ -47,6 +51,9 @@ namespace TheClinicApp.Registration
             PatientObj.MaritalStatus = txtMarital.Text;
             PatientObj.Occupation = "BUSINESS";
             PatientObj.FileNumber = "HO343499";
+            PatientObj.Picupload=PicUpload.FileContent;
+            PatientObj.ImageType = ext;
+            
             if (btnSave.Text == "SAVE")
             {
                 Guid g = Guid.NewGuid();
@@ -145,6 +152,7 @@ namespace TheClinicApp.Registration
         {
             DateTime date = DateTime.Now;
             int year = date.Year;
+            string path = Server.MapPath("~/Content/ProfilePics/").ToString();
             string[] Patient = e.CommandArgument.ToString().Split(new char[] { '|' });
             Guid PatientID = Guid.Parse(Patient[0]);
             txtName.Text = Patient[1];
@@ -156,6 +164,10 @@ namespace TheClinicApp.Registration
             txtMobile.Text = Patient[3];
             txtEmail.Text = Patient[4];
             txtMarital.Text = Patient[7];
+            //object image=(Patient[8]);
+            //MakeFile(image,Patient[1],path);
+            ProfilePic.Src = "~/Content/ProfilePics/";
+            
             btnSave.Text = "Update";
             btnnew.Visible = true;
             HiddenField1.Value = PatientID.ToString();
@@ -187,6 +199,7 @@ namespace TheClinicApp.Registration
         {
             Patient PatientObj = new Patient();
             DataRow dr = null;//;
+            string path = Server.MapPath("~/Content/ProfilePics/").ToString();
             string Name = Request.Form["txtSearch"];
             if (Name != "")
             {
@@ -205,7 +218,9 @@ namespace TheClinicApp.Registration
                 txtMobile.Text = dr["Phone"].ToString();
                 txtEmail.Text = dr["Email"].ToString();
                 txtMarital.Text = dr["MaritalStatus"].ToString();
+                MakeFile(dr, dr["Name"].ToString(), path);
                 btnSave.Text = "Update";
+                ProfilePic.Src = "~/Content/ProfilePics/";
                 HiddenField1.Value = PatientID.ToString();
             }
             else
@@ -254,7 +269,7 @@ namespace TheClinicApp.Registration
         #endregion clearfield
 
 
-
+        #region BookingToken
         protected void btntokenbooking_Click(object sender, EventArgs e)
         {
             UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
@@ -271,21 +286,191 @@ namespace TheClinicApp.Registration
             lblToken.Visible = true;
             divDisplayNumber.Visible = true;
         }
+        #endregion BookingToken
 
+
+        #region ClearScreen
         protected void btnnew_Click(object sender, EventArgs e)
         {
             ClearFields();
             btnnew.Visible = false;
             divDisplayNumber.Visible = false;
         }
+        #endregion ClearScreen
 
+        #region Paging 
         protected void dtgViewAllRegistration_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             dtgViewAllRegistration.PageIndex = e.NewPageIndex;
             dtgViewAllRegistration.DataBind();
         }
 
+        #endregion Paging
 
+        public bool ValidateFileType()
+        {
+            bool isValidFile = false;
+            string[] validFileTypes = { "bmp", "gif", "png", "jpg", "jpeg"};
+            string ext = System.IO.Path.GetExtension(PicUpload.PostedFile.FileName);
+
+            for (int i = 0; i < validFileTypes.Length; i++)
+            {
+                if (ext == "." + validFileTypes[i])
+                {
+                    isValidFile = true;
+                    break;
+                }
+            }
+            if (!isValidFile)
+            {
+                lblmsg.ForeColor = System.Drawing.Color.Red;
+                lblmsg.Text = "Invalid File. Please upload a File with extension " +
+                               string.Join(",", validFileTypes);
+            }
+            return isValidFile;
+
+        }
+        public void MakeFile(DataRow dr, string fileName, string filePath)
+        {
+            byte[] buffer = (byte[])dr["image"];
+            //byte[] buffer = new byte[dr["image"], 0, null, 0, int.MaxValue)];dr["image"], 0, buffer, 0, int.MaxValue);
+
+            System.IO.File.WriteAllBytes(filePath + fileName, buffer);
+                                   
+        }
+       
+
+
+        //public void FileInsert()
+        //{
+        //    Control ctl = this.Parent;
+        //    bool isValidFile = false;
+        //    bool largerSize = false;
+        //    try
+        //    {
+        //        //validation
+        //        isValidFile = ValidateFileType();
+        //        int Size = Convert.ToInt32(FileUpload1.PostedFile.ContentLength) / 1024;
+        //        int sizeinMB = Size / 1024;
+        //        string fileSize;
+        //        if (sizeinMB == 0)
+        //        {
+        //            fileSize = Size + "KB";
+        //        }
+        //        else
+        //        {
+        //            fileSize = sizeinMB + "MB";
+        //        }
+        //        largerSize = ValidateSize(sizeinMB);
+
+        //        if ((isValidFile) && (FileUpload1.PostedFile.ContentLength > 0))
+        //        {
+        //            if (largerSize == false)
+        //            {
+        //                string tempFile = "";
+        //                string filePath = Server.MapPath("/Content/Fileupload/");
+        //                string ext = System.IO.Path.GetExtension(FileUpload1.PostedFile.FileName);
+        //                string fileName = FileUpload1.PostedFile.FileName;
+        //                string pathToCheck = filePath + fileName;
+        //                if (System.IO.File.Exists(pathToCheck))
+        //                {
+        //                    int counter = 2;
+        //                    while (System.IO.File.Exists(pathToCheck))
+        //                    {
+        //                        tempFile = "(" + counter.ToString() + ")" + fileName;
+        //                        pathToCheck = filePath + tempFile;
+        //                        counter++;
+        //                    }
+        //                    fileName = tempFile;
+        //                }
+        //                filePath += fileName;
+        //                FileUpload1.SaveAs(filePath);
+        //                {
+        //                    if (type_value == "BOQ" || type_value == "BOQHeader")
+        //                    {
+        //                        cmd = new SqlCommand();
+        //                        cmd.Connection = cntion.GetDBConnection();
+        //                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+        //                        cmd.CommandText = "[InsertDocAttachmentDetails]";
+
+        //                        // cmd.Parameters.Add("@paramId", SqlDbType.Int).Value = Id;
+        //                        cmd.Parameters.Add("@Filename", SqlDbType.NVarChar, 100).Value = fileName.ToString();
+        //                        cmd.Parameters.Add("@Image", SqlDbType.VarBinary).Value = FileUpload1.FileContent;
+        //                        cmd.Parameters.Add("@Filetype", SqlDbType.NVarChar, 5).Value = ext;
+        //                        cmd.Parameters.Add("@Filesize", SqlDbType.NVarChar, 50).Value = fileSize;
+        //                        cmd.Parameters.Add("@Date", SqlDbType.SmallDateTime).Value = System.DateTime.Now;
+        //                        cmd.Parameters.Add("@userName", SqlDbType.VarChar, 50).Value = UA.userName;
+        //                        cmd.Parameters.Add("@Type", SqlDbType.VarChar, 50).Value = type_value;
+
+        //                        cmd.Parameters.Add("@itemID", SqlDbType.UniqueIdentifier).Value = (Guid.Parse(ItemID) != Guid.Empty) ? Guid.Parse(ItemID) : Guid.Empty;
+
+
+        //                        cmd.Parameters.Add("@RevisionID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(RevisionID);
+
+        //                        SqlParameter ouparamid = cmd.Parameters.Add("@outparamid", SqlDbType.UniqueIdentifier);
+        //                        ouparamid.Direction = ParameterDirection.Output;
+        //                        cmd.ExecuteNonQuery();
+
+
+        //                        lblmsg.ForeColor = System.Drawing.Color.Green;
+        //                        lblmsg.Text = "File uploaded successfully.";
+        //                    }
+        //                    else
+        //                    {
+        //                        //byte[] buffer;
+        //                        //buffer = (byte[])dt.Rows[0]["BinaryFile"];
+        //                        punchObj.image = FileUpload1.FileContent;
+        //                        punchObj.FileType = ext;
+        //                        punchObj.id = EILId;
+        //                        punchObj.EILType = EilType;
+        //                        punchObj.fileSize = fileSize;
+        //                        punchObj.fileUpload = fileName.ToString();
+        //                        punchObj.InsertEILAttachment();
+        //                    }
+        //                }
+        //            }
+        //            else
+        //            {
+        //                if (largerSize == true)
+        //                {
+        //                    lblmsg.ForeColor = System.Drawing.Color.Red;
+        //                    lblmsg.Text = "File should  be less than 10 mb of size";
+        //                }
+        //                if (FileUpload1.PostedFile.ContentLength == 0)
+        //                {
+        //                    lblmsg.ForeColor = System.Drawing.Color.Red;
+        //                    lblmsg.Text = "File Does not have content..";
+        //                }
+        //            }
+
+        //        }
+        //        else
+        //        {
+        //            if (isValidFile == false)
+        //            {
+        //                lblmsg.ForeColor = System.Drawing.Color.Red;
+        //                lblmsg.Text = "Please Upload bmp,gif,png,jpg,jpeg,doc,docx,xls,xlsx,pdf file types";
+        //            }
+        //        }
+
+        //        //validation
+
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        // DropFill();
+        //        if (cntion.GetDBConnection() != null)
+        //        {
+        //            cntion.GetDBConnection().Close();
+        //        }
+        //    }
+
+        //}
 
 
     }

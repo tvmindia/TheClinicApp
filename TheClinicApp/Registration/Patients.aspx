@@ -274,7 +274,7 @@ background-color: ghostwhite;
                         <div class="form-group">
                             <label class="control-label col-xs-2 regFormLabels">Mobile:</label>
                              <div class="col-xs-10">
-                                <asp:TextBox ID="txtMobile" class="form-control textBoxborder" runat="server" minlength="10" pattern=" /^[0-9-+]+$/"  ></asp:TextBox>
+                                <asp:TextBox ID="txtMobile" class="form-control textBoxborder" runat="server" minlength="10" pattern="{10}[0-9]"  ></asp:TextBox>
 
                             </div>
                         </div>
@@ -375,14 +375,17 @@ background-color: ghostwhite;
                 <table style="height:100%;width:100%;margin-left:0px; padding-left:0px;">
                     <tr style="height:100%;width:100%;">
                         <td style="height:100px;width:100%;">
-                           <div class="fileinputs">
+                             <img src="../Images/UploadPic.png" style="width:40%;height:90%" id="ProfilePic" runat="server" />
+                            <asp:FileUpload ID="PicUpload" ForeColor="Green" Font-Size="12px" runat="server" />
+                            <asp:Label ID="lblmsg" runat="server" Text="Label"></asp:Label>
+                           <%--<div class="fileinputs">
                                <input type="file" class="file" />
                                <div class="fakefile">
-                                   <img src="../Images/UploadPic.png" style="width:70%;height:50%" />
+                                   
 
                                </div>
-
-                           </div>  
+                              
+                           </div>  --%>
                         </td>
                         
                     </tr>
@@ -425,12 +428,13 @@ background-color: ghostwhite;
                         </td>
                         
                     </tr>
-                      <%--<tr style="height:100%;width:100%;">
+                      <tr style="height:100%;width:100%;">
                         <td style="height:50px;width:100%;">
+                            
                               <a href="#" role="button" data-toggle="modal" data-target="#myModal1" >Register Token !</a>
                         </td>
                         
-                    </tr>--%>
+                    </tr>
                 </table>
 
               
@@ -656,7 +660,7 @@ background-color: ghostwhite;
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"|" + Eval("Name") + "|" + Eval("Address")+"|"+ Eval("Phone")+"|"+ Eval("Email")+"|"+Eval("DOB")+"|"+Eval("Gender")+"|"+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
+                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"|" + Eval("Name") + "|" + Eval("Address")+"|"+ Eval("Phone")+"|"+ Eval("Email")+"|"+Eval("DOB")+"|"+Eval("Gender")+"|"+Eval("MaritalStatus")+"|"+Eval("image")+"|"+Eval("ImageType")%>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
                                        
 
                                     </ItemTemplate>
@@ -717,7 +721,7 @@ background-color: ghostwhite;
             </div>
         </div>
 
-       <%-- <div class="modal fade" id="myModal1" role="dialog">
+        <div class="modal fade" id="myModal1" role="dialog">
             <div class="modal-dialog  modal-lg">
 
                 <!-- Modal content-->
@@ -728,8 +732,8 @@ background-color: ghostwhite;
 
                     </div>
                     <div class="modal-body" >
-                        
-                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="424px" DataKeyNames="PatientID" OnPreRender="GridView1_PreRender" EnableModelValidation="True">
+                        <iframe src="../Home.aspx" width="200" height="200"></iframe>
+                      <%--  <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="424px" DataKeyNames="PatientID" OnPreRender="GridView1_PreRender" EnableModelValidation="True">
             <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
        <Columns>
                                 <asp:TemplateField>
@@ -770,7 +774,7 @@ background-color: ghostwhite;
             <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
             <EditRowStyle BackColor="#999999" />
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-        </asp:GridView>
+        </asp:GridView>--%>
                             </div>
                    
                     <div class="modal-footer">
@@ -780,7 +784,7 @@ background-color: ghostwhite;
                 </div>
 
             </div>
-        </div>--%>
+        </div>
         
         <div class="modal fade" id="TodaysRegistration" role="dialog">
             <div class="modal-dialog modal-lg">
@@ -800,7 +804,7 @@ background-color: ghostwhite;
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnUpdate1" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"|" + Eval("Name") + "|" + Eval("Address")+"|"+ Eval("Phone")+"|"+ Eval("Email")+"|"+Eval("DOB")+"|"+Eval("Gender")+"|"+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate1_Command" formnovalidate />
+                                        <asp:ImageButton ID="ImgBtnUpdate1" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"|" + Eval("Name") + "|" + Eval("Address")+"|"+ Eval("Phone")+"|"+ Eval("Email")+"|"+Eval("DOB")+"|"+Eval("Gender")+"|"+Eval("MaritalStatus")+"|"+Eval("image")+"|"+Eval("ImageType")%>' OnCommand="ImgBtnUpdate1_Command" formnovalidate />
 
                                     </ItemTemplate>
                                 </asp:TemplateField>

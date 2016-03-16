@@ -198,12 +198,41 @@
                      <div class="list-group leftSideBar">
                           <span class="list-group-item active">
                               PATIENT LIST TODAY </span>
-                         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
-                             <Columns>
-                                 <asp:BoundField HeaderText="Name"></asp:BoundField>
-                                 <asp:TemplateField></asp:TemplateField>
-                             </Columns>
-                         </asp:GridView>
+                         <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False" CssClass="footable" Style="max-width: 500px" DataKeyNames="UniqueId" CellPadding="4" GridLines="None" ForeColor="#333333">
+              <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+              <Columns>
+                  <asp:BoundField HeaderText="Token No" DataField="TokenNo" />
+                  <asp:BoundField HeaderText="Patient Name" DataField="Name" />
+
+                  <asp:TemplateField>
+                      <ItemTemplate>
+                          <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")%>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
+
+
+                      </ItemTemplate>
+                  </asp:TemplateField>
+              </Columns>
+
+              <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+              <FooterStyle BackColor="#507CD1" ForeColor="White" Font-Bold="True"></FooterStyle>
+
+              <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+              <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#2461BF"></PagerStyle>
+
+              <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+              <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+              <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+              <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+              <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+              <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                        </asp:GridView>
                      </div>
 
                 </div>
