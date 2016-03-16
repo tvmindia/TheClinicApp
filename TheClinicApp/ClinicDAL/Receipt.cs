@@ -282,7 +282,7 @@ namespace TheClinicApp.ClinicDAL
         //Get Recipt Details by Passing Reference Number
         #region GetReceiptDetailsByReceiptID
 
-        public DataSet GetReceiptDetailsByReceiptID(String RefNo1)
+        public DataSet GetReceiptDetailsByReceiptID(Guid Receipt)
         {
 
             dbConnection dcon = null;
@@ -300,7 +300,7 @@ namespace TheClinicApp.ClinicDAL
 
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
 
-                cmd.Parameters.Add("@RefNo1", SqlDbType.NVarChar, 255).Value = RefNo1;
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Receipt;
 
 
                 sda = new SqlDataAdapter();

@@ -168,6 +168,7 @@
     <Content Include="Images\Sync-WF.png" />
     <Content Include="Pharmacy\Pharmacy.aspx" />
     <Content Include="ResetPassword.aspx" />
+    <Content Include="Scripts\ASPSnippets_Pager.min.js" />
     <Content Include="Scripts\bootcards.js" />
     <Content Include="Content\Input.css" />
     <Content Include="Content\jquery-ui.css" />
@@ -224,6 +225,7 @@
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-1.12.0.min.js" />
     <Content Include="Scripts\jquery-1.3.2.min.js" />
+    <Content Include="Scripts\jquery-1.8.3.min.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.tablePagination.0.1.js" />
@@ -238,8 +240,13 @@
     <Content Include="Scripts\mui.js" />
     <Content Include="Scripts\mui.min.js" />
     <Content Include="Scripts\selectize.js" />
+    <Content Include="Stock\ExistingStockIn.aspx" />
     <Content Include="Stock\InventoryOut.aspx" />
+    <Content Include="Stock\NewMedicine.aspx" />
+    <Content Include="Stock\OutOfStock.aspx" />
     <Content Include="Stock\Stock.aspx" />
+    <Content Include="Stock\StockIN.aspx" />
+    <Content Include="Stock\StocksDemo.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="testpage.aspx" />
     <Content Include="Token\Tokens.aspx" />
@@ -432,6 +439,13 @@
     <Compile Include="ResetPassword.aspx.designer.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Stock\ExistingStockIn.aspx.cs">
+      <DependentUpon>ExistingStockIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\ExistingStockIn.aspx.designer.cs">
+      <DependentUpon>ExistingStockIn.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Stock\InventoryOut.aspx.cs">
       <DependentUpon>InventoryOut.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -439,12 +453,40 @@
     <Compile Include="Stock\InventoryOut.aspx.designer.cs">
       <DependentUpon>InventoryOut.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Stock\NewMedicine.aspx.cs">
+      <DependentUpon>NewMedicine.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\NewMedicine.aspx.designer.cs">
+      <DependentUpon>NewMedicine.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\OutOfStock.aspx.cs">
+      <DependentUpon>OutOfStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\OutOfStock.aspx.designer.cs">
+      <DependentUpon>OutOfStock.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Stock\Stock.aspx.cs">
       <DependentUpon>Stock.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Stock\Stock.aspx.designer.cs">
       <DependentUpon>Stock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\StockIN.aspx.cs">
+      <DependentUpon>StockIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\StockIN.aspx.designer.cs">
+      <DependentUpon>StockIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\StocksDemo.aspx.cs">
+      <DependentUpon>StocksDemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\StocksDemo.aspx.designer.cs">
+      <DependentUpon>StocksDemo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>

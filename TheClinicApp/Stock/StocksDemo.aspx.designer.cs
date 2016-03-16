@@ -7,19 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TheClinicApp {
+namespace TheClinicApp.Stock {
     
     
-    public partial class AutofillGrid {
+    public partial class StocksDemo {
         
         /// <summary>
-        /// form1 control.
+        /// btnPopup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Button btnPopup;
+        
+        /// <summary>
+        /// btnNewMedicine control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNewMedicine;
         
         /// <summary>
         /// txtSearch control.

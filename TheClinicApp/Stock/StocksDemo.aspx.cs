@@ -1,23 +1,22 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using TheClinicApp.ClinicDAL;
 
-using System.Web.Services;
-using System.Configuration;
-
-
-
-namespace TheClinicApp
+namespace TheClinicApp.Stock
 {
-    public partial class AutofillGrid : System.Web.UI.Page
+    public partial class StocksDemo : System.Web.UI.Page
     {
-        private static int PageSize = 2;
+        private static int PageSize = 4;
 
         #region Global Variables
 
@@ -27,50 +26,8 @@ namespace TheClinicApp
 
         #endregion Global Variables
 
-        #region Methods
-
-        #region Bind Gridview
-
-        //public void BindGridview()
-        //{
-        //    DataSet dsMedicines = new DataSet();
-        //    stockObj.ClinicID = "2C7A7172-6EA9-4640-B7D2-0C329336F289";
-        //    dsMedicines = stockObj.SearchMedicineStock(string.Empty);
-        //    dtgMedicines.DataSource = dsMedicines;
-        //    dtgMedicines.DataBind();
-        //}
-
-        #endregion Bind Gridview
-
-
-        #endregion Methods
-
-        private void BindData()
-        {
-            DataSet dsMedicines = new DataSet();
-            stockObj.ClinicID = "2C7A7172-6EA9-4640-B7D2-0C329336F289";
-            dsMedicines = stockObj.SearchMedicineStock(string.Empty); 
-            DataTable dt = dsMedicines.Tables[0];
-
-            //gvDetails.DataSource = dt;
-            //gvDetails.DataBind();
-
-        }
-
       
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            //txt.Attributes.Add("onkeyup", "javascript:setTimeout('__doPostBack(\'txt\',\'\')', 0)");
-            //BindGridview();
-      
-            if (!IsPostBack)
-            {
-                BindDummyRow();
-            }
 
-        }
-
-      
         private void BindDummyRow()
         {
             DataTable dummy = new DataTable();
@@ -82,26 +39,43 @@ namespace TheClinicApp
             gvMedicines.DataBind();
         }
 
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                BindDummyRow();
+              
+            }
+          
+        }
+
+       
 
         [WebMethod]
         public static string GetMedicines(string searchTerm, int pageIndex)
         {
+             ClinicDAL.UserAuthendication UA;
+               UIClasses.Const Const = new UIClasses.Const();
+
+              UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
 
             string query = "[ViewAndFilterMedicine]";
             SqlCommand cmd = new SqlCommand(query);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@SearchTerm", searchTerm);
+
+            cmd.Parameters.AddWithValue("@ClinicID", UA.ClinicID );
+           
             cmd.Parameters.AddWithValue("@PageIndex", pageIndex);
             cmd.Parameters.AddWithValue("@PageSize", PageSize);
             cmd.Parameters.Add("@RecordCount", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
 
-            var w = GetData(cmd, pageIndex).GetXml();
-            return w;
+            var xml = GetData(cmd, pageIndex).GetXml();
+            return xml;
         }
 
         private static DataSet GetData(SqlCommand cmd, int pageIndex)
         {
-           
+
             string strConnString = ConfigurationManager.ConnectionStrings["ClinicAppConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(strConnString))
             {
@@ -126,14 +100,5 @@ namespace TheClinicApp
                 }
             }
         }
-
-       
-
-
-
-
-
-
-
     }
 }

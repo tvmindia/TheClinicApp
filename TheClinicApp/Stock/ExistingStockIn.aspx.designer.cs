@@ -7,36 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TheClinicApp {
+namespace TheClinicApp.Stock {
     
     
-    public partial class AutofillGrid {
+    public partial class ExistingStockIn {
         
         /// <summary>
-        /// form1 control.
+        /// lblBillNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label lblBillNo;
         
         /// <summary>
-        /// txtSearch control.
+        /// lblDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        protected global::System.Web.UI.WebControls.Label lblDate;
         
         /// <summary>
-        /// gvMedicines control.
+        /// lblRefNo2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvMedicines;
+        protected global::System.Web.UI.WebControls.Label lblRefNo2;
+        
+        /// <summary>
+        /// GridViewReceiptDT control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewReceiptDT;
     }
 }

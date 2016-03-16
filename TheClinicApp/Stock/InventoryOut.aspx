@@ -20,7 +20,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            var iCnt = 4;
+            var iCnt = 1;
             // CREATE A "DIV" ELEMENT AND DESIGN IT USING JQUERY ".css()" CLASS.
             var container = $(document.createElement('div')).css({
                 width: '100%',
@@ -34,18 +34,18 @@
             $('body').on('click', '#btAdd', function () {
                 debugger;
 
-                if (iCnt <= 19) {
+                if (iCnt <= 20) {
                     iCnt = iCnt + 1;
                   <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');
                           count.value=iCnt;--%>
                     // ADD TEXTBOX.
-                    $(container).append('<table style="width:80%"><tr><td ><input id="txtSearch'+iCnt+'" style="width:100%" type="text" placeholder="Medicine"   class="dynamicTd"/></td><td><input id="txtQuantity'+iCnt+'" class="dynamicTd" style="width:100%" type="text"  placeholder="Quantity"    /></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td> </tr></table>');
+                    $(container).append('<table style="width:80%"><tr><td ><input id="txtSearch'+iCnt+'" style="width:100%" type="text" placeholder="Medicine"   class="dynamicTd"/></td><td><input id="txtQuantity'+iCnt+'" class="dynamicTd" style="width:100%" type="text"  placeholder="Quantity"/></td> <td> <input id="txtCode'+iCnt+'" name="txtcode1" style="width: 100%" class="dynamicTd " type="text" placeholder="Med Code" /></td><td><input id="txtCategory'+iCnt+'" style="width: 100%" class="dynamicTd " type="text" placeholder="Category" /></td>       <td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td> </tr></table>');
 
 
                           
 
                     // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
-                    if (iCnt == 5)
+                    if (iCnt ==2)
                     {
                         var divSubmit = $(document.createElement('div'));
                         $(divSubmit).append('<input type=button class="bt" onclick="GetTextValue()"' + 'id=btSubmit value=Submit />');
@@ -78,8 +78,38 @@
 
 
 
+          
             // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
+            var divValue, values = '';
+            debugger;
+            function GetTextValue() {
+                $(divValue)
+                    .empty()
+                    .remove();
 
+                values = '';
+
+                $('.input').each(function () {
+                    divValue = $(document.createElement('div')).css({
+                        padding: '5px', width: '200px'
+                    });
+
+
+                    var datas = document.getElementById('<%=HiddenField1.ClientID%>');
+
+                values += this.value + ' ';
+
+                datas.value = values;
+                      
+
+
+
+            });
+
+
+
+
+        } 
 
 
         });
@@ -92,19 +122,16 @@
             box-shadow: 1px 5px 10px 5px #4d3319;
         }
 
-            .ui-datepicker{
+        .ui-datepicker {
             background: fixed;
             background-color: ghostwhite;
-            box-shadow: 1px 5px 10px 5px #4d3319
-
+            box-shadow: 1px 5px 10px 5px #4d3319;
         }
-
-
     </style>
 
-        <script>
+    <script>
 
-           $(function () {
+        $(function () {
             $("[id$=txtDate]").datepicker({ dateFormat: 'dd-m-yy' ,
                 showOn: 'button',
                
@@ -120,9 +147,9 @@
             var ac=null;
             ac = <%=listFilter %>;
             $( "#txtSearch1,#txtSearch2,#txtSearch3,#txtSearch4" ).autocomplete({
-                  source: ac
-              });
-          });
+                source: ac
+            });
+        });
         
     </script>
 
@@ -140,6 +167,22 @@
 
 
                 <table class="col-phar-patiedet">
+                    <tr>
+                        <td>&nbsp;
+                            <asp:HiddenField ID="HiddenField1" runat="server" />
+                        </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="control-label col-sm-6 regFormLabels">Issued No:</label>
+
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtIssueNo" class="form-control textBoxborder col-sm-6" required runat="server" ValidationGroup="Submit">
+                            </asp:TextBox>
+                        </td>
+                    </tr>
                     <tr>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
@@ -181,50 +224,53 @@
                                 <table style="width: 80%">
                                     <tr>
                                         <td style="text-align: center;">
-                                            <asp:Label ID="Label1" runat="server" Text="Medicine"></asp:Label></td>
+                                            <asp:Label ID="Label1" runat="server" Text="Medicine"></asp:Label>
+
+                                        </td>
                                         <td style="text-align: center">
-                                            <asp:Label ID="Label2" runat="server" Text="Quantity"></asp:Label></td>
+                                            <asp:Label ID="Label2" runat="server" Text="Quantity"></asp:Label>
+
+                                        </td>
+                                         <td style="text-align: center;">
+                                            <asp:Label ID="Label3" runat="server" Text="Medicine Code"></asp:Label>
+
+                                        </td>
+                                        <td style="text-align: center">
+                                            <asp:Label ID="Label4" runat="server" Text="Category"></asp:Label>
+
+                                        </td>
 
 
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <input id="txtSearch1" name="txtSearch1" style="width: 100%" class="dynamicTd " type="text" placeholder="Medicine" /></td>
-                                        <td>
-                                            <input id="txtQuantity1" style="width: 100%" class="dynamicTd " type="text" placeholder="Quantity" /></td>
+                                    
+                                    
 
-                                    </tr>
                                     <tr>
-                                        <td>
-                                            <input id="txtSearch2" style="width: 100%" class="dynamicTd " type="text" placeholder="Medicine" />
+                                        <td >
+                                            <input id="txtSearch1" style="width:100%" type="text" placeholder="Medicine"   class="dynamicTd"/>
 
                                         </td>
                                         <td>
-                                            <input id="txtQuantity2" style="width: 100%" class="dynamicTd" type="text" placeholder="Quantity" /></td>
+                                            <input id="txtQuantity1" class="dynamicTd" style="width:100%" type="text"  placeholder="Quantity"/>
 
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input id="txtSearch3" style="width: 100%" class="dynamicTd " type="text" placeholder="Medicine" />
+                                             </td> 
+                                        <td> 
+                                            <input id="txtCode1"  style="width: 100%" class="dynamicTd " type="text" placeholder="Med Code" />
+
                                         </td>
                                         <td>
-                                            <input id="txtQuantity3" style="width: 100%" class="dynamicTd" type="text" placeholder="Quantity" />
-                                        </td>
+                                            <input id="txtCategory1" style="width: 100%" class="dynamicTd " type="text" placeholder="Category" />
 
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input id="txtSearch4" style="width: 100%" class="dynamicTd " type="text" placeholder="Medicine" /></td>
-                                        <td>
-                                            <input id="txtQuantity4" style="width: 100%" class="dynamicTd" type="text" placeholder="Quantity" /></td>
-
-                                        <td>
+                                             </td>    
+                                        
+                                        
+                                         <td>
 
                                             <span class="auto-style4">
                                                 <input type="button" id="btAdd" onclick="this.style.visibility = 'hidden';" value="+" class="bt" />
                                             </span>
 
-                                        </td>
+                                        </td> 
                                     </tr>
 
 
@@ -248,8 +294,8 @@
                 <asp:HiddenField ID="HiddenFieldUniqueID" runat="server" />
 
                 <%-- ClinicID,PrescID Foreign Keys --%>
-              
-              <%--  <asp:HiddenField ID="HiddenFieldPrescID" runat="server" />--%>
+
+                <%--  <asp:HiddenField ID="HiddenFieldPrescID" runat="server" />--%>
 
                 <%--<asp:HiddenField ID="HiddenField3" runat="server" />--%>
             </div>
