@@ -287,6 +287,7 @@
     <Content Include="Content\materialize\README.md" />
     <Content Include="Masters\Input.Master" />
     <Content Include="Masters\Popup.Master" />
+    <Content Include="Handler\ImageHandler.ashx" />
     <None Include="Properties\PublishProfiles\AmruthaProfile.pubxml" />
     <None Include="Properties\PublishProfiles\ClinicAppProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Hondaprofile.pubxml" />
@@ -396,6 +397,9 @@
     </Compile>
     <Compile Include="ForgotPassword.aspx.designer.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ImageHandler.ashx.cs">
+      <DependentUpon>ImageHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

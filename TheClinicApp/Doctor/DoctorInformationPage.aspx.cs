@@ -105,8 +105,7 @@ namespace TheClinicApp.Doctor
             CaseFileObj.CreatedBy = UA.userName;
             CaseFileObj.UpdatedBy = UA.userName;
             CaseFileObj.AddVisits();
-            
-
+  
             string values = HiddenField1.Value;
             //int count = Convert.ToInt32(HiddenField2.ToString());
             string[] Invalue = values.Split(' ');
@@ -175,7 +174,7 @@ namespace TheClinicApp.Doctor
             dr = dt.Rows[0];
             DateTime date = DateTime.Now;
             int year = date.Year;
-            //Guid PatientID = Guid.Parse(dr["PatientID"].ToString());
+            Guid PatientID = Guid.Parse(dr["PatientID"].ToString());
             lblName.Text = dr["Name"].ToString();
             lblGenderDis.Text = dr["Gender"].ToString();
             HiddenField2.Value = FileIDForGrid.ToString();
@@ -184,6 +183,8 @@ namespace TheClinicApp.Doctor
             lblAgeCount.Text = Age.ToString();
             lblAddress.Text = dr["Address"].ToString();
             lblLastVisitDate.Text = dr["CreatedDate"].ToString();
+            ProfilePic.Src = "../Handler/ImageHandler.ashx?PatientID=" + PatientID.ToString();
+            ProfilePic.Visible = true;
 
             //HiddenField1.Value = PatientID.ToString();
         }
