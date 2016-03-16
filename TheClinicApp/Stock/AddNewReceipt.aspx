@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="ExistingStockIn.aspx.cs" Inherits="TheClinicApp.Stock.ExistingStockIn" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="AddNewReceipt.aspx.cs" Inherits="TheClinicApp.Stock.AddNewReceipt" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,12 +16,11 @@
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/mui.min.js"></script>
 
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="container-fluid bodyDiv">
-        <label class="headingLabel">Stocks-Existing Details</label>
+       <div class="container-fluid bodyDiv">
+        <label class="headingLabel">Stocks-Add Receipt</label>
         <div class="col-sm-12 Span-One ">
 
 
@@ -44,8 +43,8 @@
                     <div class="col-xs-6">
                         <div class="col-xs-12">
                             <br />
-                                                       
-                              <asp:Label ID="lblBillNo" runat="server" Text=""></asp:Label>
+
+                            <asp:TextBox ID="txtBillNo" runat="server"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -63,7 +62,7 @@
                     <div class="col-xs-6">
                         <div class="col-xs-12">
                             <br />
-                               <asp:Label ID="lblDate" runat="server" Text=""></asp:Label>
+                            <asp:TextBox ID="txtDate" runat="server"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -82,7 +81,7 @@
                     <div class="col-xs-6">
                         <div class="col-xs-12">
                             <br />
-                               <asp:Label ID="lblRefNo2" runat="server" Text=""></asp:Label>
+                            <asp:TextBox ID="txtRefNo2" runat="server"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -105,23 +104,8 @@
         <div class="col-sm-12 Span-One ">
 
 
-            <asp:GridView ID="GridViewReceiptDT" runat="server" AutoGenerateColumns="False">
-                <Columns>
-
-                    <asp:BoundField DataField="MedicineName" HeaderText="Medicine Name" />
-                    <asp:BoundField DataField="CategoryName" HeaderText="Category Name" />
-                    <asp:BoundField DataField="Unit" HeaderText="Unit" />
-                    <asp:BoundField DataField="Qty" HeaderText="Quantity"  />
-                   
-                    
-
-                     
-                </Columns>
-            </asp:GridView>
-
+          
         </div>
     </div>
-
-
 
 </asp:Content>

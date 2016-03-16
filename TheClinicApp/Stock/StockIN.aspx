@@ -48,7 +48,7 @@
            <asp:GridView ID="GridViewStockin" runat="server" AutoGenerateColumns="False">
                 <Columns>
                     <asp:BoundField HeaderText="Receipt ID" DataField="ReceiptID" />
-                    <asp:HyperLinkField DataTextField="RefNo1" HeaderText="Bill Number" NavigateUrl="~/Stock/ExistingStockIn.aspx" />
+                    <asp:HyperLinkField DataTextField="RefNo1" HeaderText="Bill Number" DataNavigateUrlFields="ReceiptID" DataNavigateUrlFormatString="~/Stock/ExistingStockIn.aspx?ReceiptID={0}" />
                     <asp:BoundField DataField="RefNo2" HeaderText="Reference Number" />
                     <asp:BoundField HeaderText="Date" DataField="Date" />
                 </Columns>
