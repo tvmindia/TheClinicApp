@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Services;
 
@@ -28,6 +30,11 @@ namespace TheClinicApp.Webservices
             loginMsg.Columns.Add("Flag", typeof(Boolean));
             loginMsg.Columns.Add("Message", typeof(String));
             DataRow dr = loginMsg.NewRow();
+
+            ClinicDAL.CryptographyFunctions crypto = new ClinicDAL.CryptographyFunctions();
+
+            username = crypto.Decrypt(username);
+
             try
             {
                 //user credentials checking
@@ -35,7 +42,7 @@ namespace TheClinicApp.Webservices
                 if (UA.ValidUser)
                 {
                     dr["Flag"] = true;
-                    dr["Message"] = "success";// UIClasses.Messages.LoginSuccess;
+                    dr["Message"] = crypto.Encrypt(UIClasses.Messages.LoginSuccess);
                     loginMsg.Columns.Add("ClinicID", typeof(String));
                     dr["ClinicID"] = UA.ClinicID;
                 }
@@ -262,6 +269,8 @@ namespace TheClinicApp.Webservices
         //    }
         //}
         #endregion JSON converter and sender
+
+        
 
     }
 }
