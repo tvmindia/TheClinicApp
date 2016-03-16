@@ -212,17 +212,31 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@CategoryID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(CategoryID);
                 cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = Name;
-                cmd.Parameters.Add("@Unit", SqlDbType.NVarChar, 15).Value = Unit;
+                //cmd.Parameters.Add("@Unit", SqlDbType.NVarChar, 15).Value = Unit;
                 
                // cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;                INITIAL QUANTITY WILL BE ZERO
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;              
                 cmd.Parameters.Add("@ReOrderQty", SqlDbType.Real).Value = Convert.ToInt32( ReOrderQty);
                 cmd.Parameters.Add("@MedCode", SqlDbType.NVarChar, 20).Value = MedCode;
 
-
+                cmd.Parameters.Add("@Status", SqlDbType.Int);
+                cmd.Parameters["@Status"].Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                int Outputval = (int)cmd.Parameters["@Status"].Value;
 
                 cmd.ExecuteNonQuery();
 
+                if (Outputval == 1)
+               {
+                    //Success
+               }
+                else
+                {
+                    if(Outputval == 0)
+                    {
+                        //Already exists!
+                    }
+                }
             }
 
             catch (Exception ex)

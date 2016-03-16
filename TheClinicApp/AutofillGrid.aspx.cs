@@ -86,10 +86,12 @@ namespace TheClinicApp
         [WebMethod]
         public static string GetMedicines(string searchTerm, int pageIndex)
         {
-
             string query = "[ViewAndFilterMedicine]";
             SqlCommand cmd = new SqlCommand(query);
             cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@ClinicID",new Guid( "2C7A7172-6EA9-4640-B7D2-0C329336F289"));
+
             cmd.Parameters.AddWithValue("@SearchTerm", searchTerm);
             cmd.Parameters.AddWithValue("@PageIndex", pageIndex);
             cmd.Parameters.AddWithValue("@PageSize", PageSize);
@@ -109,6 +111,7 @@ namespace TheClinicApp
                 {
                     cmd.Connection = con;
                     sda.SelectCommand = cmd;
+                   
                     using (DataSet ds = new DataSet())
                     {
                         sda.Fill(ds, "Medicines");
