@@ -11,7 +11,56 @@ namespace TheClinicApp.ClinicDAL
     public class Doctor
     {
         ErrorHandling eObj = new ErrorHandling();
-        
+
+        #region GrabFileID
+        #region Property
+        public Guid PatientIdForFile
+        {
+            get;
+            set;
+        }
+
+        #endregion Property
+        #region Methods
+        public DataTable GetFileIDUSingPatientID()
+        {
+            SqlConnection con = null;
+
+            try
+            {
+                DateTime now = DateTime.Now;
+                DataTable DtFileID = new DataTable();
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand("GetFileID", con);
+                cmd.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = PatientIdForFile;
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = cmd;
+                DtFileID = new DataTable();
+                adapter.Fill(DtFileID);
+                return DtFileID;
+            }
+            catch (Exception ex)
+            {
+                //var page = HttpContext.Current.CurrentHandler as Page;
+                //eObj.ErrorData(ex, page);
+                throw ex;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+
+
+        }
+        #endregion Methods
+        #endregion GrabFileID
+
         #region Connectionstring
         dbConnection dcon = new dbConnection();
         #endregion Connectionstring
@@ -547,14 +596,15 @@ namespace TheClinicApp.ClinicDAL
                 get;
                 set;
             }
+            /// <summary>
+            /// Systematic Examination
+            /// </summary>
             public string Cardiovascular
             {
                 get;
                 set;
             }
-            /// <summary>
-            /// Systematic Examination
-            /// </summary>
+            
             public string Nervoussystem
             {
                 get;
@@ -696,9 +746,10 @@ namespace TheClinicApp.ClinicDAL
                     SqlCommand pud = new SqlCommand();
                     pud.Connection = con;
                     pud.CommandType = System.Data.CommandType.StoredProcedure;
-                    pud.CommandText = "[InsertVisits]";
+                    pud.CommandText = "[InsertVisitList]";
                     pud.Parameters.Add("@VisitID", SqlDbType.UniqueIdentifier).Value = VisitID;
                     pud.Parameters.Add("@FileID", SqlDbType.UniqueIdentifier).Value = FileID;
+                    pud.Parameters.Add("@DoctorID", SqlDbType.UniqueIdentifier).Value = DoctorID;                   
                     pud.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = ClinicID;
                     pud.Parameters.Add("@Date", SqlDbType.DateTime).Value = DateTime.Now;
                     pud.Parameters.Add("@Height", SqlDbType.Real).Value =Height;
@@ -727,11 +778,11 @@ namespace TheClinicApp.ClinicDAL
                     pud.Parameters.Add("@RespRate", SqlDbType.NVarChar, 255).Value = RespRate;
                     pud.Parameters.Add("@Others", SqlDbType.NVarChar, 255).Value = Others;
                     pud.Parameters.Add("@PrescriptionID", SqlDbType.UniqueIdentifier).Value = PrescriptionID;
-                    pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                    pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value =CreatedBy;
                     pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
-                    pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                    pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = UpdatedBy;
                     pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
-                    //pud.Parameters.Add("@image", SqlDbType.VarBinary).Value = image; 
+                   
                     SqlParameter Output = new SqlParameter();
                     Output.DbType = DbType.Int32;
                     Output.ParameterName = "@Status";
@@ -777,6 +828,49 @@ namespace TheClinicApp.ClinicDAL
 
             }
             #endregion AddVisits
+
+            #region GetVisitsGrid
+            public DataTable GetGridVisits(Guid FileID)
+            {
+               
+                if (FileID == Guid.Empty)
+                {
+                    throw new Exception("FileID Is Empty!!");
+                }
+                SqlConnection con = null;
+                try
+                {
+                   
+                    DateTime now = DateTime.Now;
+                    DataTable GridBindVisits = new DataTable();
+                    dbConnection dcon = new dbConnection();
+                    con = dcon.GetDBConnection();
+                    SqlCommand cmd = new SqlCommand("ViewVisitListUsingFileID", con);
+                    cmd.Parameters.Add("@FileID", SqlDbType.UniqueIdentifier).Value = FileID;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    adapter.SelectCommand = cmd;
+                    GridBindVisits = new DataTable();
+                    adapter.Fill(GridBindVisits);
+                    con.Close();
+                    return GridBindVisits;
+                }
+                catch (Exception ex)
+                {
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.ErrorData(ex, page);
+                    throw ex;
+                }
+                finally
+                {
+                    if (con != null)
+                    {
+                        con.Dispose();
+                    }
+
+                }
+            }
+            #endregion GetVisitsGrid
 
             //#region AddPrescriptionDT
             //public void AddPrescriptionDT()

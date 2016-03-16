@@ -26,6 +26,42 @@ namespace TheClinicApp.Pharmacy
         {
             
         }
+
+        #region GridBindTokens
+        public void gridviewbind()
+        {
+            ClinicDAL.TokensBooking tok = new ClinicDAL.TokensBooking();
+            //Gridview Binding to Diplay DoctorName,Token No,Patient Name,TIME
+            tok.DateTime = DateTime.Now;
+            DataSet gds = tok.ViewToken();
+            GridViewTokenlist.EmptyDataText = "No Records Found";
+            GridViewTokenlist.DataSource = gds;
+            GridViewTokenlist.DataBind();
+
+
+        }
+        #endregion GridBindTokens
+
+        protected void ImgBtnUpdate_Command(object sender, CommandEventArgs e)
+        {
+            DataRow dr = null;
+            ClinicDAL.Patient PatientObj = new ClinicDAL.Patient();
+            PatientObj.PatientID = Guid.Parse(e.CommandArgument.ToString());
+            DataTable dt = PatientObj.SelectPatient();
+            dr = dt.NewRow();
+            dr = dt.Rows[0];
+            DateTime date = DateTime.Now;
+            int year = date.Year;
+            //Guid PatientID = Guid.Parse(dr["PatientID"].ToString());
+            lblName.Text = dr["Name"].ToString();
+            lblMale.Text = dr["Gender"].ToString();
+
+            DateTime DT = Convert.ToDateTime(dr["DOB"].ToString());
+            int Age = year - DT.Year;
+            lblAgeCount.Text = Age.ToString();
+            lblAddress.Text = dr["Address"].ToString();
+           
+        }
         //#region  PlaceControls
 
         //public void PlaceControls()

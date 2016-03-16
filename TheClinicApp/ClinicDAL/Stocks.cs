@@ -101,15 +101,15 @@ namespace TheClinicApp.ClinicDAL
         #region Methods
 
 
-        #region Category
+        #region Medicines
 
-        #region ViewCategory
+        #region View Categories
 
-        public DataSet ViewCategory()
+        public DataSet ViewCategories()
         {
 
             dbConnection dcon = null;
-            DataSet ds = null;
+            DataSet dsCategories = null;
             SqlDataAdapter sda = null;
             try
             {
@@ -121,16 +121,15 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[ViewCategory]";
 
-               
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
 
                 sda = new SqlDataAdapter();
                 cmd.ExecuteNonQuery();
                 sda.SelectCommand = cmd;
-                ds = new DataSet();
-                sda.Fill(ds);
+                dsCategories = new DataSet();
+                sda.Fill(dsCategories);
 
-
-                return ds;
+                return dsCategories;
 
             }
 
@@ -151,13 +150,7 @@ namespace TheClinicApp.ClinicDAL
 
         }
 
-
-        #endregion ViewMedicines
-
-        #endregion Category
-
-
-        #region Medicines
+        #endregion View Categories
 
         #region SearchBoxMedicine
         public DataTable SearchBoxMedicine()
@@ -392,7 +385,7 @@ namespace TheClinicApp.ClinicDAL
 
 #endregion Out_of_Stock_MedicineList
 
-         #region Search And View MedicineStock
+        #region Search And View MedicineStock
         /// <summary>
         /// VIEW MEDCINES IF SEARCH ITEM IS NULL ....OTHERWISE SEARCH
         /// 

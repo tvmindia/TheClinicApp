@@ -105,7 +105,8 @@
          });
          </script>
 
-       <style>
+
+    <style>
              input[type="text"] {
     width: 125px;
     box-shadow: 1px 1px 1px 1px #347300;
@@ -117,9 +118,8 @@
          <label class="headingLabel" style="text-align:center">Doctors</label>
          </div>
   </div>
-
   
-<div class="container text-center bodyDiv"> 
+    <div class="container text-center bodyDiv"> 
     <div class="row">
         <div class="col-sm-7 bad">
             <div class="row">
@@ -163,6 +163,7 @@
                                       </td>
 
                                   </tr>
+                                  <asp:HiddenField ID="HiddenField2" runat="server" />
                                    <tr>
                                        <td>
                                            <asp:Label ID="lblPhone" runat="server" Text="Phone"></asp:Label>:
@@ -467,54 +468,63 @@
 
                 </div>
 
-         
 </section>
+
 </li>
 
+               </ul>
 
-</ul>
-          </div>
+           </div>
     </div>
        </div>
       </div>
          
      </div>
     <div class="col-sm-2" style=" position:fixed; z-index:3; right:0%; width:25%; height:100% ">
-        <div id="div2" class="row">
-            <div id="sidebar-wrapper">
+        <div id="div2" style="border:dashed;width:100%;height:250px;" class="row">
+            <span class="list-group-item active">Visit History</span>
+          <asp:GridView ID="GridViewVisitsHistory" runat="server" AutoGenerateColumns="False" CssClass="footable" Style="max-width: 100%;min-width:100%;" DataKeyNames="FileID" CellPadding="4" GridLines="None" ForeColor="#333333">
+              <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+              <Columns>
+                  <asp:TemplateField>
+                      <ItemTemplate>
+                          <asp:ImageButton ID="ImgBtnUpdateVisits" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("VisitID")+"|" + Eval("PrescriptionID") %>' OnCommand="ImgBtnUpdateVisits_Command" formnovalidate />
 
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    
-                        Case Sheet
-                    
-                </li>
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                
-            </ul>
-        </div>
+
+
+                      </ItemTemplate>
+                  </asp:TemplateField>
+                  <asp:BoundField HeaderText="Date" DataField="CreatedDate" />
+                  <asp:BoundField HeaderText="Remarks" DataField="Remarks" />
+              </Columns>
+
+              <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+              <FooterStyle BackColor="#507CD1" ForeColor="White" Font-Bold="True"></FooterStyle>
+
+              <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+              <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#2461BF"></PagerStyle>
+
+              <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+              <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+              <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+              <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+              <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+              <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                        </asp:GridView> 
         </div>
          
         
-    <div class="row">
-      <div id="div1" class="list-group leftSideBar1"> 
-          <span class="list-group-item active">
-                              PATIENT LIST TODAY </span>
-          <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False" CssClass="footable" Style="max-width: 500px" DataKeyNames="UniqueId" CellPadding="4" GridLines="None" ForeColor="#333333">
+    <div class="row" id="div1" style="border:dashed;width:100%;height:250px;">
+      
+          <span class="list-group-item active">Patient List Today</span>
+          <asp:GridView ID="GridViewTokenlist" runat="server" AutoGenerateColumns="False" CssClass="footable" Style="max-width:100%;min-width:100%;" DataKeyNames="UniqueId" CellPadding="4" GridLines="None" ForeColor="#333333">
               <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
               <Columns>
                   <asp:BoundField HeaderText="Token No" DataField="TokenNo" />
@@ -551,7 +561,7 @@
                         </asp:GridView>
                      </div>
 
-    </div>
+  
 
     </div>
 
@@ -559,7 +569,7 @@
 
 </div>
       
- <footer  class="footerDiv">
+    <footer  class="footerDiv">
          
 
                 <table style="width: 100%; height: 100%;">
@@ -638,7 +648,8 @@
         }
         <%--Accordian Open Close--%>
     </script>
-   <%-- <script type="text/javascript">
+
+    <%-- <script type="text/javascript">
 
         function Show() {
            
@@ -665,6 +676,7 @@
 
 
      </script>--%>
+
     <div id="flip" class="demo" style=" position:fixed; z-index:3; bottom:30%; right:0%; width:5%; height:5% ">
         <label>Tokens</label>
         <img id="img1" src="../Images/Button-Add-icon.png" />

@@ -64,7 +64,7 @@
 
 
     <div class="container-fluid bodyDiv">
-        <label class="headingLabel">Stocks</label>
+        <label class="headingLabel">Stocks IN</label>
         <div class="col-sm-12 Span-One ">
 
             <%-- center Block --%>
@@ -460,6 +460,17 @@
                     <br />
                     <div><a href="#">Usage (Receive/Issue Detail) </a></div>
                     <br />
+                     <div>
+
+                        <a id="hlkStockDemo" href="../Stock/StocksDemo.aspx">Stocks Demo</a>
+
+                    </div>
+                     <br />
+                     <div>
+
+                        <a id="hlkStockIN" href="../Stock/StockIN.aspx">Stocks IN</a>
+
+                    </div>
 
 
                 </div>

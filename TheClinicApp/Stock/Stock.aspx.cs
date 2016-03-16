@@ -59,7 +59,8 @@ namespace TheClinicApp.Stock
 
             //Binding  Category ID and Name
 
-            DataSet ds = stok.ViewCategory();
+            stok.ClinicID = UA.ClinicID.ToString();
+            DataSet ds = stok.ViewCategories();
 
             ddlCategory.DataSource = ds.Tables[0];
             ddlCategory.DataValueField = "CategoryID";
