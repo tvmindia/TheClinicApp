@@ -34,6 +34,7 @@ namespace TheClinicApp.Webservices
             ClinicDAL.CryptographyFunctions crypto = new ClinicDAL.CryptographyFunctions();
 
             username = crypto.Decrypt(username);
+            password = crypto.Decrypt(password);
 
             try
             {
@@ -42,7 +43,7 @@ namespace TheClinicApp.Webservices
                 if (UA.ValidUser)
                 {
                     dr["Flag"] = true;
-                    dr["Message"] = crypto.Encrypt(UIClasses.Messages.LoginSuccess);
+                    dr["Message"] = UIClasses.Messages.LoginSuccess;
                     loginMsg.Columns.Add("ClinicID", typeof(String));
                     dr["ClinicID"] = UA.ClinicID;
                 }
@@ -177,6 +178,7 @@ namespace TheClinicApp.Webservices
         #region JSON converter and sender
         public String getDbDataAsJSON(DataSet ds)
         {
+            ClinicDAL.CryptographyFunctions crypto = new ClinicDAL.CryptographyFunctions();
             try
             {
                 DataTable dt = ds.Tables[0];
@@ -195,7 +197,7 @@ namespace TheClinicApp.Webservices
 
                 this.Context.Response.ContentType = "";
 
-                return serializer.Serialize(rows);
+                return "[" + crypto.Encrypt(serializer.Serialize(rows)) + "]";
 
             }
             catch (Exception)
