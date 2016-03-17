@@ -67,6 +67,7 @@
      <%--   //------------- AUTOFILL SCRIPT ---------%>
     <script src="../Scripts/jquery-1.8.3.min.js"></script>
     <script src="../Scripts/ASPSnippets_Pager.min.js"></script>
+     
 
     <script type="text/javascript">
 
@@ -89,7 +90,7 @@
 
 
         $(function () {
-
+            debugger;
             GetMedicines(1);
         });
         $("[id*=txtSearch]").live("keyup", function () {

@@ -55,40 +55,41 @@
         }
     </style>
 
+
+      <%--   //------------- AUTOFILL SCRIPT ---------%>
+    <script src="../Scripts/jquery-1.8.3.min.js"></script>
+    <script src="../Scripts/ASPSnippets_Pager.min.js"></script>
+   
+     
+
+    
+
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <%--   //------------- POPUP SCRIPT ---------%>
-
-    <script src="../Scripts/jquery-1.12.0.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
-    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-
-     <%--   //------------- AUTOFILL SCRIPT ---------%>
-    <script src="../Scripts/jquery-1.8.3.min.js"></script>
-    <script src="../Scripts/ASPSnippets_Pager.min.js"></script>
-
     <script type="text/javascript">
 
-        $(function () {
 
-            GetReceiptHeader(1);
+        $(function () {
+            debugger;
+            GetReceiptHD(1);
         });
         $("[id*=txtSearch]").live("keyup", function () {
-           
-            GetReceiptHeader(parseInt(1));
+
+            GetReceiptHD(parseInt(1));
         });
         $(".Pager .page").live("click", function () {
-            GetReceiptHeader(parseInt($(this).attr('page')));
+            GetReceiptHD(parseInt($(this).attr('page')));
         });
         function SearchTerm() {
             return jQuery.trim($("[id*=txtSearch]").val());
         };
-        function GetReceiptHeader(pageIndex) {
+        function GetReceiptHD(pageIndex) {
             debugger;
             $.ajax({
                 type: "POST",
-                url: "../Stock/StockOut.aspx/GetReceiptHeader",
+                url: "../Stock/StockOut.aspx/GetReceiptHD",
                 data: '{searchTerm: "' + SearchTerm() + '", pageIndex: ' + pageIndex + '}',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -106,22 +107,19 @@
             debugger;
             var xmlDoc = $.parseXML(response.d);
             var xml = $(xmlDoc);
-            var Medicines = xml.find("Medicines");
+            var ReceiptHD = xml.find("ReceiptHD");
             if (row == null) {
                 row = $("[id*=gvReceiptHD] tr:last-child").clone(true);
             }
             $("[id*=gvReceiptHD] tr").not($("[id*=gvReceiptHD] tr:first-child")).remove();
-            if (Medicines.length > 0) {
-                $.each(Medicines, function () {
-                    var medicine = $(this);
+            if (ReceiptHD.length > 0) {
+                $.each(ReceiptHD, function () {
+                   
+                    //$("td", row).eq(0).html('<a href="#">' + $(this).find("RefNo1").text() + '</a>');
 
-
-                    $("td", row).eq(0).html('<a href="#">' + $(this).find("MedicineCode").text() + '</a>');
-
-
-                    //$("td", row).eq(0).html($(this).find("MedicineCode").text());
-                    $("td", row).eq(1).html($(this).find("MedicineName").text());
-                    $("td", row).eq(2).html($(this).find("CategoryName").text());
+                    $("td", row).eq(0).html($(this).find("RefNo1").text());
+                    $("td", row).eq(1).html($(this).find("RefNo2").text());
+                    //$("td", row).eq(2).html($(this).find("Date").text());
                     $("[id*=gvReceiptHD]").append(row);
                     row = $("[id*=gvReceiptHD] tr:last-child").clone(true);
                 });
@@ -149,9 +147,6 @@
         };
     </script>
 
-    <div>
-        <br />
-        <br />
 
 
         Search:
@@ -161,16 +156,16 @@
 
         <asp:GridView ID="gvReceiptHD" runat="server" Style="width: 400px" AutoGenerateColumns="False">
             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
-            <%--<Columns>
+            <Columns>
             
-                <aspBoundField DataField="RefNo1" HeaderText="RefNo1"  ItemStyle-CssClass="Match"  />
+                <asp:BoundField DataField="RefNo1" HeaderText="RefNo1"  ItemStyle-CssClass="Match"  />
               <%--<asp:BoundField DataField="MedicineCode" HeaderText="Medicine Code"   ItemStyle-Font-Underline="true" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Blue" ItemStyle-CssClass="cursorshow" />--%>
 
-              <%--  <asp:BoundField DataField="RefNo2" HeaderText="RefNo2"  ItemStyle-CssClass="Match"  />
-                <asp:BoundField DataField="Date" HeaderText="Date"  ItemStyle-CssClass="Match"  />
+                <asp:BoundField DataField="RefNo2" HeaderText="RefNo2"  ItemStyle-CssClass="Match"  />
+                <%--<asp:BoundField DataField="Date" HeaderText="Date"  ItemStyle-CssClass="Match"  />--%>
 
 
-            </Columns>--%>
+            </Columns>
             <EditRowStyle BackColor="#0080AA"></EditRowStyle>
 
             <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
@@ -197,14 +192,6 @@
 
         <br />
 
-     <%--   <a href="#" role="button" data-toggle="modal" data-target="#OutOfStock">View Out Of Stock Medicines </a>
-        <br />
-        <br />
-        <a href="#" role="button" data-toggle="modal" data-target="#AddNewMedicine" >Add New Medicine </a>
-        <br />
-        <br />
-        <a href="#" role="button" data-toggle="modal" data-target="#AddNewCategory">Add New Category </a>--%>
-    </div>
-
+    
 
 </asp:Content>

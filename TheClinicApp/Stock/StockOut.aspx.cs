@@ -13,10 +13,8 @@ namespace TheClinicApp.Stock
 {
     public partial class StockOut : System.Web.UI.Page
     {
-
         private static int PageSize = 5;
 
-        #region Filter Gridview
 
         #region Methods
 
@@ -25,9 +23,9 @@ namespace TheClinicApp.Stock
         private void BindDummyRow()
         {
             DataTable dummy = new DataTable();
-            dummy.Columns.Add("MedicineName");
-            dummy.Columns.Add("CategoryName");
-            dummy.Columns.Add("MedicineCode");
+            dummy.Columns.Add("RefNo1");
+            dummy.Columns.Add("RefNo2");
+            //dummy.Columns.Add("Date");
             dummy.Rows.Add();
             gvReceiptHD.DataSource = dummy;
             gvReceiptHD.DataBind();
@@ -38,23 +36,20 @@ namespace TheClinicApp.Stock
 
         #endregion Methods
 
-        #region Events
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 BindDummyRow();
 
             }
-
         }
-
-        #endregion Events
 
 
         [WebMethod]
-        public static string GetReceiptHeader(string searchTerm, int pageIndex)
+        public static string GetReceiptHD(string searchTerm, int pageIndex)
         {
             ClinicDAL.UserAuthendication UA;
             UIClasses.Const Const = new UIClasses.Const();
@@ -88,7 +83,8 @@ namespace TheClinicApp.Stock
                     sda.SelectCommand = cmd;
                     using (DataSet ds = new DataSet())
                     {
-                        sda.Fill(ds, "Medicines");
+                        sda.Fill(ds, "ReceiptHD");
+                       
                         DataTable dt = new DataTable("Pager");
                         dt.Columns.Add("PageIndex");
                         dt.Columns.Add("PageSize");
@@ -104,9 +100,6 @@ namespace TheClinicApp.Stock
             }
         }
 
-
-
-        #endregion Filter Gridview-+*
-
     }
+    
 }
