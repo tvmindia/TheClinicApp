@@ -16,91 +16,92 @@
     <script src="../Scripts/mui.min.js"></script>
 
 
-    <script type="text/javascript">
-        $(document).ready(function () {
+     <script>   
+         $(document).ready(function () {
 
-            var iCnt = 1;
-            // CREATE A "DIV" ELEMENT AND DESIGN IT USING JQUERY ".css()" CLASS.
-            var container = $(document.createElement('div')).css({
-                width: '100%',
-                borderTopColor: '#999', borderBottomColor: '#999',
-                borderLeftColor: '#999', borderRightColor: '#999'
-            });
+             var iCnt = 0;
+             // CREATE A "DIV" ELEMENT AND DESIGN IT USING JQUERY ".css()" CLASS.
+             var container = $(document.createElement('div')).css({
+                 width:'100%',
+                 borderTopColor: '#999', borderBottomColor: '#999',
+                 borderLeftColor: '#999', borderRightColor: '#999'
+             });
 
-            $('body').on('click', '#btAdd', function () {
-               
 
-                if (iCnt <= 20) {
-                    iCnt = iCnt + 1;
-                  <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');
+             $('body').on('click', '#btAdd', function () {
+                      
+                 if (iCnt <= 19) {
+                     iCnt = iCnt + 1;
+                          <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');
                           count.value=iCnt;--%>
                     // ADD TEXTBOX.
-                    $(container).append('<table style="width:80%"><tr><td ><input id="txtSearch'+iCnt+'" style="width:100%" type="text" placeholder="Medicine"   class="dynamicTd"/></td><td><input id="txtQuantity'+iCnt+'" class="dynamicTd" style="width:100%" type="text"  placeholder="Quantity"/></td> <td> <input id="txtCode'+iCnt+'" name="txtcode1" style="width: 100%" class="dynamicTd " type="text" placeholder="Med Code" /></td><td><input id="txtCategory'+iCnt+'" style="width: 100%" class="dynamicTd " type="text" placeholder="Category" /></td>       <td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td> </tr></table>');
-
-
+                     $(container).append('<table style="width:80%"><tr><td><input id="txtMedname'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Medicine"/></td><td><input id="txtUNit'+iCnt+'" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtMedcode'+iCnt+'" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
 
                     // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
-                    if (iCnt ==2)
-                    {
+                    if (iCnt == 1) {
                         var divSubmit = $(document.createElement('div'));
                         $(divSubmit).append('<input type=button class="bt" onclick="GetTextValue()"' + 'id=btSubmit value=Submit />');
-
-
- 
                     }
-                    // ADD BOTH THE DIV ELEMENTS TO THE "main" CONTAINER.
-
+                    // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
+                          
                     $('#main').after(container, divSubmit);
 
                     var ac=null;
                     ac = <%=listFilter %>;
-                    $( "#txtSearch"+iCnt ).autocomplete({
+                     $( "#txtMedname"+iCnt).autocomplete({
                         source: ac
                     });
-
+                          
                 }
 
                     // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
                     // (20 IS THE LIMIT WE HAVE SET)
-                else
-                {
+                else {
                     $(container).append('<label>Reached the limit</label>');
                     $('#btAdd').attr('class', 'bt-disable');
                     $('#btAdd').attr('disabled', 'disabled');
                 }
+             
+            });
+        });
+
+            
+
+        // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
+        var divValue, values = '';
+
+        function GetTextValue() {
+            $(divValue)
+                .empty()
+                .remove();
+
+            values = '';
+
+            $('.input').each(function () {
+                divValue = $(document.createElement('div')).css({
+                    padding: '5px', width: '200px'
+                });
+
+
+                var datas = document.getElementById('<%=HiddenField1.ClientID%>');
+
+                values += this.value + '|';
+               // alert(values);
+                datas.value = values;
+                      
+
+
 
             });
 
 
-            // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
-            var divValue, values = '';
-            debugger;
-            function GetTextValue() {
-                $(divValue)
-                    .empty()
-                    .remove();
-
-                values = '';
-
-                $('.input').each(function () {
-                    divValue = $(document.createElement('div')).css({
-                        padding: '5px', width: '200px'
-                    });
 
 
-                    var datas = document.getElementById('<%=HiddenField1.ClientID%>');
-
-                    values += this.value + ' ';
-
-                    datas.value = values;
-            
-                });
-
-            } 
-
-
-        });
-    </script>
+        }
+              
+          
+                  
+</script>
 
     <style>
         .ui-autocomplete {
@@ -133,7 +134,7 @@
              
             var ac=null;
             ac = <%=listFilter %>;
-            $( "#txtSearch1,#txtSearch2,#txtSearch3,#txtSearch4" ).autocomplete({
+            $( "#txtSearch" ).autocomplete({
                 source: ac
             });
         });
@@ -142,6 +143,7 @@
 
 
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
@@ -202,8 +204,8 @@
                                         <td style="text-align: center;">
                                             <asp:Label ID="Label5" runat="server" Text="Medicine"></asp:Label>
                                         </td>
-                                        <td style="text-align: center">
-                                            <asp:Label ID="Label6" runat="server" Text="Quantity"></asp:Label>
+                                       <td style="text-align: center;">
+                                            <asp:Label ID="Label1" runat="server" Text="Unit"></asp:Label>
                                         </td>
                                         <td style="text-align: center;">
                                             <asp:Label ID="Label7" runat="server" Text="Medicine Code"></asp:Label>
@@ -211,21 +213,28 @@
                                         <td style="text-align: center">
                                             <asp:Label ID="Label8" runat="server" Text="Category"></asp:Label>
                                         </td>
+                                         <td style="text-align: center">
+                                            <asp:Label ID="Label6" runat="server" Text="Quantity"></asp:Label>
+                                        </td>
 
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input id="txtSearch1" style="width: 100%" type="text" placeholder="Medicine" class="dynamicTd" />
+                                            <input id="txtSearch" style="width: 100%" type="text" placeholder="Medicine" class="input" />
                                         </td>
                                         <td>
-                                            <input id="txtQuantity1" class="dynamicTd" style="width: 100%" type="text" placeholder="Quantity" />
+                                            <input id="txtUNit" style="width: 100%" class="input " type="text" placeholder="Unit" />
+                                        </td>
+                                         <td>
+                                            <input id="txtCode" style="width: 100%" class="input " type="text" placeholder="Med Code" />
                                         </td>
                                         <td>
-                                            <input id="txtCode1" style="width: 100%" class="dynamicTd " type="text" placeholder="Med Code" />
+                                            <input id="txtCategory" style="width: 100%" class="input " type="text" placeholder="Category" />
                                         </td>
                                         <td>
-                                            <input id="txtCategory1" style="width: 100%" class="dynamicTd " type="text" placeholder="Category" />
+                                            <input id="txtQuantity" class="input" style="width: 100%" type="text" placeholder="Quantity" />
                                         </td>
+                                       
                                         <td>
                                             <span class="auto-style4">
                                                 <input type="button" id="btAdd" onclick="this.style.visibility = 'hidden';" value="+" class="bt" />
@@ -244,16 +253,7 @@
 
 
 
-
-                <%-- Primary Keys Issue Header and Details --%>
-                <asp:HiddenField ID="HiddenFieldIssueID" runat="server" />
-                <asp:HiddenField ID="HiddenFieldUniqueID" runat="server" />
-
-                <%-- ClinicID,PrescID Foreign Keys --%>
-
-                <%--  <asp:HiddenField ID="HiddenFieldPrescID" runat="server" />--%>
-
-                <%--<asp:HiddenField ID="HiddenField3" runat="server" />--%>
+ 
             </div>
             <div class="col-sm-4">
 

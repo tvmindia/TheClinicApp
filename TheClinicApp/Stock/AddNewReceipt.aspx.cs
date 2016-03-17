@@ -23,7 +23,7 @@ namespace TheClinicApp.Stock
         IssueDetails idt = new IssueDetails();
         Stocks stok = new Stocks();
         Receipt rpt = new Receipt();
-        ReceiptDetails rptdt = new ReceiptDetails();
+        //ReceiptDetails rptdt = new ReceiptDetails();
 
         //login details
 
@@ -92,13 +92,57 @@ namespace TheClinicApp.Stock
         protected void btnReceipt_Click(object sender, EventArgs e)
         {
 
-
-
+            rpt.CreatedBy = UA.userName;
+            rpt.Date = Convert.ToDateTime(txtDate.Text);
+            rpt.RefNo1 = txtBillNo.Text;
+            rpt.RefNo2 = txtRefNo2.Text;
+            rpt.ClinicID = UA.ClinicID.ToString();
 
             rpt.InsertReceiptHeader();
 
 
-            rptdt.InsertReceiptDetails();
+
+            string values = HiddenField1.Value;
+            
+            string[] Invalue = values.Split('|');
+
+           int len= Invalue.Length;
+           len = len - 1;
+           
+               
+                   for (int i = 0; i <len ; i = i + 5)
+                   {
+                       ReceiptDetails rptdt = new ReceiptDetails();
+
+                       rptdt.MedicineName = Invalue[i];
+                       rptdt.QTY= Convert.ToInt32(Invalue[i + 4]);
+                       rptdt.Unit = Invalue[i+1];
+                       rptdt.CreatedBy = UA.userName;
+                       rptdt.ClinicID = UA.ClinicID.ToString();
+                       rptdt.ReceiptID = rpt.ReceiptID;
+                       
+                       rptdt.InsertReceiptDetails();
+                     
+
+
+                   }
+
+
+         
+
+
+
+
+
+
+          
+
+
+
+
+
+
+          
 
 
         }
