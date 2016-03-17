@@ -15,8 +15,14 @@
         </tr>
         <tr>
             <td>Category</td>
-            <td><asp:DropDownList ID="ddlCategory" runat="server"></asp:DropDownList></td>
+            <td><asp:DropDownList ID="ddlCategory" runat="server" AutoPostBack="true"></asp:DropDownList></td>
         </tr>
+
+         <tr>
+            <td>Unit</td>
+            <td><asp:TextBox ID="txtUnit" runat="server"></asp:TextBox></td>
+        </tr>
+
         <tr>
             <td>Reorder Quantity</td>
             <td><asp:TextBox ID="txtOrderQuantity" runat="server"></asp:TextBox></td>
@@ -27,4 +33,6 @@
     <br />
 
     <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" />
+     <asp:Button ID="btnNew" runat="server" Text="New" OnClick="btnNew_Click"/>
+
 </asp:Content>

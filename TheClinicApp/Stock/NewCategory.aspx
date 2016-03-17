@@ -5,7 +5,7 @@
 
      <table>
         <tr>
-            <td>Medicine Name </td>
+            <td>Category Name </td>
             <td>
                 <asp:TextBox ID="txtCategoryName" runat="server"></asp:TextBox>
 

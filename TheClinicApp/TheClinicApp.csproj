@@ -362,6 +362,7 @@
       <DependentUpon>AutofillGrid.aspx</DependentUpon>
     </Compile>
     <Compile Include="ClinicDAL\CaseSheet.cs" />
+    <Compile Include="ClinicDAL\Category.cs" />
     <Compile Include="ClinicDAL\Clinic.cs" />
     <Compile Include="ClinicDAL\common.cs" />
     <Compile Include="ClinicDAL\dbConnection.cs" />

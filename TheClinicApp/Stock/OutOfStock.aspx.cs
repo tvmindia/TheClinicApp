@@ -56,7 +56,16 @@ namespace TheClinicApp.Stock
         {
             if (!IsPostBack)
             {
-                BindOutOfStockGridview();
+                try
+                {
+                    BindOutOfStockGridview();
+                }
+                catch (Exception)
+                {
+                    
+                    throw;
+                }
+               
             }
         }
         #endregion Page Loads
