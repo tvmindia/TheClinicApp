@@ -113,6 +113,9 @@ namespace TheClinicApp.Stock
             try
             {
                 AddNewMedicine();
+
+                hdnManageGridBind.Value = "True";
+
             }
             catch (Exception)
             {

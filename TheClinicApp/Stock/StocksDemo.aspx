@@ -93,11 +93,10 @@
             GetMedicines(1);
         });
         $("[id*=txtSearch]").live("keyup", function () {
-            debugger;
+           
             GetMedicines(parseInt(1));
         });
         $(".Pager .page").live("click", function () {
-            debugger;
             GetMedicines(parseInt($(this).attr('page')));
         });
         function SearchTerm() {
@@ -220,7 +219,7 @@
         <a href="#" role="button" data-toggle="modal" data-target="#OutOfStock">View Out Of Stock Medicines </a>
         <br />
         <br />
-        <a href="#" role="button" data-toggle="modal" data-target="#AddNewMedicine">Add New Medicine </a>
+        <a href="#" role="button" data-toggle="modal" data-target="#AddNewMedicine" >Add New Medicine </a>
         <br />
         <br />
         <a href="#" role="button" data-toggle="modal" data-target="#AddNewCategory">Add New Category </a>
@@ -264,7 +263,7 @@
                 </div>
                 <div class="modal-body" style="background-color: lightgoldenrodyellow; overflow-x: hidden; overflow-y: hidden;">
                     <div class="col-md-12">
-                        <iframe src="NewMedicine.aspx" style="width: 100%; height: 100%"></iframe>
+                        <iframe src="NewMedicine.aspx?AddedCategoryOrNot=" style="width: 100%; height: 100%"></iframe>
                     </div>
 
                 </div>
@@ -294,7 +293,7 @@
             </div>
         </div>
     </div>
-    
+
 </asp:Content>
 
 

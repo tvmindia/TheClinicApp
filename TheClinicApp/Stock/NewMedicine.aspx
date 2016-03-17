@@ -1,9 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="NewMedicine.aspx.cs" Inherits="TheClinicApp.Stock.NewMedicine" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="../Scripts/jquery-1.3.2.min.js"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script>
+        $(document).ready(function () {
+//------------* Bind medicine grid of parent page when adding a new medicine * --------------//
 
+    if ($('#<%=hdnManageGridBind.ClientID %>').val() == "True"  ) {
+        parent.GetMedicines(1);
+        $('#<%=hdnManageGridBind.ClientID %>').val('False');
+    }
 
+});
+       </script>
     <table>
         <tr>
             <td>Medicine Name </td>
@@ -34,5 +45,7 @@
 
     <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" />
      <asp:Button ID="btnNew" runat="server" Text="New" OnClick="btnNew_Click"/>
+
+     <asp:HiddenField ID="hdnManageGridBind" runat="server"  Value="False"/>
 
 </asp:Content>
