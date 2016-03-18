@@ -794,16 +794,16 @@ namespace TheClinicApp.ClinicDAL
                     {
                         //not successfull   
 
-                        var page = HttpContext.Current.CurrentHandler as Page;
-                        eObj.InsertionNotSuccessMessage(page);
+                        //var page = HttpContext.Current.CurrentHandler as Page;
+                        //eObj.InsertionNotSuccessMessage(page);
 
                     }
                     else
                     {
                         //successfull
 
-                        var page = HttpContext.Current.CurrentHandler as Page;
-                        eObj.InsertionSuccessMessage(page);
+                       // var page = HttpContext.Current.CurrentHandler as Page;
+                        //eObj.InsertionSuccessMessage(page);
 
 
                     }
@@ -830,6 +830,76 @@ namespace TheClinicApp.ClinicDAL
             #endregion AddVisits
 
             #region GetVisitsGrid
+            public void GetVisits()
+            {
+
+                if (VisitID == Guid.Empty)
+                {
+                    throw new Exception("VisitID Is Empty!!");
+                }
+                dbConnection dcon = null;
+                try
+                {
+                   
+                    DateTime now = DateTime.Now;
+                    DataTable GridVisits = null;
+                    dcon = new dbConnection();
+                    dcon.GetDBConnection();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = dcon.SQLCon;
+                    cmd.CommandText = "GetVisitDetails";
+                    cmd.Parameters.Add("@VisitID", SqlDbType.UniqueIdentifier).Value = VisitID;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    adapter.SelectCommand = cmd;
+                    GridVisits = new DataTable();
+                    adapter.Fill(GridVisits);
+                    if(GridVisits.Rows.Count>0)
+                    {
+                        DataRow dr = GridVisits.Rows[0];
+                        Height =float.Parse(dr["Height"].ToString());
+                        Weight = float.Parse(dr["Weight"].ToString());
+                        Symptoms = dr["Symptoms"].ToString();
+                        Cardiovascular = dr["Cardiovascular"].ToString();
+                        Nervoussystem = dr["Nervoussystem"].ToString();
+                        Musculoskeletal = dr["Musculoskeletal"].ToString();
+                        Palloe = dr["Palloe"].ToString();
+                        Icterus = dr["Icterus"].ToString();
+                        Clubbing = dr["Clubbing"].ToString();
+                        Cyanasis = dr["Cyanasis"].ToString();
+                        Bowel = dr["Bowel"].ToString();
+                        Appettie = dr["Appettie"].ToString();
+                        Micturation = dr["Micturation"].ToString();
+                        Sleep = dr["Sleep"].ToString();
+                        Diagnosys = dr["Diagnosys"].ToString();
+                        Remarks = dr["Remarks"].ToString();
+                        Pulse = dr["Pulse"].ToString();
+                        Bp = dr["Bp"].ToString();
+                        Tounge = dr["Tounge"].ToString();
+                        Heart = dr["Heart"].ToString();
+                        LymphGen = dr["LymphGen"].ToString();
+                        LymphClinic = dr["LymphClinic"].ToString();
+                        RespRate = dr["RespRate"].ToString();
+                        Others = dr["Others"].ToString();
+
+                    }
+                    
+                   }
+                catch (Exception ex)
+                {
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.ErrorData(ex, page);
+                    throw ex;
+                }
+                finally
+                {
+                    if (dcon.SQLCon != null)
+                    {
+                        dcon.DisconectDB();
+                    }
+
+                }
+            }
             public DataTable GetGridVisits(Guid FileID)
             {
                

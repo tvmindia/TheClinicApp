@@ -103,6 +103,14 @@
                  source: ac
              });
          });
+
+       $(function () {
+           $('#btnnew').click(function () {
+               $('input[type=text]').each(function () {
+                   $(this).val('');
+               })
+           })
+       })
          </script>
 
 
@@ -116,6 +124,7 @@
     <div class="container-fluid">
         <div class="headingLabel">
          <label class="headingLabel" style="text-align:center">Doctors</label>
+            <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/Doctors Test/DoctorTesting.aspx">LinkButton</asp:LinkButton>
          </div>
   </div>
   
@@ -349,7 +358,7 @@
                            </div>
                             <label  class="control-label col-lg-3">Lymph Nodes </label>
                             <div class="col-lg-9">
-                                <asp:TextBox ID="txtLymph" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                                <asp:TextBox ID="txtLymphGen" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
                            </div>
                             <label  class="control-label col-lg-3">Edima </label>
                             <div class="col-lg-9">
@@ -384,7 +393,7 @@
                            </div>  
                          <label  class="control-label col-lg-3">Lymphnodes</label>
                            <div class="col-lg-9">
-                               <asp:TextBox ID="txtLymphnodes" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
+                               <asp:TextBox ID="txtLymphClinic" class="form-control " TextMode="SingleLine"    Width="100%" runat="server" required ValidationGroup="Submit"></asp:TextBox>
 
                            </div>
                          <label  class="control-label col-lg-3">Respiration Rate</label>
@@ -599,7 +608,12 @@
                                         <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button" OnClick="btnSave_Click" ValidationGroup="Submit" />
 </div>
                                     </td>
-                                    <td>
+                                    
+                                        <td style="width:40%">
+                                        <div class="form-group">
+                                        <asp:Button ID="btnnew" runat="server" Text="NEW"  type="submit" CssClass="button" OnClinicClick="btnnew_Click()" Visible="false" formnovalidate />
+                                            </div>
+                                       
                                        </td>
                                 </tr>
                             </table>

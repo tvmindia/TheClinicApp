@@ -19,15 +19,20 @@ namespace TheClinicApp.Handler
 
         public void ProcessRequest(HttpContext context)
         {
+           
             context.Response.ContentType = "image/jpeg";
 
             if (context.Request.QueryString["PatientID"] != null)
             {
                 Guid PatientID;
                 PatientID = Guid.Parse(context.Request.QueryString["PatientID"]);
+                if(GetImageFromDB(PatientID)!=null)
+                {
                 MemoryStream memoryStream = new MemoryStream(GetImageFromDB(PatientID), false);
                 Image imgFromGB = Image.FromStream(memoryStream);
                 imgFromGB.Save(context.Response.OutputStream, ImageFormat.Jpeg);
+                }
+               
             }
         }
 
@@ -52,7 +57,7 @@ namespace TheClinicApp.Handler
                 cmd.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = PatientID;
 
                 SqlDataReader rd = cmd.ExecuteReader();
-                if (rd.Read())
+                if ((rd.Read())&&(rd.HasRows)&&(rd["image"]!=DBNull.Value))
                 {
                     ImageByteArray = (byte[])rd["image"];
                 }

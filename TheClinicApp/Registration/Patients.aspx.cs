@@ -49,17 +49,17 @@ namespace TheClinicApp.Registration
             PatientObj.MaritalStatus = txtMarital.Text;
             PatientObj.Occupation = "BUSINESS";
             PatientObj.FileNumber = "HO343499";
-            if (FileUpload1.HasFile)
-            {
-                byte[] ImageByteArray = null;
-                ImageByteArray = ConvertImageToByteArray(FileUpload1);
-                PatientObj.Picupload = ImageByteArray;
-                PatientObj.ImageType = Path.GetExtension(FileUpload1.PostedFile.FileName);
-                
-            }
             
             if (btnSave.Text == "SAVE")
             {
+                if (FileUpload1.HasFile)
+                {
+                    byte[] ImageByteArray = null;
+                    ImageByteArray = ConvertImageToByteArray(FileUpload1);
+                    PatientObj.Picupload = ImageByteArray;
+                    PatientObj.ImageType = Path.GetExtension(FileUpload1.PostedFile.FileName);
+
+                }
                 Guid g = Guid.NewGuid();
                 PatientObj.PatientID = g;
                 PatientObj.AddPatientDetails();
@@ -76,7 +76,7 @@ namespace TheClinicApp.Registration
 
             }
             gridDataBind();
-
+            
 
             lblFileCount.Text = PatientObj.FileNumber;
             lblFile.Text = PatientObj.FileNumber;
@@ -270,9 +270,9 @@ namespace TheClinicApp.Registration
             btnSave.Text = "Save";
             lblErrorCaption.Text = "";
             lblMsgges.Text = "";
+            ProfilePic.Src = "../Images/UploadPic.png";
         }
         #endregion clearfield
-
 
         #region BookingToken
         protected void btntokenbooking_Click(object sender, EventArgs e)
@@ -293,7 +293,6 @@ namespace TheClinicApp.Registration
         }
         #endregion BookingToken
 
-
         #region ClearScreen
         protected void btnnew_Click(object sender, EventArgs e)
         {
@@ -312,6 +311,7 @@ namespace TheClinicApp.Registration
 
         #endregion Paging
 
+        #region convertImage
         private byte[] ConvertImageToByteArray(FileUpload fuImage)
         {
             byte[] ImageByteArray;
@@ -326,149 +326,7 @@ namespace TheClinicApp.Registration
                 return null;
             }
         }
-        //}
-        public void MakeFile(DataRow dr, string fileName, string filePath)
-        {
-            byte[] buffer = (byte[])dr["image"];
-            //byte[] buffer = new byte[dr["image"], 0, null, 0, int.MaxValue)];dr["image"], 0, buffer, 0, int.MaxValue);
-
-            System.IO.File.WriteAllBytes(filePath + fileName, buffer);
-                                   
-        }
-       
-
-
-        //public void FileInsert()
-        //{
-        //    Control ctl = this.Parent;
-        //    bool isValidFile = false;
-        //    bool largerSize = false;
-        //    try
-        //    {
-        //        //validation
-        //        isValidFile = ValidateFileType();
-        //        int Size = Convert.ToInt32(FileUpload1.PostedFile.ContentLength) / 1024;
-        //        int sizeinMB = Size / 1024;
-        //        string fileSize;
-        //        if (sizeinMB == 0)
-        //        {
-        //            fileSize = Size + "KB";
-        //        }
-        //        else
-        //        {
-        //            fileSize = sizeinMB + "MB";
-        //        }
-        //        largerSize = ValidateSize(sizeinMB);
-
-        //        if ((isValidFile) && (FileUpload1.PostedFile.ContentLength > 0))
-        //        {
-        //            if (largerSize == false)
-        //            {
-        //                string tempFile = "";
-        //                string filePath = Server.MapPath("/Content/Fileupload/");
-        //                string ext = System.IO.Path.GetExtension(FileUpload1.PostedFile.FileName);
-        //                string fileName = FileUpload1.PostedFile.FileName;
-        //                string pathToCheck = filePath + fileName;
-        //                if (System.IO.File.Exists(pathToCheck))
-        //                {
-        //                    int counter = 2;
-        //                    while (System.IO.File.Exists(pathToCheck))
-        //                    {
-        //                        tempFile = "(" + counter.ToString() + ")" + fileName;
-        //                        pathToCheck = filePath + tempFile;
-        //                        counter++;
-        //                    }
-        //                    fileName = tempFile;
-        //                }
-        //                filePath += fileName;
-        //                FileUpload1.SaveAs(filePath);
-        //                {
-        //                    if (type_value == "BOQ" || type_value == "BOQHeader")
-        //                    {
-        //                        cmd = new SqlCommand();
-        //                        cmd.Connection = cntion.GetDBConnection();
-        //                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
-        //                        cmd.CommandText = "[InsertDocAttachmentDetails]";
-
-        //                        // cmd.Parameters.Add("@paramId", SqlDbType.Int).Value = Id;
-        //                        cmd.Parameters.Add("@Filename", SqlDbType.NVarChar, 100).Value = fileName.ToString();
-        //                        cmd.Parameters.Add("@Image", SqlDbType.VarBinary).Value = FileUpload1.FileContent;
-        //                        cmd.Parameters.Add("@Filetype", SqlDbType.NVarChar, 5).Value = ext;
-        //                        cmd.Parameters.Add("@Filesize", SqlDbType.NVarChar, 50).Value = fileSize;
-        //                        cmd.Parameters.Add("@Date", SqlDbType.SmallDateTime).Value = System.DateTime.Now;
-        //                        cmd.Parameters.Add("@userName", SqlDbType.VarChar, 50).Value = UA.userName;
-        //                        cmd.Parameters.Add("@Type", SqlDbType.VarChar, 50).Value = type_value;
-
-        //                        cmd.Parameters.Add("@itemID", SqlDbType.UniqueIdentifier).Value = (Guid.Parse(ItemID) != Guid.Empty) ? Guid.Parse(ItemID) : Guid.Empty;
-
-
-        //                        cmd.Parameters.Add("@RevisionID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(RevisionID);
-
-        //                        SqlParameter ouparamid = cmd.Parameters.Add("@outparamid", SqlDbType.UniqueIdentifier);
-        //                        ouparamid.Direction = ParameterDirection.Output;
-        //                        cmd.ExecuteNonQuery();
-
-
-        //                        lblmsg.ForeColor = System.Drawing.Color.Green;
-        //                        lblmsg.Text = "File uploaded successfully.";
-        //                    }
-        //                    else
-        //                    {
-        //                        //byte[] buffer;
-        //                        //buffer = (byte[])dt.Rows[0]["BinaryFile"];
-        //                        punchObj.image = FileUpload1.FileContent;
-        //                        punchObj.FileType = ext;
-        //                        punchObj.id = EILId;
-        //                        punchObj.EILType = EilType;
-        //                        punchObj.fileSize = fileSize;
-        //                        punchObj.fileUpload = fileName.ToString();
-        //                        punchObj.InsertEILAttachment();
-        //                    }
-        //                }
-        //            }
-        //            else
-        //            {
-        //                if (largerSize == true)
-        //                {
-        //                    lblmsg.ForeColor = System.Drawing.Color.Red;
-        //                    lblmsg.Text = "File should  be less than 10 mb of size";
-        //                }
-        //                if (FileUpload1.PostedFile.ContentLength == 0)
-        //                {
-        //                    lblmsg.ForeColor = System.Drawing.Color.Red;
-        //                    lblmsg.Text = "File Does not have content..";
-        //                }
-        //            }
-
-        //        }
-        //        else
-        //        {
-        //            if (isValidFile == false)
-        //            {
-        //                lblmsg.ForeColor = System.Drawing.Color.Red;
-        //                lblmsg.Text = "Please Upload bmp,gif,png,jpg,jpeg,doc,docx,xls,xlsx,pdf file types";
-        //            }
-        //        }
-
-        //        //validation
-
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    finally
-        //    {
-        //        // DropFill();
-        //        if (cntion.GetDBConnection() != null)
-        //        {
-        //            cntion.GetDBConnection().Close();
-        //        }
-        //    }
-
-        //}
-
+        #endregion convertImage
 
     }
 
