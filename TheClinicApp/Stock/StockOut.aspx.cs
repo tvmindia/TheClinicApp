@@ -1,7 +1,4 @@
-﻿
-#region Included Namespaces
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -11,25 +8,13 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TheClinicApp.ClinicDAL;
-
-#endregion  Included Namespaces
 
 namespace TheClinicApp.Stock
 {
-    public partial class StocksDemo : System.Web.UI.Page
+    public partial class StockOut : System.Web.UI.Page
     {
-       
-        #region Global Variables
-
         private static int PageSize = 5;
-        Stocks stockObj = new Stocks();
-        UIClasses.Const Const = new UIClasses.Const();
-        ClinicDAL.UserAuthendication UA;
 
-        #endregion Global Variables
-
-        #region Filter Gridview
 
         #region Methods
 
@@ -38,12 +23,12 @@ namespace TheClinicApp.Stock
         private void BindDummyRow()
         {
             DataTable dummy = new DataTable();
-            dummy.Columns.Add("MedicineName");
-            dummy.Columns.Add("CategoryName");
-            dummy.Columns.Add("MedicineCode");
+            dummy.Columns.Add("RefNo1");
+            dummy.Columns.Add("RefNo2");
+            //dummy.Columns.Add("Date");
             dummy.Rows.Add();
-            gvMedicines.DataSource = dummy;
-            gvMedicines.DataBind();
+            gvReceiptHD.DataSource = dummy;
+            gvReceiptHD.DataBind();
         }
 
         #endregion Bind Dummy Row
@@ -51,30 +36,27 @@ namespace TheClinicApp.Stock
 
         #endregion Methods
 
-        #region Events
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 BindDummyRow();
-              
-            }
-          
-        }
 
-        #endregion Events
+            }
+        }
 
 
         [WebMethod]
-        public static string GetMedicines(string searchTerm, int pageIndex)
+        public static string GetReceiptHD(string searchTerm, int pageIndex)
         {
             ClinicDAL.UserAuthendication UA;
             UIClasses.Const Const = new UIClasses.Const();
 
             UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
 
-            string query = "ViewAndFilterMedicine";
+            string query = "ViewAndFilterReceiptHD";
             SqlCommand cmd = new SqlCommand(query);
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -101,7 +83,8 @@ namespace TheClinicApp.Stock
                     sda.SelectCommand = cmd;
                     using (DataSet ds = new DataSet())
                     {
-                        sda.Fill(ds, "Medicines");
+                        sda.Fill(ds, "ReceiptHD");
+                       
                         DataTable dt = new DataTable("Pager");
                         dt.Columns.Add("PageIndex");
                         dt.Columns.Add("PageSize");
@@ -117,8 +100,6 @@ namespace TheClinicApp.Stock
             }
         }
 
-
-
-        #endregion Filter Gridview
     }
+    
 }

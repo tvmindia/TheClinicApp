@@ -10,7 +10,7 @@
 namespace TheClinicApp.Stock {
     
     
-    public partial class StocksDemo {
+    public partial class StockOut {
         
         /// <summary>
         /// txtSearch control.
@@ -22,12 +22,12 @@ namespace TheClinicApp.Stock {
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
         
         /// <summary>
-        /// gvMedicines control.
+        /// gvReceiptHD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvMedicines;
+        protected global::System.Web.UI.WebControls.GridView gvReceiptHD;
     }
 }

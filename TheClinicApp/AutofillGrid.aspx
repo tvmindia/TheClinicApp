@@ -88,7 +88,7 @@
 
 
     $(function () {
-        debugger;
+       
         GetMedicines(1);
     });
     $("[id*=txtSearch]").live("keyup", function () {
@@ -152,7 +152,7 @@
                 RecordCount: parseInt(pager.find("RecordCount").text())
             });
 
-            $(".ContactName").each(function () {
+            $(".MedicineName").each(function () {
                 var searchPattern = new RegExp('(' + SearchTerm() + ')', 'ig');
                 $(this).html($(this).text().replace(searchPattern, "<span class = 'highlight'>" + SearchTerm() + "</span>"));
             });

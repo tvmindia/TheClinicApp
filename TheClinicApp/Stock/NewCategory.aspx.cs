@@ -10,7 +10,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -21,11 +20,11 @@ using TheClinicApp.ClinicDAL;
 
 namespace TheClinicApp.Stock
 {
-    public partial class OutOfStock : System.Web.UI.Page
+    public partial class NewCategory : System.Web.UI.Page
     {
         #region Global Variables
 
-        Stocks stockObj = new Stocks();
+        Category CategoryObj = new Category();
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
 
@@ -33,42 +32,49 @@ namespace TheClinicApp.Stock
 
         #region Methods
 
-        #region Bind Out Of Stock Gridview
-        public void BindOutOfStockGridview()
+        #region Add New Medicine
+        public void AddNewCategory()
         {
             UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
-            stockObj.ClinicID = UA.ClinicID.ToString();
-            //gridview binding for listing the Out of Stock Medicines 
-            DataSet gds = stockObj.ViewOutofStockMedicines();
-            gvOutOfStock.EmptyDataText = "No Records Found";
-            gvOutOfStock.DataSource = gds;
-            gvOutOfStock.DataBind();
+
+            CategoryObj.CategoryName = txtCategoryName.Text;
+            CategoryObj.ClinicID = UA.ClinicID;
+            CategoryObj.CreatedBy = UA.userName;
+
+            CategoryObj.AddNewCategory();
+
         }
 
-        #endregion Bind Out Of Stock Gridview
+        #endregion Add New Medicine
 
         #endregion Methods
 
         #region Events
 
         #region Page Load
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+
+        }
+
+        #endregion Page Load
+
+        #region Add Button Click
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            try
             {
-                try
-                {
-                    BindOutOfStockGridview();
-                }
-                catch (Exception)
-                {
-                    
-                    throw;
-                }
-               
+                AddNewCategory();
+            }
+            catch (Exception)
+            {
+                
+                throw;
             }
         }
-        #endregion Page Loads
+
+        #endregion Add Button Click
 
         #endregion Events
     }

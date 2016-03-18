@@ -219,10 +219,24 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@ReOrderQty", SqlDbType.Real).Value = Convert.ToInt32( ReOrderQty);
                 cmd.Parameters.Add("@MedCode", SqlDbType.NVarChar, 20).Value = MedCode;
 
-
+                cmd.Parameters.Add("@Status", SqlDbType.Int);
+                cmd.Parameters["@Status"].Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                int Outputval = (int)cmd.Parameters["@Status"].Value;
 
                 cmd.ExecuteNonQuery();
 
+                if (Outputval == 1)
+               {
+                    //Success
+               }
+                else
+                {
+                    if(Outputval == 0)
+                    {
+                        //Already exists!
+                    }
+                }
             }
 
             catch (Exception ex)

@@ -388,6 +388,11 @@ namespace TheClinicApp.ClinicDAL
             get;
             set;
         }
+        public string MedicineName
+        {
+            get;
+            set;
+        }
         public string Unit
         {
             get;
@@ -444,14 +449,29 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = UniqueID;
                 cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = ReceiptID;
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
-                cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
+                cmd.Parameters.Add("@MedicineName", SqlDbType.NVarChar, 255).Value = MedicineName;
                 cmd.Parameters.Add("@Unit", SqlDbType.NVarChar, 15).Value = Unit;
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
                 cmd.Parameters.Add("@QTY", SqlDbType.Real).Value = QTY;
 
-
+                cmd.Parameters.Add("@Status", SqlDbType.Int);
+                cmd.Parameters["@Status"].Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                int Outputval = (int)cmd.Parameters["@Status"].Value;
 
                 cmd.ExecuteNonQuery();
+
+                if (Outputval == 1)
+                {
+                    Console.Write("sucess");
+                }
+                else
+                {
+                    if (Outputval == 0)
+                    {
+                        Console.Write("failed");
+                    }
+                }
 
             }
 

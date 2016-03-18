@@ -10,24 +10,24 @@
 namespace TheClinicApp.Stock {
     
     
-    public partial class StocksDemo {
+    public partial class NewCategory {
         
         /// <summary>
-        /// txtSearch control.
+        /// txtCategoryName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        protected global::System.Web.UI.WebControls.TextBox txtCategoryName;
         
         /// <summary>
-        /// gvMedicines control.
+        /// btnAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvMedicines;
+        protected global::System.Web.UI.WebControls.Button btnAdd;
     }
 }
