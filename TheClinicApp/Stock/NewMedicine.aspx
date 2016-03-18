@@ -13,6 +13,11 @@
         $('#<%=hdnManageGridBind.ClientID %>').val('False');
     }
 
+            if (parent.cate) {
+
+            }
+
+
 });
        </script>
     <table>

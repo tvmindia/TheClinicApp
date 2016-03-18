@@ -66,6 +66,8 @@ namespace TheClinicApp.Stock
             try
             {
                 AddNewCategory();
+
+                hdnCategory.Value = "True";
             }
             catch (Exception)
             {

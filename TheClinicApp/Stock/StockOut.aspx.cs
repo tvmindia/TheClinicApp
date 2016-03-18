@@ -1,4 +1,14 @@
-﻿using System;
+﻿
+#region CopyRight
+
+//Author      : SHAMILA T P
+//Created Date: Mar-18-2016
+
+#endregion CopyRight
+
+#region Included Namespaces
+
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -8,6 +18,8 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
+#endregion  Included Namespaces
 
 namespace TheClinicApp.Stock
 {
@@ -35,7 +47,6 @@ namespace TheClinicApp.Stock
 
 
         #endregion Methods
-
 
         protected void Page_Load(object sender, EventArgs e)
         {
