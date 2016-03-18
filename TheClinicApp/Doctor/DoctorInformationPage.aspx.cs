@@ -91,7 +91,7 @@ namespace TheClinicApp.Doctor
             CaseFileObj.Icterus=txtIcterus.Text;
             CaseFileObj.Clubbing=txtClubbing.Text;
             CaseFileObj.Cyanasis=txtCyanasis.Text;
-            CaseFileObj.LymphGen=txtLymph.Text;
+            CaseFileObj.LymphGen=txtLymphGen.Text;
             CaseFileObj.Edima=txtEdima.Text;
             CaseFileObj.Diagnosys=txtdiagnosis.Text;
             CaseFileObj.Remarks=txtRemarks.Text;
@@ -99,7 +99,7 @@ namespace TheClinicApp.Doctor
             CaseFileObj.Bp=txtBp.Text;
             CaseFileObj.Tounge=txtTounge.Text;
             CaseFileObj.Heart=txtHeart.Text;
-            CaseFileObj.LymphClinic=txtLymphnodes.Text;
+            CaseFileObj.LymphClinic=txtLymphClinic.Text;
             CaseFileObj.RespRate=txtRespRate.Text;
             CaseFileObj.Others=txtOthers.Text;
             CaseFileObj.CreatedBy = UA.userName;
@@ -192,9 +192,38 @@ namespace TheClinicApp.Doctor
 
         protected void ImgBtnUpdateVisits_Command(object sender, CommandEventArgs e)
         {
+            ClinicDAL.CaseFile.Visit VisitsObj = new ClinicDAL.CaseFile.Visit();
             string[] Visits = e.CommandArgument.ToString().Split(new char[] { '|' });
-            string ID= Visits[0];
+            VisitsObj.VisitID=Guid.Parse(Visits[0]);
+            VisitsObj.GetVisits();
+            txtHeight.Text = VisitsObj.Height.ToString();
+            txtWeight.Text = VisitsObj.Weight.ToString();
+            txtSymptoms.Text = VisitsObj.Symptoms;
+            txtCardiovascular.Text = VisitsObj.Cardiovascular;
+            txtNervoussystem.Text = VisitsObj.Nervoussystem;
+            txtMusculoskeletal.Text = VisitsObj.Musculoskeletal;
+            txtPalloe.Text = VisitsObj.Palloe;
+            txtIcterus.Text = VisitsObj.Icterus;
+            txtClubbing.Text = VisitsObj.Clubbing;
+            txtCyanasis.Text = VisitsObj.Cyanasis;
+            txtBowel.Text = VisitsObj.Bowel;
+            txtAppettie.Text = VisitsObj.Appettie;
+            txtMicturation.Text = VisitsObj.Micturation;
+            txtSleep.Text = VisitsObj.Sleep;
+            txtdiagnosis.Text = VisitsObj.Diagnosys;
+            txtRemarks.Text = VisitsObj.Remarks;
+            txtPulse.Text = VisitsObj.Pulse;
+            txtBp.Text = VisitsObj.Bp;
+            txtTounge.Text = VisitsObj.Tounge;
+            txtHeart.Text = VisitsObj.Heart;
+            txtLymphGen.Text = VisitsObj.LymphGen;
+            txtLymphClinic.Text = VisitsObj.LymphClinic;
+            txtRespRate.Text = VisitsObj.RespRate;
+            txtOthers.Text = VisitsObj.Others;
+            btnnew.Visible = true;
             string PrescriptionID = Visits[1];
         }
+
+        
     }
 }

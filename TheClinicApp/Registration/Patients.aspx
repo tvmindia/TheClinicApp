@@ -475,7 +475,7 @@ background-color: ghostwhite;
                                     </td>
                                     <td style="width:40%">
                                         <div class="form-group">
-                                        <asp:Button ID="btnnew" runat="server" Text="NEW"  type="submit" CssClass="button" OnClick="btnnew_Click" Visible="false" />
+                                        <asp:Button ID="btnnew" runat="server" Text="NEW"  type="submit" CssClass="button" OnClick="btnnew_Click" Visible="false" formnovalidate />
                                             </div>
                                        </td>
                                 </tr>

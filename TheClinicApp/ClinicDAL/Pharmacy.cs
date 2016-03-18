@@ -9,17 +9,29 @@ namespace TheClinicApp.ClinicDAL
 {
     public class Pharmacy
     {
-
-
-
-
-
-        #region Precription
+       #region Precription
 
         /* PATIENT DETAILS SP NAME: VIEWPATIENTDETAILS,VIEWPATIENTBOOKING
          * 
          */
+        #region DoctorPrescription
+        #region PrescriptionpropertyDoctorInsert
+        public Guid PrescriptionID
+        {
+            get;
+            set;
+        }
+        
+        public Guid ClinicID
+        {
+            get;
+            set;
+        }
 
+
+
+        #endregion PrescriptionpropertyDoctorInsert
+        #endregion DoctorPrescription
         #region PhramacyPatientDetails
 
         public DataSet PhramacyPatientDetails(Guid PatientID)

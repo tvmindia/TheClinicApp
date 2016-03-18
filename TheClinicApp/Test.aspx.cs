@@ -19,13 +19,13 @@ namespace TheClinicApp
         public void gridDataBind()
         {
 
-            Patient Patientobj = new Patient();
+            //Patient Patientobj = new Patient();
             
-            #region GridDateRegistration
-            dtgViewTodaysRegistration.EmptyDataText = "....Till Now No Registration....";
-            dtgViewTodaysRegistration.DataSource = Patientobj.GetDateRegistration();
-            dtgViewTodaysRegistration.DataBind();
-            #endregion GridDateRegistration
+            //#region GridDateRegistration
+            //dtgViewTodaysRegistration.EmptyDataText = "....Till Now No Registration....";
+            //dtgViewTodaysRegistration.DataSource = Patientobj.GetDateRegistration();
+            //dtgViewTodaysRegistration.DataBind();
+            //#endregion GridDateRegistration
 
       
         }

@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Test.aspx.cs" Inherits="TheClinicApp.Test" %>
 
-<!DOCTYPE html>
+<%--<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -250,7 +250,7 @@
 
 </body>
 </html>
-<%--<!DOCTYPE html>
+<%--<!DOCTYPE ht--%>ml>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">

@@ -136,6 +136,28 @@
     <Content Include="Content\accodin.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\DoctorStyle\css\bootstrap-spinner.css" />
+    <Content Include="Content\DoctorStyle\css\bootstrap-theme.min.css" />
+    <Content Include="Content\DoctorStyle\css\bootstrap.min.css" />
+    <Content Include="Content\DoctorStyle\css\jquery-ui.css" />
+    <Content Include="Content\DoctorStyle\css\main.css" />
+    <Content Include="Content\DoctorStyle\css\normalize.min.css" />
+    <Content Include="Content\DoctorStyle\css\slicknav.css" />
+    <Content Include="Content\DoctorStyle\images\accordion_arrow.png" />
+    <Content Include="Content\DoctorStyle\images\logo.png" />
+    <Content Include="Content\DoctorStyle\images\menu_separator.png" />
+    <Content Include="Content\DoctorStyle\images\new.png" />
+    <Content Include="Content\DoctorStyle\images\profile_pic.png" />
+    <Content Include="Content\DoctorStyle\images\save.png" />
+    <Content Include="Content\DoctorStyle\images\spindown.png" />
+    <Content Include="Content\DoctorStyle\images\spinup.png" />
+    <Content Include="Content\DoctorStyle\js\bootstrap.min.js" />
+    <Content Include="Content\DoctorStyle\js\jquery-1.11.1.min.js" />
+    <Content Include="Content\DoctorStyle\js\jquery-ui.js" />
+    <Content Include="Content\DoctorStyle\js\jquery.slicknav.js" />
+    <Content Include="Content\DoctorStyle\js\jquery.spinner.js" />
+    <Content Include="Content\DoctorStyle\js\main.js" />
+    <Content Include="Content\DoctorStyle\js\modernizr-2.6.2-respond-1.1.0.min.js" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\mui-colors.css" />
     <Content Include="Content\mui-email-inline.css" />
@@ -145,6 +167,8 @@
     <Content Include="Content\selectize.css" />
     <Content Include="Content\simple-sidebar.css" />
     <Content Include="Content\TheClinicAppDoctors.css" />
+    <Content Include="Doctors Test\Doctors.aspx" />
+    <Content Include="Doctors Test\DoctorTesting.aspx" />
     <Content Include="ForgotPassword.aspx" />
     <Content Include="Images\Addition .png" />
     <Content Include="Images\Button-Add-icon.png" />
@@ -154,6 +178,7 @@
     <Content Include="Images\calendar4.png" />
     <Content Include="Images\Check.png" />
     <Content Include="Images\Close1.png" />
+    <Content Include="Images\Delete1.png" />
     <Content Include="Images\first.gif" />
     <Content Include="Images\last.gif" />
     <Content Include="Images\Menu-01-WF.png" />
@@ -383,6 +408,20 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Doctors Test\Doctors.aspx.cs">
+      <DependentUpon>Doctors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Doctors Test\Doctors.aspx.designer.cs">
+      <DependentUpon>Doctors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Doctors Test\DoctorTesting.aspx.cs">
+      <DependentUpon>DoctorTesting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Doctors Test\DoctorTesting.aspx.designer.cs">
+      <DependentUpon>DoctorTesting.aspx</DependentUpon>
     </Compile>
     <Compile Include="Doctor\DoctorInformationPage.aspx.cs">
       <DependentUpon>DoctorInformationPage.aspx</DependentUpon>
