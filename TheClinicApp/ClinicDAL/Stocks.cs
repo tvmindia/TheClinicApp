@@ -103,6 +103,45 @@ namespace TheClinicApp.ClinicDAL
 
         #region Medicines
 
+        #region Validate Medicine Name
+        public bool ValidateMedicineName(string CheckMedicine)
+        {
+            bool flag;
+            SqlConnection con = null;
+            try
+            {
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand("CheckMedicineNameDuplication", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@MedicineName", SqlDbType.VarChar,255).Value = CheckMedicine;
+                SqlParameter outflag = cmd.Parameters.Add("@flag", SqlDbType.Bit);
+                outflag.Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                flag = (bool)outflag.Value;
+                if (flag == true)
+                {
+                    return flag;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+            }
+
+            return false;
+        }
+
+        #endregion Validate Medicine Name
+
         #region View Categories
 
         public DataSet ViewCategories()

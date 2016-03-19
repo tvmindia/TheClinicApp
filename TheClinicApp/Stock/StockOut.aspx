@@ -186,31 +186,8 @@
         </div>
 
         <br />
-     <a href="#" role="button" data-toggle="modal" data-target="#NewIssue">New Stock Issue </a>
-        <br />
+   
     
-<%--   //------------- New Issue---------%>
-
-    <div class="modal fade" id="NewIssue" role="dialog">
-        <div class="modal-dialog modal-lg1">
-
-            <!-- Modal content-->
-
-            <div class="modal-content" style="height: 60%; overflow-y: no-display;">
-                <div class="modal-header" style="background-color: #00CC99">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title" style="font-size: 20px; color: white">Out Of Stock Medicines</h4>
-
-                </div>
-                <div class="modal-body" style="background-color: lightgoldenrodyellow; overflow-x: hidden; overflow-y: hidden;">
-                    <div class="col-md-12">
-                        <iframe src="OutOfStock.aspx" style="width: 100%; height: 100%"></iframe>
-                       
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
+   
 
 </asp:Content>

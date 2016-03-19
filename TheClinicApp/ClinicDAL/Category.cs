@@ -123,6 +123,45 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion Add New Category
 
+        #region Validate Category Name
+        public bool ValidateCategoryName(string CheckCategory)
+        {
+            bool flag;
+            SqlConnection con = null;
+            try
+            {
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand("CheckCategoryNameDuplication", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@CategoryName", SqlDbType.VarChar, 255).Value = CheckCategory;
+                SqlParameter outflag = cmd.Parameters.Add("@flag", SqlDbType.Bit);
+                outflag.Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                flag = (bool)outflag.Value;
+                if (flag == true)
+                {
+                    return flag;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+            }
+
+            return false;
+        }
+
+        #endregion Validate Category Name
+
         #endregion Methods
 
     }

@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheClinicApp.ClinicDAL;
@@ -35,17 +36,25 @@ namespace TheClinicApp.Stock
         #region Add New Medicine
         public void AddNewMedicine()
         {
-            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+            if (txtmedicineName.Text.Contains("$") || txtmedicineName.Text.Contains("|"))
+            {
+                //Medicine Name is not valid as it contains $ ,|
+            }
+            else
+            {
+                UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
 
-            StockObj.Name = txtmedicineName.Text;
-            StockObj.MedCode = txtCode.Text;
-            StockObj.CategoryID = ddlCategory.SelectedValue;
-            StockObj.ReOrderQty = Convert.ToInt32(txtOrderQuantity.Text);
-            StockObj.ClinicID = UA.ClinicID.ToString();
-            StockObj.CreatedBy = UA.userName;
-            StockObj.Unit = txtUnit.Text;
+                StockObj.Name = txtmedicineName.Text;
+                StockObj.MedCode = txtCode.Text;
+                StockObj.CategoryID = ddlCategory.SelectedValue;
+                StockObj.ReOrderQty = Convert.ToInt32(txtOrderQuantity.Text);
+                StockObj.ClinicID = UA.ClinicID.ToString();
+                StockObj.CreatedBy = UA.userName;
+                StockObj.Unit = txtUnit.Text;
 
-            StockObj.InsertMedicines();
+                StockObj.InsertMedicines();
+            }
+
 
         }
 
@@ -81,6 +90,21 @@ namespace TheClinicApp.Stock
         }
 
         #endregion Clear Controls
+
+        #region Validate Medicine Name
+        [WebMethod]
+        public static bool  ValidateMedicineName(string MedicineName)
+        {
+            Stocks StockObj = new Stocks();
+
+            if (StockObj.ValidateMedicineName(MedicineName))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        #endregion  Validate Medicine Name
 
         #endregion Methods
 
