@@ -10,6 +10,8 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 using System.IO;
+using System.Web.Services;
+
 
 namespace TheClinicApp.Stock
 {
@@ -17,6 +19,10 @@ namespace TheClinicApp.Stock
 
     public partial class AddNewReceipt : System.Web.UI.Page
     {
+
+
+
+
 
         ErrorHandling eObj = new ErrorHandling();
         IssueHeaderDetails ihd = new IssueHeaderDetails();
@@ -100,8 +106,6 @@ namespace TheClinicApp.Stock
 
             rpt.InsertReceiptHeader();
 
-
-
             string values = HiddenField1.Value;
             
             string[] Invalue = values.Split('|');
@@ -123,29 +127,35 @@ namespace TheClinicApp.Stock
                        
                        rptdt.InsertReceiptDetails();
                      
-
-
                    }
+        }
 
 
-         
+        [WebMethod(EnableSession = true)]
+        public static string MedDetails(string MedName)
+        {
+           ClinicDAL.ReceiptDetails obj= new ClinicDAL.ReceiptDetails();
+
+           UIClasses.Const Const = new UIClasses.Const();
+           ClinicDAL.UserAuthendication UA;
+
+           UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
+
+           obj.ClinicID = UA.ClinicID.ToString();
+
+            DataSet ds= obj.GetMedCodeUnitCategory(MedName);
 
 
+            string Unit = Convert.ToString(ds.Tables[0].Rows[0]["Unit"]);
+            string MedCode = Convert.ToString(ds.Tables[0].Rows[0]["MedCode"]);
+            string Category = Convert.ToString(ds.Tables[0].Rows[0]["CategoryName"]);
 
+            return String.Format("{0}" + "|" + "{1}"+" | "+"{2}", Unit, MedCode, Category);
 
-
-
-          
-
-
-
-
-
-
-          
-
+           
 
         }
+
 
 
 

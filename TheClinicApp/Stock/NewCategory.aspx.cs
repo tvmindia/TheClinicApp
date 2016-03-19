@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheClinicApp.ClinicDAL;
@@ -31,6 +32,23 @@ namespace TheClinicApp.Stock
         #endregion Global Variables
 
         #region Methods
+
+
+        #region Validate Category Name
+
+        [WebMethod]
+        public static bool ValidateCategoryName(string CategoryName)
+        {
+            Category CategoryObj = new Category();
+
+            if (CategoryObj.ValidateCategoryName(CategoryName))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        #endregion  Validate Category Name
 
         #region Add New Medicine
         public void AddNewCategory()
@@ -66,6 +84,8 @@ namespace TheClinicApp.Stock
             try
             {
                 AddNewCategory();
+
+                hdnCategory.Value = "True";
             }
             catch (Exception)
             {

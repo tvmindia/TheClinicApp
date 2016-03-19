@@ -61,10 +61,6 @@
     <script src="../Scripts/ASPSnippets_Pager.min.js"></script>
    
      
-
-    
-
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -114,10 +110,9 @@
             $("[id*=gvReceiptHD] tr").not($("[id*=gvReceiptHD] tr:first-child")).remove();
             if (ReceiptHD.length > 0) {
                 $.each(ReceiptHD, function () {
-                   
-                    //$("td", row).eq(0).html('<a href="#">' + $(this).find("RefNo1").text() + '</a>');
-
-                    $("td", row).eq(0).html($(this).find("RefNo1").text());
+                    $("td", row).eq(0).html('<a href="#s">' + $(this).find("RefNo1").text() + '</a>');
+                    
+                    //$("td", row).eq(0).html($(this).find("RefNo1").text());
                     $("td", row).eq(1).html($(this).find("RefNo2").text());
                     //$("td", row).eq(2).html($(this).find("Date").text());
                     $("[id*=gvReceiptHD]").append(row);
@@ -158,8 +153,8 @@
             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
             <Columns>
             
-                <asp:BoundField DataField="RefNo1" HeaderText="RefNo1"  ItemStyle-CssClass="Match"  />
-              <%--<asp:BoundField DataField="MedicineCode" HeaderText="Medicine Code"   ItemStyle-Font-Underline="true" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Blue" ItemStyle-CssClass="cursorshow" />--%>
+                <%--<asp:BoundField DataField="RefNo1" HeaderText="RefNo1"  ItemStyle-CssClass="Match"  />--%>
+              <asp:BoundField DataField="RefNo1" HeaderText="RefNo1"   ItemStyle-Font-Underline="true" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Blue" ItemStyle-CssClass="cursorshow" />
 
                 <asp:BoundField DataField="RefNo2" HeaderText="RefNo2"  ItemStyle-CssClass="Match"  />
                 <%--<asp:BoundField DataField="Date" HeaderText="Date"  ItemStyle-CssClass="Match"  />--%>
@@ -191,7 +186,8 @@
         </div>
 
         <br />
-
+   
     
+   
 
 </asp:Content>

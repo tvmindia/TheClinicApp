@@ -69,6 +69,19 @@
     <script src="../Scripts/ASPSnippets_Pager.min.js"></script>
      
 
+    <script>
+
+        function CategoryAddedOrNot(CategoryAdded) {
+
+            if (CategoryAdded == "True") {
+                document.getElementById('#<%=hdnCategoryAddedOrNot.ClientID %>').value = "True";
+            }
+          
+        }
+
+
+    </script>
+
     <script type="text/javascript">
 
         //---------
@@ -90,7 +103,7 @@
 
 
         $(function () {
-            debugger;
+            
             GetMedicines(1);
         });
         $("[id*=txtSearch]").live("keyup", function () {
@@ -104,7 +117,7 @@
             return jQuery.trim($("[id*=txtSearch]").val());
         };
         function GetMedicines(pageIndex) {
-            debugger;
+            
             $.ajax({
                 type: "POST",
                 url: "../Stock/StocksDemo.aspx/GetMedicines",
@@ -122,7 +135,7 @@
         }
         var row;
         function OnSuccess(response) {
-            debugger;
+            
             var xmlDoc = $.parseXML(response.d);
             var xml = $(xmlDoc);
             var Medicines = xml.find("Medicines");
@@ -137,8 +150,7 @@
 
                     $("td", row).eq(0).html('<a href="#">' + $(this).find("MedicineCode").text() + '</a>');
 
-
-                    //$("td", row).eq(0).html($(this).find("MedicineCode").text());
+                     //$("td", row).eq(0).html($(this).find("MedicineCode").text());
                     $("td", row).eq(1).html($(this).find("MedicineName").text());
                     $("td", row).eq(2).html($(this).find("CategoryName").text());
                     $("[id*=gvMedicines]").append(row);
@@ -183,8 +195,8 @@
             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
             <Columns>
             
-                <asp:BoundField DataField="MedicineCode" HeaderText="Medicine Code"  ItemStyle-CssClass="Match"  />
-              <%--<asp:BoundField DataField="MedicineCode" HeaderText="Medicine Code"   ItemStyle-Font-Underline="true" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Blue" ItemStyle-CssClass="cursorshow" />--%>
+                <%--<asp:BoundField DataField="MedicineCode" HeaderText="Medicine Code"  ItemStyle-CssClass="Match"  />--%>
+              <asp:BoundField DataField="MedicineCode" HeaderText="Medicine Code"   ItemStyle-Font-Underline="true" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Blue" ItemStyle-CssClass="cursorshow" />
 
                 <asp:BoundField DataField="MedicineName" HeaderText="Medicine Name"  ItemStyle-CssClass="Match"  />
                 <asp:BoundField DataField="CategoryName" HeaderText="Category Name"  ItemStyle-CssClass="Match"  />
@@ -242,6 +254,7 @@
                 <div class="modal-body" style="background-color: lightgoldenrodyellow; overflow-x: hidden; overflow-y: hidden;">
                     <div class="col-md-12">
                         <iframe src="OutOfStock.aspx" style="width: 100%; height: 100%"></iframe>
+                       
                     </div>
 
                 </div>
@@ -264,7 +277,7 @@
                 </div>
                 <div class="modal-body" style="background-color: lightgoldenrodyellow; overflow-x: hidden; overflow-y: hidden;">
                     <div class="col-md-12">
-                        <iframe src="NewMedicine.aspx?AddedCategoryOrNot=" style="width: 100%; height: 100%"></iframe>
+                        <iframe src="NewMedicine.aspx" style="width: 100%; height: 100%"></iframe>
                     </div>
 
                 </div>
@@ -294,6 +307,9 @@
             </div>
         </div>
     </div>
+
+
+     <asp:HiddenField ID="hdnCategoryAddedOrNot" runat="server"  Value="False"/>
 
 </asp:Content>
 
