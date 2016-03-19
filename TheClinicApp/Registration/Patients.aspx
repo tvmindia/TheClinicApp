@@ -344,8 +344,8 @@ background-color: ghostwhite;
 
                 <table style="width: 100%; height: 100%;">
                     <tr>
-                        <td class="footerMessagesColumn" style="width:50%;height:50% ">
-                            <div id="Errorbox"  style="height:50%;  display:none;"  runat="server" >
+                        <td class="footerMessagesColumn" style="width:50%;height:25% ">
+                            <div id="Errorbox"  style="height:25%;  display:none;"  runat="server" >
                                <a class="close" data-dismiss="alert">×</a>  
 
                             <div>
