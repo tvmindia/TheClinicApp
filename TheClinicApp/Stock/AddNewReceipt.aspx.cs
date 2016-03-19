@@ -152,7 +152,7 @@ namespace TheClinicApp.Stock
             string MedCode = Convert.ToString(ds.Tables[0].Rows[0]["MedCode"]);
             string Category = Convert.ToString(ds.Tables[0].Rows[0]["CategoryName"]);
 
-            return String.Format("{0}" + "|" + "{1}"+" | "+"{2}"+"|", Unit, MedCode, Category);
+            return String.Format("{0}" + "|" + "{1}"+" | "+"{2}", Unit, MedCode, Category);
 
            
 

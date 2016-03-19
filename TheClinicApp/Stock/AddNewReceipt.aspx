@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="AddNewReceipt.aspx.cs" Inherits="TheClinicApp.Stock.AddNewReceipt"  %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="AddNewReceipt.aspx.cs" Inherits="TheClinicApp.Stock.AddNewReceipt" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
 
- 
+
 
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
@@ -14,8 +14,8 @@
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/mui.min.js"></script>
 
-     
-   
+
+
 
     <script>   
         $(document).ready(function () {
@@ -36,7 +36,7 @@
                           <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');
                           count.value=iCnt;--%>
                     // ADD TEXTBOX.
-                    $(container).append('<table style="width:80%"><tr><td><input id="txtMedname'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Medicine"/></td><td><input id="txtUNit'+iCnt+'" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtMedcode'+iCnt+'" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
+                    $(container).append('<table style="width:80%"><tr><td><input id="txtMedname'+iCnt+'" style="width:100%" type="text" class="input" onblur="change('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtMedcode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
 
                     // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
                     //if (iCnt == 1) {
@@ -49,50 +49,50 @@
 
                     var ac=null;
                     ac = <%=listFilter %>;
-                     $( "#txtMedname"+iCnt).autocomplete({
-                         source: ac
-                     });
+                    $( "#txtMedname"+iCnt).autocomplete({
+                        source: ac
+                    });
                           
-                 }
+                }
 
                     // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
                     // (20 IS THE LIMIT WE HAVE SET)
-                 else {
-                     $(container).append('<label>Reached the limit</label>');
-                     $('#btAdd').attr('class', 'bt-disable');
-                     $('#btAdd').attr('disabled', 'disabled');
-                 }
+                else {
+                    $(container).append('<label>Reached the limit</label>');
+                    $('#btAdd').attr('class', 'bt-disable');
+                    $('#btAdd').attr('disabled', 'disabled');
+                }
              
             });
         });
 
             
 
-         // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
-         var divValue, values = '';
+        // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
+        var divValue, values = '';
 
-         function GetTextValue() {
-             $(divValue)
-                 .empty()
-                 .remove();
+        function GetTextValue() {
+            $(divValue)
+                .empty()
+                .remove();
 
-             values = '';
+            values = '';
 
-             $('.input').each(function () {
-                 divValue = $(document.createElement('div')).css({
-                     padding: '5px', width: '200px'
-                 });
+            $('.input').each(function () {
+                divValue = $(document.createElement('div')).css({
+                    padding: '5px', width: '200px'
+                });
 
 
-                 var datas = document.getElementById('<%=HiddenField1.ClientID%>');
+                var datas = document.getElementById('<%=HiddenField1.ClientID%>');
 
-                values += this.value + '|';
-                alert(values);
-                datas.value = values;
+                 values += this.value + '|';
+                 alert(values);
+                 datas.value = values;
                
-            });
+             });
 
-        }
+         }
      
     </script>
 
@@ -139,36 +139,58 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%-- function onchange --%>
-    <asp:ScriptManager ID="ScriptManager1" EnablePageMethods="true"  runat="server" EnableCdn="true" ></asp:ScriptManager>
+    <asp:ScriptManager ID="ScriptManager1" EnablePageMethods="true" runat="server" EnableCdn="true"></asp:ScriptManager>
 
-        <%-- on change function call --%>
-     <script>
+    <%-- on change function call --%>
+    <script>
         
-         function change(txtSearch) 
-         {        
-             var MedicineName = document.getElementById('txtSearch').value;
-               
-        
-             debugger; 
+        function change(val) 
+        {        
+            x=val;
+            if (val>=1)
+            {
+                var MedicineName = document.getElementById('txtMedname'+val).value;   
+            }
+            else
+            {
+                var MedicineName = document.getElementById('txtSearch').value;   
+            }
+            
 
-             PageMethods.MedDetails(MedicineName,  OnSuccess, onError);  
+            if (MedicineName!="")
+            { 
+                debugger;
+                PageMethods.MedDetails(MedicineName,  OnSuccess, onError);  
+            }
+
+            function OnSuccess(response, userContext, methodName) 
+            {      
+                if (val>=1)
+                {              
+                    var string1 = new Array();
+                    string1 = response.split('|');                 
+                    document.getElementById('txtUnit'+val).value=string1[0];
+                    document.getElementById('txtMedcode'+val).value=string1[1];
+                    document.getElementById('txtCategory'+val).value=string1[2];
+                    
+                }
+                else
+                {
+                    var string1 = new Array(); 
+                    string1 = response.split('|');                 
+                    document.getElementById('txtUnit').value=string1[0];
+                    document.getElementById('txtCode').value=string1[1];
+                    document.getElementById('txtCategory').value=string1[2];
+                   
+                }
+            }          
+            function onError(response, userContext, methodName)
+            {      
              
+            }    
 
 
-
-             function OnSuccess(response, userContext, methodName) 
-             {      
-                
-                 
-                 
-             }          
-             function onError(response, userContext, methodName)
-             {      
-             
-             }    
-
-
-         }
+        }
 
 
 
@@ -197,7 +219,7 @@
                             <label class="control-label col-xs-12 regFormLabels">Bill Number:</label>
                         </td>
                         <td>
-                            <asp:TextBox ID="txtBillNo" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtBillNo" TabIndex="1" runat="server"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -209,7 +231,7 @@
                             <label class="control-label col-xs-12 regFormLabels">Date:</label>
                         </td>
                         <td>
-                            <asp:TextBox ID="txtDate" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtDate" TabIndex="2" runat="server"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -221,7 +243,7 @@
                             <label class="control-label col-xs-12 regFormLabels">Reference No:</label>
                         </td>
                         <td>
-                            <asp:TextBox ID="txtRefNo2" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtRefNo2" TabIndex="3" runat="server"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -254,19 +276,19 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input id="txtSearch" style="width: 100%" type="text" placeholder="Medicine" class="input" onblur="change(this)" />
+                                            <input id="txtSearch" tabindex="4" style="width: 100%" type="text" placeholder="Medicine" class="input"  onblur="change()" />
                                         </td>
                                         <td>
-                                            <input id="txtUNit" style="width: 100%" class="input " type="text" placeholder="Unit" />
+                                            <input id="txtUnit" readonly="true" style="width: 100%" class="input " type="text" placeholder="Unit" />
                                         </td>
                                         <td>
-                                            <input id="txtCode" style="width: 100%" class="input " type="text" placeholder="Med Code" />
+                                            <input id="txtCode" readonly="true" style="width: 100%" class="input " type="text" placeholder="Med Code" />
                                         </td>
                                         <td>
-                                            <input id="txtCategory" style="width: 100%" class="input " type="text" placeholder="Category" />
+                                            <input id="txtCategory" readonly="true" style="width: 100%" class="input " type="text" placeholder="Category" />
                                         </td>
                                         <td>
-                                            <input id="txtQuantity" class="input" style="width: 100%" type="text" placeholder="Quantity" />
+                                            <input id="txtQuantity" tabindex="5" class="input" style="width: 100%" type="text" placeholder="Quantity" />
                                         </td>
 
                                         <td>
