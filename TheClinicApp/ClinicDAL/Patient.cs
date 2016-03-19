@@ -289,6 +289,53 @@ namespace TheClinicApp.ClinicDAL
             }
 
         }
+
+        public Guid GetPatientID(string Name,string Address,string Phone,string Email,string Gender)
+        {
+            SqlConnection con = null;
+            Guid PatID = Guid.Empty;
+            try
+            {
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand pud = new SqlCommand();
+                pud.Connection = con;
+                pud.CommandType = System.Data.CommandType.StoredProcedure;
+                pud.CommandText = "GetPatientID";
+                pud.Parameters.Add("@Name", SqlDbType.NVarChar,255).Value = Name;
+                pud.Parameters.Add("@Address", SqlDbType.NVarChar, 255).Value = Address;
+                pud.Parameters.Add("@Phone", SqlDbType.NVarChar, 255).Value = Phone;
+                pud.Parameters.Add("@Email", SqlDbType.NVarChar, 255).Value = Email;
+                pud.Parameters.Add("@Gender", SqlDbType.NVarChar, 255).Value = Gender;
+
+                SqlParameter OutparamId = pud.Parameters.Add("@OutPatientId", SqlDbType.UniqueIdentifier);
+                OutparamId.Direction = ParameterDirection.Output;
+                pud.ExecuteNonQuery();
+                if (OutparamId.Value != null)
+                
+                {
+                    PatID=Guid.Parse(OutparamId.Value.ToString());
+                    return PatID;
+                }
+                return PatID;
+                
+            }
+            catch (Exception ex)
+            {
+                //var page = HttpContext.Current.CurrentHandler as Page;
+                //eObj.ErrorData(ex, page);
+                throw ex;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+        }
+        
         #endregion GetPatientDetails
 
         #region SearchPatientDetails
