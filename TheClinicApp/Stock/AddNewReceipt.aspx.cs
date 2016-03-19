@@ -106,8 +106,6 @@ namespace TheClinicApp.Stock
 
             rpt.InsertReceiptHeader();
 
-
-
             string values = HiddenField1.Value;
             
             string[] Invalue = values.Split('|');
