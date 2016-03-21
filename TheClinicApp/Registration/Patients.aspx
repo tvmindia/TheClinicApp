@@ -57,9 +57,9 @@ background-color: ghostwhite;
             function openModal() {
                 $('#TokenRegistration').modal('show');
             }
-
+            
         </script>
-
+       
   <%-------------------Main Container-----------------------------%>
           
     <div class="container-fluid bodyDiv" >
@@ -126,7 +126,7 @@ background-color: ghostwhite;
                             <label class="control-label col-xs-2 regFormLabels">Sex:</label>
                              <div class="col-xs-10">
                                 <asp:TextBox ID="txtSex" class="form-control textBoxborder" required runat="server"  ValidationGroup="Submit"></asp:TextBox>
-
+                                 <asp:HiddenField ID="HiddenField3" runat="server" />
                             </div>
                         </div>
                         <div class="col-xs-1">
@@ -507,8 +507,8 @@ background-color: ghostwhite;
                    
                                     <div class="col-md-12">
                                           &nbsp
-                 <%-- hidden fields --%>
-                                     <%--   <asp:HiddenField ID="HiddenPatientID"  runat="server" />--%>
+                                                       <%-- hidden fields --%>
+                                     
                                         <asp:HiddenField ID="HiddenClinicID" runat="server" />
                                     </div>
                                 </div>
@@ -643,13 +643,13 @@ background-color: ghostwhite;
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnUpdate1" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"|" + Eval("Name") + "|" + Eval("Address")+"|"+ Eval("Phone")+"|"+ Eval("Email")+"|"+Eval("DOB")+"|"+Eval("Gender")+"|"+Eval("MaritalStatus")+"|"+Eval("image")+"|"+Eval("ImageType")%>' OnCommand="ImgBtnUpdate1_Command" formnovalidate />
+                                        <asp:ImageButton ID="ImgBtnUpdate1" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandArgument='<%# Eval("PatientID")+"|" + Eval("Name") + "|" + Eval("Address")+"|"+ Eval("Phone")+"|"+ Eval("Email")+"|"+Eval("DOB")+"|"+Eval("Gender")+"|"+Eval("MaritalStatus")+"|"+Eval("image")+"|"+Eval("ImageType")%>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
 
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnDelete1" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("PatientID")%>' OnClientClick="return confirm('Deletion Confirmation \n\n\n\n\ Are you sure you want to delete this item ?');" OnCommand="ImgBtnDelete1_Command" formnovalidate />
+                                        <asp:ImageButton ID="ImgBtnDelete1" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("PatientID")%>' OnClientClick="return confirm('Deletion Confirmation \n\n\n\n\ Are you sure you want to delete this item ?');" OnCommand="ImgBtnDelete_Command" formnovalidate />
                                        
 
                                     </ItemTemplate>
