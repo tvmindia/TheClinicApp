@@ -40,6 +40,7 @@ namespace TheClinicApp.Registration
             int year = _date.Year;
             int DOB = year - age;
             PatientObj.ClinicID = UA.ClinicID;
+            string clinID = UA.ClinicID.ToString();
             PatientObj.Name = txtName.Text;
             PatientObj.Address = txtAddress.Text;
             PatientObj.Phone = txtMobile.Text;
@@ -48,7 +49,8 @@ namespace TheClinicApp.Registration
             PatientObj.Gender = txtSex.Text;
             PatientObj.MaritalStatus = txtMarital.Text;
             PatientObj.Occupation = "BUSINESS";
-            PatientObj.FileNumber = "HO343499";
+            string filenum = "F"+clinID.Substring(0,4) + txtName.Text.Substring(0, 3) + txtMobile.Text.Substring(7,3);
+            PatientObj.FileNumber = filenum.Trim();
 
             if (btnSave.Text == "SAVE")
             {
@@ -76,8 +78,6 @@ namespace TheClinicApp.Registration
 
             }
             gridDataBind();
-
-
             lblFileCount.Text = PatientObj.FileNumber;
             lblFile.Text = PatientObj.FileNumber;
             lblName.Text = txtName.Text;
@@ -165,38 +165,13 @@ namespace TheClinicApp.Registration
             txtAddress.Text = Patient[2];
             txtMobile.Text = Patient[3];
             txtEmail.Text = Patient[4];
-            txtMarital.Text = Patient[7];
-            //object image=(Patient[8]);
-            //MakeFile(image,Patient[1],path);
+            txtMarital.Text = Patient[7];            
             ProfilePic.Src = "../Handler/ImageHandler.ashx?PatientID=" + PatientID.ToString();
             ProfilePic.Visible = true;
             btnSave.Text = "Update";
             btnnew.Visible = true;
             HiddenField1.Value = PatientID.ToString();
             
-        }
-
-        
-        protected void ImgBtnUpdate1_Command(object sender, CommandEventArgs e)
-        {
-            DateTime date = DateTime.Now;
-            int year = date.Year;
-            string[] Patient = e.CommandArgument.ToString().Split(new char[] { '|' });
-            Guid PatientID = Guid.Parse(Patient[0]);
-            txtName.Text = Patient[1];
-            //txtSex.Text = Patient[6];
-            DateTime dt = Convert.ToDateTime(Patient[5]);
-            int Age = year - dt.Year;
-            txtAge.Text = Age.ToString();
-            txtAddress.Text = Patient[2];
-            txtMobile.Text = Patient[3];
-            txtEmail.Text = Patient[4];
-            txtMarital.Text = Patient[7];
-            ProfilePic.Src = "../Handler/ImageHandler.ashx?PatientID=" + PatientID.ToString();
-            ProfilePic.Visible = true;
-            btnSave.Text = "Update";
-            btnnew.Visible = true;
-            HiddenField1.Value = PatientID.ToString();
         }
         #endregion EditPatients
 
@@ -224,7 +199,7 @@ namespace TheClinicApp.Registration
                 txtMobile.Text = dr["Phone"].ToString();
                 txtEmail.Text = dr["Email"].ToString();
                 txtMarital.Text = dr["MaritalStatus"].ToString();
-                
+                ProfilePic.Src = "../Handler/ImageHandler.ashx?PatientID=" + PatientID.ToString();
                 HiddenField1.Value = PatientID.ToString();
             }
             else
@@ -245,15 +220,7 @@ namespace TheClinicApp.Registration
             gridDataBind();
         }
 
-        protected void ImgBtnDelete1_Command(object sender, CommandEventArgs e)
-        {
-            Patient PatientObj = new Patient();
-            Guid PatientID = Guid.Parse(e.CommandArgument.ToString());
-            PatientObj.PatientID = PatientID;
-            PatientObj.DeletePatientDetails();
-
-            gridDataBind();
-        }
+       
         #endregion GridDelete
 
         #region clearfield
@@ -278,7 +245,6 @@ namespace TheClinicApp.Registration
         {
             btnnew.Visible = true;
             UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
-            
             tok.DoctorID = ddlDoctorName.SelectedValue;
             tok.PatientID = HiddenField1.Value;
             if(tok.PatientID=="")
@@ -290,9 +256,7 @@ namespace TheClinicApp.Registration
             tok.CreateDate = DateTime.Now;
             tok.DateTime = DateTime.Now;
             tok.CreatedBy = UA.userName;
-
             int tokenNo = tok.InsertToken();
-
             lblTokencount.Text = "Token No: " + tokenNo.ToString();
             lblToken.Visible = true;
             divDisplayNumber.Visible = true;

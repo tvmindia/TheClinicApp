@@ -31,6 +31,15 @@ namespace TheClinicApp.Registration {
         protected global::System.Web.UI.WebControls.TextBox txtSex;
         
         /// <summary>
+        /// HiddenField3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenField3;
+        
+        /// <summary>
         /// txtAge control.
         /// </summary>
         /// <remarks>
