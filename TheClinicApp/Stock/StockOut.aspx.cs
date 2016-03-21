@@ -111,6 +111,11 @@ namespace TheClinicApp.Stock
             }
         }
 
+        protected void btnNewIssue_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Stock/NewIssue.aspx");
+        }
+
 
         //protected void Issue_ServerClick(object sender, EventArgs e)
         //{

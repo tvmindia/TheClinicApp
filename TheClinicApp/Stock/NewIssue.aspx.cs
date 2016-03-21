@@ -10,10 +10,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TheClinicApp.ClinicDAL;
 
 #endregion  Included Namespaces
 
@@ -21,6 +24,13 @@ namespace TheClinicApp.Stock
 {
     public partial class NewIssue : System.Web.UI.Page
     {
+        public string listFilter = null;
+        Stocks stok = new Stocks();
+        Receipt rpt = new Receipt();
+
+        UIClasses.Const Const = new UIClasses.Const();
+        ClinicDAL.UserAuthendication UA;
+        
 
         #region Methods
 
@@ -42,6 +52,49 @@ namespace TheClinicApp.Stock
 
         #endregion  Add Issue
 
+        #region bindpageload
+
+        public void bindpageload()
+        {
+
+
+
+            listFilter = null;
+            listFilter = BindName();
+
+            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+
+        }
+
+
+        #endregion bindpageload
+
+
+        #region BindDataAutocomplete
+        private string BindName()
+        {
+            // Patient PatientObj = new Patient();
+            Stocks stok = new Stocks();
+
+            DataTable dt = stok.SearchBoxMedicine();
+
+            StringBuilder output = new StringBuilder();
+            output.Append("[");
+            for (int i = 0; i < dt.Rows.Count; ++i)
+            {
+                output.Append("\"" + dt.Rows[i]["Name"].ToString() + "\"");
+
+                if (i != (dt.Rows.Count - 1))
+                {
+                    output.Append(",");
+                }
+            }
+            output.Append("]");
+            return output.ToString();
+        }
+
+        #endregion BindDataAutocomplete
+
         #endregion Methods
 
         #region Events
@@ -49,7 +102,12 @@ namespace TheClinicApp.Stock
         #region Page Load
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString["refNo"] != null)
+            {
+                string a = "gr";
 
+                a = Request.QueryString["refNo"].ToString();
+            }
         }
         #endregion Page Load
 

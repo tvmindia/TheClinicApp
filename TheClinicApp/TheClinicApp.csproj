@@ -269,6 +269,7 @@
     <Content Include="Scripts\selectize.js" />
     <Content Include="Stock\AddNewReceipt.aspx" />
     <Content Include="Stock\ExistingStockIn.aspx" />
+    <Content Include="Stock\ExistingStockOut.aspx" />
     <Content Include="Stock\InventoryOut.aspx" />
     <Content Include="Stock\NewCategory.aspx" />
     <Content Include="Stock\NewIssue.aspx" />
@@ -502,6 +503,13 @@
     </Compile>
     <Compile Include="Stock\ExistingStockIn.aspx.designer.cs">
       <DependentUpon>ExistingStockIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\ExistingStockOut.aspx.cs">
+      <DependentUpon>ExistingStockOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\ExistingStockOut.aspx.designer.cs">
+      <DependentUpon>ExistingStockOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="Stock\InventoryOut.aspx.cs">
       <DependentUpon>InventoryOut.aspx</DependentUpon>

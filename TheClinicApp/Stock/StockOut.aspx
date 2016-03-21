@@ -89,6 +89,22 @@
 
 
         $(function () {
+            $("[id*=gvReceiptHD] td").click(function () {
+
+                DisplayDetails($(this).closest("tr"));
+            });
+        });
+        function DisplayDetails(row) {
+            var refno = "";
+            refno =  $("td", row).eq(0).html();
+            window.location = "NewIssue.aspx?refNo=" + refno;
+            
+        }
+
+
+
+
+        $(function () {
            
             GetReceiptHD(1);
         });
@@ -134,9 +150,13 @@
             $("[id*=gvReceiptHD] tr").not($("[id*=gvReceiptHD] tr:first-child")).remove();
             if (ReceiptHD.length > 0) {
                 $.each(ReceiptHD, function () {
-                    $("td", row).eq(0).html('<a href="#s">' + $(this).find("RefNo1").text() + '</a>');
+
+                        var refno = "";
+                        refno +=  $("td", row).eq(0).html();
+                        //$("td", row).eq(0).html('<a href="NewIssue.aspx">' + $(this).find("RefNo1").text() + '</a>');
+                  //$("td", row).eq(0).html('<a href="NewIssue.aspx?refNo="'+refno+'">' + $(this).find("RefNo1").text() + '</a>');
                     
-                    //$("td", row).eq(0).html($(this).find("RefNo1").text());
+                    $("td", row).eq(0).html($(this).find("RefNo1").text());
                     $("td", row).eq(1).html($(this).find("RefNo2").text());
                     //$("td", row).eq(2).html($(this).find("Date").text());
                     $("[id*=gvReceiptHD]").append(row);
@@ -169,7 +189,7 @@
 
  
         
-      
+    Search :  
   
  <asp:TextBox runat="server"  ID="txtSearch" ></asp:TextBox>
         <br />
@@ -211,11 +231,15 @@
 
       <div class="Pager">
         </div>
-      
+    <br />
+    <br />
+
+
+    <asp:Button ID="btnNewIssue" runat="server" Text="New Issue" OnClick="btnNewIssue_Click" />
     
     <%--<a href="#" role="button"  id="Issue" onclick="openModal()" >New Issue</a>--%>
-    <a href="#" role="button" id="NewIssueID" data-toggle="modal" data-target="#NewIssue" onclick="SetIframeSrc('NewIssueID')">New Issue</a>
-   
+    <%--<a href="#" role="button" id="NewIssueID" data-toggle="modal" data-target="#NewIssue" onclick="SetIframeSrc('NewIssueID')">New Issue</a>--%>
+
     
   <%--   //------------- New Issue ---------%>
 
