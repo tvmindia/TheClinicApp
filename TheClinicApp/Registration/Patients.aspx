@@ -8,13 +8,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Panel DefaultButton="btnSave" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />       
-    <%-- <script src="../Scripts/jquery.tablePagination.0.1.js"></script>
-    <script src="../Scripts/jquery-1.3.2.min.js"></script>--%>        
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />                
     <link href="../Content/Input.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
-    <style>
+<style>
 .ui-autocomplete {
 background: fixed;
 font-size:small;
@@ -31,91 +29,16 @@ background-color: ghostwhite;
     overflow-x:hidden;
     overflow-y:hidden;
 }
-    </style>
+</style>
 
-    <%--<style>
-        footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-        }
-
-        .footerTable {
-            height: 100%;
-            background-color: transparent;
-            padding-left: 0px;
-            margin-left: 0px;
-            width: 100%;
-        }
-
-        .button {
-            background-color: gray;
-            border: none;
-            color: red;
-            font-weight: bold;
-            font-size: 16px;
-            height: 100%;
-            width: 100%;
-            font: bolder 900;
-            z-index: 1;
-            margin-right: 0%;
-            padding-right: 0%;
-        }
-
-        .headingLabel {
-            margin-left: 20%;
-            color: seagreen;
-            font: bold;
-            font-size: 17px;
-            text-decoration: underline;
-            padding-top: 2%;
-        }
-
-        .footerMessagesColumn {
-            margin-left: 2%;
-            width: 30%;
-            padding-left: 2%;
-          
-        }
-
-        .footerButtonColumn {
-            width: 30%;
-            margin-left: 0%;
-         
-        }
-
-        .footerbuttonTable {
-            margin-left: 1%;
-        }
-    </style>--%>
+        <%----------------------------Stylesheet and Scripts----------------------------%>
     
     <link href="../Content/Input.css" rel="stylesheet" />
     <link href="../Content/jquery-ui.css" rel="stylesheet" />
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
     <script src="../Scripts/jquery-ui.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
-    
-    <%--<script>
-        function OnClientButtonClicking(sender, args) {
-
-            var btn = args.get_item();
-            if (btn.get_value() == 'Delete') {
-
-                args.set_cancel(!confirm('Do you want to delete ?'));
-            }
-            if (btn.get_value() == 'Save') {
-                debugger;
-                args.set_cancel(!validate());
-            }
-            if (btn.get_value() == 'Update') {
-
-                args.set_cancel(!validate());
-            }
-
-        }
-    </script>--%>
+         
     <script>
         $(document).ready(function () {
             debugger;
@@ -124,20 +47,30 @@ background-color: ghostwhite;
             $( "#txtSearch" ).autocomplete({
                 source: ac
             });
-        });
-         </script>
-        
-        <%--- %><script type="text/javascript">
-    function openModal() {
-        $('#TokenRegistration').modal('show');
-    }
-</script>-----%>
+           
+          
+          });
+         </script>      
    
  <asp:ScriptManager runat="server"></asp:ScriptManager>
-    
+        <script type="text/javascript">
+            function openModal() {
+                $('#TokenRegistration').modal('show');
+            }
+
+        </script>
+
+  <%-------------------Main Container-----------------------------%>
+          
     <div class="container-fluid bodyDiv" >
         <label class="headingLabel">New Patient Registration </label>
+
+        <%-----------------------Main div-----------------------%>
+
         <div class="col-sm-12 Span-One ">
+
+            <%-----------------------left div with textfield-----------------------%>
+
             <div class="col-xs-9">
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
@@ -204,34 +137,7 @@ background-color: ghostwhite;
                     </div>
 
                 </div>
-                <%--<div class="col-xs-12 Span-One">
-                    <div class="col-xs-11">
-                        <div class="form-group">
-                            <label class="control-label col-xs-2 regFormLabels">Sex:</label>
-                             <div class="col-xs-10">
-                                 
-                                <section class="contents">
-	
-      <label class="label--checkbox" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;color:green;">
-          <input type="checkbox" class="checkbox" /> Male </label>
-   
-      <label class="label--checkbox" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;color:green;">
-          <input type="checkbox" class="checkbox" />
-           Female
-          </label>
-      
-</section>
-
-                            </div>
-                        </div>
-                        <div class="col-xs-1">
-                            <div class="col-xs-12">
-                                &nbsp
-                            </div>
-                        </div>
-                    </div>
-
-                </div>--%>
+             
                 <div class="col-xs-12 Span-One">
                     <div class="col-xs-11">
                         <div class="form-group">
@@ -370,22 +276,16 @@ background-color: ghostwhite;
                 </div>
             </div>
            
+            <%-----------------------Right div with upload-----------------------%>
+
             <div class="col-xs-4" style="height:400px;width:20%;" >
                   
                 <table style="height:100%;width:100%;margin-left:0px; padding-left:0px;">
                     <tr style="height:100%;width:100%;">
                         <td style="height:100px;width:100%;">
                              <img src="../Images/UploadPic.png" style="width:50%;" id="ProfilePic" runat="server" />
-                            <asp:FileUpload ID="FileUpload1" ForeColor="Green" Font-Size="12px" runat="server" />
-                           
-                           <%--<div class="fileinputs">
-                               <input type="file" class="file" />
-                               <div class="fakefile">
-                                   
+                            <asp:FileUpload ID="FileUpload1" ForeColor="Green" required Font-Size="12px" runat="server" />
 
-                               </div>
-                              
-                           </div>  --%>
                         </td>
                         
                     </tr>
@@ -428,13 +328,7 @@ background-color: ghostwhite;
                         </td>
                         
                     </tr>
-                      <tr style="height:100%;width:100%;">
-                        <td style="height:50px;width:100%;">
-                            
-                              <a href="#" role="button" data-toggle="modal" data-target="#myModal1" >Register Token !</a>
-                        </td>
-                        
-                    </tr>
+                      
                 </table>
 
               
@@ -442,13 +336,16 @@ background-color: ghostwhite;
                 </div>
           
         </div>
+
+        <%-----------------------footer div-----------------------%>
+
         <footer  class="footerDiv">
          
 
                 <table style="width: 100%; height: 100%;">
                     <tr>
-                        <td class="footerMessagesColumn" style="width:50%; ">
-                            <div id="Errorbox"  style="height:100%;  display:none;"  runat="server" >
+                        <td class="footerMessagesColumn" style="width:50%;height:25% ">
+                            <div id="Errorbox"  style="height:25%;  display:none;"  runat="server" >
                                <a class="close" data-dismiss="alert">×</a>  
 
                             <div>
@@ -470,7 +367,7 @@ background-color: ghostwhite;
                                        
                                          <div class="form-group">
                                        
-                                        <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button" data-toggle="modal" data-target="#TokenRegistration" OnClick="btnSave_Click" ValidationGroup="Submit" />
+                                        <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button" OnClick="btnSave_Click" ValidationGroup="Submit" />
                                         </div>
                                     </td>
                                     <td style="width:40%">
@@ -489,7 +386,13 @@ background-color: ghostwhite;
 
             
         </footer>
-        <!---- Modal for Token Registration -------->
+
+        <!---------------------------------------------------------------------------------------------------------------------------------->
+        <!---------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+        <!---------------------------------- Modal Section --------------------------------------->
         <div class="modal fade" id="TokenRegistration" role="dialog">
             <div class="modal-dialog modal-lg1">
 
@@ -627,7 +530,7 @@ background-color: ghostwhite;
                                 <tr>
                                     <td style="width:90%;">
                                          <div class="form-group">
-                                        <asp:Button ID="btntokenbooking" runat="server" Text="BOOK TOKEN"  type="submit" CssClass="button" OnClick="btntokenbooking_Click" BorderColor="DarkSeaGreen" BackColor="wheat" ValidationGroup="Submit" />
+                                        <asp:Button ID="btntokenbooking" runat="server" Text="BOOK TOKEN"  type="submit" CssClass="button" OnClick="btntokenbooking_Click" BorderColor="DarkSeaGreen" BackColor="wheat" ValidationGroup="Submit" formnovalidate />
 </div>
                                     </td>
                                     <td>
@@ -720,71 +623,7 @@ background-color: ghostwhite;
 
             </div>
         </div>
-
-        <div class="modal fade" id="myModal1" role="dialog">
-            <div class="modal-dialog  modal-lg">
-
-                <!-- Modal content-->
-                <div class="modal-content" >
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">View All Registrations</h4>
-
-                    </div>
-                    <div class="modal-body" >
-                        <iframe src="../Home.aspx" width="200" height="200"></iframe>
-                      <%--  <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="424px" DataKeyNames="PatientID" OnPreRender="GridView1_PreRender" EnableModelValidation="True">
-            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-       <Columns>
-                                <asp:TemplateField>
-                                    <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("PatientID")+"|" + Eval("Name") + "|" + Eval("Address")+"|"+ Eval("Phone")+"|"+ Eval("Email")+"|"+Eval("DOB")+"|"+Eval("Gender")+"|"+Eval("MaritalStatus")%>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
-                                       
-
-                                    </ItemTemplate>
-                                    
-                                </asp:TemplateField>
-                                <asp:TemplateField>
-                                    <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnDelete" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("PatientID")%>' OnClientClick="return confirm('Deletion Confirmation \n\n\n\n\ Are you sure you want to delete this item ?');" OnCommand="ImgBtnDelete_Command" formnovalidate />
-                                       
-
-                                    </ItemTemplate>
-                                   <ItemStyle HorizontalAlign="Center" />
-                                    <HeaderStyle HorizontalAlign="Center" />
-                                </asp:TemplateField>
-                                <asp:BoundField DataField="Name" HeaderText="Patient Name">
-                                    
-                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
-                                </asp:BoundField>
-                                <asp:BoundField DataField="Address" HeaderText="Address">
-                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
-                                </asp:BoundField>
-                                <asp:BoundField DataField="Phone" HeaderText="Phone">
-                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
-                                </asp:BoundField>
-                                <asp:BoundField DataField="Email" HeaderText="Email">
-                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
-                                </asp:BoundField>
-
-                            </Columns>
-            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <EditRowStyle BackColor="#999999" />
-            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-        </asp:GridView>--%>
-                            </div>
-                   
-                    <div class="modal-footer">
-                   
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
+      
         
         <div class="modal fade" id="TodaysRegistration" role="dialog">
             <div class="modal-dialog modal-lg">
@@ -852,60 +691,9 @@ background-color: ghostwhite;
                 <asp:HiddenField ID="HiddenField1" runat="server" />
             </div>
         </div>
-
+        <!------------------------------------------------------------------------------------------>
     </div>
-       <%-- <script type ="text/javascript" >
-            $(document).ready(
-            function() {
-                $('table').tablePagination({});
-            });
-
-            <%--function check() {
-
-                var name = document.getElementById('<%=TextBox1.ClientID%>').value;
-      var first = name.substring(0, 1);
-      if (!(first >= "A" && first <= "Z"))
-      {
-          alert("First character is capital");
-          return false;
-      }
       
-  }
-</script>--%>
-        <%--<style>
-              
-                  
-          #testTable { 
-            width : 300px;
-            margin-left: auto; 
-            margin-right: auto; 
-          }
-          
-          #tablePagination { 
-            background-color:  Transparent; 
-            font-size: 0.8em; 
-            padding: 0px 5px; 
-            height: 20px
-          }
-          
-          #tablePagination_paginater { 
-            margin-left: auto; 
-            margin-right: auto;
-          }
-          
-          #tablePagination img { 
-            padding: 0px 2px; 
-          }
-          
-          #tablePagination_perPage { 
-            float: left; 
-          }
-          
-          #tablePagination_paginater { 
-            float: right; 
-          }
-
-    </style>--%>
         </asp:Panel>
     
 </asp:Content>

@@ -792,18 +792,18 @@ namespace TheClinicApp.ClinicDAL
 
                     if (Output.Value.ToString() == "")
                     {
-                        //not successfull   
+                       // not successfull   
 
-                        //var page = HttpContext.Current.CurrentHandler as Page;
-                        //eObj.InsertionNotSuccessMessage(page);
+                        var page = HttpContext.Current.CurrentHandler as Page;
+                        eObj.InsertionNotSuccessMessage(page);
 
                     }
                     else
                     {
                         //successfull
 
-                       // var page = HttpContext.Current.CurrentHandler as Page;
-                        //eObj.InsertionSuccessMessage(page);
+                       var page = HttpContext.Current.CurrentHandler as Page;
+                        eObj.InsertionSuccessMessage(page);
 
 
                     }

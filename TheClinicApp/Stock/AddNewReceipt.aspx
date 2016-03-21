@@ -3,8 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
@@ -16,39 +15,41 @@
     <script src="../Scripts/mui.min.js"></script>
 
 
-     <script>   
-         $(document).ready(function () {
-
-             var iCnt = 0;
-             // CREATE A "DIV" ELEMENT AND DESIGN IT USING JQUERY ".css()" CLASS.
-             var container = $(document.createElement('div')).css({
-                 width:'100%',
-                 borderTopColor: '#999', borderBottomColor: '#999',
-                 borderLeftColor: '#999', borderRightColor: '#999'
-             });
 
 
-             $('body').on('click', '#btAdd', function () {
+    <script>   
+        $(document).ready(function () {
+
+            var iCnt = 0;
+            // CREATE A "DIV" ELEMENT AND DESIGN IT USING JQUERY ".css()" CLASS.
+            var container = $(document.createElement('div')).css({
+                width:'100%',
+                borderTopColor: '#999', borderBottomColor: '#999',
+                borderLeftColor: '#999', borderRightColor: '#999'
+            });
+
+
+            $('body').on('click', '#btAdd', function () {
                       
-                 if (iCnt <= 19) {
-                     iCnt = iCnt + 1;
+                if (iCnt <= 19) {
+                    iCnt = iCnt + 1;
                           <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');
                           count.value=iCnt;--%>
                     // ADD TEXTBOX.
-                     $(container).append('<table style="width:80%"><tr><td><input id="txtMedname'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Medicine"/></td><td><input id="txtUNit'+iCnt+'" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtMedcode'+iCnt+'" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
+                    $(container).append('<table style="width:80%"><tr><td><input id="txtMedname'+iCnt+'" style="width:100%" type="text" class="input" onblur="change('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtMedcode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
 
                     // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
-                    if (iCnt == 1) {
-                        var divSubmit = $(document.createElement('div'));
-                        $(divSubmit).append('<input type=button class="bt" onclick="GetTextValue()"' + 'id=btSubmit value=Submit />');
-                    }
+                    //if (iCnt == 1) {
+                    //    var divSubmit = $(document.createElement('div'));
+                    //    $(divSubmit).append('<input type=button class="bt" ' + 'id=btSubmit value=Submit />');
+                    //}
                     // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
                           
-                    $('#main').after(container, divSubmit);
+                    $('#main').after(container);
 
                     var ac=null;
                     ac = <%=listFilter %>;
-                     $( "#txtMedname"+iCnt).autocomplete({
+                    $( "#txtMedname"+iCnt).autocomplete({
                         source: ac
                     });
                           
@@ -85,23 +86,15 @@
 
                 var datas = document.getElementById('<%=HiddenField1.ClientID%>');
 
-                values += this.value + '|';
-               // alert(values);
-                datas.value = values;
-                      
+                 values += this.value + '|';
+                 alert(values);
+                 datas.value = values;
+               
+             });
 
-
-
-            });
-
-
-
-
-        }
-              
-          
-                  
-</script>
+         }
+     
+    </script>
 
     <style>
         .ui-autocomplete {
@@ -145,6 +138,69 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <%-- function onchange --%>
+    <asp:ScriptManager ID="ScriptManager1" EnablePageMethods="true" runat="server" EnableCdn="true"></asp:ScriptManager>
+
+    <%-- on change function call --%>
+    <script>
+        
+        function change(val) 
+        {        
+            x=val;
+            if (val>=1)
+            {
+                var MedicineName = document.getElementById('txtMedname'+val).value;   
+            }
+            else
+            {
+                var MedicineName = document.getElementById('txtSearch').value;   
+            }
+            
+
+            if (MedicineName!="")
+            { 
+                debugger;
+                PageMethods.MedDetails(MedicineName,  OnSuccess, onError);  
+            }
+
+            function OnSuccess(response, userContext, methodName) 
+            {      
+                if (val>=1)
+                {              
+                    var string1 = new Array();
+                    string1 = response.split('|');                 
+                    document.getElementById('txtUnit'+val).value=string1[0];
+                    document.getElementById('txtMedcode'+val).value=string1[1];
+                    document.getElementById('txtCategory'+val).value=string1[2];
+                    
+                }
+                else
+                {
+                    var string1 = new Array(); 
+                    string1 = response.split('|');                 
+                    document.getElementById('txtUnit').value=string1[0];
+                    document.getElementById('txtCode').value=string1[1];
+                    document.getElementById('txtCategory').value=string1[2];
+                   
+                }
+            }          
+            function onError(response, userContext, methodName)
+            {      
+             
+            }    
+
+
+        }
+
+
+
+        
+    </script>
+
+
+
+
+
 
 
     <div class="container-fluid bodyDiv">
@@ -163,7 +219,7 @@
                             <label class="control-label col-xs-12 regFormLabels">Bill Number:</label>
                         </td>
                         <td>
-                            <asp:TextBox ID="txtBillNo" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtBillNo" TabIndex="1" runat="server"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -175,7 +231,7 @@
                             <label class="control-label col-xs-12 regFormLabels">Date:</label>
                         </td>
                         <td>
-                            <asp:TextBox ID="txtDate" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtDate" TabIndex="2" runat="server"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -187,7 +243,7 @@
                             <label class="control-label col-xs-12 regFormLabels">Reference No:</label>
                         </td>
                         <td>
-                            <asp:TextBox ID="txtRefNo2" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtRefNo2" TabIndex="3" runat="server"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -204,7 +260,7 @@
                                         <td style="text-align: center;">
                                             <asp:Label ID="Label5" runat="server" Text="Medicine"></asp:Label>
                                         </td>
-                                       <td style="text-align: center;">
+                                        <td style="text-align: center;">
                                             <asp:Label ID="Label1" runat="server" Text="Unit"></asp:Label>
                                         </td>
                                         <td style="text-align: center;">
@@ -213,28 +269,28 @@
                                         <td style="text-align: center">
                                             <asp:Label ID="Label8" runat="server" Text="Category"></asp:Label>
                                         </td>
-                                         <td style="text-align: center">
+                                        <td style="text-align: center">
                                             <asp:Label ID="Label6" runat="server" Text="Quantity"></asp:Label>
                                         </td>
 
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input id="txtSearch" style="width: 100%" type="text" placeholder="Medicine" class="input" />
+                                            <input id="txtSearch" tabindex="4" style="width: 100%" type="text" placeholder="Medicine" class="input"  onblur="change()" />
                                         </td>
                                         <td>
-                                            <input id="txtUNit" style="width: 100%" class="input " type="text" placeholder="Unit" />
-                                        </td>
-                                         <td>
-                                            <input id="txtCode" style="width: 100%" class="input " type="text" placeholder="Med Code" />
+                                            <input id="txtUnit" readonly="true" style="width: 100%" class="input " type="text" placeholder="Unit" />
                                         </td>
                                         <td>
-                                            <input id="txtCategory" style="width: 100%" class="input " type="text" placeholder="Category" />
+                                            <input id="txtCode" readonly="true" style="width: 100%" class="input " type="text" placeholder="Med Code" />
                                         </td>
                                         <td>
-                                            <input id="txtQuantity" class="input" style="width: 100%" type="text" placeholder="Quantity" />
+                                            <input id="txtCategory" readonly="true" style="width: 100%" class="input " type="text" placeholder="Category" />
                                         </td>
-                                       
+                                        <td>
+                                            <input id="txtQuantity" tabindex="5" class="input" style="width: 100%" type="text" placeholder="Quantity" />
+                                        </td>
+
                                         <td>
                                             <span class="auto-style4">
                                                 <input type="button" id="btAdd" onclick="this.style.visibility = 'hidden';" value="+" class="bt" />
@@ -242,6 +298,7 @@
                                         </td>
                                     </tr>
                                     <asp:HiddenField ID="HiddenField1" runat="server" />
+                                    <asp:HiddenField ID="HiddenField2" runat="server" />
                                 </table>
 
                                 <div id="main">
@@ -253,11 +310,11 @@
 
 
 
- 
+
             </div>
             <div class="col-sm-4">
 
-                <asp:Button ID="btnReceipt" runat="server" Text="Add Receipt" OnClick="btnReceipt_Click" />
+                <asp:Button ID="btnReceipt" runat="server" Text="Add Receipt" OnClientClick="GetTextValue()" OnClick="btnReceipt_Click" />
 
             </div>
         </div>

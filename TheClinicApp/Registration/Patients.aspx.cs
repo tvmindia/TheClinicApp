@@ -18,7 +18,7 @@ namespace TheClinicApp.Registration
 
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
-
+        Patient PatientObj = new Patient();
         TokensBooking tok = new TokensBooking();
         ErrorHandling eObj = new ErrorHandling();
         public string listFilter = null;
@@ -34,11 +34,11 @@ namespace TheClinicApp.Registration
         protected void btnSave_Click(object sender, EventArgs e)
         {
             UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
-            Patient PatientObj = new Patient();
+            
             DateTime _date = DateTime.Now;
             int age = Convert.ToInt32(txtAge.Text);
             int year = _date.Year;
-            int DOB = year - age;                      
+            int DOB = year - age;
             PatientObj.ClinicID = UA.ClinicID;
             PatientObj.Name = txtName.Text;
             PatientObj.Address = txtAddress.Text;
@@ -49,7 +49,7 @@ namespace TheClinicApp.Registration
             PatientObj.MaritalStatus = txtMarital.Text;
             PatientObj.Occupation = "BUSINESS";
             PatientObj.FileNumber = "HO343499";
-            
+
             if (btnSave.Text == "SAVE")
             {
                 if (FileUpload1.HasFile)
@@ -64,19 +64,19 @@ namespace TheClinicApp.Registration
                 PatientObj.PatientID = g;
                 PatientObj.AddPatientDetails();
                 PatientObj.AddFile();
-
-                ////var page = HttpContext.Current.CurrentHandler as Page;
+                
+                var page = HttpContext.Current.CurrentHandler as Page;
 
             }
             else if (btnSave.Text == "Update")
             {
                 PatientObj.PatientID = Guid.Parse(HiddenField1.Value);
                 PatientObj.UpdatePatientDetails();
-                //var page = HttpContext.Current.CurrentHandler as Page;
+                var page = HttpContext.Current.CurrentHandler as Page;
 
             }
             gridDataBind();
-            
+
 
             lblFileCount.Text = PatientObj.FileNumber;
             lblFile.Text = PatientObj.FileNumber;
@@ -84,8 +84,7 @@ namespace TheClinicApp.Registration
             lblAge.Text = txtAge.Text;
             lblGender.Text = txtSex.Text;
             lblPhone.Text = txtMobile.Text;
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
-            btnnew.Visible = true;
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "openModal();", true);
         }
 
         #endregion MainButton
@@ -277,9 +276,16 @@ namespace TheClinicApp.Registration
         #region BookingToken
         protected void btntokenbooking_Click(object sender, EventArgs e)
         {
+            btnnew.Visible = true;
             UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+            
             tok.DoctorID = ddlDoctorName.SelectedValue;
             tok.PatientID = HiddenField1.Value;
+            if(tok.PatientID=="")
+            {
+                tok.PatientID = PatientObj.GetPatientID(txtName.Text, txtAddress.Text, txtMobile.Text, txtEmail.Text, txtSex.Text).ToString();
+                
+            }
             tok.ClinicID = UA.ClinicID.ToString();
             tok.CreateDate = DateTime.Now;
             tok.DateTime = DateTime.Now;
