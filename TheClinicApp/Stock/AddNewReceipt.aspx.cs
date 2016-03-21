@@ -15,39 +15,31 @@ using System.Web.Services;
 
 namespace TheClinicApp.Stock
 {
-
-
+    
     public partial class AddNewReceipt : System.Web.UI.Page
     {
-
-
-
-
-
         ErrorHandling eObj = new ErrorHandling();
         IssueHeaderDetails ihd = new IssueHeaderDetails();
         IssueDetails idt = new IssueDetails();
         Stocks stok = new Stocks();
         Receipt rpt = new Receipt();
-        //ReceiptDetails rptdt = new ReceiptDetails();
-
+      
         //login details
 
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
-
-
-
+        
         public string listFilter = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            bindpageload();
+           
+                bindpageload();
+
            
         }
 
-
-
+        
         #region bindpageload
 
         public void bindpageload()
@@ -97,6 +89,7 @@ namespace TheClinicApp.Stock
 
         protected void btnReceipt_Click(object sender, EventArgs e)
         {
+            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
 
             rpt.CreatedBy = UA.userName;
             rpt.Date = Convert.ToDateTime(txtDate.Text);
@@ -130,7 +123,8 @@ namespace TheClinicApp.Stock
                    }
         }
 
-
+        #region WebMethod
+        
         [WebMethod(EnableSession = true)]
         public static string MedDetails(string MedName)
         {
@@ -152,12 +146,12 @@ namespace TheClinicApp.Stock
 
             return String.Format("{0}" + "|" + "{1}"+" | "+"{2}", Unit, MedCode, Category);
 
-           
+
 
         }
 
 
-
+        #endregion WebMethod
 
     }
 }
