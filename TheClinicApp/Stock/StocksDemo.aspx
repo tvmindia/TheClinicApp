@@ -54,33 +54,54 @@
             cursor: pointer;
         }
     </style>
-
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-    <%--   //------------- POPUP SCRIPT ---------%>
+  <%--   //------------- POPUP SCRIPT ---------%>
 
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
+ 
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+     <script src="../Scripts/bootstrap.min.js"></script>
 
-     <%--   //------------- AUTOFILL SCRIPT ---------%>
-    <script src="../Scripts/jquery-1.8.3.min.js"></script>
+     <%--  //------------- AUTOFILL SCRIPT ---------%>
+   <script src="../Scripts/jquery-1.8.3.min.js"></script>
+    
     <script src="../Scripts/ASPSnippets_Pager.min.js"></script>
-     
+</asp:Content>
 
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<%--OPEN MODAL--%>
+  
     <script>
 
-        function CategoryAddedOrNot(CategoryAdded) {
-
-            if (CategoryAdded == "True") {
-                document.getElementById('#<%=hdnCategoryAddedOrNot.ClientID %>').value = "True";
+        function SetIframeSrc(HyperlinkID) {
+            debugger;
+            if (HyperlinkID == "OutOfStockID")
+            {
+                var OutOfStockIframe = document.getElementById('OutOfStockIframe');
+                OutOfStockIframe.src = "OutOfStock.aspx";
+                //$('#OutOfStock').modal('show');
             }
+
+            else if (HyperlinkID == "NewmedicineID")
+            {
+                var NewMedicineIframe = document.getElementById('NewMedicineIframe');
+                NewMedicineIframe.src = "NewMedicine.aspx";
+                //$('#NewmedicineID').modal('show');
+             
+            }
+          
+            else
+            {
+                var NewCategoryIframe = document.getElementById('NewCategoryIframe');
+                NewCategoryIframe.src = "NewCategory.aspx";
+                //$('#AddNewCategory').modal('show');
+            }
+
+          
           
         }
 
+        </script>
 
-    </script>
 
     <script type="text/javascript">
 
@@ -107,7 +128,7 @@
             GetMedicines(1);
         });
         $("[id*=txtSearch]").live("keyup", function () {
-           
+            debugger;
             GetMedicines(parseInt(1));
         });
         $(".Pager .page").live("click", function () {
@@ -196,7 +217,7 @@
             <Columns>
             
                 <%--<asp:BoundField DataField="MedicineCode" HeaderText="Medicine Code"  ItemStyle-CssClass="Match"  />--%>
-              <asp:BoundField DataField="MedicineCode" HeaderText="Medicine Code"   ItemStyle-Font-Underline="true" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Blue" ItemStyle-CssClass="cursorshow" />
+              <asp:BoundField DataField="MedicineCode" HeaderText="Medicine Code"   ItemStyle-Font-Underline="true" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Blue" ItemStyle-CssClass="cursorshow Match" />
 
                 <asp:BoundField DataField="MedicineName" HeaderText="Medicine Name"  ItemStyle-CssClass="Match"  />
                 <asp:BoundField DataField="CategoryName" HeaderText="Category Name"  ItemStyle-CssClass="Match"  />
@@ -229,13 +250,22 @@
 
         <br />
 
-        <a href="#" role="button" data-toggle="modal" data-target="#OutOfStock">View Out Of Stock Medicines </a>
+        <a href="#" role="button" id="OutOfStockID" data-toggle="modal" data-target="#OutOfStock" onclick="SetIframeSrc('OutOfStockID')">View Out Of Stock Medicines </a>
         <br />
         <br />
-        <a href="#" role="button" data-toggle="modal" data-target="#AddNewMedicine" >Add New Medicine </a>
+        <a href="#" role="button"  id="NewmedicineID" data-toggle="modal" data-target="#AddNewMedicine" onclick="SetIframeSrc('NewmedicineID')" >Add New Medicine </a>
         <br />
         <br />
-        <a href="#" role="button" data-toggle="modal" data-target="#AddNewCategory">Add New Category </a>
+       <a href="#" role="button" id="NewCategoryID" data-toggle="modal" data-target="#AddNewCategory" onclick ="SetIframeSrc('NewCategoryID')" >Add New Category </a>
+
+
+      <%--  <a href="#" role="button" id="OutOfStockID" onclick="openModal('OutOfStockID')" >View Out Of Stock Medicines </a>
+        <br />
+        <br />
+        <a href="#" role="button" id="NewmedicineID" onclick="openModal('NewmedicineID')"  >Add New Medicine </a>
+        <br />
+        <br />
+        <a href="#" role="button" id="NewCategoryID" onclick="openModal('NewCategoryID')" >Add New Category </a>--%>
     </div>
 
 <%--   //------------- OUT OF STOCK---------%>
@@ -253,8 +283,9 @@
                 </div>
                 <div class="modal-body" style="background-color: lightgoldenrodyellow; overflow-x: hidden; overflow-y: hidden;">
                     <div class="col-md-12">
-                        <iframe src="OutOfStock.aspx" style="width: 100%; height: 100%"></iframe>
-                       
+                        <%--<iframe src="OutOfStock.aspx" style="width: 100%; height: 100%"></iframe>--%>
+                        <iframe id="OutOfStockIframe" style ="width: 100%; height: 100%"></iframe>
+
                     </div>
 
                 </div>
@@ -277,7 +308,9 @@
                 </div>
                 <div class="modal-body" style="background-color: lightgoldenrodyellow; overflow-x: hidden; overflow-y: hidden;">
                     <div class="col-md-12">
-                        <iframe src="NewMedicine.aspx" style="width: 100%; height: 100%"></iframe>
+                        <%--<iframe src="NewMedicine.aspx" style="width: 100%; height: 100%"></iframe>--%>
+                        <iframe id="NewMedicineIframe"  style="width: 100%; height: 100%"></iframe>
+
                     </div>
 
                 </div>
@@ -300,16 +333,14 @@
                 </div>
                 <div class="modal-body" style="background-color: lightgoldenrodyellow; overflow-x: hidden; overflow-y: hidden;">
                     <div class="col-md-12">
-                        <iframe src="NewCategory.aspx" style="width: 100%; height: 100%"></iframe>
+                        <%--<iframe src="NewCategory.aspx" style="width: 100%; height: 100%"></iframe>--%>
+                        <iframe id="NewCategoryIframe" style="width: 100%; height: 100%"></iframe>
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
-
-
-     <asp:HiddenField ID="hdnCategoryAddedOrNot" runat="server"  Value="False"/>
 
 </asp:Content>
 

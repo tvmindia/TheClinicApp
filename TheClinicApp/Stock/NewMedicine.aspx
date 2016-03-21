@@ -100,7 +100,7 @@
 
     <br />
 
-    <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" />
+    <asp:Button ID="btnAdd" runat="server" Text="Save" OnClick="btnAdd_Click" />
      <asp:Button ID="btnNew" runat="server" Text="New" OnClick="btnNew_Click"/>
 
      <asp:HiddenField ID="hdnManageGridBind" runat="server"  Value="False"/>

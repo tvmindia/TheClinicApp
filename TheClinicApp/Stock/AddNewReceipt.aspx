@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="AddNewReceipt.aspx.cs" Inherits="TheClinicApp.Stock.AddNewReceipt" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true"  CodeBehind="AddNewReceipt.aspx.cs" Inherits="TheClinicApp.Stock.AddNewReceipt" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -87,7 +87,7 @@
                 var datas = document.getElementById('<%=HiddenField1.ClientID%>');
 
                  values += this.value + '|';
-                 alert(values);
+              
                  datas.value = values;
                
              });
@@ -314,7 +314,7 @@
             </div>
             <div class="col-sm-4">
 
-                <asp:Button ID="btnReceipt" runat="server" Text="Add Receipt" OnClientClick="GetTextValue()" OnClick="btnReceipt_Click" />
+                <asp:Button ID="btnReceipt" AutoPostBack="false" runat="server" Text="Add Receipt" OnClientClick="GetTextValue()" OnClick="btnReceipt_Click" />
 
             </div>
         </div>
