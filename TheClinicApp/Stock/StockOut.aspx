@@ -55,29 +55,53 @@
         }
     </style>
 
+ <%--   //------------- POPUP SCRIPT ---------%>
 
-      <%--   //------------- AUTOFILL SCRIPT ---------%>
-    <script src="../Scripts/jquery-1.8.3.min.js"></script>
+    <script src="../Scripts/jquery-1.12.0.min.js"></script>
+ 
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+     <script src="../Scripts/bootstrap.min.js"></script>
+
+     <%--  //------------- AUTOFILL SCRIPT ---------%>
+   <script src="../Scripts/jquery-1.8.3.min.js"></script>
+    
     <script src="../Scripts/ASPSnippets_Pager.min.js"></script>
-   
+
      
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    
+      <script type="text/javascript">
+          function SetIframeSrc(HyperlinkID) {
+              if (HyperlinkID == "NewIssueID") {
+                  var issueIframe = document.getElementById('NewIssueFrame');
+                  issueIframe.src = "NewIssue.aspx";
+
+                  //$('#NewIssue').modal('show');
+
+              }
+          }
+
+        </script> 
+    
     <script type="text/javascript">
 
 
         $(function () {
-            debugger;
+           
             GetReceiptHD(1);
         });
-        $("[id*=txtSearch]").live("keyup", function () {
 
+        $("[id*=txtSearch]").live("keyup", function () {
+            debugger;
             GetReceiptHD(parseInt(1));
         });
+      
         $(".Pager .page").live("click", function () {
             GetReceiptHD(parseInt($(this).attr('page')));
         });
+
         function SearchTerm() {
             return jQuery.trim($("[id*=txtSearch]").val());
         };
@@ -143,21 +167,24 @@
     </script>
 
 
-
-        Search:
-    <asp:TextBox runat="server" ID="txtSearch" AutoPostBack="true"></asp:TextBox>
+ 
+        
+      
+  
+ <asp:TextBox runat="server"  ID="txtSearch" ></asp:TextBox>
         <br />
         <br />
-
-        <asp:GridView ID="gvReceiptHD" runat="server" Style="width: 400px" AutoGenerateColumns="False">
+         <%--<asp:BoundField DataField="Date" HeaderText="Date"  ItemStyle-CssClass="Match"  />--%>
+         <%--<asp:BoundField DataField="RefNo1" HeaderText="RefNo1"  ItemStyle-CssClass="Match"  />--%>
+    <asp:GridView ID="gvReceiptHD" runat="server" Style="width: 400px" AutoGenerateColumns="False">
             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
             <Columns>
             
-                <%--<asp:BoundField DataField="RefNo1" HeaderText="RefNo1"  ItemStyle-CssClass="Match"  />--%>
+               
               <asp:BoundField DataField="RefNo1" HeaderText="RefNo1"   ItemStyle-Font-Underline="true" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Blue" ItemStyle-CssClass="cursorshow" />
 
                 <asp:BoundField DataField="RefNo2" HeaderText="RefNo2"  ItemStyle-CssClass="Match"  />
-                <%--<asp:BoundField DataField="Date" HeaderText="Date"  ItemStyle-CssClass="Match"  />--%>
+               
 
 
             </Columns>
@@ -182,12 +209,36 @@
             <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
         </asp:GridView>
 
-        <div class="Pager">
+      <div class="Pager">
         </div>
-
-        <br />
+      
+    
+    <%--<a href="#" role="button"  id="Issue" onclick="openModal()" >New Issue</a>--%>
+    <a href="#" role="button" id="NewIssueID" data-toggle="modal" data-target="#NewIssue" onclick="SetIframeSrc('NewIssueID')">New Issue</a>
    
     
-   
+  <%--   //------------- New Issue ---------%>
 
+    <div class="modal fade" id="NewIssue" role="dialog">
+        <div class="modal-dialog modal-lg1">
+
+            <!-- Modal content-->
+
+            <div class="modal-content" style="height: 60%; overflow-y: no-display;">
+                <div class="modal-header" style="background-color: #00CC99">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="font-size: 20px; color: white">New Issue</h4>
+
+                </div>
+                <div class="modal-body" style="background-color: lightgoldenrodyellow; overflow-x: hidden; overflow-y: hidden;">
+                    <div class="col-md-12">
+                        <%--<iframe style="width: 100%; height: 100%" id="issueIframe"></iframe>--%>
+                         <iframe id="NewIssueFrame" style ="width: 100%; height: 100%"></iframe>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </asp:Content>

@@ -17,14 +17,6 @@
           var errLname = document.getElementById('<%=errorLnames.ClientID %>');
           errLname.style.display = "none";
 
-
-
-    if ($('#<%=hdnCategory.ClientID %>').val() == "True"  ) {
-        
-        var a = parent.CategoryAddedOrNot("True");
-       
-    }
-
       });
  //---------------* Function to check category name duplication *--------------//
 
@@ -84,6 +76,6 @@
 
     <br />
 
-    <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click"/>
-    <asp:HiddenField ID="hdnCategory" runat="server"  Value="False"/>
+    <asp:Button ID="btnAdd" runat="server" Text="Save" OnClick="btnAdd_Click"/>
+  
 </asp:Content>

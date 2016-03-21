@@ -28,9 +28,9 @@ namespace TheClinicApp.Stock
         private static int PageSize = 5;
 
 
-        #region Methods
+        //#region Methods
 
-        #region Bind Dummy Row
+        //#region Bind Dummy Row
 
         private void BindDummyRow()
         {
@@ -43,10 +43,10 @@ namespace TheClinicApp.Stock
             gvReceiptHD.DataBind();
         }
 
-        #endregion Bind Dummy Row
+        //#endregion Bind Dummy Row
 
 
-        #endregion Methods
+        //#endregion Methods
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -95,7 +95,7 @@ namespace TheClinicApp.Stock
                     using (DataSet ds = new DataSet())
                     {
                         sda.Fill(ds, "ReceiptHD");
-                       
+
                         DataTable dt = new DataTable("Pager");
                         dt.Columns.Add("PageIndex");
                         dt.Columns.Add("PageSize");
@@ -110,6 +110,12 @@ namespace TheClinicApp.Stock
                 }
             }
         }
+
+
+        //protected void Issue_ServerClick(object sender, EventArgs e)
+        //{
+        //    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "openModal();", true);
+        //}
 
     }
     
