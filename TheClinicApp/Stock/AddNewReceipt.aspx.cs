@@ -33,10 +33,8 @@ namespace TheClinicApp.Stock
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
                 bindpageload();
 
-           
         }
 
         
@@ -87,6 +85,7 @@ namespace TheClinicApp.Stock
 
         #endregion BindDataAutocomplete
 
+        #region InsertClick
         protected void btnReceipt_Click(object sender, EventArgs e)
         {
             UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
@@ -99,32 +98,56 @@ namespace TheClinicApp.Stock
 
             rpt.InsertReceiptHeader();
 
-            string values = HiddenField1.Value;
-            
+            string values = HiddenField1.Value;            
             string[] Invalue = values.Split('|');
-
-           int len= Invalue.Length;
-           len = len - 1;
+            int len= Invalue.Length;
+            len = len - 1;
            
+           
+            for (int i = 0; i <len ; i = i + 5)
+            {
+                ReceiptDetails rptdt = new ReceiptDetails();
+                rptdt.MedicineName = Invalue[i];
+                rptdt.QTY= Convert.ToInt32(Invalue[i + 4]);
+                rptdt.Unit = Invalue[i+1];
+                rptdt.CreatedBy = UA.userName;
+                rptdt.ClinicID = UA.ClinicID.ToString();
+                rptdt.ReceiptID = rpt.ReceiptID;
+                                     
+                rptdt.InsertReceiptDetails();
                
-                   for (int i = 0; i <len ; i = i + 5)
-                   {
-                       ReceiptDetails rptdt = new ReceiptDetails();
+            }
 
-                       rptdt.MedicineName = Invalue[i];
-                       rptdt.QTY= Convert.ToInt32(Invalue[i + 4]);
-                       rptdt.Unit = Invalue[i+1];
-                       rptdt.CreatedBy = UA.userName;
-                       rptdt.ClinicID = UA.ClinicID.ToString();
-                       rptdt.ReceiptID = rpt.ReceiptID;
-                       
-                       rptdt.InsertReceiptDetails();
-                     
-                   }
+
+            // to reLOad added DAta To fields
+            string str = rpt.ReceiptID.ToString();
+
+            ReloadInsertFields(str);
+            
+
         }
 
+        #endregion InsertClick
+
+
+        public void ReloadInsertFields(string a)
+        {
+            DataSet ds = rpt.InsertReloaded();
+
+            var xml = ds.GetXml();
+
+            HiddenField2.Value = xml;
+
+            string str = HiddenFieldCount.Value;
+
+
+        }
+       
+
+
+
         #region WebMethod
-        
+
         [WebMethod(EnableSession = true)]
         public static string MedDetails(string MedName)
         {

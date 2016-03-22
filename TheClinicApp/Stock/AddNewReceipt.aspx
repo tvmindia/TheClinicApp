@@ -1,9 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true"  CodeBehind="AddNewReceipt.aspx.cs" Inherits="TheClinicApp.Stock.AddNewReceipt" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="AddNewReceipt.aspx.cs" Inherits="TheClinicApp.Stock.AddNewReceipt" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-
-
 
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
@@ -14,68 +11,123 @@
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/mui.min.js"></script>
 
-
-
-
     <script>   
         $(document).ready(function () {
 
-            var iCnt = 0;
-            // CREATE A "DIV" ELEMENT AND DESIGN IT USING JQUERY ".css()" CLASS.
-            var container = $(document.createElement('div')).css({
-                width:'100%',
-                borderTopColor: '#999', borderBottomColor: '#999',
-                borderLeftColor: '#999', borderRightColor: '#999'
-            });
+            debugger;
+            var hidCount=   document.getElementById('<%=HiddenFieldCount.ClientID%>').value;
+            alert(hidCount);
+            if (hidCount== "0")
+            {
+                var iCnt = 0;
+                // CREATE A "DIV" ELEMENT AND DESIGN IT USING JQUERY ".css()" CLASS.
+                var container = $(document.createElement('div')).css({
+                    width:'100%',
+                    borderTopColor: '#999', borderBottomColor: '#999',
+                    borderLeftColor: '#999', borderRightColor: '#999'
+                });
 
 
-            $('body').on('click', '#btAdd', function () {
+                $('body').on('click', '#btAdd', function () 
+                {
                       
-                if (iCnt <= 19) {
-                    iCnt = iCnt + 1;
-                          <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');
-                          count.value=iCnt;--%>
-                    // ADD TEXTBOX.
-                    $(container).append('<table style="width:80%"><tr><td><input id="txtMedname'+iCnt+'" style="width:100%" type="text" class="input" onblur="change('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtMedcode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
+                    if (iCnt <= 19)
+                    {
+                        iCnt = iCnt + 1;
+                       
+                        // ADDING  TEXTBOX CONTROLS
 
-                    // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
-                    //if (iCnt == 1) {
-                    //    var divSubmit = $(document.createElement('div'));
-                    //    $(divSubmit).append('<input type=button class="bt" ' + 'id=btSubmit value=Submit />');
-                    //}
-                    // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
-                          
+                       
+                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedname'+iCnt+'" style="width:100%" type="text" class="input" onblur="change('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtMedcode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
+
+                        // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
+                    
+                        $('#main').after(container);
+
+                        var ac=null;
+                        ac = <%=listFilter %>;
+                        $( "#txtMedname"+iCnt).autocomplete({
+                            source: ac
+                        });
+
+                    }
+                                  
+                        // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
+                        // (20 IS THE LIMIT WE HAVE SET)
+                    else
+                    {
+                        $(container).append('<label>Reached the limit</label>');
+                        $('#btAdd').attr('class', 'bt-disable');
+                        $('#btAdd').attr('disabled', 'disabled');
+                    }
+
+                    //TO SAVE THE TOP iCnt VALUE
+                    debugger;
+                    document.getElementById('<%=HiddenFieldCount.ClientID%>').value=iCnt;
+
+             
+                });
+            
+
+            }
+            else
+            {
+                debugger;
+
+
+                for(i=1;i<=hidCount;i++)
+                {
+                    var container = $(document.createElement('div')).css({
+                        width:'100%',
+                        borderTopColor: '#999', borderBottomColor: '#999',
+                        borderLeftColor: '#999', borderRightColor: '#999'
+                    });
+
+                    if (i<hidCount)
+                    {
+                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedname'+i+'" style="width:100%" type="text" class="input" onblur="change('+i+')" placeholder="Medicine"/></td><td><input id="txtUnit'+i+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtMedcode'+i+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+i+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+i+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
+                        
+                    }
+                    else
+                    {
+                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedname'+i+'" style="width:100%" type="text" class="input" onblur="change('+i+')" placeholder="Medicine"/></td><td><input id="txtUnit'+i+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtMedcode'+i+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+i+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+i+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
+                    }
+
+
+
+
                     $('#main').after(container);
 
                     var ac=null;
                     ac = <%=listFilter %>;
-                    $( "#txtMedname"+iCnt).autocomplete({
+                    $( "#txtMedname"+i).autocomplete({
                         source: ac
                     });
-                          
+
+
                 }
 
-                    // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
-                    // (20 IS THE LIMIT WE HAVE SET)
-                else {
-                    $(container).append('<label>Reached the limit</label>');
-                    $('#btAdd').attr('class', 'bt-disable');
-                    $('#btAdd').attr('disabled', 'disabled');
-                }
-             
-            });
-        });
+               
 
-            
+
+
+            }
+
+          
+
+
+
+
+        });            
 
         // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
         var divValue, values = '';
 
-        function GetTextValue() {
+        function GetTextValue()
+        {
             $(divValue)
                 .empty()
                 .remove();
-
             values = '';
 
             $('.input').each(function () {
@@ -83,16 +135,17 @@
                     padding: '5px', width: '200px'
                 });
 
-
                 var datas = document.getElementById('<%=HiddenField1.ClientID%>');
-
-                 values += this.value + '|';
-              
-                 datas.value = values;
+                values += this.value + '|';              
+                datas.value = values;
                
-             });
+            });
 
-         }
+
+
+        }
+
+
      
     </script>
 
@@ -159,7 +212,7 @@
 
             if (MedicineName!="")
             { 
-                debugger;
+              
                 PageMethods.MedDetails(MedicineName,  OnSuccess, onError);  
             }
 
@@ -192,12 +245,7 @@
 
         }
 
-
-
-        
     </script>
-
-
 
 
 
@@ -276,7 +324,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input id="txtSearch" tabindex="4" style="width: 100%" type="text" placeholder="Medicine" class="input"  onblur="change()" />
+                                            <input id="txtSearch" tabindex="4" style="width: 100%" type="text" placeholder="Medicine" class="input" onblur="change()" />
                                         </td>
                                         <td>
                                             <input id="txtUnit" readonly="true" style="width: 100%" class="input " type="text" placeholder="Unit" />
@@ -299,6 +347,7 @@
                                     </tr>
                                     <asp:HiddenField ID="HiddenField1" runat="server" />
                                     <asp:HiddenField ID="HiddenField2" runat="server" />
+                                    <asp:HiddenField ID="HiddenFieldCount" runat="server" Value="0" />
                                 </table>
 
                                 <div id="main">
@@ -314,7 +363,7 @@
             </div>
             <div class="col-sm-4">
 
-                <asp:Button ID="btnReceipt" AutoPostBack="false" runat="server" Text="Add Receipt" OnClientClick="GetTextValue()" OnClick="btnReceipt_Click" />
+                <asp:Button ID="btnReceipt" runat="server" Text="Add Receipt" OnClientClick="GetTextValue()" OnClick="btnReceipt_Click" />
 
             </div>
         </div>
