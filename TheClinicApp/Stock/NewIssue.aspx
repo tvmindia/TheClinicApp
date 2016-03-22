@@ -9,7 +9,8 @@
  <link href="../Content/bootstrap.min.css" rel="stylesheet" />
  <script src="../Scripts/jquery-ui.js"></script>
  <link href="../Content/jquery-ui.css" rel="stylesheet" />
- 
+
+   
   <%--Date picker styles--%>     
   <style>
         .ui-autocomplete {
@@ -59,7 +60,7 @@
                           <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');
                           count.value=iCnt;--%>
                     // ADD TEXTBOX.
-                    $(container).append('<table style="width:80%"><tr><td><input id="txtMedname'+iCnt+'" style="width:100%" type="text" class="input" onblur="change('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtMedcode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
+                    $(container).append('<table style="width:80%"><tr><td><input id="txtMedname'+iCnt+'" style="width:100%" type="text" class="input" onblur="PopulateTextboxesByMedicineName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtMedcode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
 
                     // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
                     //if (iCnt == 1) {
@@ -89,12 +90,10 @@
             });
         });
 
-            
-
         // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
         var divValue, values = '';
 
-        function GetTextValue() {
+        function GetTextBoxValues() {
             $(divValue)
                 .empty()
                 .remove();
@@ -106,8 +105,7 @@
                     padding: '5px', width: '200px'
                 });
 
-
-               
+                var datas = document.getElementById('<%=hdnTextboxValues.ClientID%>');
 
                 values += this.value + '|';
               
@@ -117,6 +115,8 @@
 
         }
      
+
+        
     </script>
 
     <script>
@@ -136,11 +136,11 @@
 
     <table>
 
-         <tr>
+      <%--   <tr>
              <td>Issue No </td>
             <td>
                 <asp:TextBox ID="txtIssueNO" runat="server"></asp:TextBox></td>
-        </tr>
+        </tr>--%>
 
         <tr>
             <td>Issued To </td>
@@ -159,6 +159,11 @@
        
     </table>
 
+    <br />
+     <br />
+     <br />
+     <br />
+     <br />
 
 
     <table>
@@ -186,7 +191,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input id="txtSearch" tabindex="4" style="width: 100%" type="text" placeholder="Medicine" class="input"  onblur="change()" />
+                                            <input id="txtSearch" tabindex="4" style="width: 100%" type="text" placeholder="Medicine" class="input"  onblur="PopulateTextboxesByMedicineName()" />
                                         </td>
                                         <td>
                                             <input id="txtUnit" readonly="true" style="width: 100%" class="input " type="text" placeholder="Unit" />
@@ -207,7 +212,7 @@
                                             </span>
                                         </td>
                                     </tr>
-                                    <asp:HiddenField ID="HiddenField1" runat="server" />
+                                    <asp:HiddenField ID="hdnTextboxValues" runat="server" />
                                     <asp:HiddenField ID="HiddenField2" runat="server" />
                                 </table>
 
@@ -220,7 +225,65 @@
     <br />
     <br />
 
- <asp:Button ID="btnAdd" runat="server" Text="Save" OnClick="btnAdd_Click" />
+ <asp:Button ID="btnAdd" runat="server" Text="Save" OnClick="btnAdd_Click" OnClientClick="GetTextBoxValues()" />
  <asp:Button ID="btnNew" runat="server" Text="New" OnClick="btnNew_Click" />
 
+
+     <asp:ScriptManager ID="ScriptManager1" EnablePageMethods="true" runat="server" EnableCdn="true"></asp:ScriptManager>
+
+    <script>
+        
+        function PopulateTextboxesByMedicineName(val) 
+        {        
+            debugger;
+            x=val;
+            if (val>=1)
+            {
+                var MedicineName = document.getElementById('txtMedname'+val).value;   
+            }
+            else
+            {
+                var MedicineName = document.getElementById('txtSearch').value;   
+            }
+            
+
+            if (MedicineName!="")
+            { 
+                debugger;
+                PageMethods.MedDetails(MedicineName,  OnSuccess, onError);  
+            }
+
+            function OnSuccess(response, userContext, methodName) 
+            {      
+                if (val>=1)
+                {              
+                    var string1 = new Array();
+                    string1 = response.split('|');                 
+                    document.getElementById('txtUnit'+val).value=string1[0];
+                    document.getElementById('txtMedcode'+val).value=string1[1];
+                    document.getElementById('txtCategory'+val).value=string1[2];
+                    
+                }
+                else
+                {
+                    var string1 = new Array(); 
+                    string1 = response.split('|');                 
+                    document.getElementById('txtUnit').value=string1[0];
+                    document.getElementById('txtCode').value=string1[1];
+                    document.getElementById('txtCategory').value=string1[2];
+                   
+                }
+            }          
+            function onError(response, userContext, methodName)
+            {      
+             
+            }    
+
+
+        }
+
+
+
+        
+    </script>
 </asp:Content>

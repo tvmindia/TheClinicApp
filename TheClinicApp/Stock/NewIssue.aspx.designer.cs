@@ -13,15 +13,6 @@ namespace TheClinicApp.Stock {
     public partial class NewIssue {
         
         /// <summary>
-        /// txtIssueNO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIssueNO;
-        
-        /// <summary>
         /// txtIssuedTo control.
         /// </summary>
         /// <remarks>
@@ -85,13 +76,13 @@ namespace TheClinicApp.Stock {
         protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
-        /// HiddenField1 control.
+        /// hdnTextboxValues control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenField1;
+        protected global::System.Web.UI.WebControls.HiddenField hdnTextboxValues;
         
         /// <summary>
         /// HiddenField2 control.
@@ -119,5 +110,14 @@ namespace TheClinicApp.Stock {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNew;
+        
+        /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
     }
 }

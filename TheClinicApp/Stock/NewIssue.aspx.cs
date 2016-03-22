@@ -14,6 +14,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheClinicApp.ClinicDAL;
@@ -25,8 +26,8 @@ namespace TheClinicApp.Stock
     public partial class NewIssue : System.Web.UI.Page
     {
         public string listFilter = null;
-        Stocks stok = new Stocks();
-        Receipt rpt = new Receipt();
+        IssueHeaderDetails IssuehdrObj = new IssueHeaderDetails();
+        IssueDetails IssuedtlObj = new IssueDetails();
 
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
@@ -62,7 +63,7 @@ namespace TheClinicApp.Stock
             listFilter = null;
             listFilter = BindName();
 
-            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+           
 
         }
 
@@ -95,6 +96,35 @@ namespace TheClinicApp.Stock
 
         #endregion BindDataAutocomplete
 
+
+        #region Get MedicineDetails By Medicine Name
+
+        [WebMethod]
+        public static string MedDetails(string MedName)
+        {
+            IssueHeaderDetails IssuedtlsObj = new IssueHeaderDetails();
+
+            UIClasses.Const Const = new UIClasses.Const();
+            ClinicDAL.UserAuthendication UA;
+
+            UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
+
+            IssuedtlsObj.ClinicID = UA.ClinicID.ToString();
+
+            DataSet ds = IssuedtlsObj.GetMedicineDetailsByMedicineName(MedName);
+            
+            string Unit = Convert.ToString(ds.Tables[0].Rows[0]["Unit"]);
+            string MedCode = Convert.ToString(ds.Tables[0].Rows[0]["MedCode"]);
+            string Category = Convert.ToString(ds.Tables[0].Rows[0]["CategoryName"]);
+
+            return String.Format("{0}" + "|" + "{1}" + " | " + "{2}", Unit, MedCode, Category);
+
+        }
+
+
+        #endregion Get MedicineDetails By Medicine Name
+
+
         #endregion Methods
 
         #region Events
@@ -102,19 +132,44 @@ namespace TheClinicApp.Stock
         #region Page Load
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["refNo"] != null)
-            {
-                string a = "gr";
-
-                a = Request.QueryString["refNo"].ToString();
-            }
+            bindpageload();
         }
         #endregion Page Load
 
         #region Add Button Click
         protected void btnAdd_Click(object sender, EventArgs e)
         {
+            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
 
+            IssuehdrObj.ClinicID = UA.ClinicID.ToString();
+            IssuehdrObj.IssuedTo = txtIssuedTo.Text;
+            //IssuehdrObj.IssueNO = txtIssueNO.Text;
+            IssuehdrObj.CreatedBy = UA.userName;
+
+           
+            IssuehdrObj.Date = Convert.ToDateTime(txtDate.Text);
+
+                IssuehdrObj.InsertIssueHeader();
+
+
+                string values = hdnTextboxValues.Value;
+
+                string[] Textboxvalues = values.Split('|');
+
+                int len = Textboxvalues.Length;
+                len = len - 1;
+
+                for (int i = 0; i < len; i = i + 5)
+                {
+                    IssuedtlObj.MedicineName = Textboxvalues[i];
+                    IssuedtlObj.Qty = Convert.ToInt32(Textboxvalues[i + 4]);
+                    IssuedtlObj.Unit = Textboxvalues[i + 1];
+                    IssuedtlObj.CreatedBy = UA.userName; ;
+                    IssuedtlObj.ClinicID = UA.ClinicID.ToString();
+                    IssuedtlObj.IssueID = IssuehdrObj.IssueID;
+
+                    IssuedtlObj.InsertIssueDetails();
+                }
         }
         #endregion Add Button Click
 
