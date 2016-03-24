@@ -113,7 +113,7 @@ namespace TheClinicApp.ClinicDAL
         #region User Authentication
         public UserAuthendication(String userName, String password)
         {
-
+           
             DataTable dt = GetLoginDetails(userName);
 
             if (dt.Rows.Count > 0)
