@@ -116,6 +116,8 @@ namespace TheClinicApp.Stock
                 {
                     IssuedtlObj.DeleteIssueDetails(UniqueID, MedicineID);
 
+                    //hdnManageGridBind.Value = "True";
+
                     BindGridviewAndLabels();
                 }
                 catch (Exception)

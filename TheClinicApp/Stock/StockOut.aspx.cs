@@ -38,7 +38,7 @@ namespace TheClinicApp.Stock
             dummy.Columns.Add("IssueID");
             dummy.Columns.Add("IssueNO");
             dummy.Columns.Add("IssuedTo");
-           
+            
            
             //dummy.Columns.Add("Date");
             dummy.Rows.Add();
@@ -144,6 +144,11 @@ namespace TheClinicApp.Stock
         protected void btnNewIssue_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Stock/NewIssue.aspx");
+        }
+
+        protected void ImgBtnDelete_Command(object sender, CommandEventArgs e)
+        {
+
         }
 
 

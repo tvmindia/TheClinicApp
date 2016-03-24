@@ -3,6 +3,28 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <script>
+        $(document).ready(function () {
+
+ // ----- * Manages hiddenfield inorder to bind the medicine gridview of parent page * ------//
+
+        if ($('#<%=hdnManageGridBind.ClientID %>').val() == "True"  ) {
+            parent.GetMedicines(1);
+            $('#<%=hdnManageGridBind.ClientID %>').val('False');
+        }
+
+        });
+
+
+       </script>
+ 
+
+
+
+
+
+
+
     Issue No :
     <asp:Label ID="lblIssueNo" runat="server" Text=""></asp:Label>
     <br />
@@ -78,4 +100,6 @@
                         </asp:GridView>
 
     <asp:HiddenField ID="hdnIssueID" runat="server" />
+      <asp:HiddenField ID="hdnManageGridBind" runat="server"  Value="False"/>
+
 </asp:Content>

@@ -2,7 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-
   <%--   //------------- DATEPICKER SCRIPT AND  STYLES---------%>
 
  <script src="../Scripts/jquery-1.12.0.min.js"></script>
@@ -43,6 +42,22 @@
 
     <script>   
         $(document).ready(function () {
+
+// -----------------* Manages hiddenfield inorder to bind the issue header gridview of parent page *------------//
+            if ($('#<%=hdnManageGridBind.ClientID %>').val() == "True"  ) {
+                parent.GetIssueHD(1);
+                $('#<%=hdnManageGridBind.ClientID %>').val('False');
+            }
+
+       
+
+//-------------*  images that represents IssueNo duplication hide and show * -------------//
+
+            var LnameImage = document.getElementById('<%=imgWebLnames.ClientID %>');
+            LnameImage.style.display = "none";
+            var errLname = document.getElementById('<%=errorLnames.ClientID %>');
+            errLname.style.display = "none";
+
 
             var iCnt = 0;
             // CREATE A "DIV" ELEMENT AND DESIGN IT USING JQUERY ".css()" CLASS.
@@ -116,10 +131,43 @@
         }
      
 
-        
+        //---------------* Function to check Issue Number duplication *-----------------//
+
+        function CheckIssueNoDuplication(IssueNo) {
+            debugger;
+            var IssueNo = document.getElementById('<%=txtIssueNO.ClientID %>').value;
+            IssueNo = IssueNo.replace(/\s/g, '');
+
+            PageMethods.CheckIssueNoDuplication(IssueNo, OnSuccess, onError);
+
+            function OnSuccess(response, userContext, methodName) {
+
+                var LnameImage = document.getElementById('<%=imgWebLnames.ClientID %>');
+                var errLname = document.getElementById('<%=errorLnames.ClientID %>');
+                if (response == false) {
+
+                    LnameImage.style.display = "block";
+                    errLname.style.display = "none";
+
+                }
+                if (response == true) {
+                    errLname.style.display = "block";
+                    errLname.style.color = "Red";
+                    errLname.innerHTML = "Name Alreay Exists"
+                    LnameImage.style.display = "none";
+
+                }
+            }
+            function onError(response, userContext, methodName) {
+
+            }
+        }
+
+
     </script>
 
     <script>
+
         $(document).ready(function () {
              
             var ac=null;
@@ -134,19 +182,24 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+
     <table>
 
-      <%--   <tr>
+         <tr>
              <td>Issue No </td>
             <td>
-                <asp:TextBox ID="txtIssueNO" runat="server"></asp:TextBox></td>
-        </tr>--%>
+                <asp:TextBox ID="txtIssueNO" runat="server" onchange="CheckIssueNoDuplication(this)"></asp:TextBox></td>
+        </tr>
+             
+       <asp:Image ID="imgWebLnames" runat="server" ToolTip="Login Name is Available" ImageUrl="~/Images/Check.png" Width="4%" Height="3%"  />
+                                        
+      <asp:Image ID="errorLnames" runat="server" ToolTip="Login Name is Unavailable" ImageUrl="~/Images/newClose.png"  />
 
         <tr>
             <td>Issued To </td>
             <td>
                 <asp:TextBox ID="txtIssuedTo" runat="server"></asp:TextBox>
-
+               
             </td>
         </tr>
 
@@ -226,7 +279,7 @@
     <br />
 
  <asp:Button ID="btnAdd" runat="server" Text="Save" OnClick="btnAdd_Click" OnClientClick="GetTextBoxValues()" />
- <asp:Button ID="btnNew" runat="server" Text="New" OnClick="btnNew_Click" />
+ <%--<asp:Button ID="btnNew" runat="server" Text="New" OnClick="btnNew_Click" />--%>
 
 
      <asp:ScriptManager ID="ScriptManager1" EnablePageMethods="true" runat="server" EnableCdn="true"></asp:ScriptManager>
@@ -282,8 +335,8 @@
 
         }
 
-
-
-        
     </script>
+
+     <asp:HiddenField ID="hdnManageGridBind" runat="server"  Value="False"/>
+
 </asp:Content>

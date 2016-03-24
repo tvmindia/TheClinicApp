@@ -125,11 +125,14 @@ namespace TheClinicApp.ClinicDAL
                 {
                     isValidUser = true;
                     userN = userName;
-                    ClinicName = " Clinic 1";
-                    GroupName = "Thrithvam Ayurveda";
-                    //Clinic_ID = new Guid("C0946CD5-EBB4-44CE-9DFC-349BB4D32761");
-                    Clinic_ID = new Guid(dt.Rows[0]["ClinicID"].ToString());
-                    Group_ID = new Guid("ED6A102A-E904-4471-BF9A-F6BEDB2F36FB");
+
+                    ClinicName = dt.Rows[0]["Clinic Name"].ToString();
+                    Clinic_ID = new Guid(dt.Rows[0]["Clinic ID"].ToString());
+
+                    GroupName = dt.Rows[0]["Group Name"].ToString();
+                    Group_ID = new Guid(dt.Rows[0]["Group ID"].ToString());
+
+
                 }
 
                 else
@@ -171,7 +174,7 @@ namespace TheClinicApp.ClinicDAL
                 DataTable dt = new DataTable();
                 dbConnection dcon = new dbConnection();
                 con = dcon.GetDBConnection();
-                SqlCommand cmd = new SqlCommand("GetPassword", con);
+                SqlCommand cmd = new SqlCommand("GetLoginDetails", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@LoginName", SqlDbType.NVarChar, 50).Value = LoginName;
                 SqlDataAdapter adapter = new SqlDataAdapter();

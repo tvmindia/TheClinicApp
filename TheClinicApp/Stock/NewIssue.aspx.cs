@@ -26,12 +26,15 @@ namespace TheClinicApp.Stock
     public partial class NewIssue : System.Web.UI.Page
     {
         public string listFilter = null;
-        IssueHeaderDetails IssuehdrObj = new IssueHeaderDetails();
-        IssueDetails IssuedtlObj = new IssueDetails();
 
+        #region Global Variables
+
+        IssueHeaderDetails IssuehdrObj = new IssueHeaderDetails();
+       
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
-        
+
+        #endregion Global Variables
 
         #region Methods
 
@@ -44,32 +47,15 @@ namespace TheClinicApp.Stock
 
         #endregion Clear Controls
 
-        #region Add Issue
+        #region Bind List Filter
 
-        public void AddIssue()
+        public void BindListFilter()
         {
-
-        }
-
-        #endregion  Add Issue
-
-        #region bindpageload
-
-        public void bindpageload()
-        {
-
-
-
             listFilter = null;
             listFilter = BindName();
-
-           
-
         }
 
-
-        #endregion bindpageload
-
+        #endregion Bind List Filter
 
         #region BindDataAutocomplete
         private string BindName()
@@ -95,7 +81,6 @@ namespace TheClinicApp.Stock
         }
 
         #endregion BindDataAutocomplete
-
 
         #region Get MedicineDetails By Medicine Name
 
@@ -124,6 +109,33 @@ namespace TheClinicApp.Stock
 
         #endregion Get MedicineDetails By Medicine Name
 
+        #region Bind Textbox By IssueNo
+
+        public void BindTextboxByIssueNo()
+        {
+            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+            IssuehdrObj.ClinicID = UA.ClinicID.ToString();
+            string IssueNumber =  IssuehdrObj.Generate_Issue_Number();
+
+           txtIssueNO.Text = IssueNumber;
+        }
+
+        #endregion Bind Textbox By IssueNo
+
+        #region Check IssueNo Duplication
+        [WebMethod]
+        public static bool CheckIssueNoDuplication(string IssueNo)
+        {
+            IssueHeaderDetails IssuedtlObj = new IssueHeaderDetails();
+
+            if (IssuedtlObj.CheckIssueNoDuplication(IssueNo)) 
+            {
+                return true;
+            }
+            return false;
+        }
+
+        #endregion Check IssueNo Duplication
 
         #endregion Methods
 
@@ -132,8 +144,9 @@ namespace TheClinicApp.Stock
         #region Page Load
         protected void Page_Load(object sender, EventArgs e)
         {
-            bindpageload();
-        }
+            BindListFilter();
+            BindTextboxByIssueNo();
+         }
         #endregion Page Load
 
         #region Add Button Click
@@ -143,10 +156,9 @@ namespace TheClinicApp.Stock
 
             IssuehdrObj.ClinicID = UA.ClinicID.ToString();
             IssuehdrObj.IssuedTo = txtIssuedTo.Text;
-            //IssuehdrObj.IssueNO = txtIssueNO.Text;
+            IssuehdrObj.IssueNO = txtIssueNO.Text;
             IssuehdrObj.CreatedBy = UA.userName;
 
-           
             IssuehdrObj.Date = Convert.ToDateTime(txtDate.Text);
 
                 IssuehdrObj.InsertIssueHeader();
@@ -161,6 +173,8 @@ namespace TheClinicApp.Stock
 
                 for (int i = 0; i < len; i = i + 5)
                 {
+                    IssueDetails IssuedtlObj = new IssueDetails(); //Object is created in loop as each entry should have different uniqueID 
+
                     IssuedtlObj.MedicineName = Textboxvalues[i];
                     IssuedtlObj.Qty = Convert.ToInt32(Textboxvalues[i + 4]);
                     IssuedtlObj.Unit = Textboxvalues[i + 1];

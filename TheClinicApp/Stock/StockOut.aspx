@@ -167,6 +167,7 @@
                          $("td", row).eq(0).html($(this).find("IssueID").text());
                         $("td", row).eq(1).html($(this).find("IssueNO").text());
                         $("td", row).eq(2).html($(this).find("IssuedTo").text());
+                        
                        
                     //$("td", row).eq(2).html($(this).find("Date").text());
                     $("[id*=gvIssueHD]").append(row);
@@ -213,6 +214,9 @@
             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
             <Columns>
             
+             
+                 
+
                 <asp:BoundField DataField="IssueID" HeaderText="IssueID"    />
               <asp:BoundField DataField="IssueNO" HeaderText="IssueNO"  ItemStyle-Font-Underline="true" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Blue" ItemStyle-CssClass="cursorshow" />
 
