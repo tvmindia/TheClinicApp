@@ -136,8 +136,10 @@ namespace TheClinicApp.Stock
 
             var xml = ds.GetXml();
 
-            HiddenField2.Value = xml;
+            HiddenFieldXmlData.Value = xml;
 
+
+            //
             string str = HiddenFieldCount.Value;
 
 
@@ -160,7 +162,7 @@ namespace TheClinicApp.Stock
 
            obj.ClinicID = UA.ClinicID.ToString();
 
-            DataSet ds= obj.GetMedCodeUnitCategory(MedName);
+                DataSet ds= obj.GetMedCodeUnitCategory(MedName);
 
 
             string Unit = Convert.ToString(ds.Tables[0].Rows[0]["Unit"]);
