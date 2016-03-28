@@ -307,8 +307,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.ExecuteNonQuery();
                 sda.SelectCommand = cmd;
                 ds = new DataSet();
-                sda.Fill(ds);
-
+                sda.Fill(ds, "Medicines");
 
                 return ds;
 
