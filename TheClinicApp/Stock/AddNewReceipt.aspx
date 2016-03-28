@@ -19,7 +19,7 @@
 
             //To Check the Reloading Condition
             var hidCount=   document.getElementById('<%=HiddenFieldCount.ClientID%>').value;
-            alert(hidCount);
+          
             if (hidCount== "0")
             {
                 var iCnt = 0;
@@ -40,7 +40,7 @@
                 {
                     iCnt=1;
 
-                    debugger;
+                  //  debugger;
                     $(container).append('<table style="width:80%"><tr><td><label >Medicine Name</label></td><td ><label >Unit</label></td><td ><label >Medicine Code</label></td><td ><label >Cateorgy</label></td><td ><label >Quantity</label></td></tr> </table>');
                     
                     $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Quantity" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="HiddenReceiptID'+iCnt+'" type="hidden" /></td></tr> </table>');
@@ -58,7 +58,7 @@
                
                     $('body').on('click', '#btAdd'+iCnt, function () 
                     {
-                        debugger;
+                        //debugger;
                       
                         if (iCnt <= 19)
                         {
@@ -97,14 +97,14 @@
             }
             else
             {
-                debugger;
-
+                
+                // debugger;
 
                 for(iCnt=1;iCnt<=hidCount;iCnt++)
                 {
 
                     
-                    debugger;
+                 
 
                     var container = $(document.createElement('div')).css({
                         width:'100%',
@@ -114,7 +114,7 @@
 
                     if (iCnt<hidCount)
                     {
-                       // $(container).append('<table style="width:80%"><tr><td><input id="txtMedname'+i+'" style="width:100%" type="text" class="input" onblur="change('+i+')" placeholder="Medicine"/></td><td><input id="txtUnit'+i+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtMedcode'+i+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+i+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+i+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
+                        // $(container).append('<table style="width:80%"><tr><td><input id="txtMedname'+i+'" style="width:100%" type="text" class="input" onblur="change('+i+')" placeholder="Medicine"/></td><td><input id="txtUnit'+i+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtMedcode'+i+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+i+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+i+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
                         $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd'+iCnt+'" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td><td><input id="HiddenReceiptID'+iCnt+'" type="hidden" /></td></tr></table>');
                          
 
@@ -134,10 +134,14 @@
                     });
 
 
-                }              
+                }  
+                
+                BindDataFromXml();
 
             }
 
+
+          
 
 
         });            
@@ -158,11 +162,11 @@
                 });
 
                 var datas = document.getElementById('<%=HiddenField1.ClientID%>');
-                    values += this.value + '|';              
-                    datas.value = values;
+                values += this.value + '|';              
+                datas.value = values;
                     
-                });
-            }
+            });
+        }
 
 
 
@@ -177,12 +181,51 @@
         function BindDataFromXml()
         {
             debugger;
-            var xml =   document.getElementById('<%=HiddenFieldXmlData.ClientID%>').value
+            
+            var XmlDataFromHF =   document.getElementById('<%=HiddenFieldXmlData.ClientID%>').value;
+            var xmlDoc = $.parseXML(XmlDataFromHF);
+            var xml = $(xmlDoc);
+            var Medicines = xml.find("Medicines");
+            var i=1;
+           
+            if (Medicines.length > 0) {
+                $.each(Medicines, function () {
+                   
+              
+                    
+                    var Medicinename =   $(this).find("MedicineName").text() ;
+                  
+                    alert(Medicinename);
+
+                    document.getElementById('txtMedicine'+i).value=   Medicinename;
+                   
+                    i=i+1;
+                    
+                });
+       
+            }
 
 
-            var oSerializer = new XMLSerializer();
 
-            var output = XML(oSerializer.serializeToString(xml)).toXMLString();
+
+
+
+           
+
+
+
+            //var Medicines = $(xml).find("Medicines").text();
+
+            //var title = $(xml).find('MedicineName').text(); 
+
+            
+            //var string1 = new Array();
+            //string1 = Medicines.split('\n'); 
+                    
+                   
+            //document.getElementById('txtUnit'+ControlNo).value=string1[0];
+            //document.getElementById('txtCode'+ControlNo).value=string1[1];
+            //document.getElementById('txtCategory'+ControlNo).value=string1[2];
 
         }
 
@@ -234,7 +277,7 @@
             if (ControlNo>=1)
             {
                 var MedicineName = document.getElementById('txtMedicine'+ControlNo).value;
-               // alert(MedicineName);
+                // alert(MedicineName);
 
             }
            
