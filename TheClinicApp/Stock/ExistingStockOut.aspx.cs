@@ -136,7 +136,21 @@ namespace TheClinicApp.Stock
 
         protected void ImgBtnUpdate_Command(object sender, CommandEventArgs e)
         {
+            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+            string[] ExistingStock = e.CommandArgument.ToString().Split(new char[] { '|' });
 
+            //if (ExistingStock.Length > 0)
+            //{
+            //    string UniqueID = ExistingStock[0];
+            //    string MedicineID = ExistingStock[1];
+
+            //    IssuedtlObj.UniqueID = Guid.Parse( ExistingStock[0]);
+            //    IssuedtlObj.ClinicID = UA.ClinicID.ToString();
+            //    IssuedtlObj.MedicineID = ExistingStock[1];
+            //}
+                //IssuedtlObj.UpdateIssueDetails();
+           
+            
         }
 
         #endregion Events

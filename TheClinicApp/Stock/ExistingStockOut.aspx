@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="ExistingStockOut.aspx.cs" Inherits="TheClinicApp.Stock.ExistingStockOut" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="../Scripts/DeletionConfirmation.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -18,10 +19,6 @@
 
        </script>
  
-
-
-
-
 
 
 
@@ -46,7 +43,7 @@
 
                                 <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("IssueID")+"|"+Eval("IssuedTo")+"|"+Eval("IssueNO")+"|"+Eval("Date")+"|"+Eval("Qty")+"|"+Eval("MedCode")+"|"+Eval("MedicineName")+"|"+Eval("CategoryName")%>' OnCommand="ImgBtnUpdate_Command" />
+                                    <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("UniqueID")+"|"+ Eval("IssueID")+"|"+Eval("MedicineID")+"|"+Eval("IssuedTo")+"|"+Eval("IssueNO")+"|"+Eval("Date")+"|"+Eval("Qty")+"|"+Eval("MedCode")+"|"+Eval("MedicineName")+"|"+Eval("CategoryName")%>' OnCommand="ImgBtnUpdate_Command" />
 
 
                                 </ItemTemplate>
@@ -56,7 +53,7 @@
 
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="ImgBtnDelete" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("UniqueID")+"|"+Eval("MedicineID")%>' OnClientClick="ConfirmDelete()"  OnCommand="ImgBtnDelete_Command" />
+                                        <asp:ImageButton ID="ImgBtnDelete" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("UniqueID")+"|"+Eval("MedicineID")%>' OnClientClick="return ConfirmDelete();"  OnCommand="ImgBtnDelete_Command" />
 
 
                                     </ItemTemplate>

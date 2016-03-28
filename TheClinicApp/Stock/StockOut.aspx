@@ -56,7 +56,7 @@
     </style>
 
  <%--   //------------- POPUP SCRIPT ---------%>
-
+    <script src="../Scripts/DeletionConfirmation.js"></script>
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
  
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
@@ -86,11 +86,11 @@
         </script> 
     
     <script type="text/javascript">
-
+        var ID;
 
         $(function () {
             $("[id*=gvIssueHD] td").click(function () {
-
+                
                 DisplayDetails($(this).closest("tr"));
             });
         });
@@ -100,9 +100,9 @@
             var issueID = "";
             //issueID = $("td", row).eq(0).html();
 
-            var issueID = $("td", row).closest('td').prev('td').text();
+            //var issueID = $("td", row).closest('td').prev('td').text();
          
-             window.location = "ExistingStockOut.aspx?IssueID=" + issueID;
+             window.location = "ExistingStockOut.aspx?IssueID=" + ID;
             
         }
 
@@ -155,7 +155,7 @@
             $("[id*=gvIssueHD] tr").not($("[id*=gvIssueHD] tr:first-child")).remove();
             if (IssueHD.length > 0) {
                 $.each(IssueHD, function () {
-
+                    ID =     $(this).find("IssueID").text();
                     //$("td", row).eq(0).html('<a href="NewIssue.aspx">' + $(this).find("RefNo1").text() + '</a>');
                       
 
@@ -163,8 +163,9 @@
                          issueID = $("td", row).eq(0).html();
                     //$("td", row).eq(0).html('<a href="ExistingStockOut.aspx?issueID="' + issueID + '">' + $(this).find("IssueID").text() + '</a>');
 
+                         $("td", row).eq(0).html('<input type="button" value = "Delete" onClick="Javacsript:ConfirmDelete()" ">');
 
-                         $("td", row).eq(0).html($(this).find("IssueID").text());
+                         //$("td", row).eq(0).html($(this).find("IssueID").text());
                         $("td", row).eq(1).html($(this).find("IssueNO").text());
                         $("td", row).eq(2).html($(this).find("IssuedTo").text());
                         
