@@ -157,8 +157,7 @@
         var row;
         function OnSuccess(response) {
             
-            var xmlDoc = $.parseXML(response.d);
-            var xml = $(xmlDoc);
+            
             var Medicines = xml.find("Medicines");
             if (row == null) {
                 row = $("[id*=gvMedicines] tr:last-child").clone(true);
@@ -174,6 +173,7 @@
                      //$("td", row).eq(0).html($(this).find("MedicineCode").text());
                     $("td", row).eq(1).html($(this).find("MedicineName").text());
                     $("td", row).eq(2).html($(this).find("CategoryName").text());
+                    $("td", row).eq(3).html($(this).find("Qty").text());
                     $("[id*=gvMedicines]").append(row);
                     row = $("[id*=gvMedicines] tr:last-child").clone(true);
                 });
@@ -221,8 +221,8 @@
 
                 <asp:BoundField DataField="MedicineName" HeaderText="Medicine Name"  ItemStyle-CssClass="Match"  />
                 <asp:BoundField DataField="CategoryName" HeaderText="Category Name"  ItemStyle-CssClass="Match"  />
-
-
+                  <asp:BoundField DataField="Qty" HeaderText="Qty"  ItemStyle-CssClass="Match"  />
+                
             </Columns>
             <EditRowStyle BackColor="#0080AA"></EditRowStyle>
 
