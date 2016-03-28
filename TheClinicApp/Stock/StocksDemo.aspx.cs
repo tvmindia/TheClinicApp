@@ -41,13 +41,13 @@ namespace TheClinicApp.Stock
             dummy.Columns.Add("MedicineName");
             dummy.Columns.Add("CategoryName");
             dummy.Columns.Add("MedicineCode");
+            dummy.Columns.Add("Qty");
             dummy.Rows.Add();
             gvMedicines.DataSource = dummy;
             gvMedicines.DataBind();
         }
 
         #endregion Bind Dummy Row
-
 
         #endregion Methods
 
