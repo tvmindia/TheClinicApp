@@ -40,7 +40,7 @@
                 {
                     iCnt=1;
 
-                  //  debugger;
+                    //  debugger;
                     $(container).append('<table style="width:80%"><tr><td><label >Medicine Name</label></td><td ><label >Unit</label></td><td ><label >Medicine Code</label></td><td ><label >Cateorgy</label></td><td ><label >Quantity</label></td></tr> </table>');
                     
                     $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Quantity" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="HiddenReceiptID'+iCnt+'" type="hidden" /></td></tr> </table>');
@@ -188,16 +188,24 @@
             var Medicines = xml.find("Medicines");
             var i=1;
            
-            if (Medicines.length > 0) {
+            if (Medicines.length > 0)
+            {
                 $.each(Medicines, function () {
                    
-              
-                    
-                    var Medicinename =   $(this).find("MedicineName").text() ;
+                                        
+                    var MedicineName =   $(this).find("MedicineName").text() ;
+                    var MedicineCode = $(this).find("MedCode").text();
+                    var MedicineUnit = $(this).find("Unit").text();
+                    var MedicineCategory = $(this).find("CategoryName").text();
+                    var MedicineQuantity= $(this).find("QTY").text();
                   
-                    alert(Medicinename);
+                    
 
-                    document.getElementById('txtMedicine'+i).value=   Medicinename;
+                    document.getElementById('txtMedicine'+i).value=   MedicineName;
+                    document.getElementById('txtCode'+i).value=   MedicineCode;
+                    document.getElementById('txtUnit'+i).value=   MedicineUnit;
+                    document.getElementById('txtCategory'+i).value=   MedicineCategory;
+                    document.getElementById('txtQuantity'+i).value=   MedicineQuantity;
                    
                     i=i+1;
                     
