@@ -131,6 +131,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Admin\AssignRoles.aspx" />
+    <Content Include="Admin\Masters.aspx" />
     <Content Include="Admin\User.aspx" />
     <Content Include="AutofillGrid.aspx" />
     <Content Include="Content\accodin.css" />
@@ -336,6 +337,13 @@
     </Compile>
     <Compile Include="Admin\AssignRoles.aspx.designer.cs">
       <DependentUpon>AssignRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Masters.aspx.cs">
+      <DependentUpon>Masters.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Masters.aspx.designer.cs">
+      <DependentUpon>Masters.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\User.aspx.cs">
       <DependentUpon>User.aspx</DependentUpon>

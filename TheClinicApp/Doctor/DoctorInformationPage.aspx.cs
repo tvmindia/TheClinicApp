@@ -117,7 +117,6 @@ namespace TheClinicApp.Doctor
             DataRow dr = null;
             Patient PatientObj = new Patient();
             ClinicDAL.Doctor DoctorObj = new ClinicDAL.Doctor();
-            ClinicDAL.CaseFile.Visit VisitObj = new ClinicDAL.CaseFile.Visit();
             PatientObj.PatientID = Guid.Parse(e.CommandArgument.ToString());
             Guid PatientIDForFile = Guid.Parse(e.CommandArgument.ToString());
 
@@ -128,7 +127,7 @@ namespace TheClinicApp.Doctor
             Guid FileIDForGrid =Guid.Parse(dr["FileID"].ToString());
 
             DataTable GridBindVisits = new DataTable();
-            GridBindVisits=VisitObj.GetGridVisits(FileIDForGrid);
+            GridBindVisits=CaseFileObj.GetGridVisits(FileIDForGrid);
             GridViewVisitsHistory.EmptyDataText = "No Records Found";
             GridViewVisitsHistory.DataSource = GridBindVisits;
             GridViewVisitsHistory.DataBind();
@@ -155,34 +154,34 @@ namespace TheClinicApp.Doctor
 
         protected void ImgBtnUpdateVisits_Command(object sender, CommandEventArgs e)
         {
-            ClinicDAL.CaseFile.Visit VisitsObj = new ClinicDAL.CaseFile.Visit();
+            
             string[] Visits = e.CommandArgument.ToString().Split(new char[] { '|' });
-            VisitsObj.VisitID=Guid.Parse(Visits[0]);
-            VisitsObj.GetVisits();
-            txtHeight.Text = VisitsObj.Height.ToString();
-            txtWeight.Text = VisitsObj.Weight.ToString();
-            txtSymptoms.Text = VisitsObj.Symptoms;
-            txtCardiovascular.Text = VisitsObj.Cardiovascular;
-            txtNervoussystem.Text = VisitsObj.Nervoussystem;
-            txtMusculoskeletal.Text = VisitsObj.Musculoskeletal;
-            txtPalloe.Text = VisitsObj.Palloe;
-            txtIcterus.Text = VisitsObj.Icterus;
-            txtClubbing.Text = VisitsObj.Clubbing;
-            txtCyanasis.Text = VisitsObj.Cyanasis;
-            txtBowel.Text = VisitsObj.Bowel;
-            txtAppettie.Text = VisitsObj.Appettie;
-            txtMicturation.Text = VisitsObj.Micturation;
-            txtSleep.Text = VisitsObj.Sleep;
-            txtdiagnosis.Text = VisitsObj.Diagnosys;
-            txtRemarks.Text = VisitsObj.Remarks;
-            txtPulse.Text = VisitsObj.Pulse;
-            txtBp.Text = VisitsObj.Bp;
-            txtTounge.Text = VisitsObj.Tounge;
-            txtHeart.Text = VisitsObj.Heart;
-            txtLymphGen.Text = VisitsObj.LymphGen;
-            txtLymphClinic.Text = VisitsObj.LymphClinic;
-            txtRespRate.Text = VisitsObj.RespRate;
-            txtOthers.Text = VisitsObj.Others;
+            CaseFileObj.VisitID = Guid.Parse(Visits[0]);
+            CaseFileObj.GetVisits();
+            txtHeight.Text = CaseFileObj.Height.ToString();
+            txtWeight.Text = CaseFileObj.Weight.ToString();
+            txtSymptoms.Text = CaseFileObj.Symptoms;
+            txtCardiovascular.Text = CaseFileObj.Cardiovascular;
+            txtNervoussystem.Text = CaseFileObj.Nervoussystem;
+            txtMusculoskeletal.Text = CaseFileObj.Musculoskeletal;
+            txtPalloe.Text = CaseFileObj.Palloe;
+            txtIcterus.Text = CaseFileObj.Icterus;
+            txtClubbing.Text = CaseFileObj.Clubbing;
+            txtCyanasis.Text = CaseFileObj.Cyanasis;
+            txtBowel.Text = CaseFileObj.Bowel;
+            txtAppettie.Text = CaseFileObj.Appettie;
+            txtMicturation.Text = CaseFileObj.Micturation;
+            txtSleep.Text = CaseFileObj.Sleep;
+            txtdiagnosis.Text = CaseFileObj.Diagnosys;
+            txtRemarks.Text = CaseFileObj.Remarks;
+            txtPulse.Text = CaseFileObj.Pulse;
+            txtBp.Text = CaseFileObj.Bp;
+            txtTounge.Text = CaseFileObj.Tounge;
+            txtHeart.Text = CaseFileObj.Heart;
+            txtLymphGen.Text = CaseFileObj.LymphGen;
+            txtLymphClinic.Text = CaseFileObj.LymphClinic;
+            txtRespRate.Text = CaseFileObj.RespRate;
+            txtOthers.Text = CaseFileObj.Others;
             btnnew.Visible = true;
             string PrescriptionID = Visits[1];
         }

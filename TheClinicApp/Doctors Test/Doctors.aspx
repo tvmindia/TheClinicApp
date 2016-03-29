@@ -4,6 +4,7 @@
 
 <html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><script id="tinyhippos-injected">if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }</script><!--<![endif]-->
 <head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -22,7 +23,7 @@
     
     <script src="../Content/DoctorStyle/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     <style>
-    .bt {
+    .bt,.bt1 {
    border: 2px solid #66ff66;
    background: #666666;
    color: #ffffff;
@@ -31,86 +32,109 @@
    text-decoration: none;
    vertical-align: middle;
    }
+    
+    .table {
+    margin-bottom: 5px;
+    max-width: 100%;
+    width: 100%;
+}
         </style>
     
 </head>
 
     <body>
-         <script>
-             $(document).ready(function () {
+        
+        <script>
+            $(document).ready(function () {
+                                
+                var iCnt = 0;
 
-                  $("body").on("click", "#remove", function () {
-                     $(this).closest("div").remove();
-                 });
+                //Removing Div on btRemove button click
+                $("body").on("click", "#btRemove", function () {
+                    debugger;
+                    if (iCnt >= 1) {
+                        $(this).closest("div").remove();
 
-                 var iCnt = 0;
-                 // CREATE A "DIV" ELEMENT AND DESIGN IT USING JQUERY ".css()" CLASS.
-                 var container = $(document.createElement('div')).css({
-                     width: '100%',
-                     borderTopColor: '#FFFFFF', borderBottomColor: '#FFFFFF',
-                     borderLeftColor: '#FFFFFF', borderRightColor: '#FFFFFF'
-                 });
+                        if ($('#btAdd' + (iCnt) + '').css('visibility') == 'visible') {
+                            debugger;
+                            alert(0010);
+                            //Nothing doing
+                        }
+                        else {
+
+                            $('#btAdd' + (iCnt - 1) + '').css('visibility', 'visible')
 
 
-                 $('body').on('click', '#btAdd', function () {
-                     
-                     if (iCnt <= 19) {
-                         iCnt = iCnt + 1;
-                        
-                     // ADD TEXTBOX.
-                         $(container).append('<div><table class="table" style="width:100%;border:0;"><tr><td><input id="txtMedname5" type="text" class="input" placeholder="Medicine"/></td><td><input id="txtMedname5" type="text" class="input" placeholder="Timmings"/></td><td><input id="txtMeddoz5" type="text" class="input" placeholder="Dozage"/></td><td><input id="txtMedDays5" type="text" class="input" placeholder="Days"/></td><td style="background:#E6E5E5"><input type="button" value="-" id="remove" class="bt" style="width:20px" /></td><td style="background:#E6E5E5"><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" style="width:20px" /></td></tr></table><div>');
+                        }
+                        iCnt = iCnt - 1;
+                    }
 
-                     // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
-                     if (iCnt == 1) {
-                         var divSubmit = $(document.createElement('div'));
-                         $(divSubmit).append('<input type=button class="button" onclick="GetTextValue()"' + 'id=btSubmit value=Submit />');
-                     }
-                     // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
+                });
 
-                     $('#maindiv').after(container, divSubmit);
-                 }
 
-                     // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
-                     // (20 IS THE LIMIT WE HAVE SET)
-                 else {
-                     $(container).append('<label>Reached the limit</label>');
-                     $('#btAdd').attr('class', 'bt-disable');
-                     $('#btAdd').attr('disabled', 'disabled');
-                 }
+                // CREATE A "DIV" ELEMENT AND DESIGN IT USING JQUERY ".css()" CLASS.
+                var container = $(document.createElement('div')).css({
+                    width: '100%',
+                    borderTopColor: '#FFFFFF', borderBottomColor: '#FFFFFF',
+                    borderLeftColor: '#FFFFFF', borderRightColor: '#FFFFFF'
+                });
 
-             });
-         });
+                //Onclick function for Adding Controls and Textboxes
+                $('body').on('click', ('#btAdd,.bt'), function () {
 
-         // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
-         var divValue, values = '';
+                    if (iCnt <= 100) {
+                        iCnt = iCnt + 1;
 
-         function GetTextValue() {
-             $(divValue)
-                 .empty()
-                 .remove();
-             values = '';
-             $('.input').each(function () {
-                 divValue = $(document.createElement('div')).css({
-                     padding: '5px', width: '200px'
-                 });
-                 var datas = document.getElementById('<%=HiddenField1.ClientID%>');
-                 values += this.value + '|';
-                 alert(values);
-                 datas.value = values;
-             });
+                        // ADD TEXTBOX And Controls
+                        $(container).append('<div><table class="table" style="width:100%;border:0;"><tr><td><input id="txtMedname5" type="text" class="input" placeholder="Medicine"/></td><td><input id="txtMedname5" type="text" class="input" placeholder="Timmings"/></td><td><input id="txtMeddoz5" type="text" class="input" placeholder="Dozage"/></td><td><input id="txtMedDays5" type="text" class="input" placeholder="Days"/></td><td style="background:#E6E5E5"><input type="button" id="btRemove" class="bt1" value="-" style="width:20px" /></td><td style="background:#E6E5E5"><input type="button" id="btAdd' + (iCnt) + '" value="+" onclick=this.style="visibility:hidden;" class="bt" style="width:20px" /></td></tr></table><div>');
 
-         }
+                        // ADD THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
 
-</script>
+                        $('#maindiv').after(container);
+
+                    }
+
+                        // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
+                        // (20 IS THE LIMIT WE HAVE SET)
+                    else {
+                        $(container).append('<label>Reached the limit</label>');
+                        $('#btAdd').attr('class', 'bt-disable');
+                        $('#btAdd').attr('disabled', 'disabled');
+
+                    }
+
+                });
+                var ac=null;
+                ac = <%=listFilter %>;
+                $( "#txtSearch" ).autocomplete({
+                    source: ac
+                })
+            });
+
+            // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
+            var divValue, values = '';
+
+            function GetTextValue() {
+
+                $(divValue)
+                    .empty()
+                    .remove();
+                values = '';
+                $('.input').each(function () {
+                    divValue = $(document.createElement('div')).css({
+                        padding: '5px', width: '200px'
+                    });
+                    var datas = document.getElementById('<%=HiddenField1.ClientID%>');
+                    values += this.value + '|';
+                    alert(values);
+                    datas.value = values;
+                });
+
+            }
+         </script>
+         
         <form runat="server">
-        
-       
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-        
-
+                  
          <!-- #main-container -->
          
          
@@ -131,10 +155,10 @@
          <div class="tagline">Doctors Live Sheet</div>
          <div class="grey_sec">
          <div class="search_div">
-         <input class="field" type="search" placeholder="Search here...">
+         <input class="field" id="txtSearch" type="search" placeholder="Search here...">
          <input class="button" type="submit" value="Search">
          </div>
-         <ul class="top_right_links"><li><a class="save" id="btnsave" onserverclick="btnsave_ServerClick" runat="server"><span></span>Save</a></li><li><a class="new" href="#"><span></span>New</a></li></ul>
+         <ul class="top_right_links"><li><a class="save" id="btnsave" onclick="GetTextValue();" onserverclick="btnsave_ServerClick" runat="server"><span></span>Save</a></li><li><a class="new" href="#"><span></span>New</a></li></ul>
          </div>
          <div class="right_form">
          
@@ -143,7 +167,7 @@
          <div class="fields">
          <div class="field_div"><label>Name</label>:<label id="lblName" /></div>
          <div class="field_div"><label>Age</label>:<label id="lblAge" /></div>
-         <div class="field_div"><label>Phone Number</label>:<label id="lblPhone" /></div>
+         <div class="field_div"><label>Mobile</label>:<label id="lblPhone" /></div>
          <div class="field_div"><label>Address</label>:<label id="lblAddress" /></div>
          </div>         
          </div>
@@ -154,6 +178,7 @@
   <div class="row field_row">
   <div class="col-lg-4">
   <div class="row">
+      
   <div class="col-lg-8"><label for="height">Height</label>  
   <div class="input-group spinner height" data-trigger="spinner" id="customize-spinner">
           <input type="text" class="form-control text-center" value="1" data-max="200" data-min="1" data-step="1" id="txtHeight" runat="server" >
@@ -261,8 +286,8 @@
   </tr>
   <tr>
      <td ><input id="Text4" type="text" placeholder="Medicine" class="input"/></td><td ><input id="txtMedname4" class="input" type="text" placeholder="Timing" /></td><td ><input id="txtMeddoz4" type="text" placeholder="Dozage" class="input"/></td><td ><input id="txtMedprescription4" type="text" placeholder="Days" class="input"/></td><td style="background:#E6E5E5">
-    <input type="button" value="-" class="bt" onclick="this.style.visibility = 'hidden'; btAdd.style.visibility = 'visible';" style="width:20px"/></td><td style="background:#E6E5E5">
-         <input type="button" id="btAdd" onclick="this.style.visibility = 'hidden';" value="+" class="bt" style="width:20px" />         
+    <input type="button" value="-" class="bt1" onclick="this.style.visibility = 'visible'; btAdd.style.visibility = 'visible';" style="width:20px;"/></td><td style="background:#E6E5E5">
+         <input type="button" id="btAdd" onclick="this.style.visibility = 'hidden';" value="+" class="bt1" style="width:20px" />         
          </td>
   </tr>
   </tbody>      
@@ -290,7 +315,7 @@
          <script src="../Content/DoctorStyle/js/jquery-ui.js"></script>
 <script src="../Content/DoctorStyle/js/jquery.spinner.js"></script>
          
-        
+       
 
        
 			<script>

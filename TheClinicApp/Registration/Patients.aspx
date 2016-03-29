@@ -41,7 +41,6 @@ background-color: ghostwhite;
          
     <script>
         $(document).ready(function () {
-            debugger;
             var ac=null;
             ac = <%=listFilter %>;
             $( "#txtSearch" ).autocomplete({
@@ -124,9 +123,11 @@ background-color: ghostwhite;
                     <div class="col-xs-11">
                         <div class="form-group">
                             <label class="control-label col-xs-2 regFormLabels">Sex:</label>
+
                              <div class="col-xs-10">
-                                <asp:TextBox ID="txtSex" class="form-control textBoxborder" required runat="server"  ValidationGroup="Submit"></asp:TextBox>
-                                 <asp:HiddenField ID="HiddenField3" runat="server" />
+                                
+                                 <asp:RadioButton ID="rdoMale" runat="server" GroupName="Active" Text="Male" CssClass="checkbox-inline" />
+                                <asp:RadioButton ID="rdoFemale" runat="server" GroupName="Active" Text="Female" CssClass="checkbox-inline" />
                             </div>
                         </div>
                         <div class="col-xs-1">
@@ -215,7 +216,11 @@ background-color: ghostwhite;
                         <div class="form-group">
                             <label class="control-label col-xs-2 regFormLabels">Marital:</label>
                              <div class="col-xs-10">
-                                <asp:TextBox ID="txtMarital" class="form-control textBoxborder" runat="server"></asp:TextBox>
+                               
+                                 <asp:RadioButton ID="rdoSingle" runat="server" GroupName="Status" Text="Single" CssClass="checkbox-inline" />
+                                <asp:RadioButton ID="rdoMarried" runat="server" GroupName="Status" Text="Married" CssClass="checkbox-inline" />
+                                 <asp:RadioButton ID="rdoDivorced" runat="server" GroupName="Status" Text="Divorced" CssClass="checkbox-inline" />
+                           
 
                             </div>
                         </div>
@@ -367,7 +372,7 @@ background-color: ghostwhite;
                                        
                                          <div class="form-group">
                                        
-                                        <asp:Button ID="btnSave" runat="server" Text="SAVE"  type="submit" CssClass="button" OnClick="btnSave_Click" ValidationGroup="Submit" />
+                                        <asp:Button ID="btnSave" runat="server" Text="SAVE" type="submit" CssClass="button" OnClick="btnSave_Click" ValidationGroup="Submit" />
                                         </div>
                                     </td>
                                     <td style="width:40%">
@@ -507,9 +512,7 @@ background-color: ghostwhite;
                    
                                     <div class="col-md-12">
                                           &nbsp
-                                                       <%-- hidden fields --%>
-                                     
-                                        <asp:HiddenField ID="HiddenClinicID" runat="server" />
+                                                       
                                     </div>
                                 </div>
                            
@@ -540,7 +543,7 @@ background-color: ghostwhite;
                         ....
                     </div>
                 </div>
-                <asp:HiddenField ID="HiddenField2" runat="server" />
+                
             </div>
         </div>
 
