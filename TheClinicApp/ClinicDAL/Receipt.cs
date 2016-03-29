@@ -279,6 +279,60 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion InsertReceiptHeader
 
+
+        // Reload the inserted datats into controls
+
+        #region ReloadInsertData
+
+        public DataSet InsertReloaded()
+        {
+            dbConnection dcon = null;
+            DataSet ds = null;
+            SqlDataAdapter sda = null;
+            try
+            {
+
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = dcon.SQLCon;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[GetReceiptInsertReload]";
+
+
+                cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = ReceiptID;
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
+
+                sda = new SqlDataAdapter();
+                cmd.ExecuteNonQuery();
+                sda.SelectCommand = cmd;
+                ds = new DataSet();
+                sda.Fill(ds, "Medicines");
+
+                return ds;
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                if (dcon.SQLCon != null)
+                {
+                    dcon.DisconectDB();
+                }
+
+            }
+
+        }
+
+
+        #endregion ReloadInsertData
+
         //Get Recipt Details by Passing Reference Number
         #region GetReceiptDetailsByReceiptID
 
@@ -481,6 +535,8 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion autofill
 
+
+  
 
 
         #region InsertReceiptDetails
@@ -692,6 +748,8 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion DeleteReceiptDetails
 
+
+        
 
         #endregion Methods
 

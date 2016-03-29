@@ -10,52 +10,34 @@
 namespace TheClinicApp.Stock {
     
     
-    public partial class NewIssue {
+    public partial class ExistingStockOut {
         
         /// <summary>
-        /// txtIssueNO control.
+        /// lblIssueNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIssueNO;
+        protected global::System.Web.UI.WebControls.Label lblIssueNo;
         
         /// <summary>
-        /// imgWebLnames control.
+        /// lblIssuedTo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgWebLnames;
+        protected global::System.Web.UI.WebControls.Label lblIssuedTo;
         
         /// <summary>
-        /// errorLnames control.
+        /// lblIssueDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image errorLnames;
-        
-        /// <summary>
-        /// txtIssuedTo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIssuedTo;
-        
-        /// <summary>
-        /// txtDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDate;
+        protected global::System.Web.UI.WebControls.Label lblIssueDate;
         
         /// <summary>
         /// Label5 control.
@@ -121,15 +103,6 @@ namespace TheClinicApp.Stock {
         protected global::System.Web.UI.WebControls.HiddenField HiddenField2;
         
         /// <summary>
-        /// btnAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdd;
-        
-        /// <summary>
         /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
@@ -137,6 +110,15 @@ namespace TheClinicApp.Stock {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
+        /// hdnIssueID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnIssueID;
         
         /// <summary>
         /// hdnManageGridBind control.

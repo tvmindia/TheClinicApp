@@ -30,6 +30,7 @@ namespace TheClinicApp.Admin
     {
         #region Global Variables
 
+        ClinicDAL.CryptographyFunctions CryptObj = new CryptographyFunctions();
         ClinicDAL.User userObj = new ClinicDAL.User();
         ClinicDAL.Master mstrObj = new ClinicDAL.Master();
         ClinicDAL.RoleAssign roleObj = new RoleAssign();
@@ -67,7 +68,7 @@ namespace TheClinicApp.Admin
              //userObj.ClinicID = new Guid("2c7a7172-6ea9-4640-b7d2-0c329336f289");
              userObj.createdBy = UA.userName;
              userObj.updatedBy = UA.userName;
-             userObj.passWord = Encrypt(txtPassword.Text);
+             userObj.passWord = CryptObj.Encrypt(txtPassword.Text);
 
              if (btnSave.Text == "Save")
              {
@@ -168,30 +169,30 @@ namespace TheClinicApp.Admin
 
         #endregion ValidateLoginName
 
-        #region Encrypt Password
-       private string Encrypt(string clearText)
-       {
-           string EncryptionKey = "MAKV2SPBNI99212";
-           byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
-           using (Aes encryptor = Aes.Create())
-           {
-               Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
-               encryptor.Key = pdb.GetBytes(32);
-               encryptor.IV = pdb.GetBytes(16);
-               using (MemoryStream ms = new MemoryStream())
-               {
-                   using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
-                   {
-                       cs.Write(clearBytes, 0, clearBytes.Length);
-                       cs.Close();
-                   }
-                   clearText = Convert.ToBase64String(ms.ToArray());
-               }
-           }
-           return clearText;
-       }
+       // #region Encrypt Password
+       //private string Encrypt(string clearText)
+       //{
+       //    string EncryptionKey = "MAKV2SPBNI99212";
+       //    byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
+       //    using (Aes encryptor = Aes.Create())
+       //    {
+       //        Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+       //        encryptor.Key = pdb.GetBytes(32);
+       //        encryptor.IV = pdb.GetBytes(16);
+       //        using (MemoryStream ms = new MemoryStream())
+       //        {
+       //            using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
+       //            {
+       //                cs.Write(clearBytes, 0, clearBytes.Length);
+       //                cs.Close();
+       //            }
+       //            clearText = Convert.ToBase64String(ms.ToArray());
+       //        }
+       //    }
+       //    return clearText;
+       //}
 
-       #endregion Encrypt Password
+       //#endregion Encrypt Password
 
         #endregion Methods
 

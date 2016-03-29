@@ -35,12 +35,18 @@ namespace TheClinicApp.Stock
         private void BindDummyRow()
         {
             DataTable dummy = new DataTable();
-            dummy.Columns.Add("RefNo1");
-            dummy.Columns.Add("RefNo2");
+            dummy.Columns.Add("IssueID");
+            dummy.Columns.Add("IssueNO");
+            dummy.Columns.Add("IssuedTo");
+            
+           
             //dummy.Columns.Add("Date");
             dummy.Rows.Add();
-            gvReceiptHD.DataSource = dummy;
-            gvReceiptHD.DataBind();
+
+            gvIssueHD.DataSource = dummy;
+            
+            gvIssueHD.DataBind();
+
         }
 
         //#endregion Bind Dummy Row
@@ -58,16 +64,15 @@ namespace TheClinicApp.Stock
             }
         }
 
-
-        [WebMethod]
-        public static string GetReceiptHD(string searchTerm, int pageIndex)
+         [WebMethod]
+        public static string GetIssueHD(string searchTerm, int pageIndex)
         {
             ClinicDAL.UserAuthendication UA;
             UIClasses.Const Const = new UIClasses.Const();
 
             UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
 
-            string query = "ViewAndFilterReceiptHD";
+            string query = "ViewAndFilterIssueHD";
             SqlCommand cmd = new SqlCommand(query);
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -82,6 +87,31 @@ namespace TheClinicApp.Stock
             return xml;
         }
 
+
+
+         [WebMethod]
+         public static string GetReceiptHD(string searchTerm, int pageIndex)
+         {
+             ClinicDAL.UserAuthendication UA;
+             UIClasses.Const Const = new UIClasses.Const();
+
+             UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
+
+             string query = "ViewAndFilterReceiptHD";
+             SqlCommand cmd = new SqlCommand(query);
+             cmd.CommandType = CommandType.StoredProcedure;
+
+             cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = UA.ClinicID;
+
+             cmd.Parameters.AddWithValue("@SearchTerm", searchTerm);
+             cmd.Parameters.AddWithValue("@PageIndex", pageIndex);
+             cmd.Parameters.AddWithValue("@PageSize", PageSize);
+             cmd.Parameters.Add("@RecordCount", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+             var xml = GetData(cmd, pageIndex).GetXml();
+             return xml;
+         }
+
         private static DataSet GetData(SqlCommand cmd, int pageIndex)
         {
 
@@ -94,7 +124,7 @@ namespace TheClinicApp.Stock
                     sda.SelectCommand = cmd;
                     using (DataSet ds = new DataSet())
                     {
-                        sda.Fill(ds, "ReceiptHD");
+                        sda.Fill(ds, "IssueHD");
 
                         DataTable dt = new DataTable("Pager");
                         dt.Columns.Add("PageIndex");
@@ -109,6 +139,16 @@ namespace TheClinicApp.Stock
                     }
                 }
             }
+        }
+
+        protected void btnNewIssue_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Stock/NewIssue.aspx");
+        }
+
+        protected void ImgBtnDelete_Command(object sender, CommandEventArgs e)
+        {
+
         }
 
 

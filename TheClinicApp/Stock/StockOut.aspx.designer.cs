@@ -22,12 +22,21 @@ namespace TheClinicApp.Stock {
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
         
         /// <summary>
-        /// gvReceiptHD control.
+        /// gvIssueHD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvReceiptHD;
+        protected global::System.Web.UI.WebControls.GridView gvIssueHD;
+        
+        /// <summary>
+        /// btnNewIssue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNewIssue;
     }
 }

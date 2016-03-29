@@ -56,7 +56,7 @@
     </style>
 
  <%--   //------------- POPUP SCRIPT ---------%>
-
+    <script src="../Scripts/DeletionConfirmation.js"></script>
     <script src="../Scripts/jquery-1.12.0.min.js"></script>
  
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
@@ -86,30 +86,51 @@
         </script> 
     
     <script type="text/javascript">
+        var ID;
+
+        $(function () {
+            $("[id*=gvIssueHD] td").click(function () {
+                
+                DisplayDetails($(this).closest("tr"));
+            });
+        });
+        function DisplayDetails(row) {
+            debugger;
+           
+            var issueID = "";
+            //issueID = $("td", row).eq(0).html();
+
+            //var issueID = $("td", row).closest('td').prev('td').text();
+         
+             window.location = "ExistingStockOut.aspx?IssueID=" + ID;
+            
+        }
+
+
 
 
         $(function () {
-           
-            GetReceiptHD(1);
+            debugger;
+            GetIssueHD(1);
         });
 
         $("[id*=txtSearch]").live("keyup", function () {
             debugger;
-            GetReceiptHD(parseInt(1));
+            GetIssueHD(parseInt(1));
         });
       
         $(".Pager .page").live("click", function () {
-            GetReceiptHD(parseInt($(this).attr('page')));
+            GetIssueHD(parseInt($(this).attr('page')));
         });
 
         function SearchTerm() {
             return jQuery.trim($("[id*=txtSearch]").val());
         };
-        function GetReceiptHD(pageIndex) {
+        function GetIssueHD(pageIndex) {
             debugger;
             $.ajax({
                 type: "POST",
-                url: "../Stock/StockOut.aspx/GetReceiptHD",
+                url: "../Stock/StockOut.aspx/GetIssueHD",
                 data: '{searchTerm: "' + SearchTerm() + '", pageIndex: ' + pageIndex + '}',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -127,20 +148,34 @@
             debugger;
             var xmlDoc = $.parseXML(response.d);
             var xml = $(xmlDoc);
-            var ReceiptHD = xml.find("ReceiptHD");
+            var IssueHD = xml.find("IssueHD");
             if (row == null) {
-                row = $("[id*=gvReceiptHD] tr:last-child").clone(true);
+                row = $("[id*=gvIssueHD] tr:last-child").clone(true);
             }
-            $("[id*=gvReceiptHD] tr").not($("[id*=gvReceiptHD] tr:first-child")).remove();
-            if (ReceiptHD.length > 0) {
-                $.each(ReceiptHD, function () {
-                    $("td", row).eq(0).html('<a href="#s">' + $(this).find("RefNo1").text() + '</a>');
-                    
-                    //$("td", row).eq(0).html($(this).find("RefNo1").text());
-                    $("td", row).eq(1).html($(this).find("RefNo2").text());
+            $("[id*=gvIssueHD] tr").not($("[id*=gvIssueHD] tr:first-child")).remove();
+            if (IssueHD.length > 0) {
+                $.each(IssueHD, function () {
+                    ID =     $(this).find("IssueID").text();
+                    //$("td", row).eq(0).html('<a href="NewIssue.aspx">' + $(this).find("RefNo1").text() + '</a>');
+                      
+
+                        var issueID = "";
+                         issueID = $("td", row).eq(0).html();
+                    //$("td", row).eq(0).html('<a href="ExistingStockOut.aspx?issueID="' + issueID + '">' + $(this).find("IssueID").text() + '</a>');
+
+                         $("td", row).eq(0).html('<input type="button" value = "Delete" onClick="Javacsript:ConfirmDelete()" ">');
+
+                         //$("td", row).eq(0).html($(this).find("IssueID").text());
+                        $("td", row).eq(1).html($(this).find("IssueNO").text());
+                        $("td", row).eq(2).html($(this).find("IssuedTo").text());
+                        
+                       
                     //$("td", row).eq(2).html($(this).find("Date").text());
-                    $("[id*=gvReceiptHD]").append(row);
-                    row = $("[id*=gvReceiptHD] tr:last-child").clone(true);
+                    $("[id*=gvIssueHD]").append(row);
+                    row = $("[id*=gvIssueHD] tr:last-child").clone(true);
+
+                  
+
                 });
                 var pager = xml.find("Pager");
                 $(".Pager").ASPSnippets_Pager({
@@ -169,23 +204,26 @@
 
  
         
-      
+    Search :  
   
  <asp:TextBox runat="server"  ID="txtSearch" ></asp:TextBox>
         <br />
         <br />
          <%--<asp:BoundField DataField="Date" HeaderText="Date"  ItemStyle-CssClass="Match"  />--%>
          <%--<asp:BoundField DataField="RefNo1" HeaderText="RefNo1"  ItemStyle-CssClass="Match"  />--%>
-    <asp:GridView ID="gvReceiptHD" runat="server" Style="width: 400px" AutoGenerateColumns="False">
+    <asp:GridView ID="gvIssueHD" runat="server" Style="width: 400px" AutoGenerateColumns="False">
             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
             <Columns>
             
-               
-              <asp:BoundField DataField="RefNo1" HeaderText="RefNo1"   ItemStyle-Font-Underline="true" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Blue" ItemStyle-CssClass="cursorshow" />
+             
+                 
 
-                <asp:BoundField DataField="RefNo2" HeaderText="RefNo2"  ItemStyle-CssClass="Match"  />
-               
+                <asp:BoundField DataField="IssueID" HeaderText="IssueID"    />
+              <asp:BoundField DataField="IssueNO" HeaderText="IssueNO"  ItemStyle-Font-Underline="true" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Blue" ItemStyle-CssClass="cursorshow" />
 
+                <asp:BoundField DataField="IssuedTo" HeaderText="IssuedTo"  ItemStyle-CssClass="Match"  />
+               
+                
 
             </Columns>
             <EditRowStyle BackColor="#0080AA"></EditRowStyle>
@@ -211,11 +249,15 @@
 
       <div class="Pager">
         </div>
-      
+    <br />
+    <br />
+
+
+    <asp:Button ID="btnNewIssue" runat="server" Text="New Issue" OnClick="btnNewIssue_Click" />
     
     <%--<a href="#" role="button"  id="Issue" onclick="openModal()" >New Issue</a>--%>
-    <a href="#" role="button" id="NewIssueID" data-toggle="modal" data-target="#NewIssue" onclick="SetIframeSrc('NewIssueID')">New Issue</a>
-   
+    <%--<a href="#" role="button" id="NewIssueID" data-toggle="modal" data-target="#NewIssue" onclick="SetIframeSrc('NewIssueID')">New Issue</a>--%>
+
     
   <%--   //------------- New Issue ---------%>
 

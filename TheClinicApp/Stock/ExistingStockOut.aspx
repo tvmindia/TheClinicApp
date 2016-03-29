@@ -1,63 +1,36 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="NewIssue.aspx.cs" Inherits="TheClinicApp.Stock.NewIssue" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="ExistingStockOut.aspx.cs" Inherits="TheClinicApp.Stock.ExistingStockOut" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="../Scripts/DeletionConfirmation.js"></script>
 
-  <%--   //------------- DATEPICKER SCRIPT AND  STYLES---------%>
-
+    
  <script src="../Scripts/jquery-1.12.0.min.js"></script>
  <link href="../Content/bootstrap.min.css" rel="stylesheet" />
  <script src="../Scripts/jquery-ui.js"></script>
  <link href="../Content/jquery-ui.css" rel="stylesheet" />
 
-   
-  <%--Date picker styles--%>     
-  <style>
-        .ui-autocomplete {
-            background: fixed;
-            background-color: ghostwhite;
-            box-shadow: 1px 5px 10px 5px #4d3319;
-        }
 
-        .ui-datepicker {
-            background: fixed;
-            background-color: ghostwhite;
-            box-shadow: 1px 5px 10px 5px #4d3319;
-        }
-    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-  <%--Date picker scripts--%>
-
-   <script>
-
-        $(function () {
-            $("[id$=txtDate]").datepicker({
-                dateFormat: 'dd-m-yy',
-                showOn: 'button',
-
-                buttonImageOnly: true,
-                buttonImage: '../Images/calendar4.png'
-            });
-        });
-    </script>
-
-    <script>   
+    <script>
         $(document).ready(function () {
 
-// -----------------* Manages hiddenfield inorder to bind the issue header gridview of parent page *------------//
-            if ($('#<%=hdnManageGridBind.ClientID %>').val() == "True"  ) {
-                parent.GetIssueHD(1);
-                $('#<%=hdnManageGridBind.ClientID %>').val('False');
-            }
 
+           var ac=null;
+           ac = <%=listFilter %>;
+           $( "#txtSearch" ).autocomplete({
+               source: ac
+           });
        
+        
+   
 
-//-------------*  images that represents IssueNo duplication hide and show * -------------//
+ // ----- * Manages hiddenfield inorder to bind the medicine gridview of parent page * ------//
 
-            var LnameImage = document.getElementById('<%=imgWebLnames.ClientID %>');
-            LnameImage.style.display = "none";
-            var errLname = document.getElementById('<%=errorLnames.ClientID %>');
-            errLname.style.display = "none";
-
+        if ($('#<%=hdnManageGridBind.ClientID %>').val() == "True"  ) {
+            parent.GetMedicines(1);
+            $('#<%=hdnManageGridBind.ClientID %>').val('False');
+        }
 
             var iCnt = 0;
             // CREATE A "DIV" ELEMENT AND DESIGN IT USING JQUERY ".css()" CLASS.
@@ -69,10 +42,10 @@
 
 
             $('body').on('click', '#btAdd', function () {
-                      
+                     
                 if (iCnt <= 19) {
                     iCnt = iCnt + 1;
-                          <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');
+                    <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');
                           count.value=iCnt;--%>
                     // ADD TEXTBOX.
                     $(container).append('<table style="width:80%"><tr><td><input id="txtMedname'+iCnt+'" style="width:100%" type="text" class="input" onblur="PopulateTextboxesByMedicineName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtMedcode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
@@ -105,6 +78,7 @@
             });
         });
 
+
         // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
         var divValue, values = '';
 
@@ -127,99 +101,28 @@
                 datas.value = values;
                
             });
-
-        }
-     
-
-        //---------------* Function to check Issue Number duplication *-----------------//
-
-        function CheckIssueNoDuplication(IssueNo) {
-            debugger;
-            var IssueNo = document.getElementById('<%=txtIssueNO.ClientID %>').value;
-            IssueNo = IssueNo.replace(/\s/g, '');
-
-            PageMethods.CheckIssueNoDuplication(IssueNo, OnSuccess, onError);
-
-            function OnSuccess(response, userContext, methodName) {
-
-                var LnameImage = document.getElementById('<%=imgWebLnames.ClientID %>');
-                var errLname = document.getElementById('<%=errorLnames.ClientID %>');
-                if (response == false) {
-
-                    LnameImage.style.display = "block";
-                    errLname.style.display = "none";
-
-                }
-                if (response == true) {
-                    errLname.style.display = "block";
-                    errLname.style.color = "Red";
-                    errLname.innerHTML = "Name Alreay Exists"
-                    LnameImage.style.display = "none";
-
-                }
-            }
-            function onError(response, userContext, methodName) {
-
-            }
         }
 
-
-    </script>
-
-    <script>
-
-        $(document).ready(function () {
-             
-            var ac=null;
-            ac = <%=listFilter %>;
-            $( "#txtSearch" ).autocomplete({
-                source: ac
-            });
-        });
-        
-    </script>
-
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+       </script>
+ 
 
 
-    <table>
 
-         <tr>
-             <td>Issue No </td>
-            <td>
-                <asp:TextBox ID="txtIssueNO" runat="server" onchange="CheckIssueNoDuplication(this)"></asp:TextBox></td>
-        </tr>
-             
-       <asp:Image ID="imgWebLnames" runat="server" ToolTip="Login Name is Available" ImageUrl="~/Images/Check.png" Width="4%" Height="3%"  />
-                                        
-      <asp:Image ID="errorLnames" runat="server" ToolTip="Login Name is Unavailable" ImageUrl="~/Images/newClose.png"  />
-
-        <tr>
-            <td>Issued To </td>
-            <td>
-                <asp:TextBox ID="txtIssuedTo" runat="server"></asp:TextBox>
-               
-            </td>
-        </tr>
-
-        <tr>
-            <td>Date </td>
-            <td> <asp:TextBox ID="txtDate" runat="server"></asp:TextBox></td>
-
-        </tr>
-        
-       
-    </table>
-
+    Issue No :
+    <asp:Label ID="lblIssueNo" runat="server" Text=""></asp:Label>
     <br />
-     <br />
-     <br />
-     <br />
-     <br />
 
+    Issued To :
+    <asp:Label ID="lblIssuedTo" runat="server" Text=""></asp:Label>
+    <br />
 
-    <table>
+    Date :
+    <asp:Label ID="lblIssueDate" runat="server" Text=""></asp:Label>
+    <br />
+
+     <br />
+     <br />
+       <table>
         <tr>
             <td>
                     <div class="col-lg-12">
@@ -277,8 +180,8 @@
     </table>
     <br />
     <br />
+    
 
- <asp:Button ID="btnAdd" runat="server" Text="Save" OnClick="btnAdd_Click" OnClientClick="GetTextBoxValues()" />
  <%--<asp:Button ID="btnNew" runat="server" Text="New" OnClick="btnNew_Click" />--%>
 
 
@@ -337,6 +240,68 @@
 
     </script>
 
-     <asp:HiddenField ID="hdnManageGridBind" runat="server"  Value="False"/>
+
+
+    <%--<asp:GridView ID="dtgExistingIssueByIssueNo" runat="server" AutoGenerateColumns="False" Style="text-align: center; width: 100%;" CellPadding="4" ForeColor="#333333" GridLines="None" Height="30px">
+                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                            <Columns>
+
+                                <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("UniqueID")+"|"+ Eval("IssueID")+"|"+Eval("MedicineID")+"|"+Eval("IssuedTo")+"|"+Eval("IssueNO")+"|"+Eval("Date")+"|"+Eval("Qty")+"|"+Eval("MedCode")+"|"+Eval("MedicineName")+"|"+Eval("CategoryName")%>' OnCommand="ImgBtnUpdate_Command" />
+
+
+                                </ItemTemplate>
+
+                            </asp:TemplateField>
+
+
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="ImgBtnDelete" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("UniqueID")+"|"+Eval("MedicineID")%>' OnClientClick="return ConfirmDelete();"  OnCommand="ImgBtnDelete_Command" />
+
+
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="MedicineName" HeaderText="Medicine Name">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="CategoryName" HeaderText="Category Name">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+
+                                 <asp:BoundField DataField="Unit" HeaderText="Unit">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+
+                                <asp:BoundField DataField="Qty" HeaderText="Qty">
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                                </asp:BoundField>
+                                
+                            </Columns>
+                            <EditRowStyle HorizontalAlign="Center" BackColor="#0080AA"></EditRowStyle>
+
+                            <FooterStyle BackColor="#0080AA" ForeColor="White" Font-Bold="True"></FooterStyle>
+
+                          
+                            <HeaderStyle BackColor="#009933" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                            <PagerStyle HorizontalAlign="Center" ForeColor="White" BackColor="#2461BF"></PagerStyle>
+
+                            <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                        </asp:GridView>--%>
+
+    <asp:HiddenField ID="hdnIssueID" runat="server" />
+      <asp:HiddenField ID="hdnManageGridBind" runat="server"  Value="False"/>
 
 </asp:Content>

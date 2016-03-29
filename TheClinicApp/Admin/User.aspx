@@ -351,7 +351,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:ImageButton ID="ImgBtnDelete" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("UserID")%>' OnCommand="ImgBtnDelete_Command" OnClientClick="ConfirmDelete()" formnovalidate />
+                                    <asp:ImageButton ID="ImgBtnDelete" runat="server" ImageUrl="~/Images/Cancel.png" CommandName="CommentDelete" CommandArgument='<%# Eval("UserID")%>' OnCommand="ImgBtnDelete_Command" OnClientClick=" return ConfirmDelete()" formnovalidate />
 
                                 </ItemTemplate>
                             </asp:TemplateField>
