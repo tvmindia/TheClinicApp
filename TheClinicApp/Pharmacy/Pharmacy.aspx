@@ -182,7 +182,7 @@
                         <td>
 
                             <span class="auto-style4" />
-                            <input type="button" id="btAdd" onclick="this.style.visibility = 'hidden';" value="+" class="bt" />
+                            <input type="button" id="btAdd" value="+" class="bt" />
 
                         </td>
                     </tr>
@@ -282,4 +282,5 @@
             
         </footer>
     </div>
+  
 </asp:Content>

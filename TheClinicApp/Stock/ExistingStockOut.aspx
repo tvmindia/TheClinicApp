@@ -42,7 +42,7 @@
 
 
             $('body').on('click', '#btAdd', function () {
-                alert(1)       ;
+                     
                 if (iCnt <= 19) {
                     iCnt = iCnt + 1;
                     <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');

@@ -151,15 +151,11 @@ namespace TheClinicApp.Stock
 
             HiddenFieldXmlData.Value = xml;
 
-
-            //
             string str = HiddenFieldCount.Value;
 
 
         }
        
-
-
 
         #region WebMethod
 

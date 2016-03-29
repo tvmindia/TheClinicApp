@@ -50,7 +50,7 @@ namespace TheClinicApp.ClinicDAL
             get;
             set;
         }
-        public string DOB
+        public DateTime DOB
         {
             get;
             set;
@@ -76,6 +76,16 @@ namespace TheClinicApp.ClinicDAL
             set;
         }
         public string ImageType
+        {
+            get;
+            set;
+        }
+        public string CreatedBy
+        {
+            get;
+            set;
+        }
+        public string UpdatedBy
         {
             get;
             set;
@@ -120,13 +130,12 @@ namespace TheClinicApp.ClinicDAL
                 pud.Parameters.Add("@Gender", SqlDbType.NVarChar, 50).Value = Gender;
                 pud.Parameters.Add("@MaritalStatus", SqlDbType.NVarChar, 50).Value = MaritalStatus;
                 pud.Parameters.Add("@Occupation", SqlDbType.NVarChar, 255).Value = Occupation;
-                pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = CreatedBy;
                 pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
-                pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = UpdatedBy;
                 pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
                 pud.Parameters.Add("@image", SqlDbType.Image,0).Value =Picupload;
-                pud.Parameters.Add("@ImageType", SqlDbType.NVarChar, 6).Value = ImageType;
-                
+                pud.Parameters.Add("@ImageType", SqlDbType.NVarChar, 6).Value = ImageType;               
                 SqlParameter Output = new SqlParameter();
                 Output.DbType = DbType.Int32;
                 Output.ParameterName = "@Status";
@@ -240,57 +249,8 @@ namespace TheClinicApp.ClinicDAL
         #endregion UpdatePatientDetails
 
         #region GetPatientDetails
-        public void GetPatientDetails()
-        {
-            SqlConnection con = null;
-            try
-            {
 
-                dbConnection dcon = new dbConnection();
-                con = dcon.GetDBConnection();
-                SqlCommand pud = new SqlCommand();
-                pud.Connection = con;
-                pud.CommandType = System.Data.CommandType.StoredProcedure;
-                pud.CommandText = "UpdatePatientDetails";
-                pud.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = PatientID;
-                
-                SqlParameter OutparamId = pud.Parameters.Add("@OutparamId", SqlDbType.SmallInt);
-                OutparamId.Direction = ParameterDirection.Output;
-                SqlDataReader dr;
-                dr=pud.ExecuteReader();
-                //if (int.Parse(OutparamId.Value.ToString()) != 0)
-                //{
-                //    //not successfull
-                //    var page = HttpContext.Current.CurrentHandler as Page;
-                //    eObj.UpdationSuccessData(page, "Not Updated");
-                //}
-                //else
-                //{
-                //    //successfull
-                //    var page = HttpContext.Current.CurrentHandler as Page;
-                //    eObj.UpdationSuccessData(page);
-                //}
-
-
-            }
-            catch (Exception ex)
-            {
-                //var page = HttpContext.Current.CurrentHandler as Page;
-                //eObj.ErrorData(ex, page);
-                throw ex;
-            }
-            finally
-            {
-                if (con != null)
-                {
-                    con.Dispose();
-                }
-
-            }
-
-        }
-
-        public Guid GetPatientID(string Name,string Address,string Phone,string Email,string Gender)
+        public Guid GetPatientID(string Name,string Address,string Phone,string Email)
         {
             SqlConnection con = null;
             Guid PatID = Guid.Empty;
@@ -306,7 +266,7 @@ namespace TheClinicApp.ClinicDAL
                 pud.Parameters.Add("@Address", SqlDbType.NVarChar, 255).Value = Address;
                 pud.Parameters.Add("@Phone", SqlDbType.NVarChar, 255).Value = Phone;
                 pud.Parameters.Add("@Email", SqlDbType.NVarChar, 255).Value = Email;
-                pud.Parameters.Add("@Gender", SqlDbType.NVarChar, 255).Value = Gender;
+               
 
                 SqlParameter OutparamId = pud.Parameters.Add("@OutPatientId", SqlDbType.UniqueIdentifier);
                 OutparamId.Direction = ParameterDirection.Output;
@@ -679,37 +639,6 @@ namespace TheClinicApp.ClinicDAL
         }
         #endregion SelectPatient
 
-        protected void SaveImageToDB(byte[] ImageByteArray)
-        {
-            SqlConnection con = null;
-            try
-            {
-                dbConnection dcon = new dbConnection();
-                con = dcon.GetDBConnection();
-
-                SqlCommand cmd = new SqlCommand("usp_SaveProfileImage", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@ImgBody", SqlDbType.Image, 0).Value = ImageByteArray;
-                con.Open();
-
-                cmd.ExecuteScalar();
-                con.Close();
-
-               
-            }
-            catch (Exception ex)
-            {
-                var page = HttpContext.Current.CurrentHandler as Page;
-                eObj.ErrorData(ex, page);
-                
-            }
-
-            finally
-            {
-                if (con != null && con.State != ConnectionState.Closed)
-                    con.Close();
-            }
-        }
     }
 
 }

@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
 
 namespace TheClinicApp.Doctors_Test
 {
@@ -11,11 +17,68 @@ namespace TheClinicApp.Doctors_Test
     {
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
+        public string listFilter = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            listFilter = null;
+            listFilter = BindName();
         }
 
+        #region BindDataAutocomplete
+        private string BindName()
+        {
+            // Patient PatientObj = new Patient();
+            ClinicDAL.Stocks stok = new ClinicDAL.Stocks();
+
+            DataTable dt = stok.SearchBoxMedicine();
+
+            StringBuilder output = new StringBuilder();
+            output.Append("[");
+            for (int i = 0; i < dt.Rows.Count; ++i)
+            {
+                output.Append("\"" + dt.Rows[i]["Name"].ToString() + "\"");
+
+                if (i != (dt.Rows.Count - 1))
+                {
+                    output.Append(",");
+                }
+            }
+            output.Append("]");
+            return output.ToString();
+        }
+
+
+        #region WebMethod
+
+        [WebMethod(EnableSession = true)]
+        public static string MedDetails(string MedName)
+        {
+            ClinicDAL.ReceiptDetails obj = new ClinicDAL.ReceiptDetails();
+
+            UIClasses.Const Const = new UIClasses.Const();
+            ClinicDAL.UserAuthendication UA;
+
+            UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
+
+            obj.ClinicID = UA.ClinicID.ToString();
+
+            DataSet ds = obj.GetMedCodeUnitCategory(MedName);
+
+
+            string Unit = Convert.ToString(ds.Tables[0].Rows[0]["Unit"]);
+            string MedCode = Convert.ToString(ds.Tables[0].Rows[0]["MedCode"]);
+            string Category = Convert.ToString(ds.Tables[0].Rows[0]["CategoryName"]);
+
+            return String.Format("{0}" + "|" + "{1}" + " | " + "{2}", Unit, MedCode, Category);
+
+
+
+        }
+
+
+        #endregion WebMethod
+
+        #endregion BindDataAutocomplete
 
         protected void btnsave_ServerClick(object sender, EventArgs e)
         {
@@ -53,6 +116,14 @@ namespace TheClinicApp.Doctors_Test
             VisitsObj.LymphClinic =(lymphnodes.Value!=null)? lymphnodes.Value.ToString():null;
             VisitsObj.RespRate = (resp_rate.Value!=null)? resp_rate.Value.ToString():null;
             VisitsObj.Others = (others.Value != null) ? others.Value.ToString() : null;
+            
+            
+            if(VisitsObj.Diagnosys!="")
+            {
+                VisitsObj.AddVisits();
+            }
+
+            //Fetching values of prescription from Design throurh Hiddenfield
             string values = HiddenField1.Value;
             if (values != null)
             {
@@ -62,11 +133,6 @@ namespace TheClinicApp.Doctors_Test
                 {
                     string w = Invalue[i], x = Invalue[i + 1], y = Invalue[i + 2], z = Invalue[i + 3];
                 }
-            }
-            
-            if(VisitsObj.Diagnosys!=null)
-            {
-                VisitsObj.AddVisits();
             }
         }
     }

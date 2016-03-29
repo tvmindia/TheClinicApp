@@ -22,22 +22,22 @@ namespace TheClinicApp.Registration {
         protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
-        /// txtSex control.
+        /// rdoMale control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSex;
+        protected global::System.Web.UI.WebControls.RadioButton rdoMale;
         
         /// <summary>
-        /// HiddenField3 control.
+        /// rdoFemale control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenField3;
+        protected global::System.Web.UI.WebControls.RadioButton rdoFemale;
         
         /// <summary>
         /// txtAge control.
@@ -76,13 +76,31 @@ namespace TheClinicApp.Registration {
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
         
         /// <summary>
-        /// txtMarital control.
+        /// rdoSingle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMarital;
+        protected global::System.Web.UI.WebControls.RadioButton rdoSingle;
+        
+        /// <summary>
+        /// rdoMarried control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdoMarried;
+        
+        /// <summary>
+        /// rdoDivorced control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdoDivorced;
         
         /// <summary>
         /// divDisplayNumber control.
@@ -265,15 +283,6 @@ namespace TheClinicApp.Registration {
         protected global::System.Web.UI.WebControls.Label lblToken;
         
         /// <summary>
-        /// HiddenClinicID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenClinicID;
-        
-        /// <summary>
         /// btntokenbooking control.
         /// </summary>
         /// <remarks>
@@ -281,15 +290,6 @@ namespace TheClinicApp.Registration {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btntokenbooking;
-        
-        /// <summary>
-        /// HiddenField2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenField2;
         
         /// <summary>
         /// dtgViewAllRegistration control.
