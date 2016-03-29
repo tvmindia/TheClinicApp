@@ -61,22 +61,22 @@ namespace TheClinicApp.ClinicDAL
             get;
             set;
         }
-        public string Name
+        public string ClinicName
         {
             get;
             set;
         }
-        public string Address
+        public string ClinicAddress
         {
             get;
             set;
         }
-        public string Location
+        public string ClinicLocation
         {
             get;
             set;
         }
-        public string Phone
+        public string ClinicPhone
         {
             get;
             set;
@@ -154,8 +154,8 @@ namespace TheClinicApp.ClinicDAL
                 pud.CommandType = System.Data.CommandType.StoredProcedure;
                 pud.CommandText = "[InsertGroup]";
                 pud.Parameters.Add("@GroupID", SqlDbType.UniqueIdentifier).Value = GroupID;
-                pud.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = Name;
-                pud.Parameters.Add("@Logo", SqlDbType.VarBinary, 255).Value = Phone;
+                pud.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = GroupName;
+                pud.Parameters.Add("@Logo", SqlDbType.VarBinary, 255).Value = Logo;
                 pud.Parameters.Add("@CreatedBY", SqlDbType.DateTime).Value = "Thomson";
                 pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
                 pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
@@ -222,10 +222,10 @@ namespace TheClinicApp.ClinicDAL
                 pud.CommandText = "[InsertClinics]";
                 pud.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = ClinicID;
                 pud.Parameters.Add("@GroupID", SqlDbType.UniqueIdentifier).Value = GroupID;
-                pud.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = Name;
-                pud.Parameters.Add("@Location", SqlDbType.NVarChar, 255).Value = Location;
-                pud.Parameters.Add("@Address", SqlDbType.NVarChar, 255).Value = Address;
-                pud.Parameters.Add("@Phone", SqlDbType.NVarChar, 50).Value = Phone;
+                pud.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = ClinicName;
+                pud.Parameters.Add("@Location", SqlDbType.NVarChar, 255).Value = ClinicLocation;
+                pud.Parameters.Add("@Address", SqlDbType.NVarChar, 255).Value = ClinicAddress;
+                pud.Parameters.Add("@Phone", SqlDbType.NVarChar, 50).Value = ClinicPhone;
                 pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
                 pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
                 pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
