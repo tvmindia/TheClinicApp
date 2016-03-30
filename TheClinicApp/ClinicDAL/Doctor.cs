@@ -64,46 +64,6 @@ namespace TheClinicApp.ClinicDAL
         #region Connectionstring
         dbConnection dcon = new dbConnection();
         #endregion Connectionstring
-             
-        //#region PrescriptionProperty
-        //public Guid UniqueID
-        //{
-        //    get;
-        //    set;
-        //}
-        //public Guid MedicineID
-        //{
-        //    get;
-        //    set;
-        //}
-        
-        //public string Qty
-        //{
-        //    get;
-        //    set;
-        //}
-        //public string Unit
-        //{
-        //    get;
-        //    set;
-        //}
-        //public string Dosage
-        //{
-        //    get;
-        //    set;
-        //}
-        //public string Timing
-        //{
-        //    get;
-        //    set;
-        //}
-        //public int Days
-        //{
-        //    get;
-        //    set;
-        //}
-
-        //#endregion PrescriptionProperty
 
         #region ViewAllRegistration
         /// <summary>
@@ -183,70 +143,12 @@ namespace TheClinicApp.ClinicDAL
         }
         #endregion ViewDateRegistration
 
-        //#region DeletePatientDetails
-
-        //public void DeletePatientDetails()
-        //{
-        //    SqlConnection con = null;
-        //    try
-        //    {
-
-        //        dbConnection dcon = new dbConnection();
-        //        con = dcon.GetDBConnection();
-        //        SqlCommand pud = new SqlCommand();
-        //        pud.Connection = con;
-        //        pud.CommandType = System.Data.CommandType.StoredProcedure;
-        //        pud.CommandText = "DeletePatientDetails";
-        //        pud.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = PatientID;
-
-        //        SqlParameter Output = new SqlParameter();
-        //        Output.DbType = DbType.Int32;
-        //        Output.ParameterName = "@Status";
-        //        Output.Direction = ParameterDirection.Output;
-        //        pud.Parameters.Add(Output);
-        //        pud.ExecuteNonQuery();
-        //        if (Output.Value.ToString() == "")
-        //        {
-        //            //not successfull   
-
-        //            var page = HttpContext.Current.CurrentHandler as Page;
-        //            eObj.WarningMessage(page);
-
-        //        }
-        //        else
-        //        {
-        //            //successfull
-
-        //            var page = HttpContext.Current.CurrentHandler as Page;
-        //            eObj.DeleteSuccessMessage(page);
-
-
-        //        }
-
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        var page = HttpContext.Current.CurrentHandler as Page;
-        //        eObj.ErrorData(ex, page);
-
-        //    }
-
-        //    finally
-        //    {
-        //        if (con != null)
-        //        {
-        //            con.Dispose();
-        //        }
-
-        //    }
-
-        //}
-        //#endregion DeletePatientDetails
+       
 
     }
     public class CaseFile
-    {   ErrorHandling eObj = new ErrorHandling();
+    {   
+        ErrorHandling eObj = new ErrorHandling();
 
             private DateTime CreatedDateLocal;
             private DateTime UpdatedDateLocal;
@@ -284,7 +186,7 @@ namespace TheClinicApp.ClinicDAL
             }
             #endregion Constructors
 
-        #region Fileproperty
+            #region Fileproperty
         public Guid FileID
         {
             get;
@@ -330,7 +232,7 @@ namespace TheClinicApp.ClinicDAL
         }
         #endregion Fileproperty
 
-        #region File Methods
+            #region File Methods
         #region AddFile
         public void AddFile()
         {
@@ -459,7 +361,7 @@ namespace TheClinicApp.ClinicDAL
         #endregion UpdateFile
         #endregion File Methods
 
-        #region Visit Class
+            #region Visit Class
         public class Visit
         {
             ErrorHandling eObj = new ErrorHandling();
@@ -1321,7 +1223,7 @@ namespace TheClinicApp.ClinicDAL
             #endregion Visit Attachment Class
         }
         #endregion Visit Class
-
+ 
     }
        
 }

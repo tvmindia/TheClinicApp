@@ -63,6 +63,10 @@
             {
                 NavigateUrl = "../Admin/User.aspx";
             }
+            else if (HyperLinkid == "hlkInputMasters")
+            {
+                NavigateUrl = "../Admin/Masters.aspx";
+            }
 
 
             document.getElementById('main').src = NavigateUrl;
@@ -83,7 +87,7 @@
                         &nbsp; | &nbsp; 
                         <asp:Label ID="txtclinic" runat="server" Text=""></asp:Label>&nbsp; | &nbsp; 
                         <asp:Label ID="lblGroupName" runat="server" Text=""></asp:Label>
-                           &nbsp; | &nbsp; <img src="Images/settings.png" class="settingsLogo" title="Settings/Logout"/ onclick="openSettings()">
+                           &nbsp; | &nbsp; <img src="Images/settings.png" class="settingsLogo" title="Settings/Logout"/ onclick="openSettings()" />
                     </td>
                  
                 </tr>
@@ -145,6 +149,7 @@
                  
                 <li><a id="hlkAssignRoles" onclick="OpenPageOnHyperLinkClick(id)">Assign Roles</a></li>
                <li><a id="hlkCreateUser"  onclick="OpenPageOnHyperLinkClick(id)">Create User</a> </li>
+                 <li><a id="hlkInputMasters" onclick="OpenPageOnHyperLinkClick(id)">Add Masters</a></li>
                </ul>
 
           </div>
