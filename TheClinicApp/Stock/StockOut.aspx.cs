@@ -26,16 +26,18 @@ namespace TheClinicApp.Stock
     public partial class StockOut : System.Web.UI.Page
     {
         private static int PageSize = 5;
-
+        ClinicDAL.UserAuthendication UA;
+        UIClasses.Const Const = new UIClasses.Const();
 
         //#region Methods
 
         //#region Bind Dummy Row
 
+
         private void BindDummyRow()
         {
             DataTable dummy = new DataTable();
-            dummy.Columns.Add("IssueID");
+          
             dummy.Columns.Add("IssueNO");
             dummy.Columns.Add("IssuedTo");
             

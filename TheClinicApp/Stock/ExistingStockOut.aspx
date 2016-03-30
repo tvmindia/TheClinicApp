@@ -103,9 +103,12 @@
             });
         }
 
-       </script>
- 
 
+
+    </script>
+ 
+    
+   
 
 
     Issue No :
@@ -303,5 +306,8 @@
 
     <asp:HiddenField ID="hdnIssueID" runat="server" />
       <asp:HiddenField ID="hdnManageGridBind" runat="server"  Value="False"/>
+   
+
+
 
 </asp:Content>

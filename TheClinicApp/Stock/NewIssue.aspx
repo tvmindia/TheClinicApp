@@ -1,6 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="NewIssue.aspx.cs" Inherits="TheClinicApp.Stock.NewIssue" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" validateRequest="false" CodeBehind="NewIssue.aspx.cs" Inherits="TheClinicApp.Stock.NewIssue" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+
+    <%-- NOTE :  validateRequest is set to false for disabling request validation on a page--%>
+
+
 
   <%--   //------------- DATEPICKER SCRIPT AND  STYLES---------%>
 
@@ -35,106 +40,326 @@
                 showOn: 'button',
 
                 buttonImageOnly: true,
-                buttonImage: '../Images/calendar4.png'
+                buttonImage: '../Images/calendar4.png',
+                readonly:true
             });
         });
     </script>
 
-    <script>   
-        $(document).ready(function () {
 
-// -----------------* Manages hiddenfield inorder to bind the issue header gridview of parent page *------------//
-            if ($('#<%=hdnManageGridBind.ClientID %>').val() == "True"  ) {
-                parent.GetIssueHD(1);
-                $('#<%=hdnManageGridBind.ClientID %>').val('False');
+        <script>  
+            
+//----------------------------------------------------------  * MEDICINES  * --------------------------------------------------------------------------------------------------
+
+
+//----------- * Function to add row -- it creates a row if rowcont is zero , othewise create a row and append it to the existing rows *----------//
+
+            function AddRow()
+            {
+                
+                //To Check the Reloading Condition
+                var hidCount=   document.getElementById('<%=hdnRowCount.ClientID%>').value;
+          
+                if (hidCount== "0")
+                {
+                    var iCnt = 0;
+                    // CREATE A "DIV" ELEMENT AND DESIGN IT USING JQUERY ".css()" CLASS.
+                    var container = $(document.createElement('div')).css({
+                        width:'100%',
+                        borderTopColor: '#999', borderBottomColor: '#999',
+                        borderLeftColor: '#999', borderRightColor: '#999'
+                    });
+
+
+                    if (iCnt==0)
+                    {
+                        CreateDynamicContols();
+                    }
+            
+
+
+
+                    function CreateDynamicContols()
+                    {  
+                        iCnt=1;
+
+                 
+                        $(container).append('<table style="width:80%"><tr><td><label >Medicine Name</label></td><td ><label >Unit</label></td><td ><label >Medicine Code</label></td><td ><label >Cateorgy</label></td><td ><label >Quantity</label></td></tr> </table>');
+                    
+                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Quantity" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td></tr> </table>');
+                   
+                        // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
+                    
+                
+                        $('#main').after(container);
+
+                        //$('<%=hdnRowCount.ClientID%>').after(container);
+
+                        var ac=null;
+                        ac = <%=listFilter %>;
+                        $( "#txtMedicine"+iCnt).autocomplete({
+                            source: ac
+                        });
+               
+                        $('body').on('click', '#btAdd'+iCnt, function () 
+                        {
+                            //debugger;
+                      
+                            if (iCnt <= 19)
+                            {
+                                iCnt = iCnt + 1;
+                       
+                                // ADDING  TEXTBOX CONTROLS
+                       
+                                $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd'+iCnt+'" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td></tr></table>');
+
+                                // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
+                    
+                                $('#main').after(container);                            
+                                var ac=null;
+                                ac = <%=listFilter %>;
+                                $( "#txtMedicine"+iCnt).autocomplete({
+                                    source: ac
+                                });
+
+                            }
+                                  
+                                // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
+                                // (20 IS THE LIMIT WE HAVE SET)
+                            else
+                            {
+                                $(container).append('<label>Reached the limit</label>');
+                                $('#btAdd'+iCnt).attr('class', 'bt-disable');
+                                $('#btAdd'+iCnt).attr('disabled', 'disabled');
+                            }
+
+                            //to find how many rows are currrently inserted.
+                            document.getElementById('<%=hdnRowCount.ClientID%>').value=iCnt;
+                          
+                        });
+                    }
+                    if (document.getElementById('<%=hdnRowCount.ClientID%>').value != 0) {
+                        RefillTextboxesWithXmlData();
+                    }
+
+                }
+                else
+                {
+                
+                  
+
+                    for(iCnt=1;iCnt<=hidCount;iCnt++)
+                    {
+
+
+                        var container = $(document.createElement('div')).css({
+                            width:'100%',
+                            borderTopColor: '#999', borderBottomColor: '#999',
+                            borderLeftColor: '#999', borderRightColor: '#999'
+                        });
+
+                        if (iCnt<hidCount)
+                        {
+                            // $(container).append('<table style="width:80%"><tr><td><input id="txtMedname'+i+'" style="width:100%" type="text" class="input" onblur="change('+i+')" placeholder="Medicine"/></td><td><input id="txtUnit'+i+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtMedcode'+i+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+i+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+i+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
+                            $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd'+iCnt+'" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td></tr></table>');
+                         
+
+                        }
+                        else
+                        {
+                            // $(container).append('<table style="width:80%"><tr><td><input id="txtMedname'+i+'" style="width:100%" type="text" class="input" onblur="change('+i+')" placeholder="Medicine"/></td><td><input id="txtUnit'+i+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtMedcode'+i+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+i+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+i+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
+                            $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd'+iCnt+'" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td></tr></table>');
+                        }
+
+                        $('#main').before(container);
+
+                        var ac=null;
+                        ac = <%=listFilter %>;
+                        $( "#txtMedname"+iCnt).autocomplete({
+                            source: ac
+                        });
+
+
+                    }  
+                
+                    //RefillTextboxesWithXmlData();
+
+                }
+
+
             }
+
+//------------ *   Function to get textbox values -- stores textbox values into hidden field when data is submitted *-----------//
+
+            // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
+            var divValue, values = '';
+
+            function GetTextBoxValues()
+            {
+                debugger;
+               
+
+                $(divValue)
+                    .empty()
+                    .remove();
+                values = '';
+                var i=1;
+                var HiddenfieldCount = 0;
+
+                $('.input').each(function () {
+                    divValue = $(document.createElement('div')).css({
+                        padding: '5px', width: '200px'
+                    });
+
+                    var datas = document.getElementById('<%=hdnTextboxValues.ClientID%>');
+                  
+                    
+                    if(i % 5 == 0)
+                        {
+                      
+                        HiddenfieldCount= HiddenfieldCount+1;
+                        values += this.value +document.getElementById('hdnDetailID'+HiddenfieldCount).value+'$';
+                        }
+
+                        else
+                        {
+                            values += this.value +'|'; 
+                        }
+
+                    //values += this.value +'|'; 
+                   
+                        i++;
+
+         
+                    datas.value = values;
+                    
+                });
+
+                
+
+
+            }
+
+
+
+//-----------------------* Function to bind textboxes by medicine name -- fills textboxes when focus is lost from medicine textbox  *-----------------//
+
+
+            function BindControlsByMedicneName(ControlNo) 
+            {        
+ 
+            
+                if (ControlNo>=1)
+                {
+                    var MedicineName = document.getElementById('txtMedicine'+ControlNo).value;
+                    // alert(MedicineName);
+
+                }
+           
+            
+
+                if (MedicineName!="")
+                { 
+              
+                    PageMethods.MedDetails(MedicineName,  OnSuccess, onError);  
+                }
+
+                function OnSuccess(response, userContext, methodName) 
+                {      
+                    if (ControlNo>=1)
+                    {     
+                    
+                            
+                        var string1 = new Array();
+                        string1 = response.split('|'); 
+                    
+                   
+                        document.getElementById('txtUnit'+ControlNo).value=string1[0];
+                        document.getElementById('txtCode'+ControlNo).value=string1[1];
+                        document.getElementById('txtCategory'+ControlNo).value=string1[2];
+                    
+                    }
+              
+                }          
+                function onError(response, userContext, methodName)
+                {      
+             
+                }    
+
+
+            }
+
+
+//----------------------------------- * Function to rebind medicine textboxes -- refills controls by retrieving data from xml *-----------------------
+
+            function RefillTextboxesWithXmlData()
+            {
+                debugger;
+
+                var XmlDataFromHF =   document.getElementById('<%=hdnXmlData.ClientID%>').value;
+                var xmlDoc = $.parseXML(XmlDataFromHF);
+                var xml = $(xmlDoc);
+                var Medicines = xml.find("Medicines");
+                var i=1;
+           
+                if (Medicines.length > 0)
+                {
+                    $.each(Medicines, function () {
+                   
+                                        
+                        var MedicineName      =   $(this).find("MedicineName").text() ;
+                        var MedicineCode      =   $(this).find("MedCode").text();
+                        var MedicineUnit      =   $(this).find("Unit").text();
+                        var MedicineCategory  =   $(this).find("CategoryName").text();
+                        var MedicineQuantity  =   $(this).find("QTY").text();
+                        var UniqueID          =   $(this).find("UniqueID").text();
+                    
+
+                        document.getElementById('txtMedicine'+i).value      =   MedicineName;
+                        document.getElementById('txtCode'+i).value          =   MedicineCode;
+                        document.getElementById('txtUnit'+i).value          =   MedicineUnit;
+                        document.getElementById('txtCategory'+i).value      =   MedicineCategory;
+                        document.getElementById('txtQuantity'+i).value      =   MedicineQuantity;
+
+                        document.getElementById('hdnDetailID'+i).value =  UniqueID;
+
+                        i=i+1;
+                    
+                    });
+                  
+                }
+
+
+            }
+
+
+//----------------------------------------------------------  * END MEDICINES  * --------------------------------------------------------------------------------------------------
+
+            $(document).ready(function () {
+              
+                //-------------*  images that represents IssueNo duplication hide and show * -------------//
+
+                var LnameImage = document.getElementById('<%=imgWebLnames.ClientID %>');
+                LnameImage.style.display = "none";
+                var errLname = document.getElementById('<%=errorLnames.ClientID %>');
+                errLname.style.display = "none";
+
+                AddRow();
+
+                if (document.getElementById('<%=hdnXmlData.ClientID%>').value != null) {
+                    RefillTextboxesWithXmlData();
+                }
+
+
+        });            
 
        
 
-//-------------*  images that represents IssueNo duplication hide and show * -------------//
 
-            var LnameImage = document.getElementById('<%=imgWebLnames.ClientID %>');
-            LnameImage.style.display = "none";
-            var errLname = document.getElementById('<%=errorLnames.ClientID %>');
-            errLname.style.display = "none";
-
-
-            var iCnt = 0;
-            // CREATE A "DIV" ELEMENT AND DESIGN IT USING JQUERY ".css()" CLASS.
-            var container = $(document.createElement('div')).css({
-                width:'100%',
-                borderTopColor: '#999', borderBottomColor: '#999',
-                borderLeftColor: '#999', borderRightColor: '#999'
-            });
-
-
-            $('body').on('click', '#btAdd', function () {
-                      
-                if (iCnt <= 19) {
-                    iCnt = iCnt + 1;
-                          <%--int count = document.getElementById('<%=HiddenField2.ClientID%>');
-                          count.value=iCnt;--%>
-                    // ADD TEXTBOX.
-                    $(container).append('<table style="width:80%"><tr><td><input id="txtMedname'+iCnt+'" style="width:100%" type="text" class="input" onblur="PopulateTextboxesByMedicineName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtMedcode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td></tr></table>');
-
-                    // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
-                    //if (iCnt == 1) {
-                    //    var divSubmit = $(document.createElement('div'));
-                    //    $(divSubmit).append('<input type=button class="bt" ' + 'id=btSubmit value=Submit />');
-                    //}
-                    // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
-                          
-                    $('#main').after(container);
-
-                    var ac=null;
-                    ac = <%=listFilter %>;
-                    $( "#txtMedname"+iCnt).autocomplete({
-                        source: ac
-                    });
-                          
-                }
-
-                    // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
-                    // (20 IS THE LIMIT WE HAVE SET)
-                else {
-                    $(container).append('<label>Reached the limit</label>');
-                    $('#btAdd').attr('class', 'bt-disable');
-                    $('#btAdd').attr('disabled', 'disabled');
-                }
-             
-            });
-        });
-
-        // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
-        var divValue, values = '';
-
-        function GetTextBoxValues() {
-            $(divValue)
-                .empty()
-                .remove();
-
-            values = '';
-
-            $('.input').each(function () {
-                divValue = $(document.createElement('div')).css({
-                    padding: '5px', width: '200px'
-                });
-
-                var datas = document.getElementById('<%=hdnTextboxValues.ClientID%>');
-
-                values += this.value + '|';
-              
-                datas.value = values;
-               
-            });
-
-        }
-     
-
-        //---------------* Function to check Issue Number duplication *-----------------//
+    //---------------* Function to check Issue Number duplication *-----------------//
 
         function CheckIssueNoDuplication(IssueNo) {
-            debugger;
+            
             var IssueNo = document.getElementById('<%=txtIssueNO.ClientID %>').value;
             IssueNo = IssueNo.replace(/\s/g, '');
 
@@ -166,18 +391,7 @@
 
     </script>
 
-    <script>
-
-        $(document).ready(function () {
-             
-            var ac=null;
-            ac = <%=listFilter %>;
-            $( "#txtSearch" ).autocomplete({
-                source: ac
-            });
-        });
-        
-    </script>
+   
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -211,70 +425,20 @@
         
        
     </table>
-
+    
     <br />
      <br />
      <br />
-     <br />
-     <br />
 
-
-    <table>
-        <tr>
-            <td>
-                    <div class="col-lg-12">
-                                <table style="width: 80%">
-                                    <tr>
-                                        <td style="text-align: center;">
-                                            <asp:Label ID="Label5" runat="server" Text="Medicine"></asp:Label>
-                                        </td>
-                                        <td style="text-align: center;">
-                                            <asp:Label ID="Label1" runat="server" Text="Unit"></asp:Label>
-                                        </td>
-                                        <td style="text-align: center;">
-                                            <asp:Label ID="Label7" runat="server" Text="Medicine Code"></asp:Label>
-                                        </td>
-                                        <td style="text-align: center">
-                                            <asp:Label ID="Label8" runat="server" Text="Category"></asp:Label>
-                                        </td>
-                                        <td style="text-align: center">
-                                            <asp:Label ID="Label6" runat="server" Text="Quantity"></asp:Label>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input id="txtSearch" tabindex="4" style="width: 100%" type="text" placeholder="Medicine" class="input"  onblur="PopulateTextboxesByMedicineName()" />
-                                        </td>
-                                        <td>
-                                            <input id="txtUnit" readonly="true" style="width: 100%" class="input " type="text" placeholder="Unit" />
-                                        </td>
-                                        <td>
-                                            <input id="txtCode" readonly="true" style="width: 100%" class="input " type="text" placeholder="Med Code" />
-                                        </td>
-                                        <td>
-                                            <input id="txtCategory" readonly="true" style="width: 100%" class="input " type="text" placeholder="Category" />
-                                        </td>
-                                        <td>
-                                            <input id="txtQuantity" tabindex="5" class="input" style="width: 100%" type="text" placeholder="Quantity" />
-                                        </td>
-
-                                        <td>
-                                            <span class="auto-style4">
-                                                <input type="button" id="btAdd" onclick="this.style.visibility = 'hidden';" value="+" class="bt" />
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <asp:HiddenField ID="hdnTextboxValues" runat="server" />
-                                    <asp:HiddenField ID="HiddenField2" runat="server" />
-                                </table>
-
-                                <div id="main">
+     <div id="main"  >
                                 </div>
-                            </div>
-            </td>
-        </tr>
-    </table>
+
+
+     <br />
+     <br />
+
+
+    
     <br />
     <br />
 
@@ -284,59 +448,13 @@
 
      <asp:ScriptManager ID="ScriptManager1" EnablePageMethods="true" runat="server" EnableCdn="true"></asp:ScriptManager>
 
-    <script>
-        
-        function PopulateTextboxesByMedicineName(val) 
-        {        
-            debugger;
-            x=val;
-            if (val>=1)
-            {
-                var MedicineName = document.getElementById('txtMedname'+val).value;   
-            }
-            else
-            {
-                var MedicineName = document.getElementById('txtSearch').value;   
-            }
-            
-
-            if (MedicineName!="")
-            { 
-                debugger;
-                PageMethods.MedDetails(MedicineName,  OnSuccess, onError);  
-            }
-
-            function OnSuccess(response, userContext, methodName) 
-            {      
-                if (val>=1)
-                {              
-                    var string1 = new Array();
-                    string1 = response.split('|');                 
-                    document.getElementById('txtUnit'+val).value=string1[0];
-                    document.getElementById('txtMedcode'+val).value=string1[1];
-                    document.getElementById('txtCategory'+val).value=string1[2];
-                    
-                }
-                else
-                {
-                    var string1 = new Array(); 
-                    string1 = response.split('|');                 
-                    document.getElementById('txtUnit').value=string1[0];
-                    document.getElementById('txtCode').value=string1[1];
-                    document.getElementById('txtCategory').value=string1[2];
-                   
-                }
-            }          
-            function onError(response, userContext, methodName)
-            {      
-             
-            }    
-
-
-        }
-
-    </script>
-
+   
      <asp:HiddenField ID="hdnManageGridBind" runat="server"  Value="False"/>
+
+
+     <asp:HiddenField ID="hdnXmlData" runat="server" />
+     <asp:HiddenField ID="hdnRowCount" runat="server" Value="0" />
+    <asp:HiddenField ID="hdnTextboxValues" runat="server" />
+     
 
 </asp:Content>
