@@ -88,52 +88,43 @@ namespace TheClinicApp.Stock
         #region InsertClick
         protected void btnReceipt_Click(object sender, EventArgs e)
         {
-            if ( (txtBillNo.Text != string.Empty)  && (txtRefNo2.Text != string.Empty) && (txtDate.Text != string.Empty))
+            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+
+            rpt.CreatedBy = UA.userName;
+            rpt.Date = Convert.ToDateTime(txtDate.Text);
+            rpt.RefNo1 = txtBillNo.Text;
+            rpt.RefNo2 = txtRefNo2.Text;
+            rpt.ClinicID = UA.ClinicID.ToString();
+
+            rpt.InsertReceiptHeader();
+
+            string values = HiddenField1.Value;            
+            string[] Invalue = values.Split('|');
+            int len= Invalue.Length;
+            len = len - 1;
+           
+           
+            for (int i = 0; i <len ; i = i + 5)
             {
-
-                //INSERT
-
-                //Inserting Section ReceiptHD
-
-                UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
-
-                rpt.CreatedBy = UA.userName;
-                rpt.Date = Convert.ToDateTime(txtDate.Text);
-                rpt.RefNo1 = txtBillNo.Text;
-                rpt.RefNo2 = txtRefNo2.Text;
-                rpt.ClinicID = UA.ClinicID.ToString();
-
-                rpt.InsertReceiptHeader();
-
-                //Inserting Section ReceiptDT
-                string values = HiddenField1.Value;
-                string[] Invalue = values.Split('|');
-                int len = Invalue.Length;
-                len = len - 1;
-
-
-                for (int i = 0; i < len; i = i + 5)
-                {
-                    ReceiptDetails rptdt = new ReceiptDetails();
-                    rptdt.MedicineName = Invalue[i];
-                    rptdt.QTY = Convert.ToInt32(Invalue[i + 4]);
-                    rptdt.Unit = Invalue[i + 1];
-                    rptdt.CreatedBy = UA.userName;
-                    rptdt.ClinicID = UA.ClinicID.ToString();
-                    rptdt.ReceiptID = rpt.ReceiptID;
-
-                    rptdt.InsertReceiptDetails();
-
-                }
-
-                // to reLOad added DAta To fields
-                string str = rpt.ReceiptID.ToString();
-
-                ReloadInsertFields(str);
-
+                ReceiptDetails rptdt = new ReceiptDetails();
+                rptdt.MedicineName = Invalue[i];
+                rptdt.QTY= Convert.ToInt32(Invalue[i + 4]);
+                rptdt.Unit = Invalue[i+1];
+                rptdt.CreatedBy = UA.userName;
+                rptdt.ClinicID = UA.ClinicID.ToString();
+                rptdt.ReceiptID = rpt.ReceiptID;
+                                     
+                rptdt.InsertReceiptDetails();
+               
             }
 
+
+            // to reLOad added DAta To fields
+            string str = rpt.ReceiptID.ToString();
+
+            ReloadInsertFields(str);
             
+
         }
 
         #endregion InsertClick

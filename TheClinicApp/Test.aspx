@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Test.aspx.cs" Inherits="TheClinicApp.Test" %>
 
-<!DOCTYPE html>
+<%--<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -98,7 +98,7 @@
                 </div>
                 <asp:HiddenField ID="HiddenField1" runat="server" />
             </div>
-        </div>
+        </div>--%>
   <%--<div id="test">
     <div class="user">
       <img src="http://image.priceprice.k-img.com/ph/images/common/face_japan_01.gif" alt="Esempio" class="img-thumbnail">

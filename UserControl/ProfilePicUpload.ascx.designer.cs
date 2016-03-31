@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TheClinicApp {
+namespace TheClinicApp.UserControl {
     
     
-    public partial class Test {
+    public partial class ProfilePicUpload {
     }
 }

@@ -11,6 +11,12 @@ namespace TheClinicApp.ClinicDAL
 {
     public class Master
     {
+        public Master()
+        {
+            GroupID = Guid.NewGuid();
+            ClinicID = Guid.NewGuid();
+            DoctorID = Guid.NewGuid();
+        }
         #region Global variables
 
         ErrorHandling eObj = new ErrorHandling();
@@ -48,7 +54,7 @@ namespace TheClinicApp.ClinicDAL
             get;
             set;
         }
-        public string Logo
+        public object Logo
         {
             get;
             set;
@@ -155,8 +161,8 @@ namespace TheClinicApp.ClinicDAL
                 pud.CommandText = "[InsertGroup]";
                 pud.Parameters.Add("@GroupID", SqlDbType.UniqueIdentifier).Value = GroupID;
                 pud.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = GroupName;
-                pud.Parameters.Add("@Logo", SqlDbType.VarBinary, 255).Value = Logo;
-                pud.Parameters.Add("@CreatedBY", SqlDbType.DateTime).Value = "Thomson";
+                pud.Parameters.Add("@Logo", SqlDbType.Image, 0).Value = Logo;
+                pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar,255).Value = "Thomson";
                 pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
                 pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
                 pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
@@ -257,6 +263,8 @@ namespace TheClinicApp.ClinicDAL
 
 
             }
+            
+            
             catch (Exception ex)
             {
                 var page = HttpContext.Current.CurrentHandler as Page;
