@@ -160,6 +160,9 @@
     <Content Include="Content\DoctorStyle\js\main.js" />
     <Content Include="Content\DoctorStyle\js\modernizr-2.6.2-respond-1.1.0.min.js" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Master\Masterawsome.css" />
+    <Content Include="Content\Master\MasterRed.css" />
+    <Content Include="Content\Master\Masterw3.css" />
     <Content Include="Content\mui-colors.css" />
     <Content Include="Content\mui-email-inline.css" />
     <Content Include="Content\mui-email-styletag.css" />
@@ -170,8 +173,9 @@
     <Content Include="Content\TheClinicAppDoctors.css" />
     <Content Include="Doctors Test\Doctors.aspx" />
     <Content Include="Doctors Test\DoctorTesting.aspx" />
-    <Content Include="ForgotPassword.aspx" />
+    <Content Include="Forgot.aspx" />
     <Content Include="Images\Addition .png" />
+    <Content Include="Images\Arrowhead-Down-01.png" />
     <Content Include="Images\Button-Add-icon.png" />
     <Content Include="Images\calendar 32x32.png" />
     <Content Include="Images\calendar 42x42.png" />
@@ -190,10 +194,11 @@
     <Content Include="Images\next.gif" />
     <Content Include="Images\plus.png" />
     <Content Include="Images\prev.gif" />
+    <Content Include="Images\question-mark-nothing.png" />
     <Content Include="Images\select.png" />
     <Content Include="Images\Sync-WF.png" />
     <Content Include="Pharmacy\Pharmacy.aspx" />
-    <Content Include="ResetPassword.aspx" />
+    <Content Include="Reset.aspx" />
     <Content Include="Scripts\ASPSnippets_Pager.min.js" />
     <Content Include="Scripts\bootcards.js" />
     <Content Include="Content\Input.css" />
@@ -443,12 +448,12 @@
     <Compile Include="Doctor\DoctorInformationPage.aspx.designer.cs">
       <DependentUpon>DoctorInformationPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ForgotPassword.aspx.cs">
-      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    <Compile Include="Forgot.aspx.cs">
+      <DependentUpon>Forgot.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ForgotPassword.aspx.designer.cs">
-      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    <Compile Include="Forgot.aspx.designer.cs">
+      <DependentUpon>Forgot.aspx</DependentUpon>
     </Compile>
     <Compile Include="Handler\ImageHandler.ashx.cs">
       <DependentUpon>ImageHandler.ashx</DependentUpon>
@@ -489,12 +494,12 @@
     <Compile Include="Registration\Patients.aspx.designer.cs">
       <DependentUpon>Patients.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ResetPassword.aspx.cs">
-      <DependentUpon>ResetPassword.aspx</DependentUpon>
+    <Compile Include="Reset.aspx.cs">
+      <DependentUpon>Reset.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ResetPassword.aspx.designer.cs">
-      <DependentUpon>ResetPassword.aspx</DependentUpon>
+    <Compile Include="Reset.aspx.designer.cs">
+      <DependentUpon>Reset.aspx</DependentUpon>
     </Compile>
     <Compile Include="Stock\AddNewReceipt.aspx.cs">
       <DependentUpon>AddNewReceipt.aspx</DependentUpon>

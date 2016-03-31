@@ -8,10 +8,20 @@
     <link href="../Content/Master/Masterawsome.css" rel="stylesheet" />
     <link href="../Content/Master/MasterRed.css" rel="stylesheet" />
     <link href="../Content/Master/Masterw3.css" rel="stylesheet" />
-
-
-
-
+    <style type="text/css">
+        .ddl
+        {
+            border:2px solid #009688;
+            border-radius:5px;
+            padding:3px;
+            -webkit-appearance: none; 
+            background-image:url('../Images/Arrowhead-Down-01.png');
+            background-position:120px;
+            background-repeat:no-repeat;
+            text-indent: 0.01px;/*In Firefox*/
+            text-overflow: '';/*In Firefox*/
+        }
+</style>
 <h2 class="w3-center" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;">Masters</h2>	
 <div class="w3-container">
 <div class="w3-border">
@@ -35,7 +45,10 @@
 <label class="w3-label w3-validate">Group Name</label>
 <input class="w3-input" type="text" runat="server" id="txtGroup" style="width:90%" required /></p>
 
-
+<p>
+<label class="w3-label w3-validate">Logo</label>
+    <asp:FileUpload ID="FileUpload1" runat="server" />
+</p>
 
 
 <p>
@@ -50,12 +63,18 @@
 <div id="Paris" class="w3-container city w3-animate-opacity"> 
     <h1></h1>
   <header class="w3-container w3-teal">
-  <h1>Add Clinic</h1>
+  <h1 style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;">Add Clinic</h1>
 </header>
 
 <div class="w3-container w3-half w3-margin-top">
 
-
+<p>
+<label class="w3-label w3-validate">Group Name</label>
+    <asp:DropDownList ID="DropDownList1" runat="server" Width="160px" BackColor="#F6F1DB" ForeColor="#7d6754" Font-Names="Andalus" CssClass="ddl" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="GroupID">
+        <asp:ListItem Text="----Select----"></asp:ListItem>
+    </asp:DropDownList>
+    <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:ClinicAppConnectionString4 %>' SelectCommand="SELECT [GroupID], [Name] FROM [Groups]"></asp:SqlDataSource>
+</p>
 
 <p>    
 <label class="w3-label w3-validate">Clinic Name</label>
@@ -66,7 +85,7 @@
 
  <p>
 <label class="w3-label w3-validate">Address</label>
-<input class="w3-input" type="textarea" runat="server" id="txtaddress" style="width:90%" required /></p>
+<textarea rows="4" cols="50" class="w3-input" runat="server" id="txtaddress" style="width:90%" required /></p>
 
  <p>
 <label class="w3-label w3-validate">Phone Number</label>
@@ -79,7 +98,15 @@
 
 
 </div>
+<div id="Errorbox"  style="height:25%;  display:none;"  runat="server" >
+    <a class="close" data-dismiss="alert">×</a>
+    <div>
+         <strong> <asp:Label ID="lblErrorCaption" runat="server" Text=""></asp:Label> </strong>
+        <asp:Label ID="lblMsgges" runat="server" Text=""></asp:Label>
 
+    </div>
+
+</div>  
 </div>
 </div>
 
@@ -112,7 +139,7 @@
 
 
 </div>
-
+      
 </div>
 </div>
 

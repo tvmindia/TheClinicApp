@@ -417,30 +417,30 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add(Output);
                 cmd.ExecuteNonQuery();
 
-                if (Output.Value.ToString() == "")
-                {
-                    //not successfull   
+                //if (Output.Value.ToString() == "")
+                //{
+                //    //not successfull   
 
-                    var page = HttpContext.Current.CurrentHandler as Page;
-                    eObj.InsertionNotSuccessMessage(page);
+                //    var page = HttpContext.Current.CurrentHandler as Page;
+                //    eObj.InsertionNotSuccessMessage(page);
 
-                }
-                else
-                {
-                    //successfull
+                //}
+                //else
+                //{
+                //    //successfull
 
-                    var page = HttpContext.Current.CurrentHandler as Page;
-                    eObj.InsertionSuccessMessage(page);
+                //    var page = HttpContext.Current.CurrentHandler as Page;
+                //    eObj.InsertionSuccessMessage(page);
 
 
-                }
+                //}
 
 
             }
             catch (Exception ex)
             {
-                var page = HttpContext.Current.CurrentHandler as Page;
-                eObj.ErrorData(ex, page);
+                //var page = HttpContext.Current.CurrentHandler as Page;
+                //eObj.ErrorData(ex, page);
 
             }
 
@@ -496,7 +496,7 @@ namespace TheClinicApp.ClinicDAL
 
         #region Reset Password
 
-        public void ResetPassword()
+        public void ResetPassword(Guid UserID)
         {
             dbConnection dcon = new dbConnection();
 
@@ -508,7 +508,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.CommandText = "ResetPassword";
 
-                cmd.Parameters.Add("@LoginName", SqlDbType.NVarChar, 255).Value = loginName;
+                cmd.Parameters.Add("@UserId", SqlDbType.UniqueIdentifier).Value = UserID;
                 cmd.Parameters.Add("@Password", SqlDbType.NVarChar, 40).Value = passWord;
                
 

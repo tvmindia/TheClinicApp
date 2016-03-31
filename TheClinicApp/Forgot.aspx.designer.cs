@@ -10,16 +10,16 @@
 namespace TheClinicApp {
     
     
-    public partial class ForgotPassword {
+    public partial class Forgot {
         
         /// <summary>
-        /// lblEmail control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmail;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
         /// txtEmail control.
@@ -28,16 +28,16 @@ namespace TheClinicApp {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEmail;
         
         /// <summary>
-        /// lblVerificationCode control.
+        /// btnVerificationCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVerificationCode;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnVerificationCode;
         
         /// <summary>
         /// txtVerificationCode control.
@@ -46,7 +46,7 @@ namespace TheClinicApp {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtVerificationCode;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtVerificationCode;
         
         /// <summary>
         /// btnVerify control.
@@ -55,7 +55,7 @@ namespace TheClinicApp {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVerify;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnVerify;
         
         /// <summary>
         /// lblError control.

@@ -1,13 +1,4 @@
-﻿#region CopyRight
-
-//Author      : SHAMILA T P
-//Created Date: Mar-9-2016
-
-#endregion CopyRight
-
-#region Included Namespaces
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -18,12 +9,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheClinicApp.ClinicDAL;
 
-#endregion Included Namespaces
-
 namespace TheClinicApp
 {
-    public partial class ResetPassword : System.Web.UI.Page
+    public partial class Reset : System.Web.UI.Page
     {
+        ClinicDAL.CryptographyFunctions CrypObj = new CryptographyFunctions();
+        Guid UserID;
         #region Global Variables
 
         ClinicDAL.User userObj = new ClinicDAL.User();
@@ -61,39 +52,40 @@ namespace TheClinicApp
 
         #endregion Methods
 
+
         #region Events
-
-        #region Page Load
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Request.QueryString["UserID"] != null)
+            {
+                 UserID = Guid.Parse(Request.QueryString["UserID"]);
+            }
         }
 
-        #endregion Page Load
 
         #region Reset Button Click
-        protected void btnReset_Click(object sender, EventArgs e)
+        protected void btnReset_ServerClick(object sender, EventArgs e)
         {
-            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+            
 
-            userObj.passWord = Encrypt(txtConfirmPassword.Text);
-            userObj.loginName = UA.userName;
+            userObj.passWord = CrypObj.Encrypt(txtConfirmPassword.Value);
+            
 
-            if(txtNewPassowrd.Text == txtConfirmPassword.Text)
+            if (txtNewPassword.Value == txtConfirmPassword.Value)
             {
-                userObj.ResetPassword();
+                userObj.ResetPassword(UserID);
             }
 
             else
             {
                 lblError.Text = " Password does not match the confirm password";
             }
-
         }
 
         #endregion Reset Button Click
 
         #endregion Events
+
+
     }
 }
