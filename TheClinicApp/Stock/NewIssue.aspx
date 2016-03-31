@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" validateRequest="false" CodeBehind="NewIssue.aspx.cs" Inherits="TheClinicApp.Stock.NewIssue" %>
+﻿
+<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" validateRequest="false" CodeBehind="NewIssue.aspx.cs" Inherits="TheClinicApp.Stock.NewIssue" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -218,7 +219,7 @@
                         {
                       
                         HiddenfieldCount= HiddenfieldCount+1;
-                        values += this.value +document.getElementById('hdnDetailID'+HiddenfieldCount).value+'$';
+                        values += this.value +'|'+document.getElementById('hdnDetailID'+HiddenfieldCount).value+'$';
                         }
 
                         else
@@ -337,6 +338,7 @@
 
             $(document).ready(function () {
               
+                
                 //-------------*  images that represents IssueNo duplication hide and show * -------------//
 
                 var LnameImage = document.getElementById('<%=imgWebLnames.ClientID %>');
@@ -456,5 +458,7 @@
      <asp:HiddenField ID="hdnRowCount" runat="server" Value="0" />
     <asp:HiddenField ID="hdnTextboxValues" runat="server" />
      
+
+    <asp:HiddenField ID="hdnHdrInserted" runat="server" />
 
 </asp:Content>

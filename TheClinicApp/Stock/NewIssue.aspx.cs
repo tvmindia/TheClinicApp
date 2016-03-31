@@ -30,9 +30,10 @@ namespace TheClinicApp.Stock
         #region Global Variables
 
         IssueHeaderDetails IssuehdrObj = new IssueHeaderDetails();
-        IssueDetails IssuedtlObj = new IssueDetails();
+        //IssueDetails IssuedtlObj = new IssueDetails();
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
+      
        
         #endregion Global Variables
 
@@ -214,34 +215,13 @@ namespace TheClinicApp.Stock
         #region Add Button Click
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            //int RowCount = 0;
-
-            //RowCount = Convert.ToInt32(hdnRowCount.Value);
-
+            
             //HiddenField hdnDetailID = (HiddenField)main.FindControl("hdnDetailID1");
-            //string DetailID = hdnDetailID.Value;
+           
             if ( (txtIssueNO.Text != string.Empty)  && (txtIssuedTo.Text != string.Empty) && (txtDate.Text != string.Empty))
             {
-
-                //string IssueID = IssuehdrObj.IssueID.ToString();
-                //DataSet dsIssue = GetIssueDetailsByIssueID(IssueID);
-
-                //foreach (DataRow dr in dsIssue.Tables[0].Rows)
-                //{
-                //    string MedicineName = dr["MedicineName"].ToString();
-                //    string Unit = dr["Unit"].ToString();
-                //    string Code = dr["Code"].ToString();
-                //    string CategoryName = dr["CategoryName"].ToString();
-                //    int Qty = Convert.ToInt32(dr["QTY"]);
-                //}
-
-
-                string values = hdnTextboxValues.Value;
-
-                string[] Rows = values.Split('$');
-
-                int RowsLastIndex = Rows.Length - 1;
-
+                string last = string.Empty;
+                
                 UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
 
                 IssuehdrObj.ClinicID = UA.ClinicID.ToString();
@@ -251,51 +231,64 @@ namespace TheClinicApp.Stock
 
                 IssuehdrObj.Date = Convert.ToDateTime(txtDate.Text);
 
-                if (Rows[RowsLastIndex] == string.Empty)
+                if (hdnHdrInserted.Value == "")
                 {
                     IssuehdrObj.InsertIssueHeader();
+                    hdnHdrInserted.Value = "True";
                 }
 
-                      for (int i = 0; i < Rows.Length - 1; i++)
-                      {
+                string values = hdnTextboxValues.Value;
 
-                          IssueDetails IssuedtlObj = new IssueDetails(); //Object is created in loop as each entry should have different uniqueID
+                string[] Rows = values.Split('$');
 
-                          string[] columns = Rows[i].Split('|');
+                int RowsLastIndex = Rows.Length - 1;
 
-                          IssuedtlObj.MedicineName = columns[0];
-                          IssuedtlObj.Unit = columns[1];
-                          IssuedtlObj.Qty = Convert.ToInt32(columns[4]);
-
-                          IssuedtlObj.CreatedBy = UA.userName; ;
-                          IssuedtlObj.ClinicID = UA.ClinicID.ToString();
-                          IssuedtlObj.IssueID = IssuehdrObj.IssueID;
-
-                          if (Rows[RowsLastIndex] == string.Empty)
-                          {
- //----------------- * CASE :INSERT *-----------------------------------//
-                              IssuedtlObj.InsertIssueDetails();
-                          }
-
-                          else
-                          {
-
- //----------------- * CASE : UPDATE *-----------------------------------//
-
-                              string uniqueID = Rows[RowsLastIndex];
-                              IssueDetails UpIssueDtlObj = new IssueDetails(new Guid(uniqueID));
-
-                              UpIssueDtlObj.ClinicID = UA.ClinicID.ToString();
-                              UpIssueDtlObj.Qty = Convert.ToInt32(columns[4]);
-                              UpIssueDtlObj.UpdatedBy = UA.userName;
-
-                             string medicineID  = IssuedtlObj.GetMedcineIDByMedicineName(columns[0]);
-
-                             UpIssueDtlObj.UpdateIssueDetails(uniqueID, medicineID);
+                for (int i = 0; i < Rows.Length - 1; i++)
+                {
+                    IssueDetails IssuedtlObj = new IssueDetails(); //Object is created in loop as each entry should have different uniqueID
 
 
-                          }
-                      }
+                    last = Rows[i].Split('|').Last();
+
+                    string[] columns = Rows[i].Split('|');
+
+                    if (last == string.Empty || last == "")
+                    {
+
+ //----------------- * CASE : INSERT *-----------------------------------//
+
+                        IssuedtlObj.MedicineName = columns[0];
+                        IssuedtlObj.Unit = columns[1];
+                        IssuedtlObj.Qty = Convert.ToInt32(columns[4]);
+
+                        IssuedtlObj.CreatedBy = UA.userName; ;
+                        IssuedtlObj.ClinicID = UA.ClinicID.ToString();
+                        IssuedtlObj.IssueID = IssuehdrObj.IssueID;
+
+                        IssuedtlObj.InsertIssueDetails();
+                    }
+
+                    else
+                    {
+  //----------------- * CASE : UPDATE *-----------------------------------//
+
+                        string uniqueID = last;
+                        IssueDetails UpIssueDtlObj = new IssueDetails(new Guid(uniqueID));
+
+                        UpIssueDtlObj.ClinicID = UA.ClinicID.ToString();
+                        UpIssueDtlObj.Qty = Convert.ToInt32(columns[4]);
+                        UpIssueDtlObj.UpdatedBy = UA.userName;
+
+                        string medicineID = IssuedtlObj.GetMedcineIDByMedicineName(columns[0]);
+
+                        UpIssueDtlObj.UpdateIssueDetails(uniqueID, medicineID);
+
+                    }
+
+                }
+
+               
+                     
 
                      
 
