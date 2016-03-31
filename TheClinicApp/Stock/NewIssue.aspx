@@ -101,7 +101,8 @@
                         source: ac
                     });
                
-                    $('body').on('click', '#btAdd'+iCnt, function () 
+
+                    $('body').on('click', '.bt', function () 
                     {
                         //debugger;
                       
@@ -110,8 +111,11 @@
                             iCnt = iCnt + 1;
                        
                             // ADDING  TEXTBOX CONTROLS
+                       
+$(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility:hidden;"  value="+" class="bt" /><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td></tr></table>');
 
-                            $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd'+iCnt+'" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td></tr></table>'); 
+                            // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
+                    
                             $('#main').after(container);                            
                             var ac=null;
                             ac = <%=listFilter %>;
@@ -126,15 +130,14 @@
                         else
                         {
                             $(container).append('<label>Reached the limit</label>');
-                            $('#btAdd'+iCnt).attr('class', 'bt-disable');
-                            $('#btAdd'+iCnt).attr('disabled', 'disabled');
+                            $('.bt').attr('class', 'bt-disable');
+                            $('.bt').attr('disabled', 'disabled');
                         }
 
                         //to find how many rows are currrently inserted.
-                        document.getElementById('<%=hdnRowCount.ClientID%>').value = iCnt;
-
-                        });
-
+                        document.getElementById('<%=hdnRowCount.ClientID%>').value=iCnt;
+ 
+                    });
 
                 }
                 if (document.getElementById('<%=hdnRowCount.ClientID%>').value != 0) {
