@@ -86,18 +86,7 @@
         </script> 
     
     <script type="text/javascript">
-
-
-        function SetXmlHiddenField(xmlFromChild)
-        {
-            debugger;
-           
-        }
-
-
-
-
-        var issueID ='';
+        var ID;
 
         $(function () {
             $("[id*=gvIssueHD] td").click(function () {
@@ -106,17 +95,14 @@
             });
         });
         function DisplayDetails(row) {
+            debugger;
            
-
-           <%-- var xml = document.getElementById('<%=hdnXmlData.ClientID%>').value;
-            alert(xml);--%>
-           
-           
+            var issueID = "";
             //issueID = $("td", row).eq(0).html();
 
             //var issueID = $("td", row).closest('td').prev('td').text();
          
-            //window.location = "ExistingStockOut.aspx?IssueID=" + issueID;
+             window.location = "ExistingStockOut.aspx?IssueID=" + ID;
             
         }
 
@@ -124,11 +110,12 @@
 
 
         $(function () {
-          GetIssueHD(1);
+            debugger;
+            GetIssueHD(1);
         });
 
         $("[id*=txtSearch]").live("keyup", function () {
-           
+            debugger;
             GetIssueHD(parseInt(1));
         });
       
@@ -140,7 +127,7 @@
             return jQuery.trim($("[id*=txtSearch]").val());
         };
         function GetIssueHD(pageIndex) {
-           
+            debugger;
             $.ajax({
                 type: "POST",
                 url: "../Stock/StockOut.aspx/GetIssueHD",
@@ -158,7 +145,7 @@
         }
         var row;
         function OnSuccess(response) {
-          
+            debugger;
             var xmlDoc = $.parseXML(response.d);
             var xml = $(xmlDoc);
             var IssueHD = xml.find("IssueHD");
@@ -168,23 +155,19 @@
             $("[id*=gvIssueHD] tr").not($("[id*=gvIssueHD] tr:first-child")).remove();
             if (IssueHD.length > 0) {
                 $.each(IssueHD, function () {
-                   
+                    ID =     $(this).find("IssueID").text();
                     //$("td", row).eq(0).html('<a href="NewIssue.aspx">' + $(this).find("RefNo1").text() + '</a>');
                       
 
-                       
-                    issueID = $(this).find("IssueID").text();
+                        var issueID = "";
+                         issueID = $("td", row).eq(0).html();
                     //$("td", row).eq(0).html('<a href="ExistingStockOut.aspx?issueID="' + issueID + '">' + $(this).find("IssueID").text() + '</a>');
 
-                         //$("td", row).eq(0).html('<input type="button" value = "Delete" onClick="Javacsript:ConfirmDelete()" ">');
+                         $("td", row).eq(0).html('<input type="button" value = "Delete" onClick="Javacsript:ConfirmDelete()" ">');
 
-                    //$("td", row).eq(0).html($(this).find("IssueID").text());
-
-
-                    //$("td", row).eq(0).html('<a href="ExistingStockOut.aspx">' + $(this).find("IssueNO").text() + '</a>');
-
-                        $("td", row).eq(0).html($(this).find("IssueNO").text());
-                        $("td", row).eq(1).html($(this).find("IssuedTo").text());
+                         //$("td", row).eq(0).html($(this).find("IssueID").text());
+                        $("td", row).eq(1).html($(this).find("IssueNO").text());
+                        $("td", row).eq(2).html($(this).find("IssuedTo").text());
                         
                        
                     //$("td", row).eq(2).html($(this).find("Date").text());
@@ -235,7 +218,7 @@
              
                  
 
-                <%--<asp:BoundField DataField="IssueID" HeaderText="IssueID"    />--%>
+                <asp:BoundField DataField="IssueID" HeaderText="IssueID"    />
               <asp:BoundField DataField="IssueNO" HeaderText="IssueNO"  ItemStyle-Font-Underline="true" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Blue" ItemStyle-CssClass="cursorshow" />
 
                 <asp:BoundField DataField="IssuedTo" HeaderText="IssuedTo"  ItemStyle-CssClass="Match"  />
@@ -300,6 +283,4 @@
             </div>
         </div>
     </div>
-
-
 </asp:Content>
