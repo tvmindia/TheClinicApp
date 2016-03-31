@@ -24,6 +24,7 @@ namespace TheClinicApp.ClinicDAL
 
 
         }
+
         #endregion constructor
 
         #region Property
@@ -486,8 +487,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.ExecuteNonQuery();
                 sda.SelectCommand = cmd;
                 ds = new DataSet();
-                sda.Fill(ds);
-
+                 sda.Fill(ds, "Medicines");
 
                 return ds;
 
@@ -529,6 +529,17 @@ namespace TheClinicApp.ClinicDAL
             UniqueID = Guid.NewGuid();
 
         }
+
+
+        public IssueDetails(Guid uniqueID)
+        {
+
+            UniqueID = uniqueID;
+
+
+        }
+
+
 
         #endregion constructor
 
@@ -723,23 +734,32 @@ namespace TheClinicApp.ClinicDAL
 
 
 
-                cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = IssueID;
+                cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(UniqueID);
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
-                cmd.Parameters.Add("@ReceiptID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ReceiptID);
                 cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
-
                 cmd.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
-                cmd.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = UpdatedDate;
 
+
+                cmd.Parameters.Add("@Status", SqlDbType.Int);
+                cmd.Parameters["@Status"].Direction = ParameterDirection.Output;
                 cmd.ExecuteNonQuery();
+                int Outputval = (int)cmd.Parameters["@Status"].Value;
+
+                if (Outputval == 1)
+                {
+                    //Success
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    //eObj.InsertionSuccessMessage(page);
+                }
+
 
             }
 
             catch (Exception ex)
             {
 
-                throw ex;
+                var page = HttpContext.Current.CurrentHandler as Page;
             }
 
             finally
