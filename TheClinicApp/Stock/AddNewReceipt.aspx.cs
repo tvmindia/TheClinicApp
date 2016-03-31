@@ -88,9 +88,8 @@ namespace TheClinicApp.Stock
         #region InsertClick
         protected void btnReceipt_Click(object sender, EventArgs e)
         {
-            //int x=Convert.ToInt32(HiddenFieldCount.Value);
-            //if (x==0)
-            //{
+            if ( (txtBillNo.Text != string.Empty)  && (txtRefNo2.Text != string.Empty) && (txtDate.Text != string.Empty))
+            {
 
                 //INSERT
 
@@ -132,11 +131,8 @@ namespace TheClinicApp.Stock
 
                 ReloadInsertFields(str);
 
-            //}
+            }
 
-            //else   //UPDATE
-            //{
-            //}
             
         }
 

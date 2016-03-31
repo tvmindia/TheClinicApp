@@ -120,8 +120,7 @@
                     {
                         $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd'+iCnt+'" value="+" onclick=this.style="visibility:hidden;"  class="bt" /></td><td><input id="HiddenReceiptID'+iCnt+'" type="hidden" /></td></tr></table>');
                         
-                    }
-             
+                    }         
 
                     $('#main').before(container);
 
@@ -198,10 +197,6 @@
                     
             });
         }
-
-
-
-
     </script>
 
 
@@ -221,17 +216,14 @@
            
             if (Medicines.length > 0)
             {
-                $.each(Medicines, function () {
-                   
+                $.each(Medicines, function () {                   
                                         
                     var MedicineName =   $(this).find("MedicineName").text() ;
                     var MedicineCode = $(this).find("MedCode").text();
                     var MedicineUnit = $(this).find("Unit").text();
                     var MedicineCategory = $(this).find("CategoryName").text();
                     var MedicineQuantity= $(this).find("QTY").text();
-                    var UniqueID=$(this).find("UniqueID").text();
-                  
-                    
+                    var UniqueID=$(this).find("UniqueID").text();    
 
                     document.getElementById('txtMedicine'+i).value=   MedicineName;
                     document.getElementById('txtCode'+i).value=   MedicineCode;
@@ -249,42 +241,6 @@
         }
 
     </script>
-
-    <style>
-        .ui-autocomplete {
-            background: fixed;
-            background-color: ghostwhite;
-            box-shadow: 1px 5px 10px 5px #4d3319;
-        }
-
-        .ui-datepicker {
-            background: fixed;
-            background-color: ghostwhite;
-            box-shadow: 1px 5px 10px 5px #4d3319;
-        }
-    </style>
-
-    <script>
-
-        $(function () {
-            $("[id$=txtDate]").datepicker({ dateFormat: 'dd-m-yy' ,
-                showOn: 'button',
-               
-                buttonImageOnly: true,
-                buttonImage: '../Images/calendar4.png'
-            });
-        });
-    </script>
-
-
-
-
-</asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <%-- function BindControlsByMedicneName --%>
-    <asp:ScriptManager ID="ScriptManager1" EnablePageMethods="true" runat="server" EnableCdn="true"></asp:ScriptManager>
-
     <%-- BindControlsByMedicneName function definition --%>
     <script>
         
@@ -333,6 +289,41 @@
         }
 
     </script>
+    <%-- Date Picker,autocomplete style --%>
+    <style>
+        .ui-autocomplete {
+            background: fixed;
+            background-color: ghostwhite;
+            box-shadow: 1px 5px 10px 5px #4d3319;
+        }
+
+        .ui-datepicker {
+            background: fixed;
+            background-color: ghostwhite;
+            box-shadow: 1px 5px 10px 5px #4d3319;
+        }
+    </style>
+    <%-- Date Picker --%>
+    <script>
+
+        $(function () {
+            $("[id$=txtDate]").datepicker({ dateFormat: 'dd-m-yy' ,
+                showOn: 'button',
+               
+                buttonImageOnly: true,
+                buttonImage: '../Images/calendar4.png'
+            });
+        });
+    </script>
+
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <%-- function BindControlsByMedicneName --%>
+    <asp:ScriptManager ID="ScriptManager1" EnablePageMethods="true" runat="server" EnableCdn="true"></asp:ScriptManager>
+
+ 
 
     <div class="container-fluid bodyDiv">
 
