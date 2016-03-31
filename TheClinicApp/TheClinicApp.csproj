@@ -160,9 +160,6 @@
     <Content Include="Content\DoctorStyle\js\main.js" />
     <Content Include="Content\DoctorStyle\js\modernizr-2.6.2-respond-1.1.0.min.js" />
     <Content Include="Content\font-awesome.min.css" />
-    <Content Include="Content\Master\Masterawsome.css" />
-    <Content Include="Content\Master\MasterRed.css" />
-    <Content Include="Content\Master\Masterw3.css" />
     <Content Include="Content\mui-colors.css" />
     <Content Include="Content\mui-email-inline.css" />
     <Content Include="Content\mui-email-styletag.css" />
@@ -175,7 +172,6 @@
     <Content Include="Doctors Test\DoctorTesting.aspx" />
     <Content Include="Forgot.aspx" />
     <Content Include="Images\Addition .png" />
-    <Content Include="Images\Arrowhead-Down-01.png" />
     <Content Include="Images\Button-Add-icon.png" />
     <Content Include="Images\calendar 32x32.png" />
     <Content Include="Images\calendar 42x42.png" />
@@ -194,7 +190,6 @@
     <Content Include="Images\next.gif" />
     <Content Include="Images\plus.png" />
     <Content Include="Images\prev.gif" />
-    <Content Include="Images\question-mark-nothing.png" />
     <Content Include="Images\select.png" />
     <Content Include="Images\Sync-WF.png" />
     <Content Include="Pharmacy\Pharmacy.aspx" />
@@ -448,13 +443,6 @@
     <Compile Include="Doctor\DoctorInformationPage.aspx.designer.cs">
       <DependentUpon>DoctorInformationPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Forgot.aspx.cs">
-      <DependentUpon>Forgot.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Forgot.aspx.designer.cs">
-      <DependentUpon>Forgot.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Handler\ImageHandler.ashx.cs">
       <DependentUpon>ImageHandler.ashx</DependentUpon>
     </Compile>
@@ -493,13 +481,6 @@
     </Compile>
     <Compile Include="Registration\Patients.aspx.designer.cs">
       <DependentUpon>Patients.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Reset.aspx.cs">
-      <DependentUpon>Reset.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reset.aspx.designer.cs">
-      <DependentUpon>Reset.aspx</DependentUpon>
     </Compile>
     <Compile Include="Stock\AddNewReceipt.aspx.cs">
       <DependentUpon>AddNewReceipt.aspx</DependentUpon>
