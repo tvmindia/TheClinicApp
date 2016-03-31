@@ -170,6 +170,7 @@
     <Content Include="Content\TheClinicAppDoctors.css" />
     <Content Include="Doctors Test\Doctors.aspx" />
     <Content Include="Doctors Test\DoctorTesting.aspx" />
+    <Content Include="Forgot.aspx" />
     <Content Include="Images\Addition .png" />
     <Content Include="Images\Button-Add-icon.png" />
     <Content Include="Images\calendar 32x32.png" />
@@ -192,6 +193,7 @@
     <Content Include="Images\select.png" />
     <Content Include="Images\Sync-WF.png" />
     <Content Include="Pharmacy\Pharmacy.aspx" />
+    <Content Include="Reset.aspx" />
     <Content Include="Scripts\ASPSnippets_Pager.min.js" />
     <Content Include="Scripts\bootcards.js" />
     <Content Include="Content\Input.css" />
