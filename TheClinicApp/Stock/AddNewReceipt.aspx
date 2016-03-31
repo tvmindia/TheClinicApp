@@ -132,6 +132,9 @@
                     
                 }
 
+                //icnt value will be reset by reducing 1 after for loop 
+                iCnt=iCnt-1;
+
                 $('body').on('click', '.bt', function () 
                 {
                     //debugger;
