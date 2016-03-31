@@ -29,11 +29,11 @@ namespace TheClinicApp.Stock
 
         #region Global Variables
 
-        IssueHeaderDetails IssuehdrObj = new IssueHeaderDetails();
+      
         //IssueDetails IssuedtlObj = new IssueDetails();
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
-      
+        IssueHeaderDetails IssuehdrObj = new IssueHeaderDetails();
        
         #endregion Global Variables
 
@@ -91,11 +91,18 @@ namespace TheClinicApp.Stock
         /// </summary>
         public void StoreXmlToHiddenField()
         {
-            string IssueID = IssuehdrObj.IssueID.ToString();
-            DataSet dsIssue = GetIssueDetailsByIssueID(IssueID);
-            var xml = dsIssue.GetXml();
+            if (ViewState["IssueHdrID"] != null && ViewState["IssueHdrID"].ToString() != string.Empty)
+            {
+                string issueid = ViewState["IssueHdrID"].ToString();
 
-            hdnXmlData.Value = xml;
+                //string issueid = IssuehdrObj.IssueID.ToString();
+                DataSet dsIssue = GetIssueDetailsByIssueID(issueid);
+                var xml = dsIssue.GetXml();
+
+                hdnXmlData.Value = xml;
+            }
+
+           
         }
 
         #endregion Store Xml To HiddenField#region Store Xml To HiddenField
@@ -105,6 +112,7 @@ namespace TheClinicApp.Stock
 
         public DataSet GetIssueDetailsByIssueID(string IssueID)
         {
+          
             DataSet dsIssue = null;
 
             UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
@@ -170,6 +178,7 @@ namespace TheClinicApp.Stock
 
         public void BindTextboxByIssueNo()
         {
+           
             UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
             IssuehdrObj.ClinicID = UA.ClinicID.ToString();
             string IssueNumber =  IssuehdrObj.Generate_Issue_Number();
@@ -215,13 +224,13 @@ namespace TheClinicApp.Stock
         #region Add Button Click
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            
+          
             //HiddenField hdnDetailID = (HiddenField)main.FindControl("hdnDetailID1");
            
             if ( (txtIssueNO.Text != string.Empty)  && (txtIssuedTo.Text != string.Empty) && (txtDate.Text != string.Empty))
             {
                 string last = string.Empty;
-                
+               
                 UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
 
                 IssuehdrObj.ClinicID = UA.ClinicID.ToString();
@@ -233,24 +242,25 @@ namespace TheClinicApp.Stock
 
                 if (hdnHdrInserted.Value == "")
                 {
-                    IssuehdrObj.InsertIssueHeader();
+                 IssuehdrObj.InsertIssueHeader();
                     hdnHdrInserted.Value = "True";
+                    ViewState["IssueHdrID"] = IssuehdrObj.IssueID;
                 }
 
                 string values = hdnTextboxValues.Value;
 
                 string[] Rows = values.Split('$');
 
-                int RowsLastIndex = Rows.Length - 1;
+                
 
-                for (int i = 0; i < Rows.Length - 1; i++)
+                for (int i = 0; i < Rows.Length-1; i++)
                 {
                     IssueDetails IssuedtlObj = new IssueDetails(); //Object is created in loop as each entry should have different uniqueID
+                    string[] tempRow = Rows;
 
+                    last = tempRow[i].Split('|').Last();
 
-                    last = Rows[i].Split('|').Last();
-
-                    string[] columns = Rows[i].Split('|');
+                    string[] columns = tempRow[i].Split('|');
 
                     if (last == string.Empty || last == "")
                     {
@@ -263,7 +273,13 @@ namespace TheClinicApp.Stock
 
                         IssuedtlObj.CreatedBy = UA.userName; ;
                         IssuedtlObj.ClinicID = UA.ClinicID.ToString();
-                        IssuedtlObj.IssueID = IssuehdrObj.IssueID;
+
+                        if (ViewState["IssueHdrID"] != null && ViewState["IssueHdrID"].ToString() != string.Empty)
+                        {
+                            IssuedtlObj.IssueID = Guid.Parse(ViewState["IssueHdrID"].ToString());
+                        }
+
+                        //IssuedtlObj.IssueID = IssuehdrObj.IssueID;
 
                         IssuedtlObj.InsertIssueDetails();
                     }
@@ -288,13 +304,7 @@ namespace TheClinicApp.Stock
                 }
 
                
-                     
-
-                     
-
-                  
-
-                  
+                    
              
 
                 //string[] Textboxvalues = values.Split('|');

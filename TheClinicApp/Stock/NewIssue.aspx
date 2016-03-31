@@ -56,7 +56,7 @@
 
         function AddRow()
         {
-                
+            debugger;   
             //To Check the Reloading Condition
             var hidCount=   document.getElementById('<%=hdnRowCount.ClientID%>').value;
           
@@ -110,11 +110,8 @@
                             iCnt = iCnt + 1;
                        
                             // ADDING  TEXTBOX CONTROLS
-                       
-                            $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd'+iCnt+'" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td></tr></table>');
 
-                            // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
-                    
+                            $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd'+iCnt+'" value="+" onclick=this.style="visibility:hidden;" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td></tr></table>'); 
                             $('#main').after(container);                            
                             var ac=null;
                             ac = <%=listFilter %>;
@@ -134,9 +131,11 @@
                         }
 
                         //to find how many rows are currrently inserted.
-                        document.getElementById('<%=hdnRowCount.ClientID%>').value=iCnt;
-                          
-                    });
+                        document.getElementById('<%=hdnRowCount.ClientID%>').value = iCnt;
+
+                        });
+
+
                 }
                 if (document.getElementById('<%=hdnRowCount.ClientID%>').value != 0) {
                     RefillTextboxesWithXmlData();
@@ -172,14 +171,10 @@
 
                     debugger;
 
-                    var ac=null;
-                    ac = <%=listFilter %>;
-                    $( "#txtMedname"+iCnt).autocomplete({
-                        source: ac
-                    });
+                   
                 }  
                 
-                RefillTextboxesWithXmlData();
+                //RefillTextboxesWithXmlData();
 
             }
 
@@ -345,9 +340,9 @@
 
                 AddRow();
 
-               <%-- if (document.getElementById('<%=hdnXmlData.ClientID%>').value != null) {
+     <%--     if (document.getElementById('<%=hdnXmlData.ClientID%>').value != null) {--%>
                     RefillTextboxesWithXmlData();
-                }--%>
+                //}
 
 
             });            
