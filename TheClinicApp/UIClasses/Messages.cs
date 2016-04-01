@@ -96,6 +96,6 @@ namespace TheClinicApp.UIClasses
         {
             get { return "Warning Msg "; }
         }
-
+   
     }
 }

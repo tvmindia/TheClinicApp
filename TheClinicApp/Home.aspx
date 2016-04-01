@@ -19,7 +19,7 @@
         function selectTile(id) {
             //debugger;
             var tileList = ['dashboard', 'patient', 'token', 'doctor', 'pharmacy', 'stock'];
-            var IframeUrl = ['test.aspx', '../Registration/Patients.aspx', '../Token/Tokens.aspx', '../Doctor/DoctorInformationPage.aspx', '../Pharmacy/Pharmacy.aspx', '../Stock/Stock.aspx'];
+            var IframeUrl = ['underConstruction.aspx', '../Registration/Patients.aspx', '../Token/Tokens.aspx', '../Doctor/DoctorInformationPage.aspx', '../Pharmacy/Pharmacy.aspx', '../Stock/Stock.aspx'];
             for (i = 0; i < tileList.length; i++) {
                 if (id == tileList[i]) {
                     document.getElementById(id).className = id + '_selected'
@@ -65,8 +65,9 @@
             }
             else if (HyperLinkid == "hlkInputMasters")
             {
-                NavigateUrl = "../ForgotPassword.aspx";
+                NavigateUrl ="../Admin/Masters.aspx";
             }
+            
 
 
             document.getElementById('main').src = NavigateUrl;
@@ -150,6 +151,7 @@
                 <li><a id="hlkAssignRoles" onclick="OpenPageOnHyperLinkClick(id)">Assign Roles</a></li>
                <li><a id="hlkCreateUser"  onclick="OpenPageOnHyperLinkClick(id)">Create User</a> </li>
                  <li><a id="hlkInputMasters" onclick="OpenPageOnHyperLinkClick(id)">Add Masters</a></li>
+                 
                </ul>
 
           </div>
