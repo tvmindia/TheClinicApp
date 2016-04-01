@@ -217,7 +217,6 @@
     <Content Include="Doctor\DoctorInformationPage.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Images\accent.png" />
-    <Content Include="Images\arrowR.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\Cancel.png" />
     <Content Include="Images\clinic app logo.png" />

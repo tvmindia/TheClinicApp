@@ -24,12 +24,10 @@
             z-index:-1;
         }
           #bt_forgot{
-          position:relative;
+          position:absolute;
           transition: .5s ease;
-          top: 364px;
-          left: 420px;
-          right: -420px;
-          bottom: -191px;
+          top: 60%;
+          left: 30%;                   
            }
     </style>
    
@@ -57,10 +55,7 @@
        
      <div style="text-align:right">
 
-          <button class="btn waves-effect waves-light" type="submit" name="action"  >Login
-    <i class="material-icons right" >
-        <img style="width:80%" src="Images/arrowR.png" /></i>
-         </button>       
+          <button class="btn waves-effect waves-light" type="submit" name="action"  >Login<i class="material-icons right" ><img src="Images/next.gif" /></i></button>       
      </div>  
  
 
