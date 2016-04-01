@@ -171,6 +171,7 @@
     <Content Include="Content\selectize.css" />
     <Content Include="Content\simple-sidebar.css" />
     <Content Include="Content\TheClinicAppDoctors.css" />
+    <Content Include="Default.aspx" />
     <Content Include="Doctors Test\Doctors.aspx" />
     <Content Include="Doctors Test\DoctorTesting.aspx" />
     <Content Include="Forgot.aspx" />
@@ -213,7 +214,6 @@
     <Content Include="Content\TheClinicApp.css" />
     <Content Include="Content\Theme\Blue.css" />
     <Content Include="Content\Theme\Green.css" />
-    <Content Include="Default.aspx" />
     <Content Include="Doctor\DoctorInformationPage.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Images\accent.png" />

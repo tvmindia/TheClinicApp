@@ -24,6 +24,8 @@ namespace TheClinicApp
 
         #endregion Global Variables
 
+
+
         #region Methods
 
         #region Encrypt Password

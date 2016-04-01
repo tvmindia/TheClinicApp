@@ -14,6 +14,8 @@ namespace TheClinicApp
         ClinicDAL.User userObj = new ClinicDAL.User();
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
             
         }
 

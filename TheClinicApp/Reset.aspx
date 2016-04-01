@@ -7,6 +7,7 @@
     <link href="Content/mui.css" rel="stylesheet" />
     <title>resetpassword</title>
 </head>
+
 <body>
     <form id="form1" runat="server">
     <div class="mui-container">
