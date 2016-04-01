@@ -15,7 +15,7 @@ using System.Web.Services;
 
 namespace TheClinicApp.Stock
 {
-    
+
     public partial class AddNewReceipt : System.Web.UI.Page
     {
         ErrorHandling eObj = new ErrorHandling();
@@ -23,21 +23,21 @@ namespace TheClinicApp.Stock
         IssueDetails idt = new IssueDetails();
         Stocks stok = new Stocks();
         Receipt rpt = new Receipt();
-      
+
         //login details
 
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
-        
+
         public string listFilter = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-                bindpageload();
+            bindpageload();
 
         }
 
-        
+
         #region bindpageload
 
         public void bindpageload()
@@ -88,42 +88,51 @@ namespace TheClinicApp.Stock
         #region InsertClick
         protected void btnReceipt_Click(object sender, EventArgs e)
         {
-            UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
-
-            rpt.CreatedBy = UA.userName;
-            rpt.Date = Convert.ToDateTime(txtDate.Text);
-            rpt.RefNo1 = txtBillNo.Text;
-            rpt.RefNo2 = txtRefNo2.Text;
-            rpt.ClinicID = UA.ClinicID.ToString();
-
-            rpt.InsertReceiptHeader();
-
-            string values = HiddenField1.Value;            
-            string[] Invalue = values.Split('|');
-            int len= Invalue.Length;
-            len = len - 1;
-           
-           
-            for (int i = 0; i <len ; i = i + 5)
+            if ((txtBillNo.Text != string.Empty) && (txtRefNo2.Text != string.Empty) && (txtDate.Text != string.Empty))
             {
-                ReceiptDetails rptdt = new ReceiptDetails();
-                rptdt.MedicineName = Invalue[i];
-                rptdt.QTY= Convert.ToInt32(Invalue[i + 4]);
-                rptdt.Unit = Invalue[i+1];
-                rptdt.CreatedBy = UA.userName;
-                rptdt.ClinicID = UA.ClinicID.ToString();
-                rptdt.ReceiptID = rpt.ReceiptID;
-                                     
-                rptdt.InsertReceiptDetails();
-               
+
+                //INSERT
+
+                //Inserting Section ReceiptHD
+
+                UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+
+                rpt.CreatedBy = UA.userName;
+                rpt.Date = Convert.ToDateTime(txtDate.Text);
+                rpt.RefNo1 = txtBillNo.Text;
+                rpt.RefNo2 = txtRefNo2.Text;
+                rpt.ClinicID = UA.ClinicID.ToString();
+
+                rpt.InsertReceiptHeader();
+
+                //Inserting Section ReceiptDT
+                string values = HiddenField1.Value;
+                string[] Invalue = values.Split('|');
+                int len = Invalue.Length;
+                len = len - 1;
+
+
+                for (int i = 0; i < len; i = i + 5)
+                {
+                    ReceiptDetails rptdt = new ReceiptDetails();
+                    rptdt.MedicineName = Invalue[i];
+                    rptdt.QTY = Convert.ToInt32(Invalue[i + 4]);
+                    rptdt.Unit = Invalue[i + 1];
+                    rptdt.CreatedBy = UA.userName;
+                    rptdt.ClinicID = UA.ClinicID.ToString();
+                    rptdt.ReceiptID = rpt.ReceiptID;
+
+                    rptdt.InsertReceiptDetails();
+
+                }
+
+                // to reLOad added DAta To fields
+                string str = rpt.ReceiptID.ToString();
+
+                ReloadInsertFields(str);
+
             }
 
-
-            // to reLOad added DAta To fields
-            string str = rpt.ReceiptID.ToString();
-
-            ReloadInsertFields(str);
-            
 
         }
 
@@ -142,30 +151,30 @@ namespace TheClinicApp.Stock
 
 
         }
-       
+
 
         #region WebMethod
 
         [WebMethod(EnableSession = true)]
         public static string MedDetails(string MedName)
         {
-           ClinicDAL.ReceiptDetails obj= new ClinicDAL.ReceiptDetails();
+            ClinicDAL.ReceiptDetails obj = new ClinicDAL.ReceiptDetails();
 
-           UIClasses.Const Const = new UIClasses.Const();
-           ClinicDAL.UserAuthendication UA;
+            UIClasses.Const Const = new UIClasses.Const();
+            ClinicDAL.UserAuthendication UA;
 
-           UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
+            UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
 
-           obj.ClinicID = UA.ClinicID.ToString();
+            obj.ClinicID = UA.ClinicID.ToString();
 
-                DataSet ds= obj.GetMedCodeUnitCategory(MedName);
+            DataSet ds = obj.GetMedCodeUnitCategory(MedName);
 
 
             string Unit = Convert.ToString(ds.Tables[0].Rows[0]["Unit"]);
             string MedCode = Convert.ToString(ds.Tables[0].Rows[0]["MedCode"]);
             string Category = Convert.ToString(ds.Tables[0].Rows[0]["CategoryName"]);
 
-            return String.Format("{0}" + "|" + "{1}"+" | "+"{2}", Unit, MedCode, Category);
+            return String.Format("{0}" + "|" + "{1}" + " | " + "{2}", Unit, MedCode, Category);
 
 
 
