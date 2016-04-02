@@ -412,7 +412,7 @@
            
                 if (Medicines.length > 0)
                 {
-                    document.getElementById('<%=hdnRowCount.ClientID%>').value = Medicines.length;
+                    //document.getElementById('<%=hdnRowCount.ClientID%>').value = Medicines.length;
 
                     $.each(Medicines, function () {
                    
@@ -455,7 +455,23 @@
                 var errLname = document.getElementById('<%=errorLnames.ClientID %>');
                 errLname.style.display = "none";
 
-                AddRow();
+
+                var XmlDataFromHF =   document.getElementById('<%=hdnXmlData.ClientID%>').value;
+                var xmlDoc = $.parseXML(XmlDataFromHF);
+                var xml = $(xmlDoc);
+                var Medicines = xml.find("Medicines");
+                var i=1;
+           
+                if (Medicines.length > 0)
+                {
+                    document.getElementById('<%=hdnRowCount.ClientID%>').value = Medicines.length;
+                }
+
+               
+                    AddRow();
+                
+
+               
 
      <%--     if (document.getElementById('<%=hdnXmlData.ClientID%>').value != null) {--%>
                     RefillTextboxesWithXmlData();
