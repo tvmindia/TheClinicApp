@@ -65,7 +65,7 @@
             }
             else if (HyperLinkid == "hlkInputMasters")
             {
-                NavigateUrl = "../ForgotPassword.aspx";
+                NavigateUrl = "../Admin/Masters.aspx";
             }
 
 

@@ -24,12 +24,11 @@
             z-index:-1;
         }
           #bt_forgot{
-          position:relative;
+          position:absolute;
           transition: .5s ease;
-          top: 364px;
-          left: 420px;
-          right: -420px;
-          bottom: -191px;
+          top: 60%;
+          left: 30%;
+         
            }
     </style>
    
