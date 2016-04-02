@@ -462,7 +462,7 @@ namespace TheClinicApp.ClinicDAL
 
         #region GetIssueDetailsByIssueID
 
-        public DataSet GetIssueDetailsByIssueNO(String IssueID)
+        public DataSet GetIssueDetailsByIssueID(String IssueID)
         {
 
             dbConnection dcon = null;
@@ -512,6 +512,60 @@ namespace TheClinicApp.ClinicDAL
 
 
         #endregion GetIssueDetailsByIssueID
+
+
+        #region Get Issue Details By IssueNo
+
+        public DataSet GetIssueDetailsByIssueNO(String IssueNo)
+        {
+
+            dbConnection dcon = null;
+            DataSet ds = null;
+            SqlDataAdapter sda = null;
+            try
+            {
+
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = dcon.SQLCon;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[GetIssueDetailsByIssueNo]";
+
+
+                cmd.Parameters.Add("@IssueNo", SqlDbType.NVarChar, 255).Value = IssueNo;
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
+
+
+                sda = new SqlDataAdapter();
+                cmd.ExecuteNonQuery();
+                sda.SelectCommand = cmd;
+                ds = new DataSet();
+                sda.Fill(ds,"Medicines");
+
+                return ds;
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                if (dcon.SQLCon != null)
+                {
+                    dcon.DisconectDB();
+                }
+
+            }
+
+        }
+
+
+        #endregion Get Issue Details By IssueNo
 
         #endregion Methods
 
@@ -853,8 +907,6 @@ namespace TheClinicApp.ClinicDAL
                 cmd.ExecuteNonQuery();
                 int Outputval = (int)cmd.Parameters["@Status"].Value;
 
-                cmd.ExecuteNonQuery();
-
                 if (Outputval == 1)
                 {
                     //Success
@@ -884,6 +936,53 @@ namespace TheClinicApp.ClinicDAL
 
 
         #endregion DeleteIssueDetails
+
+        #region Get MedicineID By UniqueID
+
+        public string GetMedicineIDByUniqueID(Guid UniqueID)
+        {
+            string MedicineID = string.Empty;
+            dbConnection dcon = null;
+
+            try
+            {
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = dcon.SQLCon;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[GetMedicineIDByUniqueID]";
+
+                cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = UniqueID;
+
+                object ID = cmd.ExecuteScalar();
+                if (ID != null)
+                {
+                    MedicineID = ID.ToString();
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                var page = HttpContext.Current.CurrentHandler as Page;
+                //eObj.ErrorData(ex, page);
+
+            }
+
+            finally
+            {
+                if (dcon.SQLCon != null)
+                {
+                    dcon.DisconectDB();
+                }
+            }
+
+            return MedicineID;
+        }
+
+
+        #endregion Get MedicineID By UniqueID
 
         #endregion Methods
 
