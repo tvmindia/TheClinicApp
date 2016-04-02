@@ -63,7 +63,7 @@ namespace TheClinicApp.Stock
                 UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
 
               Issuehdrobj.ClinicID = UA.ClinicID.ToString();
-              dsIssuehdr = Issuehdrobj.GetIssueDetailsByIssueNO(IssueID);
+              dsIssuehdr = Issuehdrobj.GetIssueDetailsByIssueID(IssueID);
 
               //dtgExistingIssueByIssueNo.DataSource = dsIssuehdr;
               //dtgExistingIssueByIssueNo.DataBind();

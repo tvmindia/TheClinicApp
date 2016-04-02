@@ -91,28 +91,6 @@ namespace TheClinicApp.Stock
 
 
 
-         [WebMethod]
-         public static string GetReceiptHD(string searchTerm, int pageIndex)
-         {
-             ClinicDAL.UserAuthendication UA;
-             UIClasses.Const Const = new UIClasses.Const();
-
-             UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
-
-             string query = "ViewAndFilterReceiptHD";
-             SqlCommand cmd = new SqlCommand(query);
-             cmd.CommandType = CommandType.StoredProcedure;
-
-             cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = UA.ClinicID;
-
-             cmd.Parameters.AddWithValue("@SearchTerm", searchTerm);
-             cmd.Parameters.AddWithValue("@PageIndex", pageIndex);
-             cmd.Parameters.AddWithValue("@PageSize", PageSize);
-             cmd.Parameters.Add("@RecordCount", SqlDbType.Int).Direction = ParameterDirection.Output;
-
-             var xml = GetData(cmd, pageIndex).GetXml();
-             return xml;
-         }
 
         private static DataSet GetData(SqlCommand cmd, int pageIndex)
         {
