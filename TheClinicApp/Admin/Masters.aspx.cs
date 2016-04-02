@@ -37,8 +37,7 @@ namespace TheClinicApp.Admin
         }
 
         protected void btGroup_ServerClick(object sender, EventArgs e)
-        {
-             MasterObj.GroupName=txtGroup.Value;
+        {             MasterObj.GroupName=txtGroup.Value;
              byte[] ImageByteArray = null;
              ImageByteArray = ConvertImageToByteArray(FileUpload1);
              MasterObj.Logo = ImageByteArray;
