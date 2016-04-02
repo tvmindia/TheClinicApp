@@ -2,7 +2,7 @@
 .Semitransparent_1 {
     background: rgb(34,34,34); /* for IE */
     background: rgba(34,34,34,0.75);
-    background-image: url('../Images/mainbg5.jpg');
+    background-image: url('../Images/HerbeInWhite.jpg');
     background-size: 100%;
 }
 
@@ -10,7 +10,7 @@
     border-width: thin;
     padding: 15px 30px 20px 30px;
     background: rgb(34,34,34); /* for IE */
-    background: rgba(34,34,34,0.3);
+    background: rgba(213, 211, 74, 0.21);
     width: 35%;
     height: 35%;
     position: absolute;
@@ -23,7 +23,7 @@
 }
 
 .captions {
-    color:white !important;
+    color:#28ADA1 !important;
    
 }
  
@@ -43,7 +43,7 @@
 
 html, body {
     height: 95%;
-    background-image: url('../Images/mainbg5.jpg');
+    background-image: url('../Images/HerbeInWhite.jpg');
     background-size: 100%;
 }
 
