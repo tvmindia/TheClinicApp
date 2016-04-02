@@ -10,6 +10,7 @@
 namespace TheClinicApp.Admin {
     
     
+
     public partial class Masters {
         
         /// <summary>

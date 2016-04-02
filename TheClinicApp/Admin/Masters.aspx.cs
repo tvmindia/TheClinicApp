@@ -13,7 +13,7 @@ namespace TheClinicApp.Admin
         ClinicDAL.Master MasterObj = new ClinicDAL.Master();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+             
         }
 
        

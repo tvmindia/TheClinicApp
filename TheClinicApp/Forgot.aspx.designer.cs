@@ -11,7 +11,7 @@ namespace TheClinicApp {
     
     
     public partial class Forgot {
-        
+         
         /// <summary>
         /// form1 control.
         /// </summary>

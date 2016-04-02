@@ -24,7 +24,7 @@ namespace TheClinicApp
 
         #endregion Global Variables
 
-
+         
 
         #region Methods
 

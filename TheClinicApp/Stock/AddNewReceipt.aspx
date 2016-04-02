@@ -1,5 +1,4 @@
-﻿
-<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="AddNewReceipt.aspx.cs" Inherits="TheClinicApp.Stock.AddNewReceipt" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="AddNewReceipt.aspx.cs" Inherits="TheClinicApp.Stock.AddNewReceipt" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="head" runat="server">
 
@@ -97,22 +96,24 @@
 
 
                         alert(iCnt);
-                        //if (iCnt >= 1) {
-                        //    $(this).closest("div").remove();
+                        if (iCnt > 1) 
+                        {
+                            $(this).closest("div").remove();
 
-                        //    if ($('#btAdd' + (iCnt) + '').css('visibility') == 'visible') {
-                        //        debugger;
-                        //        alert(0010);
-                        //        //Nothing doing
-                        //    }
-                        //    else {
+                            if ($('#btAdd'+iCnt).css('visibility') == 'visible')
+                            {
+                         
+                                alert(0010);
 
-                        //        $('#btAdd' + (iCnt - 1) + '').css('visibility', 'visible')
-
-
-                        //    }
-                        //    iCnt = iCnt - 1;
-                        //}
+                            }
+                            else 
+                            {
+                                
+                                $('#btAdd'+(iCnt-1)).css('visibility', 'visible')
+                                
+                            }
+                            iCnt = iCnt - 1;
+                        }
 
                     }); 
 
@@ -272,8 +273,6 @@
     </script>
 
 
-
-
     <script>
 
         function BindDataFromXml()
@@ -325,8 +324,7 @@
                 var MedicineName = document.getElementById('txtMedicine'+ControlNo).value;
                 // alert(MedicineName);
 
-            }
-           
+            }          
             
 
             if (MedicineName!="")
@@ -342,8 +340,7 @@
                     
                     debugger;         
                     var string1 = new Array();
-                    string1 = response.split('|'); 
-                    
+                    string1 = response.split('|');                     
                    
                     document.getElementById('txtUnit'+ControlNo).value=string1[0];
                     document.getElementById('txtCode'+ControlNo).value=string1[1];
@@ -395,7 +392,7 @@
     <%-- function BindControlsByMedicneName --%>
     <asp:ScriptManager ID="ScriptManager2" EnablePageMethods="true" runat="server" EnableCdn="true"></asp:ScriptManager>
 
- 
+
 
     <div class="container-fluid bodyDiv">
 
@@ -449,11 +446,11 @@
                         <td>
 
                             <div class="col-lg-12">
-                       
+
                                 <asp:HiddenField ID="HiddenField1" runat="server" />
                                 <asp:HiddenField ID="HiddenFieldXmlData" runat="server" />
                                 <asp:HiddenField ID="HiddenFieldCount" runat="server" Value="0" />
-                                 <asp:HiddenField ID="hdnRemovedIDs" runat="server" />
+                                <asp:HiddenField ID="hdnRemovedIDs" runat="server" />
                                 <div id="main">
                                 </div>
                             </div>
