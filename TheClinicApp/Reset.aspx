@@ -25,6 +25,7 @@
     <input type="password" placeholder="Confirm Password" id="txtConfirmPassword" runat="server" />
   </div>
   
+
   <button type="submit" class="mui-btn mui-btn--raised" id="btnReset" runat="server" onserverclick="btnReset_ServerClick">Submit</button>
         <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
           <div id="Errorbox"  style="height:25%;  display:none;"  runat="server" >

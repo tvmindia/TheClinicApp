@@ -48,7 +48,7 @@ namespace TheClinicApp.ClinicDAL
             get;
             set;
         }
-        public string Logo
+        public object Logo
         {
             get;
             set;

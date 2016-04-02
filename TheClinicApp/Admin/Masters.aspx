@@ -14,6 +14,7 @@
 
 <h2 class="w3-center" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;">Masters</h2>	
 <div class="w3-container">
+
 <div class="w3-border">
 <ul class="w3-navbar w3-theme">
   <li><a class="w3-btn w3-theme testbtn" onclick="openCity(event, 'London')">Groups</a></li>

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/Input.Master" AutoEventWireup="true" CodeBehind="AddNewReceipt.aspx.cs" Inherits="TheClinicApp.Stock.AddNewReceipt" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="head" runat="server">
 
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
@@ -42,7 +42,7 @@
                     //  debugger;
                     $(container).append('<table style="width:80%"><tr><td><label >Medicine Name</label></td><td ><label >Unit</label></td><td ><label >Medicine Code</label></td><td ><label >Cateorgy</label></td><td ><label >Quantity</label></td></tr> </table>');
                     
-                    $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Quantity" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility:hidden;"  value="+" class="bt" /></td><td><input id="HiddenReceiptID'+iCnt+'" type="hidden" /></td></tr> </table>');
+                    $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Quantity" /></td><td><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"  /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility:hidden;"  value="+" class="bt" /></td><td><input id="HiddenReceiptID'+iCnt+'" type="hidden" /></td></tr> </table>');
                    
                     // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.                    
                 
@@ -64,7 +64,7 @@
                        
                             // ADDING  TEXTBOX CONTROLS
                        
-                            $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility:hidden;"  value="+" class="bt" /><td><input id="HiddenReceiptID'+iCnt+'" type="hidden" /></td></tr></table>');
+                            $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"  /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility:hidden;"  value="+" class="bt" /></td><td><input id="HiddenReceiptID'+iCnt+'" type="hidden" /></td></tr></table>');
 
                             // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
                     
@@ -89,6 +89,34 @@
                         document.getElementById('<%=HiddenFieldCount.ClientID%>').value=iCnt;
  
                     });
+
+                    //Removing Div on btRemove button click
+                    $('body').on('click', '#btRemove'+iCnt, function () {
+                        debugger;
+
+
+                        alert(iCnt);
+                        if (iCnt > 1) 
+                        {
+                            $(this).closest("div").remove();
+
+                            if ($('#btAdd'+iCnt).css('visibility') == 'visible')
+                            {
+                         
+                                alert(0010);
+
+                            }
+                            else 
+                            {
+                                
+                                $('#btAdd'+(iCnt-1)).css('visibility', 'visible')
+                                
+                            }
+                            iCnt = iCnt - 1;
+                        }
+
+                    }); 
+
                 }
           
             }
@@ -108,17 +136,17 @@
                     if(iCnt==1)
                     {
                         $(container).append('<table style="width:80%"><tr><td><label >Medicine Name</label></td><td ><label >Unit</label></td><td ><label >Medicine Code</label></td><td ><label >Cateorgy</label></td><td ><label >Quantity</label></td></tr> </table>');
-                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility:hidden;"  value="+" class="bt" /><td><input id="HiddenReceiptID'+iCnt+'" type="hidden" /></td></tr></table>');
+                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"  /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility:hidden;"  value="+" class="bt" /></td><td><input id="HiddenReceiptID'+iCnt+'" type="hidden" /></td></tr></table>');
                     }
                     else  if (iCnt==hidCount-1)
                     {
                        
-                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility:hidden;"  value="+" class="bt" /><td><input id="HiddenReceiptID'+iCnt+'" type="hidden" /></td></tr></table>');
+                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"  /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility:hidden;"  value="+" class="bt" /></td><td><input id="HiddenReceiptID'+iCnt+'" type="hidden" /></td></tr></table>');
                     }
 
                     else 
                     {
-                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd'+iCnt+'" value="+" onclick=this.style="visibility:hidden;"  class="bt" /></td><td><input id="HiddenReceiptID'+iCnt+'" type="hidden" /></td></tr></table>');
+                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"  /></td><td><input type="button" id="btAdd'+iCnt+'" value="+" onclick=this.style="visibility:hidden;"  class="bt" /></td><td><input id="HiddenReceiptID'+iCnt+'" type="hidden" /></td></tr></table>');
                         
                     }         
 
@@ -131,6 +159,7 @@
                     });    
                     
                 }
+                iCnt = iCnt - 1;
 
                 $('body').on('click', '.bt', function () 
                 {
@@ -142,7 +171,7 @@
                        
                         // ADDING  TEXTBOX CONTROLS
                        
-                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility:hidden;"  value="+" class="bt" /><td><input id="HiddenReceiptID'+iCnt+'" type="hidden" /></td></tr></table>');
+                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" type="text" class="input" onblur="BindControlsByMedicneName('+iCnt+')" placeholder="Medicine"/></td><td><input id="txtUnit'+iCnt+'" readonly="true" style="width:100%" class="input " type="text" placeholder="Unit" /></td> <td><input id="txtCode'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="MedCOde"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" style="width:100%" type="text" class="input" placeholder="Category"/></td> <td><input id="txtQuantity'+iCnt+'" style="width:100%" type="text" class="input" placeholder="Quantity"/></td><td><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"  /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility:hidden;"  value="+" class="bt" /><td><input id="HiddenReceiptID'+iCnt+'" type="hidden" /></td></tr></table>');
 
                         // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
                     
@@ -168,6 +197,50 @@
                     document.getElementById('<%=HiddenFieldCount.ClientID%>').value=iCnt;
  
                 });
+
+
+                //Removing Div on btRemove button click
+                $('body').on('click', '.bt1', function () {
+                   
+                    debugger;
+                    
+                    var RemoveBtnId = $(this).closest('.bt1').attr('id')                    
+
+                    var Id = RemoveBtnId.substring(8,20);                    
+
+                    var RemovedIDs ;
+                    
+                    RemovedIDs += document.getElementById('hdnDetailID'+Id).value+',';
+                    
+                    document.getElementById('<%=hdnRemovedIDs.ClientID%>').value = RemovedIDs;  
+                    
+                    alert(iCnt);
+
+
+
+                    if (iCnt > 1) 
+                    {
+                        $(this).closest("div").remove();
+                    }
+
+                    //    if ($('#btAdd' + (iCnt) + '').css('visibility') == 'visible') {
+                    //        debugger;
+                    //        alert(0010);
+                    //        //Nothing doing
+                    //    }
+                    //    else {
+
+                    //        $('#btAdd' + (iCnt - 1) + '').css('visibility', 'visible')
+
+
+                    //    }
+                    //    iCnt = iCnt - 1;
+                    //}
+
+                }); 
+
+
+
             }
 
 
@@ -198,8 +271,6 @@
             });
         }
     </script>
-
-
 
 
     <script>
@@ -253,8 +324,7 @@
                 var MedicineName = document.getElementById('txtMedicine'+ControlNo).value;
                 // alert(MedicineName);
 
-            }
-           
+            }          
             
 
             if (MedicineName!="")
@@ -270,8 +340,7 @@
                     
                     debugger;         
                     var string1 = new Array();
-                    string1 = response.split('|'); 
-                    
+                    string1 = response.split('|');                     
                    
                     document.getElementById('txtUnit'+ControlNo).value=string1[0];
                     document.getElementById('txtCode'+ControlNo).value=string1[1];
@@ -319,11 +388,11 @@
 
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%-- function BindControlsByMedicneName --%>
-    <asp:ScriptManager ID="ScriptManager1" EnablePageMethods="true" runat="server" EnableCdn="true"></asp:ScriptManager>
+    <asp:ScriptManager ID="ScriptManager2" EnablePageMethods="true" runat="server" EnableCdn="true"></asp:ScriptManager>
 
- 
+
 
     <div class="container-fluid bodyDiv">
 
@@ -377,54 +446,11 @@
                         <td>
 
                             <div class="col-lg-12">
-                                <%-- <table style="width: 80%">
-                                    <tr>
-                                        <td style="text-align: center;">
-                                            <asp:Label ID="Label5" runat="server" Text="Medicine"></asp:Label>
-                                        </td>
-                                        <td style="text-align: center;">
-                                            <asp:Label ID="Label1" runat="server" Text="Unit"></asp:Label>
-                                        </td>
-                                        <td style="text-align: center;">
-                                            <asp:Label ID="Label7" runat="server" Text="Medicine Code"></asp:Label>
-                                        </td>
-                                        <td style="text-align: center">
-                                            <asp:Label ID="Label8" runat="server" Text="Category"></asp:Label>
-                                        </td>
-                                        <td style="text-align: center">
-                                            <asp:Label ID="Label6" runat="server" Text="Quantity"></asp:Label>
-                                        </td>
 
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input id="txtSearch" tabindex="4" style="width: 100%" type="text" placeholder="Medicine" class="input" onblur="change()" />
-                                        </td>
-                                        <td>
-                                            <input id="txtUnit" readonly="true" style="width: 100%" class="input " type="text" placeholder="Unit" />
-                                        </td>
-                                        <td>
-                                            <input id="txtCode" readonly="true" style="width: 100%" class="input " type="text" placeholder="Med Code" />
-                                        </td>
-                                        <td>
-                                            <input id="txtCategory" readonly="true" style="width: 100%" class="input " type="text" placeholder="Category" />
-                                        </td>
-                                        <td>
-                                            <input id="txtQuantity" tabindex="5" class="input" style="width: 100%" type="text" placeholder="Quantity" />
-                                        </td>
-
-                                        <td>
-                                            <span class="auto-style4">
-                                                <input type="button" id="btAdd" onclick="this.style.visibility = 'hidden';" value="+" class="bt" />
-                                            </span>
-                                        </td>
-                                    </tr>
-                                   
-                                   
-                                </table>--%>
                                 <asp:HiddenField ID="HiddenField1" runat="server" />
                                 <asp:HiddenField ID="HiddenFieldXmlData" runat="server" />
                                 <asp:HiddenField ID="HiddenFieldCount" runat="server" Value="0" />
+                                <asp:HiddenField ID="hdnRemovedIDs" runat="server" />
                                 <div id="main">
                                 </div>
                             </div>
@@ -438,7 +464,7 @@
             </div>
             <div class="col-sm-4">
 
-                <asp:Button ID="btnReceipt" runat="server" Text="Add Receipt" OnClientClick="GetTextValue()" OnClick="btnReceipt_Click" />
+                <asp:Button ID="Button1" runat="server" Text="Add Receipt" OnClientClick="GetTextValue()" OnClick="btnReceipt_Click" />
 
             </div>
         </div>
