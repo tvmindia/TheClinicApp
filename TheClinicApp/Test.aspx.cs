@@ -13,7 +13,7 @@ namespace TheClinicApp
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            //gridDataBind();
+            gridDataBind();
         }
         #region GridBind
         public void gridDataBind()

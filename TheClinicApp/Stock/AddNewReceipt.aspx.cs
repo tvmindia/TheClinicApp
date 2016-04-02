@@ -15,7 +15,7 @@ using System.Web.Services;
 
 namespace TheClinicApp.Stock
 {
-
+    
     public partial class AddNewReceipt : System.Web.UI.Page
     {
         ErrorHandling eObj = new ErrorHandling();
@@ -23,21 +23,21 @@ namespace TheClinicApp.Stock
         IssueDetails idt = new IssueDetails();
         Stocks stok = new Stocks();
         Receipt rpt = new Receipt();
-
+      
         //login details
 
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
-
+        
         public string listFilter = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            bindpageload();
+                bindpageload();
 
         }
 
-
+        
         #region bindpageload
 
         public void bindpageload()
@@ -88,7 +88,7 @@ namespace TheClinicApp.Stock
         #region InsertClick
         protected void btnReceipt_Click(object sender, EventArgs e)
         {
-            if ((txtBillNo.Text != string.Empty) && (txtRefNo2.Text != string.Empty) && (txtDate.Text != string.Empty))
+            if ( (txtBillNo.Text != string.Empty)  && (txtRefNo2.Text != string.Empty) && (txtDate.Text != string.Empty))
             {
 
                 //INSERT
@@ -133,7 +133,7 @@ namespace TheClinicApp.Stock
 
             }
 
-
+            
         }
 
         #endregion InsertClick
@@ -151,30 +151,30 @@ namespace TheClinicApp.Stock
 
 
         }
-
+       
 
         #region WebMethod
 
         [WebMethod(EnableSession = true)]
         public static string MedDetails(string MedName)
         {
-            ClinicDAL.ReceiptDetails obj = new ClinicDAL.ReceiptDetails();
+           ClinicDAL.ReceiptDetails obj= new ClinicDAL.ReceiptDetails();
 
-            UIClasses.Const Const = new UIClasses.Const();
-            ClinicDAL.UserAuthendication UA;
+           UIClasses.Const Const = new UIClasses.Const();
+           ClinicDAL.UserAuthendication UA;
 
-            UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
+           UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
 
-            obj.ClinicID = UA.ClinicID.ToString();
+           obj.ClinicID = UA.ClinicID.ToString();
 
-            DataSet ds = obj.GetMedCodeUnitCategory(MedName);
+                DataSet ds= obj.GetMedCodeUnitCategory(MedName);
 
 
             string Unit = Convert.ToString(ds.Tables[0].Rows[0]["Unit"]);
             string MedCode = Convert.ToString(ds.Tables[0].Rows[0]["MedCode"]);
             string Category = Convert.ToString(ds.Tables[0].Rows[0]["CategoryName"]);
 
-            return String.Format("{0}" + "|" + "{1}" + " | " + "{2}", Unit, MedCode, Category);
+            return String.Format("{0}" + "|" + "{1}"+" | "+"{2}", Unit, MedCode, Category);
 
 
 

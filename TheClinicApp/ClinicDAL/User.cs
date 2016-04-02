@@ -417,30 +417,30 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add(Output);
                 cmd.ExecuteNonQuery();
 
-                //if (Output.Value.ToString() == "")
-                //{
-                //    //not successfull   
+                if (Output.Value.ToString() == "")
+                {
+                    //not successfull   
 
-                //    var page = HttpContext.Current.CurrentHandler as Page;
-                //    eObj.InsertionNotSuccessMessage(page);
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.InsertionNotSuccessMessage(page);
 
-                //}
-                //else
-                //{
-                //    //successfull
+                }
+                else
+                {
+                    //successfull
 
-                //    var page = HttpContext.Current.CurrentHandler as Page;
-                //    eObj.InsertionSuccessMessage(page);
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.InsertionSuccessMessage(page);
 
 
-                //}
+                }
 
 
             }
             catch (Exception ex)
             {
-                //var page = HttpContext.Current.CurrentHandler as Page;
-                //eObj.ErrorData(ex, page);
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
 
             }
 
@@ -496,7 +496,7 @@ namespace TheClinicApp.ClinicDAL
 
         #region Reset Password
 
-        public string ResetPassword(Guid UserID)
+        public void ResetPassword()
         {
             dbConnection dcon = new dbConnection();
 
@@ -508,7 +508,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.CommandText = "ResetPassword";
 
-                cmd.Parameters.Add("@UserId", SqlDbType.UniqueIdentifier).Value = UserID;
+                cmd.Parameters.Add("@LoginName", SqlDbType.NVarChar, 255).Value = loginName;
                 cmd.Parameters.Add("@Password", SqlDbType.NVarChar, 40).Value = passWord;
                
 
@@ -523,27 +523,25 @@ namespace TheClinicApp.ClinicDAL
                 {
                     //not successfull   
 
-                    //var page = HttpContext.Current.CurrentHandler as Page;
-                    //eObj.UpdationNotSuccessMessage(page);
-                    return "false";
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.UpdationNotSuccessMessage(page);
+
                 }
                 else
                 {
                     //successfull
 
-                    //var page = HttpContext.Current.CurrentHandler as Page;
-                    //eObj.UpdationSuccessMessage(page);
-                    return "true";
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.UpdationSuccessMessage(page);
+
                 }
 
 
             }
             catch (Exception ex)
             {
-                //var page = HttpContext.Current.CurrentHandler as Page;
-                //eObj.ErrorData(ex, page);
-               string warning= ex.Message;
-               return warning;
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
 
             }
 

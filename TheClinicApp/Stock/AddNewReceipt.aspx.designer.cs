@@ -13,13 +13,13 @@ namespace TheClinicApp.Stock {
     public partial class AddNewReceipt {
         
         /// <summary>
-        /// ScriptManager2 control.
+        /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager2;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
         /// txtBillNo control.
@@ -76,21 +76,12 @@ namespace TheClinicApp.Stock {
         protected global::System.Web.UI.WebControls.HiddenField HiddenFieldCount;
         
         /// <summary>
-        /// hdnRemovedIDs control.
+        /// btnReceipt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnRemovedIDs;
-        
-        /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnReceipt;
     }
 }

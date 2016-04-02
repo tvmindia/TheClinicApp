@@ -17,13 +17,13 @@ namespace TheClinicApp.Stock
     public partial class ExistingStockIn : System.Web.UI.Page
     {
 
-
+        
         #region objects
 
         ErrorHandling eObj = new ErrorHandling();
         Stocks stok = new Stocks();
         Receipt rpt = new Receipt();
-
+        
         public string listFilter = null;
 
         //passing guid value: ReceiptID
@@ -39,11 +39,11 @@ namespace TheClinicApp.Stock
         {
 
             receipt = Guid.Parse(Request.QueryString["ReceiptID"]);
-
+           
 
             UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
             rpt.ClinicID = UA.ClinicID.ToString();
-
+          
             GetReceiptDetails();
 
             bindpageload();
@@ -58,8 +58,8 @@ namespace TheClinicApp.Stock
         public void bindpageload()
         {
             listFilter = null;
-            listFilter = BindName();
-        }
+            listFilter = BindName(); 
+        }        
         #endregion bindpageload
 
 
@@ -92,10 +92,10 @@ namespace TheClinicApp.Stock
         {
             DataSet ds = rpt.GetReceiptDetailsByReceiptID(receipt);
 
-            HiddenFieldCount.Value = ds.Tables[0].Rows.Count.ToString();
+            HiddenFieldCount.Value= ds.Tables[0].Rows.Count.ToString();
 
             var xml = ds.GetXml();
-
+            
             HiddenFieldXmlData.Value = xml;
         }
 
