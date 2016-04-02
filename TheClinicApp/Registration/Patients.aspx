@@ -31,7 +31,7 @@ background-color: ghostwhite;
 }
 </style>
 
-        <%----------------------------Stylesheet and Scripts----------------------------%>
+        <%--------------------------Stylesheet and Scripts---------------------------%>
     
     <link href="../Content/Input.css" rel="stylesheet" />
     <link href="../Content/jquery-ui.css" rel="stylesheet" />

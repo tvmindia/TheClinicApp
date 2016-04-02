@@ -10,7 +10,6 @@
 namespace TheClinicApp.Admin {
     
     
-
     public partial class Masters {
         
         /// <summary>
@@ -129,6 +128,24 @@ namespace TheClinicApp.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMsgges;
+        
+        /// <summary>
+        /// ddlGroupforDoc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlGroupforDoc;
+        
+        /// <summary>
+        /// ddlClinicforDoc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlClinicforDoc;
         
         /// <summary>
         /// txtDoctor control.

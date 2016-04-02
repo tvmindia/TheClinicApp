@@ -10,7 +10,7 @@
     border-width: thin;
     padding: 15px 30px 20px 30px;
     background: rgb(34,34,34); /* for IE */
-    background: rgba(213, 211, 74, 0.21);
+    background: rgba(235, 249, 210, 0.71);
     width: 35%;
     height: 35%;
     position: absolute;
@@ -42,8 +42,8 @@
 }
 
 html, body {
-    height: 95%;
-    background-image: url('../Images/HerbeInWhite.jpg');
+    height: 100%;
+    background-image: url('../Images/mainbg5.jpg');
     background-size: 100%;
 }
 
