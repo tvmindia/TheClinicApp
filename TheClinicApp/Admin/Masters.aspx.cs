@@ -41,7 +41,7 @@ namespace TheClinicApp.Admin
              MasterObj.GroupName=txtGroup.Value;
              byte[] ImageByteArray = null;
              ImageByteArray = ConvertImageToByteArray(FileUpload1);
-             //MasterObj.Logo = ImageByteArray;
+             MasterObj.Logo = ImageByteArray;
              MasterObj.InsertGroups();
         }
 

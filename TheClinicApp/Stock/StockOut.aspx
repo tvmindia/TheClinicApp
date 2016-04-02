@@ -107,12 +107,16 @@
         });
         function DisplayDetails(row) {
            
-           
-            issueNo = $("td", row).eq(0).html();
 
-            //var issueid = $("td", row).closest('td').prev('td').text();
+           <%-- var xml = document.getElementById('<%=hdnXmlData.ClientID%>').value;
+            alert(xml);--%>
+           
+           
+            //issueID = $("td", row).eq(0).html();
+
+            //var issueID = $("td", row).closest('td').prev('td').text();
          
-            window.location = "NewIssue.aspx?issueNo=" + issueNo ;
+            //window.location = "ExistingStockOut.aspx?IssueID=" + issueID;
             
         }
 
