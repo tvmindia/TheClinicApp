@@ -22,6 +22,7 @@
 <p>
 <button class="w3-btn w3-section w3-teal w3-ripple" runat="server" id="btnVerificationCode" onclick="this.style.visibility='hidden';" onserverclick="btnVerificationCode_ServerClick1"> Send me verification code </button></p>
 
+
 <p>
 <label class="w3-label w3-validate">Verification Code</label>
 <input class="w3-input" type="password" runat="server" id="txtVerificationCode" style="width:90%"></p>

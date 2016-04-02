@@ -21,6 +21,7 @@ namespace TheClinicApp {
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
+
         /// <summary>
         /// username control.
         /// </summary>
