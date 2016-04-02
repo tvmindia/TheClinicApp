@@ -176,7 +176,7 @@
     <Content Include="Doctors Test\DoctorTesting.aspx" />
     <Content Include="Forgot.aspx" />
     <Content Include="Images\Addition .png" />
-    <Content Include="Images\Arrowhead-Down-01.png" />
+    <Content Include="Images\Aloe water.jpg" />
     <Content Include="Images\Button-Add-icon.png" />
     <Content Include="Images\calendar 32x32.png" />
     <Content Include="Images\calendar 42x42.png" />
@@ -186,6 +186,7 @@
     <Content Include="Images\Close1.png" />
     <Content Include="Images\Delete1.png" />
     <Content Include="Images\first.gif" />
+    <Content Include="Images\HerbeInwhite.jpg" />
     <Content Include="Images\last.gif" />
     <Content Include="Images\Menu-01-WF.png" />
     <Content Include="Images\Minus.png" />
@@ -195,7 +196,6 @@
     <Content Include="Images\next.gif" />
     <Content Include="Images\plus.png" />
     <Content Include="Images\prev.gif" />
-    <Content Include="Images\question-mark-nothing.png" />
     <Content Include="Images\select.png" />
     <Content Include="Images\Sync-WF.png" />
     <Content Include="Pharmacy\Pharmacy.aspx" />
@@ -222,7 +222,6 @@
     <Content Include="Images\clinic app logo.png" />
     <Content Include="Images\Delete.png" />
     <Content Include="Images\heroAccent.png" />
-    <Content Include="Images\icon-user-default.jpg" />
     <Content Include="Images\LOGO.png" />
     <Content Include="Images\mainbg.jpg" />
     <Content Include="Images\mainbg1.jpg" />

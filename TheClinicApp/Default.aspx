@@ -55,7 +55,7 @@
        
      <div style="text-align:right">
 
-          <button class="btn waves-effect waves-light" type="submit" name="action"  >Login<i class="material-icons right" ><img src="Images/next.gif" /></i></button>       
+          <button class="btn waves-effect waves-light" type="submit" name="action"  >Login<i class="material-icons right" ><img src="Images/next.gif"/></i></button>       
      </div>  
  
 

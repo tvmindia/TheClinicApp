@@ -111,6 +111,7 @@ namespace TheClinicApp.Registration
             lblAge.Text = txtAge.Text;
             lblPhone.Text = txtMobile.Text;
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "openModal();", true);
+            
         }
 
         #endregion MainButton
@@ -347,6 +348,7 @@ namespace TheClinicApp.Registration
         {
             dtgViewAllRegistration.PageIndex = e.NewPageIndex;
             dtgViewAllRegistration.DataBind();
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "openModalAllRegistration();", true);
         }
 
         #endregion Paging

@@ -213,7 +213,7 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion AddGroups
 
-         #region AddClinics
+        #region AddClinics
          public void InsertClinics()
         {
             SqlConnection con = null;
@@ -285,7 +285,7 @@ namespace TheClinicApp.ClinicDAL
         }
         #endregion AddClinics
 
-         #region AddDoctors
+        #region AddDoctors
          public void InsertDoctors()
          {
              SqlConnection con = null;
@@ -359,7 +359,7 @@ namespace TheClinicApp.ClinicDAL
          }
          #endregion AddDoctors
 
-         #region AddCategoryID
+        #region AddCategoryID
          public void InsertCategories()
          {
              SqlConnection con = null;
@@ -426,7 +426,7 @@ namespace TheClinicApp.ClinicDAL
 
          #endregion AddCategories
 
-         #region AddUnit
+        #region AddUnit
          public void InsertUnits()
          {
              SqlConnection con = null;
@@ -494,6 +494,79 @@ namespace TheClinicApp.ClinicDAL
 
          #endregion AddUnits
 
+        #region BindDropDowns
+         #region BindGroupName
+         public DataTable BindGroup()
+        {
+            DataTable datatableGroups = null;
+            SqlConnection con = null;
+            dbConnection dcon = new dbConnection();
+            try
+            {
+                con = dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand("SelectGroups", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = cmd;
+                datatableGroups = new DataTable();
+                adapter.Fill(datatableGroups);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return datatableGroups;
+        }
+        #endregion BindGroupName
+
+         #region BindClinicName
+        public DataTable GetClinic()
+        {
+            SqlConnection conn = null;
+            DataTable ds = null;
+            SqlCommand cmd = null;
+            SqlDataAdapter da = null;
+            dbConnection dcon = new dbConnection();
+            try
+            {
+                conn = dcon.GetDBConnection();
+                //conn.Open();
+
+                cmd = new SqlCommand("[SelectClinics]", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                da = new SqlDataAdapter();
+                da.SelectCommand = cmd;
+                ds = new DataTable();
+                da.Fill(ds);
+
+                conn.Close();
+
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+
+            }
+
+        } 
+
+
+        #endregion BindClinicName
+         #endregion BindDropDowns
     }
        
     }
