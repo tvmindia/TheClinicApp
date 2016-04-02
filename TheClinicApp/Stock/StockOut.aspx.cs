@@ -26,16 +26,18 @@ namespace TheClinicApp.Stock
     public partial class StockOut : System.Web.UI.Page
     {
         private static int PageSize = 5;
-
+        ClinicDAL.UserAuthendication UA;
+        UIClasses.Const Const = new UIClasses.Const();
 
         //#region Methods
 
         //#region Bind Dummy Row
 
+
         private void BindDummyRow()
         {
             DataTable dummy = new DataTable();
-            dummy.Columns.Add("IssueID");
+          
             dummy.Columns.Add("IssueNO");
             dummy.Columns.Add("IssuedTo");
             
@@ -89,28 +91,6 @@ namespace TheClinicApp.Stock
 
 
 
-         [WebMethod]
-         public static string GetReceiptHD(string searchTerm, int pageIndex)
-         {
-             ClinicDAL.UserAuthendication UA;
-             UIClasses.Const Const = new UIClasses.Const();
-
-             UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
-
-             string query = "ViewAndFilterReceiptHD";
-             SqlCommand cmd = new SqlCommand(query);
-             cmd.CommandType = CommandType.StoredProcedure;
-
-             cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = UA.ClinicID;
-
-             cmd.Parameters.AddWithValue("@SearchTerm", searchTerm);
-             cmd.Parameters.AddWithValue("@PageIndex", pageIndex);
-             cmd.Parameters.AddWithValue("@PageSize", PageSize);
-             cmd.Parameters.Add("@RecordCount", SqlDbType.Int).Direction = ParameterDirection.Output;
-
-             var xml = GetData(cmd, pageIndex).GetXml();
-             return xml;
-         }
 
         private static DataSet GetData(SqlCommand cmd, int pageIndex)
         {

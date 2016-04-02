@@ -127,7 +127,7 @@
                     
                     $('body').on('click', '.bt1', function  () {
                         
-
+                        debugger;
                         //var ABC = $(this).closest('.bt1').attr('id') //document.getElementById(this.Id);
                        
 
@@ -194,7 +194,7 @@
                 for(iCnt=1;iCnt<=hidCount;iCnt++)
                 {
                     
-
+                    debugger;
                     var container = $(document.createElement('div')).css({
                         width:'100%',
                         borderTopColor: '#999', borderBottomColor: '#999',
@@ -231,7 +231,7 @@
           
                 $('body').on('click', '.bt1', function  () {
                  
-
+                    debugger;
                     var RemoveButtonId = $(this).closest('.bt1').attr('id') //document.getElementById(this.Id);
                     //alert (ABC);
 
@@ -400,7 +400,7 @@
 
         //----------------------------------- * Function to rebind medicine textboxes -- refills controls by retrieving data from xml *-----------------------
 
-        function RefillTextboxesWithXmlData()
+        function RefillTextboxesWithXmlData(Medicines)
         {
             debugger;
 
@@ -447,7 +447,7 @@
 
             $(document).ready(function () {
               
-                
+                debugger;
                 //-------------*  images that represents IssueNo duplication hide and show * -------------//
 
                 var LnameImage = document.getElementById('<%=imgWebLnames.ClientID %>');
