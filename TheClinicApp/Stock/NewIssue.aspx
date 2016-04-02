@@ -41,9 +41,17 @@
 
                 buttonImageOnly: true,
                 buttonImage: '../Images/calendar4.png',
-                readonly:true
+
+                
+               
             });
+
+           
         });
+
+       
+
+
     </script>
 
 
@@ -127,7 +135,7 @@
                     
                     $('body').on('click', '.bt1', function  () {
                         
-                        debugger;
+                       
                         //var ABC = $(this).closest('.bt1').attr('id') //document.getElementById(this.Id);
                        
 
@@ -137,7 +145,7 @@
                         if (iCnt > 1) {
 
                        
-                            $(this).closest("div").remove();
+                            $(this).closest("table").remove();
 
                             iCnt = iCnt - 1;
                         } 
@@ -231,7 +239,7 @@
           
                 $('body').on('click', '.bt1', function  () {
                  
-                    debugger;
+                  
                     var RemoveButtonId = $(this).closest('.bt1').attr('id') //document.getElementById(this.Id);
                     //alert (ABC);
 
@@ -247,7 +255,7 @@
                         alert(RemovedIDs);
 
                        
-                        $(this).closest("div").remove();
+                        $(this).closest("table").remove();
                         iCnt = iCnt - 1;
                     } 
                     document.getElementById('<%=hdnRowCount.ClientID%>').value = iCnt;
@@ -260,7 +268,7 @@
 
                 $('body').on('click', '.bt', function () 
                 {
-                    debugger;
+                 
                       
                     if (iCnt <= 19)
                     {
@@ -306,7 +314,7 @@
 
         function GetTextBoxValues()
         {
-
+            debugger;
             $(divValue)
                 .empty()
                 .remove();
@@ -548,7 +556,7 @@
         <tr>
             <td>Date </td>
             <td>
-                <asp:TextBox ID="txtDate" runat="server"></asp:TextBox></td>
+                <asp:TextBox ID="txtDate" runat="server"  ></asp:TextBox></td>
 
         </tr>
 

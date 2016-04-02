@@ -210,6 +210,9 @@ namespace TheClinicApp.Stock
         #region Page Load
         protected void Page_Load(object sender, EventArgs e)
         {
+            txtDate.Attributes.Add("readonly", "readonly");
+
+
             UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
 
             BindListFilter();
@@ -291,6 +294,7 @@ namespace TheClinicApp.Stock
                         {
                             DetailObj.ClinicID = UA.ClinicID.ToString();
                             DetailObj.DeleteIssueDetails(UniqueId, medId);
+                            hdnRemovedIDs.Value = "";
                         }
                     }
                 }
