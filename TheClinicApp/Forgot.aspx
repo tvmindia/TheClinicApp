@@ -11,7 +11,6 @@
   <h1 style="text-align:center;">Forgot Password</h1>
 </header>--------%>
 
-
 <div class="w3-container w3-half w3-margin-top">
 
 <form id="form1" class="w3-container w3-card-4" runat="server">

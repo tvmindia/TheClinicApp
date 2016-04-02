@@ -42,7 +42,7 @@ background-color: ghostwhite;
     <script>
         $(document).ready(function () {
             var ac=null;
-             ac = <%=listFilter %>;
+            ac = <%=listFilter %>;
             $( "#txtSearch" ).autocomplete({
                 source: ac
             });
@@ -55,9 +55,6 @@ background-color: ghostwhite;
         <script type="text/javascript">
             function openModal() {
                 $('#TokenRegistration').modal('show');
-            }
-            function openModalAllRegistration() {
-                $('#myModal').modal('show');
             }
             
         </script>
@@ -563,7 +560,7 @@ background-color: ghostwhite;
                     </div>
                     <div class="modal-body" >
                         
-                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None" Height="30px" AllowPaging="true" OnPageIndexChanging="dtgViewAllRegistration_PageIndexChanging" PageSize="5">
+                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None" Height="30px" AllowPaging="true" OnPageIndexChanging="dtgViewAllRegistration_PageIndexChanging" PageSize="10">
                             
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>

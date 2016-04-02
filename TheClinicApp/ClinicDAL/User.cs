@@ -496,7 +496,7 @@ namespace TheClinicApp.ClinicDAL
 
         #region Reset Password
 
-        public string ResetPassword(Guid UserID)
+        public void ResetPassword(Guid UserID)
         {
             dbConnection dcon = new dbConnection();
 
@@ -523,27 +523,25 @@ namespace TheClinicApp.ClinicDAL
                 {
                     //not successfull   
 
-                    //var page = HttpContext.Current.CurrentHandler as Page;
-                    //eObj.UpdationNotSuccessMessage(page);
-                    return "false";
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.UpdationNotSuccessMessage(page);
+
                 }
                 else
                 {
                     //successfull
 
-                    //var page = HttpContext.Current.CurrentHandler as Page;
-                    //eObj.UpdationSuccessMessage(page);
-                    return "true";
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.UpdationSuccessMessage(page);
+
                 }
 
 
             }
             catch (Exception ex)
             {
-                //var page = HttpContext.Current.CurrentHandler as Page;
-                //eObj.ErrorData(ex, page);
-               string warning= ex.Message;
-               return warning;
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
 
             }
 

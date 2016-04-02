@@ -7,7 +7,6 @@
     <link href="Content/mui.css" rel="stylesheet" />
     <title>resetpassword</title>
 </head>
-
 <body>
     <form id="form1" runat="server">
     <div class="mui-container">
@@ -30,8 +29,8 @@
         <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
           <div id="Errorbox"  style="height:25%;  display:none;"  runat="server" >
     <div>
-    
-    <asp:Label ID="lblMsgg" runat="server" Text=""></asp:Label>
+    <strong> <asp:Label ID="lblErrorCaption" runat="server" Text=""></asp:Label> </strong>
+    <asp:Label ID="lblMsgges" runat="server" Visible="false" Text=""></asp:Label>
     </div>
     </div> 
     </div>

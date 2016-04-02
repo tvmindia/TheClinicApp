@@ -37,7 +37,7 @@
     margin-bottom: 5px;
     max-width: 100%;
     width: 100%;
-    }
+}
         </style>
     
 </head>
@@ -52,7 +52,7 @@
                 //Removing Div on btRemove button click
                 $("body").on("click", "#btRemove", function () {
                     debugger;
-                    if (iCnt > 1) {
+                    if (iCnt >= 1) {
                         $(this).closest("div").remove();
 
                         if ($('#btAdd' + (iCnt) + '').css('visibility') == 'visible') {

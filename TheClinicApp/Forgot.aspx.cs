@@ -14,8 +14,6 @@ namespace TheClinicApp
         ClinicDAL.User userObj = new ClinicDAL.User();
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
             
         }
 
@@ -76,7 +74,7 @@ namespace TheClinicApp
 
             // Recipient e-mail address.
             Msg.To.Add(txtEmail.Value);
-            string body = "The Verification Code for Changing Password is ::"+verificationCode.ToString();
+            string body = verificationCode.ToString();
             Msg.Subject = "Verification Code  ";
             Msg.Body = body;
             Msg.IsBodyHtml = true;

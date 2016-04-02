@@ -377,7 +377,6 @@ namespace TheClinicApp.ClinicDAL
             public Visit()
             {
                VisitID = Guid.NewGuid();
-               PrescriptionID = Guid.NewGuid();
             }
             public Visit(Guid VisitID)
             {

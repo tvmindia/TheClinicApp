@@ -24,10 +24,12 @@
             z-index:-1;
         }
           #bt_forgot{
-          position:absolute;
+          position:relative;
           transition: .5s ease;
-          top: 60%;
-          left: 30%;                   
+          top: 364px;
+          left: 420px;
+          right: -420px;
+          bottom: -191px;
            }
     </style>
    
@@ -55,7 +57,10 @@
        
      <div style="text-align:right">
 
-          <button class="btn waves-effect waves-light" type="submit" name="action"  >Login<i class="material-icons right" ><img src="Images/next.gif"/></i></button>       
+          <button class="btn waves-effect waves-light" type="submit" name="action"  >Login
+    <i class="material-icons right" >
+        <img style="width:80%" src="Images/arrowR.png" /></i>
+         </button>       
      </div>  
  
 
@@ -68,7 +73,8 @@
     </form>
     <button id="bt_forgot" onclick="document.getElementById('id01').style.display='block'" class="w3-btn" style="background-color:transparent;color:blueviolet;">Forget Password?</button> 
         <div id="id01" class="w3-modal" runat="server">
-  <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn w3-hover-red w3-container w3-padding-16 w3-display-topright w3-xxlarge">×</span>
+  <span onclick="document.getElementById('id01').style.display='none'" 
+  class="w3-closebtn w3-hover-red w3-container w3-padding-16 w3-display-topright w3-xxlarge">×</span>
   <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px;height:372px;">  
       
         <iframe src="Forgot.aspx" style="width:100%;height:100%;"></iframe>
@@ -79,5 +85,4 @@
 </div>
    
 </body>
-    
 </html>

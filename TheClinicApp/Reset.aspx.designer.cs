@@ -67,12 +67,21 @@ namespace TheClinicApp {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Errorbox;
         
         /// <summary>
-        /// lblMsgg control.
+        /// lblErrorCaption control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMsgg;
+        protected global::System.Web.UI.WebControls.Label lblErrorCaption;
+        
+        /// <summary>
+        /// lblMsgges control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMsgges;
     }
 }

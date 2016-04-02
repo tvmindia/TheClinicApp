@@ -7,7 +7,6 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Messages = TheClinicApp.UIClasses.Messages;
 using TheClinicApp.ClinicDAL;
 
 namespace TheClinicApp
@@ -23,8 +22,6 @@ namespace TheClinicApp
         ClinicDAL.UserAuthendication UA;
 
         #endregion Global Variables
-
-
 
         #region Methods
 
@@ -76,28 +73,13 @@ namespace TheClinicApp
 
             if (txtNewPassword.Value == txtConfirmPassword.Value)
             {
-                string msg=userObj.ResetPassword(UserID);
-                if (msg == "true")
-                {
-
-                    Response.Redirect("Forgot.aspx");
-                    //lblMsgg.Text = Messages.SuccessMsgCaption;
-                }
-                else if(msg == "false")
-                {
-                    lblMsgg.Text = Messages.FailureMsgCaption;
-                }
-                else if(msg=="warning")
-                {
-                    lblMsgg.Text = Messages.WarningMsgCaption;
-                }
+                userObj.ResetPassword(UserID);
             }
 
             else
             {
                 lblError.Text = " Password does not match the confirm password";
             }
-
         }
 
         #endregion Reset Button Click
