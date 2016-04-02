@@ -347,6 +347,7 @@ namespace TheClinicApp.Registration
         {
             dtgViewAllRegistration.PageIndex = e.NewPageIndex;
             dtgViewAllRegistration.DataBind();
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "openmyModal();", true);
         }
 
         #endregion Paging

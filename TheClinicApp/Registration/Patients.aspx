@@ -56,7 +56,9 @@ background-color: ghostwhite;
             function openModal() {
                 $('#TokenRegistration').modal('show');
             }
-            
+            function openmyModal() {
+                $('#myModal').modal('show');
+            }
         </script>
        
   <%-------------------Main Container-----------------------------%>
@@ -560,7 +562,7 @@ background-color: ghostwhite;
                     </div>
                     <div class="modal-body" >
                         
-                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None" Height="30px" AllowPaging="true" OnPageIndexChanging="dtgViewAllRegistration_PageIndexChanging" PageSize="10">
+                        <asp:GridView ID="dtgViewAllRegistration" runat="server" AutoGenerateColumns="False" style="text-align:center;width:100%;" CellPadding="4" ForeColor="#333333" GridLines="None" Height="30px" AllowPaging="true" OnPageIndexChanging="dtgViewAllRegistration_PageIndexChanging" PageSize="5">
                             
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
