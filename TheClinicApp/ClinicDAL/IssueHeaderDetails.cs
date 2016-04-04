@@ -479,7 +479,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.CommandText = "[GetIssueDetailsByIssueID]";
 
 
-                cmd.Parameters.Add("@IssueID", SqlDbType.NVarChar, 255).Value = IssueID;
+                cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(IssueID);
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
 
 
@@ -770,7 +770,7 @@ namespace TheClinicApp.ClinicDAL
         #endregion InsertIssueDetails
 
         #region UpdateIssueDetails
-        public void UpdateIssueDetails(string UniqueID, string MedicineID)
+        public void UpdateIssueDetails(string UniqueID)
         {
 
             dbConnection dcon = null;
@@ -790,7 +790,7 @@ namespace TheClinicApp.ClinicDAL
 
                 cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(UniqueID);
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
-                cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
+                //cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
                 cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
                 cmd.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar, 255).Value = UpdatedBy;
 
@@ -885,7 +885,7 @@ namespace TheClinicApp.ClinicDAL
 
         #region DeleteIssueDetails
 
-        public void DeleteIssueDetails(string UniqueID, string MedicineID)
+        public void DeleteIssueDetails(string UniqueID)
         {
             dbConnection dcon = null;
 
@@ -900,7 +900,7 @@ namespace TheClinicApp.ClinicDAL
 
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
                 cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(UniqueID);
-                cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
+                //cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(MedicineID);
 
                 cmd.Parameters.Add("@Status", SqlDbType.Int);
                 cmd.Parameters["@Status"].Direction = ParameterDirection.Output;

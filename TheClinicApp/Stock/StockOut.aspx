@@ -88,37 +88,6 @@
     <script type="text/javascript">
 
 
-        function SetXmlHiddenField(xmlFromChild)
-        {
-            debugger;
-           
-        }
-
-
-
-
-        var issueID ='';
-
-        $(function () {
-            $("[id*=gvIssueHD] td").click(function () {
-                
-                DisplayDetails($(this).closest("tr"));
-            });
-        });
-        function DisplayDetails(row) {
-           
-           
-            issueNo = $("td", row).eq(0).html();
-
-            //var issueid = $("td", row).closest('td').prev('td').text();
-         
-            window.location = "NewIssue.aspx?issueNo=" + issueNo ;
-            
-        }
-
-
-
-
         $(function () {
           GetIssueHD(1);
         });
@@ -153,8 +122,12 @@
             });
         }
         var row;
+        var issueID = '';
+
         function OnSuccess(response) {
           
+           
+
             var xmlDoc = $.parseXML(response.d);
             var xml = $(xmlDoc);
             var IssueHD = xml.find("IssueHD");
@@ -164,30 +137,29 @@
             $("[id*=gvIssueHD] tr").not($("[id*=gvIssueHD] tr:first-child")).remove();
             if (IssueHD.length > 0) {
                 $.each(IssueHD, function () {
-                   
+                    debugger;
                     //$("td", row).eq(0).html('<a href="NewIssue.aspx">' + $(this).find("RefNo1").text() + '</a>');
                       
+                    //issueID = $(this).find("IssueID").text();
+                   
+                
 
-                       
-                    issueID = $(this).find("IssueID").text();
-                    //$("td", row).eq(0).html('<a href="ExistingStockOut.aspx?issueID="' + issueID + '">' + $(this).find("IssueID").text() + '</a>');
+                    $("td", row).eq(0).html($(this).find("IssueNO").text()).click(function () {
+                     
+                        issueID = $(this).closest('tr').find('td:eq(2)').text();
+                                                       window.location = "NewIssue.aspx?issueID="+issueID;
+                                                         });
 
-                         //$("td", row).eq(0).html('<input type="button" value = "Delete" onClick="Javacsript:ConfirmDelete()" ">');
+                  $("td", row).eq(1).html($(this).find("IssuedTo").text());
+                    
+                  $("td", row).eq(2).html($(this).find("IssueID").text());
 
-                    //$("td", row).eq(0).html($(this).find("IssueID").text());
-
-
-                    //$("td", row).eq(0).html('<a href="ExistingStockOut.aspx">' + $(this).find("IssueNO").text() + '</a>');
-
-                        $("td", row).eq(0).html($(this).find("IssueNO").text());
-                        $("td", row).eq(1).html($(this).find("IssuedTo").text());
-                        
-                       
-                    //$("td", row).eq(2).html($(this).find("Date").text());
+                 //$("td", row).eq(2).html($(this).find("Date").text());
                     $("[id*=gvIssueHD]").append(row);
                     row = $("[id*=gvIssueHD] tr:last-child").clone(true);
 
-                  
+
+                   
 
                 });
                 var pager = xml.find("Pager");
@@ -211,7 +183,20 @@
                 $("td", empty_row).not($("td:first-child", empty_row)).remove();
                 $("[id*=gvReceiptHD]").append(empty_row);
             }
+
+           
+            var th = $("[id*=gvIssueHD] th:contains('IssueID')");
+            th.css("display","none");
+            $("[id*=gvIssueHD] tr").each(function () {
+                $(this).find("td").eq(th.index()).css("display", "none");
+            });
+
         };
+
+
+
+       
+
     </script>
 
 
@@ -222,21 +207,18 @@
  <asp:TextBox runat="server"  ID="txtSearch" ></asp:TextBox>
         <br />
         <br />
-         <%--<asp:BoundField DataField="Date" HeaderText="Date"  ItemStyle-CssClass="Match"  />--%>
-         <%--<asp:BoundField DataField="RefNo1" HeaderText="RefNo1"  ItemStyle-CssClass="Match"  />--%>
+      
+
     <asp:GridView ID="gvIssueHD" runat="server" Style="width: 400px" AutoGenerateColumns="False">
             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
             <Columns>
             
-             
-                 
-
-                <%--<asp:BoundField DataField="IssueID" HeaderText="IssueID"    />--%>
+            
               <asp:BoundField DataField="IssueNO" HeaderText="IssueNO"  ItemStyle-Font-Underline="true" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Blue" ItemStyle-CssClass="cursorshow" />
 
                 <asp:BoundField DataField="IssuedTo" HeaderText="IssuedTo"  ItemStyle-CssClass="Match"  />
                
-                
+                   <asp:BoundField DataField="IssueID" HeaderText="IssueID"  ItemStyle-CssClass="Match"  />
 
             </Columns>
             <EditRowStyle BackColor="#0080AA"></EditRowStyle>
@@ -267,10 +249,7 @@
 
 
     <asp:Button ID="btnNewIssue" runat="server" Text="New Issue" OnClick="btnNewIssue_Click" />
-    
-    <%--<a href="#" role="button"  id="Issue" onclick="openModal()" >New Issue</a>--%>
-    <%--<a href="#" role="button" id="NewIssueID" data-toggle="modal" data-target="#NewIssue" onclick="SetIframeSrc('NewIssueID')">New Issue</a>--%>
-
+   
     
   <%--   //------------- New Issue ---------%>
 

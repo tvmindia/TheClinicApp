@@ -183,20 +183,8 @@ namespace TheClinicApp.Stock
 
                 IssuedtlObj.ClinicID = UA.ClinicID.ToString();
 
-                try
-                {
-                    IssuedtlObj.DeleteIssueDetails(UniqueID, MedicineID);
-
-                    //hdnManageGridBind.Value = "True";
-
                     BindGridviewAndLabels();
-                }
-                catch (Exception)
-                {
-                    
-                    throw;
-                }
-                
+               
 	        }         
             
          
