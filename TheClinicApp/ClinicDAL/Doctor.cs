@@ -1,10 +1,20 @@
-﻿using System;
+﻿#region CopyRight
+
+//Author      : Thomson K Varkey
+//Created Date: Feb-22-2016
+
+#endregion CopyRight
+
+
+#region Included Namespaces
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI;
+#endregion Included Namespaces
 
 namespace TheClinicApp.ClinicDAL
 {
