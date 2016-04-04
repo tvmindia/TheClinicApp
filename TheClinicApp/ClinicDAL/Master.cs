@@ -11,12 +11,15 @@ namespace TheClinicApp.ClinicDAL
 {
     public class Master
     {
+        #region Constructors
         public Master()
         {
             GroupID = Guid.NewGuid();
             ClinicID = Guid.NewGuid();
             DoctorID = Guid.NewGuid();
         }
+        #endregion Constructors
+
         #region Global variables
 
         ErrorHandling eObj = new ErrorHandling();
@@ -146,6 +149,7 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion Global variables
 
+        #region Methods
         #region AddGroups
         public void InsertGroups()
         {
@@ -563,5 +567,6 @@ namespace TheClinicApp.ClinicDAL
 
         }
         #endregion BindClinicName
+        #endregion Methods
     }
 }

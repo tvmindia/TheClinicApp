@@ -50,23 +50,29 @@
                 var iCnt = 0;
 
                 //Removing Div on btRemove button click
-                $("body").on("click", "#btRemove", function () {
+                $("body").on("click", "#btRemove", function () 
+                {
                     debugger;
-                    if (iCnt >= 1) {
+                    if (iCnt > 1)
+                    {
                         $(this).closest("div").remove();
 
-                        if ($('#btAdd' + (iCnt) + '').css('visibility') == 'visible') {
+                        if ($('#btAdd' + (iCnt) + '').css('visibility') == 'visible')
+                        {
                             debugger;
-                            alert(0010);
+                            //alert(0010);
                             //Nothing doing
                         }
-                        else {
+                        else
+                        {
 
                             $('#btAdd' + (iCnt - 1) + '').css('visibility', 'visible')
-
+                            iCnt = iCnt - 1;
 
                         }
-                        iCnt = iCnt - 1;
+                        
+
+                        
                     }
 
                 });
@@ -286,7 +292,7 @@
   </tr>
   <tr>
      <td ><input id="Text4" type="text" placeholder="Medicine" class="input"/></td><td ><input id="txtMedname4" class="input" type="text" placeholder="Timing" /></td><td ><input id="txtMeddoz4" type="text" placeholder="Dozage" class="input"/></td><td ><input id="txtMedprescription4" type="text" placeholder="Days" class="input"/></td><td style="background:#E6E5E5">
-    <input type="button" value="-" class="bt1" onclick="this.style.visibility = 'visible'; btAdd.style.visibility = 'visible';" style="width:20px;"/></td><td style="background:#E6E5E5">
+    <input type="button" value="-" class="bt1" style="width:20px;"/></td><td style="background:#E6E5E5">
          <input type="button" id="btAdd" onclick="this.style.visibility = 'hidden';" value="+" class="bt1" style="width:20px" />         
          </td>
   </tr>

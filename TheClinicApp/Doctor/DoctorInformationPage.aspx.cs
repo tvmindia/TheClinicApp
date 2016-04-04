@@ -1,4 +1,12 @@
-﻿using System;
+﻿#region CopyRight
+
+//Author      : Thomson K Varkey
+//Created Date: Feb-22-2016
+
+#endregion CopyRight
+
+#region Included Namespaces
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,24 +16,34 @@ using TheClinicApp.ClinicDAL;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
+#endregion Included Namespaces
 
 namespace TheClinicApp.Doctor
 {
     public partial class DoctorInformationPage : System.Web.UI.Page
     {
+        #region Global Variable
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
         ClinicDAL.ErrorHandling eObj = new ClinicDAL.ErrorHandling();
         ClinicDAL.TokensBooking tok = new ClinicDAL.TokensBooking();
         ClinicDAL.CaseFile.Visit CaseFileObj = new ClinicDAL.CaseFile.Visit();
+        ClinicDAL.Patient PatientObj = new ClinicDAL.Patient();
+        ClinicDAL.Doctor DoctorObj = new ClinicDAL.Doctor();
+
         public string listFilter = null;
+        #endregion Global Variable
+
+        #region PageLoad
         protected void Page_Load(object sender, EventArgs e)
         {
             listFilter = null;
             listFilter = BindName();
             gridviewbind();
         }
+        #endregion PageLoad
 
+        #region Methods
         #region SearchButton
         protected void btnSearch_ServerClick(object sender, EventArgs e)
         {
@@ -50,8 +68,6 @@ namespace TheClinicApp.Doctor
         #region BindSearch
         private string BindName()
         {
-            Patient PatientObj = new Patient();
-
             DataTable dt = PatientObj.GetSearchBoxData();
 
             StringBuilder output = new StringBuilder();
@@ -114,9 +130,7 @@ namespace TheClinicApp.Doctor
         #region FillPatientDetails
         protected void ImgBtnUpdate_Command1(object sender, CommandEventArgs e)
         {
-            DataRow dr = null;
-            Patient PatientObj = new Patient();
-            ClinicDAL.Doctor DoctorObj = new ClinicDAL.Doctor();
+            DataRow dr = null;            
             PatientObj.PatientID = Guid.Parse(e.CommandArgument.ToString());
             Guid PatientIDForFile = Guid.Parse(e.CommandArgument.ToString());
 
@@ -152,6 +166,7 @@ namespace TheClinicApp.Doctor
         }
         #endregion FillPatientDetails
 
+        #region Update Visits
         protected void ImgBtnUpdateVisits_Command(object sender, CommandEventArgs e)
         {
             
@@ -185,7 +200,7 @@ namespace TheClinicApp.Doctor
             btnnew.Visible = true;
             string PrescriptionID = Visits[1];
         }
-
-        
+        #endregion Update Visits
+        #endregion Methods
     }
 }

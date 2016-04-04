@@ -11,14 +11,19 @@ namespace TheClinicApp
 {
     public partial class Forgot : System.Web.UI.Page
     {
+        #region GlobalVariables
         ClinicDAL.User userObj = new ClinicDAL.User();
+        #endregion GlobalVariables
+
+        #region PageLoad
         protected void Page_Load(object sender, EventArgs e)
         {
             
         }
+        #endregion PageLoad
 
-        
-
+        #region Methods
+        #region Verify Code
         protected void btnVerify_ServerClick(object sender, EventArgs e)
         {
                 userObj.Email = txtEmail.Value;
@@ -45,7 +50,9 @@ namespace TheClinicApp
                     lblError.Text = "Time expired";
                 }
             }
+        #endregion Verify Code
 
+        #region Send Verification Code
         protected void btnVerificationCode_ServerClick1(object sender, EventArgs e)
         {
             //----------*Add verification code*------------//
@@ -64,6 +71,7 @@ namespace TheClinicApp
             DataTable dtCode = userObj.GetUserVerificationCodeByEmailID();
             verificationCode = Convert.ToInt32(dtCode.Rows[0]["VerificationCode"]);
             DateTime vcCreatedTime = Convert.ToDateTime(dtCode.Rows[0]["VerificatinCreatedTime"]);
+            string username = (dtCode.Rows[0]["LoginName"]).ToString();
             DateTime CurrentTime = DateTime.Now;
             MailMessage Msg = new MailMessage();
 
@@ -74,9 +82,11 @@ namespace TheClinicApp
 
             // Recipient e-mail address.
             Msg.To.Add(txtEmail.Value);
+            
             string body = verificationCode.ToString();
-            Msg.Subject = "Verification Code  ";
-            Msg.Body = body;
+            string message = "<body style='border-style: groove;'><p>&nbsp;&nbsp;<h3>Hello&nbsp;<font color='blue'>" + username + "</font>,</h3><p>&nbsp; Here is your 4 digit verification Code for Security purposes<p>&nbsp;Enter Your Code in given field and change your Password<p><h1> Verification Code is&nbsp;&nbsp;<font color='red'>" + body + "</font></h1><p><p><p>Yours Sincerely,<p>&nbsp;&nbsp;&nbsp;&nbsp; ClinicApp&nbsp; Admin<p><p><p><p><p><p><strong>Confidentiality Requirement:</strong>This communication, including any attachment(s), may contain confidential information and is for the sole use of the intended recipient(s). If you are not the intended recipient, you are hereby notified that you have received this communication in error and any unauthorized review, use, disclosure, dissemination, distribution or copying of it or its contents is strictly prohibited.  If you have received this communication in error, please notify the sender immediately by telephone or e-mail and destroy all copies of this communication and any attachments<p><p></body>";
+            Msg.Subject = "Verification Code";
+            Msg.Body = message;
             Msg.IsBodyHtml = true;
 
 
@@ -90,5 +100,7 @@ namespace TheClinicApp
             smtp.Send(Msg);
             Msg = null;
         }
-        }
+        #endregion Send Verification Code
+        #endregion Methods
+    }
 }
