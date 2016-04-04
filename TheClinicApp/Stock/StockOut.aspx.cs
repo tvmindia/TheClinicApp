@@ -40,14 +40,16 @@ namespace TheClinicApp.Stock
           
             dummy.Columns.Add("IssueNO");
             dummy.Columns.Add("IssuedTo");
-            
+            dummy.Columns.Add("IssueID");
            
             //dummy.Columns.Add("Date");
             dummy.Rows.Add();
 
             gvIssueHD.DataSource = dummy;
-            
+            //gvIssueHD.Columns[2].Visible = false;
             gvIssueHD.DataBind();
+
+            
 
         }
 

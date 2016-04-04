@@ -56,7 +56,7 @@
                
                     $('body').on('click', '.bt', function () 
                     {
-                        //debugger;
+                        debugger;
                       
                         if (iCnt <= 19)
                         {
@@ -69,11 +69,54 @@
                             // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
                     
                             $('#main').after(container);                            
+                           
+
+
                             var ac=null;
                             ac = <%=listFilter %>;
+                            var i=1;
+                            while(i<iCnt)
+                            {
+                                if (i==1)
+                                {
+                                    var item=  document.getElementById('txtMedicine'+i).value 
+                                    //var a =  ac.indexOf(item);
+                               
+                                    //  delete ac[a];
+                              
+                                    //var arr = [1, 2, 3, 4, 5, 5];
+
+                                    var result = ac.filter(function(elem){
+                                        return elem != item; 
+                                    });//result -> [1,2,3,4]
+
+                                }
+                                else
+                                {
+                                    var item=  document.getElementById('txtMedicine'+i).value 
+                                    //var a =  ac.indexOf(item);
+                               
+                                    //  delete ac[a];
+                              
+                                    //var arr = [1, 2, 3, 4, 5, 5];
+
+                                    result = result.filter(function(elem){
+                                        return elem != item; 
+                                    });//result -> [1,2,3,4]
+
+
+
+                                }
+                                i++;
+                            }
+
+
+
+                            
                             $( "#txtMedicine"+iCnt).autocomplete({
-                                source: ac
+                                source: result
                             });
+
 
                         }                                  
                             // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.

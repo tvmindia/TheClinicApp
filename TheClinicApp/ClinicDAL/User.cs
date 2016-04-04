@@ -109,6 +109,12 @@ namespace TheClinicApp.ClinicDAL
             set;
         }
 
+        public string PhoneNo
+        {
+            get;
+            set;
+        }
+
         #endregion Global Variables
 
         #region Methods
@@ -171,6 +177,9 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = createdBy;
                 cmd.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = updatedBy;
                 cmd.Parameters.Add("@Password", SqlDbType.NVarChar,40).Value = passWord;
+
+                cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 255).Value = Email;
+                //cmd.Parameters.Add("@PhoneNo", SqlDbType.NVarChar, 255).Value = PhoneNo;
                
                 SqlParameter Output = new SqlParameter();
                 Output.DbType = DbType.Int32;
@@ -391,7 +400,54 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion ValidateUsername
 
-//------------*Methods Used For Forgot Password Implementation *------------//
+        #region Get RoleID Of Doctor
+
+        public string GetRoleIDOfDoctor()
+        {
+            string DoctorRoleID = string.Empty;
+
+            dbConnection dcon = null;
+
+            try
+            {
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = dcon.SQLCon;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[GetRoleIDOFDoctor]";
+
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = ClinicID;
+
+                object ID = cmd.ExecuteScalar();
+                if (ID != null)
+                {
+                    DoctorRoleID = ID.ToString();
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                var page = HttpContext.Current.CurrentHandler as Page;
+                //eObj.ErrorData(ex, page);
+
+            }
+
+            finally
+            {
+                if (dcon.SQLCon != null)
+                {
+                    dcon.DisconectDB();
+                }
+            }
+
+            return DoctorRoleID;
+        }
+
+        #endregion Get RoleID Of Doctor
+
+        //------------*Methods Used For Forgot Password Implementation *------------//
 
         #region Add verificationcode (Generated random number)
 

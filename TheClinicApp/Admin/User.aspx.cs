@@ -36,13 +36,15 @@ namespace TheClinicApp.Admin
         ClinicDAL.RoleAssign roleObj = new RoleAssign();
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
-        public Guid DoctorRoleID = new Guid("69668C0B-1231-4229-A7FA-5C0CD3744435");
+        //public Guid DoctorRoleID = new Guid("69668C0B-1231-4229-A7FA-5C0CD3744435");
 
         #endregion Global Variables
 
         #region Methods
 
-//---* To USER *--//
+ //---* To USER *--//
+
+        #region User
 
         #region Add User To User Table
         public void AddUserToUserTable()
@@ -69,6 +71,8 @@ namespace TheClinicApp.Admin
              userObj.createdBy = UA.userName;
              userObj.updatedBy = UA.userName;
              userObj.passWord = CryptObj.Encrypt(txtPassword.Text);
+             userObj.Email = txtEmail.Text;
+             //userObj.PhoneNo = txtPhoneNumber.Text;
 
              if (btnSave.Text == "Save")
              {
@@ -90,7 +94,27 @@ namespace TheClinicApp.Admin
 
         #endregion Add User To User Table   
 
- //---* To DOCTOR *--//
+        #endregion User
+
+//---* To DOCTOR *--//
+
+        #region DOCTOR
+
+        #region GetRoleIDOFDoctor
+
+        public string GetRoleIDOFDoctor()
+        {
+            string DoctorRoleID=string.Empty;
+
+             UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+             userObj.ClinicID = UA.ClinicID;
+
+             DoctorRoleID = userObj.GetRoleIDOfDoctor();
+
+             return DoctorRoleID;
+        }
+
+        #endregion GetRoleIDOFDoctor
 
         #region Add User To Doctor Table
         public void AddUserToDoctorTable()
@@ -111,17 +135,18 @@ namespace TheClinicApp.Admin
 
         #endregion Add User To Doctor Table
 
+        #endregion DOCTOR
 
-        //---* To USER-In-ROLES *--//
+ //---* To USER-In-ROLES *--//
 
-        #region
+        #region USER-In-ROLES
 
         public void AddUserRole()
         {
             UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
 
             roleObj.ClinicID = UA.ClinicID;
-            roleObj.RoleID = DoctorRoleID;
+            roleObj.RoleID = Guid.Parse(GetRoleIDOFDoctor());
             roleObj.CreatedBy = UA.userName;
            
 
@@ -141,7 +166,9 @@ namespace TheClinicApp.Admin
 
         }
 
-        #endregion 
+        #endregion USER-In-ROLES
+
+//---------------------------------------------------------------------------------------------
 
         #region Bind Gridview
         public void BindGriewWithDetailsOfAllUsers()
