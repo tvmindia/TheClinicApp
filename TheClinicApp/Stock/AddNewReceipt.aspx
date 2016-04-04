@@ -80,15 +80,10 @@
                                 if (i==1)
                                 {
                                     var item=  document.getElementById('txtMedicine'+i).value 
-                                    //var a =  ac.indexOf(item);
-                               
-                                    //  delete ac[a];
-                              
-                                    //var arr = [1, 2, 3, 4, 5, 5];
-
+                                 
                                     var result = ac.filter(function(elem){
                                         return elem != item; 
-                                    });//result -> [1,2,3,4]
+                                    });
 
                                 }
                                 else
