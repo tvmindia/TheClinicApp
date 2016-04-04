@@ -27,9 +27,10 @@
 
 <div class="w3-border">
 <ul class="w3-navbar w3-theme">
+   <li><a class="w3-btn w3-theme testbtn" onclick="openCity(event, 'Tokyo')">Doctors</a></li>
   <li><a class="w3-btn w3-theme testbtn" onclick="openCity(event, 'London')">Groups</a></li>
   <li><a class="w3-btn w3-theme testbtn" onclick="openCity(event, 'Paris')">Clinics</a></li>
-  <li><a class="w3-btn w3-theme testbtn" onclick="openCity(event, 'Tokyo')">Doctors</a></li>
+  
 </ul>
 
 <div id="London" class="w3-container city w3-animate-opacity">
@@ -72,7 +73,7 @@
 <p>
 <label class="w3-label w3-validate">Group Name</label>
     <asp:DropDownList ID="DropDownList1" runat="server" Width="160px" BackColor="#F6F1DB" ForeColor="#7d6754" Font-Names="Andalus" CssClass="ddl" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="GroupID">
-        <asp:ListItem Text="----Select----"></asp:ListItem>
+       
     </asp:DropDownList>
     <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:ClinicAppConnectionString4 %>' SelectCommand="SELECT [GroupID], [Name] FROM [Groups]"></asp:SqlDataSource>
 </p>
@@ -120,7 +121,16 @@
 <div class="w3-container w3-half w3-margin-top">
 
 
+<p>
+<label class="w3-label w3-validate">Group Name</label>
+    <asp:DropDownList ID="ddlGroupforDoc" runat="server" Width="160px" BackColor="#F6F1DB" ForeColor="#7d6754" Font-Names="Andalus" AutoPostBack="true" OnSelectedIndexChanged="ddlGroupforDoc_SelectedIndexChanged" CssClass="ddl">
+        
+    </asp:DropDownList></p>
+<p>
+<label class="w3-label w3-validate">Clinic Name</label>
+    <asp:DropDownList ID="ddlClinicforDoc" runat="server" Width="170px" BackColor="#F6F1DB" ForeColor="#7d6754" Font-Names="Andalus" CssClass="ddl">
 
+    </asp:DropDownList></p>
 <p>    
 <label class="w3-label w3-validate">Doctor Name</label>
 <input class="w3-input" type="text" placeholder="Dr." runat="server" id="txtDoctor" style="width:90%" required /></p>
