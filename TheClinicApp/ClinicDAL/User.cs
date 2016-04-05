@@ -179,7 +179,7 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@Password", SqlDbType.NVarChar,40).Value = passWord;
 
                 cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 255).Value = Email;
-                //cmd.Parameters.Add("@PhoneNo", SqlDbType.NVarChar, 255).Value = PhoneNo;
+                cmd.Parameters.Add("@PhoneNo", SqlDbType.NVarChar, 30).Value = PhoneNo;
                
                 SqlParameter Output = new SqlParameter();
                 Output.DbType = DbType.Int32;
@@ -235,7 +235,6 @@ namespace TheClinicApp.ClinicDAL
             try
             {
 
-
                 dcon.GetDBConnection();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = dcon.SQLCon;
@@ -248,10 +247,10 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@LastName", SqlDbType.NVarChar, 255).Value = lastName;
                 cmd.Parameters.Add("@Password", SqlDbType.NVarChar, 40).Value = passWord;
                 cmd.Parameters.Add("@Active", SqlDbType.Bit).Value = isActive;
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = ClinicID;
+                cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 255).Value = Email;
+                cmd.Parameters.Add("@PhoneNo", SqlDbType.NVarChar, 30).Value = PhoneNo;
 
-
-                //cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = "2C7A7172-6EA9-4640-B7D2-0C329336F289";
-                //cmd.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = createdBy;
                 cmd.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = updatedBy;
 
 
@@ -446,6 +445,55 @@ namespace TheClinicApp.ClinicDAL
         }
 
         #endregion Get RoleID Of Doctor
+
+
+        #region Check User Is Doctor
+
+        public int CheckUserIsDoctor()
+        {
+            int count = 0;
+            dbConnection dcon = new dbConnection();
+
+            try
+            {
+
+                dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = dcon.SQLCon;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandText = "[CheckUserIsDoctor]";
+
+                cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 255).Value = firstName;
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = ClinicID;
+
+                object cnt = cmd.ExecuteScalar();
+                if (cnt != null)
+                {
+                    count = Convert.ToInt32(cnt);
+                }
+                
+
+            }
+            catch (Exception ex)
+            {
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
+
+            }
+
+            finally
+            {
+                if (dcon.SQLCon != null)
+                {
+                    dcon.DisconectDB();
+                }
+
+            }
+
+            return count;
+        }
+
+        #endregion Check User Is Doctor
 
         //------------*Methods Used For Forgot Password Implementation *------------//
 
