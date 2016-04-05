@@ -571,10 +571,7 @@ namespace TheClinicApp.ClinicDAL
         }
 
 
-        #endregion autofill
-
-
-  
+        #endregion autofill        
 
 
         #region InsertReceiptDetails
