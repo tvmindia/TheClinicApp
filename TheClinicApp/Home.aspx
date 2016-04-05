@@ -16,8 +16,8 @@
 <body class="Semitransparent_1">
     <script type="text/javascript">
         var settingOpen = 0;
-        function selectTile(id) {
-            //debugger;
+        function selectTile1(id) {
+            debugger;
             var tileList = ['dashboard', 'patient', 'token', 'doctor', 'pharmacy', 'stock'];
             var IframeUrl = ['test.aspx', '../Registration/Patients.aspx', '../Token/Tokens.aspx', '../Doctor/DoctorInformationPage.aspx', '../Pharmacy/Pharmacy.aspx', '../Stock/Stock.aspx'];
             for (i = 0; i < tileList.length; i++) {
@@ -28,6 +28,23 @@
                 else {
                     document.getElementById(tileList[i]).className = tileList[i]
                 
+                }
+
+            }
+
+        }
+        function selectTile(id) {
+            debugger;
+            var tileList = ['dashboard', 'patient', 'token', 'doctor', 'pharmacy', 'stock'];
+            var IframeUrl = ['test.aspx', '../Registration/Patients.aspx', '../Token/Tokens.aspx', '../AccessDenied.aspx', '../AccessDenied.aspx', '../AccessDenied.aspx'];
+            for (i = 0; i < tileList.length; i++) {
+                if (id == tileList[i]) {
+                    document.getElementById(id).className = id + '_selected'
+                    document.getElementById('main').src = IframeUrl[i];
+                }
+                else {
+                    document.getElementById(tileList[i]).className = tileList[i]
+
                 }
 
             }
@@ -83,10 +100,10 @@
                     <td class="LeftLogo">
                         <img src="Images/LOGO.png" style="width: 15px; padding: 1px;" /></td>
                     <td class="RightLogo">Hi
-                        <asp:Label ID="lblUserName" runat="server" Text=""></asp:Label>
+                        <asp:Label ID="lblUserName" ForeColor="Green" runat="server" Text=""></asp:Label>
                         &nbsp; | &nbsp; 
-                        <asp:Label ID="txtclinic" runat="server" Text=""></asp:Label>&nbsp; | &nbsp; 
-                        <asp:Label ID="lblGroupName" runat="server" Text=""></asp:Label>
+                        <asp:Label ID="txtclinic" runat="server" ForeColor="Green" Text=""></asp:Label>&nbsp; | &nbsp; 
+                        <asp:Label ID="lblGroupName" ForeColor="Green" runat="server" Text=""></asp:Label>
                            &nbsp; | &nbsp; <img src="Images/settings.png" class="settingsLogo" title="Settings/Logout"/ onclick="openSettings()" />
                     </td>
                  

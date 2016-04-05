@@ -125,6 +125,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AccessDenied.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
@@ -174,6 +175,7 @@
     <Content Include="Doctors Test\Doctors.aspx" />
     <Content Include="Doctors Test\DoctorTesting.aspx" />
     <Content Include="Forgot.aspx" />
+    <Content Include="Images\403.png" />
     <Content Include="Images\Addition .png" />
     <Content Include="Images\Arrowhead-Down-01.png" />
     <Content Include="Images\Button-Add-icon.png" />
@@ -335,6 +337,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessDenied.aspx.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccessDenied.aspx.designer.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AssignRoles.aspx.cs">
       <DependentUpon>AssignRoles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
