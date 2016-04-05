@@ -345,6 +345,57 @@
     <%-- BindControlsByMedicneName&autocompleteonfocus  functions definition --%>
     <script>
         
+        function autocompleteonfocus(controlID)
+        {
+            //debugger;
+            var topcount =document.getElementById('<%=HiddenFieldCount.ClientID%>').value;
+ 
+            if (topcount==0)
+            {
+                var ac=null; 
+                ac = <%=listFilter %>;
+                $( "#txtMedicine"+controlID).autocomplete({
+                    source: ac
+                });
+            }
+            else
+            {
+                var ac=null;
+                ac = <%=listFilter %>;
+                var i=1;
+                while(i<=topcount)
+                {
+                    if (i==1)
+                    {
+                        var item=  document.getElementById('txtMedicine'+i).value 
+                                 
+                        var result = ac.filter(function(elem){
+                            return elem != item; 
+                        });
+
+                    }
+                    else
+                    {
+                        var item=  document.getElementById('txtMedicine'+i).value 
+                        //var a =  ac.indexOf(item);                               
+                        //  delete ac[a];                                 
+
+                        result = result.filter(function(elem){
+                            return elem != item; 
+                        }); 
+                    }
+                    i++;
+                }
+            
+                            
+                $( "#txtMedicine"+controlID).autocomplete({
+                    source: result
+                });
+
+            }
+
+        } 
+
         function BindControlsByMedicneName(ControlNo) 
         {        
  
@@ -386,61 +437,8 @@
 
 
         }
-
-
-        function autocompleteonfocus(controlID)
-        {
-            debugger;
-            
-            var topcount =document.getElementById('<%=HiddenFieldCount.ClientID%>').value;
- 
-            if (topcount==0)
-            {
-                var ac=null;
-                ac = <%=listFilter %>;
-                $( "#txtMedicine"+controlID).autocomplete({
-                    source: ac
-                });
-            }
-            else
-            {
-
-                var ac=null;
-                ac = <%=listFilter %>;
-                var i=1;
-                while(i<=topcount)
-                {
-                    if (i==1)
-                    {
-                        var item=  document.getElementById('txtMedicine'+i).value 
-                                 
-                        var result = ac.filter(function(elem){
-                            return elem != item; 
-                        });
-
-                    }
-                    else
-                    {
-                        var item=  document.getElementById('txtMedicine'+i).value 
-                        //var a =  ac.indexOf(item);                               
-                        //  delete ac[a];                                 
-
-                        result = result.filter(function(elem){
-                            return elem != item; 
-                        }); 
-                    }
-                    i++;
-                }
-            
-                            
-                $( "#txtMedicine"+controlID).autocomplete({
-                    source: result
-                });
-
-            }
-
-        }
-
+        
+      
     </script>
     <%-- Date Picker,autocomplete style --%>
     <style>
