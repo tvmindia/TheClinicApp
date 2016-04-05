@@ -30,7 +30,7 @@ namespace TheClinicApp
                     lblUserName.Text = LoginName;
                     txtclinic.Text = UA.Clinic;
                     lblGroupName.Text = UA.Group;
-                    DataTable dtAssignedRoles= UA.GetRoleID(LoginName);
+                    string Role=UA.GetRoleName(LoginName);
 
 
                 }

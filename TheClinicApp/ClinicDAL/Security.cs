@@ -205,30 +205,37 @@ namespace TheClinicApp.ClinicDAL
         #endregion Get Login Details
 
         #region Get RoleID
-        public DataTable GetRoleID(string LoginName)
+        public string GetRoleName(string LoginName)
         {
+            string Role="";
             SqlConnection con = null;
 
             try
             {
-                DataTable dt = new DataTable();
                 dbConnection dcon = new dbConnection();
                 con = dcon.GetDBConnection();
-                SqlCommand cmd = new SqlCommand("GetUserandRolesJoined", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@LoginName", SqlDbType.NVarChar, 50).Value = LoginName;
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                adapter.SelectCommand = cmd;
-                dt = new DataTable();
-                adapter.Fill(dt);
-                con.Close();
-                return dt;
+                SqlCommand pud = new SqlCommand();
+                pud.Connection = con;
+                pud.CommandType = System.Data.CommandType.StoredProcedure;
+                pud.CommandText = "GetUserandRolesJoined";
+                pud.Parameters.Add("@LoginName", SqlDbType.NVarChar, 50).Value = LoginName;
+                SqlParameter OutparamId = pud.Parameters.Add("@OutRole", SqlDbType.NVarChar,255);
+                OutparamId.Direction = ParameterDirection.Output;
+                pud.ExecuteNonQuery();
+               if (OutparamId.Value != null)
+                
+                {
+                    Role=OutparamId.Value.ToString();
+                    
+                }
+             
+                
             }
             catch (Exception ex)
             {
                 //var page = HttpContext.Current.CurrentHandler as Page;
                 //eObj.ErrorData(ex, page);
-                throw ex;
+                //throw ex;
             }
             finally
             {
@@ -238,10 +245,10 @@ namespace TheClinicApp.ClinicDAL
                 }
 
             }
-
-
-        }
-
+            return Role;
+            }
+           
+                
         #endregion Get RoleID
 
 
