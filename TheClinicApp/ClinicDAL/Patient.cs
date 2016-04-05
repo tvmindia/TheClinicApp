@@ -1,24 +1,42 @@
-﻿using System;
+﻿#region CopyRight
+
+//Author      : Thomson K Varkey
+//Created Date: Feb-04-2016
+
+#endregion CopyRight
+
+#region Included Namespaces
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+#endregion Included Namespaces
 
 namespace TheClinicApp.ClinicDAL
 {
     public class Patient
     {
+        #region Constructor
         public Patient()
         {
             FileID = Guid.NewGuid();
         }
+        #endregion Constructor
+
+        #region GlobalVariables
         ErrorHandling eObj = new ErrorHandling();
+        UIClasses.Const Const = new UIClasses.Const();
+        ClinicDAL.UserAuthendication UA;
+        #endregion GlobalVariables
+
         #region Connectionstring
         dbConnection dcon = new dbConnection();
         #endregion Connectionstring
-         
+
+        #region Properties
         #region Patientproperty
         public Guid PatientID
         {
@@ -105,8 +123,15 @@ namespace TheClinicApp.ClinicDAL
             set;
         }
         #endregion FileProperty
+        #endregion Properties
 
+        #region Methods
+        //****Patient Functionalities****//
+        #region Patients Methods
         #region AddPatientDetails
+        /// <summary>
+        /// Insert Patients On save Click
+        /// </summary>
         public void AddPatientDetails()
         {
 
@@ -130,9 +155,9 @@ namespace TheClinicApp.ClinicDAL
                 pud.Parameters.Add("@Gender", SqlDbType.NVarChar, 50).Value = Gender;
                 pud.Parameters.Add("@MaritalStatus", SqlDbType.NVarChar, 50).Value = MaritalStatus;
                 pud.Parameters.Add("@Occupation", SqlDbType.NVarChar, 255).Value = Occupation;
-                pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = CreatedBy;
+                pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = UA.userName;
                 pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
-                pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = UpdatedBy;
+                pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = UA.userName;
                 pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
                 pud.Parameters.Add("@image", SqlDbType.Image,0).Value =Picupload;
                 pud.Parameters.Add("@ImageType", SqlDbType.NVarChar, 6).Value = ImageType;               
@@ -206,10 +231,8 @@ namespace TheClinicApp.ClinicDAL
                 pud.Parameters.Add("@DOB", SqlDbType.Date).Value = DOB;
                 pud.Parameters.Add("@Gender", SqlDbType.NVarChar, 50).Value = Gender;
                 pud.Parameters.Add("@MaritalStatus", SqlDbType.NVarChar, 50).Value = MaritalStatus;
-                pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = UA.userName;
                 pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
-                //SqlParameter OutparamId = pud.Parameters.Add("@OutparamId", SqlDbType.SmallInt);
-                //OutparamId.Direction = ParameterDirection.Output;
                 SqlParameter Output = new SqlParameter();
                 Output.DbType = DbType.Int32;
                 Output.ParameterName = "@Status";
@@ -218,9 +241,9 @@ namespace TheClinicApp.ClinicDAL
                 pud.ExecuteNonQuery();
                 if (int.Parse(Output.Value.ToString()) == -1)
                 {
-                   // ////not successfull
-                   // var page = HttpContext.Current.CurrentHandler as Page;
-                   //eObj.U
+                    ////not successfull
+                   var page = HttpContext.Current.CurrentHandler as Page;
+                   eObj.UpdationNotSuccessMessage(page);
                 }
                 else
                 {
@@ -249,8 +272,16 @@ namespace TheClinicApp.ClinicDAL
         #endregion UpdatePatientDetails
 
         #region GetPatientDetails
-
+        /// <summary>
+        /// Select PatientId from database using parameters
+        /// </summary>
+        /// <param Name="Name"></param>
+        /// <param Address="Address"></param>
+        /// <param Phone="Phone"></param>
+        /// <param Email="Email"></param>
+        /// <returns></returns>
         public Guid GetPatientID(string Name,string Address,string Phone,string Email)
+         
         {
             SqlConnection con = null;
             Guid PatID = Guid.Empty;
@@ -266,8 +297,6 @@ namespace TheClinicApp.ClinicDAL
                 pud.Parameters.Add("@Address", SqlDbType.NVarChar, 255).Value = Address;
                 pud.Parameters.Add("@Phone", SqlDbType.NVarChar, 255).Value = Phone;
                 pud.Parameters.Add("@Email", SqlDbType.NVarChar, 255).Value = Email;
-               
-
                 SqlParameter OutparamId = pud.Parameters.Add("@OutPatientId", SqlDbType.UniqueIdentifier);
                 OutparamId.Direction = ParameterDirection.Output;
                 pud.ExecuteNonQuery();
@@ -299,6 +328,10 @@ namespace TheClinicApp.ClinicDAL
         #endregion GetPatientDetails
 
         #region SearchPatientDetails
+        /// <summary>
+        /// Search and fill for updation 
+        /// </summary>
+        /// <param name="searchtxt"></param>
         public void SearchPatientDetails(string searchtxt)
         {
             SqlConnection con = null;
@@ -350,6 +383,69 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion SearchPatientDetails
 
+        #region DeletePatientDetails
+
+        public void DeletePatientDetails()
+        {
+            SqlConnection con = null;
+            try
+            {
+
+                dbConnection dcon = new dbConnection();
+                con = dcon.GetDBConnection();
+                SqlCommand pud = new SqlCommand();
+                pud.Connection = con;
+                pud.CommandType = System.Data.CommandType.StoredProcedure;
+                pud.CommandText = "DeletePatientDetails";
+                pud.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = PatientID;
+
+                SqlParameter Output = new SqlParameter();
+                Output.DbType = DbType.Int32;
+                Output.ParameterName = "@Status";
+                Output.Direction = ParameterDirection.Output;
+                pud.Parameters.Add(Output);
+                pud.ExecuteNonQuery();
+                if (Output.Value.ToString() == "")
+                {
+                    //not successfull   
+
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.WarningMessage(page);
+
+                }
+                else
+                {
+                    //successfull
+
+                    var page = HttpContext.Current.CurrentHandler as Page;
+                    eObj.DeleteSuccessMessage(page);
+
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var page = HttpContext.Current.CurrentHandler as Page;
+                eObj.ErrorData(ex, page);
+
+            }
+
+            finally
+            {
+                if (con != null)
+                {
+                    con.Dispose();
+                }
+
+            }
+
+        }
+        #endregion DeletePatientDetails
+        #endregion Patients Methods
+
+        //***Add New File***//
         #region AddFile
         public void AddFile()
         {
@@ -368,9 +464,9 @@ namespace TheClinicApp.ClinicDAL
                 pud.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = PatientID;
                 pud.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = ClinicID;
                 pud.Parameters.Add("@FileDate", SqlDbType.DateTime).Value = DateTime.Now;               
-                pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                pud.Parameters.Add("@CreatedBY", SqlDbType.NVarChar, 255).Value = UA.userName;
                 pud.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
-                pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = "Thomson";
+                pud.Parameters.Add("@UpdatedBY", SqlDbType.NVarChar, 255).Value = UA.userName;
                 pud.Parameters.Add("@UpdatedDate", SqlDbType.DateTime).Value = DateTime.Now;
                 pud.Parameters.Add("@FileNumber", SqlDbType.NVarChar, 50).Value = FileNumber;
                 SqlParameter OutputFileNumber = pud.Parameters.Add("@OutFileNumber", SqlDbType.NVarChar, 50);
@@ -415,6 +511,8 @@ namespace TheClinicApp.ClinicDAL
         }
         #endregion AddFile
 
+        //***Grid Bind For All regisration && Todays Registration
+        #region GridBind
         #region ViewAllRegistration
         /// <summary>
         /// ***********
@@ -492,67 +590,7 @@ namespace TheClinicApp.ClinicDAL
             }
         }
         #endregion ViewDateRegistration
-
-        #region DeletePatientDetails
-
-        public void DeletePatientDetails()
-        {
-            SqlConnection con = null;
-            try
-            {
-                
-                dbConnection dcon = new dbConnection();
-                con = dcon.GetDBConnection();
-                SqlCommand pud = new SqlCommand();
-                pud.Connection = con;
-                pud.CommandType = System.Data.CommandType.StoredProcedure;
-                pud.CommandText = "DeletePatientDetails";
-                pud.Parameters.Add("@PatientID", SqlDbType.UniqueIdentifier).Value = PatientID;
-               
-                SqlParameter Output = new SqlParameter();
-                Output.DbType = DbType.Int32;
-                Output.ParameterName = "@Status";
-                Output.Direction = ParameterDirection.Output;
-                pud.Parameters.Add(Output);  
-                pud.ExecuteNonQuery();
-                 if (Output.Value.ToString() == "")
-                {
-                    //not successfull   
-
-                    var page = HttpContext.Current.CurrentHandler as Page;
-                    eObj.WarningMessage(page);
-
-                }
-                else
-                {
-                    //successfull
-                    
-                    var page = HttpContext.Current.CurrentHandler as Page;
-                    eObj.DeleteSuccessMessage(page);
-
-
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-                var page = HttpContext.Current.CurrentHandler as Page;
-                eObj.ErrorData(ex, page);
-            
-            }
-
-            finally
-            {
-                if (con != null)
-                {
-                    con.Dispose();
-                }
-
-            }
-            
-        }
-        #endregion DeletePatientDetails
+        #endregion GridBind      
 
         #region GetSearchBoxData
         public DataTable GetSearchBoxData()
@@ -639,6 +677,7 @@ namespace TheClinicApp.ClinicDAL
         }
         #endregion SelectPatient
 
+        #endregion Methods
     }
 
 }

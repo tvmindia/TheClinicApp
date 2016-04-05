@@ -1,4 +1,12 @@
-﻿using System;
+﻿#region CopyRight
+
+//Author      : Thomson K Varkey
+//Created Date: Feb-04-2016
+
+#endregion CopyRight
+
+#region Included Namespaces
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -9,6 +17,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TheClinicApp.ClinicDAL;
+#endregion Included Namespaces
 
 namespace TheClinicApp.Registration
 {
@@ -20,8 +29,9 @@ namespace TheClinicApp.Registration
         Patient PatientObj = new Patient();
         TokensBooking tok = new TokensBooking();
         ErrorHandling eObj = new ErrorHandling();
-        #endregion GlobalVariables
         public string listFilter = null;
+        #endregion GlobalVariables
+        
         #region PageLoad
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,6 +40,7 @@ namespace TheClinicApp.Registration
         }
         #endregion PageLoad
 
+        #region Methods
         #region MainButton
         protected void btnSave_Click(object sender, EventArgs e)
         {
@@ -368,6 +379,7 @@ namespace TheClinicApp.Registration
             }
         }
         #endregion convertImage
+        #endregion Methods
 
     }
 

@@ -611,11 +611,8 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Connection = dcon.SQLCon;
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.CommandText = "ResetPassword";
-
                 cmd.Parameters.Add("@UserId", SqlDbType.UniqueIdentifier).Value = UserID;
                 cmd.Parameters.Add("@Password", SqlDbType.NVarChar, 40).Value = passWord;
-               
-
                 SqlParameter Output = new SqlParameter();
                 Output.DbType = DbType.Int32;
                 Output.ParameterName = "@Status";
