@@ -26,6 +26,7 @@ namespace TheClinicApp.Stock
     public partial class NewIssue : System.Web.UI.Page
     {
         public string listFilter = null;
+        DataTable dtIssuehdr = null;
 
         #region Global Variables
 
@@ -34,7 +35,8 @@ namespace TheClinicApp.Stock
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
         IssueHeaderDetails IssuehdrObj = new IssueHeaderDetails();
-       
+        Stocks stockObj = new Stocks();
+
         #endregion Global Variables
 
         #region Methods
@@ -107,7 +109,6 @@ namespace TheClinicApp.Stock
 
         #endregion Store Xml To HiddenField#region Store Xml To HiddenField
 
-
         #region Get Issue Details By IssueID
 
         public DataSet GetIssueDetailsByIssueID(string IssueID)
@@ -126,8 +127,29 @@ namespace TheClinicApp.Stock
 
         #endregion Get Issue Details By IssueID
 
+        #region Check Input Quantity Of Medicine Is Out Of Stock
 
-//-----------------------------  * END  MEDICINES AREA * -------------------//
+         //[WebMethod]
+        //public bool CheckInputQuantityOfMedicineIsOutOfStock(string MedicineName, int InputQty)
+        //{
+        //    bool OutOfStock = false;
+
+        //    UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+        //    stockObj.ClinicID = UA.ClinicID.ToString();
+
+        //    DataSet dsOutOfStock = stockObj.SearchMedicineStock(MedicineName );
+        //    int QtyInStock = Convert.ToInt32(dsOutOfStock.Tables[0].Rows[0]["Qty"]);
+
+        //     if(InputQty > QtyInStock)
+        //     {
+        //         OutOfStock = true;
+        //     }
+        //     return OutOfStock;
+        //}
+
+        #endregion Check Input Quantity Of Medicine Is Out Of Stock
+
+        //-----------------------------  * END  MEDICINES AREA * -------------------//
 
      
 
@@ -158,15 +180,17 @@ namespace TheClinicApp.Stock
             string Unit ="";
             string MedCode = "";
              string Category = "";
+             string Qty = "";
 
              if (ds.Tables[0].Rows.Count > 0)
              {
                  Unit = Convert.ToString(ds.Tables[0].Rows[0]["Unit"]);
                  MedCode = Convert.ToString(ds.Tables[0].Rows[0]["MedCode"]);
                  Category = Convert.ToString(ds.Tables[0].Rows[0]["CategoryName"]);
+                 Qty = Convert.ToString(ds.Tables[0].Rows[0]["Qty"]);
              }
 
-                return String.Format("{0}" + "|" + "{1}" + " | " + "{2}", Unit, MedCode, Category);
+             return String.Format("{0}" + "|" + "{1}" + " | " + "{2}" + " | " + "{3}", Unit, MedCode, Category,Qty);
             
 
         }
@@ -210,12 +234,13 @@ namespace TheClinicApp.Stock
         #region Page Load
         protected void Page_Load(object sender, EventArgs e)
         {
+
             BindListFilter();
 
 
             txtDate.Attributes.Add("readonly", "readonly");
             string issueID = string.Empty;
-            DataTable dtIssuehdr = null;
+           
             DataSet dsIssuehdr = null;
             UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
 
@@ -252,9 +277,15 @@ namespace TheClinicApp.Stock
 
                         //foreach (DataRow dr in dsIssuehdr.Tables[0].Rows)
                         //{
-                        txtIssueNO.Text     = dtIssuehdr.Rows[0]["IssueNO"].ToString();
-                        txtIssuedTo.Text    = dtIssuehdr.Rows[0]["IssuedTo"].ToString();
-                        txtDate.Text = ((DateTime)dtIssuehdr.Rows[0]["Date"]).ToString("dd-MM-yyyy");
+
+                        if (!IsPostBack)
+                        {
+                            txtIssueNO.Text = dtIssuehdr.Rows[0]["IssueNO"].ToString();
+                            txtIssuedTo.Text = dtIssuehdr.Rows[0]["IssuedTo"].ToString();
+                            txtDate.Text = ((DateTime)dtIssuehdr.Rows[0]["Date"]).ToString("dd-MM-yyyy");
+                        }
+
+                       
                         
                         //}
 
@@ -311,7 +342,6 @@ namespace TheClinicApp.Stock
             {
                 if ((txtIssueNO.Text != string.Empty) && (txtIssuedTo.Text != string.Empty) && (txtDate.Text != string.Empty))
                 {
-                    string last = string.Empty;
 
                     IssuehdrObj.ClinicID = UA.ClinicID.ToString();
                     IssuehdrObj.IssuedTo = txtIssuedTo.Text;
@@ -320,12 +350,36 @@ namespace TheClinicApp.Stock
 
                     IssuehdrObj.Date = Convert.ToDateTime(txtDate.Text);
 
+
+
                     if (hdnHdrInserted.Value == "")
                     {
                         IssuehdrObj.InsertIssueHeader();
                         hdnHdrInserted.Value = "True";
                         ViewState["IssueHdrID"] = IssuehdrObj.IssueID;
+
                     }
+
+                    string oldDate = ((DateTime)dtIssuehdr.Rows[0]["Date"]).ToString("dd-MM-yyyy");
+                    string newDate = txtDate.Text;
+
+                    if ((txtIssueNO.Text != dtIssuehdr.Rows[0]["IssueNO"].ToString()) || (txtIssuedTo.Text != dtIssuehdr.Rows[0]["IssuedTo"].ToString()) || (oldDate != newDate))
+                    {
+                        //  ------- Update header ---------//
+                        IssuehdrObj.ClinicID = UA.ClinicID.ToString();
+                        IssuehdrObj.IssuedTo = txtIssuedTo.Text;
+                        IssuehdrObj.Date = Convert.ToDateTime(txtDate.Text);
+                        IssuehdrObj.UpdatedBy = UA.userName;
+
+                        IssuehdrObj.UpdateIssueHeader(ViewState["IssueHdrID"].ToString());
+
+                    }
+
+
+                    string last = string.Empty;
+
+                   
+
 
                     string values = hdnTextboxValues.Value;
 
@@ -359,14 +413,13 @@ namespace TheClinicApp.Stock
                                 IssuedtlObj.IssueID = Guid.Parse(ViewState["IssueHdrID"].ToString());
                             }
 
-                            //IssuedtlObj.IssueID = IssuehdrObj.IssueID;
-
                             IssuedtlObj.InsertIssueDetails();
                         }
 
                         if (last != string.Empty )
                         {
  //----------------- * CASE : UPDATE *---------------------------------//
+
 
                             string uniqueID = last;
                             IssueDetails UpIssueDtlObj = new IssueDetails(new Guid(uniqueID));
