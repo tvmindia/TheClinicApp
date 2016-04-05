@@ -72,7 +72,7 @@ namespace TheClinicApp.Admin
              userObj.updatedBy = UA.userName;
              userObj.passWord = CryptObj.Encrypt(txtPassword.Text);
              userObj.Email = txtEmail.Text;
-             //userObj.PhoneNo = txtPhoneNumber.Text;
+             userObj.PhoneNo = txtPhoneNumber.Text;
 
              if (btnSave.Text == "Save")
              {
@@ -228,7 +228,8 @@ namespace TheClinicApp.Admin
         #region Page Load
        protected void Page_Load(object sender, EventArgs e)
         {
-            BindGriewWithDetailsOfAllUsers(); 
+            BindGriewWithDetailsOfAllUsers();
+
         }
 
         #endregion Page Load
@@ -267,6 +268,8 @@ namespace TheClinicApp.Admin
         #region Update Image Button Click
         protected void ImgBtnUpdate_Command(object sender, CommandEventArgs e)
         {
+             UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+
             string[] Users = e.CommandArgument.ToString().Split(new char[] { '|' });
             Guid UserID = Guid.Parse(Users[0]);
             userObj.UserID = UserID;
@@ -274,17 +277,37 @@ namespace TheClinicApp.Admin
             txtLoginName.Text = Users[1];
             txtFirstName.Text = Users[2];
             txtLastName.Text = Users[3];
-
             bool isActive = Convert.ToBoolean(Users[4]);
+            txtPassword.Text = CryptObj.Decrypt(Users[5]);
+            txtEmail.Text = Users[6];
+            txtPhoneNumber.Text = Users[7];
 
             if (isActive)
             {
                 rdoActiveYes.Checked = true;
+                rdoActiveNo.Checked = false;
                  }
             else
             {
                 rdoActiveNo.Checked = true;
+                rdoActiveYes.Checked = false;
               }
+
+            userObj.ClinicID = UA.ClinicID;
+            userObj.firstName = Users[2];
+            int DoctorCount = userObj.CheckUserIsDoctor();
+
+            if (DoctorCount == 1)
+            {
+                rdoDoctor.Checked = true;
+                rdoNotDoctor.Checked = false;
+            }
+
+            else
+            {
+                rdoNotDoctor.Checked = true;
+                rdoDoctor.Checked = false;
+            }
 
             btnSave.Text = "Update";
             hdnUserID.Value = UserID.ToString();

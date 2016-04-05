@@ -117,7 +117,18 @@ namespace TheClinicApp.Stock
                         dt.Rows[0]["PageSize"] = PageSize;
                         dt.Rows[0]["RecordCount"] = cmd.Parameters["@RecordCount"].Value;
                         ds.Tables.Add(dt);
+
+                        
                         return ds;
+
+
+                       
+                       
+                       
+
+
+
+
                     }
                 }
             }

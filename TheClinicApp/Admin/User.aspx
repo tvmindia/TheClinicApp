@@ -230,7 +230,7 @@
                             <label class="control-label col-xs-3 regFormLabels">Active:</label>
 
                             <div class="col-xs-6">
-                                <asp:RadioButton ID="rdoActiveYes" runat="server" GroupName="Active" Text="Yes" Checked="true" CssClass="checkbox-inline" />
+                                <asp:RadioButton ID="rdoActiveYes" runat="server" GroupName="Active" Text="Yes"  CssClass="checkbox-inline" Checked="true" />
                                 <asp:RadioButton ID="rdoActiveNo" runat="server" GroupName="Active" Text="No" CssClass="checkbox-inline" />
 
                             </div>
@@ -254,7 +254,7 @@
 
                             <div class="col-xs-6">
                                 <asp:RadioButton ID="rdoDoctor" runat="server" GroupName="Doctor" Text="Yes"  CssClass="checkbox-inline" />
-                                <asp:RadioButton ID="rdoNotDoctor" runat="server" GroupName="Doctor" Text="No" Checked="true" CssClass="checkbox-inline" />
+                                <asp:RadioButton ID="rdoNotDoctor" runat="server" GroupName="Doctor" Text="No"  CssClass="checkbox-inline" Checked="true" />
 
                             </div>
                         </div>
@@ -343,7 +343,7 @@
                         <Columns>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("UserID")+"|"+Eval("LoginName")+"|"+Eval("FirstName")+"|"+Eval("LastName")+"|"+Eval("Active")%>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
+                                    <asp:ImageButton ID="ImgBtnUpdate" runat="server" ImageUrl="~/Images/Pencil-01.png" CommandName="Comment" CommandArgument='<%# Eval("UserID")+"|"+Eval("LoginName")+"|"+Eval("FirstName")+"|"+Eval("LastName")+"|"+Eval("Active")+"|"+Eval("Password")+"|"+Eval("Email")+"|"+Eval("PhoneNo")%>' OnCommand="ImgBtnUpdate_Command" formnovalidate />
 
 
                                 </ItemTemplate>
