@@ -16,7 +16,7 @@
 <body class="Semitransparent_1">
     <script type="text/javascript">
         var settingOpen = 0;
-        function selectTile1(id) {
+        function selectTile(id) {
             debugger;
             var tileList = ['dashboard', 'patient', 'token', 'doctor', 'pharmacy', 'stock'];
             var IframeUrl = ['test.aspx', '../Registration/Patients.aspx', '../Token/Tokens.aspx', '../Doctor/DoctorInformationPage.aspx', '../Pharmacy/Pharmacy.aspx', '../Stock/Stock.aspx'];
@@ -33,7 +33,7 @@
             }
 
         }
-        function selectTile(id) {
+        function selectTile1(id) {
             debugger;
             var tileList = ['dashboard', 'patient', 'token', 'doctor', 'pharmacy', 'stock'];
             var IframeUrl = ['test.aspx', '../Registration/Patients.aspx', '../Token/Tokens.aspx', '../AccessDenied.aspx', '../AccessDenied.aspx', '../AccessDenied.aspx'];
