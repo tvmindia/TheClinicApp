@@ -764,7 +764,7 @@ namespace TheClinicApp.ClinicDAL
         public void InsertIssueDetails()
         {
             dbConnection dcon = null;
-            string medID = GetMedcineIDByMedicineName(MedicineName);
+            //string medID = GetMedcineIDByMedicineName(MedicineName);
 
             try
             {
@@ -779,8 +779,8 @@ namespace TheClinicApp.ClinicDAL
                 cmd.Parameters.Add("@UniqueID", SqlDbType.UniqueIdentifier).Value = UniqueID;
                 cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = IssueID;
                 cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
-                //cmd.Parameters.Add("@MedicineName", SqlDbType.NVarChar, 255).Value = MedicineName;
-                cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(medID);
+                cmd.Parameters.Add("@MedicineName", SqlDbType.NVarChar, 255).Value = MedicineName;
+                //cmd.Parameters.Add("@MedicineID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(medID);
                 cmd.Parameters.Add("@Qty", SqlDbType.Real).Value = Qty;
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.NVarChar, 255).Value = CreatedBy;
 
@@ -794,6 +794,13 @@ namespace TheClinicApp.ClinicDAL
                     //Success
                     var page = HttpContext.Current.CurrentHandler as Page;
                     //eObj.InsertionSuccessMessage(page);
+                }
+                else
+                {
+                    if (Outputval == 2)
+                    {
+                        //Out of stock
+                    }
                 }
               
             }

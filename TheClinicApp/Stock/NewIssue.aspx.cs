@@ -35,7 +35,7 @@ namespace TheClinicApp.Stock
         UIClasses.Const Const = new UIClasses.Const();
         ClinicDAL.UserAuthendication UA;
         IssueHeaderDetails IssuehdrObj = new IssueHeaderDetails();
-        Stocks stockObj = new Stocks();
+       
 
         #endregion Global Variables
 
@@ -129,22 +129,23 @@ namespace TheClinicApp.Stock
 
         #region Check Input Quantity Of Medicine Is Out Of Stock
 
-         //[WebMethod]
-        //public bool CheckInputQuantityOfMedicineIsOutOfStock(string MedicineName, int InputQty)
+        //[WebMethod]
+        //public static int CheckIfMedicineIsOutOfStock(string MedicineName)
         //{
-        //    bool OutOfStock = false;
+        //    int QtyInStock = 0;
 
-        //    UA = (ClinicDAL.UserAuthendication)Session[Const.LoginSession];
+        //    UIClasses.Const Const = new UIClasses.Const();
+        //    ClinicDAL.UserAuthendication UA;
+        //    UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
+        //    Stocks stockObj = new Stocks();
+
+
         //    stockObj.ClinicID = UA.ClinicID.ToString();
 
-        //    DataSet dsOutOfStock = stockObj.SearchMedicineStock(MedicineName );
-        //    int QtyInStock = Convert.ToInt32(dsOutOfStock.Tables[0].Rows[0]["Qty"]);
+        //    DataSet dsOutOfStock = stockObj.SearchMedicineStock(MedicineName);
+        //     QtyInStock = Convert.ToInt32(dsOutOfStock.Tables[0].Rows[0]["Qty"]);
 
-        //     if(InputQty > QtyInStock)
-        //     {
-        //         OutOfStock = true;
-        //     }
-        //     return OutOfStock;
+        //     return QtyInStock;
         //}
 
         #endregion Check Input Quantity Of Medicine Is Out Of Stock
@@ -177,21 +178,21 @@ namespace TheClinicApp.Stock
             IssuedtlsObj.ClinicID = UA.ClinicID.ToString();
 
             DataSet ds = IssuedtlsObj.GetMedicineDetailsByMedicineName(MedName);
-            string Unit ="";
+            string Unit = "";
             string MedCode = "";
-             string Category = "";
-             string Qty = "";
+            string Category = "";
+            string Qty = "";
 
-             if (ds.Tables[0].Rows.Count > 0)
-             {
-                 Unit = Convert.ToString(ds.Tables[0].Rows[0]["Unit"]);
-                 MedCode = Convert.ToString(ds.Tables[0].Rows[0]["MedCode"]);
-                 Category = Convert.ToString(ds.Tables[0].Rows[0]["CategoryName"]);
-                 Qty = Convert.ToString(ds.Tables[0].Rows[0]["Qty"]);
-             }
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                Unit = Convert.ToString(ds.Tables[0].Rows[0]["Unit"]);
+                MedCode = Convert.ToString(ds.Tables[0].Rows[0]["MedCode"]);
+                Category = Convert.ToString(ds.Tables[0].Rows[0]["CategoryName"]);
+                Qty = Convert.ToString(ds.Tables[0].Rows[0]["Qty"]);
+            }
 
-             return String.Format("{0}" + "|" + "{1}" + " | " + "{2}" + " | " + "{3}", Unit, MedCode, Category,Qty);
-            
+            return String.Format("{0}" + "|" + "{1}" + " | " + "{2}" + " | " + "{3}", Unit, MedCode, Category, Qty);
+
 
         }
 

@@ -461,6 +461,7 @@
 
                 if (  (MedicineName!="") && (InputQty!= ""))
                 { 
+
               
                     PageMethods.CheckInputQuantityOfMedicineIsOutOfStock(MedicineName,InputQty,OnSuccess, onError);  
 
@@ -527,7 +528,7 @@
                     document.getElementById('txtUnit'+ControlNo).value=MedicineDetails[0];
                     document.getElementById('txtCode'+ControlNo).value=MedicineDetails[1];
                     document.getElementById('txtCategory'+ControlNo).value=MedicineDetails[2];
-                    document.getElementById('txtQuantity'+ControlNo).placeholder = MedicineDetails[3];
+                    document.getElementById('txtQuantity'+ControlNo).placeholder = " Out Of: " +MedicineDetails[3];
                     Qty = parseInt(MedicineDetails[3]);
                 }
               
@@ -552,15 +553,36 @@
 
                 if (  (MedicineName!="") && (InputQty!= ""))
                 { 
+                    if (document.getElementById('hdnDetailID'+ControlNo).value == "")
+                    {
+            //----------- * Case Of Insert *----------//
                     if(InputQty > Qty)
-                             {
+                    {
                         alert("Please enter a value below "+Qty);
-                             }
+                    }
+                    }
+
+                    else
+                    {
+       //----------- * Case Of Update *----------//     
+                        
+     var QtyInStock = Number(document.getElementById('txtQuantity'+ControlNo).getAttribute("placeholder").replace(" Out Of: ", "") );
+                           
+
+                            if(InputQty > QtyInStock)
+                            {
+                                alert("Please enter a value below "+QtyInStock);
+                            }
+              
+                               
+                         
+                    }
+
+
                 }
             }
+
         }
-
-
 
         //----------------------------------- * Function to rebind medicine textboxes -- refills controls by retrieving data from xml *-----------------------
 
@@ -587,7 +609,7 @@
                     var MedicineCategory  =   $(this).find("CategoryName").text();
                     var MedicineQuantity  =   $(this).find("QTY").text();
                     var UniqueID          =   $(this).find("UniqueID").text();
-                    
+                    var QtyInStock        =   $(this).find("QtyInStock").text();
 
                     document.getElementById('txtMedicine'+i).value      =   MedicineName;
                     document.getElementById('txtCode'+i).value          =   MedicineCode;
@@ -596,6 +618,9 @@
                     document.getElementById('txtQuantity'+i).value      =   MedicineQuantity;
 
                     document.getElementById('hdnDetailID'+i).value =  UniqueID;
+
+                    document.getElementById('txtQuantity'+i).placeholder = " Out Of: " +QtyInStock;
+
 
                     document.getElementById('txtMedicine'+i).readOnly = true; // --------* medicine name set to non-editable after saving *--------//
 
