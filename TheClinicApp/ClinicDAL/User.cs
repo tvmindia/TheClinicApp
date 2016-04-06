@@ -624,16 +624,16 @@ namespace TheClinicApp.ClinicDAL
                 {
                     //not successfull   
 
-                    var page = HttpContext.Current.CurrentHandler as Page;
-                    eObj.UpdationNotSuccessMessage(page);
+                    //var page = HttpContext.Current.CurrentHandler as Page;
+                    //eObj.UpdationNotSuccessMessage(page);
 
                 }
                 else
                 {
                     //successfull
 
-                    var page = HttpContext.Current.CurrentHandler as Page;
-                    eObj.UpdationSuccessMessage(page);
+                    //var page = HttpContext.Current.CurrentHandler as Page;
+                   // eObj.UpdationSuccessMessage(page);
 
                 }
 
@@ -641,8 +641,8 @@ namespace TheClinicApp.ClinicDAL
             }
             catch (Exception ex)
             {
-                var page = HttpContext.Current.CurrentHandler as Page;
-                eObj.ErrorData(ex, page);
+                //var page = HttpContext.Current.CurrentHandler as Page;
+                //eObj.ErrorData(ex, page);
 
             }
 

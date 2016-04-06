@@ -17,9 +17,22 @@
     <script type="text/javascript">
         var settingOpen = 0;
         function selectTile(id) {
-            debugger;
+            var Role = '<%=Role%>';
+            //debugger;
             var tileList = ['dashboard', 'patient', 'token', 'doctor', 'pharmacy', 'stock'];
-            var IframeUrl = ['test.aspx', '../Registration/Patients.aspx', '../Token/Tokens.aspx', '../Doctor/DoctorInformationPage.aspx', '../Pharmacy/Pharmacy.aspx', '../Stock/Stock.aspx'];
+            if (Role == 'Administrator' || 'Doctor')
+            {
+                var IframeUrl = ['test.aspx', '../Registration/Patients.aspx', '../Token/Tokens.aspx', '../Doctor/DoctorInformationPage.aspx', '../Pharmacy/Pharmacy.aspx', '../Stock/Stock.aspx'];
+
+            }
+            else if(Role=='pharmacist')
+            {
+                var IframeUrl = ['test.aspx', '../Registration/Patients.aspx', '../Token/Tokens.aspx', '../AccessDenied.aspx', '../Pharmacy/Pharmacy.aspx', '../Stock/Stock.aspx'];
+            }
+            else
+            {
+                var IframeUrl = ['test.aspx', '../Registration/Patients.aspx', '../Token/Tokens.aspx', '../AccessDenied.aspx', '../AccessDenied.aspx', '../AccessDenied.aspx'];
+            }
             for (i = 0; i < tileList.length; i++) {
                 if (id == tileList[i]) {
                     document.getElementById(id).className = id + '_selected'
@@ -33,23 +46,7 @@
             }
 
         }
-        function selectTile1(id) {
-            debugger;
-            var tileList = ['dashboard', 'patient', 'token', 'doctor', 'pharmacy', 'stock'];
-            var IframeUrl = ['test.aspx', '../Registration/Patients.aspx', '../Token/Tokens.aspx', '../AccessDenied.aspx', '../AccessDenied.aspx', '../AccessDenied.aspx'];
-            for (i = 0; i < tileList.length; i++) {
-                if (id == tileList[i]) {
-                    document.getElementById(id).className = id + '_selected'
-                    document.getElementById('main').src = IframeUrl[i];
-                }
-                else {
-                    document.getElementById(tileList[i]).className = tileList[i]
-
-                }
-
-            }
-
-        }
+        
 
         function openSettings() {
             if (settingOpen == 0) {
@@ -70,7 +67,7 @@
         function OpenPageOnHyperLinkClick(HyperLinkid)
         {
             var url = "";
-
+            debugger;
             if (HyperLinkid == "hlkAssignRoles")
             {
                 NavigateUrl = "../Admin/AssignRoles.aspx";
@@ -84,8 +81,7 @@
             {
                 NavigateUrl = "../Admin/Masters.aspx";
             }
-
-
+            
             document.getElementById('main').src = NavigateUrl;
             document.getElementById('settings').style.display = "none";
           
@@ -167,6 +163,7 @@
                 <li><a id="hlkAssignRoles" onclick="OpenPageOnHyperLinkClick(id)">Assign Roles</a></li>
                <li><a id="hlkCreateUser"  onclick="OpenPageOnHyperLinkClick(id)">Create User</a> </li>
                  <li><a id="hlkInputMasters" onclick="OpenPageOnHyperLinkClick(id)">Add Masters</a></li>
+                 <li><a id="hlkLogout" runat="server" onserverclick="hlkLogout_ServerClick">Logout</a></li>
                </ul>
 
           </div>
