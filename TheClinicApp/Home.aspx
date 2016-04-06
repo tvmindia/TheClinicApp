@@ -18,9 +18,9 @@
         var settingOpen = 0;
         function selectTile(id) {
             var Role = '<%=Role%>';
-            //debugger;
+            debugger;
             var tileList = ['dashboard', 'patient', 'token', 'doctor', 'pharmacy', 'stock'];
-            if (Role == 'Administrator' || 'Doctor')
+            if (Role =='Doctor')
             {
                 var IframeUrl = ['test.aspx', '../Registration/Patients.aspx', '../Token/Tokens.aspx', '../Doctor/DoctorInformationPage.aspx', '../Pharmacy/Pharmacy.aspx', '../Stock/Stock.aspx'];
 
