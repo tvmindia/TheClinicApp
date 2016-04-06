@@ -513,6 +513,55 @@ namespace TheClinicApp.ClinicDAL
 
         #endregion GetIssueDetailsByIssueID
 
+        #region Get Issue Header Details By IssueID
+
+        public DataSet GetIssueHeaderByIssueID(String IssueID)
+        {
+            dbConnection dcon = null;
+            DataSet ds = null;
+            SqlDataAdapter sda = null;
+            try
+            {
+
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = dcon.SQLCon;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[GetIssueHeaderByIssueID]";
+
+
+                cmd.Parameters.Add("@IssueID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(IssueID);
+                cmd.Parameters.Add("@ClinicID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(ClinicID);
+
+
+                sda = new SqlDataAdapter();
+                cmd.ExecuteNonQuery();
+                sda.SelectCommand = cmd;
+                ds = new DataSet();
+                sda.Fill(ds);
+
+                return ds;
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                if (dcon.SQLCon != null)
+                {
+                    dcon.DisconectDB();
+                }
+
+            }
+        }
+
+        #endregion Get Issue Header Details By IssueID
 
         #region Get Issue Details By IssueNo
 

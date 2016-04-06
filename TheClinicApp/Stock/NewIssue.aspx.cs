@@ -260,6 +260,8 @@ namespace TheClinicApp.Stock
           
                 else
                 {
+
+                 
  //-----*Redirection due to Grid link click*-----//
 
                     hdnHdrInserted.Value = "True";
@@ -267,9 +269,11 @@ namespace TheClinicApp.Stock
                      issueID = Request.QueryString["issueID"].ToString();
                
                     IssuehdrObj.ClinicID = UA.ClinicID.ToString();
-                     dsIssuehdr = IssuehdrObj.GetIssueDetailsByIssueID(issueID);
+                    DataSet dsHdr = IssuehdrObj.GetIssueHeaderByIssueID(issueID);
 
-                     dtIssuehdr = dsIssuehdr.Tables[0];
+
+
+                    dtIssuehdr = dsHdr.Tables[0];
 
                     if (dtIssuehdr.Rows.Count > 0)
                     {
@@ -288,7 +292,7 @@ namespace TheClinicApp.Stock
                        
                         
                         //}
-
+                        dsIssuehdr = IssuehdrObj.GetIssueDetailsByIssueID(issueID);
                         var xml = dsIssuehdr.GetXml();
 
                         hdnXmlData.Value = xml;
@@ -360,21 +364,37 @@ namespace TheClinicApp.Stock
 
                     }
 
-                    string oldDate = ((DateTime)dtIssuehdr.Rows[0]["Date"]).ToString("dd-MM-yyyy");
-                    string newDate = txtDate.Text;
-
-                    if ((txtIssueNO.Text != dtIssuehdr.Rows[0]["IssueNO"].ToString()) || (txtIssuedTo.Text != dtIssuehdr.Rows[0]["IssuedTo"].ToString()) || (oldDate != newDate))
+                    if (ViewState["IssueHdrID"] != null && ViewState["IssueHdrID"].ToString() != string.Empty)
                     {
-                        //  ------- Update header ---------//
+                      
+
+                     string issueid = ViewState["IssueHdrID"].ToString();
+
                         IssuehdrObj.ClinicID = UA.ClinicID.ToString();
-                        IssuehdrObj.IssuedTo = txtIssuedTo.Text;
-                        IssuehdrObj.Date = Convert.ToDateTime(txtDate.Text);
-                        IssuehdrObj.UpdatedBy = UA.userName;
+                        DataSet dsHdr = IssuehdrObj.GetIssueHeaderByIssueID(issueid);
 
-                        IssuehdrObj.UpdateIssueHeader(ViewState["IssueHdrID"].ToString());
+                        dtIssuehdr = dsHdr.Tables[0];
 
+
+                        if (dtIssuehdr.Rows.Count > 0)
+                        {
+
+                            string oldDate = ((DateTime)dtIssuehdr.Rows[0]["Date"]).ToString("dd-MM-yyyy");
+                            string newDate = txtDate.Text;
+
+                            if ((txtIssueNO.Text != dtIssuehdr.Rows[0]["IssueNO"].ToString()) || (txtIssuedTo.Text != dtIssuehdr.Rows[0]["IssuedTo"].ToString()) || (oldDate != newDate))
+                            {
+                                //  ------- Update header ---------//
+                                IssuehdrObj.ClinicID = UA.ClinicID.ToString();
+                                IssuehdrObj.IssuedTo = txtIssuedTo.Text;
+                                IssuehdrObj.Date = Convert.ToDateTime(txtDate.Text);
+                                IssuehdrObj.UpdatedBy = UA.userName;
+
+                                IssuehdrObj.UpdateIssueHeader(ViewState["IssueHdrID"].ToString());
+
+                            }
+                        }
                     }
-
 
                     string last = string.Empty;
 
