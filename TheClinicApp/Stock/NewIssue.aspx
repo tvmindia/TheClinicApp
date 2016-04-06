@@ -28,6 +28,12 @@
             background-color: ghostwhite;
             box-shadow: 1px 5px 10px 5px #4d3319;
         }
+   
+       .warning{
+            background: url(http://icons.iconarchive.com/icons/hopstarter/soft-scraps/16/Button-Warning-icon.png) no-repeat;
+            padding-left: 18px;
+            border:1px solid #ccc;
+        }
     </style>
 
     <%--Date picker scripts--%>
@@ -407,7 +413,8 @@
 
             $('.input').each(function () {
 
-                
+                while ( (document.getElementById('txtMedicine'+i)!=null ) && (document.getElementById('txtMedicine'+i).value != '')   )
+                {
                 divValue = $(document.createElement('div')).css({
                     padding: '5px', width: '200px'
                 });
@@ -415,37 +422,44 @@
                 var datas = document.getElementById('<%=hdnTextboxValues.ClientID%>');
                   
               
-                    if (this.value == '') // ----- * To avoid empty rows *---//
+                if (this.value == '' ) // ----- * To avoid empty rows *---//
+                {
+                    i++;
+                }
+                else
+                {
+                    if(i % 5 == 0) //  ----- *Checking whether reached at row end -then append $ and set detail id to hiddenfield  *---//
                     {
-                        i++;
+                        HiddenfieldCount= HiddenfieldCount+1;
+
+                        while (document.getElementById('hdnDetailID'+HiddenfieldCount) == null) {
+                            HiddenfieldCount= HiddenfieldCount+1;
+                        }
+                       
+                        values += this.value +'|'+document.getElementById('hdnDetailID'+HiddenfieldCount).value+'$';
+                           
                     }
+
                     else
                     {
-                        if(i % 5 == 0) //  ----- *Checking whether reached at row end -then append $ and set detail id to hiddenfield  *---//
-                        {
-                            HiddenfieldCount= HiddenfieldCount+1;
-
-                            while (document.getElementById('hdnDetailID'+HiddenfieldCount) == null) {
-                                HiddenfieldCount= HiddenfieldCount+1;
-                            }
-                       
-                            values += this.value +'|'+document.getElementById('hdnDetailID'+HiddenfieldCount).value+'$';
-                           
-                        }
-
-                        else
-                        {
                         
                             values += this.value +'|'; 
-                        }
-               
-                        //values += this.value +'|'; 
-                   
-                        i++;
-
-                        datas.value = values;
-                
+                        
+                    
+                            
                     }
+               
+                    //values += this.value +'|'; 
+                   
+                    i++;
+
+                    datas.value = values;
+                
+                }
+
+
+
+            }
             });
 
                 
@@ -564,8 +578,16 @@
                             //----------- * Case Of Insert *----------//
                             if(InputQty > Qty)
                             {
+                                
+                                //$("#txtQuantity"+ControlNo).addClass("warning");
+                                //$("#txtQuantity"+ControlNo).text("Please enter a value below "+QtyInStock);
+                                
                                 alert("Please enter a value below "+Qty);
                             }
+
+                            //else{
+                            //    $("#txtQuantity"+ControlNo).removeClass("warning")
+                            //}
                         }
 
                         else
@@ -577,10 +599,15 @@
 
                             if(InputQty > QtyInStock)
                             {
+                                //$("#txtQuantity"+ControlNo).addClass("warning");
+                                //$("#txtQuantity"+ControlNo).text("Please enter a value below "+QtyInStock);
+
                                 alert("Please enter a value below "+QtyInStock);
                             }
               
-                               
+                            //else{
+                            //    $("#txtQuantity"+ControlNo).removeClass("warning")
+                            //}
                          
                         }
 

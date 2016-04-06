@@ -357,7 +357,7 @@ namespace TheClinicApp.Stock
 
 
 
-                    if (hdnHdrInserted.Value == "")
+                    if ( (hdnHdrInserted.Value == "") && (hdnTextboxValues.Value != ""))
                     {
                         IssuehdrObj.InsertIssueHeader();
                         hdnHdrInserted.Value = "True";
@@ -386,12 +386,17 @@ namespace TheClinicApp.Stock
                             if ((txtIssueNO.Text != dtIssuehdr.Rows[0]["IssueNO"].ToString()) || (txtIssuedTo.Text != dtIssuehdr.Rows[0]["IssuedTo"].ToString()) || (oldDate != newDate))
                             {
                                 //  ------- Update header ---------//
-                                IssuehdrObj.ClinicID = UA.ClinicID.ToString();
-                                IssuehdrObj.IssuedTo = txtIssuedTo.Text;
-                                IssuehdrObj.Date = Convert.ToDateTime(txtDate.Text);
-                                IssuehdrObj.UpdatedBy = UA.userName;
-                                IssuehdrObj.IssueNO = txtIssueNO.Text;
-                                IssuehdrObj.UpdateIssueHeader(ViewState["IssueHdrID"].ToString());
+
+                                if (hdnTextboxValues.Value != "")
+                                {
+
+                                    IssuehdrObj.ClinicID = UA.ClinicID.ToString();
+                                    IssuehdrObj.IssuedTo = txtIssuedTo.Text;
+                                    IssuehdrObj.Date = Convert.ToDateTime(txtDate.Text);
+                                    IssuehdrObj.UpdatedBy = UA.userName;
+                                    //IssuehdrObj.IssueNO = txtIssueNO.Text;
+                                    IssuehdrObj.UpdateIssueHeader(ViewState["IssueHdrID"].ToString());
+                                }
 
                             }
                         }
