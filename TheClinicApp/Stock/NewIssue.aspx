@@ -95,13 +95,17 @@
                     }
                     else
                     {
-                        var item=  document.getElementById('txtMedicine'+i).value 
-                        //var a =  ac.indexOf(item);                               
-                        //  delete ac[a];                                 
+                        if (document.getElementById('txtMedicine'+i) != null)
 
-                        result = result.filter(function(elem){
-                            return elem != item; 
-                        }); 
+                        {
+                            var item=  document.getElementById('txtMedicine'+i).value 
+                            //var a =  ac.indexOf(item);                               
+                            //  delete ac[a];                                 
+
+                            result = result.filter(function(elem){
+                                return elem != item; 
+                            }); 
+                        }
                     }
                     i++;
                 }
@@ -197,10 +201,12 @@
                                 $(this).closest("table").remove();
                             }
 
-                            iCnt = iCnt - 1;
+
+                          var tempRowCount  = iCnt - 1;
+
                         } 
                     
-                        document.getElementById('<%=hdnRowCount.ClientID%>').value = iCnt;
+                        document.getElementById('<%=hdnRowCount.ClientID%>').value = tempRowCount;
 
                        
                            
@@ -217,7 +223,7 @@
                     {
                        
                       
-                        if (iCnt <= 19)
+                        if (iCnt <= 200)
                         {
                             iCnt = iCnt + 1;
                        
@@ -330,10 +336,10 @@
                         else{
                             $(this).closest("table").remove();
                         }
-                        iCnt = iCnt - 1;
+                     var   tempRowCount  = iCnt - 1;
                     } 
 
-                    document.getElementById('<%=hdnRowCount.ClientID%>').value = iCnt;
+                    document.getElementById('<%=hdnRowCount.ClientID%>').value = tempRowCount;
 
 
                     
@@ -348,7 +354,7 @@
                 {
                  
                       
-                    if (iCnt <= 19)
+                    if (iCnt <= 200)
                     {
                         iCnt = iCnt + 1;
                        
@@ -402,20 +408,20 @@
             $('.input').each(function () {
 
                 
-                    divValue = $(document.createElement('div')).css({
-                        padding: '5px', width: '200px'
-                    });
+                divValue = $(document.createElement('div')).css({
+                    padding: '5px', width: '200px'
+                });
 
-                    var datas = document.getElementById('<%=hdnTextboxValues.ClientID%>');
+                var datas = document.getElementById('<%=hdnTextboxValues.ClientID%>');
                   
               
-                if (this.value == '') // ----- * To avoid empty rows *---//
-                {
-                    i++;
-                }
-                else
-                {
-                    if(i % 5 == 0) //  ----- *Checking whether reached at row end -then append $ and set detail id to hiddenfield  *---//
+                    if (this.value == '') // ----- * To avoid empty rows *---//
+                    {
+                        i++;
+                    }
+                    else
+                    {
+                        if(i % 5 == 0) //  ----- *Checking whether reached at row end -then append $ and set detail id to hiddenfield  *---//
                         {
                             HiddenfieldCount= HiddenfieldCount+1;
 
@@ -439,134 +445,134 @@
 
                         datas.value = values;
                 
-                }
+                    }
             });
 
                 
 
 
-        }
+            }
 
 
 
 
 
-        function CheckInputQuantityOfMedicineIsOutOfStock(ControlNo)
-        {
-            debugger;
+            function CheckInputQuantityOfMedicineIsOutOfStock(ControlNo)
+            {
+                debugger;
 
-            if (document.getElementById('txtMedicine'+ControlNo)!=null && document.getElementById('txtQuantity'+ControlNo)!=null ) {
-                var MedicineName = document.getElementById('txtMedicine'+ControlNo).value;
-                var InputQty     = document.getElementById('txtQuantity'+ControlNo).value;
+                if (document.getElementById('txtMedicine'+ControlNo)!=null && document.getElementById('txtQuantity'+ControlNo)!=null ) {
+                    var MedicineName = document.getElementById('txtMedicine'+ControlNo).value;
+                    var InputQty     = document.getElementById('txtQuantity'+ControlNo).value;
 
-                if (  (MedicineName!="") && (InputQty!= ""))
-                { 
+                    if (  (MedicineName!="") && (InputQty!= ""))
+                    { 
 
               
-                    PageMethods.CheckInputQuantityOfMedicineIsOutOfStock(MedicineName,InputQty,OnSuccess, onError);  
+                        PageMethods.CheckInputQuantityOfMedicineIsOutOfStock(MedicineName,InputQty,OnSuccess, onError);  
 
-                    function OnSuccess(response, userContext, methodName) 
-                    {      
-                        var OutOfStockOrNot = response;
-                        if (OutOfStockOrNot) {
-                            alert("Out Of Stock");
-                        }
+                        function OnSuccess(response, userContext, methodName) 
+                        {      
+                            var OutOfStockOrNot = response;
+                            if (OutOfStockOrNot) {
+                                alert("Out Of Stock");
+                            }
 
                         
               
-                    }          
-                    function onError(response, userContext, methodName)
-                    {      
+                        }          
+                        function onError(response, userContext, methodName)
+                        {      
              
-                    }    
+                        }    
+
+                    }
+
 
                 }
-
-
             }
-        }
 
 
 
 
 
 
-        //-----------------------* Function to bind textboxes by medicine name -- fills textboxes when focus is lost from medicine textbox  *-----------------//
+            //-----------------------* Function to bind textboxes by medicine name -- fills textboxes when focus is lost from medicine textbox  *-----------------//
 
-        var Qty = 0;
+            var Qty = 0;
 
 
-        function BindControlsByMedicneName(ControlNo) 
-        {        
+            function BindControlsByMedicneName(ControlNo) 
+            {        
  
             
-            if (ControlNo>=1)
-            {
-                var MedicineName = document.getElementById('txtMedicine'+ControlNo).value;
-                // alert(MedicineName);
+                if (ControlNo>=1)
+                {
+                    var MedicineName = document.getElementById('txtMedicine'+ControlNo).value;
+                    // alert(MedicineName);
 
-            }
+                }
            
             
 
-            if (MedicineName!="")
-            { 
+                if (MedicineName!="")
+                { 
               
-                PageMethods.MedDetails(MedicineName,  OnSuccess, onError);  
-            }
+                    PageMethods.MedDetails(MedicineName,  OnSuccess, onError);  
+                }
 
-            function OnSuccess(response, userContext, methodName) 
-            {      
-                if (ControlNo>=1)
-                {     
+                function OnSuccess(response, userContext, methodName) 
+                {      
+                    if (ControlNo>=1)
+                    {     
                     
                             
-                    var MedicineDetails = new Array();
-                    MedicineDetails = response.split('|'); 
+                        var MedicineDetails = new Array();
+                        MedicineDetails = response.split('|'); 
                     
                    
-                    document.getElementById('txtUnit'+ControlNo).value=MedicineDetails[0];
-                    document.getElementById('txtCode'+ControlNo).value=MedicineDetails[1];
-                    document.getElementById('txtCategory'+ControlNo).value=MedicineDetails[2];
-                    document.getElementById('txtQuantity'+ControlNo).placeholder = " Out Of: " +MedicineDetails[3];
-                    Qty = parseInt(MedicineDetails[3]);
-                }
+                        document.getElementById('txtUnit'+ControlNo).value=MedicineDetails[0];
+                        document.getElementById('txtCode'+ControlNo).value=MedicineDetails[1];
+                        document.getElementById('txtCategory'+ControlNo).value=MedicineDetails[2];
+                        document.getElementById('txtQuantity'+ControlNo).placeholder = " Out Of: " +MedicineDetails[3];
+                        Qty = parseInt(MedicineDetails[3]);
+                    }
               
-            }          
-            function onError(response, userContext, methodName)
-            {      
+                }          
+                function onError(response, userContext, methodName)
+                {      
              
-            }    
+                }    
 
 
-        }
+            }
 
 
 
-        function CheckMedicineIsOutOfStock(ControlNo)
-        {
-            debugger;
-            if (document.getElementById('txtMedicine'+ControlNo)!=null && document.getElementById('txtQuantity'+ControlNo)!=null ) {
+            function CheckMedicineIsOutOfStock(ControlNo)
+            {
+                debugger;
+                if (document.getElementById('txtMedicine'+ControlNo)!=null && document.getElementById('txtQuantity'+ControlNo)!=null ) {
 
-                var MedicineName = document.getElementById('txtMedicine'+ControlNo).value;
-                var InputQty     = Number(document.getElementById('txtQuantity'+ControlNo).value);
+                    var MedicineName = document.getElementById('txtMedicine'+ControlNo).value;
+                    var InputQty     = Number(document.getElementById('txtQuantity'+ControlNo).value);
 
-                if (  (MedicineName!="") && (InputQty!= ""))
-                { 
-                    if (document.getElementById('hdnDetailID'+ControlNo).value == "")
-                    {
-            //----------- * Case Of Insert *----------//
-                    if(InputQty > Qty)
-                    {
-                        alert("Please enter a value below "+Qty);
-                    }
-                    }
+                    if (  (MedicineName!="") && (InputQty!= ""))
+                    { 
+                        if (document.getElementById('hdnDetailID'+ControlNo).value == "")
+                        {
+                            //----------- * Case Of Insert *----------//
+                            if(InputQty > Qty)
+                            {
+                                alert("Please enter a value below "+Qty);
+                            }
+                        }
 
-                    else
-                    {
-       //----------- * Case Of Update *----------//     
+                        else
+                        {
+                            //----------- * Case Of Update *----------//     
                         
-     var QtyInStock = Number(document.getElementById('txtQuantity'+ControlNo).getAttribute("placeholder").replace(" Out Of: ", "") );
+                            var QtyInStock = Number(document.getElementById('txtQuantity'+ControlNo).getAttribute("placeholder").replace(" Out Of: ", "") );
                            
 
                             if(InputQty > QtyInStock)
@@ -576,74 +582,74 @@
               
                                
                          
+                        }
+
+
                     }
-
-
                 }
+
             }
 
-        }
+            //----------------------------------- * Function to rebind medicine textboxes -- refills controls by retrieving data from xml *-----------------------
 
-        //----------------------------------- * Function to rebind medicine textboxes -- refills controls by retrieving data from xml *-----------------------
+            function RefillTextboxesWithXmlData(Medicines)
+            {
+                debugger;
 
-        function RefillTextboxesWithXmlData(Medicines)
-        {
-            debugger;
-
-            var XmlDataFromHF =   document.getElementById('<%=hdnXmlData.ClientID%>').value;
-        var xmlDoc = $.parseXML(XmlDataFromHF);
-        var xml = $(xmlDoc);
-        var Medicines = xml.find("Medicines");
-        var i=1;
+                var XmlDataFromHF =   document.getElementById('<%=hdnXmlData.ClientID%>').value;
+            var xmlDoc = $.parseXML(XmlDataFromHF);
+            var xml = $(xmlDoc);
+            var Medicines = xml.find("Medicines");
+            var i=1;
            
-        if (Medicines.length > 0)
-        {
-            //document.getElementById('<%=hdnRowCount.ClientID%>').value = Medicines.length;
+            if (Medicines.length > 0)
+            {
+                //document.getElementById('<%=hdnRowCount.ClientID%>').value = Medicines.length;
 
-                $.each(Medicines, function () {
+            $.each(Medicines, function () {
                    
                                         
-                    var MedicineName      =   $(this).find("MedicineName").text() ;
-                    var MedicineCode      =   $(this).find("MedCode").text();
-                    var MedicineUnit      =   $(this).find("Unit").text();
-                    var MedicineCategory  =   $(this).find("CategoryName").text();
-                    var MedicineQuantity  =   $(this).find("QTY").text();
-                    var UniqueID          =   $(this).find("UniqueID").text();
-                    var QtyInStock        =   $(this).find("QtyInStock").text();
+                var MedicineName      =   $(this).find("MedicineName").text() ;
+                var MedicineCode      =   $(this).find("MedCode").text();
+                var MedicineUnit      =   $(this).find("Unit").text();
+                var MedicineCategory  =   $(this).find("CategoryName").text();
+                var MedicineQuantity  =   $(this).find("QTY").text();
+                var UniqueID          =   $(this).find("UniqueID").text();
+                var QtyInStock        =   $(this).find("QtyInStock").text();
 
-                    document.getElementById('txtMedicine'+i).value      =   MedicineName;
-                    document.getElementById('txtCode'+i).value          =   MedicineCode;
-                    document.getElementById('txtUnit'+i).value          =   MedicineUnit;
-                    document.getElementById('txtCategory'+i).value      =   MedicineCategory;
-                    document.getElementById('txtQuantity'+i).value      =   MedicineQuantity;
+                document.getElementById('txtMedicine'+i).value      =   MedicineName;
+                document.getElementById('txtCode'+i).value          =   MedicineCode;
+                document.getElementById('txtUnit'+i).value          =   MedicineUnit;
+                document.getElementById('txtCategory'+i).value      =   MedicineCategory;
+                document.getElementById('txtQuantity'+i).value      =   MedicineQuantity;
 
-                    document.getElementById('hdnDetailID'+i).value =  UniqueID;
+                document.getElementById('hdnDetailID'+i).value =  UniqueID;
 
-                    document.getElementById('txtQuantity'+i).placeholder = " Out Of: " +QtyInStock;
+                document.getElementById('txtQuantity'+i).placeholder = " Out Of: " +QtyInStock;
 
 
-                    document.getElementById('txtMedicine'+i).readOnly = true; // --------* medicine name set to non-editable after saving *--------//
+                document.getElementById('txtMedicine'+i).readOnly = true; // --------* medicine name set to non-editable after saving *--------//
 
-                    i=i+1;
+                i=i+1;
                     
-                });
+            });
                     
-            }
-
-
         }
 
 
-        //----------------------------------------------------------  * END MEDICINES  * --------------------------------------------------------------------------------------------------
+    }
 
-        $(document).ready(function () {
+
+    //----------------------------------------------------------  * END MEDICINES  * --------------------------------------------------------------------------------------------------
+
+    $(document).ready(function () {
               
-            debugger;
-            //-------------*  images that represents IssueNo duplication hide and show * -------------//
+        debugger;
+        //-------------*  images that represents IssueNo duplication hide and show * -------------//
 
-            var LnameImage = document.getElementById('<%=imgWebLnames.ClientID %>');
-                LnameImage.style.display = "none";
-                var errLname = document.getElementById('<%=errorLnames.ClientID %>');
+        var LnameImage = document.getElementById('<%=imgWebLnames.ClientID %>');
+            LnameImage.style.display = "none";
+            var errLname = document.getElementById('<%=errorLnames.ClientID %>');
                 errLname.style.display = "none";
 
 
@@ -659,27 +665,27 @@
                 }
 
                
-                AddRow();
+            AddRow();
                 
 
                
 
      <%--     if (document.getElementById('<%=hdnXmlData.ClientID%>').value != null) {--%>
-                RefillTextboxesWithXmlData();
-                //}
+            RefillTextboxesWithXmlData();
+            //}
 
 
 
-            });            
+        });            
 
        
 
 
-            //---------------* Function to check Issue Number duplication *-----------------//
+        //---------------* Function to check Issue Number duplication *-----------------//
 
-            function CheckIssueNoDuplication(IssueNo) {
+        function CheckIssueNoDuplication(IssueNo) {
             
-                var IssueNo = document.getElementById('<%=txtIssueNO.ClientID %>').value;
+            var IssueNo = document.getElementById('<%=txtIssueNO.ClientID %>').value;
                 IssueNo = IssueNo.replace(/\s/g, '');
 
                 PageMethods.CheckIssueNoDuplication(IssueNo, OnSuccess, onError);
@@ -687,25 +693,25 @@
                 function OnSuccess(response, userContext, methodName) {
 
                     var LnameImage = document.getElementById('<%=imgWebLnames.ClientID %>');
-                var errLname = document.getElementById('<%=errorLnames.ClientID %>');
-                if (response == false) {
+                    var errLname = document.getElementById('<%=errorLnames.ClientID %>');
+                    if (response == false) {
 
-                    LnameImage.style.display = "block";
-                    errLname.style.display = "none";
+                        LnameImage.style.display = "block";
+                        errLname.style.display = "none";
 
+                    }
+                    if (response == true) {
+                        errLname.style.display = "block";
+                        errLname.style.color = "Red";
+                        errLname.innerHTML = "Name Alreay Exists"
+                        LnameImage.style.display = "none";
+
+                    }
                 }
-                if (response == true) {
-                    errLname.style.display = "block";
-                    errLname.style.color = "Red";
-                    errLname.innerHTML = "Name Alreay Exists"
-                    LnameImage.style.display = "none";
+                function onError(response, userContext, methodName) {
 
                 }
             }
-            function onError(response, userContext, methodName) {
-
-            }
-        }
 
 
     </script>

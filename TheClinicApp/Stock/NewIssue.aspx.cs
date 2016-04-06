@@ -390,7 +390,7 @@ namespace TheClinicApp.Stock
                                 IssuehdrObj.IssuedTo = txtIssuedTo.Text;
                                 IssuehdrObj.Date = Convert.ToDateTime(txtDate.Text);
                                 IssuehdrObj.UpdatedBy = UA.userName;
-
+                                IssuehdrObj.IssueNO = txtIssueNO.Text;
                                 IssuehdrObj.UpdateIssueHeader(ViewState["IssueHdrID"].ToString());
 
                             }

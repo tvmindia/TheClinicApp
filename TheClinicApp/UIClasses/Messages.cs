@@ -40,7 +40,7 @@ namespace TheClinicApp.UIClasses
             get { return "Warning!"; }
         }
 
-        public static string InsertionFailureMsgCaption
+        public static string AlreadyExistsMsgCaption
         {
             get { return "Already exists!"; }
         }
@@ -96,6 +96,17 @@ namespace TheClinicApp.UIClasses
         {
             get { return "Warning Msg "; }
         }
+
+        public static string DeletionFailure
+        {
+            get { return "Deletion Not Successfull"; }
+        }
+
+        public static string OutOfStock
+        {
+            get { return "Medicine is out of stock"; }
+        }
+
 
     }
 }
