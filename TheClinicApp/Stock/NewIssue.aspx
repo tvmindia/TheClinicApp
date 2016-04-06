@@ -413,8 +413,7 @@
 
             $('.input').each(function () {
 
-                while ( (document.getElementById('txtMedicine'+i)!=null ) && (document.getElementById('txtMedicine'+i).value != '')   )
-                {
+               
                 divValue = $(document.createElement('div')).css({
                     padding: '5px', width: '200px'
                 });
@@ -459,7 +458,14 @@
 
 
 
-            }
+               
+
+                //if ((document.getElementById('txtMedicine'+i)!=null ) && (document.getElementById('txtMedicine'+i).value == '')) {
+                //    document.getElementById('txtMedicine'+i).focus();
+                //}
+               
+
+
             });
 
                 
@@ -539,7 +545,7 @@
                 {      
                     if (ControlNo>=1)
                     {     
-                    
+                        
                             
                         var MedicineDetails = new Array();
                         MedicineDetails = response.split('|'); 
@@ -621,7 +627,7 @@
 
             function RefillTextboxesWithXmlData(Medicines)
             {
-                debugger;
+                
 
                 var XmlDataFromHF =   document.getElementById('<%=hdnXmlData.ClientID%>').value;
             var xmlDoc = $.parseXML(XmlDataFromHF);
@@ -631,7 +637,10 @@
            
             if (Medicines.length > 0)
             {
-                //document.getElementById('<%=hdnRowCount.ClientID%>').value = Medicines.length;
+
+                //document.getElementById('<%=txtIssueNO.ClientID %>').readOnly = true;
+
+               
 
             $.each(Medicines, function () {
                    

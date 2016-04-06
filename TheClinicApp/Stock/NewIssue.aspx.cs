@@ -426,7 +426,10 @@ namespace TheClinicApp.Stock
                         {
 
  //----------------- * CASE : INSERT *-----------------------------------//
-
+                            if ((columns[0] != null) && (columns[4] != null))
+	                        {
+		 
+	
                             IssuedtlObj.MedicineName = columns[0];
                             IssuedtlObj.Unit = columns[1];
                             IssuedtlObj.Qty = Convert.ToInt32(columns[4]);
@@ -441,12 +444,14 @@ namespace TheClinicApp.Stock
 
                             IssuedtlObj.InsertIssueDetails();
                         }
+                        }
 
                         if (last != string.Empty )
                         {
  //----------------- * CASE : UPDATE *---------------------------------//
 
-
+                            if ((columns[0] != null) && (columns[4] != null))
+                            {
                             string uniqueID = last;
                             IssueDetails UpIssueDtlObj = new IssueDetails(new Guid(uniqueID));
 
@@ -457,7 +462,7 @@ namespace TheClinicApp.Stock
                             //string medicineID = IssuedtlObj.GetMedcineIDByMedicineName(columns[0]);
 
                             UpIssueDtlObj.UpdateIssueDetails(uniqueID);
-
+                        }
                         }
 
                     }
