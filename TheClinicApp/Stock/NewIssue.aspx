@@ -548,7 +548,7 @@
             if (document.getElementById('txtMedicine'+ControlNo)!=null && document.getElementById('txtQuantity'+ControlNo)!=null ) {
 
                 var MedicineName = document.getElementById('txtMedicine'+ControlNo).value;
-                var InputQty     = document.getElementById('txtQuantity'+ControlNo).value;
+                var InputQty     = Number(document.getElementById('txtQuantity'+ControlNo).value);
 
                 if (  (MedicineName!="") && (InputQty!= ""))
                 { 
