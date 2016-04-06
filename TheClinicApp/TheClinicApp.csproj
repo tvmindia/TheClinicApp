@@ -178,6 +178,7 @@
     <Content Include="Images\403.png" />
     <Content Include="Images\Addition .png" />
     <Content Include="Images\Arrowhead-Down-01.png" />
+    <Content Include="Images\arrowR.png" />
     <Content Include="Images\Button-Add-icon.png" />
     <Content Include="Images\calendar 32x32.png" />
     <Content Include="Images\calendar 42x42.png" />
@@ -220,7 +221,6 @@
     <Content Include="Doctor\DoctorInformationPage.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Images\accent.png" />
-    <Content Include="Images\arrowR.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\Cancel.png" />
     <Content Include="Images\clinic app logo.png" />

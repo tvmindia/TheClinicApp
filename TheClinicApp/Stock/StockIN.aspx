@@ -49,7 +49,7 @@
                         <asp:BoundField HeaderText="Receipt ID" DataField="ReceiptID" />
                         <asp:HyperLinkField DataTextField="RefNo1" HeaderText="Bill Number" DataNavigateUrlFields="ReceiptID" DataNavigateUrlFormatString="~/Stock/ExistingStockIn.aspx?ReceiptID={0}" />
                         <asp:BoundField DataField="RefNo2" HeaderText="Reference Number" />
-                        <asp:BoundField HeaderText="Date" DataField="Date" />
+                        <asp:BoundField HeaderText="Date"  DataFormatString="{0:dd/MM/yyyy}"   DataField="Date" />
                     </Columns>
                 </asp:GridView>
             </div>

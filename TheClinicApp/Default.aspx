@@ -46,11 +46,11 @@
     </div>    
     <div class="login">         
         <div class="input-field ">
-          <input id="username" runat="server" type="text"  class="validate" />
+          <input id="username" runat="server" type="text"  class="validate" style="color:saddlebrown;font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif" />
           <label for="username" class="captions">User Name</label>
         </div>                
         <div class="input-field">
-          <input id="password" type="password" class="validate" runat="server" />
+          <input id="password" type="password" class="validate" runat="server" style="color:saddlebrown;" />
           <label for="password" class="captions">Password</label>
         </div>
        
