@@ -199,7 +199,14 @@
                                 $(this).closest("table").remove();
                                 document.getElementById("Header").remove();
 
-                                AddRow();
+                                $(container).append('<table style="width:80%" id="Header"><tr><td><label >Medicine Name</label></td><td ><label >Unit</label></td><td ><label >Medicine Code</label></td><td ><label >Cateorgy</label></td><td ><label >Quantity</label></td></tr> </table>');
+                    
+                                $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')"  /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td> </tr> </table>');
+                   
+                                
+                
+                                $('#main').after(container);
+
                               
                             }
                             else
@@ -336,7 +343,15 @@
                         if (iCnt == 1) {
                             $(this).closest("table").remove();
                             document.getElementById("Header").remove();
-                            AddRow();
+                            
+                            $(container).append('<table style="width:80%" id="Header"><tr><td><label >Medicine Name</label></td><td ><label >Unit</label></td><td ><label >Medicine Code</label></td><td ><label >Cateorgy</label></td><td ><label >Quantity</label></td></tr> </table>');
+                    
+                            $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')"  /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td> </tr> </table>');
+                   
+                                
+                
+                            $('#main').after(container);
+
                             
                         }
                         else{
@@ -412,6 +427,16 @@
             var HiddenfieldCount = 0;
 
             $('.input').each(function () {
+                debugger;
+                //if($(this).val() == '' || $(this).val() == null)
+                //{$(this).focus = true;
+                //    alert(1);
+
+                    
+                //    return false;
+                //}
+
+
 
                
                 divValue = $(document.createElement('div')).css({
@@ -586,13 +611,21 @@
                             {
                                 
                                 //$("#txtQuantity"+ControlNo).addClass("warning");
-                                //$("#txtQuantity"+ControlNo).text("Please enter a value below "+QtyInStock);
+
+                                //$("#txtQuantity"+ControlNo).attr('type','text');
+                               
+                                //$("#txtQuantity"+ControlNo).css({'color':'red'});
+                                //$("#txtQuantity"+ControlNo).val('Should below '+Qty);
+
+                                //$("#txtQuantity"+ControlNo).val('Please enter a value below '+Qty);
                                 
                                 alert("Please enter a value below "+Qty);
                             }
 
                             //else{
-                            //    $("#txtQuantity"+ControlNo).removeClass("warning")
+                            //    $("#txtQuantity"+ControlNo).removeClass("warning");
+                            //    $("#txtQuantity"+ControlNo).attr('type','number');
+
                             //}
                         }
 
@@ -605,14 +638,24 @@
 
                             if(InputQty > QtyInStock)
                             {
+                               
                                 //$("#txtQuantity"+ControlNo).addClass("warning");
-                                //$("#txtQuantity"+ControlNo).text("Please enter a value below "+QtyInStock);
+
+                                //$("#txtQuantity"+ControlNo).attr('type','text');
+                               
+                                //$("#txtQuantity"+ControlNo).css({'color':'red'});
+                                //$("#txtQuantity"+ControlNo).val('Should below '+QtyInStock);
+
+
+                                //$("#txtQuantity"+ControlNo).val('Please enter a value below '+QtyInStock);
 
                                 alert("Please enter a value below "+QtyInStock);
                             }
               
                             //else{
-                            //    $("#txtQuantity"+ControlNo).removeClass("warning")
+                            //    $("#txtQuantity"+ControlNo).removeClass("warning");
+                            //    $("#txtQuantity"+ControlNo).removeClass("warning");
+                            //    $("#txtQuantity"+ControlNo).attr('type','number');
                             //}
                          
                         }
