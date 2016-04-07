@@ -180,6 +180,7 @@
     <Content Include="Images\Arrowhead-Down-01.png" />
     <Content Include="Images\arrowR.png" />
     <Content Include="Images\Button-Add-icon.png" />
+    <Content Include="Images\Button-Warning-icon.png" />
     <Content Include="Images\calendar 32x32.png" />
     <Content Include="Images\calendar 42x42.png" />
     <Content Include="Images\calendar.png" />
