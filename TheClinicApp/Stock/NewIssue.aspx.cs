@@ -345,6 +345,9 @@ namespace TheClinicApp.Stock
 
             if (hdnRemovedIDs.Value == string.Empty)
             {
+                if(hdnTextboxValues.Value != "")
+                {
+
                 if ((txtIssueNO.Text != string.Empty) && (txtIssuedTo.Text != string.Empty) && (txtDate.Text != string.Empty))
                 {
 
@@ -471,7 +474,7 @@ namespace TheClinicApp.Stock
                     hdnManageGridBind.Value = "True";
 
                 }
-
+            }
             }
 
             StoreXmlToHiddenField();

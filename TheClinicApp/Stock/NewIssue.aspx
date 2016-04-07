@@ -30,9 +30,14 @@
         }
    
        .warning{
-            background: url(http://icons.iconarchive.com/icons/hopstarter/soft-scraps/16/Button-Warning-icon.png) no-repeat;
-            padding-left: 18px;
+            
+             background: url(../Images/Button-Warning-icon.png) no-repeat;
+            
+             background-size:9% 90%;
+           padding-left:1%;
+            text-indent: 11%;
             border:1px solid #ccc;
+           
         }
     </style>
 
@@ -43,7 +48,7 @@
 
   function      RemoveWarning(ControlNo)
   {
-      debugger;
+      //debugger;
 
             $("#txtQuantity"+ControlNo).removeClass("warning");
             $("#txtQuantity"+ControlNo).css({'color':'black'});
@@ -178,7 +183,7 @@
                  
                     $(container).append('<table style="width:80%" id="Header"><tr><td><label >Medicine Name</label></td><td ><label >Unit</label></td><td ><label >Medicine Code</label></td><td ><label >Cateorgy</label></td><td ><label >Quantity</label></td></tr> </table>');
                     
-                    $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')" onkeyup="RemoveWarning('+iCnt+')" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td> </tr> </table>');
+                    $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')" onkeyup="RemoveWarning('+iCnt+')" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td><td><input id="hdnQty'+iCnt+'" type="hidden" /></td> </tr> </table>');
                    
                     // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
                     
@@ -213,7 +218,7 @@
 
                                 $(container).append('<table style="width:80%" id="Header"><tr><td><label >Medicine Name</label></td><td ><label >Unit</label></td><td ><label >Medicine Code</label></td><td ><label >Cateorgy</label></td><td ><label >Quantity</label></td></tr> </table>');
                     
-                                $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')" onkeyup="RemoveWarning('+iCnt+')"  /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td> </tr> </table>');
+                                $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')" onkeyup="RemoveWarning('+iCnt+')"  /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td><td><input id="hdnQty'+iCnt+'" type="hidden" /></td> </tr> </table>');
                    
                                 
                 
@@ -254,7 +259,7 @@
                        
                             // ADDING  TEXTBOX CONTROLS
 
-                            $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')" onkeyup="RemoveWarning('+iCnt+')" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td> </tr> </table>');
+                            $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')" onkeyup="RemoveWarning('+iCnt+')" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td><td><input id="hdnQty'+iCnt+'" type="hidden" /></td> </tr> </table>');
                             $('#main').after(container);                            
                            <%-- var ac=null;
                             ac = <%=listFilter %>;
@@ -299,17 +304,17 @@
                     if(iCnt==1)
                     {
                         $(container).append('<table style="width:80%" id="Header"><tr><td><label >Medicine Name</label></td><td ><label >Unit</label></td><td ><label >Medicine Code</label></td><td ><label >Cateorgy</label></td><td ><label >Quantity</label></td></tr> </table>');
-                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')" onkeyup="RemoveWarning('+iCnt+')" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td> </tr> </table>');
+                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')" onkeyup="RemoveWarning('+iCnt+')" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td> <td><input id="hdnQty'+iCnt+'" type="hidden" /></td></tr> </table>');
                     }
                     else  if (iCnt==hidCount-1)
                     {
                        
-                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')" onkeyup="RemoveWarning('+iCnt+')" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td> </tr> </table>');
+                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')" onkeyup="RemoveWarning('+iCnt+')" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td><td><input id="hdnQty'+iCnt+'" type="hidden" /></td> </tr> </table>');
                     }
 
                     else 
                     {
-                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')" onkeyup="RemoveWarning('+iCnt+')" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td> </tr> </table>');
+                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')" onkeyup="RemoveWarning('+iCnt+')" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td> <td><input id="hdnQty'+iCnt+'" type="hidden" /></td></tr> </table>');
                         
                     }         
 
@@ -358,7 +363,7 @@
                             
                             $(container).append('<table style="width:80%" id="Header"><tr><td><label >Medicine Name</label></td><td ><label >Unit</label></td><td ><label >Medicine Code</label></td><td ><label >Cateorgy</label></td><td ><label >Quantity</label></td></tr> </table>');
                     
-                            $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')" onkeyup="RemoveWarning('+iCnt+')" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td> </tr> </table>');
+                            $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')" onkeyup="RemoveWarning('+iCnt+')" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td> <td><input id="hdnQty'+iCnt+'" type="hidden" /></td></tr> </table>');
                    
                                 
                 
@@ -393,7 +398,7 @@
                        
                         // ADDING  TEXTBOX CONTROLS
 
-                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')"  onkeyup="RemoveWarning('+iCnt+')"/></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td> </tr> </table>');
+                        $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')"  onkeyup="RemoveWarning('+iCnt+')"/></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td><td><input id="hdnQty'+iCnt+'" type="hidden" /></td> </tr> </table>');
                         $('#main').after(container);                            
                         <%--var ac=null;
                         ac = <%=listFilter %>;
@@ -430,13 +435,17 @@
         var divValue, values = '';
 
         function GetTextBoxValues()
-        {
+        {debugger;
             $(divValue)
                 .empty()
                 .remove();
             values = '';
             var i=1;
             var HiddenfieldCount = 0;
+
+            if( (document.getElementById('txtQuantity'+i) != null) &&(document.getElementById('txtQuantity'+i).value != '' ) &&(document.getElementById('txtMedicine'+i) != null) && (document.getElementById('txtMedicine'+i).value != '' ) ) 
+            {
+
 
             $('.input').each(function () {
                 debugger;
@@ -449,15 +458,17 @@
                 //}
 
 
-
                
                 divValue = $(document.createElement('div')).css({
                     padding: '5px', width: '200px'
                 });
 
                 var datas = document.getElementById('<%=hdnTextboxValues.ClientID%>');
-                  
               
+                
+               
+    
+                  
                 if (this.value == '' ) // ----- * To avoid empty rows *---//
                 {
                     i++;
@@ -467,21 +478,25 @@
                     if(i % 5 == 0) //  ----- *Checking whether reached at row end -then append $ and set detail id to hiddenfield  *---//
                     {
                         HiddenfieldCount= HiddenfieldCount+1;
-
-                        while (document.getElementById('hdnDetailID'+HiddenfieldCount) == null) {
+                           
+                        while ( (document.getElementById('hdnDetailID'+HiddenfieldCount) == null)  ) {
                             HiddenfieldCount= HiddenfieldCount+1;
                         }
-                       
+                        
+                        //if (values != '') 
+                        //{
                         values += this.value +'|'+document.getElementById('hdnDetailID'+HiddenfieldCount).value+'$';
+                        //}
+                                
+                               
                            
                     }
 
                     else
                     {
-                        
-                            values += this.value +'|'; 
-                        
-                    
+                           
+                        values += this.value +'|'; 
+                           
                             
                     }
                
@@ -496,67 +511,21 @@
 
 
                
-
-                //if ((document.getElementById('txtMedicine'+i)!=null ) && (document.getElementById('txtMedicine'+i).value == '')) {
-                //    document.getElementById('txtMedicine'+i).focus();
-                //}
                
-
-
+               
             });
 
                 
-
+        }
 
             }
-
-
-
-
-
-            function CheckInputQuantityOfMedicineIsOutOfStock(ControlNo)
-            {
-               
-
-                if (document.getElementById('txtMedicine'+ControlNo)!=null && document.getElementById('txtQuantity'+ControlNo)!=null ) {
-                    var MedicineName = document.getElementById('txtMedicine'+ControlNo).value;
-                    var InputQty     = document.getElementById('txtQuantity'+ControlNo).value;
-
-                    if (  (MedicineName!="") && (InputQty!= ""))
-                    { 
-
-              
-                        PageMethods.CheckInputQuantityOfMedicineIsOutOfStock(MedicineName,InputQty,OnSuccess, onError);  
-
-                        function OnSuccess(response, userContext, methodName) 
-                        {      
-                            var OutOfStockOrNot = response;
-                            if (OutOfStockOrNot) {
-                                alert("Out Of Stock");
-                            }
-
-                        
-              
-                        }          
-                        function onError(response, userContext, methodName)
-                        {      
-             
-                        }    
-
-                    }
-
-
-                }
-            }
-
-
 
 
 
 
             //-----------------------* Function to bind textboxes by medicine name -- fills textboxes when focus is lost from medicine textbox  *-----------------//
 
-            var Qty = 0;
+            //var Qty = 0;
 
 
             function BindControlsByMedicneName(ControlNo) 
@@ -592,7 +561,11 @@
                         document.getElementById('txtCode'+ControlNo).value=MedicineDetails[1];
                         document.getElementById('txtCategory'+ControlNo).value=MedicineDetails[2];
                         document.getElementById('txtQuantity'+ControlNo).placeholder = " Out Of: " +MedicineDetails[3];
-                        Qty = parseInt(MedicineDetails[3]);
+                        document.getElementById('hdnQty'+ControlNo).value = parseInt(MedicineDetails[3]);
+                        
+                        
+                      
+                        //Qty = parseInt(MedicineDetails[3]);
                     }
               
                 }          
@@ -610,7 +583,10 @@
             function CheckMedicineIsOutOfStock(ControlNo)
             {
                
-                if (document.getElementById('txtMedicine'+ControlNo)!=null && document.getElementById('txtQuantity'+ControlNo)!=null ) {
+                if (document.getElementById('txtMedicine'+ControlNo)!=null && document.getElementById('txtQuantity'+ControlNo)!=null  ) 
+                {
+                    var Qty = parseInt(document.getElementById('hdnQty'+ControlNo).value);
+
 
                     var MedicineName = document.getElementById('txtMedicine'+ControlNo).value;
                     var InputQty     = Number(document.getElementById('txtQuantity'+ControlNo).value);
@@ -619,6 +595,9 @@
                     { 
                         if (document.getElementById('hdnDetailID'+ControlNo).value == "")
                         {
+
+
+
                             //----------- * Case Of Insert *----------//
                             if(InputQty > Qty)
                             {
@@ -627,8 +606,8 @@
 
                                 $("#txtQuantity"+ControlNo).attr('type','text');
                                
-                                $("#txtQuantity"+ControlNo).css({'color':'red'});
-                                $("#txtQuantity"+ControlNo).val('Should below '+Qty);
+                                $("#txtQuantity"+ControlNo).css({'color':' #ffad99'});
+                                $("#txtQuantity"+ControlNo).val('Must be < '+Qty);
 
                                 //$("#txtQuantity"+ControlNo).val('Please enter a value below '+Qty);
                                 
@@ -658,8 +637,8 @@
 
                                 $("#txtQuantity"+ControlNo).attr('type','text');
                                
-                                $("#txtQuantity"+ControlNo).css({'color':'red'});
-                                $("#txtQuantity"+ControlNo).val('Should below '+QtyInStock);
+                                $("#txtQuantity"+ControlNo).css({'color':' #ffad99'});
+                                $("#txtQuantity"+ControlNo).val('Must be < '+QtyInStock);
 
 
                                 //$("#txtQuantity"+ControlNo).val('Please enter a value below '+QtyInStock);
@@ -738,7 +717,7 @@
 
     $(document).ready(function () {
               
-        debugger;
+        //debugger;
         //-------------*  images that represents IssueNo duplication hide and show * -------------//
 
         var LnameImage = document.getElementById('<%=imgWebLnames.ClientID %>');
@@ -879,7 +858,7 @@
 
     <asp:HiddenField ID="hdnHdrInserted" runat="server" />
     <asp:HiddenField ID="hdnRemovedIDs" runat="server" />
-
+   
      
 
 </asp:Content>
