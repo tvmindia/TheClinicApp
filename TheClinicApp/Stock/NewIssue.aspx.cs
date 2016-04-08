@@ -43,6 +43,49 @@ namespace TheClinicApp.Stock
 
 //------------------------------ * MEDICINES  * -------------------------------------------//
 
+        #region Get MedicineDetails By Medicine Name
+
+        /// <summary>
+        /// To fill textboxes with medicine details when when medicne name is inserted
+        /// </summary>
+        /// <param name="MedName"></param>
+        /// <returns>String of medicine details</returns>
+
+        [WebMethod]
+
+        public static string MedDetails(string MedName)
+        {
+            IssueHeaderDetails IssuedtlsObj = new IssueHeaderDetails();
+
+            UIClasses.Const Const = new UIClasses.Const();
+            ClinicDAL.UserAuthendication UA;
+
+            UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
+
+            IssuedtlsObj.ClinicID = UA.ClinicID.ToString();
+
+            DataSet ds = IssuedtlsObj.GetMedicineDetailsByMedicineName(MedName);
+            string Unit = "";
+            string MedCode = "";
+            string Category = "";
+            string Qty = "";
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                Unit = Convert.ToString(ds.Tables[0].Rows[0]["Unit"]);
+                MedCode = Convert.ToString(ds.Tables[0].Rows[0]["MedCode"]);
+                Category = Convert.ToString(ds.Tables[0].Rows[0]["CategoryName"]);
+                Qty = Convert.ToString(ds.Tables[0].Rows[0]["Qty"]);
+            }
+
+            return String.Format("{0}" + "|" + "{1}" + " | " + "{2}" + " | " + "{3}", Unit, MedCode, Category, Qty);
+
+
+        }
+
+
+        #endregion Get MedicineDetails By Medicine Name
+
         #region Bind List Filter
 
         /// <summary>
@@ -111,6 +154,11 @@ namespace TheClinicApp.Stock
 
         #region Get Issue Details By IssueID
 
+        /// <summary>
+        /// To fill xml with saved data
+        /// </summary>
+        /// <param name="IssueID"></param>
+        /// <returns>Dataset of issue details by id</returns>
         public DataSet GetIssueDetailsByIssueID(string IssueID)
         {
           
@@ -127,32 +175,7 @@ namespace TheClinicApp.Stock
 
         #endregion Get Issue Details By IssueID
 
-        #region Check Input Quantity Of Medicine Is Out Of Stock
-
-        //[WebMethod]
-        //public static int CheckIfMedicineIsOutOfStock(string MedicineName)
-        //{
-        //    int QtyInStock = 0;
-
-        //    UIClasses.Const Const = new UIClasses.Const();
-        //    ClinicDAL.UserAuthendication UA;
-        //    UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
-        //    Stocks stockObj = new Stocks();
-
-
-        //    stockObj.ClinicID = UA.ClinicID.ToString();
-
-        //    DataSet dsOutOfStock = stockObj.SearchMedicineStock(MedicineName);
-        //     QtyInStock = Convert.ToInt32(dsOutOfStock.Tables[0].Rows[0]["Qty"]);
-
-        //     return QtyInStock;
-        //}
-
-        #endregion Check Input Quantity Of Medicine Is Out Of Stock
-
-        //-----------------------------  * END  MEDICINES AREA * -------------------//
-
-     
+ //-----------------------------  * END  MEDICINES AREA * -------------------//
 
         #region Clear Controls
         public void ClearControls()
@@ -163,44 +186,11 @@ namespace TheClinicApp.Stock
 
         #endregion Clear Controls
 
-        #region Get MedicineDetails By Medicine Name
+        #region Bind Textbox By Generated IssueNo
 
-        [WebMethod]
-        public static string MedDetails(string MedName)
-        {
-            IssueHeaderDetails IssuedtlsObj = new IssueHeaderDetails();
-
-            UIClasses.Const Const = new UIClasses.Const();
-            ClinicDAL.UserAuthendication UA;
-
-            UA = (ClinicDAL.UserAuthendication)HttpContext.Current.Session[Const.LoginSession];
-
-            IssuedtlsObj.ClinicID = UA.ClinicID.ToString();
-
-            DataSet ds = IssuedtlsObj.GetMedicineDetailsByMedicineName(MedName);
-            string Unit = "";
-            string MedCode = "";
-            string Category = "";
-            string Qty = "";
-
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-                Unit = Convert.ToString(ds.Tables[0].Rows[0]["Unit"]);
-                MedCode = Convert.ToString(ds.Tables[0].Rows[0]["MedCode"]);
-                Category = Convert.ToString(ds.Tables[0].Rows[0]["CategoryName"]);
-                Qty = Convert.ToString(ds.Tables[0].Rows[0]["Qty"]);
-            }
-
-            return String.Format("{0}" + "|" + "{1}" + " | " + "{2}" + " | " + "{3}", Unit, MedCode, Category, Qty);
-
-
-        }
-
-
-        #endregion Get MedicineDetails By Medicine Name
-
-        #region Bind Textbox By IssueNo
-
+        /// <summary>
+        /// To bind issue no textbox with generated issue no , and is changable
+        /// </summary>
         public void BindTextboxByIssueNo()
         {
            
@@ -214,6 +204,13 @@ namespace TheClinicApp.Stock
         #endregion Bind Textbox By IssueNo
 
         #region Check IssueNo Duplication
+
+        /// <summary>
+        ///Checks issue no duplication when Generated issue no is editable
+        /// </summary>
+        /// <param name="IssueNo"></param>
+        /// <returns></returns>
+
         [WebMethod]
         public static bool CheckIssueNoDuplication(string IssueNo)
         {
@@ -305,6 +302,15 @@ namespace TheClinicApp.Stock
         #endregion Page Load
 
         #region Add Button Click
+
+        /// <summary>
+        /// Insert,update,delete operations are handling in this case.
+        ///  Case 1 : If removedId hiddenfield has value, case is delete.
+        ///  Case 2 : If DetaildId hiddenfield has value, case is Update 
+        ///  Case 3 : If DetailId is empty , Case is insert
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnAdd_Click(object sender, EventArgs e)
         
         {

@@ -45,16 +45,15 @@
 
     <script>
 
-
   function      RemoveWarning(ControlNo)
   {
       //debugger;
 
+      //--------------* To remove warning msg from textbox if the medicine is not out of stock , and is called onfocus event of quantity textbox *-------------------//
             $("#txtQuantity"+ControlNo).removeClass("warning");
             $("#txtQuantity"+ControlNo).css({'color':'black'});
             $("#txtQuantity"+ControlNo).attr('type','number');
         }
-
 
 
         $(function () {
@@ -64,31 +63,32 @@
 
                 buttonImageOnly: true,
                 buttonImage: '../Images/calendar4.png',
-
-                
+ 
                
             });
 
            
         });
 
-       
-
-
     </script>
 
 
     <script>  
             
-        //----------------------------------------------------------  * MEDICINES  * --------------------------------------------------------------------------------------------------
+  //----------------------------------------------------------  * MEDICINES  * --------------------------------------------------------------------------------------------------
+      
+        //----------* Global variables *--------//
 
-
-        //----------- * Function to add row -- it creates a row if rowcont is zero , othewise create a row and append it to the existing rows *-------//
+        var RemovedIDs = ''; //Uniqueids of details to be deleted are stored to this by appending commas
+        var divValue;
+        var values = '';     //User Inputs in all textboxes are stored into this by appending '|' as columnwise and '$' as rowwise 
 
 
 
         function autocompleteonfocus(controlID)
         {
+//---------* Medicine auto fill, it also filters the medicine that has been already saved  *----------//
+
             //debugger;
             var topcount =document.getElementById('<%=hdnRowCount.ClientID%>').value;
  
@@ -122,8 +122,7 @@
 
                         {
                             var item=  document.getElementById('txtMedicine'+i).value 
-                            //var a =  ac.indexOf(item);                               
-                            //  delete ac[a];                                 
+                                                           
 
                             result = result.filter(function(elem){
                                 return elem != item; 
@@ -145,22 +144,19 @@
 
 
 
-        var RemovedIDs = '';
-
-
-
 
         function AddRow()
         {
            
+ //----------- * Function to add row -- it creates a row if rowcont is zero , othewise create a row and append it to the existing rows *-------//  
+           
           
-            //To Check the Reloading Condition
             var hidCount= document.getElementById('<%=hdnRowCount.ClientID%>').value;
           
             if (hidCount== "0")
             {
                 var iCnt = 0;
-                // CREATE A "DIV" ELEMENT AND DESIGN IT USING JQUERY ".css()" CLASS.
+               
                 var container = $(document.createElement('div')).css({
                     width:'100%',
                     borderTopColor: '#999', borderBottomColor: '#999',
@@ -173,42 +169,18 @@
                     CreateDynamicContols();
                 }
             
-
-
-
                 function CreateDynamicContols()
                 {  
                     iCnt=1;
 
-                 
                     $(container).append('<table style="width:80%" id="Header"><tr><td><label >Medicine Name</label></td><td ><label >Unit</label></td><td ><label >Medicine Code</label></td><td ><label >Cateorgy</label></td><td ><label >Quantity</label></td></tr> </table>');
                     
                     $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')" onfocus="RemoveWarning('+iCnt+')" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td><td><input id="hdnQty'+iCnt+'" type="hidden" /></td> </tr> </table>');
                    
-                    // ADD BOTH THE DIV ELEMENTS TO THE "Prescription" CONTAINER.
-                    
-                
                     $('#main').after(container);
 
-                  
-
-                  <%--  var ac=null;
-                    ac = <%=listFilter %>;
-                    $( "#txtMedicine"+iCnt).autocomplete({
-                        source: ac
-                    });--%>
-               
-
-                    
                     $('body').on('click', '.bt1', function  () {
                         
-                       
-                        //var ABC = $(this).closest('.bt1').attr('id') //document.getElementById(this.Id);
-                       
-
-                        //id = ABC.substring(8,20); 
-                        
-
                         if (iCnt >= 1) {
 
                             if (iCnt == 1) 
@@ -220,11 +192,8 @@
                     
                                 $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')" onfocus="RemoveWarning('+iCnt+')"  /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td><td><input id="hdnQty'+iCnt+'" type="hidden" /></td> </tr> </table>');
                    
-                                
-                
                                 $('#main').after(container);
 
-                              
                             }
                             else
                             {
@@ -238,39 +207,21 @@
                     
                         document.getElementById('<%=hdnRowCount.ClientID%>').value = tempRowCount;
 
-                       
-                           
-                      
-
-
                     }); 
                  
 
-
-
-
                     $('body').on('click', '.bt', function () 
                     {
-                       
                       
                         if (iCnt <= 200)
                         {
                             iCnt = iCnt + 1;
                        
-                            // ADDING  TEXTBOX CONTROLS
-
                             $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')" onfocus="RemoveWarning('+iCnt+')" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td><td><input id="hdnQty'+iCnt+'" type="hidden" /></td> </tr> </table>');
                             $('#main').after(container);                            
-                           <%-- var ac=null;
-                            ac = <%=listFilter %>;
-                            $( "#txtMedicine"+iCnt).autocomplete({
-                                source: ac
-                            });--%>
-
+                          
                         }
-                                  
-                            // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
-                            // (20 IS THE LIMIT WE HAVE SET)
+                         
                         else
                         {
                             $(container).append('<label>Reached the limit</label>');
@@ -278,7 +229,6 @@
                             $('.bt').attr('disabled', 'disabled');
                         }
 
-                        //to find how many rows are currrently inserted.
                         document.getElementById('<%=hdnRowCount.ClientID%>').value = iCnt;
 
                     });
@@ -294,7 +244,6 @@
                 for(iCnt=1;iCnt<=hidCount;iCnt++)
                 {
                     
-                  
                     var container = $(document.createElement('div')).css({
                         width:'100%',
                         borderTopColor: '#999', borderBottomColor: '#999',
@@ -320,42 +269,27 @@
 
                     $('#main').before(container);
 
-                   
-
-                   
                 }  
 
 
-                //icnt value will be reset by reducing 1 after for loop 
+                
                 iCnt=iCnt-1;
 
-
-
-
-          
                 $('body').on('click', '.bt1', function  () {
                  
-                  
                     var RemoveButtonId = $(this).closest('.bt1').attr('id') //document.getElementById(this.Id);
-                    //alert (ABC);
-
+                   
                     var id = RemoveButtonId.substring(8,20); 
-                    //alert(string1); 
-
+                    
                     if (iCnt >= 1) {
 
                         RemovedIDs += document.getElementById('hdnDetailID'+id).value+',';
-
 
                         if (RemovedIDs == ',') {
                             RemovedIDs = '';
                         }
 
-
                         document.getElementById('<%=hdnRemovedIDs.ClientID%>').value = RemovedIDs;
-
-                        //alert(RemovedIDs);
-                        
 
                         if (iCnt == 1) {
                             $(this).closest("table").remove();
@@ -365,11 +299,8 @@
                     
                             $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')" onfocus="RemoveWarning('+iCnt+')" /></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td> <td><input id="hdnQty'+iCnt+'" type="hidden" /></td></tr> </table>');
                    
-                                
-                
                             $('#main').after(container);
-
-                            
+ 
                         }
                         else{
                             $(this).closest("table").remove();
@@ -379,37 +310,22 @@
 
                     document.getElementById('<%=hdnRowCount.ClientID%>').value = tempRowCount;
 
-
-                    
-
                 }); 
 
-
-            
-
-
+                 
                 $('body').on('click', '.bt', function () 
                 {
-                 
-                      
+                  
                     if (iCnt <= 200)
                     {
                         iCnt = iCnt + 1;
                        
-                        // ADDING  TEXTBOX CONTROLS
-
                         $(container).append('<table style="width:80%"><tr><td><input id="txtMedicine'+iCnt+'" style="width:100%" class="input" type="text" placeholder="Medicine" onblur="BindControlsByMedicneName('+iCnt+')" onfocus="autocompleteonfocus('+iCnt+')"  /></td><td><input id="txtUnit'+iCnt+'" readonly="true" class="input "  style="width:100%" type="text" placeholder="Unit" /></td><td><input id="txtCode'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Med Code"/></td><td><input id="txtCategory'+iCnt+'" readonly="true" class="input " style="width:100%" type="text" placeholder="Category"/></td><td><input id="txtQuantity'+iCnt+'" style="width:100%" class="input" min="1" type="number" placeholder="Quantity" onblur="CheckMedicineIsOutOfStock('+iCnt+')"  onfocus="RemoveWarning('+iCnt+')"/></td><td><input type="button" id="btAdd'+iCnt+'"  onclick=this.style="visibility = hidden;"  value="+" class="bt" /></td><td><input id="hdnDetailID'+iCnt+'" type="hidden" /></td><td ><input type="button" id="btRemove'+iCnt+'" class="bt1" value="-"/></td><td><input id="hdnQty'+iCnt+'" type="hidden" /></td> </tr> </table>');
                         $('#main').after(container);                            
-                        <%--var ac=null;
-                        ac = <%=listFilter %>;
-                        $( "#txtMedicine"+iCnt).autocomplete({
-                            source: ac
-                        });--%>
-
+                        
                     }
-                                  
-                        // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
-                        // (20 IS THE LIMIT WE HAVE SET)
+                                
+                        
                     else
                     {
                         $(container).append('<label>Reached the limit</label>');
@@ -417,7 +333,7 @@
                         $('.bt').attr('disabled', 'disabled');
                     }
 
-                    //to find how many rows are currrently inserted.
+                    
                     document.getElementById('<%=hdnRowCount.ClientID%>').value = iCnt;
 
                 });
@@ -429,108 +345,35 @@
         }
 
 
-        //------------ *   Function to get textbox values -- stores textbox values into hidden field when data is submitted *-----------//
+ 
 
         // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
-        var divValue, values = '';
+       
 
         function GetTextBoxValues()
         {
+ //------------ *   Function to get textbox values -- stores textbox values into hidden field when data is submitted *-----------//
+
             $(divValue)
                 .empty()
                 .remove();
             values = '';
             var i=1;
-            var HiddenfieldCount = 0;
-
            
-            var j= 1;
-
             $('.input').each(function () {
                
-                //if($(this).val() == '' || $(this).val() == null)
-                //{$(this).focus = true;
-                //    alert(1);
-
-                    
-                //    return false;
-                //}
-
-
-               
-                divValue = $(document.createElement('div')).css({
-                    padding: '5px', width: '200px'
-                });
-
-                var datas = document.getElementById('<%=hdnTextboxValues.ClientID%>');
-              
-                
-               
-    
-                //if( (document.getElementById('txtQuantity'+j) != null) &&(document.getElementById('txtQuantity'+j).value != '' ) &&(document.getElementById('txtMedicine'+j) != null) && (document.getElementById('txtMedicine'+j).value != '' ) ) 
-                //{     
-                if (this.value == '' ) // ----- * To avoid empty rows *---//
-                {
-                    i++;
-                }
-                else
-                {
-                    if(i % 5 == 0) //  ----- *Checking whether reached at row end -then append $ and set detail id to hiddenfield  *---//
-                    {
-                        HiddenfieldCount= HiddenfieldCount+1;
-                           
-                        while ( (document.getElementById('hdnDetailID'+HiddenfieldCount) == null)  ) {
-                            HiddenfieldCount= HiddenfieldCount+1;
-                          
-                        }
-                        
-                        //if (values != '') 
-                        //{
-                        values += this.value +'|'+document.getElementById('hdnDetailID'+HiddenfieldCount).value+'$';
-                        //}
-                                
-                        j= j+1;    
-                           
-                    }
-
-                    else
-                    {
-                           
-                        values += this.value +'|'; 
-                           
-                            
-                    }
-               
-                    //values += this.value +'|'; 
-                   
                     i++;
 
-                    datas.value = values;
-                
-                }
-
-
-            //}
-
-            //    if( (document.getElementById('txtQuantity'+j) != null) &&(document.getElementById('txtQuantity'+j).value == '' ) ) 
-            //    {
-                
-            //        j= j+1;
-            //    }
-               
-               
             });
             
-
 
             var NumberOfColumns = i-1;
             
             var NumberOfRows = NumberOfColumns/5;
-            values = '';
+          
             for (var k = 1; k <= NumberOfRows; k++) 
             {
               
-                debugger;
                 if(( (document.getElementById('txtQuantity'+k) != null) &&(document.getElementById('txtQuantity'+k).value != '' ) && (isNaN(document.getElementById('txtQuantity'+k).value))== false ) && ( (document.getElementById('txtMedicine'+k) != null) &&(document.getElementById('txtMedicine'+k).value != '' ) )) 
                 {
                 
@@ -567,15 +410,9 @@
 
 
 
-
-            //-----------------------* Function to bind textboxes by medicine name -- fills textboxes when focus is lost from medicine textbox  *-----------------//
-
-            //var Qty = 0;
-
-
             function BindControlsByMedicneName(ControlNo) 
             {        
- 
+ //-----------------------* Function to bind textboxes by medicine name -- fills textboxes when focus is lost from medicine textbox  *-----------------//
             
                 if (ControlNo>=1)
                 {
@@ -623,11 +460,10 @@
             }
 
 
-         
 
             function CheckMedicineIsOutOfStock(ControlNo)
             {
-               
+//-----------* Checks whether medicine is out of stock , when user input quantity , and is called onblur event of quantity textbox *-----------//               
                 if (document.getElementById('txtMedicine'+ControlNo)!=null && document.getElementById('txtQuantity'+ControlNo)!=null  ) 
                 {
                     var Qty = parseInt(document.getElementById('hdnQty'+ControlNo).value);
@@ -710,12 +546,12 @@
 
             }
 
-            //----------------------------------- * Function to rebind medicine textboxes -- refills controls by retrieving data from xml *-----------------------
+ 
 
             function RefillTextboxesWithXmlData(Medicines)
             {
                 
-
+//----------------------------------- * Function to rebind medicine textboxes -- refills controls by retrieving data from xml *-----------------------
                 var XmlDataFromHF =   document.getElementById('<%=hdnXmlData.ClientID%>').value;
             var xmlDoc = $.parseXML(XmlDataFromHF);
             var xml = $(xmlDoc);
@@ -763,7 +599,7 @@
     }
 
 
-    //----------------------------------------------------------  * END MEDICINES  * --------------------------------------------------------------------------------------------------
+ //----------------------------------------------------------  * END MEDICINES  * --------------------------------------------------------------------------------------------------
 
     $(document).ready(function () {
               
@@ -789,8 +625,6 @@
 
                
             AddRow();
-                
-
                
 
      <%--     if (document.getElementById('<%=hdnXmlData.ClientID%>').value != null) {--%>
@@ -803,10 +637,9 @@
 
        
 
-
-        //---------------* Function to check Issue Number duplication *-----------------//
-
         function CheckIssueNoDuplication(IssueNo) {
+
+ //---------------* Function to check Issue Number duplication *-----------------// 
             
             var IssueNo = document.getElementById('<%=txtIssueNO.ClientID %>').value;
                 IssueNo = IssueNo.replace(/\s/g, '');
