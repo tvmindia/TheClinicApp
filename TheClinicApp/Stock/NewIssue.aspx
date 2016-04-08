@@ -531,13 +531,34 @@
             {
               
                 debugger;
-                if(( (document.getElementById('txtQuantity'+k) != null) &&(document.getElementById('txtQuantity'+k).value != '' ) ) && ( (document.getElementById('txtMedicine'+k) != null) &&(document.getElementById('txtMedicine'+k).value != '' ) )) 
-                    {
+                if(( (document.getElementById('txtQuantity'+k) != null) &&(document.getElementById('txtQuantity'+k).value != '' ) && (isNaN(document.getElementById('txtQuantity'+k).value))== false ) && ( (document.getElementById('txtMedicine'+k) != null) &&(document.getElementById('txtMedicine'+k).value != '' ) )) 
+                {
                 
-                            values += document.getElementById('txtMedicine'+k).value +'|'+document.getElementById('txtUnit'+k).value +'|'+document.getElementById('txtCode'+k).value +'|'+ document.getElementById('txtCategory'+k).value +'|'+ document.getElementById('txtQuantity'+k).value+'|'+document.getElementById('hdnDetailID'+k).value+'$';
+                    values += document.getElementById('txtMedicine'+k).value +'|'+document.getElementById('txtUnit'+k).value +'|'+document.getElementById('txtCode'+k).value +'|'+ document.getElementById('txtCategory'+k).value +'|'+ document.getElementById('txtQuantity'+k).value+'|'+document.getElementById('hdnDetailID'+k).value+'$';
                            
-                    }
+                }
                 
+                if ((document.getElementById('txtQuantity'+k) != null) &&((document.getElementById('txtQuantity'+k).value == '' ) || (isNaN(document.getElementById('txtQuantity'+k).value)== true ))) 
+                {
+    
+                
+                    if ((document.getElementById('hdnDetailID'+k) != null) &&(document.getElementById('hdnDetailID'+k).value != '' ) )
+                    {
+                        RemovedIDs += document.getElementById('hdnDetailID'+k).value+',';
+
+
+                        if (RemovedIDs == ',') {
+                            RemovedIDs = '';
+                        }
+
+
+                        document.getElementById('<%=hdnRemovedIDs.ClientID%>').value = RemovedIDs;
+                    }
+              
+            }
+
+
+
             }
 
             document.getElementById('<%=hdnTextboxValues.ClientID%>').value = values;
@@ -631,6 +652,9 @@
                                 $("#txtQuantity"+ControlNo).attr('type','text');
                                
                                 $("#txtQuantity"+ControlNo).css({'color':' #ffad99'});
+
+                                //$("#txtQuantity"+ControlNo).attr("placeholder", 'Must be < '+Qty);
+
                                 $("#txtQuantity"+ControlNo).val('Must be < '+Qty);
 
                                 //$("#txtQuantity"+ControlNo).val('Please enter a value below '+Qty);
@@ -662,6 +686,8 @@
                                 $("#txtQuantity"+ControlNo).attr('type','text');
                                
                                 $("#txtQuantity"+ControlNo).css({'color':' #ffad99'});
+                               
+                                
                                 $("#txtQuantity"+ControlNo).val('Must be < '+QtyInStock);
 
 
@@ -699,7 +725,7 @@
             if (Medicines.length > 0)
             {
 
-                //document.getElementById('<%=txtIssueNO.ClientID %>').readOnly = true;
+                document.getElementById('<%=txtIssueNO.ClientID %>').readOnly = true;
 
                
 

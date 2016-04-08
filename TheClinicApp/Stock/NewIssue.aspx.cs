@@ -388,7 +388,7 @@ namespace TheClinicApp.Stock
 
                             if ((txtIssueNO.Text != dtIssuehdr.Rows[0]["IssueNO"].ToString()) || (txtIssuedTo.Text != dtIssuehdr.Rows[0]["IssuedTo"].ToString()) || (oldDate != newDate))
                             {
-                                //  ------- Update header ---------//
+ // ----------------- *  Update header*-----------------------------------//
 
                                 if (hdnTextboxValues.Value != "")
                                 {
