@@ -488,6 +488,20 @@ namespace TheClinicApp.Stock
         }
         #endregion Add Button Click
 
+
+        #region Get Quantity In Stock 
+        [WebMethod]
+
+        public static string GetQtyInStock(string MedName)
+        {
+            IssueDetails dtlsObj = new IssueDetails();
+            string qty = dtlsObj.GetQtyInStock(MedName);
+            return qty;
+        }
+
+        #endregion Get Quantity In Stock 
+
+
         #region New Button Click
         protected void btnNew_Click(object sender, EventArgs e)
         {

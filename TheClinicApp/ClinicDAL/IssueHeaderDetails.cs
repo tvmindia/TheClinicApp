@@ -269,8 +269,13 @@ namespace TheClinicApp.ClinicDAL
 
                 cmd.Parameters.Add("@Status", SqlDbType.Int);
                 cmd.Parameters["@Status"].Direction = ParameterDirection.Output;
+
+
                 cmd.ExecuteNonQuery();
                 int Outputval = (int)cmd.Parameters["@Status"].Value;
+               
+
+                
 
                 if (Outputval == 1)
                 {
@@ -836,8 +841,15 @@ namespace TheClinicApp.ClinicDAL
 
                 cmd.Parameters.Add("@Status", SqlDbType.Int);
                 cmd.Parameters["@Status"].Direction = ParameterDirection.Output;
+
+
+                //cmd.Parameters.Add("@QtyInStock", SqlDbType.Real);
+                //cmd.Parameters["@QtyInStock"].Direction = ParameterDirection.Output;
+
                 cmd.ExecuteNonQuery();
                 int Outputval = (int)cmd.Parameters["@Status"].Value;
+                //int QtyInstock = Convert.ToInt32(cmd.Parameters["@QtyInStock"].Value);
+
 
                 if (Outputval == 1)
                 {
@@ -1111,6 +1123,51 @@ namespace TheClinicApp.ClinicDAL
 
 
         #endregion Get MedicineID By UniqueID
+
+        #region Get Quantity In Stock 
+
+        public string GetQtyInStock(string MedName)
+        {
+            string Qty = string.Empty;
+            dbConnection dcon = null;
+
+            try
+            {
+                dcon = new dbConnection();
+                dcon.GetDBConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = dcon.SQLCon;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[GetQtyInStock]";
+
+                cmd.Parameters.Add("@MedName", SqlDbType.NVarChar, 255).Value =MedName;
+
+                object qtyInIssueDT = cmd.ExecuteScalar();
+                if (qtyInIssueDT != null)
+                {
+                    Qty = qtyInIssueDT.ToString();
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                var page = HttpContext.Current.CurrentHandler as Page;
+                //eObj.ErrorData(ex, page);
+
+            }
+
+            finally
+            {
+                if (dcon.SQLCon != null)
+                {
+                    dcon.DisconectDB();
+                }
+            }
+
+            return Qty;
+        }
+        #endregion Get Quantity In Stock
 
         #endregion Methods
 
