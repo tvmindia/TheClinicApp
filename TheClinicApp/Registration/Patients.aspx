@@ -374,7 +374,7 @@ background-color: ghostwhite;
                                        
                                          <div class="form-group">
                                        
-                                        <asp:Button ID="btnSave" runat="server" Text="SAVE" type="submit" CssClass="button" OnClick="btnSave_Click" ValidationGroup="Submit" />
+                                        <asp:Button ID="btnSave" runat="server" Text="SAVE" type="submit" CssClass="button" OnClick="btnSave_Click" ValidationGroup="Submit" formnovalidate />
                                         </div>
                                     </td>
                                     <td style="width:40%">
